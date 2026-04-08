@@ -25,3 +25,60 @@ subscriptions:
     stage: A
     diff_threshold_pct: 15
   keyword_recall_mode: or
+  intent_profiles:
+    - tag: RE US
+      description: 需求工程领域的用户故事相关的论文
+      enabled: true
+      paper_sources:
+        - arxiv
+      keywords:
+        - keyword: User Stories
+          keyword_cn: 用户故事
+          query: User stories in software development and requirements engineering
+        - keyword: Requirements Engineering
+          keyword_cn: 需求工程
+          query: Requirements engineering methodologies and practices
+        - keyword: Agile Requirements
+          keyword_cn: 敏捷需求
+          query: Agile requirements engineering and management
+        - keyword: User Story Quality
+          keyword_cn: 用户故事质量
+          query: Quality assessment and improvement of user stories
+        - keyword: User Story Extraction
+          keyword_cn: 用户故事提取
+          query: Automated extraction of user stories from text
+        - keyword: Acceptance Criteria
+          keyword_cn: 验收标准
+          query: Defining and validating user story acceptance criteria
+      intent_queries:
+        - query: State of the art in user story research for requirements engineering
+          query_cn: 需求工程中用户故事研究的现状
+          enabled: true
+          source: manual
+          note: ''
+        - query: Automated tools for user story generation and validation
+          query_cn: 用户故事生成与验证的自动化工具
+          enabled: true
+          source: manual
+          note: ''
+        - query: Impact of user story quality on software project success
+          query_cn: 用户故事质量对软件项目成功的影响
+          enabled: true
+          source: manual
+          note: ''
+      updated_at: '2026-04-08T08:16:50.839Z'
+source_backends:
+  arxiv:
+    papers_table: arxiv_papers
+    use_vector_rpc: true
+    vector_rpc: match_arxiv_papers
+    vector_rpc_exact: match_arxiv_papers_exact
+    use_bm25_rpc: true
+    bm25_rpc: match_arxiv_papers_bm25
+    sync_table: arxiv_sync_status
+    sync_success_value: success
+    schema: public
+    kind: supabase
+    enabled: true
+    url: https://lyucdwgefyfbmaiopjbk.supabase.co
+    anon_key: sb_publishable_lX-oi64Uxyd7SIVv3_w2Uw_MTOojeKq
