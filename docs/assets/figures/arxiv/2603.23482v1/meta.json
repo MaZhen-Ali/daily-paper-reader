@@ -1,0 +1,54 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.23482v1/fig-001.webp",
+      "caption": "Table 1. PEGS-structured prompt template",
+      "page": 6,
+      "index": 1,
+      "width": 629,
+      "height": 191
+    },
+    {
+      "url": "assets/figures/arxiv/2603.23482v1/fig-002.webp",
+      "caption": "Fig. 5. Provider performance comparison. The multi-provider consensus approach achieves the highest F1 score (0.88), outperforming all individual providers.",
+      "page": 10,
+      "index": 2,
+      "width": 615,
+      "height": 298
+    },
+    {
+      "url": "assets/figures/arxiv/2603.23482v1/fig-003.webp",
+      "caption": "Fig. 6. ReqFusion performance improvements. Time reduction (78%) and consistency (98%) represent the most significant gains over manual methods.",
+      "page": 13,
+      "index": 3,
+      "width": 604,
+      "height": 286
+    },
+    {
+      "url": "assets/figures/arxiv/2603.23482v1/fig-004.webp",
+      "caption": "Fig. 4. Distribution of requirements by category (Dataset B). Compliance requirements (26.5%) dominate due to the regulatory nature of German industrial tenders.",
+      "page": 9,
+      "index": 4,
+      "width": 675,
+      "height": 311
+    },
+    {
+      "url": "assets/figures/arxiv/2603.23482v1/fig-005.webp",
+      "caption": "Fig. 3. Priority distribution of extracted requirements (Dataset B, n=1,050). Highpriority requirements dominate at 64.5%, reflecting the industrial nature of the tender documentation.",
+      "page": 9,
+      "index": 5,
+      "width": 496,
+      "height": 261
+    },
+    {
+      "url": "assets/figures/arxiv/2603.23482v1/fig-006.webp",
+      "caption": "Fig. 1. ReqFusion system architecture. The Multi-LLM Orchestrator (center, highlighted) coordinates GPT-4, Claude-3, and Groq providers. The Response Merger applies cosine similarity (>0.85 threshold) for deduplication and consensus voting for conflict resolution.",
+      "page": 5,
+      "index": 6,
+      "width": 532,
+      "height": 527
+    }
+  ]
+}

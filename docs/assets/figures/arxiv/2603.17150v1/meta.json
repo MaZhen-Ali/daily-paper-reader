@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.17150v1/fig-001.webp",
+      "caption": "Fig. 1. The intent gap in software development. Top: Traditional AI code generation translates informal, ambiguous natural language directly into operational code, leaving a large semantic gap. Bottom: Formal specifications serve as an intermediate “what” layer, reducing the gap and enabling enforcement through testing and verification.",
+      "page": 3,
+      "index": 1,
+      "width": 819,
+      "height": 301
+    }
+  ]
+}

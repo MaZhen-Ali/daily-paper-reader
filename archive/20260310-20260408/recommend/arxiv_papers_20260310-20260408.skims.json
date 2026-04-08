@@ -1,0 +1,609 @@
+{
+  "mode": "skims",
+  "generated_at": "2026-04-08T08:24:55.256785+00:00",
+  "stats": {
+    "mode": "skims",
+    "forced_all_quick": true,
+    "min_score": 8.0,
+    "deep_divecandidates": 16,
+    "deep_cap": null,
+    "deep_selected": 0,
+    "quick_candidates": 16,
+    "quick_skim_target": null,
+    "quick_selected": 16
+  },
+  "deep_dive": [],
+  "quick_skim": [
+    {
+      "id": "2603.28163v1",
+      "source": "arxiv",
+      "title": "From Reviews to Requirements: Can LLMs Generate Human-Like User Stories?",
+      "abstract": "App store reviews provide a constant flow of real user feedback that can help improve software requirements. However, these reviews are often messy, informal, and difficult to analyze manually at scale. Although automated techniques exist, many do not perform well when replicated and often fail to produce clean, backlog-ready user stories for agile projects.   In this study, we evaluate how well large language models (LLMs) such as GPT-3.5 Turbo, Gemini 2.0 Flash, and Mistral 7B Instruct can generate usable user stories directly from raw app reviews. Using the Mini-BAR dataset of 1,000+ health app reviews, we tested zero-shot, one-shot, and two-shot prompting methods.   We evaluated the generated user stories using both human judgment (via the RUST framework) and a RoBERTa classifier fine-tuned on UStAI to assess their overall quality. Our results show that LLMs can match or even outperform humans in writing fluent, well-formatted user stories, especially when few-shot prompts are used. However, they still struggle to produce independent and unique user stories, which are essential for building a strong agile backlog.   Overall, our findings show how LLMs can reliably turn unstructured app reviews into actionable software requirements, providing developers with clear guidance to turn user feedback into meaningful improvements.",
+      "authors": [
+        "Shadman Sakib",
+        "Oishy Fatema Akhand",
+        "Tasnia Tasneem",
+        "Shohel Ahmed"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-03-30T08:31:18+00:00",
+      "link": "https://arxiv.org/pdf/2603.28163v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "Generating user stories from app reviews using LLMs and quality evaluation",
+      "llm_evidence_cn": "使用大模型从应用评论中生成用户故事并进行质量评估",
+      "llm_evidence": "使用大模型从应用评论中生成用户故事并进行质量评估",
+      "canonical_evidence": "使用大模型从应用评论中生成用户故事并进行质量评估",
+      "llm_tldr_en": "Evaluates LLMs for generating backlog-ready user stories from raw app store reviews.",
+      "llm_tldr_cn": "评估了大模型从原始应用商店评论中生成可直接使用的用户故事的能力。",
+      "llm_tldr": "评估了大模型从原始应用商店评论中生成可直接使用的用户故事的能力。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Automated extraction of user stories from text",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2603.12925v1",
+      "source": "arxiv",
+      "title": "Teaching Agile Requirements Engineering: A Stakeholder Simulation with Generative AI",
+      "abstract": "Context: The active involvement of users and customers in agile software development remains a persistent challenge in practice. For this reason, it is important that students in higher education become familiar with good practices in Agile Requirements Engineering during their studies. Objective: Our objective is to enable students to learn how to interact with Generative Artificial Intelligence (GenAI) through the use of a stakeholder simulation with AI Personas, while also developing an understanding of the limitations of AI tools in practical contexts. Method: In our courses, we employ a stakeholder simulation using GenAI, in which students conduct interviews with AI Personas through a provided meta-prompt. Based on the outcomes of these interviews, students apply agile practices (e.g., story mapping or impact mapping) to document requirements. The use of GenAI is subsequently reflected upon in a structured group discussion. Results: Through this approach, students gain practical experience by applying state-of-the art agile practices for requirements elicitation and documentation while simultaneously developing an understanding of the technical and ethical limitations associated with the use of generative AI. Conclusion: We have applied this approach over several terms and found that using a meta-prompt provides flexibility, allowing us to remain independent of specific large language model providers.",
+      "authors": [
+        "Eva-Maria Schön",
+        "Michael Neumann",
+        "Tiago Silva da Silva"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.HC"
+      ],
+      "published": "2026-03-13T12:07:52+00:00",
+      "link": "https://arxiv.org/pdf/2603.12925v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "teaching agile requirements engineering and stakeholder simulation",
+      "llm_evidence_cn": "敏捷需求工程教学与利益相关者模拟",
+      "llm_evidence": "敏捷需求工程教学与利益相关者模拟",
+      "canonical_evidence": "敏捷需求工程教学与利益相关者模拟",
+      "llm_tldr_en": "Uses GenAI personas to simulate stakeholder interviews for teaching agile requirements engineering practices.",
+      "llm_tldr_cn": "利用生成式人工智能角色模拟利益相关者访谈，用于敏捷需求工程实践教学。",
+      "llm_tldr": "利用生成式人工智能角色模拟利益相关者访谈，用于敏捷需求工程实践教学。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Agile requirements engineering and management",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2603.20534v2",
+      "source": "arxiv",
+      "title": "An Industrial-Scale Retrieval-Augmented Generation Framework for Requirements Engineering: Empirical Evaluation with Automotive Manufacturing Data",
+      "abstract": "Requirements engineering in Industry 4.0 faces critical challenges with heterogeneous, unstructured documentation spanning technical specifications, supplier lists, and compliance standards. While retrieval-augmented generation (RAG) shows promise for knowledge-intensive tasks, no prior work has evaluated RAG on authentic industrial RE workflows using comprehensive production-grade performance metrics. This paper presents a comprehensive empirical evaluation of RAG for industrial requirements engineering automation using authentic automotive manufacturing documentation comprising 669 requirements across four specification standards (MBN 9666-1, MBN 9666-2, BQF 9666-5, MBN 9666-9) spanning 2015-2023, plus 49 supplier qualifications with extensive supporting documentation. Through controlled comparisons with BERT-based and ungrounded LLM approaches, the framework achieves 98.2% extraction accuracy with complete traceability, outperforming baselines by 24.4% and 19.6%, respectively. Hybrid semantic-lexical retrieval achieves MRR of 0.847. Expert quality assessment averaged 4.32/5.0 across five dimensions. The evaluation demonstrates 83% reduction in manual analysis time and 47% cost savings through multi-provider LLM orchestration. Ablation studies quantify individual component contributions. Longitudinal analysis reveals a 55% reduction in requirement volume coupled with 1,800% increase in IT security focus, identifying 10 legacy suppliers (20.4%) requiring requalification, representing potential $2.3M in avoided contract penalties.",
+      "authors": [
+        "Muhammad Khalid",
+        "Yilmaz Uygun"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-03-20T22:05:08+00:00",
+      "link": "https://arxiv.org/pdf/2603.20534v2",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "RAG framework for industrial requirements engineering automation",
+      "llm_evidence_cn": "用于工业需求工程自动化的RAG框架",
+      "llm_evidence": "用于工业需求工程自动化的RAG框架",
+      "canonical_evidence": "用于工业需求工程自动化的RAG框架",
+      "llm_tldr_en": "Evaluates a RAG framework for automating requirements engineering using industrial automotive documentation.",
+      "llm_tldr_cn": "评估了一种利用工业汽车文档实现需求工程自动化的RAG框架。",
+      "llm_tldr": "评估了一种利用工业汽车文档实现需求工程自动化的RAG框架。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2603.23482v1",
+      "source": "arxiv",
+      "title": "ReqFusion: A Multi-Provider Framework for Automated PEGS Analysis Across Software Domains",
+      "abstract": "Requirements engineering is a vital, yet labor-intensive, stage in the software development process. This article introduces ReqFusion: an AI-enhanced system that automates the extraction, classification, and analysis of software requirements utilizing multiple Large Language Model (LLM) providers. The architecture of ReqFusion integrates OpenAI GPT, Anthropic Claude, and Groq models to extract functional and non-functional requirements from various documentation formats (PDF, DOCX, and PPTX) in academic, industrial, and tender proposal contexts. The system uses a domain-independent extraction method and generates requirements following the Project, Environment, Goal, and System (PEGS) approach introduced by Bertrand Meyer. The main idea is that, because the PEGS format is detailed, LLMs have more information and cues about the requirements, producing better results than a simple generic request. An ablation study confirms this hypothesis: PEGS-guided prompting achieves an F1 score of 0.88, compared to 0.71 for generic prompting under the same multi-provider configuration. The evaluation used 18 real-world documents to generate 226 requirements through automated classification, with 54.9% functional and 45.1% nonfunctional across academic, business, and technical domains. An extended evaluation on five projects with 1,050 requirements demonstrated significant improvements in extraction accuracy and a 78% reduction in analysis time compared to manual methods. The multi-provider architecture enhances reliability through model consensus and fallback mechanisms, while the PEGS-based approach ensures comprehensive coverage of all requirement categories.",
+      "authors": [
+        "Muhammad Khalid",
+        "Manuel Oriol",
+        "Yilmaz Uygun"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-03-24T17:45:40+00:00",
+      "link": "https://arxiv.org/pdf/2603.23482v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Automated extraction and classification of software requirements",
+      "llm_evidence_cn": "自动提取和分类软件需求",
+      "llm_evidence": "自动提取和分类软件需求",
+      "canonical_evidence": "自动提取和分类软件需求",
+      "llm_tldr_en": "ReqFusion automates requirement extraction and analysis from various documents using multiple LLMs.",
+      "llm_tldr_cn": "ReqFusion利用多种大模型自动从各类文档中提取和分析软件需求。",
+      "llm_tldr": "ReqFusion利用多种大模型自动从各类文档中提取和分析软件需求。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Automated extraction of user stories from text",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2604.03443v1",
+      "source": "arxiv",
+      "title": "Agile Story-Point Estimation: Is RAG a Better Way to Go?",
+      "abstract": "The sprint-based iterative approach in the Agile software development method allows continuous feedback and adaptation. One of the crucial Agile software development activities is the sprint planning session where developers estimate the effort required to complete tasks through a consensus-based estimation technique such as Planning Poker. In the Agile software development method, a common unit of measuring development effort is Story Point (SP) which is assigned to tasks to understand the complexity and development time needed to complete them. Despite the benefits of this process, it is an extremely time-consuming manual process. To mitigate this issue, in this study, we investigated if this manual process can be automated using Retrieval Augmented Generation (RAG) which comprises a \"Retriever\" and a \"Generator\". We applied two embedding models - bge-large-en-v1.5, and Sentence-Transformers' all-mpnet-base-v2 on 23 open-source software projects of varying sizes and examined four key aspects: 1) how retrieval hyper-parameters influence the performance, 2) whether estimation accuracy differs across different sizes of the projects, 3) whether embedding model choice affects accuracy, and 4) how the RAG-based approach compares to the existing baselines. Although the RAG-based approach outperformed the baseline models in several occasions, our results did not exhibit statistically significant differences in performance across the projects or across the embedding models. This highlights the need for further studies and refinement of the RAG, and model adaptation strategies for better accuracy in automatically estimating user stories.",
+      "authors": [
+        "Lamyea Maha",
+        "Tajmilur Rahman",
+        "Chanchal Roy"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI",
+        "cs.LG"
+      ],
+      "published": "2026-04-03T20:35:51+00:00",
+      "link": "https://arxiv.org/pdf/2604.03443v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Agile story-point estimation and sprint planning automation",
+      "llm_evidence_cn": "敏捷故事点估算和迭代计划自动化",
+      "llm_evidence": "敏捷故事点估算和迭代计划自动化",
+      "canonical_evidence": "敏捷故事点估算和迭代计划自动化",
+      "llm_tldr_en": "Investigates using Retrieval Augmented Generation (RAG) to automate Agile story-point estimation for tasks.",
+      "llm_tldr_cn": "研究使用检索增强生成 (RAG) 自动化敏捷开发中的任务故事点估算。",
+      "llm_tldr": "研究使用检索增强生成 (RAG) 自动化敏捷开发中的任务故事点估算。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Agile requirements engineering and management",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2603.10994v1",
+      "source": "arxiv",
+      "title": "Artificial Intelligence as a Catalyst for Innovation in Software Engineering",
+      "abstract": "The rapid evolution and inherent complexity of modern software requirements demand highly flexible and responsive development methodologies. While Agile frameworks have become the industry standard for prioritizing iteration, collaboration, and adaptability, software development teams continue to face persistent challenges in managing constantly evolving requirements and maintaining product quality under tight deadlines. This article explores the intersection of Artificial Intelligence (AI) and Software Engineering (SE), to analyze how AI serves as a powerful catalyst for enhancing agility and fostering innovation. The research combines a comprehensive review of existing literature with an empirical study, utilizing a survey directed at Software Engineering professionals to assess the perception, adoption, and impact of AI-driven tools. Key findings reveal that the integration of AI (specifically through Machine Learning (ML) and Natural Language Processing (NLP) )facilitates the automation of tedious tasks, from requirement management to code generation and testing . This paper demonstrates that AI not only optimizes current Agile practices but also introduces new capabilities essential for sustaining quality, speed, and innovation in the future landscape of software development.",
+      "authors": [
+        "Carlos Alberto Fernández-y-Fernández",
+        "Jorge R. Aguilar-Cisneros"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-03-11T17:20:30+00:00",
+      "link": "https://arxiv.org/pdf/2603.10994v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "AI for enhancing agility and managing evolving requirements",
+      "llm_evidence_cn": "人工智能增强敏捷性并管理不断演变的需求",
+      "llm_evidence": "人工智能增强敏捷性并管理不断演变的需求",
+      "canonical_evidence": "人工智能增强敏捷性并管理不断演变的需求",
+      "llm_tldr_en": "Analyzes how AI enhances agility and innovation in managing complex, evolving software requirements.",
+      "llm_tldr_cn": "分析了人工智能如何增强管理复杂且不断演变的软件需求的敏捷性和创新性。",
+      "llm_tldr": "分析了人工智能如何增强管理复杂且不断演变的软件需求的敏捷性和创新性。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Agile requirements engineering and management",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2603.11890v1",
+      "source": "arxiv",
+      "title": "QUARE: Multi-Agent Negotiation for Balancing Quality Attributes in Requirements Engineering",
+      "abstract": "Requirements engineering (RE) is critical to software success, yet automating it remains challenging because multiple, often conflicting quality attributes must be balanced while preserving stakeholder intent. Existing Large-Language-Model (LLM) approaches predominantly rely on monolithic reasoning or implicit aggregation, limiting their ability to systematically surface and resolve cross-quality conflicts. We present QUARE (Quality-Aware Requirements Engineering), a multi-agent framework that formulates requirements analysis as structured negotiation among five quality-specialized agents (Safety, Efficiency, Green, Trustworthiness, and Responsibility), coordinated by a dedicated orchestrator. QUARE introduces a dialectical negotiation protocol that explicitly exposes inter-quality conflicts and resolves them through iterative proposal, critique, and synthesis. Negotiated outcomes are transformed into structurally sound KAOS goal models via topology validation and verified against industry standards through retrieval-augmented generation (RAG). We evaluate QUARE on five case studies drawn from established RE benchmarks (MARE, iReDev) and an industrial autonomous-driving specification, spanning safety-critical, financial, and information-system domains. Results show that QUARE achieves 98.2% compliance coverage (+105% over both baselines), 94.9% semantic preservation (+2.3 percentage points over the best baseline), and high verifiability (4.96/5.0), while generating 25-43% more requirements than existing multi-agent RE frameworks. These findings suggest that effective RE automation depends less on model scale than on principled architectural decomposition, explicit interaction protocols, and automated verification.",
+      "authors": [
+        "Haowei Cheng",
+        "Milhan Kim",
+        "Foutse Khomh",
+        "Teeradaj Racharak",
+        "Nobukazu Yoshioka",
+        "Naoyasu Ubayashi",
+        "Hironori Washizaki"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-03-12T13:03:01+00:00",
+      "link": "https://arxiv.org/pdf/2603.11890v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "multi-agent framework for balancing quality attributes in requirements engineering",
+      "llm_evidence_cn": "需求工程中平衡质量属性的多智能体框架",
+      "llm_evidence": "需求工程中平衡质量属性的多智能体框架",
+      "canonical_evidence": "需求工程中平衡质量属性的多智能体框架",
+      "llm_tldr_en": "Introduces a multi-agent negotiation framework to resolve conflicting quality attributes in requirements analysis.",
+      "llm_tldr_cn": "提出一种多智能体协商框架，用于解决需求分析中冲突的质量属性。",
+      "llm_tldr": "提出一种多智能体协商框架，用于解决需求分析中冲突的质量属性。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2603.12406v1",
+      "source": "arxiv",
+      "title": "Team Diversity Promotes Software Fairness: An Experiment on Fairness-Aware Requirements Prioritization",
+      "abstract": "\\textbf{Background:} Fairness and diversity are receiving growing attention in software engineering, particularly as AI and machine learning systems increasingly influence decision-making processes. While fairness is often examined at the algorithmic or data level, there is limited understanding of how it is addressed during the early stages of software development. Moreover, little is known about how team diversity affects fairness-related decisions in software projects.   \\textbf{Aims:} This study investigates how diversity in software teams influences fairness-aware behavior during requirements prioritization.   \\textbf{Method:} A controlled experiment was conducted with 27 pairs of software engineering students, including 13 LGBTQ diverse pairs and 14 non diverse pairs. Each pair prioritized user stories with varying fairness implications. Descriptive statistics were used to analyze attitudes and prioritization outcomes, and thematic analysis was applied to examine the reasoning behind participants' decisions.   \\textbf{Results:} Both groups demonstrated general alignment with fairness principles, prioritizing features that promoted equitable treatment and rejecting those that posed fairness risks. However, LGBTQ diverse pairs were more consistent in rejecting fairness risking stories and made fewer fairness related misprioritization errors. Their reasoning emphasized inclusion, non discrimination, and ethical responsibility, whereas non diverse pairs adopted a more pragmatic, goal oriented perspective.   \\textbf{Conclusions:} The findings indicate that fairness should be considered from the earliest stages of software development. Team diversity can enhance the identification and interpretation of fairness issues during requirements analysis, fostering more reflective and inclusive decision making.",
+      "authors": [
+        "Cleyton Magalhes",
+        "Ronnie de Souza Santos",
+        "Bimpe Ayoola",
+        "Brody Stuart-Verner",
+        "Italo Santos"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-03-12T19:38:18+00:00",
+      "link": "https://arxiv.org/pdf/2603.12406v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "fairness-aware behavior during requirements prioritization",
+      "llm_evidence_cn": "需求优先级排序中的公平意识行为",
+      "llm_evidence": "需求优先级排序中的公平意识行为",
+      "canonical_evidence": "需求优先级排序中的公平意识行为",
+      "llm_tldr_en": "Examines how team diversity influences fairness-related decisions during early requirements engineering.",
+      "llm_tldr_cn": "研究团队多样性如何影响需求工程早期阶段与公平相关的决策。",
+      "llm_tldr": "研究团队多样性如何影响需求工程早期阶段与公平相关的决策。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2603.13999v1",
+      "source": "arxiv",
+      "title": "ReqToCode: Embedding Requirements Traceability as a Structural Property of the Codebase",
+      "abstract": "Requirements traceability in safety-critical software development remains largely dependent on external documentation maintained separately from the systems it describes. This separation introduces structural fragility: traces degrade silently as requirements, code, and tests evolve independently across tools, repositories, and revisions. Recent advances in LLM-based traceability focus on recovering broken links after the fact - an inherently retrospective approach. This paper introduces ReqToCode, an approach that prevents trace degradation by embedding traceable system elements directly into the codebase, making traceability a compile-time verifiable property of the system rather than an external documentation task. Central to the approach is the concept of the Traceable - a language-native, generated code element that represents a single requirement and carries its metadata. Developers reference Traceables in implementation and test code, creating hard, bidirectional links that are validated automatically during the build process. When requirements change, the system responds through a graduated lifecycle - from deprecation warnings to build failures - providing teams with actionable signals rather than abrupt breakage. We describe the approach, its architectural principles, the Traceable lifecycle, and illustrate it with a generic example spanning requirement definition, artifact generation, code integration, and build-time validation.",
+      "authors": [
+        "Thorsten Schlathölter"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-03-14T16:00:09+00:00",
+      "link": "https://arxiv.org/pdf/2603.13999v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "requirements traceability embedded in codebase",
+      "llm_evidence_cn": "嵌入代码库的需求可追溯性",
+      "llm_evidence": "嵌入代码库的需求可追溯性",
+      "canonical_evidence": "嵌入代码库的需求可追溯性",
+      "llm_tldr_en": "Introduces ReqToCode to embed requirements traceability directly into the codebase for better maintenance.",
+      "llm_tldr_cn": "引入 ReqToCode 将需求可追溯性直接嵌入代码库，以便更好地维护。",
+      "llm_tldr": "引入 ReqToCode 将需求可追溯性直接嵌入代码库，以便更好地维护。",
+      "llm_tags": [
+        "query:re-us:composite"
+      ],
+      "matched_query_tag": "query:re-us:composite",
+      "matched_query_text": "Papers central to 需求工程领域的用户故事相关的论文, especially work that connects or combines: User stories in software development and requirements engineering; Requirements engineering methodologies and practices; Agile requirements engineering and management; Quality assessment and improvement of user stories; Automated extraction of user stories from text; Defining and validating user story acceptance criteria; State of the art in user story research for requirements engineering; Automated tools for user story generation and validation; Impact of user story quality on software project success.",
+      "matched_requirement_id": "req-composite-re-us",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2603.15401v1",
+      "source": "arxiv",
+      "title": "SWE-Skills-Bench: Do Agent Skills Actually Help in Real-World Software Engineering?",
+      "abstract": "Agent skills, structured procedural knowledge packages injected at inference time, are increasingly used to augment LLM agents on software engineering tasks. However, their real utility in end-to-end development settings remains unclear. We present SWE-Skills-Bench, the first requirement-driven benchmark that isolates the marginal utility of agent skills in real-world software engineering (SWE). It pairs 49 public SWE skills with authentic GitHub repositories pinned at fixed commits and requirement documents with explicit acceptance criteria, yielding approximately 565 task instances across six SWE subdomains. We introduce a deterministic verification framework that maps each task's acceptance criteria to execution-based tests, enabling controlled paired evaluation with and without the skill. Our results show that skill injection benefits are far more limited than rapid adoption suggests: 39 of 49 skills yield zero pass-rate improvement, and the average gain is only +1.2%. Token overhead varies from modest savings to a 451% increase while pass rates remain unchanged. Only seven specialized skills produce meaningful gains (up to +30%), while three degrade performance (up to -10%) due to version-mismatched guidance conflicting with project context. These findings suggest that agent skills are a narrow intervention whose utility depends strongly on domain fit, abstraction level, and contextual compatibility. SWE-Skills-Bench provides a testbed for evaluating the design, selection, and deployment of skills in software engineering agents. SWE-Skills-Bench is available at https://github.com/GeniusHTX/SWE-Skills-Bench.",
+      "authors": [
+        "Tingxu Han",
+        "Yi Zhang",
+        "Wei Song",
+        "Chunrong Fang",
+        "Zhenyu Chen",
+        "Youcheng Sun",
+        "Lijie Hu"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-03-16T15:16:31+00:00",
+      "link": "https://arxiv.org/pdf/2603.15401v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Requirement-driven benchmark with explicit acceptance criteria and verification",
+      "llm_evidence_cn": "具有明确验收标准和验证的需求驱动基准测试",
+      "llm_evidence": "具有明确验收标准和验证的需求驱动基准测试",
+      "canonical_evidence": "具有明确验收标准和验证的需求驱动基准测试",
+      "llm_tldr_en": "Introduces a benchmark for software agents using requirement documents with explicit acceptance criteria.",
+      "llm_tldr_cn": "引入了一个针对软件智能体的基准，使用带有明确验收标准的需求文档。",
+      "llm_tldr": "引入了一个针对软件智能体的基准，使用带有明确验收标准的需求文档。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Defining and validating user story acceptance criteria",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2603.16348v1",
+      "source": "arxiv",
+      "title": "Prompts Blend Requirements and Solutions: From Intent to Implementation",
+      "abstract": "AI coding assistants are reshaping software development by shifting focus from writing code to formulating prompts. In chat-focused approaches such as vibe coding, prompts become the primary arbiter between human intent and executable software. While Requirements Engineering (RE) emphasizes capturing, validating, and evolving requirements, current prompting practices remain informal and adhoc. We argue that prompts should be understood as lightweight, evolving requirement artifacts that blend requirements with solution guidance. We propose a conceptual model decomposing prompts into three interrelated components: Functionality and Quality (the requirement), General Solutions (architectural strategy and technology choices) and Specific Solutions (implementation-level constraints). We assess this model using existing prompts, examining how these components manifest in practice. Based on this model and the initial assessment, we formulate four hypotheses: prompts evolve toward specificity, evolution varies by user characteristics, engineers using prompting engage in increased requirement validation and verification, and progressive prompt refinement yields higher code quality. Our vision is to empirically evaluate these hypotheses through analysis of real-world AI-assisted development, with datasets, corpus analysis, and controlled experiments, ultimately deriving best practices for requirements-aware prompt engineering. By rethinking prompts through the lens of RE, we position prompting not merely as a technical skill, but as a central concern for software engineering's future.",
+      "authors": [
+        "Shalini Chakraborty",
+        "Jan-Philipp Steghöfer"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-03-17T10:31:44+00:00",
+      "link": "https://arxiv.org/pdf/2603.16348v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Prompts as lightweight evolving requirement artifacts",
+      "llm_evidence_cn": "提示词作为轻量级演进的需求制品",
+      "llm_evidence": "提示词作为轻量级演进的需求制品",
+      "canonical_evidence": "提示词作为轻量级演进的需求制品",
+      "llm_tldr_en": "Argues that AI prompts should be treated as evolving requirement artifacts blending intent with implementation.",
+      "llm_tldr_cn": "认为 AI 提示词应被视为融合了意图与实现且不断演进的需求制品。",
+      "llm_tldr": "认为 AI 提示词应被视为融合了意图与实现且不断演进的需求制品。",
+      "llm_tags": [
+        "query:re-us:composite"
+      ],
+      "matched_query_tag": "query:re-us:composite",
+      "matched_query_text": "Papers central to 需求工程领域的用户故事相关的论文, especially work that connects or combines: User stories in software development and requirements engineering; Requirements engineering methodologies and practices; Agile requirements engineering and management; Quality assessment and improvement of user stories; Automated extraction of user stories from text; Defining and validating user story acceptance criteria; State of the art in user story research for requirements engineering; Automated tools for user story generation and validation; Impact of user story quality on software project success.",
+      "matched_requirement_id": "req-composite-re-us",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2603.17150v1",
+      "source": "arxiv",
+      "title": "Intent Formalization: A Grand Challenge for Reliable Coding in the Age of AI Agents",
+      "abstract": "Agentic AI systems can now generate code with remarkable fluency, but a fundamental question remains: \\emph{does the generated code actually do what the user intended?} The gap between informal natural language requirements and precise program behavior -- the \\emph{intent gap} -- has always plagued software engineering, but AI-generated code amplifies it to an unprecedented scale. This article argues that \\textbf{intent formalization} -- the translation of informal user intent into a set of checkable formal specifications -- is the key challenge that will determine whether AI makes software more reliable or merely more abundant. Intent formalization offers a tradeoff spectrum suitable to the reliability needs of different contexts: from lightweight tests that disambiguate likely misinterpretations, through full functional specifications for formal verification, to domain-specific languages from which correct code is synthesized automatically. The central bottleneck is \\emph{validating specifications}: since there is no oracle for specification correctness other than the user, we need semi-automated metrics that can assess specification quality with or without code, through lightweight user interaction and proxy artifacts such as tests. We survey early research that demonstrates the \\emph{potential} of this approach: interactive test-driven formalization that improves program correctness, AI-generated postconditions that catch real-world bugs missed by prior methods, and end-to-end verified pipelines that produce provably correct code from informal specifications. We outline the open research challenges -- scaling beyond benchmarks, achieving compositionality over changes, metrics for validating specifications, handling rich logics, designing human-AI specification interactions -- that define a research agenda spanning AI, programming languages, formal methods, and human-computer interaction.",
+      "authors": [
+        "Shuvendu K. Lahiri"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI",
+        "cs.PL"
+      ],
+      "published": "2026-03-17T21:28:59+00:00",
+      "link": "https://arxiv.org/pdf/2603.17150v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "translation of informal user intent into formal specifications",
+      "llm_evidence_cn": "将非正式用户意图转化为正式规范",
+      "llm_evidence": "将非正式用户意图转化为正式规范",
+      "canonical_evidence": "将非正式用户意图转化为正式规范",
+      "llm_tldr_en": "Discusses the challenge of formalizing informal natural language requirements into checkable specifications.",
+      "llm_tldr_cn": "探讨了将非正式自然语言需求转化为可检查正式规范的挑战。",
+      "llm_tldr": "探讨了将非正式自然语言需求转化为可检查正式规范的挑战。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Defining and validating user story acceptance criteria",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2603.20534v1",
+      "source": "arxiv",
+      "title": "An Industrial-Scale Retrieval-Augmented Generation Framework for Requirements Engineering: Empirical Evaluation with Automotive Manufacturing Data",
+      "abstract": "Requirements engineering in Industry 4.0 faces critical challenges with heterogeneous, unstructured documentation spanning technical specifications, supplier lists, and compliance standards. While retrieval-augmented generation (RAG) shows promise for knowledge-intensive tasks, no prior work has evaluated RAG on authentic industrial RE workflows using comprehensive production-grade performance metrics. This paper presents a comprehensive empirical evaluation of RAG for industrial requirements engineering automation using authentic automotive manufacturing documentation comprising 669 requirements across four specification standards (MBN 9666-1, MBN 9666-2, BQF 9666-5, MBN 9666-9) spanning 2015-2023, plus 49 supplier qualifications with extensive supporting documentation. Through controlled comparisons with BERT-based and ungrounded LLM approaches, the framework achieves 98.2% extraction accuracy with complete traceability, outperforming baselines by 24.4% and 19.6%, respectively. Hybrid semantic-lexical retrieval achieves MRR of 0.847. Expert quality assessment averaged 4.32/5.0 across five dimensions. The evaluation demonstrates 83% reduction in manual analysis time and 47% cost savings through multi-provider LLM orchestration. Ablation studies quantify individual component contributions. Longitudinal analysis reveals a 55% reduction in requirement volume coupled with 1,800% increase in IT security focus, identifying 10 legacy suppliers (20.4%) requiring requalification, representing potential $2.3M in avoided contract penalties.",
+      "authors": [
+        "Muhammad Khalid",
+        "Yilmaz Uygun"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-03-20T22:05:08+00:00",
+      "link": "https://arxiv.org/pdf/2603.20534v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "RAG framework for industrial requirements engineering automation",
+      "llm_evidence_cn": "用于工业需求工程自动化的RAG框架",
+      "llm_evidence": "用于工业需求工程自动化的RAG框架",
+      "canonical_evidence": "用于工业需求工程自动化的RAG框架",
+      "llm_tldr_en": "Evaluates a RAG framework for automating industrial requirements engineering using automotive data.",
+      "llm_tldr_cn": "评估了用于汽车制造领域需求工程自动化的检索增强生成（RAG）框架。",
+      "llm_tldr": "评估了用于汽车制造领域需求工程自动化的检索增强生成（RAG）框架。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2603.23954v1",
+      "source": "arxiv",
+      "title": "Towards Energy-aware Requirements Dependency Classification: Knowledge-Graph vs. Vector-Retrieval Augmented Inference with SLMs",
+      "abstract": "The continuous evolution of system specifications necessitates frequent evaluation of conflicting requirements, a process that is traditionally labour intensive. Although large language models (LLMs) have demonstrated significant potential for automating this detection, their massive computational requirements often result in excessive energy waste. Consequently, there is a growing need to transition toward Small Language Models (SLMs) and energy aware architectures for sustainable Requirements Engineering. This study proposes and empirically evaluates an energy aware framework that compares Knowledge Graph-based Retrieval (KGR) with Vector-based Semantic Retrieval (VSR) to enhance SLM-based inference at the 7B to 8B parameter scale. By leveraging structured graph traversal and high dimensional semantic mapping, we extract candidate requirements, which are then classified as conflicting or neutral by an inference engine. We evaluate these retrieval enhanced strategies across Zero-Shot, Few-Shot, and Chain of Thoughts prompting methods. Using a three-pillar sustainability framework measuring energy consumption (Wh), latency (s), and carbon emissions (gCO2eq) alongside standard accuracy metrics (F1 Score), this research provides a first systematic empirical evaluation and trade off analysis between predictive performance and environmental impact. Our findings highlight the effectiveness of structured versus semantic retrieval in detecting requirement conflicts, offering a reproducible, sustainability aware architecture for energy efficient requirement engineering.",
+      "authors": [
+        "Shreyas Patil",
+        "Pragati Kumari",
+        "Novarun Deb",
+        "Gouri Ginde"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-03-25T05:29:36+00:00",
+      "link": "https://arxiv.org/pdf/2603.23954v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "automated detection of conflicting requirements",
+      "llm_evidence_cn": "自动检测冲突需求",
+      "llm_evidence": "自动检测冲突需求",
+      "canonical_evidence": "自动检测冲突需求",
+      "llm_tldr_en": "Proposes an energy-aware framework for classifying requirements dependencies using small language models.",
+      "llm_tldr_cn": "提出了一种使用小语言模型进行需求依赖分类的节能框架。",
+      "llm_tldr": "提出了一种使用小语言模型进行需求依赖分类的节能框架。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2603.24248v1",
+      "source": "arxiv",
+      "title": "Detecting Underspecification in Software Requirements via k-NN Coverage Geometry",
+      "abstract": "We propose \\geogap{}, a geometric method for detecting missing requirement types in software specifications. The method represents each requirement as a unit vector via a pretrained sentence encoder, then measures coverage deficits through $k$-nearest-neighbour distances z-scored against per-project baselines. Three complementary scoring components -- per-point geometric coverage, type-restricted distributional coverage, and annotation-free population counting -- fuse into a unified gap score controlled by two hyperparameters. On the PROMISE NFR benchmark, \\geogap{} achieves 0.935 AUROC for detecting completely absent requirement types in projects with $N \\geq 50$ requirements, matching a ground-truth count oracle that requires human annotation. Six baselines confirm that each pipeline component -- per-project normalisation, neural embeddings, and geometric scoring -- contributes measurable value.",
+      "authors": [
+        "Wenyan Yang",
+        "Tomáš Janovec",
+        "Samantha Bavautdin"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-03-25T12:38:07+00:00",
+      "link": "https://arxiv.org/pdf/2603.24248v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Detecting missing requirement types in software specifications",
+      "llm_evidence_cn": "检测软件规范中缺失的需求类型",
+      "llm_evidence": "检测软件规范中缺失的需求类型",
+      "canonical_evidence": "检测软件规范中缺失的需求类型",
+      "llm_tldr_en": "GeoGap uses geometric methods to detect underspecification and missing requirement types in projects.",
+      "llm_tldr_cn": "GeoGap采用几何方法检测软件规范中的需求欠定义和缺失的需求类型。",
+      "llm_tldr": "GeoGap采用几何方法检测软件规范中的需求欠定义和缺失的需求类型。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Quality assessment and improvement of user stories",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2604.05278v1",
+      "source": "arxiv",
+      "title": "Spec Kit Agents: Context-Grounded Agentic Workflows",
+      "abstract": "Spec-driven development (SDD) with AI coding agents provides a structured workflow, but agents often remain \"context blind\" in large, evolving repositories, leading to hallucinated APIs and architectural violations. We present Spec Kit Agents, a multi-agent SDD pipeline (with PM and developer roles) that adds phase-level, context-grounding hooks. Read-only probing hooks ground each stage (Specify, Plan, Tasks, Implement) in repository evidence, while validation hooks check intermediate artifacts against the environment. We evaluate 128 runs covering 32 features across five repositories. Context-grounding hooks improve judged quality by +0.15 on a 1-5 composite LLM-as-judge score (+3.0 percent of the full score; Wilcoxon signed-rank, p < 0.05) while maintaining 99.7-100 percent repository-level test compatibility. We further evaluate the framework on SWE-bench Lite, where augmentation hooks improve baseline by 1.7 percent, achieving 58.2 percent Pass@1.",
+      "authors": [
+        "Pardis Taghavi",
+        "Santosh Bhavani"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI",
+        "cs.MA"
+      ],
+      "published": "2026-04-07T00:26:49+00:00",
+      "link": "https://arxiv.org/pdf/2604.05278v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Spec-driven development with multi-agent workflows",
+      "llm_evidence_cn": "多代理工作流驱动的规格说明驱动开发",
+      "llm_evidence": "多代理工作流驱动的规格说明驱动开发",
+      "canonical_evidence": "多代理工作流驱动的规格说明驱动开发",
+      "llm_tldr_en": "Proposes a multi-agent pipeline for specification-driven development with context-grounding hooks.",
+      "llm_tldr_cn": "提出了一种用于规格说明驱动开发的多代理流水线，具有上下文落地钩子。",
+      "llm_tldr": "提出了一种用于规格说明驱动开发的多代理流水线，具有上下文落地钩子。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.12406v1/fig-001.webp",
+      "caption": "Table 1: User Story Prioritization Example",
+      "page": 5,
+      "index": 1,
+      "width": 440,
+      "height": 300
+    },
+    {
+      "url": "assets/figures/arxiv/2603.12406v1/fig-002.webp",
+      "caption": "Table 3: Focus of Prioritization by Group",
+      "page": 8,
+      "index": 2,
+      "width": 440,
+      "height": 567
+    }
+  ]
+}

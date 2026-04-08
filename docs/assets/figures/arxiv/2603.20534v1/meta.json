@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.20534v1/fig-001.webp",
+      "caption": "Fig. 1. Production-grade RAG framework architecture with six integrated subsystems for industrial requirements engineering.",
+      "page": 5,
+      "index": 1,
+      "width": 767,
+      "height": 1115
+    }
+  ]
+}

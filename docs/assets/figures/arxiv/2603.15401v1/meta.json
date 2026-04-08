@@ -1,0 +1,70 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.15401v1/fig-001.webp",
+      "caption": "Table 2: Evaluation results across all 49 skills. Pass+ and Pass− denote pass rates with and without skill injection, respectively. ∆P is the skill utility delta, C+ and C− are average token costs, ρ is the token overhead ratio, and CE is cost efficiency. Best viewed in color.",
+      "page": 6,
+      "index": 1,
+      "width": 830,
+      "height": 983
+    },
+    {
+      "url": "assets/figures/arxiv/2603.15401v1/fig-002.webp",
+      "caption": "Figure 1: Illustration of how agent skills are used in a software engineering workflow. Given a natural-language requirement, the LLM-based agent selects the most relevant skill from its skill library, including skills such as writing code, running tests, debugging, creating pull requests, and deploying, and injects it into the context window. The agent then executes a series of SWE actions to produce the final software artifacts (such as code) that fulfill the requirement.",
+      "page": 2,
+      "index": 2,
+      "width": 808,
+      "height": 314
+    },
+    {
+      "url": "assets/figures/arxiv/2603.15401v1/fig-003.webp",
+      "caption": "Figure 8: An example of the generated requirement in SWE-Skills-Bench.",
+      "page": 14,
+      "index": 3,
+      "width": 701,
+      "height": 1313
+    },
+    {
+      "url": "assets/figures/arxiv/2603.15401v1/fig-004.webp",
+      "caption": "Figure 7: The prompt used for task instance requirement generation.",
+      "page": 13,
+      "index": 4,
+      "width": 711,
+      "height": 1038
+    },
+    {
+      "url": "assets/figures/arxiv/2603.15401v1/fig-005.webp",
+      "caption": "Figure 2: The distribution of the curated skills and generated tasks.",
+      "page": 4,
+      "index": 5,
+      "width": 800,
+      "height": 381
+    },
+    {
+      "url": "assets/figures/arxiv/2603.15401v1/fig-006.webp",
+      "caption": "Figure 3: Overview of the SWE-Skills-Bench construction pipeline. We begin with 84,192 public skills and narrow them down through three filtering stages: category selection, semantic filtering, and feasibility screening. This process yields 49 SWE skills (Stage 1). Next, for each skill, we identify a matching GitHub project and generate 565 task instances of the form (R,E, P, S) (Stage 2). For each criterion in the requirements document P , we build deterministic verifiers using pytest unit tests (Stage 3). Finally, we run a paired evaluation that compares agent performance with and without the SKILL.md file, allowing us to measure the effectiveness of the skill (Stage 4).",
+      "page": 4,
+      "index": 6,
+      "width": 810,
+      "height": 248
+    },
+    {
+      "url": "assets/figures/arxiv/2603.15401v1/fig-007.webp",
+      "caption": "Figure 6: The prompt used for requirement-driven verification generation.",
+      "page": 12,
+      "index": 7,
+      "width": 710,
+      "height": 1091
+    },
+    {
+      "url": "assets/figures/arxiv/2603.15401v1/fig-008.webp",
+      "caption": "Figure 5: Context interference in the linkerd-patterns skill (∆P = −9.1%). The task requires a Server CRD and a ServerAuthorization CRD enforcing mTLS identity verification for a gRPC service. Left: Template 5 from the injected skill, which near-matches the task but encodes different concrete values: API version v1beta1 with proxyProtocol: HTTP/1, and multiple authorization modes (meshTLS, unauthenticated, and CIDR-based). Center: Without the skill, the agent reasons from first principles and produces a correct solution using v1beta3, gRPC, and standard meshTLS.serviceAccounts. Right: With the skill, the agent’s output degrades through three",
+      "page": 9,
+      "index": 8,
+      "width": 818,
+      "height": 372
+    }
+  ]
+}

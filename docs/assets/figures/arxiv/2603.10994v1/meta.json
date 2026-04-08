@@ -1,0 +1,78 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.10994v1/fig-001.webp",
+      "caption": "Table 4. Item-Rest Correlation and 95% Confidence Intervals for Survey Items.",
+      "page": 6,
+      "index": 1,
+      "width": 538,
+      "height": 387
+    },
+    {
+      "url": "assets/figures/arxiv/2603.10994v1/fig-002.webp",
+      "caption": "Fig. 14. Valuable AI Capabilities for Development Teams.",
+      "page": 11,
+      "index": 2,
+      "width": 510,
+      "height": 246
+    },
+    {
+      "url": "assets/figures/arxiv/2603.10994v1/fig-003.webp",
+      "caption": "Fig. 4. AI-Powered Tools in Development Workflows.",
+      "page": 7,
+      "index": 3,
+      "width": 510,
+      "height": 263
+    },
+    {
+      "url": "assets/figures/arxiv/2603.10994v1/fig-004.webp",
+      "caption": "Fig. 3. Development Methodologies in Use.",
+      "page": 7,
+      "index": 4,
+      "width": 510,
+      "height": 245
+    },
+    {
+      "url": "assets/figures/arxiv/2603.10994v1/fig-005.webp",
+      "caption": "Fig. 12. Barriers to Wider AI Adoption in Software Development.",
+      "page": 10,
+      "index": 5,
+      "width": 510,
+      "height": 248
+    },
+    {
+      "url": "assets/figures/arxiv/2603.10994v1/fig-006.webp",
+      "caption": "Fig. 11. Concerns About AI Integration in Software Development",
+      "page": 10,
+      "index": 6,
+      "width": 510,
+      "height": 262
+    },
+    {
+      "url": "assets/figures/arxiv/2603.10994v1/fig-007.webp",
+      "caption": "Fig. 7. Stages of the Development Lifecycle Where AI Is Most Beneficial.",
+      "page": 8,
+      "index": 7,
+      "width": 510,
+      "height": 248
+    },
+    {
+      "url": "assets/figures/arxiv/2603.10994v1/fig-008.webp",
+      "caption": "Table 1. Kaiser-Meyer-Olkin Test",
+      "page": 5,
+      "index": 8,
+      "width": 527,
+      "height": 356
+    },
+    {
+      "url": "assets/figures/arxiv/2603.10994v1/fig-009.webp",
+      "caption": "Table 2. Factor loadings.",
+      "page": 5,
+      "index": 9,
+      "width": 535,
+      "height": 337
+    }
+  ]
+}
