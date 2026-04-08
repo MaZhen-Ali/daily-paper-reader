@@ -6,71 +6,55 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-03-10 ~ 2026-04-08
-- 运行时间：2026-04-08 08:26:56 UTC
+- 最新运行日期：2026-04-08
+- 运行时间：2026-04-08 20:38:55 UTC
 - 运行状态：成功
-- 本次总论文数：16
-- 精读区：0
-- 速读区：16
+- 本次总论文数：11
+- 精读区：3
+- 速读区：8
 
 ### 今日简报（AI）
-本期速读 16 篇前沿论文，聚焦大模型在需求工程中从用户评论转化到工业级 RAG 框架的深度实践。
-核心结论显示 LLM 已能生成高质量类人用户故事，且针对汽车制造等复杂场景的检索增强生成方案已展现出显著的工业应用价值。
-建议开发者尝试利用生成式 AI 模拟利益相关者，以低成本提升敏捷开发中的需求获取效率与教学质量。
-- 详情：[/20260310-20260408/README](/20260310-20260408/README)
+今日精选 11 篇前沿论文，深度探讨 RAG 在敏捷估算中的潜力及医疗需求优先级的可解释性。
+重点关注 RAG 技术如何优化敏捷开发的故事点估算，以及面向养老医疗领域的利益相关者感知需求分析。
+建议开发者关注 LLM 在 API 自动化测试生成与 AI 辅助工程推理中的落地实践。
+- 详情：[/202604/08/README](/202604/08/README)
 
 ### 精读区论文标签
-- 本次无精读推荐。
+1. [Agile Story-Point Estimation: Is RAG a Better Way to Go?](/202604/08/2604.03443v1-agile-story-point-estimation-is-rag-a-better-way-to-go)  
+   标签：评分：9.0/10、query:re-us
+   evidence：使用RAG自动化敏捷任务的故事点估算
+2. [Towards Explainable Stakeholder-Aware Requirements Prioritisation in Aged-Care Digital Health](/202604/08/2603.29114v1-towards-explainable-stakeholder-aware-requirements-prioritisation-in-aged-care-digital-health)  
+   标签：评分：8.0/10、query:re-us
+   evidence：需求工程优先级排序和利益相关者研究
+3. [Automated Functional Testing for Malleable Mobile Application Driven from User Intent](/202604/08/2604.02079v1-automated-functional-testing-for-malleable-mobile-application-driven-from-user-intent)  
+   标签：评分：8.0/10、query:re-us
+   evidence：用户需求驱动的GUI测试生成，用于验证用户指定的功能
 
 ### 速读区论文标签
-1. [From Reviews to Requirements: Can LLMs Generate Human-Like User Stories?](/20260310-20260408/2603.28163v1-from-reviews-to-requirements-can-llms-generate-human-like-user-stories)  
-   标签：评分：10.0/10、query:re-us
-   evidence：使用大模型从应用评论中生成用户故事并进行质量评估
-2. [Teaching Agile Requirements Engineering: A Stakeholder Simulation with Generative AI](/20260310-20260408/2603.12925v1-teaching-agile-requirements-engineering-a-stakeholder-simulation-with-generative-ai)  
-   标签：评分：9.0/10、query:re-us
-   evidence：敏捷需求工程教学与利益相关者模拟
-3. [An Industrial-Scale Retrieval-Augmented Generation Framework for Requirements Engineering: Empirical Evaluation with Automotive Manufacturing Data](/20260310-20260408/2603.20534v2-an-industrial-scale-retrieval-augmented-generation-framework-for-requirements-engineering-empirical-evaluation-with-automotive-manufacturing-data)  
-   标签：评分：9.0/10、query:re-us
-   evidence：用于工业需求工程自动化的RAG框架
-4. [ReqFusion: A Multi-Provider Framework for Automated PEGS Analysis Across Software Domains](/20260310-20260408/2603.23482v1-reqfusion-a-multi-provider-framework-for-automated-pegs-analysis-across-software-domains)  
-   标签：评分：9.0/10、query:re-us
-   evidence：自动提取和分类软件需求
-5. [Agile Story-Point Estimation: Is RAG a Better Way to Go?](/20260310-20260408/2604.03443v1-agile-story-point-estimation-is-rag-a-better-way-to-go)  
-   标签：评分：9.0/10、query:re-us
-   evidence：敏捷故事点估算和迭代计划自动化
-6. [Artificial Intelligence as a Catalyst for Innovation in Software Engineering](/20260310-20260408/2603.10994v1-artificial-intelligence-as-a-catalyst-for-innovation-in-software-engineering)  
-   标签：评分：8.0/10、query:re-us
-   evidence：人工智能增强敏捷性并管理不断演变的需求
-7. [QUARE: Multi-Agent Negotiation for Balancing Quality Attributes in Requirements Engineering](/20260310-20260408/2603.11890v1-quare-multi-agent-negotiation-for-balancing-quality-attributes-in-requirements-engineering)  
-   标签：评分：8.0/10、query:re-us
-   evidence：需求工程中平衡质量属性的多智能体框架
-8. [Team Diversity Promotes Software Fairness: An Experiment on Fairness-Aware Requirements Prioritization](/20260310-20260408/2603.12406v1-team-diversity-promotes-software-fairness-an-experiment-on-fairness-aware-requirements-prioritization)  
-   标签：评分：8.0/10、query:re-us
-   evidence：需求优先级排序中的公平意识行为
-9. [ReqToCode: Embedding Requirements Traceability as a Structural Property of the Codebase](/20260310-20260408/2603.13999v1-reqtocode-embedding-requirements-traceability-as-a-structural-property-of-the-codebase)  
-   标签：评分：8.0/10、query:re-us
-   evidence：嵌入代码库的需求可追溯性
-10. [SWE-Skills-Bench: Do Agent Skills Actually Help in Real-World Software Engineering?](/20260310-20260408/2603.15401v1-swe-skills-bench-do-agent-skills-actually-help-in-real-world-software-engineering)  
-   标签：评分：8.0/10、query:re-us
-   evidence：具有明确验收标准和验证的需求驱动基准测试
-11. [Prompts Blend Requirements and Solutions: From Intent to Implementation](/20260310-20260408/2603.16348v1-prompts-blend-requirements-and-solutions-from-intent-to-implementation)  
-   标签：评分：8.0/10、query:re-us
-   evidence：提示词作为轻量级演进的需求制品
-12. [Intent Formalization: A Grand Challenge for Reliable Coding in the Age of AI Agents](/20260310-20260408/2603.17150v1-intent-formalization-a-grand-challenge-for-reliable-coding-in-the-age-of-ai-agents)  
-   标签：评分：8.0/10、query:re-us
-   evidence：将非正式用户意图转化为正式规范
-13. [An Industrial-Scale Retrieval-Augmented Generation Framework for Requirements Engineering: Empirical Evaluation with Automotive Manufacturing Data](/20260310-20260408/2603.20534v1-an-industrial-scale-retrieval-augmented-generation-framework-for-requirements-engineering-empirical-evaluation-with-automotive-manufacturing-data)  
-   标签：评分：8.0/10、query:re-us
-   evidence：用于工业需求工程自动化的RAG框架
-14. [Towards Energy-aware Requirements Dependency Classification: Knowledge-Graph vs. Vector-Retrieval Augmented Inference with SLMs](/20260310-20260408/2603.23954v1-towards-energy-aware-requirements-dependency-classification-knowledge-graph-vs-vector-retrieval-augmented-inference-with-slms)  
-   标签：评分：8.0/10、query:re-us
-   evidence：自动检测冲突需求
-15. [Detecting Underspecification in Software Requirements via k-NN Coverage Geometry](/20260310-20260408/2603.24248v1-detecting-underspecification-in-software-requirements-via-k-nn-coverage-geometry)  
-   标签：评分：8.0/10、query:re-us
-   evidence：检测软件规范中缺失的需求类型
-16. [Spec Kit Agents: Context-Grounded Agentic Workflows](/20260310-20260408/2604.05278v1-spec-kit-agents-context-grounded-agentic-workflows)  
-   标签：评分：8.0/10、query:re-us
-   evidence：多代理工作流驱动的规格说明驱动开发
+1. [IDEA2: Expert-in-the-loop competency question elicitation for collaborative ontology engineering](/202604/08/2604.01344v1-idea2-expert-in-the-loop-competency-question-elicitation-for-collaborative-ontology-engineering)  
+   标签：评分：7.0/10、query:re-us
+   evidence：基于大语言模型从需求文档中提取能力问题
+2. [APITestGenie: Generating Web API Tests from Requirements and API Specifications with LLMs](/202604/08/2604.02039v1-apitestgenie-generating-web-api-tests-from-requirements-and-api-specifications-with-llms)  
+   标签：评分：7.0/10、query:re-us
+   evidence：根据业务需求和规范生成测试
+3. [Nidus: Externalized Reasoning for AI-Assisted Engineering](/202604/08/2604.05080v1-nidus-externalized-reasoning-for-ai-assisted-engineering)  
+   标签：评分：7.0/10、query:re-us
+   evidence：通过需求追踪和工程不变性使V模型机械化
+4. [Spec Kit Agents: Context-Grounded Agentic Workflows](/202604/08/2604.05278v1-spec-kit-agents-context-grounded-agentic-workflows)  
+   标签：评分：7.0/10、query:re-us
+   evidence：基于规格说明驱动的开发，包含规格说明和计划的多智能体流水线
+5. [Structure- and Event-Driven Frameworks for State Machine Modeling with Large Language Models](/202604/08/2604.00275v1-structure--and-event-driven-frameworks-for-state-machine-modeling-with-large-language-models)  
+   标签：评分：6.0/10、query:re-us
+   evidence：根据自然语言需求建模状态机
+6. [Beyond Isolated Tasks: A Framework for Evaluating Coding Agents on Sequential Software Evolution](/202604/08/2604.03035v1-beyond-isolated-tasks-a-framework-for-evaluating-coding-agents-on-sequential-software-evolution)  
+   标签：评分：6.0/10、query:re-us
+   evidence：基于项目需求文档（PRD）的编码评估
+7. [Automata Learning versus Process Mining: The Case for User Journeys](/202604/08/2604.03686v1-automata-learning-versus-process-mining-the-case-for-user-journeys)  
+   标签：评分：6.0/10、query:re-us
+   evidence：软件工程过程中来自用户体验的反馈
+8. [AutoReSpec: A Framework for Generating Specification using Large Language Models](/202604/08/2604.03758v1-autorespec-a-framework-for-generating-specification-using-large-language-models)  
+   标签：评分：6.0/10、query:re-us
+   evidence：使用大语言模型生成形式化规范以提高程序正确性
 
 
 <div class="dpr-home-promo-card">

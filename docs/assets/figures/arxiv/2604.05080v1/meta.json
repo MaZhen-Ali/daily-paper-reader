@@ -1,0 +1,54 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2604.05080v1/fig-001.webp",
+      "caption": "Figure 3: Stigmergic dynamics. Phase 1: speculative exploration. Phase 2: verified commit. Phase 3: rejection + UNSAT core. Phase 4: tier narrowing. No orchestrator.",
+      "page": 11,
+      "index": 1,
+      "width": 925,
+      "height": 588
+    },
+    {
+      "url": "assets/figures/arxiv/2604.05080v1/fig-002.webp",
+      "caption": "Figure 1: Representational closure. Human, LLM, and Solver read/write the same S-expression.",
+      "page": 7,
+      "index": 2,
+      "width": 885,
+      "height": 546
+    },
+    {
+      "url": "assets/figures/arxiv/2604.05080v1/fig-003.webp",
+      "caption": "Table 3: Architect-steered constraints. Observed friction → crystallized obligation → agent behavior eliminated.",
+      "page": 18,
+      "index": 3,
+      "width": 795,
+      "height": 423
+    },
+    {
+      "url": "assets/figures/arxiv/2604.05080v1/fig-004.webp",
+      "caption": "Figure 2: MCP server: read (step 0), verify (step 1), commit (step 2). Commit is gated on verification.",
+      "page": 8,
+      "index": 4,
+      "width": 912,
+      "height": 342
+    },
+    {
+      "url": "assets/figures/arxiv/2604.05080v1/fig-005.webp",
+      "caption": "Table 2: Verification latency on the production artifact (M4 Mac Studio, SBCL 2.6, 238 POs).",
+      "page": 17,
+      "index": 5,
+      "width": 810,
+      "height": 198
+    },
+    {
+      "url": "assets/figures/arxiv/2604.05080v1/fig-006.webp",
+      "caption": "Table 1: PO coverage by element type (N = 49 removals).",
+      "page": 16,
+      "index": 6,
+      "width": 714,
+      "height": 268
+    }
+  ]
+}

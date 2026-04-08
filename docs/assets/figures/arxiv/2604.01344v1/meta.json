@@ -1,0 +1,38 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2604.01344v1/fig-001.webp",
+      "caption": "Fig. 1: Overview of the IDEA2 architecture: (1) CQ Extraction generates candidate requirements from heterogeneous sources; (2) these are published to a collaborative dashboard for Expert Validation; (3) feedback drives an Iterative Reformulation loop where rejected CQs are refined by the LLM based on the feedback; and (4) the process terminates upon meeting defined stopping criteria, producing a CQ export.",
+      "page": 6,
+      "index": 1,
+      "width": 723,
+      "height": 321
+    },
+    {
+      "url": "assets/figures/arxiv/2604.01344v1/fig-002.webp",
+      "caption": "Table 2: Comparative summary of key metrics from validation scenarios. Note: Final Acceptance Rate is calculated as the total number of accepted requirements divided by the total number of validation tasks (initial + reformulations).",
+      "page": 11,
+      "index": 2,
+      "width": 633,
+      "height": 229
+    },
+    {
+      "url": "assets/figures/arxiv/2604.01344v1/fig-003.webp",
+      "caption": "Fig. 2: Screenshot of the IDEA2 collaborative dashboard on Notion. The interface shows the CQ Pool (left) and the detailed validation view (right) for a specific requirement (ID 109). In this example, a split vote (Score 0) and qualitative comments from domain experts highlight a domain-specific ambiguity, providing the necessary context to trigger and guide the reformulation loop.",
+      "page": 7,
+      "index": 3,
+      "width": 725,
+      "height": 519
+    },
+    {
+      "url": "assets/figures/arxiv/2604.01344v1/fig-004.webp",
+      "caption": "Fig. 3: Usage metrics results derived from the expert evaluation. The Likert scale charts illustrate the domain experts’ agreement regarding the tool’s consistency, collaborative capabilities, expressiveness, and intuitiveness across (a) the AnIML scenario (N = 4) and (b) the Cultural Heritage scenario (N = 3).",
+      "page": 13,
+      "index": 4,
+      "width": 673,
+      "height": 615
+    }
+  ]
+}
