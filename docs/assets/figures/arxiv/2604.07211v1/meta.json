@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2604.07211v1/fig-001.webp",
+      "caption": "TABLE V SOFT-SKILL SELF-ASSESSMENT: PRE VS. POST SCORES (MEAN ± SD)",
+      "page": 4,
+      "index": 1,
+      "width": 548,
+      "height": 246
+    },
+    {
+      "url": "assets/figures/arxiv/2604.07211v1/fig-002.webp",
+      "caption": "Fig. 1. Four Phases of ISE Requirements Activity",
+      "page": 3,
+      "index": 2,
+      "width": 968,
+      "height": 220
+    }
+  ]
+}
