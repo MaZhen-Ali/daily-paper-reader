@@ -1,0 +1,202 @@
+Title: Dead Code Doesn't Talk: Authentic Requirements Elicitation in Introductory Software Engineering
+
+URL Source: https://arxiv.org/pdf/2604.07211v1
+
+Published Time: Thu, 09 Apr 2026 01:12:43 GMT
+
+Number of Pages: 6
+
+Markdown Content:
+# Dead Code Doesn’t Talk: Authentic Requirements Elicitation in Introductory Software Engineering 
+
+Santiago Berrezueta-Guzman 
+
+Technical University of Munich 
+
+Heilbronn, Germany 
+
+Vanesa Metaj 
+
+Technical University of Munich 
+
+Heilbronn, Germany 
+
+Stefan Wagner 
+
+Technical University of Munich 
+
+Heilbronn, Germany 
+
+Abstract —Requirements elicitation is among the most communication-intensive activities in software engineering, yet it receives limited explicit treatment in undergraduate curricula. This paper presents a case study of an Introduction to Software Engineering course in which 20 student teams applied require-ments elicitation practices to a Java-based 2D game they had built in a prior programming course, engaging 18 campus doctoral and postdoctoral researchers as authentic clients. Structured across four phases—preparation, client meeting, requirements elaboration, and a prototype sprint—the activity produced 203 elicited requirements, SRS documents with a mean quality score of 6.79 ± 1.08 out of 10, and prototype demonstrations scoring 
+
+7.21 ±1.15 . A pre/post self-assessment survey revealed statistically significant improvements across all eight measured soft-skill dimensions, with the largest gains in Stakeholder Empathy (∆ = +1 .33 ) and Negotiation ( ∆ = +1 .13 ). Thematic analysis of reflective reports identified four dominant learning themes, with the tension between client wishes and technical feasibility cited as the most professionally relevant experience. Our findings suggest that anchoring elicitation practice to a student-authored artifact lowers cognitive barriers while increasing authenticity, and that campus researchers serve as an accessible and effective proxy client for programs without established industry partnerships. 
+
+Index Terms —Requirements Elicitation, Software Engineer-ing Education, Soft Skills, Project-Based Learning, Stakeholder Communication, Agile Development, Client Interaction 
+
+I. I NTRODUCTION 
+
+The software engineering profession demands more than technical proficiency. Studies consistently show that com-munication failures, unclear requirements, and stakeholder misalignment remain among the leading causes of project failure [1]. Despite this, introductory software engineering courses often treat requirements engineering as a theoretical module—taught via textbooks, followed by a simplified in-class exercise—rather than as a live, socially embedded prac-tice [2]. The result is a well-documented gap: graduates can describe the phases of the Software Development Life Cycle (SDLC) but struggle to conduct a productive client interview, manage conflicting stakeholder priorities, or translate am-biguous natural-language requests into actionable specification artefacts [3], [4]. This case study comes from a B.Sc. Information Engineer-ing programme. In the first semester, students take Funda-mentals of Programming (FoP), which uses a Project-Based Learning approach built around a 2D Maze Runner game in Java. By the end of the course, each team has a working, documented codebase covering object-oriented design, colli-sion logic, maze loading, and a GUI. In the next semester, the same students take Introduction to Software Engineering (ISE). Instead of starting from scratch, ISE builds directly on what they already made: teams approach real campus stakeholders, run requirements-elicitation sessions, and write formal specification documents for extensions to their own game. This creates a genuinely authentic learning context — students know their codebase inside out, clients can interact with a live prototype, and the resulting feature requests are both technically grounded and user-driven. This paper makes the following contributions: (1) A repli-cable pedagogical design for embedding client-facing require-ments elicitation into an introductory SE course using a pre-existing student artefact. (2) A structured analysis of how diverse client backgrounds (non-technical vs. technical) influ-ence the complexity and realism of elicited requirements. (3) A scalable roadmap applicable to other SE courses that wish to integrate authentic stakeholder interaction. II. R ELATED WORK 
+
+Requirements engineering (RE) education has long been identified as underserved in undergraduate curricula [5]. The use of real clients in educational projects has been shown to increase student motivation and strengthen connections between academic learning and professional practice across multiple disciplines [6]. Stegh¨ ofer et al. [7] conducted a comprehensive study across eight software engineering project courses at multiple uni-versities, developing a conceptual model for planning and evaluating stakeholder involvement. They confirmed that ex-ternal stakeholders improve student motivation, but also reveal some problems, such as misalignment between stakeholder expectations and student capabilities, inconsistent engagement, and scheduling incompatibilities. Thus, they confirm that this method has a significant impact on course outcomes only when it is properly monitored. Even though the software engineering industry increasingly prioritizes interpersonal abilities, with research showing that up to 75% of long-term job success depends on soft skills [8], traditional computing curricula often struggle to inte-grate them effectively, with soft skills frequently delegated to generic university communication courses that fail to address the specific challenge of translating technical constraints for 
+
+> arXiv:2604.07211v1 [cs.CE] 8 Apr 2026
+
+non-technical stakeholders [9]. To bridge this gap, educators have turned to experiential and project-based learning. Recent studies demonstrate that situating soft skill development within student-centered technical projects produces improvements in active listening, teamwork, and stakeholder empathy [8], [10]. Project-Based Learning (PBL) has become a highly effec-tive pedagogical strategy in computer science to encourage problem-solving and critical thinking [11], with game devel-opment proving particularly effective at generating authentic motivation through creative authorship and personal ownership of code [12]. Teaching Agile in academic settings is challeng-ing, as students often treat it as administrative overhead rather than a practical necessity [13]. However, when integrated with real stakeholder reviews and iterative deliveries, students transition from mere compliance to genuine process adoption [14]. III. C OURSE AND ACTIVITY DESIGN 
+
+A. Course Context Introduction to Software Engineering (ISE) is a second-semester mandatory course for the B.Sc. Information Engi-neering students. It follows directly from Fundamentals of Programming (FoP) and assumes that students have working knowledge of Java, object-oriented design, and collaborative development. ISE covers the full SDLC with emphasis on: (i) agile and plan-driven process models; (ii) requirements engineering; (iii) architectural and detailed design; (iv) testing strategies; and (v) project management fundamentals. The course runs for 12 weeks with two lecture hours and a two-hour lab session per week. 
+
+B. Student Demographics and Prerequisites 
+
+The course consisted of 135 students, approximately 75% male and 25% female. Students represented 30 different na-tionalities, with the largest groups originating from East Asia, Southeast Asia, and the Middle East. All participating students were required to have completed the predecessor course Fundamentals of Programming , ensur-ing sufficient coding proficiency to shift focus toward soft skills and client-facing elicitation. 
+
+C. The Predecessor Artefact: The Maze Runner Game 
+
+The software artefact is a 2D Maze Runner style game, orig-inally developed by the student teams during their prerequisite first-semester Fundamentals of Programming (FoP) course. This artefact was deliberately chosen as the anchor for the 
+
+Introduction to Software Engineering (ISE) elicitation exercise because it satisfies two critical conditions. First, it features an interactive product that non-technical stakeholders can easily understand and play with during live demonstrations, which sparks feature requests. Second, the students authored the codebase themselves and are familiar with the system’s architectural constraints. This technical ownership empowers students to immediately evaluate the feasibility of a client’s request during the interview, arriving at realistic negotiations. 
+
+D. Client Recruitment and Profile 
+
+Clients were doctoral and postdoctoral researchers across all chairs in the Computer Science Faculty, selected because they are easily accessible on campus, span a wide range of technical literacy levels mirroring real-world client heterogeneity, and are accustomed to analytical thinking that produces structured feature requests rather than vague wishes. Participation was voluntary. Clients were asked to attend one 15-minute meeting, interact with the running game, express genuine feature wishes, and be available for at most one follow-up clarification by email. No compensation beyond the reward of influencing a student project was provided. 
+
+E. Activity Structure and Timeline 
+
+The elicitation activity was structured as a four-phase se-quence integrated into the semester, illustrated by Figure 1: 
+
+a) Phase 1 — Preparation: Students reviewed RE the-ory (elicitation techniques, use-case modelling, user stories) through lectures and a structured reading list. Lab sessions covered interview design: how to prepare open-ended ques-tions, avoid leading prompts, and manage a meeting agenda. Each team prepared a client package consisting of a one-page game overview, a demonstration script, and a blank requirements-capture template. 
+
+b) Phase 2 — Client Meeting: Teams conducted a single, 15-minute in-person meeting with their assigned client (one client per team), and each client could be assigned to up to 2 teams to introduce conflicting priorities. Meetings took place wherever the clients decided, on-site at the campus or online. It was instructed that the teams must organize their contributions in the meeting; therefore, one team member was suggested to run the game demonstration and facilitate the conversation; another took structured notes; and the third managed the time and ensured all agenda items were covered. Meetings were not audio-recorded for later instructor review. 
+
+c) Phase 3 — Requirements Elaboration: Teams pro-cessed their raw notes into formal artefacts: a user story map, a use-case diagram, and a draft Software Requirements Specification (SRS) following the IEEE 830 template. During this phase, students were permitted one asynchronous follow-up exchange with their client to clarify ambiguities. 
+
+d) Phase 4 — Process Adaptation and Prototype Sprint: 
+
+With an approved SRS, teams entered a mini-sprint cycle. They decomposed requirements into a product backlog, esti-mated effort using story points, and planned a two-sprint devel-opment cycle targeting a working prototype of at least two of the elicited features. Weekly lab check-ins replaced the sprint retrospective. The final deliverable was a live demonstration to instructors and, where available, to the original client pair. IV. A SSESSMENT METHODOLOGY 
+
+A. Assessment Dimensions 
+
+Assessment in ISE for this activity was structured across four complementary dimensions, mirroring the multi-modal philosophy of the predecessor FoP course [15]: Fig. 1. Four Phases of ISE Requirements Activity 
+
+D1. Requirements Artefact Quality — Evaluated the completeness, consistency, and traceability of the SRS, user story map, and use-case diagram. Graded using an adaptation of the RE quality framework [16]. 
+
+D2. Client Meeting Performance — Assessed via an instructor survey of the clients to understand how well the meeting facilitation, question quality, active listening, and time management were. 
+
+D3. Prototype Demonstration — Evaluated the fidelity of the implemented new prototype to the elicited new require-ments, architectural soundness, and the ability to justify design decisions under questioning. 
+
+D4. Reflective Report and Peer Assessment — Each student submitted an individual reflection on their personal contribution and their observations of the team’s process adaptation to the new client’s requirements. 
+
+B. Grading Rubric and Weight Distribution 
+
+The overall activity accounted for 50% of the ISE course grade, divided as shown in Table I.              
+
+> TABLE I ASSESSMENT WEIGHT DISTRIBUTION
+> Assessment Dimension Weight (%) Format
+> Requirements Artefact Quality 30 Team Client Meeting Performance 30 Team Prototype Demonstration 30 Team Individual Reflection 10 Individual
+> Total 100
+
+C. Soft-Skills Evaluation Instrument 
+
+Assessing soft skills reliably is an established challenge in computing education [17]. In this study, soft-skill development was captured through two instruments: 
+
+Pre/post self-assessment survey : Students rated their per-ceived competence across eight dimensions (communication, active listening, negotiation, conflict resolution, documenta-tion, time management, adaptability, and stakeholder empathy) on a five-point Likert scale at the start of ISE and again at the end of the elicitation activity. 
+
+Client/Instructor observation rubric : Applied during the client meeting review and the prototype demonstration to provide an external perspective on communication quality. This is done by analyzing the clients who completed abrief post-meeting survey rating the students’ professionalism, preparedness, soft skills, and overall meeting quality. 
+
+D. Data Collection and Analysis 
+
+This study adopted a mixed-methods design. Quantitative data were collected from three sources: (i) the pre-/post-soft-skill self-assessment surveys; (ii) the SRS grading rubric scores applied by two independent instructors; and (iii) the post-meeting client satisfaction surveys. Because Likert-scale responses are ordinal, pre-/post-differences were analysed using the Wilcoxon signed-rank test with Cliff’s δ as the effect-size estimator. SRS dimension scores were treated as interval-level data and summarised using means and standard deviations. Inter-rater reliability for the SRS grading rubric was established across a stratified 25% sample of documents and assessed using Cohen’s κ.Qualitative data from the individual reflective reports ( N =60 ) were coded thematically following the six-phase procedure described by Braun and Clarke [18]: familiarisation, gener-ating initial codes, searching for themes, reviewing themes, defining and naming themes, and writing up. Two researchers coded independently, resolving disagreements through discus-sion until consensus was reached. Final inter-coder reliability was κ = 0 .78 , indicating substantial agreement. V. R ESULTS AND ANALYSIS 
+
+A. Client Meeting Outcomes 
+
+The cohort comprised 60 students organized into 20 teams of three. A total of 18 campus clients were recruited (14 doctoral students and 4 postdoctoral researchers), distributed across the CIT school. All 20 meetings were held within the established timeslot, and no team missed their meeting. Table II summarizes client satisfaction. Overall meeting quality was rated at 3.74 ± 0.65 , indicating a solid but not exceptional first client-interaction experience. Professionalism received the highest rating ( 3.82 ± 0.71 ), reflecting the prepa-ration effort invested in Phase 1. Active listening received the lowest score ( 3.54 ± 0.88 ), a finding consistent with the instructor observation rubric, which noted a tendency for students to redirect conversations toward technical topics before fully exhausting the client’s expressed needs. Open-ended client comments praised the live game demonstration as a strong engagement tool; several clients noted it prompted them to articulate feature wishes they had not previously formed.                   
+
+> TABLE II CLIENT SATISFACTION SURVEY RESULTS (M EAN ±SD, SCALE 1–5)
+> Dimension Mean SD
+> Professionalism 3.82 0.71 Preparedness 3.61 0.83 Active Listening 3.54 0.88 Overall Meeting Quality 3.74 0.65
+
+Across all 20 SRS submissions, 203 distinct requirements were identified and categorised. Table III shows the full distribution. Gameplay Mechanics Extensions constituted the largest category (25.6%), followed by UI/UX Improvements (20.2%) and Narrative/Thematic Additions (15.8%). Together, these three surface-level experiential categories account for over 60% of all requirements, reflecting the client pool’s predominantly non-technical composition. Notably, the two clients assigned to two teams each gener-ated measurably divergent requirement sets when interviewed separately, confirming that the shared-client design success-fully introduced conflicting priorities.                      
+
+> TABLE III DISTRIBUTION OF ELICITED REQUIREMENT TYPES
+> Requirement Category Count %
+> Gameplay Mechanics Extensions 52 25.6% UI / UX Improvements 41 20.2% Narrative / Thematic Additions 32 15.8% AI / Algorithmic Features 28 13.8% Accessibility Features 22 10.8% Performance / Technical NFRs 17 8.4% Multiplayer / Networking 11 5.4%
+> Total 203 100%
+
+B. Requirements Artefact Quality 
+
+SRS documents were evaluated across four quality dimen-sions using the RE quality framework [19]: completeness, consistency, clarity, and traceability. Results are shown in Table IV. The overall mean SRS score was 6.79 ± 1.08 out of 10, indicating a competent first attempt at formal specification for a cohort with no prior RE experience. Clarity was the strongest dimension ( 7.31 ± 1.09 ). Post-hoc analysis suggested that this was attributable to students writing for an audience they had personally met: the client’s vocab-ulary, background, and reactions to the live demo served as fresh reference points when drafting requirement statements. Consistency was similarly strong ( 7.14 ± 1.18 ), likely aided by the shared use of the IEEE 830 template. Traceability was the weakest dimension ( 5.87 ± 1.63 ) and showed the highest variance, indicating wide differences in                   
+
+> TABLE IV SRS Q UALITY SCORES (M EAN ±SD, SCALE 0–10)
+> Quality Dimension Mean SD
+> Completeness 6.83 1.42 Consistency 7.14 1.18 Clarity 7.31 1.09 Traceability 5.87 1.63
+> Overall SRS Score 6.79 1.08
+
+students’ understanding of the concept. While most teams pro-duced a user story map and a use-case diagram, fewer than half explicitly linked these artefacts to specific SRS requirement identifiers or traced requirements forward to acceptance crite-ria. Indeed, non-functional requirements (NFRs) accounted for only 8.4% of all elicited requirements (Table III), underscoring that functional features dominate novice elicitation sessions at the expense of operational quality attributes. Inter-rater reliability for the SRS rubric across the stratified sample was κ = 0 .74 (substantial agreement), confirming that the grading rubric was sufficiently operationalised for consistent application across assessors. 
+
+C. Soft-Skills Development 1) Pre/Post Self-Assessment: Table V reports the mean self-assessed competence scores across all eight dimensions at the start of ISE (Pre) and immediately after the completion of Phase 3 (Post). All eight dimensions showed positive mean shifts. Seven reached statistical significance at p < 0.05 under the Wilcoxon signed-rank test; Time Management was the sole exception ( p = 0 .031 , which nonetheless crosses the threshold, but with the smallest effect size, Cliff’s δ = 0 .24 ).                                                                                
+
+> TABLE V SOFT -S KILL SELF -A SSESSMENT : P RE VS . P OST SCORES (M EAN ±SD)
+> Skill Dimension Pre Post ∆p
+> Communication 2.93 ±0.81 3.72 ±0.74 +0 .79 <0.001
+> Active Listening 3.12 ±0.76 3.87 ±0.65 +0 .75 <0.001
+> Negotiation 2.28 ±0.91 3.41 ±0.83 +1 .13 <0.001
+> Conflict Resolution 2.51 ±0.85 3.18 ±0.79 +0 .67 0.003
+> Documentation 3.05 ±0.72 3.83 ±0.61 +0 .78 <0.001
+> Time Management 3.21 ±0.79 3.58 ±0.73 +0 .37 0.031
+> Adaptability 2.84 ±0.83 3.71 ±0.70 +0 .87 <0.001
+> Stakeholder Empathy 2.19 ±0.94 3.52 ±0.82 +1 .33 <0.001
+
+The two largest gains were in Stakeholder Empathy ( ∆ = +1 .33 , Cliff’s δ = 0 .68 , large effect) and Negotiation ( ∆ = +1 .13 , Cliff’s δ = 0 .59 , large effect). These are precisely the skills that are most directly exercised when a student must understand and then respectfully push back on a real client’s feature request. The fact that both dimensions began at the lowest pre-scores ( 2.19 and 2.28 respectively) further indicates that, prior to the activity, students had little prior exposure to these competencies in a professional context—consistent with the cohort’s first-semester background. Communication and Documentation both showed substan-tial gains ( ∆ = +0 .79 and +0 .78 ). The improvement in Documentation is particularly noteworthy, given that FoP already required Javadoc commenting; the higher post-scores suggest that writing for a human stakeholder audience (as required by the SRS) develops a qualitatively different and more demanding form of documentation competency. Time Management showed the smallest gain ( ∆ = +0 .37 ), which is consistent with the fact that students had already de-veloped scheduling habits through the FoP project milestones in the prior semester. The ceiling effect for this dimension (high pre-score of 3.21 ) further limits the observable delta. 
+
+2) Qualitative Themes from Reflective Reports: Thematic analysis of the individual reflective reports surfaced four dominant themes: 
+
+T1. Bridging technical and non-technical discourse. 
+
+The majority of students noted the challenge of translating technical constraints (e.g., the rendering pipeline’s limitations, the absence of a networking layer) into language accessible to a non-technical client, and conversely of parsing infor-mal client wishes into unambiguous requirement statements. Several students reported that writing the SRS forced them to revisit and refine their mental model of the game’s own architecture. 
+
+T2. Ownership and pride in the existing artefact. 
+
+Students repeatedly commented that presenting their own 
+
+game—rather than a given specification—created a sense of personal stake in the meeting. A representative reflection stated: “It felt different to show something we actually built. We wanted to impress the client, so we prepared more carefully than for any lab session.” This intrinsic motivation was not directed by the grading rubric and suggests that artefact ownership is a genuine driver of preparation effort. 
+
+T3. Tension between client wishes and technical fea-sibility. Teams consistently reported moments of negotia-tion in which a client’s request was deemed too complex or architecturally disruptive to the sprint timeline. Students described the challenge of communicating “no—but perhaps in a future sprint” without appearing dismissive, an experience they identified as novel and professionally relevant. 
+
+T4. Process adaptation as a learning moment. The transition from the FoP development style—informal task distribution, no explicit backlog—to a story-point-estimated, sprint-structured workflow was frequently cited as cognitively demanding but ultimately satisfying, with the external commit-ment to a real client making abstract agile concepts concrete. VI. D ISCUSSION 
+
+Using a codebase students have already built differs markedly from providing a fictional system description for a requirements exercise. Artefact familiarity produced two distinct benefits: reduced cognitive load , as students did not need to simultaneously learn a new domain and practise elicitation techniques, freeing cognitive resources for the in-terpersonal dimensions of the meeting, and grounded feasi-bility reasoning , as their intimate knowledge of the codebase allowed immediate, concrete feasibility assessments during the interview rather than deferring judgment to a analysis phase. 
+
+A. Team Process Adaptation 
+
+The mean prototype score of 7.21 ± 1.15 and the 70% rate of teams exceeding the minimum feature count indicate that the transition from informal FoP-style development to sprint-structured delivery was largely successful. The two teams that implemented only the minimum features both provided explanatory rationales in their reflective reports: one attributed it to a mid-sprint architectural pivot driven by a client clarifi-cation; the other to underestimation during backlog planning. Both are authentic project management failure modes that generated richer reflective reports than teams whose sprints ran smoothly. The reflective data in Theme T4 suggest that the source of sprint discipline was not the instructor-mandated process but the moral commitment to a real client. This finding aligns with the broader agile education literature, which identifies external accountability as one of the most effective catalysts for process adoption in student teams [13]. 
+
+B. Instructor and Tutor Role 
+
+Instructors and tutors operated as facilitators. During Phase 1, tutors reviewed each team’s client package and interview guide, providing formative feedback on the quality of the questions. During Phases 3 and 4, weekly stand-up check-ins replaced formal retrospectives, with tutors probing priori-tisation decisions without prescribing solutions. This choice is consistent with the PBL literature’s recommendation to maintain learner agency [11] and avoid over-involvement that suppresses authentic problem-solving. 
+
+C. Observed Student Patterns 
+
+Analysis of client satisfaction data and reflective reports identified three recurring behavioural patterns. First, role spe-cialisation solidified rapidly: in nearly all teams, the same student who had led the FoP presentation assumed the fa-cilitator role in the client meeting, suggesting that com-munication leadership roles persist across course transitions. Second, overuse of technical jargon in early exchanges was the most common trigger for low Active Listening scores; client comments frequently noted being “talked past” during the first five minutes before students settled into a more responsive conversational mode. Third, several teams initially resisted requirements outside their perceived technical comfort zone, particularly accessibility features and narrative additions. 
+
+D. Scalability and Adaptability 
+
+The pedagogical model is transferable to other SE courses with three minimal conditions: (a) students possess a runnable, documented software artefact they have personally authored; (b) a pool of non-student stakeholders is accessible on or near campus; and (c) the course timeline accommodates the four-phase sequence. The model does not require industry part-nerships — a significant advantage for programmes without established corporate connections. E. Limitations 
+
+Single-course context. All data derive from one cohort at one institution. Replication across diverse institutional contexts is required to assess generalisability. 
+
+Self-selection of clients. Campus researchers who volun-teer may be more engaged and constructive than a random industrial sample. Client satisfaction scores may therefore be optimistically biased upward. 
+
+Self-report validity. Soft-skill self-assessments are subject to social desirability bias and response-shift bias; students may have reassessed their pre-activity competence level retrospec-tively. The instructor observation rubric provides a partial ex-ternal signal but was available only for meeting performance, not for all eight dimensions. 
+
+Absence of a control group. A within-cohort control con-dition, ethically challenging to implement, would be needed to isolate the causal contribution of the elicitation activity. VII. C ONCLUSIONS AND FUTURE WORK 
+
+This paper reports a client-facing requirements elicitation activity embedded in a second-semester Introduction to Soft-ware Engineering course , in which 60 students across 20 teams engaged 18 campus researchers as authentic clients, using their own Java Maze Runner game as the elicitation anchor. The activity produced 203 distinct requirements span-ning seven categories, with experiential features dominating over algorithmic ones. SRS clarity was the strongest quality dimension ( 7.31 ± 1.09 ) while traceability was the weakest (5.87 ± 1.63 ), consistent with the RE education literature on novice specifiers. All eight soft-skill dimensions improved significantly, with Stakeholder Empathy ( ∆ = +1 .33 ) and Negotiation (∆ = +1 .13 ) showing the largest gains —precisely the competencies most directly exercised by live client interaction. Collectively, these results support the conclusion that a structured, artifact-anchored elicitation activity can meaning-fully develop the communicative, analytical, and process man-agement skills most frequently lacking in new graduates, even within a single undergraduate semester. Educators replicating this model are encouraged to follow these steps: (i) identify a visually demonstrable student-authored artefact; (ii) recruit a diverse client pool spanning technical and non-technical backgrounds; (iii) structure the activity into at least four phases with explicit preparation scaffolding; and (iv) close the loop with a client-attended final demonstration, which students consistently identified as the moment of highest perceived professional relevance. Future work will replicate the activity with industry clients made available through the institution’s technology transfer office, to determine whether commercial stakeholders gener-ate qualitatively different requirement types and whether the higher-stakes context further elevates student motivation and preparation effort. ACKNOWLEDGEMENTS 
+
+The authors thank the doctoral students and postdoctoral researchers who volunteered their time as project clients. REFERENCES [1] T. O. Lehtinen, M. V. M¨ antyl¨ a, J. Vanhanen, J. Itkonen, and C. Lasse-nius, “Perceived causes of software project failures–an analysis of their relationships,” Information and Software Technology , vol. 56, no. 6, pp. 623–643, 2014. [2] M. Daun, A. M. Grubb, V. Stenkova, and B. Tenbergen, “A systematic literature review of requirements engineering education,” Requirements Engineering , vol. 28, no. 2, pp. 145–175, 2023. [3] S. Ouhbi, A. Idri, J. L. Fern´ andez-Alem´ an, and A. Toval, “Requirements engineering education: a systematic mapping study,” Requirements En-gineering , vol. 20, no. 2, pp. 119–138, 2015. [4] A. Radermacher and G. Walia, “Gaps between industry expectations and the abilities of graduates,” in Proceeding of the 44th ACM technical symposium on Computer science education , pp. 525–530, 2013. [5] M. T. Soo and H. Aris, “Game-based learning in requirements engi-neering: An overview,” in 2018 IEEE Conference on e-Learning, e-Management and e-Services (IC3e) , pp. 46–51, IEEE, 2018. [6] A. L. Parsons and E. Lepkowska-White, “Group projects using clients versus not using clients: Do students perceive any differences?,” Journal of Marketing Education , vol. 31, no. 2, pp. 154–159, 2009. [7] J.-P. Stegh¨ ofer, H. Burden, R. Hebig, G. Calikli, R. Feldt, I. Hammouda, J. Horkoff, E. Knauss, and G. Liebel, “Involving external stakeholders in project courses,” ACM Transactions on Computing Education (TOCE) ,vol. 18, no. 2, pp. 1–32, 2018. [8] O. Glazunova, V. Korolchuk, T. Voloshyna, and T. Vakaliuk, “Devel-opment of soft skills in computer science bachelors in the project learning process,” Information Technologies and Learning Tools , vol. 92, pp. 111–123, 12 2022. [9] L. Carter, “Ideas for adding soft skills education to service learning and capstone courses for computer science students,” in Proceedings of the 42nd ACM Technical Symposium on Computer Science Education ,SIGCSE ’11, (New York, NY, USA), p. 517–522, Association for Computing Machinery, 2011. [10] R. Motschnig, D. Dolezal, V. ˇ Sv´ abensk` y, K. Palubov´ a, and M. Silber, “Long-term effects of promoting communication and soft skills in higher computing education,” ACM Transactions on Computing Education ,2026. [11] S. U. Rehman, “Trends and challenges of project-based learning in computer science and engineering education,” in Proceedings of the 15th International Conference on Education Technology and Computers ,pp. 397–403, 2023. [12] B. D´ ıaz-Lauzurica and D. Moreno-Salinas, “Gamified project-based learning in vocational education and training computer science courses,” 
+
+Computers , vol. 15, no. 2, p. 82, 2026. [13] V. Devedˇ zi´ c et al. , “Teaching agile software development: A case study,” 
+
+IEEE transactions on Education , vol. 54, no. 2, pp. 273–278, 2010. [14] U. Sa’adah, U. L. Yuhana, S. Rochimah, and M. B. A. Rasyid, “Bridg-ing the skills gap through agile methodologies in vocational software development education,” Array , p. 100614, 2025. [15] S. Berrezueta-Guzman, V. Metaj, and S. Wagner, “Beyond the code: A multi-modal assessment strategy for fostering professional com-petencies via introductory programming projects,” arXiv preprint arXiv:2603.18741 , 2026. [16] J. dos Santos, L. E. G. Martins, V. A. de Santiago J´ unior, L. V. Povoa, and L. B. R. dos Santos, “Software requirements testing approaches: a systematic literature review,” Requirements Engineering , vol. 25, no. 3, pp. 317–337, 2020. [17] K. Andree, S. Berrezueta-Guzman, S. Krusche, L. Pufahl, and S. Wag-ner, “How soft skills shape first-year success in higher education,” in 
+
+2025 IEEE 4th German Education Conference (GECon) , pp. 1–7, IEEE, 2025. [18] V. Braun and V. Clarke, “Using thematic analysis in psychology,” 
+
+Qualitative research in psychology , vol. 3, no. 2, pp. 77–101, 2006. [19] A. M. Hickey and A. M. Davis, “A unified model of requirements elicitation,” Journal of management information systems , vol. 20, no. 4, pp. 65–84, 2004.
