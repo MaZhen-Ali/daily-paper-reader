@@ -1,0 +1,462 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-04-13T19:57:32.116465+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 2,
+    "deep_cap": 6,
+    "deep_selected": 2,
+    "quick_candidates": 9,
+    "quick_skim_target": 11,
+    "quick_selected": 9
+  },
+  "deep_dive": [
+    {
+      "id": "2604.07211v1",
+      "source": "arxiv",
+      "title": "Dead Code Doesn't Talk: Authentic Requirements Elicitation in Introductory Software Engineering",
+      "abstract": "Requirements elicitation is among the most communication-intensive activities in software engineering, yet it receives limited explicit treatment in undergraduate curricula. This paper presents a case study of an Introduction to Software Engineering course in which 20 student teams applied requirements elicitation practices to a Java-based 2D game they had built in a prior programming course, engaging 18 campus doctoral and postdoctoral researchers as authentic clients. Structured across four phases--preparation, client meeting, requirements elaboration, and a prototype sprint--the activity produced 203 elicited requirements, SRS documents with a mean quality score of $6.79 \\pm 1.08$ out of 10, and prototype demonstrations scoring $7.21 \\pm 1.15$. A pre/post self-assessment survey revealed statistically significant improvements across all eight measured soft-skill dimensions, with the largest gains in Stakeholder Empathy ($Δ= +1.33$) and Negotiation ($Δ= +1.13$). Thematic analysis of reflective reports identified four dominant learning themes, with the tension between client wishes and technical feasibility cited as the most professionally relevant experience. Our findings suggest that anchoring elicitation practice to a student-authored artifact lowers cognitive barriers while increasing authenticity, and that campus researchers serve as an accessible and effective proxy client for programs without established industry partnerships.",
+      "authors": [
+        "Santiago Berrezueta-Guzman",
+        "Vanesa Metaj",
+        "Stefan Wagner"
+      ],
+      "primary_category": "cs.CE",
+      "categories": [
+        "cs.CE"
+      ],
+      "published": "2026-04-08T15:32:21+00:00",
+      "link": "https://arxiv.org/pdf/2604.07211v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "requirements elicitation practices and SRS document quality",
+      "llm_evidence_cn": "需求获取实践与SRS文档质量",
+      "llm_evidence": "需求获取实践与SRS文档质量",
+      "canonical_evidence": "需求获取实践与SRS文档质量",
+      "llm_tldr_en": "Presents a case study on teaching requirements elicitation through authentic client engagement.",
+      "llm_tldr_cn": "介绍了一个通过真实客户参与来教学需求获取的案例研究。",
+      "llm_tldr": "介绍了一个通过真实客户参与来教学需求获取的案例研究。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2604.06861v1",
+      "source": "arxiv",
+      "title": "REAgent: Requirement-Driven LLM Agents for Software Issue Resolution",
+      "abstract": "Issue resolution aims to automatically generate patches from given issue descriptions and has attracted significant attention with the rapid advancement of large language models (LLMs). However, due to the complexity of software issues and codebases, LLM-generated patches often fail to resolve corresponding issues. Although various advanced techniques have been proposed with carefully designed tools and workflows, they typically treat issue descriptions as direct inputs and largely overlook their quality (e.g., missing critical context or containing ambiguous information), which hinders LLMs from accurate understanding and resolution. To address this limitation, we draw on principles from software requirements engineering and propose REAgent, a requirement-driven LLM agent framework that introduces issue-oriented requirements as structured task specifications to better guide patch generation. Specifically, REAgent automatically constructs structured and information-rich issue-oriented requirements, identifies low-quality requirements, and iteratively refines them to improve patch correctness. We conduct comprehensive experiments on three widely used benchmarks using two advanced LLMs, comparing against five representative or state-of-the-art baselines. The results demonstrate that REAgent consistently outperforms all baselines, achieving an average improvement of 17.40% in terms of the number of successfully-resolved issues (% Resolved).",
+      "authors": [
+        "Shiqi Kuang",
+        "Zhao Tian",
+        "Kaiwei Lin",
+        "Chaofan Tao",
+        "Shaowei Wang",
+        "Haoli Bai",
+        "Lifeng Shang",
+        "Junjie Chen"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-04-08T09:22:30+00:00",
+      "link": "https://arxiv.org/pdf/2604.06861v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "requirement-driven LLM agents and principles from software requirements engineering",
+      "llm_evidence_cn": "需求驱动的LLM智能体及软件需求工程原理",
+      "llm_evidence": "需求驱动的LLM智能体及软件需求工程原理",
+      "canonical_evidence": "需求驱动的LLM智能体及软件需求工程原理",
+      "llm_tldr_en": "REAgent uses requirements engineering principles to improve LLM-based software issue resolution and patch generation.",
+      "llm_tldr_cn": "REAgent利用需求工程原理来改进基于LLM的软件问题修复和补丁生成。",
+      "llm_tldr": "REAgent利用需求工程原理来改进基于LLM的软件问题修复和补丁生成。",
+      "llm_tags": [
+        "query:re-us:composite"
+      ],
+      "matched_query_tag": "query:re-us:composite",
+      "matched_query_text": "Papers central to 需求工程领域的用户故事相关的论文, especially work that connects or combines: User stories in software development and requirements engineering; Requirements engineering methodologies and practices; Agile requirements engineering and management; Quality assessment and improvement of user stories; Automated extraction of user stories from text; Defining and validating user story acceptance criteria; State of the art in user story research for requirements engineering; Automated tools for user story generation and validation; Impact of user story quality on software project success.",
+      "matched_requirement_id": "req-composite-re-us",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2604.05080v1",
+      "source": "arxiv",
+      "title": "Nidus: Externalized Reasoning for AI-Assisted Engineering",
+      "abstract": "We present Nidus, a governance runtime that mechanizes the V-model for AI-assisted software delivery. In the self-hosting deployment, three LLM families (Claude, Gemini, Codex) delivered a 100,000-line system under proof obligations verified against the current obligation set on every commit. The system governed its own construction.   Engineering invariants - traced requirements, justified architecture, evidenced deliveries - cannot be reliably maintained as learned behavior; assurance requires enforcement by a mechanism external to the proposer. Nidus externalizes the engineering methodology into a decidable artifact verified on every mutation before persistence. Organizational standards compile into guidebooks - constraint libraries imported by governed projects and enforced by decidable evaluation.   Four contributions: (1) recursive self-governance - the constraint surface constrains mutations to itself; (2) stigmergic coordination - friction from the surface routes agents without central control; (3) proximal spec reinforcement - the living artifact externalizes the engineering context that RL and long-chain reasoning try to internalize; the specification is the reward function, UNSAT verdicts shape behavior at inference time, no weight updates; (4) governance theater prevention - compliance evidence cannot be fabricated within the modeled mutation path. The constraint surface compounds: each obligation permanently eliminates a class of unengineered output. The artifact's development history is a formal development - every state satisfies all active obligations, and the obligation set grows monotonically.",
+      "authors": [
+        "Danil Gorinevski"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI",
+        "cs.LO",
+        "cs.MA"
+      ],
+      "published": "2026-04-06T18:32:09+00:00",
+      "link": "https://arxiv.org/pdf/2604.05080v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "mechanizes the V-model and traced requirements in AI-assisted engineering",
+      "llm_evidence_cn": "在AI辅助工程中机械化V模型并追踪需求",
+      "llm_evidence": "在AI辅助工程中机械化V模型并追踪需求",
+      "canonical_evidence": "在AI辅助工程中机械化V模型并追踪需求",
+      "llm_tldr_en": "Nidus is a governance runtime that enforces engineering methodologies and requirement tracing for AI-assisted delivery.",
+      "llm_tldr_cn": "Nidus是一个治理运行时，为AI辅助交付强制执行工程方法论和需求追踪。",
+      "llm_tldr": "Nidus是一个治理运行时，为AI辅助交付强制执行工程方法论和需求追踪。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2604.05955v1",
+      "source": "arxiv",
+      "title": "Does Pass Rate Tell the Whole Story? Evaluating Design Constraint Compliance in LLM-based Issue Resolution",
+      "abstract": "Repository-level issue resolution benchmarks have become a standard testbed for evaluating LLM-based agents, yet success is still predominantly measured by test pass rates. In practice, however, acceptable patches must also comply with project-specific design constraints, such as architectural conventions, error-handling policies, and maintainability requirements, which are rarely encoded in tests and are often documented only implicitly in code review discussions. This paper introduces \\textit{design-aware issue resolution} and presents \\bench{}, a benchmark that makes such implicit design constraints explicit and measurable. \\bench{} is constructed by mining and validating design constraints from real-world pull requests, linking them to issue instances, and automatically checking patch compliance using an LLM-based verifier, yielding 495 issues and 1,787 validated constraints across six repositories, aligned with SWE-bench-Verified and SWE-bench-Pro. Experiments with state-of-the-art agents show that test-based correctness substantially overestimates patch quality: fewer than half of resolved issues are fully design-satisfying, design violations are widespread, and functional correctness exhibits negligible statistical association with design satisfaction. While providing issue-specific design guidance reduces violations, substantial non-compliance remains, highlighting a fundamental gap in current agent capabilities and motivating design-aware evaluation beyond functional correctness.",
+      "authors": [
+        "Kai Yu",
+        "Zhenhao Zhou",
+        "Junhao Zeng",
+        "Ying Wang",
+        "Xueying Du",
+        "Zhiqiang Yuan",
+        "Junwei Liu",
+        "Ziyu Zhou",
+        "Yujia Wang",
+        "Chong Wang",
+        "Xin Peng"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-04-07T14:47:27+00:00",
+      "link": "https://arxiv.org/pdf/2604.05955v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "mining and validating design constraints from code reviews",
+      "llm_evidence_cn": "从代码审查中挖掘并验证设计约束",
+      "llm_evidence": "从代码审查中挖掘并验证设计约束",
+      "canonical_evidence": "从代码审查中挖掘并验证设计约束",
+      "llm_tldr_en": "Introduces a benchmark for evaluating LLM compliance with implicit design constraints in issue resolution.",
+      "llm_tldr_cn": "提出一个基准，用于评估大模型在解决问题时对隐式设计约束的遵守情况。",
+      "llm_tldr": "提出一个基准，用于评估大模型在解决问题时对隐式设计约束的遵守情况。",
+      "llm_tags": [
+        "query:re-us:composite"
+      ],
+      "matched_query_tag": "query:re-us:composite",
+      "matched_query_text": "Papers central to 需求工程领域的用户故事相关的论文, especially work that connects or combines: User stories in software development and requirements engineering; Requirements engineering methodologies and practices; Agile requirements engineering and management; Quality assessment and improvement of user stories; Automated extraction of user stories from text; Defining and validating user story acceptance criteria; State of the art in user story research for requirements engineering; Automated tools for user story generation and validation; Impact of user story quality on software project success.",
+      "matched_requirement_id": "req-composite-re-us",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2604.05278v1",
+      "source": "arxiv",
+      "title": "Spec Kit Agents: Context-Grounded Agentic Workflows",
+      "abstract": "Spec-driven development (SDD) with AI coding agents provides a structured workflow, but agents often remain \"context blind\" in large, evolving repositories, leading to hallucinated APIs and architectural violations. We present Spec Kit Agents, a multi-agent SDD pipeline (with PM and developer roles) that adds phase-level, context-grounding hooks. Read-only probing hooks ground each stage (Specify, Plan, Tasks, Implement) in repository evidence, while validation hooks check intermediate artifacts against the environment. We evaluate 128 runs covering 32 features across five repositories. Context-grounding hooks improve judged quality by +0.15 on a 1-5 composite LLM-as-judge score (+3.0 percent of the full score; Wilcoxon signed-rank, p < 0.05) while maintaining 99.7-100 percent repository-level test compatibility. We further evaluate the framework on SWE-bench Lite, where augmentation hooks improve baseline by 1.7 percent, achieving 58.2 percent Pass@1.",
+      "authors": [
+        "Pardis Taghavi",
+        "Santosh Bhavani"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI",
+        "cs.MA"
+      ],
+      "published": "2026-04-07T00:26:49+00:00",
+      "link": "https://arxiv.org/pdf/2604.05278v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "spec-driven development with PM roles and artifact validation",
+      "llm_evidence_cn": "包含产品经理角色的规格驱动开发与制品验证",
+      "llm_evidence": "包含产品经理角色的规格驱动开发与制品验证",
+      "canonical_evidence": "包含产品经理角色的规格驱动开发与制品验证",
+      "llm_tldr_en": "Introduces an agentic workflow for specification-driven development with context-grounding and validation.",
+      "llm_tldr_cn": "提出了一种具有上下文衔接和验证功能的规格驱动开发代理工作流。",
+      "llm_tldr": "提出了一种具有上下文衔接和验证功能的规格驱动开发代理工作流。",
+      "llm_tags": [
+        "query:re-us:composite"
+      ],
+      "matched_query_tag": "query:re-us:composite",
+      "matched_query_text": "Papers central to 需求工程领域的用户故事相关的论文, especially work that connects or combines: User stories in software development and requirements engineering; Requirements engineering methodologies and practices; Agile requirements engineering and management; Quality assessment and improvement of user stories; Automated extraction of user stories from text; Defining and validating user story acceptance criteria; State of the art in user story research for requirements engineering; Automated tools for user story generation and validation; Impact of user story quality on software project success.",
+      "matched_requirement_id": "req-composite-re-us",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2604.06373v1",
+      "source": "arxiv",
+      "title": "Beyond Functional Correctness: Design Issues in AI IDE-Generated Large-Scale Projects",
+      "abstract": "New generation of AI coding tools, including AI-powered IDEs equipped with agentic capabilities, can generate code within the context of the project. These AI IDEs are increasingly perceived as capable of producing project-level code at scale. However, there is limited empirical evidence on the extent to which they can generate large-scale software systems and what design issues such systems may exhibit. To address this gap, we conducted a study to explore the capability of Cursor in generating large-scale projects and to evaluate the design quality of projects generated by Cursor. First, we propose a Feature-Driven Human-In-The-Loop (FD-HITL) framework that systematically guides project generation from curated project descriptions. We generated 10 projects using Cursor with the FD-HITL framework across three application domains and multiple technologies. We assessed the functional correctness of these projects through manual evaluation, obtaining an average functional correctness score of 91%. Next, we analyzed the generated projects using two static analysis tools, CodeScene and SonarQube, to detect design issues. We identified 1,305 design issues categorized into 9 categories by CodeScene and 3,193 issues in 11 categories by SonarQube. Our findings show that (1) when used with the FD-HITL framework, Cursor can generate functional large-scale projects averaging 16,965 LoC and 114 files; (2) the generated projects nevertheless contain design issues that may pose long-term maintainability and evolvability risks, requiring careful review by experienced developers; (3) the most prevalent issues include Code Duplication, high Code Complexity, Large Methods, Framework Best-Practice Violations, Exception-Handling Issues and Accessibility Issues; (4) these design issues violate design principles such as SRP, SoC, and DRY. The replication package is at https://github.com/Kashifraz/DIinAGP",
+      "authors": [
+        "Syed Mohammad Kashif",
+        "Ruiyin Li",
+        "Peng Liang",
+        "Amjed Tahir",
+        "Qiong Feng",
+        "Zengyang Li",
+        "Mojtaba Shahin"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-04-07T18:59:05+00:00",
+      "link": "https://arxiv.org/pdf/2604.06373v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "feature-driven framework for project generation from curated descriptions",
+      "llm_evidence_cn": "从策划的描述中生成项目的特性驱动框架",
+      "llm_evidence": "从策划的描述中生成项目的特性驱动框架",
+      "canonical_evidence": "从策划的描述中生成项目的特性驱动框架",
+      "llm_tldr_en": "Explores AI IDE capabilities in generating large-scale projects using a feature-driven human-in-the-loop framework.",
+      "llm_tldr_cn": "探讨了AI IDE在使用特性驱动的人机协同框架生成大规模项目方面的能力。",
+      "llm_tldr": "探讨了AI IDE在使用特性驱动的人机协同框架生成大规模项目方面的能力。",
+      "llm_tags": [
+        "query:re-us:composite"
+      ],
+      "matched_query_tag": "query:re-us:composite",
+      "matched_query_text": "Papers central to 需求工程领域的用户故事相关的论文, especially work that connects or combines: User stories in software development and requirements engineering; Requirements engineering methodologies and practices; Agile requirements engineering and management; Quality assessment and improvement of user stories; Automated extraction of user stories from text; Defining and validating user story acceptance criteria; State of the art in user story research for requirements engineering; Automated tools for user story generation and validation; Impact of user story quality on software project success.",
+      "matched_requirement_id": "req-composite-re-us",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2604.06683v1",
+      "source": "arxiv",
+      "title": "Benchmarking Requirement-to-Architecture Generation with Hybrid Evaluation",
+      "abstract": "Recently, Large Language Models (LLMs) have demonstrated significant potential in automating software engineering tasks. Generating software architecture designs from requirement documents is a crucial step in software development. However, there is currently a lack of functional datasets tailored for this task. To bridge this gap, we introduce R2ABench (Requirement-To-Architecture Benchmark), a novel benchmark comprising diverse real-world software projects paired with comprehensive Product Requirements Documents (PRDs) and expert-curated PlantUML reference diagrams. Furthermore, we propose a multi-dimensional, hybrid evaluation framework that assesses generated diagrams across three complementary layers: Structural Graph Metrics, Multi-dimensional Scoring, and Architecture Anti-pattern Detection. Using this framework, we conducted a comprehensive empirical study evaluating state-of-the-art models and agentic workflows. Our study shows that LLMs show strong syntactic validity and robust entity extraction but fundamentally struggle with relational reasoning, leading to structurally fragmented architectures. Code-specialized models partially alleviate this limitation, while agent frameworks introduce significant instability rather than consistent improvements. R2ABench provides a robust and standardized foundation for advancing LLM-driven software architecture generation.",
+      "authors": [
+        "Minxiao Li",
+        "Shuying Yan",
+        "Li Zhang",
+        "Yang Liu",
+        "Fang Liu"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-04-08T04:58:36+00:00",
+      "link": "https://arxiv.org/pdf/2604.06683v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "generating architecture from requirement documents and hybrid evaluation",
+      "llm_evidence_cn": "从需求文档生成架构及混合评估",
+      "llm_evidence": "从需求文档生成架构及混合评估",
+      "canonical_evidence": "从需求文档生成架构及混合评估",
+      "llm_tldr_en": "Benchmarks the generation of software architecture from product requirements documents using LLMs.",
+      "llm_tldr_cn": "评估了使用大语言模型从产品需求文档生成软件架构的效果。",
+      "llm_tldr": "评估了使用大语言模型从产品需求文档生成软件架构的效果。",
+      "llm_tags": [
+        "query:re-us:composite"
+      ],
+      "matched_query_tag": "query:re-us:composite",
+      "matched_query_text": "Papers central to 需求工程领域的用户故事相关的论文, especially work that connects or combines: User stories in software development and requirements engineering; Requirements engineering methodologies and practices; Agile requirements engineering and management; Quality assessment and improvement of user stories; Automated extraction of user stories from text; Defining and validating user story acceptance criteria; State of the art in user story research for requirements engineering; Automated tools for user story generation and validation; Impact of user story quality on software project success.",
+      "matched_requirement_id": "req-composite-re-us",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2604.06607v1",
+      "source": "arxiv",
+      "title": "CoverAssert: Iterative LLM Assertion Generation Driven by Functional Coverage via Syntax-Semantic Representations",
+      "abstract": "LLMs can generate SystemVerilog assertions (SVAs) from natural language specs, but single-pass outputs often lack functional coverage due to limited IC design understanding. We propose CoverAssert, an iterative framework that clusters semantic and AST-based structural features of assertions, maps them to specifications, and uses functional coverage feedback to guide LLMs in prioritizing uncovered points. Experiments on four open-source designs show that integrating CoverAssert with AssertLLM and Spec2Assertion improves average improvements of 9.57 % in branch coverage, 9.64 % in statement coverage, and 15.69 % in toggle coverage.",
+      "authors": [
+        "Yonghao Wang",
+        "Yang Yin",
+        "Hongqin Lyu",
+        "Jiaxin Zhou",
+        "Zhiteng Chao",
+        "Mingyu Shi",
+        "Wenchao Ding",
+        "Yunlin Du",
+        "Jing Ye",
+        "Tiancheng Wang",
+        "Huawei Li"
+      ],
+      "primary_category": "cs.AR",
+      "categories": [
+        "cs.AR"
+      ],
+      "published": "2026-04-08T02:41:15+00:00",
+      "link": "https://arxiv.org/pdf/2604.06607v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "generating assertions from natural language specs",
+      "llm_evidence_cn": "从自然语言规格生成断言",
+      "llm_evidence": "从自然语言规格生成断言",
+      "canonical_evidence": "从自然语言规格生成断言",
+      "llm_tldr_en": "Iteratively generates SystemVerilog assertions from natural language specifications using coverage feedback.",
+      "llm_tldr_cn": "利用覆盖率反馈从自然语言规格中迭代生成SystemVerilog断言。",
+      "llm_tldr": "利用覆盖率反馈从自然语言规格中迭代生成SystemVerilog断言。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Defining and validating user story acceptance criteria",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2604.06946v1",
+      "source": "arxiv",
+      "title": "An empirical study of LoRA-based fine-tuning of large language models for automated test case generation",
+      "abstract": "Automated test case generation from natural language requirements remains a challenging problem in software engineering due to the ambiguity of requirements and the need to produce structured, executable test artifacts. Recent advances in LLMs have shown promise in addressing this task; however, their effectiveness depends on task-specific adaptation and efficient fine-tuning strategies. In this paper, we present a comprehensive empirical study on the use of parameter-efficient fine-tuning, specifically LoRA, for requirement-based test case generation. We evaluate multiple LLM families, including open-source and proprietary models, under a unified experimental pipeline. The study systematically explores the impact of key LoRA hyperparameters, including rank, scaling factor, and dropout, on downstream performance. We propose an automated evaluation framework based on GPT-4o, which assesses generated test cases across nine quality dimensions. Experimental results demonstrate that LoRA-based fine-tuning significantly improves the performance of all open-source models, with Ministral-8B achieving the best results among them. Furthermore, we show that a fine-tuned 8B open-source model can achieve performance comparable to pre-fine-tuned GPT-4.1 models, highlighting the effectiveness of parameter-efficient adaptation. While GPT-4.1 models achieve the highest overall performance, the performance gap between proprietary and open-source models is substantially reduced after fine-tuning. These findings provide important insights into model selection, fine-tuning strategies, and evaluation methods for automated test generation. In particular, they demonstrate that cost-efficient, locally deployable open-source models can serve as viable alternatives to proprietary systems when combined with well-designed fine-tuning approaches.",
+      "authors": [
+        "Milad Moradi",
+        "Ke Yan",
+        "David Colwell",
+        "Rhona Asgari"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-04-08T11:09:49+00:00",
+      "link": "https://arxiv.org/pdf/2604.06946v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "automated test case generation from natural language requirements",
+      "llm_evidence_cn": "从自然语言需求自动生成测试用例",
+      "llm_evidence": "从自然语言需求自动生成测试用例",
+      "canonical_evidence": "从自然语言需求自动生成测试用例",
+      "llm_tldr_en": "This study evaluates LLM fine-tuning for generating executable test cases from natural language requirements.",
+      "llm_tldr_cn": "本研究评估了利用LLM微调从自然语言需求生成可执行测试用例的效果。",
+      "llm_tldr": "本研究评估了利用LLM微调从自然语言需求生成可执行测试用例的效果。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Defining and validating user story acceptance criteria",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2604.06742v1",
+      "source": "arxiv",
+      "title": "Evaluating LLM-Based 0-to-1 Software Generation in End-to-End CLI Tool Scenarios",
+      "abstract": "Large Language Models (LLMs) are driving a shift towards intent-driven development, where agents build complete software from scratch. However, existing benchmarks fail to assess this 0-to-1 generation capability due to two limitations: reliance on predefined scaffolds that ignore repository structure planning, and rigid white-box unit testing that lacks end-to-end behavioral validation. To bridge this gap, we introduce CLI-Tool-Bench, a structure-agnostic benchmark for evaluating the ground-up generation of Command-Line Interface (CLI) tools. It features 100 diverse real-world repositories evaluated via a black-box differential testing framework. Agent-generated software is executed in sandboxes, comparing system side effects and terminal outputs against human-written oracles using multi-tiered equivalence metrics. Evaluating seven state-of-the-art LLMs, we reveal that top models achieve under 43% success, highlighting the ongoing challenge of 0-to-1 generation. Furthermore, higher token consumption does not guarantee better performance, and agents tend to generate monolithic code.",
+      "authors": [
+        "Ruida Hu",
+        "Xinchen Wang",
+        "Chao Peng",
+        "Cuiyun Gao",
+        "David Lo"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-04-08T07:09:10+00:00",
+      "link": "https://arxiv.org/pdf/2604.06742v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "intent-driven development and end-to-end behavioral validation",
+      "llm_evidence_cn": "意图驱动开发与端到端行为验证",
+      "llm_evidence": "意图驱动开发与端到端行为验证",
+      "canonical_evidence": "意图驱动开发与端到端行为验证",
+      "llm_tldr_en": "Evaluates LLM capability to generate complete software from high-level intent using a new CLI benchmark.",
+      "llm_tldr_cn": "通过新的CLI基准评估大模型根据高层意图从零生成完整软件的能力。",
+      "llm_tldr": "通过新的CLI基准评估大模型根据高层意图从零生成完整软件的能力。",
+      "llm_tags": [
+        "query:re-us:composite"
+      ],
+      "matched_query_tag": "query:re-us:composite",
+      "matched_query_text": "Papers central to 需求工程领域的用户故事相关的论文, especially work that connects or combines: User stories in software development and requirements engineering; Requirements engineering methodologies and practices; Agile requirements engineering and management; Quality assessment and improvement of user stories; Automated extraction of user stories from text; Defining and validating user story acceptance criteria; State of the art in user story research for requirements engineering; Automated tools for user story generation and validation; Impact of user story quality on software project success.",
+      "matched_requirement_id": "req-composite-re-us",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2604.06793v1",
+      "source": "arxiv",
+      "title": "Evaluating Repository-level Software Documentation via Question Answering and Feature-Driven Development",
+      "abstract": "Software documentation is crucial for repository comprehension. While Large Language Models (LLMs) advance documentation generation from code snippets to entire repositories, existing benchmarks have two key limitations: (1) they lack a holistic, repository-level assessment, and (2) they rely on unreliable evaluation strategies, such as LLM-as-a-judge, which suffers from vague criteria and limited repository-level knowledge. To address these issues, we introduce SWD-Bench, a novel benchmark for evaluating repository-level software documentation. Inspired by documentation-driven development, our strategy evaluates documentation quality by assessing an LLM's ability to understand and implement functionalities using the documentation, rather than by directly scoring it. This is measured through function-driven Question Answering (QA) tasks. SWD-Bench comprises three interconnected QA tasks: (1) Functionality Detection, to determine if a functionality is described; (2) Functionality Localization, to evaluate the accuracy of locating related files; and (3) Functionality Completion, to measure the comprehensiveness of implementation details. We construct the benchmark, containing 4,170 entries, by mining high-quality Pull Requests and enriching them with repository-level context. Experiments reveal limitations in current documentation generation methods and show that source code provides complementary value. Notably, documentation from the best-performing method improves the issue-solving rate of SWE-Agent by 20.00%, which demonstrates the practical value of high-quality documentation in supporting documentation-driven development.",
+      "authors": [
+        "Xinchen Wang",
+        "Ruida Hu",
+        "Cuiyun Gao",
+        "Pengfei Gao",
+        "Chao Peng"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-04-08T07:58:18+00:00",
+      "link": "https://arxiv.org/pdf/2604.06793v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "evaluating documentation quality via feature-driven development",
+      "llm_evidence_cn": "通过功能驱动开发评估文档质量",
+      "llm_evidence": "通过功能驱动开发评估文档质量",
+      "canonical_evidence": "通过功能驱动开发评估文档质量",
+      "llm_tldr_en": "SWD-Bench evaluates repository-level documentation quality using LLMs and feature-driven development.",
+      "llm_tldr_cn": "SWD-Bench利用LLM和功能驱动开发评估仓库级软件文档的质量。",
+      "llm_tldr": "SWD-Bench利用LLM和功能驱动开发评估仓库级软件文档的质量。",
+      "llm_tags": [
+        "query:re-us:composite"
+      ],
+      "matched_query_tag": "query:re-us:composite",
+      "matched_query_text": "Papers central to 需求工程领域的用户故事相关的论文, especially work that connects or combines: User stories in software development and requirements engineering; Requirements engineering methodologies and practices; Agile requirements engineering and management; Quality assessment and improvement of user stories; Automated extraction of user stories from text; Defining and validating user story acceptance criteria; State of the art in user story research for requirements engineering; Automated tools for user story generation and validation; Impact of user story quality on software project success.",
+      "matched_requirement_id": "req-composite-re-us",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
