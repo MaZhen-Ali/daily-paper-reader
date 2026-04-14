@@ -1,0 +1,157 @@
+Title: Vibe-driven model-based engineering
+
+URL Source: https://arxiv.org/pdf/2604.10645v1
+
+Published Time: Tue, 14 Apr 2026 01:16:23 GMT
+
+Number of Pages: 11
+
+Markdown Content:
+# Vibe-driven model-based engineering 
+
+Jordi Cabot 1,2[0000 −0003 −2418 −2489]  
+
+> 1
+
+Luxembourg Institute of Science and Technology, Esch-sur-Alzette, Luxembourg 
+
+jordi.cabot@list.lu  
+
+> 2
+
+University of Luxembourg, Esch-sur-Alzette, Luxembourg 
+
+Abstract. There is a pressing need for better development methods and tools to keep up with the growing demand and increasing complexity of new software systems. New types of user interfaces, the need for intelli-gent components, sustainability concerns, etc. bring new challenges that we need to handle. In the last years, model-driven engineering (MDE), including its latest incarnation, i.e. low/no-code development, has been key to improving the quality and productivity of software development, but models themselves are becoming increasingly complex to specify and manage. At the same time, we are witnessing the growing popularity of vibe coding approaches that rely on Large Language Models (LLMs) to transform natural language descriptions into running code at the expense of potential code vulnerabilities, scalability issues and maintainability concerns. While many may think vibe coding will replace model-based engineering, in this paper we argue that, in fact, the two approaches can complement each other and provide altogether different development paths for differ-ent types of software systems, development scenarios, and user profiles. In this sense, we introduce the concept of vibe-driven model-based en-gineering as a novel approach to integrate the best of both worlds (AI and MDE) to accelerate the development of reliable complex systems. We outline the key concepts of this new approach and highlight the op-portunities and open challenges it presents for the future of software development. 
+
+Keywords: Vibe Modeling · spec-driven development · Low-code · Ar-tificial Intelligence · Model-driven · Vibe Coding. 
+
+# 1 Introduction 
+
+Current software development projects face a growing demand for advanced fea-tures, including support for new types of user interfaces (augmented reality, virtual reality, chat and voice,...), intelligent behavior to be able to classify/pre-dict/recommend information based on user input or the need to face new security and sustainability concerns, among many other new types of requirements. To tame this complexity, software engineers typically used to choose to work at a higher abstraction level [4] where technical details can be ignored, at least during the initial development phases. Low-code platforms are the latest incar-nation of this trend, promising to accelerate software delivery by dramatically  
+
+> arXiv:2604.10645v1 [cs.SE] 12 Apr 2026 2J. Cabot
+
+reducing the amount of hand-coding required. Low-code can be regarded as a continuation or specific style of other model-based approaches [8, 19], where high-level software models are used to (semi)automatically generate the running software system. However, even models themselves are becoming more and more complex due to the increasing complexity of the underlying systems being mod-eled. Beyond “classical” data and behavioral aspects, we now need to come up with new models to define the new types of UIs or all the smart features of the system. This hampers the adoption of model-driven processes as it reduces the (perceived?) Return on Investment (ROI) of modeling activities due to the increased cost of modeling 3.In parallel, we are witnessing the explosion of vibe-coding, promising to gen-erate full software applications from natural language descriptions thanks to the use of Large Language Models (LLMs) 4. With the new agentic capabilities provided by many IDEs and agent-based systems built on top of those LLMs, even the testing and verification of the generated code is becoming easier, where the agent itself creates tests, runs them and automatically refines the code if it detects any issues. And while the generated code is not always correct, it does keep improving with every new released LLM version. So good (at first sight), that many developers are blindly adopting vibe-coding and disregarding more traditional (and reliable) approaches based on the use of software models and code-generation templates. We even often see claims about the death of low-code with some of the major low-code commercial vendors reshaping their marketing strategies to present themselves as agentic platforms, hiding the fact that they still rely on software models and code-generation templates under the hood. In this paper, we propose a new flexible development approach that explicitly combines the two strategies. We call it vibe-driven model-based engineering . We say it is flexible because, based on the needs of the scenario and the expertise of the user, we can choose to use the more traditional model-based approach relying on code-generation templates, the vibe-coding approach with LLMs for generating code or a combination of both. But the key aspect of our proposal is that regardless of which path you go, software models (or specifications or designs, depending on which terminology you prefer) remain the central point of the development process and guarantee a certain level of quality and reliability in the final software system. The next sections are organized as follows. Section 2 reviews the state of the art in applying LLMs and AI to development activities. Section 3 reviews the key concepts of our vibe-driven model-based engineering proposal. Then, Section 4 discusses the different variants of our approach depending on the needs of the scenario and the expertise of the user while Section 5 comments on the infras-tructure required to support vibe modeling. Finally, we discuss open challenges and future directions before concluding the paper.    
+
+> 3Note that the adoption of modeling practices is a complex sociotechnical problem [14].
+> 4https://en.wikipedia.org/wiki/Vibe_coding Vibe-driven Model-based Engineering 3
+
+# 2 State of the art 
+
+The software engineering community has deeply embraced vibe coding and other LLM-based approaches to generate/review/test/evolve code from natural lan-guage descriptions. In fact, any major software engineering conference is now flooded with papers on this topic 5. At the same time, the community is also deeply reflecting on the implications of these new approaches and the role of LLMs (and AI in general) in software engineering. As one of the many examples of such reflecitons, see [21] for a comprehensive review of the state of the art in AI-driven software engineering. The modeling community has also embraced with real interest the idea of using LLMs to assist in modeling activities [5, 6, 18] as part of ongoing efforts to reduce the cost of modeling itself and improve its ROI [7]. This is what we call 
+
+vibe modeling [9]. Many of these works focus on inferring a (partial) model from a natural language description. For instance, research conducted in [10], [13], and [11] evaluated the potential to create domain models from textual descrip-tions using prompting. Other approaches tried to go beyond simple prompting techniques and experiment with chain-of-thought [12] and tree-of-thought [20] prompting techniques for better accuracy while still acknowledging the need for a human in the loop to validate the model and provide feedback to the LLM [17]. However, and while LLMs can clearly help in the modeling process, there is also the risk that developers believe that vibe coding can replace the need for models and code-generation templates altogether. As such the modeling commu-nity is also starting to reflect on their role in this AI-driven era. See, for instance, this manifesto [16] that states that "to build a better world with AI, we must fundamentally rethink the partnership between human modelers and AI.". Next section presents our concrete proposal to enable this partnership be-tween modeling (including, but not only, human modelers) and AI a fruitful reality. 
+
+# 3 Overview of vibe-driven model-based engineering 
+
+Figure 1 summarizes how we see classical model-based development and LLM-assisted “vibe” workflows coexisting in a single, model-centric landscape. The upper path recalls the classical model-driven/low-code process: a human models the system-to-be and picks the right rule-based code-generator for the target implementation platform. As a result, we obtain a completely determin-istic software system. This system is completely deterministic and the code can be of high quality as the generators could embed “best practices” in the tem-plate, resulting in code that is secure, unbiased, energy efficient, etc and, more     
+
+> 5You can check it yourself by looking at the proceedings of those conferences or any other bibliographic database. As anecdotal evidence, 70% of the papers in arxiv are now LLM related, according to this post https://shape-of-code.com/2026/03/ 22/70-of-new-software-engineering-papers-on-arxiv-are-llm-related/ .4J. Cabot
+> Fig. 1. Possible vibe-driven model-based engineering development workflows.
+
+importantly, that doesn’t need to be tested. If the models were correct, the code will be correct as well 6.This is in contrast with pure vibe coding approaches, where systems are generated from natural language descriptions and the result is unpredictable. Still, this does not mean we cannot benefit from the power of AI, e.g. to facilitate the modeling activity itself. It just means that we need to leverage AI in a controlled way. Indeed, depending on the complexity of the system to be developed and their own skills and preferences, users can decide to opt for introducing vibe modeling in the development process. We can embed agents in the low-code platforms to assist the modelers. This speeds up the modeling process while still giving the users the chance to verify and validate the models before generating the code with the same rule-based deterministic generator as before. Note how this path combines the flexibility of AI and the determinism of rule-based code generation, offering a way to get the best of both worlds. Still, introducing AI as a modeling assistant may not always be enough. Some scenarios may require a more flexible approach where even the code itself is generated by AI to cover unforeseen situations (a target platform not covered by the generator, the need to generate code that goes beyond of the generator scope, addition of features that are not easy to model, e.g. styling visual aspects, etc). This is where vibe coding comes into play. But with a twist. In our approach, vibe coding does not start from a natural language description, but from a model. The model is used to guide the generation process. It is worth noting that in every scenario, we keep the models as the pillar of the development. These models can be manually created or “vibed” but they are   
+
+> 6Of course assuming that the code-generation templates work well but the templates can be exhaustively tested and even certified as they are reused across all projects targeting the same tech stack Vibe-driven Model-based Engineering 5
+
+still explicit and can be reviewed and validated before generating (or vibing) the code. Moreover, in the latter case, the models are part of the vibe coding input (a kind of “spec-driven development”, the term used by the vibe-coding community 
+
+> 7
+
+). Moreover, models remain a useful documentation and communication tool in any development path. This is why we say that you can have a vibe-driven approach, but, still, that approach will reamin model-based. 
+
+# 4 Variants of vibe-driven model-based engineering 
+
+As hinted above, our methodology is flexible and can be adapted to the needs of every project. This is also true within different iterations of the same project, where also other aspects as deadlines, cost, privacy,... come into play. In fact, every iteration could navigate a different path. For instance, we could start with a more model-based approach to generate a robust first version of the system providing the core functionality in a reliable way. And later switch to a more vibe coding approach to, for instance, beautify the UI, as this is something predefined generators are more difficult to adapt to. Or the completely opposite scenario, where we go all in on vibe coding as a way to quickly generate prototypes useful to validate the models (and our understanding of the system requirements) with non-technical stakeholders and then move to a model-based approach to generate trustworthy code from the validated models. These are just two examples of the many possible variants of this approach. 
+
+# 5 infrastructure 
+
+There is a key infrastructure element to make this proposal feasible in practice: the availability of an easy way for agents to interact with the human experts via models. In our proposal, agents are required to read, understand, create, and manipulate models. 
+
+From and to existing low-code platforms and modeling tools. While we can (and should) train specialized agents to become great modelers, the agents them-selves should not embed the modeling stack. Same as human modelers. We do not have a modeling tech stack within us; instead, we use modeling tools that expose core modeling services through different interfaces (textual, graphical, chat-based, etc). The same applies to agents. We do not want to re-implement a full-blown modeling stack as part of each agent code. Instead, agents should be able to communicate with the modeling platform/s we want to use in our development project and benefit from the tool capabilities (e.g. to perform model validation, model rendering and many other basic model manipulation operations that are common to most modeling scenarios). But    
+
+> 7Note that the fact that spec-driven development is not an entirely new concept but one that could learn from our experience in model-driven engineering has also been discussed in https://martinfowler.com/articles/exploring-gen-ai/ sdd-3-tools.html 6J. Cabot
+
+implementing a direct bridge between each agent and each modeling platform quickly triggers the MxN integration problem 8.There are now two alternative ways to bridge the gap between our modeling agents and the modeling platforms. The Model Context Protocol (MCP) and the use of agent skills. The Model Context Protocol (MCP) 9 is a popular open protocol that stan-dardizes how applications provide context to agents. Therefore, we can add MCP support in modeling tools to bridge the gap between our modeling agents and the modeling platforms. Once a modeling platform offers an MCP server, any agent can use it to chat with it, and the platform does not need to adapt to the type of agent or the LLM used by such agent. Similarly, an agent embedding an MCP client can automatically discover and use any MCP server tools avail-able in the environment without having to learn and implement code to interact with the internal modeling platform API. This allows for scenarios where agents could even use, at every step of the collaboration, a different modeling platform specialized on the type of modeling request they are working on. As a proof of concept, we are implementing an MCP Server for the BESSER low-code platform [2]. Thanks to this MCP server, any agent can discover and use the modeling services offered by BESSER when a user (or any other agent) requests a task for which one of the BESSER services exposed in its MCP server would be a good fit. The actual MCP Server implementation is mostly a thin wrapper on top of the internal tool API where MCP standardizes the way the tool (in a MCP context, tool refers to a service the agent can use as a tool to achieve something, so each modeling service would be exposed as an MCP tool) is described (and later discovered and called) by the agent. Listing 1.1 shows a simple example of the MCP Server of BESSER exposing the creation of a new B-UML model. Note that the model is returned serialized. This enables the agent to keep and use the model in a future interaction if needed. An obvious alternative would be to store the model in a database and return the ID of the model. Each approach has different trade-offs.                         
+
+> 1@mcp.tool()
+> 2async def new_model(name: str) -> str:
+> 3"""Creates a new B-UML DomainModel with the specified name and
+> ,→returns it as base64.
+> 45Args:
+> 6name (str): Name of the new domain model.
+> 78Returns:
+> 9str: A new domain model instance as base64 string.
+> 8The MxN integration problem refers to the challenge of connecting M different AI applications to N different external tools without a standardized approach
+> https://huggingface.co/learn/mcp-course/en/unit1/key-concepts . It is a re-current problem in information systems development that also appears in the context of vibe engineering.
+> 9https://modelcontextprotocol.io/ Vibe-driven Model-based Engineering 7
+> 10 """
+> 11 try:
+> 12 from besser.BUML.metamodel.structural import DomainModel #
+> ,→type: ignore
+> 13 except ImportError as exc:
+> 14 raise RuntimeError(
+> 15 "BESSER library must be installed (‘pip install besser‘)."
+> 16 ) from exc
+> 17 18 # Create and return a new DomainModel instance as base64
+> 19 domain_model = DomainModel(name=name)
+> 20 return serialize_domain_model(domain_model)
+> Listing 1.1. BESSER MCP Server example
+
+Skills are a more recent approach to bridge the gap between agents and tools. Skills are a way to explain the set of actions that an agent can perform on a tool and how to carry them out. They are more like shareable workflows made of instructions and optionally code/assets, typically bundled around a SKILL.md manifest. BESSER also comes with skills that help agents to learn and use the BESSER metamodel and the different BESSER input/output formats. Skills can also be used in complex interaction patterns where we want to instruct agents not to modify code generated (e.g. using a rule-based code generator) in a previous iteration of the same project (see Section 4). The choice between MCP and skills depends on the specific needs of the project and the type of agents we are using. For instance, when you want to authenticate the agents and trace their actions, MCP is the way to go. 
+
+# 6 Discussion 
+
+So far, we have presented the key definitions and infrastructure to put in place a vibe-driven model-based approach. Nevertheless, there are still several challenges to address to make this approach more effective and more widely adopted. In what follows, we discuss some open aspects. 
+
+6.1 Specialized modeling agents 
+
+While we have seen a plethora of works on inferring models from natural language descriptions (see Section 2), most are one-shot approaches. The advent of agents and agentic workflows opens the door to interactive vibe modeling approaches like the one discussed here. But we still need to learn how to best leverage agentic capabilities and collaborate with one (or more) agent(s)to infer better models. Aspects like: 
+
+– What types of conversations and questions should the agents have with the domain experts to validate the model being inferred? Or to disambiguate and complete the natural language description? 8 J. Cabot 
+
+– How to train agents for the modeling domain? What type of Reinforcement Learning strategies could be useful to create specialized modeling agents? 
+
+– What datasets should be created and provided to the LLMs used by the agents to improve their training (e.g. extending [15])? Or to have fine-tuned LLMs with a better understanding of the modeling concepts and tasks? 
+
+– How these agents can effectively collaborate on partial models to complement and improve their own suggestions? How many agents should be involved, depending on the complexity of the model to be inferred? 
+
+– How to evaluate the quality of the models inferred by the agents? And how to use that information to choose the best modeling agent for the task at hand? 
+
+– How many agents should we use? And should they compete or collaborate? And if they compete, how to select the best solution from the different pro-posals according to a predefined governance policy [1]? still need to be addressed. 
+
+6.2 Uncertainty and traceability 
+
+Uncertainty modeling [22] should be considered a first-level concern. Indeed, when agents and LLMs are part of a model-based process, all model proposals come with a certain level of uncertainty. This confidence score should be stored together with the element. And for the same reason, we must be able to explain where that number came from. We need to keep full traceability of the model evolution. We should be able to explain who proposed and approved each model change. 
+
+6.3 Adapting vibe dialogues to different user profiles 
+
+Vibe modeling and vibe coding could be used by different types of users, from domain experts, with limited technical expertise, to software engineers with deep software engineering expertise but limited domain knowledge for the domain tar-geted by the system-to-be. Each profile may prefer a different type of interaction with the agent/s. In the former, the agent should be able to explain the model in a way that is easy to understand for the domain expert. In the latter, the agent should focus more on bringing the domain expertise the expert engineer lacks of. This is similar to the no-code/low-code discussion, where we also have these two types of profiles, and platforms end up offering a combination of both as they are not mutually exclusive. 
+
+6.4 Modeling capabilities for everybody 
+
+An implicit requirement in our approach is that the human experts have a certain level of modeling skills. At the very least, to validate and understand the models proposed by the agents. Vibe-driven Model-based Engineering 9
+
+This is not always mandatory, as in a full vibing scenario, agents could take care of creating the models that other agents will use to generate the code, while the validation of the models could be done by explaining such models or showing prototypes created from them to the user, i.e. an indirect validation. Still, to maximize the benefits of our approach, we would like to encourage the learning of modeling skills by everyone. In fact, we believe this modeling (and in general abstraction [3]) ability is useful beyond software development and therefore worth acquiring even for non-technical users that will only need to occasionally participate in development projects as external collaborators. 
+
+# 7 Conclusions and further work 
+
+This paper has introduced the concept of vibe-driven model-based engineering and how it can enable a new type of development process leveraging the best of low-code and AI to tailor the process to the needs of the the system to be developed and the characteristics of the user and development sceanrio. While this new development approach still has many shortcomings, we believe it shows promise and could contribute to reinforcing the importance of modeling in front of current trends favoring direct "vibe coding" of the applications with all the risks this implies for the quality of the final system. As further work, we plan to address the roadmap outlined above to facilitate the adoption of our approach and continue refining these ideas based on the feedback of the community and the evolution of the underlying technology. 
+
+Acknowledgements. This project is supported by the Luxembourg National Research Fund (FNR) PEARL program, grant agreement 16544475. 
+
+# References        
+
+> 1. Ait, A., Jouneaux, G., Izquierdo, J.L.C., Cabot, J.: Towards automated gov-ernance: A DSL for human-agent collaboration in software projects. In: 40th IEEE/ACM International Conference on Automated Software Engineering, ASE 2025, Seoul, Korea, Republic of, November 16-20, 2025. pp. 3891–3895. IEEE (2025). https://doi.org/10.1109/ASE63991.2025.00337, https://doi.org/ 10.1109/ASE63991.2025.00337
+> 2. Alfonso, I., Conrardy, A.D., Sulejmani, A., Nirumand, A., Haq, F.U., Gomez-Vazquez, M., Sottet, J., Cabot, J.: Building BESSER: an open-source low-code platform. In: van der Aa, H., Bork, D., Schmidt, R., Sturm, A. (eds.) Enterprise, Business-Process and Information Systems Modeling - 25th International Confer-ence, BPMDS 2024, and 29th International Conference, EMMSAD 2024, Limas-sol, Cyprus, June 3-4, 2024, Proceedings. Lecture Notes in Business Information Processing, vol. 511, pp. 203–212. Springer (2024). https://doi.org/10.1007/978-3-031-61007-3_16
+
+10 J. Cabot 3. Bencomo, N., Cabot, J., Chechik, M., Cheng, B.H.C., Combemale, B., Wąsowski, A., Zschaler, S.: Abstraction engineering (2024), https://arxiv.org/abs/2408. 14074 
+
+4. Booch, G.: The history of software engineering. IEEE Softw. 35 (5), 108–114 (2018). https://doi.org/10.1109/MS.2018.3571234 5. Burgueño, L., Cabot, J., Wimmer, M., Zschaler, S.: Guest editorial to the theme section on ai-enhanced model-driven engineering. Softw. Syst. Model. 21 (3), 963– 965 (2022). https://doi.org/10.1007/s10270-022-00988-0 6. Burgueño, L., Ruscio, D.D., Sahraoui, H.A., Wimmer, M.: The past, present, and future of automation in model-driven engineering. CoRR abs/2405.18539 (2024). https://doi.org/10.48550/ARXIV.2405.18539 7. Cabot, J.: Low-modeling of software systems. In: Fill, H., Mayo, F.J.D., van Sinderen, M., Maciaszek, L.A. (eds.) Software Technologies - 18th Interna-tional Conference, ICSOFT 2023, Rome, Italy, July 10-12, 2023, Revised Se-lected Papers. Communications in, vol. 2104, pp. 19–28. Springer (2023). https://doi.org/10.1007/978-3-031-61753-9_2 8. Cabot, J.: The low-code handbook: Learn how to unlock faster and better soft-ware development with low-code solutions. Self-published, 1st edn. (October 2024), 
+
+https://lowcode-book.com/ 
+
+9. Cabot, J.: Vibe modeling: Challenges and opportunities. In: Advances in Concep-tual Modeling - ER 2025 Workshops, FCM, CMLS, LLM4Modeling, OntoCom, and QUAMES, Poitiers, France, October 20-23, 2025, Proceedings. pp. 105–118. Lecture Notes in Computer Science, Springer (2025). https://doi.org/10.1007/978-3-032-08620-4_7, https://doi.org/10.1007/978-3-032-08620-4_7 
+
+10. Cámara, J., Troya, J., Burgueño, L., Vallecillo, A.: On the assessment of generative AI in modeling tasks: an experience report with chatgpt and UML. Softw. Syst. Model. 22 (3), 781–793 (2023). https://doi.org/10.1007/s10270-023-01105-5 11. Chaaben, M.B., Burgueño, L., Sahraoui, H.: Towards using Few-Shot Prompt Learning for Automating Model Completion. In: 2023 IEEE/ACM 45th In-ternational Conference on Software Engineering: New Ideas and Emerging Results (ICSE-NIER). pp. 7–12. IEEE, Melbourne, Australia (May 2023). https://doi.org/10.1109/ICSE-NIER58687.2023.00008 12. Chen, K., Yang, Y., Chen, B., Hernández López, J.A., Mussbacher, G., Varró, D.: Automated Domain Modeling with Large Language Models: A Comparative Study. In: 2023 ACM/IEEE 26th International Conference on Model Driven Engineering Languages and Systems (MODELS). pp. 162–172. IEEE, Västerås, Sweden (Oct 2023). https://doi.org/10.1109/MODELS58315.2023.00037 13. Fill, H.G., Fettke, P., Köpke, J.: Conceptual Modeling and Large Language Mod-els: Impressions From First Experiments With ChatGPT. Enterprise Modelling and Information Systems Architectures (EMISAJ) pp. 3:1–15 Pages (Apr 2023). https://doi.org/10.18417/EMISA.18.3, artwork Size: 3:1-15 Pages Publisher: En-terprise Modelling and Information Systems Architectures (EMISAJ) 14. Hutchinson, J.E., Whittle, J., Rouncefield, M.: Model-driven engineering practices in industry: Social, organizational and managerial factors that lead to success or failure. Sci. Comput. Program. 89 , 144–161 (2014). https://doi.org/10.1016/j.scico.2013.03.017 15. López, J.A.H., Izquierdo, J.L.C., Cuadrado, J.S.: Modelset: a dataset for machine learning in model-driven engineering. Softw. Syst. Model. 21 (3), 967–986 (2022). https://doi.org/10.1007/s10270-021-00929-3 Vibe-driven Model-based Engineering 11 16. Lukyanenko, R., Samuel, B., Tegarden, D., Larsen, K., Jabbari, A., Abd El Aziz, R., Almeida, J., Amrollahi, A., Beard, J., Bellatreche, L., Bork, D., Brocke, J.v., Cabot, J., Castellanos, A., Gerber, A., Green, P., Grover, A., Guizzardi, G., Hertelendy, A., Zhao, J.: Manifesto for software development and model-ing in the age of artificial intelligence. SSRN Electronic Journal (12 2025). https://doi.org/10.2139/ssrn.5881104 17. Mercado, J.S., Ma, Q., Cabot, J., Kelsen, P., Proper, H.A.: Towards human-in-the-loop llm-enabled domain modeling. In: Bork, D., Lukyanenko, R., Sadiq, S., Bellatreche, L., Pastor, O. (eds.) Conceptual Modeling - 44th International Con-ference, ER 2025, Poitiers, France, October 20-23, 2025, Proceedings. pp. 127–145. Lecture Notes in Computer Science, Springer (2025). https://doi.org/10.1007/978-3-032-08623-5_7, https://doi.org/10.1007/978-3-032-08623-5_7 
+
+18. Rocco, J.D., Ruscio, D.D., Sipio, C.D., Nguyen, P.T., Rubei, R.: On the use of large language models in model-driven engineering. Softw. Syst. Model. 24 (3), 923–948 (2025). https://doi.org/10.1007/S10270-025-01263-8 19. Ruscio, D.D., Kolovos, D.S., de Lara, J., Pierantonio, A., Tisi, M., Wimmer, M.: Low-code development and model-driven engineering: Two sides of the same coin? Softw. Syst. Model. 21 (2), 437–446 (2022). https://doi.org/10.1007/S10270-021-00970-2 20. Silva, J., Ma, Q., Cabot, J., Kelsen, P., Proper, H.A.: Application of the tree-of-thoughts framework to llm-enabled domain modeling. In: Maass, W., Han, H., Yasar, H., Multari, N.J. (eds.) Conceptual Modeling - 43rd International Conference, ER 2024, Pittsburgh, PA, USA, October 28-31, 2024, Proceedings. Lecture Notes in Computer Science, vol. 15238, pp. 94–111. Springer (2024). https://doi.org/10.1007/978-3-031-75872-0_6 21. Terragni, V., Vella, A., Roop, P., Blincoe, K.: The future of AI-driven soft-ware engineering. ACM Trans. Softw. Eng. Methodol. 34 (5) (May 2025). https://doi.org/10.1145/3715003 22. Troya, J., Moreno, N., Bertoa, M.F., Vallecillo, A.: Uncertainty representation in software models: a survey. Softw. Syst. Model. 20 (4), 1183–1213 (2021). https://doi.org/10.1007/s10270-020-00842-1
