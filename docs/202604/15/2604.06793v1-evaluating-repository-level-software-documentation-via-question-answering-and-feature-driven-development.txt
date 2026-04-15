@@ -1,0 +1,662 @@
+Title: Evaluating Repository-level Software Documentation via Question Answering and Feature-Driven Development
+
+URL Source: https://arxiv.org/pdf/2604.06793v1
+
+Published Time: Thu, 09 Apr 2026 00:40:45 GMT
+
+Number of Pages: 11
+
+Markdown Content:
+# Evaluating Repository-level Software Documentation via Question Answering and Feature-Driven Development 
+
+## Xinchen Wang 1, Ruida Hu 1, Cuiyun Gao 1†, Pengfei Gao 2, Chao Peng 2† 
+
+> 1
+
+Harbin Institute of Technology, Shenzhen, China  
+
+> 2
+
+Independent Researcher, China 200111115@stu.hit.edu.cn,200111107@stu.hit.edu.cn,gaocuiyun@hit.edu.cn, gaopf1995@gmail.com,chao.peng@acm.org 
+
+Abstract 
+
+Software documentation, which provides detailed and clear de-scriptions of source code, is crucial for repository comprehension. Researchers have developed various automated methods, as man-ual documentation writing is labor-intensive. With the advance-ment of large language models (LLMs), these methods extend from isolated code snippets to the entire repository, leveraging global semantic context for comprehensive summaries. However, existing benchmarks for evaluating software documentation suffer from two fundamental limitations. (1) They lack repository-level analysis, assessing in a fragmented manner that overlooks overall documen-tation quality. (2) They depend on unreliable evaluation strategies. While LLM-as-a-judge methods are widely adopted, their reliability is compromised by vaguely defined evaluation criteria and limited repository-level knowledge. To address these limitations, we propose a novel benchmark for evaluating repository-level Soft Ware Documentation, named SWD-Bench . Our evaluation strategy is inspired by documentation-driven development, where higher-quality documentation enables more effective repository comprehension. Based on this strategy, we propose to regard LLMs as repository developers and evaluate the documentation quality through the process of the LLMs’ un-derstanding and implementing functionalities, instead of directly prompting LLMs for evaluation. To ensure the reliability of evalu-ation results, documentation quality is assessed by functionality-driven question answering (QA) tasks. Specifically, SWD-Bench introduces three interconnected QA tasks: (1) Functionality De-tection , aiming to assess whether a specific functionality exists in the documentation. (2) Functionality Localization , aiming to evaluate the capability in accurately locating functionality-related files. (3) Functionality Completion , aiming to measure the com-prehensiveness of implementation details of the functionalities. The construction pipeline for SWD-Bench involves three stages: we first mine high-quality Pull Requests (PRs) through multi-step filtering, then enrich them with diverse repository-level context,   
+
+> †Corresponding authors. Permission to make digital or hard copies of all or part of this work for personal or classroom use is granted without fee provided that copies are not made or distributed for profit or commercial advantage and that copies bear this notice and the full citation on the first page. Copyrights for components of this work owned by others than the author(s) must be honored. Abstracting with credit is permitted. To copy otherwise, or republish, to post on servers or to redistribute to lists, requires prior specific permission and/or a fee. Request permissions from permissions@acm.org.
+> Conference’17, July 2017, Washington, DC, USA
+> ©2026 Copyright held by the owner/author(s). Publication rights licensed to ACM. ACM ISBN 978-x-xxxx-xxxx-x/YY/MM https://doi.org/10.1145/nnnnnnn.nnnnnnn
+
+and finally leverage this rich context to meticulously craft the tasks. This rigorous process yields the final benchmark of 4,170 entries across three QA tasks. Extensive experiments reveal that there still exist limitations in current repository-level documentation genera-tion methods, and highlight that source code offers complementary value to software documentation. Besides, documentation gener-ated by the best-performed method improves the issue-solving rate of SWE-Agent, one popular issue-fixing approach, by 20.00%, highlighting the practical value of high-quality documentation in supporting documentation-driven development. 
+
+CCS Concepts 
+
+• Software and its engineering → Software verification and validation .
+
+Keywords 
+
+Software Documentation, Repository-level, Benchmark 
+
+ACM Reference Format: 
+
+Xinchen Wang 1, Ruida Hu 1, Cuiyun Gao 1†, Pengfei Gao 2, Chao Peng 2†.2026. Evaluating Repository-level Software Documentation via Question Answering and Feature-Driven Development. In . ACM, New York, NY, USA, 11 pages. https://doi.org/10.1145/nnnnnnn.nnnnnnn 
+
+1 INTRODUCTION 
+
+Software documentation refers to describing the functionality and logic of source code, playing a crucial role in software engineer-ing practices [ 15 , 18 , 31 ]. It facilitates developers’ understanding of repositories, thereby enhancing development efficiency [ 5, 13 ,32 , 46 , 47 ]. Since manually writing documentation is costly, re-searchers have developed various automated methods. Early meth-ods [ 12 , 14 , 28 , 33 ] are limited to summarizing isolated code snip-pets, such as functions or classes. They often neglect contextual information, including program dependency and functional inter-action, resulting in fragmented documentation that provides lim-ited guidance. With the advancement of large language models (LLMs), research has shifted towards generating repository-level documentation [ 23 , 43 ]. These methods enhance documentation quality by retrieving semantic context from the entire repository to generate comprehensive summaries. AI-based assistants such as DeepWiki [ 7] and Autodoc [ 6], pre-generate software documen-tation for the user repository, thereby empowering diverse code tasks, such as code generation and issue solving. Despite the progress in repository-level software documenta-tion generation, existing benchmarks [ 8, 23 , 43 ] suffer from two fundamental limitations that hinder comprehensive evaluation: (1) Lack of repository-level analysis: Current benchmarks typically  
+
+> arXiv:2604.06793v1 [cs.SE] 8 Apr 2026 Conference’17, July 2017, Washington, DC, USA Xinchen Wang 1, Ruida Hu 1, Cuiyun Gao 1†, Pengfei Gao 2, Chao Peng 2†
+
+Input      
+
+> Developer
+> Functionality
+> Requirement
+> 1. Functionality
+> Detection
+> Q: Does the
+> functionality
+> exist?
+> 2. Functionality
+> Localization
+> Q: Where is the
+> functionality
+> located ?
+> 3. Functionality
+> Completion
+> Q: How is the
+> functionality
+> implemented ?
+
+Output  
+
+> Requirement
+> Completed
+> & Integrated
+> Repository -level Software Documentation
+
+Figure 1: A typical workflow of documentation-driven development. 
+
+decompose generated documentation into function- or method-level summaries and assess them sequentially, overlooking seman-tic relationships between code snippets. This narrow focus does not well reflect real-world documentation reading, where devel-opers rely on a holistic understanding to capture functionality spanning multiple modules. Hence, these benchmarks fail to assess the overall documentation accuracy. (2) Unreliable evaluation strategy: Current evaluation strategies generally fall into three types. Human-based methods [ 25 , 34 ] are labor-intensive, while metric-based methods [ 3, 20 , 29 ] rely on reference documentation, which is generally difficult to construct. Hence, LLM-as-a-judge methods [ 8, 43 ] are widely adopted due to their strong contextual understanding abilities. These methods typically utilize an LLM to assess documentation quality through a 5-point Likert scale [ 17 ]. However, these scales rely on vague descriptors like “not helpful” and “slightly helpful”, rather than a precise and objective definition. Besides, the LLM often lacks domain knowledge of the repository’s implementation details, making it difficult to determine whether a documented functionality is accurately described. Furthermore, these strategies tend to assess the qualities of the documentation content, rather than its practical utility. To mitigate these limitations, we propose a novel benchmark for evaluating repository-level Soft Ware Documentation, named SWD-Bench . Our evaluation strategy is inspired by documentation-driven development [ 13 , 24 , 47 ], where higher-quality documenta-tion enables developers to more effectively understand the reposi-tory. Figure 1 illustrates a typical development workflow: when en-countering functionality requirements, developers begin by search-ing the documentation to analyze whether the functionality has been implemented. If so, they then map the documentation de-scriptions to specific locations within the vast repository. Finally, developers leverage concrete information—such as API definitions and parameter usage—provided in the documentation to integrate the new functionality. Clearly, software documentation lies at the core of these consecutive stages. Based on this workflow, we sim-ulate the LLM as a repository developer that understands and im-plements functionalities through a documentation-based inquiry process, instead of directly scoring the documentation. Accord-ingly, we construct three categories of repository-level, objective question-answering (QA) tasks aligned with this development work-flow: Functionality Detection , Functionality Localization , and 
+
+Functionality Completion . The documentation quality is mea-sured by assessing the LLM’s performance on these tasks. The construction pipeline of SWD-Bench is divided into three stages. (1) High-quality data crawling and filtering stage: Pull Requests (PRs) typically introduce functionalities and contain rich contextual information, making them ideal for QA construction. Hence, we employ a series of rigorous crawling and filtering rules to retain high-quality PRs that genuinely reflect developers’ functional contributions from representative repositories. (2) Repository-level context retrieving stage: We enrich each PR with exten-sive contextual information, covering its background, motivation, and impact scope, such as program dependencies and associated issues. This comprehensive context provides a solid foundation for constructing repository-level QA tasks, thereby mitigating the limitation of insufficient analysis from a holistic perspective. (3) 
+
+Functionality-driven QA construction stage: We leverage di-verse context from PRs to meticulously create three categories of QA tasks. Each question is paired with a clear reference answer extracted from the PR’s context. Based on this, we mitigate the limitation of unreliable evaluation strategies by assessing software documentation quality through the consistency between the LLM’s answers and the objective reference answers. SWD-Bench consists of 4,170 high-quality entries across three tasks. To ensure data qual-ity, we manually validate a random sample of 100 entries, achieving a Kappa coefficient greater than 90%, which indicates strong inter-annotator agreement. We conduct extensive experiments and conclude several findings: (1) There still exist limitations in current repository-level software documentation generation methods, among which methods leveraging more thorough context achieve better performance. (2) Software documentation produced by the best method improves SWE-Agent’s issue-solving rate by 20.00%, highlighting its prac-tical value in supporting documentation-driven development. (3) Source code offers complementary value to software documen-tation on repository comprehension, especially in functionality detection and localization. Our contributions can be summarized as follows: (1) We introduce SWD-Bench, a novel benchmark for evaluat-ing repository-level software documentation. This benchmark aims to mitigate two major limitations, including the lack of repository-level analysis and unreliable evaluation strategies. (2) SWD-Bench comprises 4,170 high-quality data entries. Each entry is enriched with three categories of functionality-driven Evaluating Repository-level Software Documentation via Question Answering and Feature-Driven Development Conference’17, July 2017, Washington, DC, USA 
+
+QA tasks, enabling holistic and comprehensive evaluation of software documentation quality. (3) We conduct extensive experiments on SWD-Bench, conclude our findings, and provide valuable insights for both researchers and developers. 
+
+2 TASK FORMULATION 
+
+We formulate the evaluation on SWD-Bench as a documentation-based QA problem. Let D denote the space of generated software documentation and Q be the set of potential developers’ questions. The target model is defined as a function 𝑀 : D × Q → A , which takes the documentation 𝐷 ∈ D and a specific question 𝑄 ∈ Q 
+
+as input, and produces an answer 𝐴 ∈ A . The structure of the question 𝑄 and the domain of the answer space A vary across the three tasks, as detailed below. 
+
+2.1 Functionality Detection 
+
+Software documentation supports developers in identifying which functionalities are implemented within the repository. This task reflects documentation’s completeness in presenting repository functionalities. In this task, the question 𝑄 detect inquires about the existence of a specific functionality. The answer space A is bi-nary, i.e., A = {True , False }. The model output 𝑦 = 𝑀 (𝐷, 𝑄 detect )
+
+indicates whether the functionality is judged to be available. 
+
+2.2 Functionality Localization 
+
+Software documentation helps developers effectively locate the source files responsible for implementing specific functionalities. This task reflects the documentation’s helpfulness in navigation and localization. Here, the question 𝑄 localize asks for the implementation location of a functionality. The answer space A corresponds to the power set of all file paths in the repository. The model predicts a list of files 𝐹 = 𝑀 (𝐷, 𝑄 localize ) responsible for the functionality. 
+
+2.3 Functionality Completion 
+
+Software documentation enables developers to obtain clear techni-cal details about specific functionalities. This task reflects the docu-mentation’s comprehensiveness in describing the functionalities’ implementation details. Specifically, the question 𝑄 complete is formu-lated as a cloze-style prompt containing masked placeholders. The answer space A consists of sequences of details (e.g., API parame-ters). The model generates the missing details 𝑇 = 𝑀 (𝐷, 𝑄 complete )
+
+to complete the masked placeholders. 
+
+3 METHODOLOGY 
+
+This section details the data construction pipeline for SWD-Bench, which is illustrated in Figure 2. 
+
+3.1 High-quality Data Crawling and Filtering Stage 
+
+To ensure high-quality and large-scale data collection, we follow a multi-step data mining process. 
+
+3.1.1 Representative Repository and Version Selection. To construct a robust benchmark, we follow the repository selection strategy established by SWE-Bench [ 16 ], a widely recognized issue-resolving benchmark encompassing repositories from diverse application domains with active development communities. Specifically, we use 12 repositories from SWE-Bench as the sources for PR metadata collection. For each repository, we designate a single snapshot as the evaluation target: the latest stable version available in SWE-Bench (2023). Thus, our benchmark comprises 12 distinct repository versions (one per repository) for documentation generation. 
+
+3.1.2 Large-scale PR Metadata Collection. We leverage the GitHub REST API [ 9] to crawl all PRs from the selected repositories to en-sure a reliable collection. For each PR, we systematically extract and structure essential metadata, such as its unique ID, title, description, and code changes. This initial collection process yields a massive corpus of 177.4k PRs, which are then stored in a structured format for subsequent filtering. 
+
+3.1.3 Multi-dimensional Data Filtering. Raw crawled data is often noisy. To guarantee the high quality of our benchmark, we apply a multi-step filtering process. 
+
+Basic Regularity Filtering: This step aims to quickly filter noisy PRs from the initial dataset. The specific rules are as follows: 
+
+• Status Check: Retain PRs that have been merged, as these rep-resent accepted contributions that meet repository standards. 
+
+• Milestone Tag: Retain PRs containing the “milestone” attribute, as these are typically associated with major repository goals. 
+
+• Length Constraint: Retain PRs with description length greater than 50 characters, ensuring each PR provides clear context. 
+
+• Branch Filter: Retain PRs merged into the main branch, as these are formal contributions central to the repository’s evolution. 
+
+• Review Presence: Retain PRs with review comments, indicating that the changes have undergone human validation. 
+
+• Bot Exclusion: Exclude PRs generated by bots to focus on human-made changes. 
+
+Functionality Relevance Filtering: This step aims to retain PRs focused on functionality implementation. 
+
+• Functionality Label: Retain PRs that contain functionality-related labels, such as “new feature” or “new API”, to ensure the relevance to functional contributions. 
+
+• Functionality Modified File: Retain PRs based on the filenames of the modified files. Specifically, a PR is kept if it modifies at least one functional file (such as “.py” extension) located within a functional directory (excluding directories like “ /test ”). 
+
+• Functionality Persistence: Functionalities introduced by previ-ous PRs may be altered or removed in subsequent code updates. To ensure the persistence of QA tasks, we focus on PRs merged before the snapshot time of the selected repository version in Section 3.1.1. We then verify the persistence of their introduced functionalities by checking whether the added non-comment code lines still exist in the corresponding files of the selected version, accounting for potential file renames. After this series of rigorous filtering steps, we obtain 4,170 high-quality PRs, forming the comprehensive basis of our benchmark. 
+
+3.2 Repository-level Context Retrieving Stage 
+
+Current benchmarks often assess in a fragmented manner, failing to evaluate overall accuracy. To address this, this stage aggregates Conference’17, July 2017, Washington, DC, USA Xinchen Wang 1, Ruida Hu 1, Cuiyun Gao 1†, Pengfei Gao 2, Chao Peng 2†Stage 2: Repository -level 
+
+Context Retrieving 
+
+Stage 3: Functionality -driven 
+
+QA Construction 
+
+Stage 1: High -quality Data 
+
+Crawling and Filtering 
+
+Representative Repository and Version Selection 
+
+Large -scale PR Metadata Collection 
+
+Multi -dimensional Data Filtering 
+
+> Selected Repository and Version
+
+…Select 
+
++
+
+> GitHub REST API
+> Crawl
+> Pull Requests (PRs)
+
+…
+
+> Basic Regularity
+> Functionality Relevance
+> Status
+> Check
+> Bot
+> Exclusion
+> Length
+> Constraint
+> Branch
+> Filter
+> Review
+> Presence
+> Milestone
+> Tag
+> Functionality
+> Label
+> Functionality
+> Modified File
+> Functionality
+> Persistence
+> Filter raw PRs
+> with diverse rules
+> Initial
+> Dataset
+
+Program Dependency Analysis 
+
+Associated Issue Retrieval 
+
+Commit History Tracking 
+
+External Web Page Extraction     
+
+> Code Changes
+> void func1{
+> +result = func2;}
+> Callee func2{...}
+> Caller func3{func1;}
+> Analyze
+> Tree -
+> sitter
+> PR Title & Description
+> Associate
+> Associated Issues
+
+… 
+
+> Beautiful
+> Soup
+> Extract
+> Official
+> API Doc
+> Stack
+> Overflow
+> PR Links Other
+> Websites
+> PR Commit
+> History
+> Track
+> Involved
+> Commits
+
+Intent -guided Functionality Description Generation 
+
+Reliable QA Pair Generation  
+
+> Enriched
+> Dataset
+> PR Repository -level
+> Context
+
++ Generate 
+
+> LLM
+> Intent -guided
+> Functionality Description
+> Enrich each PR with
+> Comprehensive Context
+> Functionality
+> Description
+
++ Does the  
+
+> functionality
+> exist? Yes / No
+> Functionality
+> Description
+
++ Where is the  
+
+> functionality
+> located? Files
+
++ How is the   
+
+> functionality
+> implemented? Details
+> SWE -Bench
+> Selected
+> Repository
+> Masked Functionality
+> Description
+> Question ( 𝑄 )
+> Functionality Detection
+> Functionality Localization
+> Functionality Completion
+> Answer ( 𝐴 )
+
+Figure 2: The overview of SWD-Bench’s data construction pipeline. 
+
+abundant repository-level context for each PR, forming a solid foundation for constructing high-quality QA tasks. 
+
+3.2.1 Program Dependency Analysis. Code changes in PRs often propagate their impact beyond the immediately modified snippets, potentially affecting the dependent modules. Since raw diffs are fragmentary, we first utilize Tree-Sitter [ 37 ] to parse and extract complete definitions of modified code snippets (e.g., functions, meth-ods). To capture repository-level context, we analyze dependencies by identifying both the callers and callees of these snippets. 
+
+3.2.2 Associated Issue Retrieval. Associated issues reflect reposi-tory requirements or feature motivations driving PR changes. We apply keyword-based regular expressions (e.g., “closes” ) to ex-tract related issue numbers from PR titles and descriptions, and then crawl issue metadata via the GitHub REST API. For the “Django” repository, where issues are tracked on its official website, we im-plement a custom crawler to ensure comprehensive coverage. This process grounds QA tasks in the broader repository context. 
+
+3.2.3 External Web Page Extraction. External web links in PR de-scriptions provide additional information, such as official documen-tation or community discussions. Using the BeautifulSoup pack-age [ 4], we parse these pages and extract relevant information, supporting a more comprehensive understanding of the PR. 
+
+3.2.4 Commit History Tracking. PR typically consists of a series of commits, each documenting incremental changes. For every involved commit, we collect detailed metadata including commit message, code changes, and associated review comments. This infor-mation offers a holistic view of functionality evolution, deepening the overall understanding of PRs. 
+
+3.3 Functionality-driven QA Construction Stage 
+
+Current benchmarks often use vague scoring criteria, leading to unreliable evaluation. To overcome this, we leverage the rich PR context to construct functionality-driven tasks, enabling objective evaluation by comparing the LLM’s answers with references. The core philosophy is to simulate documentation-driven development: a developer formulates a functionality requirement and consults the documentation for answers. Thus, each QA consists of two parts: 
+
+◀ Question : A composite input (developer’s requirement) contain-ing a Functionality Description and a Query (e.g., “Determine if the functionality is implemented in the current repository?”). 
+
+▶ Answer : The factual answer extracted from the PR’s metadata and context. Crucially, the functionality description serves as the content of the question, and LLMs should use this description to reason over the given documentation and predict the answer. 
+
+3.3.1 Intent-guided Functionality Description Generation. To gen-erate high-quality functionality descriptions, we leverage LLMs’ advanced contextual understanding capabilities. Specifically, we populate a predefined prompt template with the PR metadata and rich context from Section 3.2. We further employ the Chain-of-Thought (CoT) strategy [ 40 ], guiding the LLM to consider from a global perspective, which includes motivation, implementation details, and impact scope. The generated descriptions are structured along three intent dimensions to include technical details: 
+
+• WHAT: Entities constituting or affected by the functionality. 
+
+• WHY: Purpose and motivation behind the functionality. 
+
+• HOW: Detailed approaches used for implementation. Here, WHAT and HOW can be derived from code changes and program dependencies, while WHY can be informed by commit messages and associated issues. Other contextual information fur-ther enriches the generated descriptions. To prevent answer leakage, the LLM is instructed to avoid explicit mentions of file paths or repository versions. Overall, the generated description simulates the information developers seek in the documentation. 
+
+3.3.2 Reliable QA Pair Generation. Based on the generated func-tionality descriptions, we formulate three kinds of QA tasks. 
+
+Functionality Detection . This task focuses on detecting the presence of the described functionality in the current repository. Evaluating Repository-level Software Documentation via Question Answering and Feature-Driven Development Conference’17, July 2017, Washington, DC, USA 
+
+◀ Question: We formulate the following question by combining the functionality description with a query:  
+
+> [Functionality Description] + Determine if the functionality is im-plemented in the current repository?
+
+▶ Answer: We compare the PR’s merged time with the snapshot time of the selected repository version. The answer is True if the attribute is earlier than or the same as the target version, indicating the functionality is present; otherwise, the answer is False .
+
+Functionality Localization . This task focuses on locating the files responsible for implementing the described functionality. 
+
+◀ Question: We formulate the following question by combining the functionality description with a query:  
+
+> [Functionality Description] + Identify the code file(s) responsible for implementing the functionality?
+
+▶ Answer: We generate the reference answer by extracting files from the PR’s code changes, retaining functional files (such as 
+
+“.py” extension) with newly added lines that are not located in non-functional directories (such as “/docs” or “/tests” ). 
+
+Functionality Completion . This task focuses on filling in the masked technical details of the described functionality. 
+
+◀ Question: We construct the question by replacing technical de-tails from the WHAT , WHY , and HOW dimensions of the func-tionality description with “ [MASK] ”, and appending the query:    
+
+> [Masked Functionality Description] + Fill in the [MASK] placehold-ers with the correct details?
+
+▶ Answer: The reference answer is the list of corresponding tech-nical details that are extracted from the functionality description. As shown in Table 1, each entry in SWD-Bench features a de-tailed functionality description with an average length of 771.45 characters. On average, solving the questions in the entry requires locating 2.01 files and completing 7.48 details 1.
+
+3.3.3 Manual Quality Validation. To validate the quality of SWD-Bench, we conduct a human calibration process. We randomly sample 100 entries and have them reviewed by two expert annota-tors, each possessing over three years of Python expertise. For the first task, annotators assess whether the existence of the described functionality aligns with the answer by carefully analyzing the code repository. For the second task, they verify that the answer (a file list) accurately corresponds to the described functionality through inspection of the code repository. For the third task, an-notators ensure that the details required to fill are precise and can be sourced from PR’s metadata and context. Besides, annotators evaluate whether the functionality description is clear and reason-able. Across all aspects, the inter-annotator agreement consistently exceeds a Kappa coefficient of 90%, demonstrating high agreement. 
+
+> 1Due to space limitations, the detailed prompt template and data structure are provided in our repository.
+
+Table 1: Statistics of the SWD-Bench. # Func. Desc. denotes the average character length of functionality descriptions. % Detect. Ratio is the percentage of positive entries for the detection task. # Loc. File and # Comp. Detail represent the number of files to locate and details to complete, respectively.            
+
+> # Entry # Func. Desc. % Detect. Ratio # Loc. File # Comp. Detail
+> Min Max Avg. Min Max Avg. 4,170 771.45 50.65 162 2.01 323 7.48
+
+4 EXPERIMENTAL SETUP 
+
+We investigate the following three research questions (RQs): 
+
+• RQ1: How do different software documentation generation meth-ods perform on functionality-driven QA tasks? 
+
+• RQ2: How effective is our evaluation strategy in assessing soft-ware documentation quality? 
+
+• RQ3: What is the impact of software documentation quality on issue solving? 
+
+4.1 Selected Methods 
+
+To comprehensively evaluate different software documentation, we compare six approaches. Among them, four are widely adopted or academically recognized repository-level software documentation generation methods, while the remaining two serve as baselines. 
+
+4.1.1 Baseline Methods. 
+
+• Human-Written Documentation Artifacts (H-Written) con-sist of documentation embedded directly within the source code, such as function docstrings and inline comments, as well as stan-dalone documents, like “README.md” and “.rst” files. 
+
+• Chat [ 43 ] is a baseline approach that generates documentation for each code snippet (e.g., class and function), without providing any repository-level context to the LLM. 
+
+4.1.2 Repository-level Documentation Generation Methods. 
+
+• DeepWiki [ 7] produces high-level, modular documentation by summarizing each module with its technology stack and inter-action diagrams. It also includes the core file paths and source code responsible for the modules. 
+
+• AutoDoc [6] performs a depth-first traversal to index the entire code repository. The documentation is generated for each file and folder, which can be combined to describe system components and how components work together. 
+
+• DocAgent [ 43 ] is a multi-agent system designed for iterative documentation generation. It orchestrates a team of specialized agents to determine a dependency-aware processing order and gather context from both internal and external sources. The doc-umentation is generated for each code snippet, with agents itera-tively writing and validating the content. 
+
+• RepoAgent [23 ] is a three-stage method designed for context-aware documentation. The approach first conducts a global anal-ysis to build the dependency graph (DAG), capturing the entire repository’s structure. It then leverages this contextual infor-mation to prompt an LLM to generate fine-grained, structured documentation for each code snippet. Conference’17, July 2017, Washington, DC, USA Xinchen Wang 1, Ruida Hu 1, Cuiyun Gao 1†, Pengfei Gao 2, Chao Peng 2†
+
+4.2 Evaluation Metrics 
+
+4.2.1 Functionality Detection. We use the following two metrics, considering that both the positive and negative classes are impor-tant in this binary task. 
+
+Balanced Accuracy (B-ACC) is the average of recall obtained on each class, providing a more representative measure than stan-dard accuracy. It is calculated as: B-ACC = 12
+
+ 𝑇 𝑃 𝑇 𝑃 + 𝐹 𝑁 + 𝑇 𝑁 𝑇 𝑁 + 𝐹 𝑃 
+
+
+
+(1) 
+
+Matthews Correlation Coefficient (MCC) is a reliable metric of binary classification, particularly useful in imbalanced datasets, calculated as: MCC = 𝑇 𝑃 × 𝑇 𝑁 − 𝐹 𝑃 × 𝐹 𝑁 √︁ 
+
+(𝑇 𝑃 + 𝐹 𝑃 )( 𝑇 𝑃 + 𝐹 𝑁 )( 𝑇 𝑁 + 𝐹 𝑃 )( 𝑇 𝑁 + 𝐹 𝑁 ) (2) 
+
+4.2.2 Functionality Localization. This task requires the LLM to predict a list of implementation files. We leverage the following two metrics to measure performance: 
+
+F1 Score (F1) provides a balanced assessment of precision and recall. We report the unweighted macro-average across all entries: F1 𝑖 = 2 × |𝑃 𝑖 ∩ 𝑅 𝑖 ||𝑃 𝑖 | + | 𝑅 𝑖 | , F1 = 1
+
+𝑁 
+
+> 𝑁
+
+∑︁ 
+
+> 𝑖 =1
+
+F1 𝑖 (3) 
+
+Intersection over Union (IoU) measures the average overlap between the predicted and reference sets. This metric is calculated as follows, where 𝑃 𝑖 and 𝑅 𝑖 are the predicted and reference set of the 𝑖 -th entry, and 𝑁 is the total number of entries: IoU 𝑖 = |𝑃 𝑖 ∩ 𝑅 𝑖 ||𝑃 𝑖 ∪ 𝑅 𝑖 | , IoU = 1
+
+𝑁 
+
+> 𝑁
+
+∑︁ 
+
+> 𝑖 =1
+
+IoU 𝑖 (4) 
+
+4.2.3 Functionality Completion. This task requires the LLM to pre-dict a list of technical details. We use a thresholded Exact Match (EM) score to measure performance. 
+
+Exact Match (EM): EM computes the average proportion of correctly predicted details. For the 𝑖 -th entry, we compare every predicted detail 𝑃 𝑖,𝑗 against its reference detail 𝑅 𝑖,𝑗 . A match is counted if their edit similarity meets a specified threshold 𝜏 . We use two thresholds to evaluate the predictions: 𝜏 = 1.0 for a strict, perfect match, and 𝜏 = 0.8 for a relaxed match. It is calculated as: EM 𝜏 = 1
+
+𝑁 
+
+> 𝑁
+
+∑︁ 
+
+> 𝑖 =1
+
+Í|𝑅 𝑖 | 
+
+> 𝑗 =1
+
+I(sim (𝑃 𝑖,𝑗 , 𝑅 𝑖,𝑗 ) ≥ 𝜏 )|𝑅 𝑖 | (5) 
+
+4.3 Implementation Details 
+
+Dataset Construction and Evaluation. We use Claude-Sonnet-4 [ 2 ] to generate intent-oriented functionality descriptions. Due to financial costs, we randomly sample a subset of 480 entries from SWD-Bench for evaluation. During evaluation, GPT-4.1 [ 27 ] and Gemini-2.5-Pro [ 10 ] are employed as repository developers and address QA tasks. The sampling temperature for LLMs is set to 0.2. All experiments are repeated three times, and average results are reported to ensure reliability. 
+
+Method Configuration. All automated methods are provided access to Claude-4-Sonnet [ 2], except for DeepWiki, which does not support model selection. These methods are implemented using their official replication packages or online platforms and executed with default hyperparameters. 
+
+Software Documentation Retrieval. In the documentation-driven development process, developers consult documentation for relevant information. To mirror real-world workflows, we adopt a retrieval-based strategy, supplying the LLM with relevant docu-mentation context for each task question: (1) Chunking: Documentation is divided into chunks of up to 512 tokens [ 19 , 21 ], with a 10% overlap to preserve boundary context. Chunking follows the documentation structure: for approaches that generate summaries for each code snippet, chunks are based on syntax elements like classes and methods; for approaches that generate file or module-level summaries, chunks follow logical sections such as Markdown headings (“#”, “##”). For DeepWiki, references to specific code fragments (e.g., “main.py 1-100 ”) are replaced with the actual code. (2) Embedding: All chunks and task questions are encoded as vec-tors using the advanced SFR-Embedding-Code-400M_R model [ 21 ], ensuring precise retrieval of relevant documentation. (3) Retrieval: For each task question, the Top-K most relevant chunks are retrieved based on vector similarity and combined into context windows of different sizes (Top-1024, Top-2048, and Top-4096 tokens). We leverage these three sizes to simulate different levels of developer engagement with documentation. Token counting uses official packages [ 1, 36 ], and each retrieved chunk is annotated with its documentation file path. 
+
+5 EXPERIMENTAL RESULTS 5.1 RQ1: Overall Performance on QA Tasks 
+
+Software documentation provides essential value for repos-itory comprehension. As illustrated in Tables 2, the “No Doc” setting (i.e., addressing tasks without inquiring documentation) achieves average performance of only 48.68 and -3.43 in B-ACC and MCC, 30.34 and 28.49 in F1 and IoU, and 18.40 and 20.74 in EM 1.0 and EM 0.8, respectively. It highlights the challenging nature of SWD-Bench, where advanced LLMs cannot effectively answer repository-level questions from prior knowledge without consult-ing the documentation. All six selected methods consistently out-perform the “No Doc” setting, with absolute improvements ranging from 5.39% to 16.22%, 13.03% to 32.77%, 17.45% to 37.95%, 16.61% to 36.41%, 5.97% to 9.69%, and 6.39% to 10.54% across these six met-rics. This directly confirms that documentation offers indispensable value for understanding and locating repository functionalities. 
+
+Despite recent advancements, current documentation gen-eration methods still exhibit great limitations. Our experi-ments reveal that even top-performance methods struggle to achieve high scores. In functionality detection, the best performance method achieves an average MCC of only 29.35. While performance on func-tionality localization is relatively higher, with the leading method achieving an average IoU of 64.90, this still implies a notable local-ization deviation. This limitation is most pronounced in function-ality completion, where the leading method scores merely 28.09 and 31.28 on EM 1.0 and EM 0.8, on average. These results collec-tively indicate that current automatically generated documentation demonstrates limited navigation ability and struggles to provide Evaluating Repository-level Software Documentation via Question Answering and Feature-Driven Development Conference’17, July 2017, Washington, DC, USA 
+
+Table 2: Experimental results for the functionality-driven tasks. Top XX indicates the token size of the retrieved documentation context. No Doc refers to the setting of not inquiring about documentation. The largest and second-largest values in each column are highlighted with an underline, and the largest value is also bolded. Model GPT-4.1 Gemini-2.5-pro Top 1024 Top 2048 Top 4096 Top 1024 Top 2048 Top 4096 Functionality Detection Metric (%) B-ACC MCC B-ACC MCC B-ACC MCC B-ACC MCC B-ACC MCC B-ACC MCC No Doc 46.72 -8.03 – – – – 50.63 1.18 – – – –
+
+Baseline Methods 
+
+H-Written 53.59 11.74 54.06 13.70 55.16 15.38 58.13 15.71 61.56 22.07 62.97 24.66 Chat 53.13 8.61 53.75 9.74 54.69 11.63 57.34 14.04 59.84 18.60 60.94 20.63 
+
+Repository-level Documentation Generation Methods 
+
+DeepWiki 52.19 6.94 52.50 8.01 53.91 10.26 53.91 8.48 55.78 11.80 56.09 12.15 AutoDoc 52.97 10.13 53.28 12.23 54.22 12.59 57.19 13.70 59.06 17.24 60.78 20.33 DocAgent 54.69 13.36 54.84 14.01 55.63 15.40 59.69 18.95 61.41 21.88 63.13 24.91 RepoAgent 62.19 25.92 62.97 26.74 63.75 27.77 63.28 25.04 67.66 33.38 69.53 37.23 Functionality Localization Metric (%) F1 IoU F1 IoU F1 IoU F1 IoU F1 IoU F1 IoU No Doc 29.12 27.24 – – – – 31.55 29.74 – – – –
+
+Baseline Methods 
+
+H-Written 60.62 57.77 62.89 59.48 65.84 62.31 62.02 59.38 65.97 62.84 68.17 65.09 Chat 59.71 56.37 62.93 59.33 64.43 60.59 60.93 58.19 61.97 58.86 63.21 59.47 
+
+Repository-level Documentation Generation Methods 
+
+DeepWiki 40.65 38.17 42.66 39.94 43.76 41.27 49.84 47.30 52.57 50.30 57.25 53.64 AutoDoc 56.87 53.94 59.64 56.43 62.58 59.13 59.55 56.42 60.54 57.27 64.72 61.02 DocAgent 62.42 58.91 65.78 62.08 68.32 64.89 61.74 58.75 63.69 60.20 65.96 62.15 RepoAgent 63.64 60.21 67.43 64.04 70.19 66.28 67.48 64.61 69.83 66.71 71.11 67.52 Functionality Completion Metric (%) EM 1.0 EM 0.8 EM 1.0 EM 0.8 EM 1.0 EM 0.8 EM 1.0 EM 0.8 EM 1.0 EM 0.8 EM 1.0 EM 0.8
+
+No Doc 17.14 19.06 – – – – 19.66 22.41 – – – –
+
+Baseline Methods 
+
+H-Written 24.54 27.23 25.00 27.81 25.58 28.25 26.61 30.62 27.63 31.39 28.09 31.54 Chat 23.43 26.28 24.25 26.74 25.38 27.82 25.36 27.79 27.38 30.54 27.85 30.70 
+
+Repository-level Documentation Generation Methods 
+
+DeepWiki 22.23 24.45 22.78 24.74 23.16 25.53 25.44 28.47 26.23 29.85 26.37 29.73 AutoDoc 22.88 25.39 23.41 26.33 23.77 27.02 26.00 29.54 26.23 29.57 27.09 30.35 DocAgent 24.92 27.61 25.04 27.59 25.42 28.05 28.09 31.29 28.30 30.82 28.26 30.56 RepoAgent 26.40 29.37 26.06 28.53 26.87 29.72 29.40 33.20 29.76 32.95 30.05 33.88 
+
+comprehensive details. Thus, there is still a gap between current automated methods and practical developer usage. 
+
+Finding 1: Although documentation aids repository com-prehension, the limited performance of current automated methods constrains their practical value for developers. 
+
+Fine-grained documentation generation methods achieve superior performance. We categorize the four repository-level documentation generation methods by their generated documen-tation granularity: fine-grained (RepoAgent and DocAgent, which focus on code snippets), intermediate-grained (AutoDoc, which operates at the file level), and coarse-grained (DeepWiki, which produces module-level summaries). Overall, fine-grained methods achieve better performance. Specifically, the average performance of RepoAgent and DocAgent relatively improves upon the AutoDoc by 9.45% and 65.04% in B-ACC and MCC, 9.59% and 9.87% in F1 and IoU, 9.98% and 8.08% in EM 1.0 and EM 0.8. Furthermore, AutoDoc demonstrates a relative improvement over the DeepWiki of 4.04%, 49.58%, 26.91%, 27.19%, 2.17%, and 3.34% on these six metrics. This suggests that fine-grained documentation provides more compre-hensive and concrete information, including parameter usage and code examples, which greatly aid in understanding functionality. 
+
+Integrating global semantic context is crucial for gener-ating high-quality documentation. Chat, DocAgent, and Re-poAgent all generate fine-grained documentation, but they adopt different strategies for integrating global semantic context, result-ing in notable performance differences. RepoAgent populates the prompt with comprehensive context using a repository-wide DAG, DocAgent relies on a “searcher agent” to retrieve relevant context, and Chat serves as a baseline comparison without context integra-tion. As shown in Tables 2, DocAgent relatively improves upon Chat Conference’17, July 2017, Washington, DC, USA Xinchen Wang 1, Ruida Hu 1, Cuiyun Gao 1†, Pengfei Gao 2, Chao Peng 2†(C) Retrieved Software Documentation 
+
+Chat:       
+
+> pylint/pyreverse/diagrams.py
+> class PackageDiagram (ClassDiagram ):
+> PackageDiagram provides a structured way to model and analyze the
+> architecture of a software system at the package level ... Example:
+> diagram.add_object ("core", core_module_node )
+> diagram.add_object("utils", utils_module_node) …
+> pylint/pyreverse/diadefslib.py
+> class DefaultDiadefGenerator (LocalsVisitor ,DiaDefGenerator ):
+> To provide a visual representation of a project's structure and
+> relationships between its components...
+
+RepoAgent:                      
+
+> pylint/pyreverse/diagrams.py
+> class PackageDiagram (ClassDiagram ):
+> The PackageDiagram class is utilized in the pyreverse ...The
+> "in_type_checking_block "function is crucial for determining whether an
+> import is within "TYPE_CHECKING" ...
+> pylint/pyreverse/diagrams.py
+> def get_relationships (self, role: str ):
+> This function retrieves and sorts relationships of a specified role from ...
+> EdgeType. TYPE_DEPENDENCY for "type_depends "relationships ...
+> pylint/checkers/utils.py
+> [1962] def in_type_checking_block (node: nodes.NodeNG )-> bool:
+> [1980] if ancestor. test.attrname != "TYPE_CHECKING" :
+> [1981] continue
+
+(B) Related Source Code                                  
+
+> caller/callee
+> pylint/pyreverse/diagrams.py
+> [242] class PackageDiagram (ClassDiagram )
+> [281] def add_from_depend (self, node: nodes. ImportFrom ,from_module : str):
+> [289] if not in_type_checking_block (node):
+> [290] package. depends.append (from_module )
+> [294] def extract_relationships (self) -> None:
+> [319] self. add_relationship (package_obj , dep, "type_depends ")
+> pylint/pyreverse/writer.py
+> [56] def write_packages (self, diagram: PackageDiagram )-> None:
+> [95] for rel in diagram. get_relationships ("type_depends "):
+> [99] self.printer.emit_edge (from_id ,to_id , type_= EdgeType .TYPE_DEPENDENCY )
+> pylint/pyreverse/diagrams.py
+> [80] class ClassDiagram (Figure, FilterMixIn ):
+> [94] def get_relationships (self, role: str) ->Iterable [Relationship]:
+> caller/callee
+> inherit
+> : Reference Answer : Relationship
+
+(D) Software Documentation Evaluation 
+
+LLM -as -a-judge  Evaluation  Method 
+
+SWD -Bench’s Evaluation Strategy 
+
+RepoAgent: 
+
+[MASK1]:  TYPE_CHECKING 
+
+[MASK2]:  type_depends 
+
+[MASK3]:  in_type_checking_block 
+
+[MASK4]:  TYPE_DEPENDENCY 
+
+RepoAgent :
+
+Completeness Score: 5 
+
+Usefulness Score: 5 
+
+Clarity Score: 5 
+
+Chat: 
+
+Completeness Score: 5 
+
+Usefulness Score: 5 
+
+Clarity Score: 5 
+
+Chat: 
+
+[MASK1]:  type_check 
+
+[MASK2]:  type_checking_imports 
+
+[MASK3]:  is_type_checking_import 
+
+[MASK4]:  TYPE_CHECKING_IMPORT 
+
+Question:          
+
+> “… addresses the need to differentiate imports that occur only within [MASK1] blocks from standard runtime imports. The implementation adds a new [MASK2]
+> attribute to module nodes to track type -checking imports separately from regular dependencies, utilizes the [MASK3] utility function to detect when imports
+> occur within type checking contexts, and introduces a [MASK4] edge type with corresponding visual representations across all supported output formats…
+> Fill in the [MASK] placeholders with the correct functionality details?”
+
+Answer :       
+
+> [MASK1]: TYPE_CHECKING [MASK2]: type_depends [MASK3]: in_type_checking_block [MASK4]: TYPE_DEPENDENCY
+
+(A) Functionality Completion Task 
+
+Figure 3: A case study on the functionality detail task (Entry-ID: “ pylint-dev/pylint/8824 ”). (A) The task question and answer. (B) The related source code to implement the described functionality. (C) The retrieved documentation from Chat and RepoAgent. (D) A comparison of results between the current evaluation method and our evaluation strategy. 
+
+by 2.86%, 30.34%, 3.95%, 4.02%, 4.15%, and 3.56%, demonstrating that integrating global context directly enhances documentation quality. RepoAgent relatively improves upon DocAgent by 11.45%, 62.27%, 5.61%, 6.10%, 5.32%, and 6.67% across the six metrics. This indicates that directly integrating global context into the prompt is a more robust strategy than relying on a sub-agent for retrieving, which may introduce information incompleteness. Besides, H-Written (human-written documentation artifacts) outperform Chat and is even competitive with DocAgent. For instance, its performance on the functionality localization task under the Gemini-2.5-pro model achieves relative improvements of 2.49% in F1 and 3.43% in IoU over DocAgent. This result reveals the authentic process of developers’ documentation generation, where developers naturally incorporate repository-level context when writing documentation. 
+
+Finding 2: Fine-grained methods that utilize comprehensive context deliver stronger performance. Human-written doc-umentation remains competitive, likely because developers naturally incorporate repository-level context. 
+
+Extensive documentation-based inquiry enhances deeper repository comprehension. To simulate different levels of devel-oper engagement with documentation, we configure three retrieval settings: brief overview (Top 1024 tokens), standard review (Top 2048 tokens), and in-depth inspection (Top 4096 tokens). Our re-sults demonstrate that accessing more documentation information consistently leads to better outcomes. Specifically, transitioning from a brief overview to a standard review, the average perfor-mance of six methods relatively improves by 2.71%, 21.31%, 4.31%, 4.10%, 2.22%, and 1.65% on the six metrics. Further expanding to an in-depth inspection yields additional relative improvements of 2.02%, 11.24%, 4.03%, 3.71%, 1.86%, and 1.81%. This trend mirrors the documentation-driven development, where deeper documentation reading results in more accurate repository understanding. 
+
+SWD-Bench provides stable evaluation across different foundational models. Our experiments demonstrate that while the choice of foundational model influences absolute scores, the relative ranking of documentation generation methods remains consistent. Specifically, Gemini-2.5-pro outperforms GPT-4.1 by 5.04% on B-ACC, 2.57% on F1, and 2.95% on EM 1.0 on average, likely due to its advanced comprehension capabilities. However, across all methods, RepoAgent consistently ranks first, followed by DocAgent, AutoDoc, and DeepWiki. This indicates that SWD-Bench can reliably evaluate the documentation under different models. 
+
+Finding 3: Extensive and in-depth documentation-based in-quiry enhances repository comprehension. Besides, our eval-uation strategy remains stable under different models. 
+
+5.2 RQ2: Effectiveness of SWD-Bench’s Evaluation Strategy 
+
+We present a case study to demonstrate the advantages of our evaluation strategy over traditional LLM-as-a-judge evaluation. As illustrated in Figure 3, we select a functionality completion task from SWD-Bench (Entry-ID: pylint-dev/pylint/8824 ). The task question (with masked details) and reference answer are pre-sented in Figure 3 (A). Completing this task requires extracting precise and fine-grained information cross multi files. Figure 3 (B) shows the source code for implementing the described func-tionality, with technical details highlighted in red boxes repre-senting the ground truth for the reference answers. This func-tionality involves complex cross-file interactions: for example, the “in_type_checking_block ” function in “ utils.py ” is called by the “ add_from_depend ” method in “ diagrams.py ” (line 289), and the “ get_relationships ” method in “ diagrams.py ” (line 94) is in-voked by “ writer.py ” (line 95). Correctly answering the question requires a holistic understanding of these interactions. Evaluating Repository-level Software Documentation via Question Answering and Feature-Driven Development Conference’17, July 2017, Washington, DC, USA 
+
+Figure 3 (C) displays the retrieved documentation from Chat and RepoAgent. RepoAgent’s documentation contains the necessary details (highlighted in bold) to answer the question, due to its inte-gration of global semantic context during generation. For instance, its documentation for the “ PackageDiagram ” class introduces the concept of “ TYPE_CHECKING ” from the “ in_type_checking_block ”function, and its explanation of “ get_relationships ” covers the “TYPE_DEPENDENCY ” edge type from the “ write_packages ” func-tion. This context-aware approach enables developers to better understand the implementation and interaction of specific function-alities. In contrast, Chat’s documentation, which lacks repository-level context, produces only generic descriptions with limited guid-ance. Figure 3 (D) illustrates the results of two different evaluation strategies. The LLM-as-a-judge method assesses the documenta-tion on dimensions like “Completeness” and “Usefulness”. Since the LLM lacks prior knowledge of the repository, it can only evaluate surface-level quality. As a result, it awards both documentation a perfect score of 5, failing to distinguish their practical value. In contrast, SWD-Bench’s evaluation strategy, based on repository-level QA tasks, reveals clear differences: RepoAgent correctly fills the four masked placeholders, while Chat fails on all of them. This case study demonstrates that our evaluation strategy can assess the practical guidance of software documentation for development. 
+
+Finding 4: Compared to current evaluation methods, our evaluation strategy based on functionality-driven QA tasks can provide an accurate assessment of documentation quality. 
+
+5.3 RQ3: Impact of Documentation Quality on Issue Solving 
+
+In this RQ, we investigate the impact of documentation quality on issue solving. Based on the selected version in Section 3.1.1, we col-lect 57 corresponding instances from the SWE-Bench Verified [ 16 ]and adopt SWE-Agent [ 44 ] as a representative issue-solving method. For each instance, we provide SWE-Agent with retrieved software documentation (Top 4096 tokens) based on the issue description. The results are shown in Figure 4. 
+
+Software documentation can help improve issue-solving performance. The baseline issue-solving rate of SWE-Agent (re-trieving from the code repository) is 43.86%. When documentation is provided, the relative issue-solving improvement ranges from 8.00% to 20.00%, with the issue file location rates improving by 6.01% to 11.19%. These enhancements can be attributed to the global infor-mation and complementary context provided in the documentation, which helps SWE-Agent locate and address issues. 
+
+Higher-quality documentation provides greater benefits in issue-solving. The performance ranking of four repository-level documentation generation methods observed in RQ1—with RepoAgent ranks highest, followed by DocAgent, AutoDoc, and DeepWiki—is similarly reflected in the issue-solving results. Specif-ically, RepoAgent achieves the highest issue-solving rate at 52.63%, followed by DocAgent and AutoDoc, both at 49.12%, and DeepWiki at 47.37%. This consistency demonstrates that our evaluation strat-egy is effective for evaluating documentation, as higher-quality documentation aids in solving real-world issues. 
+
+Figure 4: Performance of SWE-Agent on issue solving when provided with different software documentation. Finding 5: Higher-quality software documentation is more conducive to issue solving, highlighting its practical value in supporting documentation-driven development. 
+
+6 DISCUSSION 6.1 Complementary Value of Source Code 
+
+We further evaluate the complementary value of source code to software documentation on repository comprehension. We design two settings: (1) inquiring only the documentation generated by the best-performance method (RepoAgent), (2) inquiring both doc-umentation and source code, with code segmented and embedded by syntax structure and context windows evenly allocated. As shown in Table 3, the combined approach consistently out-performs inquiring documentation alone. Specifically, it achieves average relative improvements of 10.39% and 40.35% for function-ality detection, 12.43% and 12.88% for functionality localization, and 2.52% and 3.62% for functionality completion. These results highlight that source code, by providing direct implementation details, is essential for enhancing repository-level comprehension. Besides, we find that this complementary value is task-dependent. The synergy between documentation and code is most pronounced in functionality detection and localization, with maximum abso-lute improvements of 8.91% and 15.50% for detection, and up to 9.45% and 9.46% for localization. This effectiveness stems from the code’s ability to supply precise information. However, this synergy is less evident for functionality completion. For instance, under the GPT-4.1 model and Top 1024 tokens context, performance drops slightly by 0.18% and 0.26% in EM 1.0 and EM 0.8, respectively. This indicates that, within a brief overview, broader global information from documentation is more valuable for accurate completion. 
+
+6.2 Implication of Findings 
+
+6.2.1 Implications for Developers. Developers should regard doc-umentation as a fundamental knowledge source within their de-velopment process and utilize automated tools to enhance docu-mentation generation efficiency. It is advisable to prioritize tools that produce fine-grained and context-rich documentation, and to supplement documentation reading with source code for a deeper repository understanding. An effective strategy is to first consult the documentation for a high-level overview and identification of Conference’17, July 2017, Washington, DC, USA Xinchen Wang 1, Ruida Hu 1, Cuiyun Gao 1†, Pengfei Gao 2, Chao Peng 2†
+
+Table 3: Performance comparison on functionality-driven tasks between the standalone RepoAgent and RepoAgent augmented with source code (RepoAgent + Code). Top XX indicates the token size of the retrieved documentation and source code context, which is evenly allocated to each source. The largest value in each column is marked in bold and underlined. Model GPT-4.1 Gemini-2.5-pro Top 1024 Top 2048 Top 4096 Top 1024 Top 2048 Top 4096 Functionality Detection Metric (%) B-ACC MCC B-ACC MCC B-ACC MCC B-ACC MCC B-ACC MCC B-ACC MCC RepoAgent 62.19 25.92 62.97 26.74 63.75 27.77 63.28 25.04 67.66 33.38 69.53 37.23 RepoAgent+Code 67.81 34.80 70.47 39.33 72.66 43.27 68.13 34.32 74.53 43.52 76.25 51.89 Functionality Localization Metric (%) F1 IoU F1 IoU F1 IoU F1 IoU F1 IoU F1 IoU RepoAgent 63.64 60.21 67.43 64.04 70.19 66.28 67.48 64.61 69.83 66.71 71.11 67.52 RepoAgent+Code 73.09 69.62 76.65 72.94 78.22 74.58 74.49 71.03 77.75 74.39 80.39 76.98 Functionality Completion Metric (%) EM 1.0 EM 0.8 EM 1.0 EM 0.8 EM 1.0 EM 0.8 EM 1.0 EM 0.8 EM 1.0 EM 0.8 EM 1.0 EM 0.8
+
+RepoAgent 26.40 29.37 26.06 28.53 26.87 29.72 29.40 33.20 29.76 32.95 30.05 33.88 RepoAgent+Code 26.22 29.11 26.61 30.62 28.41 31.88 29.50 33.13 30.73 34.36 31.31 35.34 
+
+relevant files, followed by detailed code inspection. This strategy also proves effective during issue resolution, helping developers locate and address issues. 
+
+6.2.2 Implications for Researchers. Current automated documenta-tion generation methods exhibit notable limitations, particularly in providing intent-oriented details that require a global under-standing of functionality. Hence, efforts should be directed toward improving documentation’s ability to provide comprehensive im-plementation details. Besides, integrating global semantic context proves effective, suggesting that exploring diverse strategies for semantic fusion is a promising direction. Further research should also investigate the broader value of documentation across various development scenarios, such as code review and refactoring, to fully uncover its impact throughout the software development process. 
+
+6.3 Threats and Limitations 
+
+One threat is that SWD-Bench is limited to 12 popular open-source repositories, which may affect the generalizability of our findings. However, our data construction pipeline is extensible, and we intend to incorporate more repositories in the future. Another threat arises from the inherent randomness of LLMs. Since we use LLMs to answer QA tasks, results may vary across trials. To mitigate this, we conduct multiple runs and report the average results. 
+
+7 RELATED WORK 7.1 Automatic Software Documentation Generation 
+
+Automatic software documentation generation methods can be cate-gorized into three types. Template-based methods [ 26 , 33 , 39 ] parse specific information from source code and then populate it into pre-defined templates. For instance, Hill et al. [ 14 ] generate annotations by analyzing the identifiers of Java methods. Information retrieval-based methods retrieve suitable descriptions from a vast documen-tation corpus [ 12 , 22 , 41 ], including bug tracking systems [ 28 ] and developer forums like Stack Overflow [ 30 ]. Deep learning-based methods represent a major focus of current research [ 11 , 35 , 45 ]. DocAgent [ 43 ] designs a multi-agent framework to generate high-quality documentation. RepoAgent [ 23 ] utilizes global context to infer code functionality and semantics. 
+
+7.2 Software Documentation Evaluation 
+
+Existing evaluation methods for software documentation can be classified into three categories. Human-based methods [ 25 , 34 ,42 ] invite experts to provide detailed assessment, which is labor-intensive. Metrics-based methods [ 3, 20 , 29 , 38 ] borrow metrics from Natural Language Processing (NLP), focusing on quantifying the textual similarity between the generated documentation and the references. However, these methods typically rely on high-quality reference documentation, which is quite challenging to construct. Nowadays, LLM-as-a-judge methods have gained traction [ 8, 43 ] by leveraging the contextual understanding and instruction-following capabilities of LLMs. By providing LLMs with evaluation criteria, they can conduct assessments across different dimensions. 
+
+8 CONCLUSION 
+
+In this paper, we introduce SWD-Bench, a novel benchmark for evaluating repository-level software documentation generation. We conduct in-depth experiments on this benchmark with several documentation generation methods, conclude our findings, and provide insights for developers and researchers. To conclude, SWD-Bench provides a reliable foundation for advancing higher-quality and practical automated documentation generation methods. Evaluating Repository-level Software Documentation via Question Answering and Feature-Driven Development Conference’17, July 2017, Washington, DC, USA 
+
+References 
+
+[1] Google Cloud AI. [n. d.]. Google-cloud-aiplatform. https://pypi.org/project/ google-cloud-aiplatform. [2] Anthropic. [n. d.]. Claude-Sonnet-4. https://www.anthropic.com/news/claude-4. [3] Satanjeev Banerjee and Alon Lavie. 2005. METEOR: An automatic metric for MT evaluation with improved correlation with human judgments. In Proceedings of the acl workshop on intrinsic and extrinsic evaluation measures for machine translation and/or summarization . 65–72. [4] BeautifulSoup. [n. d.]. “BeautifulSoup”. https://beautiful-soup-4.readthedocs.io/ en/latest/. [5] Vikas S Chomal and Jatinderkumar R Saini. 2014. Significance of software docu-mentation in software development process. International Journal of Engineering Innovations and Research 3, 4 (2014), 410. [6] context labs. [n. d.]. Autodoc. https://github.com/context-labs/autodoc. [7] Devin. [n. d.]. DeepWiki. https://deepwiki.org/. [8] Nilesh Dhulshette, Sapan Shah, and Vinay Kulkarni. 2025. Hierarchical Repository-Level Code Summarization for Business Applications Using Lo-cal LLMs. In IEEE/ACM International Workshop on Large Language Models for Code, LLM4Code@ICSE 2025, Ottawa, ON, Canada, May 3, 2025 . IEEE, 145–152. https://doi.org/10.1109/LLM4CODE66737.2025.00023 [9] GitHub. [n. d.]. GitHub REST API. https://docs.github.com/en/rest. [10] Google. [n. d.]. Gemini-2.5-pro. https://aistudio.google.com/app/prompts/new_ chat?model=gemini-2.5-pro. [11] Juncai Guo, Jin Liu, Yao Wan, Li Li, and Pingyi Zhou. 2022. Modeling hierarchical syntax structure with triplet position for source code summarization. In Proceed-ings of the 60th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers) . 486–500. [12] Sonia Haiduc, Jairo Aponte, Laura Moreno, and Andrian Marcus. 2010. On the use of automated text summarization techniques for summarizing source code. In 2010 17th Working conference on reverse engineering . IEEE, 35–44. [13] Lise Tordrup Heeager. 2012. Introducing agile practices in a documentation-driven software development practice: a case study. Journal of Information Technology Case and Application Research 14, 1 (2012), 3–24. [14] Emily Hill, Lori Pollock, and K Vijay-Shanker. 2009. Automatically capturing source code context of nl-queries for software maintenance and reuse. In 2009 IEEE 31st International Conference on Software Engineering . IEEE, 232–242. [15] Xing Hu, Qiuyuan Chen, Haoye Wang, Xin Xia, David Lo, and Thomas Zimmer-mann. 2022. Correlating automated and human evaluation of code documentation generation quality. ACM Transactions on Software Engineering and Methodology (TOSEM) 31, 4 (2022), 1–28. [16] Carlos E. Jimenez, John Yang, Alexander Wettig, Shunyu Yao, Kexin Pei, Ofir Press, and Karthik R. Narasimhan. 2024. SWE-bench: Can Language Models Resolve Real-world Github Issues?. In The Twelfth International Conference on Learning Representations, ICLR 2024, Vienna, Austria, May 7-11, 2024 . OpenReview.net. https://openreview.net/forum?id=VTF8yNQM66 [17] Ankur Joshi, Saket Kale, Satish Chandel, and D Kumar Pal. 2015. Likert scale: Explored and explained. British journal of applied science & technology 7, 4 (2015), 396. [18] Junaed Younus Khan and Gias Uddin. 2022. Automatic code documentation gen-eration using gpt-3. In Proceedings of the 37th IEEE/ACM International Conference on Automated Software Engineering . 1–6. [19] Xiangyang Li, Kuicai Dong, Yi Quan Lee, Wei Xia, Hao Zhang, Xinyi Dai, Yasheng Wang, and Ruiming Tang. 2025. Coir: A comprehensive benchmark for code information retrieval models. In Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers) . 22074–22091. [20] Chin-Yew Lin. 2004. Rouge: A package for automatic evaluation of summaries. In Text summarization branches out . 74–81. [21] Ye Liu, Rui Meng, Shafiq Joty, silvio savarese, Caiming Xiong, Yingbo Zhou, and Semih Yavuz. 2025. CodeXEmbed: A Generalist Embedding Model Family for Multilingual and Multi-task Code Retrieval. In Second Conference on Language Modeling . https://openreview.net/forum?id=z3lG70Azbg [22] Zhongxin Liu, Xin Xia, Ahmed E Hassan, David Lo, Zhenchang Xing, and Xinyu Wang. 2018. Neural-machine-translation-based commit message generation: how far are we?. In Proceedings of the 33rd ACM/IEEE international conference on automated software engineering . 373–384. [23] Qinyu Luo, Yining Ye, Shihao Liang, Zhong Zhang, Yujia Qin, Yaxi Lu, Yesai Wu, Xin Cong, Yankai Lin, Yingli Zhang, Xiaoyin Che, Zhiyuan Liu, and Maosong Sun. 2024. RepoAgent: An LLM-Powered Open-Source Framework for Repository-level Code Documentation Generation. In Proceedings of the 2024 Conference on Empirical Methods in Natural Language Processing: System Demonstrations ,Delia Irazu Hernandez Farias, Tom Hope, and Manling Li (Eds.). Association for Computational Linguistics, Miami, Florida, USA, 436–464. https://doi.org/10. 18653/v1/2024.emnlp-demo.46 [24] Luqi, L. Zhang, V. Berzins, and Y. Qiao. 2004. Documentation driven development for complex real-time systems. IEEE Transactions on Software Engineering 30, 12 (2004), 936–952. https://doi.org/10.1109/TSE.2004.100 [25] Paul W McBurney and Collin McMillan. 2015. Automatic source code summa-rization of context for java methods. IEEE Transactions on Software Engineering 
+
+42, 2 (2015), 103–119. [26] Laura Moreno, Jairo Aponte, Giriprasad Sridhara, Andrian Marcus, Lori Pollock, and K Vijay-Shanker. 2013. Automatic generation of natural language summaries for java classes. In 2013 21st International conference on program comprehension (ICPC) . IEEE, 23–32. [27] OpenAI. [n. d.]. GPT-4.1. https://openai.com/index/gpt-4-1/. [28] Sebastiano Panichella, Jairo Aponte, Massimiliano Di Penta, Andrian Marcus, and Gerardo Canfora. 2012. Mining source code descriptions from developer commu-nications. In 2012 20th IEEE International Conference on Program Comprehension (ICPC) . IEEE, 63–72. [29] Kishore Papineni, Salim Roukos, Todd Ward, and Wei-Jing Zhu. 2002. Bleu: a method for automatic evaluation of machine translation. In Proceedings of the 40th annual meeting of the Association for Computational Linguistics . 311–318. [30] Mohammad Masudur Rahman, Chanchal K Roy, and Iman Keivanloo. 2015. Rec-ommending insightful comments for source code using crowdsourced knowledge. In 2015 IEEE 15th International working conference on source code analysis and manipulation (SCAM) . IEEE, 81–90. [31] Sawan Rai, Ramesh Chandra Belwal, and Atul Gupta. 2022. A review on source code documentation. ACM Transactions on Intelligent Systems and Technology (TIST) 13, 5 (2022), 1–44. [32] Ian Sommerville. 2001. Software documentation. Software engineering 2 (2001), 143–154. [33] Giriprasad Sridhara, Emily Hill, Divya Muppaneni, Lori Pollock, and K Vijay-Shanker. 2010. Towards automatically generating summary comments for java methods. In Proceedings of the 25th IEEE/ACM international conference on Auto-mated software engineering . 43–52. [34] Giriprasad Sridhara, Lori Pollock, and K Vijay-Shanker. 2011. Generating pa-rameter comments and integrating with method summaries. In 2011 IEEE 19th international conference on program comprehension . IEEE, 71–80. [35] Chia-Yi Su and Collin McMillan. 2024. Distilled GPT for source code summariza-tion. Automated Software Engineering 31, 1 (2024), 22. [36] OpenAI tiktoken. [n. d.]. tiktoken. https://github.com/openai/tiktoken. [37] tree sitter. [n. d.]. “Tree-sitter”. https://tree-sitter.github.io/tree-sitter/. [38] Ramakrishna Vedantam, C Lawrence Zitnick, and Devi Parikh. 2015. Cider: Consensus-based image description evaluation. In Proceedings of the IEEE confer-ence on computer vision and pattern recognition . 4566–4575. [39] Xiaoran Wang, Lori Pollock, and K Vijay-Shanker. 2017. Automatically generating natural language descriptions for object-related statement sequences. In 2017 IEEE 24th International Conference on Software Analysis, Evolution and Reengineering (SANER) . IEEE, 205–216. [40] Jason Wei, Xuezhi Wang, Dale Schuurmans, Maarten Bosma, Fei Xia, Ed Chi, Quoc V Le, Denny Zhou, et al . 2022. Chain-of-thought prompting elicits reasoning in large language models. Advances in neural information processing systems 35 (2022), 24824–24837. [41] Edmund Wong, Taiyue Liu, and Lin Tan. 2015. Clocom: Mining existing source code for automatic comment generation. In 2015 IEEE 22nd International confer-ence on software analysis, evolution, and reengineering (SANER) . IEEE, 380–389. [42] Edmund Wong, Jinqiu Yang, and Lin Tan. 2013. Autocomment: Mining question and answer sites for automatic comment generation. In 2013 28th IEEE/ACM International Conference on Automated Software Engineering (ASE) . IEEE, 562– 567. [43] Dayu Yang, Antoine Simoulin, Xin Qian, Xiaoyi Liu, Yuwei Cao, Zhaopu Teng, and Grey Yang. 2025. DocAgent: A Multi-Agent System for Automated Code Docu-mentation Generation. In Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 3: System Demonstrations) , Pushkar Mishra, Smaranda Muresan, and Tao Yu (Eds.). Association for Computational Linguistics, Vienna, Austria, 460–471. https://doi.org/10.18653/v1/2025.acl-demo.44 [44] John Yang, Carlos E. Jimenez, Alexander Wettig, Kilian Lieret, Shunyu Yao, Karthik Narasimhan, and Ofir Press. 2024. SWE-agent: Agent-Computer In-terfaces Enable Automated Software Engineering. CoRR abs/2405.15793 (2024). https://doi.org/10.48550/ARXIV.2405.15793 arXiv:2405.15793 [45] Jianwei Zeng, Yutong He, Tao Zhang, Zhou Xu, and Qiang Han. 2023. CLG-Trans: Contrastive learning for code summarization via graph attention-based transformer. Science of Computer Programming 226 (2023), 102925. [46] Xuejun Zhang, Xia Hou, Xiuming Qiao, and Wenfeng Song. 2024. A review of automatic source code summarization. Empirical Software Engineering 29, 6 (2024), 162. [47] Yuxiang Zhu and Minxue Pan. 2019. Automatic code summarization: A systematic literature review. arXiv preprint arXiv:1909.04352 (2019).
