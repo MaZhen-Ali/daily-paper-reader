@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2604.09120v1/fig-001.webp",
+      "caption": "Figure 1: Timeline of when prompts were entered by each pair, split by partner. One line indicates only one partner entered prompts. The pairs have been grouped and labelled to indicate their reliance on the LLM. DNU=No role; IS=Information source; GE=Generator; PD=Producer.",
+      "page": 4,
+      "index": 1,
+      "width": 500,
+      "height": 316
+    },
+    {
+      "url": "assets/figures/arxiv/2604.09120v1/fig-002.webp",
+      "caption": "Table 1: Different types of assistance sought from the LLM by three or more pairs. Each type of assistance is tagged with the overarching roles (Section 4.2.1) in which it appeared (e.g., General Design Help was only sought by pairs that leveraged the LLM in the role of Information Seeker or Generator).",
+      "page": 6,
+      "index": 2,
+      "width": 486,
+      "height": 480
+    }
+  ]
+}

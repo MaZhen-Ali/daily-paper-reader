@@ -1,0 +1,62 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2604.10345v1/fig-001.webp",
+      "caption": "Table 4. Number of rationale sentences found for each artifact (with column-wise proportions).",
+      "page": 11,
+      "index": 1,
+      "width": 895,
+      "height": 200
+    },
+    {
+      "url": "assets/figures/arxiv/2604.10345v1/fig-002.webp",
+      "caption": "Fig. 3. Structure of the developed prompts for both of Argus’s major tasks.",
+      "page": 15,
+      "index": 2,
+      "width": 787,
+      "height": 297
+    },
+    {
+      "url": "assets/figures/arxiv/2604.10345v1/fig-003.webp",
+      "caption": "Table 11. Cross-model sensitivity analysis for rationale identification",
+      "page": 21,
+      "index": 3,
+      "width": 481,
+      "height": 250
+    },
+    {
+      "url": "assets/figures/arxiv/2604.10345v1/fig-004.webp",
+      "caption": "Fig. 1. A Motivating Example from the OkHttp Project[2]",
+      "page": 3,
+      "index": 4,
+      "width": 759,
+      "height": 362
+    },
+    {
+      "url": "assets/figures/arxiv/2604.10345v1/fig-005.webp",
+      "caption": "Table 7. Prompt development results for rationale identification (CI)",
+      "page": 18,
+      "index": 5,
+      "width": 869,
+      "height": 314
+    },
+    {
+      "url": "assets/figures/arxiv/2604.10345v1/fig-006.webp",
+      "caption": "Table 8. Prompt development results for rationale generation, CG (IC = Information Coverage; EI = Extra information)",
+      "page": 18,
+      "index": 6,
+      "width": 895,
+      "height": 231
+    },
+    {
+      "url": "assets/figures/arxiv/2604.10345v1/fig-007.webp",
+      "caption": "Table 6. Proportion of sentences describing rationale in software artifacts.",
+      "page": 12,
+      "index": 7,
+      "width": 715,
+      "height": 233
+    }
+  ]
+}
