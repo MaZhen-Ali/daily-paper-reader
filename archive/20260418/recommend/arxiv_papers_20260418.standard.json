@@ -1,0 +1,284 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-04-18T19:55:27.056250+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 2,
+    "deep_cap": 6,
+    "deep_selected": 2,
+    "quick_candidates": 5,
+    "quick_skim_target": 11,
+    "quick_selected": 5
+  },
+  "deep_dive": [
+    {
+      "id": "2604.15222v1",
+      "source": "arxiv",
+      "title": "AI-Assisted Requirements Engineering: An Empirical Evaluation Relative to Expert Judgment",
+      "abstract": "Artificial Intelligence is increasingly introduced into systems engineering activities, particularly within requirements engineering, where quality assessment and validation remain heavily dependent on expert judgment. While recent AI tools demonstrate promising capabilities in analyzing and generating requirements, their role within formal systems engineering processes-and their alignment with established INCOSE criteria-remains insufficiently understood. This paper investigates the extent to which AI-based tools can support systems engineers in evaluating requirement quality, without replacing professional expertise. The research adopts a structured systems engineering methodology to compare AI-assisted requirement evaluation with human expert assessment. A controlled study was conducted in which system requirements were evaluated against established INCOSE ``good requirement'' criteria by both experienced systems engineers and an AI-based assessment tool. The evaluation focused on consistency, completeness, clarity, and testability, examining not only accuracy but also the decision logic underlying each assessment. Results indicate that AI tools can provide consistent and rapid preliminary assessments, particularly for syntactic and structural quality attributes. However, expert judgment remains essential for contextual interpretation, ambiguity resolution, and trade-off reasoning. Rather than positioning AI as a replacement for systems engineers, the findings support its role as a decision-support mechanism within the RE lifecycle. From a systems engineering perspective, this study contributes empirical evidence on how AI can be integrated into RE workflows while preserving traceability, accountability, and engineering consistency.",
+      "authors": [
+        "Oz Levy",
+        "Ilya Dikman",
+        "Natan Levy",
+        "Michael Winokur"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-04-16T16:53:57+00:00",
+      "link": "https://arxiv.org/pdf/2604.15222v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "AI-assisted requirement quality assessment and validation relative to expert judgment",
+      "llm_evidence_cn": "人工智能辅助的需求质量评估与验证，并与专家判断进行对比",
+      "llm_evidence": "人工智能辅助的需求质量评估与验证，并与专家判断进行对比",
+      "canonical_evidence": "人工智能辅助的需求质量评估与验证，并与专家判断进行对比",
+      "llm_tldr_en": "Evaluates AI tools for requirement quality assessment and validation within formal systems engineering processes.",
+      "llm_tldr_cn": "评估了在正式系统工程流程中，人工智能工具用于需求质量评估和验证的效果。",
+      "llm_tldr": "评估了在正式系统工程流程中，人工智能工具用于需求质量评估和验证的效果。",
+      "llm_tags": [
+        "query:re-us:composite"
+      ],
+      "matched_query_tag": "query:re-us:composite",
+      "matched_query_text": "Papers central to 需求工程领域的用户故事相关的论文, especially work that connects or combines: User stories in software development and requirements engineering; Requirements engineering methodologies and practices; Agile requirements engineering and management; Quality assessment and improvement of user stories; Automated extraction of user stories from text; Defining and validating user story acceptance criteria; State of the art in user story research for requirements engineering; Automated tools for user story generation and validation; Impact of user story quality on software project success.",
+      "matched_requirement_id": "req-composite-re-us",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2604.10300v1",
+      "source": "arxiv",
+      "title": "From Helpful to Trustworthy: LLM Agents for Pair Programming",
+      "abstract": "LLM-based coding agents are increasingly used to generate code, tests, and documentation. Still, their outputs can be plausible yet misaligned with developer intent and provide limited evidence for review in evolving projects. This limits our understanding of how to structure LLM pair-programming workflows so that artifacts remain reliable, auditable, and maintainable over time. To address this gap, this doctoral research proposes a systematic study of multi-agent LLM pair programming that externalizes intent and uses development tools for iterative validation. The plan includes three studies: translating informal problem statements into standards aligned requirements and formal specifications; refining tests and implementations using automated feedback, such as solver-backed counterexamples; and supporting maintenance tasks, including refactoring, API migrations, and documentation updates, while preserving validated behavior. The expected outcome is a clearer understanding of when multi-agent workflows increase trust, along with practical guidance for building reliable programming assistants for real-world development.",
+      "authors": [
+        "Ragib Shahariar Ayon"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-04-11T17:39:57+00:00",
+      "link": "https://arxiv.org/pdf/2604.10300v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Translating informal problem statements into requirements and formal specifications",
+      "llm_evidence_cn": "将非正式问题陈述转化为需求和正式规范",
+      "llm_evidence": "将非正式问题陈述转化为需求和正式规范",
+      "canonical_evidence": "将非正式问题陈述转化为需求和正式规范",
+      "llm_tldr_en": "Studies multi-agent LLM pair programming to translate informal intent into standard-aligned requirements.",
+      "llm_tldr_cn": "研究多代理LLM结对编程，将非正式意图转化为符合标准的需求。",
+      "llm_tldr": "研究多代理LLM结对编程，将非正式意图转化为符合标准的需求。",
+      "llm_tags": [
+        "query:re-us:composite"
+      ],
+      "matched_query_tag": "query:re-us:composite",
+      "matched_query_text": "Papers central to 需求工程领域的用户故事相关的论文, especially work that connects or combines: User stories in software development and requirements engineering; Requirements engineering methodologies and practices; Agile requirements engineering and management; Quality assessment and improvement of user stories; Automated extraction of user stories from text; Defining and validating user story acceptance criteria; State of the art in user story research for requirements engineering; Automated tools for user story generation and validation; Impact of user story quality on software project success.",
+      "matched_requirement_id": "req-composite-re-us",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2604.13559v1",
+      "source": "arxiv",
+      "title": "WebMAC: A Multi-Agent Collaborative Framework for Scenario Testing of Web Systems",
+      "abstract": "Scenario testing is an important technique for detecting errors in web systems. Testers draft test scenarios and convert them into test scripts for execution. Early methods relied on testers to convert test scenarios into test scripts. Recent LLM-based scenario testing methods can generate test scripts from natural language descriptions of test scenarios. However, these methods are not only limited by the incompleteness of descriptions but also overlook test adequacy criteria, making it difficult to detect potential errors. To address these limitations, this paper proposes WebMAC, a multi-agent collaborative framework for scenario testing of web systems. WebMAC can complete natural language descriptions of test scenarios through interactive clarification and transform adequate instantiated test scenarios via equivalence class partitioning. WebMAC consists of three multi-agent modules, responsible respectively for completing natural language descriptions of test scenarios, transforming test scenarios, and converting test scripts. We evaluated WebMAC on four web systems. Compared with the SOTA method, WebMAC improves the execution success rate of generated test scripts by 30%-60%, increases testing efficiency by 29%, and reduces token consumption by 47.6%. Furthermore, WebMAC can effectively detect more errors in web systems.",
+      "authors": [
+        "Zhenyu Wan",
+        "Gong Chen",
+        "Qing Huang",
+        "Xiaoyuan Xie"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-04-15T07:07:30+00:00",
+      "link": "https://arxiv.org/pdf/2604.13559v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "generate test scripts from natural language descriptions of test scenarios",
+      "llm_evidence_cn": "根据测试场景的自然语言描述生成测试脚本",
+      "llm_evidence": "根据测试场景的自然语言描述生成测试脚本",
+      "canonical_evidence": "根据测试场景的自然语言描述生成测试脚本",
+      "llm_tldr_en": "A multi-agent framework that completes scenario descriptions and generates test scripts for web systems.",
+      "llm_tldr_cn": "一个多智能体协作框架，用于完善场景描述并为 Web 系统生成测试脚本。",
+      "llm_tldr": "一个多智能体协作框架，用于完善场景描述并为 Web 系统生成测试脚本。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Defining and validating user story acceptance criteria",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2604.10345v1",
+      "source": "arxiv",
+      "title": "Fine-grained Multi-Document Extraction and Generation of Code Change Rationale",
+      "abstract": "Understanding the reasons behind past code changes is critical for many software engineering tasks, including refactoring and reviewing code, diagnosing bugs, and implementing new features. Unfortunately, locating and reconstructing this rationale can be difficult for developers because the information is often fragmented, inconsistently documented, and scattered across different artifacts such as commit messages, issue reports, and PRs. In this paper, we address this challenge in two steps. First, we conduct an empirical study of 63 commits from five open-source Java projects to analyze how rationale components (e.g., a change's goal, need, and alternative) are distributed across artifacts. We find that the rationale is highly fragmented: commit messages and pull requests primarily capture goals, while needs and alternatives are more often found in issues and PRs. Other components are scarce but found in artifacts other than commit messages. No single artifact type captures all components, underscoring the need for cross-document reasoning and synthesis. Second, we introduce ARGUS, an LLM-based approach that identifies sentences expressing goal, need, and alternative across a commit's artifacts and creates concise rationale summaries to support code comprehension and maintenance tasks. We evaluated ARGUS on the 63 commits and compared its performance against baseline variants. The best-performing version achieved 51.4% precision and 93.2% recall for rationale identification, while producing rationale summaries rated as accurate. A user study with 12 Java developers further showed that these summaries were perceived as useful and helpful for tasks such as code review, documentation, and debugging. Our results highlight the need for multi-document reasoning in capturing rationale and demonstrate the potential of ARGUS to help developers understand and maintain software systems.",
+      "authors": [
+        "Mehedi Sun",
+        "Antu Saha",
+        "Nadeeshan De Silva",
+        "Antonio Mastropaolo",
+        "Oscar Chaparro"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-04-11T20:49:36+00:00",
+      "link": "https://arxiv.org/pdf/2604.10345v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "extraction of rationale components like goals and needs from software artifacts",
+      "llm_evidence_cn": "从软件制品中提取目标和需求等基本原理组件",
+      "llm_evidence": "从软件制品中提取目标和需求等基本原理组件",
+      "canonical_evidence": "从软件制品中提取目标和需求等基本原理组件",
+      "llm_tldr_en": "Analyzes and generates code change rationale by extracting goals and needs from fragmented artifacts.",
+      "llm_tldr_cn": "通过从碎片化的制品中提取目标和需求，分析并生成代码变更的基本原理。",
+      "llm_tldr": "通过从碎片化的制品中提取目标和需求，分析并生成代码变更的基本原理。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Automated extraction of user stories from text",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2604.14624v1",
+      "source": "arxiv",
+      "title": "Asking What Matters: Reward-Driven Clarification for Software Engineering Tasks",
+      "abstract": "Humans often specify tasks incompletely, so assistants must know when and how to ask clarifying questions. However, effective clarification remains challenging in software engineering tasks as not all missing information is equally valuable, and questions must target information users can realistically provide. We study clarification in real software engineering tasks by quantifying which types of information most affect task success and which questions elicit useful responses from simulated users. Using Shapley attribution and distributional comparisons, we identify two key properties of effective clarification: task relevance (which information predicts success) and user answerability (what users can realistically provide). We operationalize these properties as multi-stage reinforcement learning rewards to train CLARITI, an 8B-parameter clarification module, that matches GPT-5's resolution rate on underspecified issues while generating 41% fewer questions. Our results suggest that grounding reward design in empirical analysis of information impact and user answerability improves clarification efficiency.",
+      "authors": [
+        "Sanidhya Vijayvargiya",
+        "Vijay Viswanathan",
+        "Graham Neubig"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-04-16T05:11:02+00:00",
+      "link": "https://arxiv.org/pdf/2604.14624v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "clarifying incomplete task specifications in software engineering",
+      "llm_evidence_cn": "澄清软件工程任务中不完整的规范",
+      "llm_evidence": "澄清软件工程任务中不完整的规范",
+      "canonical_evidence": "澄清软件工程任务中不完整的规范",
+      "llm_tldr_en": "Studies how to ask clarifying questions to improve the quality of incomplete software task specifications.",
+      "llm_tldr_cn": "研究如何通过提问澄清来提高不完整软件任务规范的质量。",
+      "llm_tldr": "研究如何通过提问澄清来提高不完整软件任务规范的质量。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Quality assessment and improvement of user stories",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2604.14422v1",
+      "source": "arxiv",
+      "title": "Demonstration of Pneuma-Seeker: Agentic System for Reifying and Fulfilling Information Needs on Tabular Data",
+      "abstract": "Data analysts working with relational data often start with vague or underspecified questions and refine them iteratively as they explore the data. To support this iterative process, we demonstrate Pneuma-Seeker, a system that reifies a user's information need as explicit, inspectable relational specifications, enabling iterative refinement of the information need, targeted data discovery, and provenance-aware execution. Through two real-world procurement use cases, we show how Pneuma-Seeker leverages LLMs as transparent, interactive analytical collaborators rather than opaque answer engines.",
+      "authors": [
+        "Muhammad Imam Luthfi Balaka",
+        "Raul Castro Fernandez"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-04-15T21:07:40+00:00",
+      "link": "https://arxiv.org/pdf/2604.14422v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "reifying information needs into explicit specifications",
+      "llm_evidence_cn": "将信息需求具体化为明确的规范",
+      "llm_evidence": "将信息需求具体化为明确的规范",
+      "canonical_evidence": "将信息需求具体化为明确的规范",
+      "llm_tldr_en": "System for refining vague information needs into explicit relational specifications through collaboration.",
+      "llm_tldr_cn": "该系统通过协作将模糊的信息需求细化为明确的关系规范。",
+      "llm_tldr": "该系统通过协作将模糊的信息需求细化为明确的关系规范。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Defining and validating user story acceptance criteria",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2604.14820v1",
+      "source": "arxiv",
+      "title": "SWE-TRACE: Optimizing Long-Horizon SWE Agents Through Rubric Process Reward Models and Heuristic Test-Time Scaling",
+      "abstract": "Resolving real-world software engineering (SWE) issues with autonomous agents requires complex, long-horizon reasoning. Current pipelines are bottlenecked by unoptimized demonstration data, sparse execution rewards, and computationally prohibitive inference scaling, which collectively exacerbate token bloat, reward hacking, and policy degradation. We present SWE-TRACE (Trajectory Reduction and Agentic Criteria Evaluation), a unified framework optimizing the SWE agent lifecycle across data curation, reinforcement learning (RL), and test-time inference. First, we introduce an LLM multi-task cascading method, utilizing stepwise oracle verification to distill a 60K-instance Supervised Fine-Tuning (SFT) corpus strictly biased toward token-efficient, shortest-path trajectories. Second, to overcome the instability of sparse outcome rewards, we design a MemoryAugmented Agentic RL pipeline featuring a Rubric-Based Process Reward Model (PRM). An auxiliary Rubric-Agent provides dense, fine-grained heuristic feedback on intermediate steps, guiding the model through long-horizon tasks. Finally, we bridge training and inference by repurposing the PRM for heuristic-guided Test-Time Scaling (TTS). By dynamically evaluating and pruning action candidates at each step, SWE-TRACE achieves superior search efficiency without the latency overhead of standard parallel sampling. Extensive experiments on standard SWE benchmarks demonstrate that SWE-TRACE significantly advances the state-of-the-art, maximizing resolution rates while drastically reducing both token consumption and inference latency.",
+      "authors": [
+        "Hao Han",
+        "Jin Xie",
+        "Xuehao Ma",
+        "Weiquan Zhu",
+        "Ziyao Zhang",
+        "ZhiLiang Long",
+        "Hongkai Chen",
+        "Qingwen Ye"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-04-16T09:41:47+00:00",
+      "link": "https://arxiv.org/pdf/2604.14820v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Agentic criteria evaluation and automated verification in software engineering",
+      "llm_evidence_cn": "软件工程中的代理标准评估和自动验证",
+      "llm_evidence": "软件工程中的代理标准评估和自动验证",
+      "canonical_evidence": "软件工程中的代理标准评估和自动验证",
+      "llm_tldr_en": "Introduces SWE-TRACE to optimize software engineering agents using rubric-based evaluation and verification.",
+      "llm_tldr_cn": "引入SWE-TRACE，通过基于量表的评估和验证来优化软件工程代理。",
+      "llm_tldr": "引入SWE-TRACE，通过基于量表的评估和验证来优化软件工程代理。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Automated tools for user story generation and validation",
+      "matched_requirement_id": "req-8",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
