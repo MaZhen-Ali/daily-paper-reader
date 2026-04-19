@@ -1,0 +1,280 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-04-19T19:34:09.399925+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 3,
+    "deep_cap": 6,
+    "deep_selected": 3,
+    "quick_candidates": 4,
+    "quick_skim_target": 11,
+    "quick_selected": 4
+  },
+  "deep_dive": [
+    {
+      "id": "2604.15222v1",
+      "source": "arxiv",
+      "title": "AI-Assisted Requirements Engineering: An Empirical Evaluation Relative to Expert Judgment",
+      "abstract": "Artificial Intelligence is increasingly introduced into systems engineering activities, particularly within requirements engineering, where quality assessment and validation remain heavily dependent on expert judgment. While recent AI tools demonstrate promising capabilities in analyzing and generating requirements, their role within formal systems engineering processes-and their alignment with established INCOSE criteria-remains insufficiently understood. This paper investigates the extent to which AI-based tools can support systems engineers in evaluating requirement quality, without replacing professional expertise. The research adopts a structured systems engineering methodology to compare AI-assisted requirement evaluation with human expert assessment. A controlled study was conducted in which system requirements were evaluated against established INCOSE ``good requirement'' criteria by both experienced systems engineers and an AI-based assessment tool. The evaluation focused on consistency, completeness, clarity, and testability, examining not only accuracy but also the decision logic underlying each assessment. Results indicate that AI tools can provide consistent and rapid preliminary assessments, particularly for syntactic and structural quality attributes. However, expert judgment remains essential for contextual interpretation, ambiguity resolution, and trade-off reasoning. Rather than positioning AI as a replacement for systems engineers, the findings support its role as a decision-support mechanism within the RE lifecycle. From a systems engineering perspective, this study contributes empirical evidence on how AI can be integrated into RE workflows while preserving traceability, accountability, and engineering consistency.",
+      "authors": [
+        "Oz Levy",
+        "Ilya Dikman",
+        "Natan Levy",
+        "Michael Winokur"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-04-16T16:53:57+00:00",
+      "link": "https://arxiv.org/pdf/2604.15222v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "AI-assisted requirement quality assessment and validation relative to expert judgment",
+      "llm_evidence_cn": "AI辅助的需求质量评估与验证，并与专家判断进行对比",
+      "llm_evidence": "AI辅助的需求质量评估与验证，并与专家判断进行对比",
+      "canonical_evidence": "AI辅助的需求质量评估与验证，并与专家判断进行对比",
+      "llm_tldr_en": "Evaluates AI tools for requirement quality assessment against professional systems engineering standards.",
+      "llm_tldr_cn": "评估AI工具在需求质量评估中相对于专业系统工程标准的表现。",
+      "llm_tldr": "评估AI工具在需求质量评估中相对于专业系统工程标准的表现。",
+      "llm_tags": [
+        "query:re-us:composite"
+      ],
+      "matched_query_tag": "query:re-us:composite",
+      "matched_query_text": "Papers central to 需求工程领域的用户故事相关的论文, especially work that connects or combines: User stories in software development and requirements engineering; Requirements engineering methodologies and practices; Agile requirements engineering and management; Quality assessment and improvement of user stories; Automated extraction of user stories from text; Defining and validating user story acceptance criteria; State of the art in user story research for requirements engineering; Automated tools for user story generation and validation; Impact of user story quality on software project success.",
+      "matched_requirement_id": "req-composite-re-us",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2604.13814v1",
+      "source": "arxiv",
+      "title": "Cognitive Offloading in Agile Teams: How Artificial Intelligence Reshapes Risk Assessment and Planning Quality",
+      "abstract": "Recent advances in artificial intelligence (AI) have shown promise in automating key aspects of Agile project management, yet their impact on team cognition remains underexplored. In this work, we investigate cognitive offloading in Agile sprint planning by conducting a controlled, three-condition experiment comparing AI-only, human-only, and hybrid planning models on a live client deliverable at a mid-sized digital agency. Using quantitative metrics -- including estimation accuracy, rework rates, and scope change recovery time -- alongside qualitative indicators of planning robustness, we evaluate each model's effectiveness beyond raw efficiency. We find that while AI-only planning minimizes time and cost, it significantly degrades risk capture rates and increases rework due to unstated assumptions, whereas human-only planning excels at adaptability but incurs substantial overhead. Drawing on these findings, we propose a theoretical framework for hybrid AI-human sprint planning that assigns algorithmic tools to estimation and backlog formatting while mandating human deliberation for risk assessment and ambiguity resolution. Our results challenge the assumption that efficiency equates to effectiveness, offering actionable governance strategies for organizations seeking to augment rather than erode team cognition.",
+      "authors": [
+        "Adriana Caraeni",
+        "Alexander Shick",
+        "Andrew Lan"
+      ],
+      "primary_category": "cs.HC",
+      "categories": [
+        "cs.HC",
+        "cs.AI"
+      ],
+      "published": "2026-04-15T12:48:29+00:00",
+      "link": "https://arxiv.org/pdf/2604.13814v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "AI impact on Agile sprint planning and risk assessment",
+      "llm_evidence_cn": "AI对敏捷冲刺计划和风险评估的影响",
+      "llm_evidence": "AI对敏捷冲刺计划和风险评估的影响",
+      "canonical_evidence": "AI对敏捷冲刺计划和风险评估的影响",
+      "llm_tldr_en": "Investigates how AI affects cognitive offloading and planning quality in Agile software development teams.",
+      "llm_tldr_cn": "研究AI如何影响敏捷开发团队的认知卸载和计划质量。",
+      "llm_tldr": "研究AI如何影响敏捷开发团队的认知卸载和计划质量。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Agile requirements engineering and management",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2604.10300v1",
+      "source": "arxiv",
+      "title": "From Helpful to Trustworthy: LLM Agents for Pair Programming",
+      "abstract": "LLM-based coding agents are increasingly used to generate code, tests, and documentation. Still, their outputs can be plausible yet misaligned with developer intent and provide limited evidence for review in evolving projects. This limits our understanding of how to structure LLM pair-programming workflows so that artifacts remain reliable, auditable, and maintainable over time. To address this gap, this doctoral research proposes a systematic study of multi-agent LLM pair programming that externalizes intent and uses development tools for iterative validation. The plan includes three studies: translating informal problem statements into standards aligned requirements and formal specifications; refining tests and implementations using automated feedback, such as solver-backed counterexamples; and supporting maintenance tasks, including refactoring, API migrations, and documentation updates, while preserving validated behavior. The expected outcome is a clearer understanding of when multi-agent workflows increase trust, along with practical guidance for building reliable programming assistants for real-world development.",
+      "authors": [
+        "Ragib Shahariar Ayon"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-04-11T17:39:57+00:00",
+      "link": "https://arxiv.org/pdf/2604.10300v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "translating informal problem statements into standards aligned requirements",
+      "llm_evidence_cn": "将非正式问题陈述转化为符合标准的需求",
+      "llm_evidence": "将非正式问题陈述转化为符合标准的需求",
+      "canonical_evidence": "将非正式问题陈述转化为符合标准的需求",
+      "llm_tldr_en": "Proposes using LLM agents to translate informal intent into formal requirements and validated code.",
+      "llm_tldr_cn": "提出使用LLM智能体将非正式意图转化为正式需求和经过验证的代码。",
+      "llm_tldr": "提出使用LLM智能体将非正式意图转化为正式需求和经过验证的代码。",
+      "llm_tags": [
+        "query:re-us:composite"
+      ],
+      "matched_query_tag": "query:re-us:composite",
+      "matched_query_text": "Papers central to 需求工程领域的用户故事相关的论文, especially work that connects or combines: User stories in software development and requirements engineering; Requirements engineering methodologies and practices; Agile requirements engineering and management; Quality assessment and improvement of user stories; Automated extraction of user stories from text; Defining and validating user story acceptance criteria; State of the art in user story research for requirements engineering; Automated tools for user story generation and validation; Impact of user story quality on software project success.",
+      "matched_requirement_id": "req-composite-re-us",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2604.13559v1",
+      "source": "arxiv",
+      "title": "WebMAC: A Multi-Agent Collaborative Framework for Scenario Testing of Web Systems",
+      "abstract": "Scenario testing is an important technique for detecting errors in web systems. Testers draft test scenarios and convert them into test scripts for execution. Early methods relied on testers to convert test scenarios into test scripts. Recent LLM-based scenario testing methods can generate test scripts from natural language descriptions of test scenarios. However, these methods are not only limited by the incompleteness of descriptions but also overlook test adequacy criteria, making it difficult to detect potential errors. To address these limitations, this paper proposes WebMAC, a multi-agent collaborative framework for scenario testing of web systems. WebMAC can complete natural language descriptions of test scenarios through interactive clarification and transform adequate instantiated test scenarios via equivalence class partitioning. WebMAC consists of three multi-agent modules, responsible respectively for completing natural language descriptions of test scenarios, transforming test scenarios, and converting test scripts. We evaluated WebMAC on four web systems. Compared with the SOTA method, WebMAC improves the execution success rate of generated test scripts by 30%-60%, increases testing efficiency by 29%, and reduces token consumption by 47.6%. Furthermore, WebMAC can effectively detect more errors in web systems.",
+      "authors": [
+        "Zhenyu Wan",
+        "Gong Chen",
+        "Qing Huang",
+        "Xiaoyuan Xie"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-04-15T07:07:30+00:00",
+      "link": "https://arxiv.org/pdf/2604.13559v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "generate test scripts from natural language descriptions of scenarios",
+      "llm_evidence_cn": "从场景的自然语言描述中生成测试脚本",
+      "llm_evidence": "从场景的自然语言描述中生成测试脚本",
+      "canonical_evidence": "从场景的自然语言描述中生成测试脚本",
+      "llm_tldr_en": "Proposes a multi-agent framework to complete and convert natural language scenarios into test scripts.",
+      "llm_tldr_cn": "提出一个多智能体框架，将自然语言描述的测试场景完善并转换为测试脚本。",
+      "llm_tldr": "提出一个多智能体框架，将自然语言描述的测试场景完善并转换为测试脚本。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Defining and validating user story acceptance criteria",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2604.14034v1",
+      "source": "arxiv",
+      "title": "Large Language Models to Enhance Business Process Modeling: Past, Present, and Future Trends",
+      "abstract": "Recent advances in Generative Artificial Intelligence, particularly Large Language Models (LLMs), have stimulated growing interest in automating or assisting Business Process Modeling tasks using natural language. Several approaches have been proposed to transform textual process descriptions into BPMN and related workflow models. However, the extent to which these approaches effectively support complex process modeling in organizational settings remains unclear. This article presents a literature review of AI-driven methods for transforming natural language into BPMN process models, with a particular focus on the role of LLMs. Following a structured review strategy, relevant studies were identified and analyzed to classify existing approaches, examine how LLMs are integrated into text-to-model pipelines, and investigate the evaluation practices used to assess generated models. The analysis reveals a clear shift from rule-based and traditional NLP pipelines toward LLM-based architectures that rely on prompt engineering, intermediate representations, and iterative refinement mechanisms. While these approaches significantly expand the capabilities of automated process model generation, the literature also exposes persistent challenges related to semantic correctness, evaluation fragmentation, reproducibility, and limited validation in real-world organizational contexts. Based on these findings, this review identifies key research gaps and discusses promising directions for future research, including the integration of contextual knowledge through Retrieval-Augmented Generation (RAG), its integration with LLMs, the development of interactive modeling architectures, and the need for more comprehensive and standardized evaluation frameworks.",
+      "authors": [
+        "João Bettencourt",
+        "Sérgio Guerreiro"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI",
+        "cs.IR"
+      ],
+      "published": "2026-04-15T16:15:03+00:00",
+      "link": "https://arxiv.org/pdf/2604.14034v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "transforming natural language descriptions into process models",
+      "llm_evidence_cn": "将自然语言描述转化为流程模型",
+      "llm_evidence": "将自然语言描述转化为流程模型",
+      "canonical_evidence": "将自然语言描述转化为流程模型",
+      "llm_tldr_en": "Reviews AI-driven methods for extracting structured business process models from natural language text.",
+      "llm_tldr_cn": "综述了从自然语言文本中提取结构化业务流程模型的AI驱动方法。",
+      "llm_tldr": "综述了从自然语言文本中提取结构化业务流程模型的AI驱动方法。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Automated extraction of user stories from text",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2604.14631v1",
+      "source": "arxiv",
+      "title": "StoryCoder: Narrative Reformulation for Structured Reasoning in LLM Code Generation",
+      "abstract": "Effective code generation requires both model capability and a problem representation that carefully structures how models reason and plan. Existing approaches augment reasoning steps or inject specific structure into how models think, but leave scattered problem conditions unchanged. Inspired by the way humans organize fragmented information into coherent explanations, we propose StoryCoder, a narrative reformulation framework that transforms code generation questions into coherent natural language narratives, providing richer contextual structure than simple rephrasings. Each narrative consists of three components: a task overview, constraints, and example test cases, guided by the selected algorithm and genre. Experiments across 11 models on HumanEval, LiveCodeBench, and CodeForces demonstrate consistent improvements, with an average gain of 18.7% in zero-shot pass@10. Beyond accuracy, our analyses reveal that narrative reformulation guides models toward correct algorithmic strategies, reduces implementation errors, and induces a more modular code structure. The analyses further show that these benefits depend on narrative coherence and genre alignment, suggesting that structured problem representation is important for code generation regardless of model scale or architecture. Our code is available at https://github.com/gu-ni/StoryCoder.",
+      "authors": [
+        "Geonhui Jang",
+        "Dongyoon Han",
+        "YoungJoon Yoo"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "published": "2026-04-16T05:19:48+00:00",
+      "link": "https://arxiv.org/pdf/2604.14631v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "narrative reformulation of fragmented problem conditions",
+      "llm_evidence_cn": "碎片化问题条件的叙事性重构",
+      "llm_evidence": "碎片化问题条件的叙事性重构",
+      "canonical_evidence": "碎片化问题条件的叙事性重构",
+      "llm_tldr_en": "Proposes StoryCoder to transform fragmented task conditions into coherent narratives for better code generation.",
+      "llm_tldr_cn": "提出 StoryCoder，将碎片化的任务条件转化为连贯的叙事，以优化代码生成。",
+      "llm_tldr": "提出 StoryCoder，将碎片化的任务条件转化为连贯的叙事，以优化代码生成。",
+      "llm_tags": [
+        "query:re-us:composite"
+      ],
+      "matched_query_tag": "query:re-us:composite",
+      "matched_query_text": "Papers central to 需求工程领域的用户故事相关的论文, especially work that connects or combines: User stories in software development and requirements engineering; Requirements engineering methodologies and practices; Agile requirements engineering and management; Quality assessment and improvement of user stories; Automated extraction of user stories from text; Defining and validating user story acceptance criteria; State of the art in user story research for requirements engineering; Automated tools for user story generation and validation; Impact of user story quality on software project success.",
+      "matched_requirement_id": "req-composite-re-us",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2604.14624v1",
+      "source": "arxiv",
+      "title": "Asking What Matters: Reward-Driven Clarification for Software Engineering Tasks",
+      "abstract": "Humans often specify tasks incompletely, so assistants must know when and how to ask clarifying questions. However, effective clarification remains challenging in software engineering tasks as not all missing information is equally valuable, and questions must target information users can realistically provide. We study clarification in real software engineering tasks by quantifying which types of information most affect task success and which questions elicit useful responses from simulated users. Using Shapley attribution and distributional comparisons, we identify two key properties of effective clarification: task relevance (which information predicts success) and user answerability (what users can realistically provide). We operationalize these properties as multi-stage reinforcement learning rewards to train CLARITI, an 8B-parameter clarification module, that matches GPT-5's resolution rate on underspecified issues while generating 41% fewer questions. Our results suggest that grounding reward design in empirical analysis of information impact and user answerability improves clarification efficiency.",
+      "authors": [
+        "Sanidhya Vijayvargiya",
+        "Vijay Viswanathan",
+        "Graham Neubig"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-04-16T05:11:02+00:00",
+      "link": "https://arxiv.org/pdf/2604.14624v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "clarifying incomplete task specifications in software engineering",
+      "llm_evidence_cn": "澄清软件工程中不完整的任务规范",
+      "llm_evidence": "澄清软件工程中不完整的任务规范",
+      "canonical_evidence": "澄清软件工程中不完整的任务规范",
+      "llm_tldr_en": "Studies reward-driven clarification to handle incomplete task specifications in software engineering contexts.",
+      "llm_tldr_cn": "研究奖励驱动的澄清机制，以处理软件工程背景下不完整的任务规范。",
+      "llm_tldr": "研究奖励驱动的澄清机制，以处理软件工程背景下不完整的任务规范。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}

@@ -1,0 +1,308 @@
+Title: AI-Assisted Requirements Engineering: An Empirical Evaluation Relative to Expert Judgment
+
+URL Source: https://arxiv.org/pdf/2604.15222v1
+
+Published Time: Fri, 17 Apr 2026 01:15:01 GMT
+
+Number of Pages: 14
+
+Markdown Content:
+# AI-Assisted Requirements Engineering: An Empirical Evaluation Relative to Expert Judgment 
+
+Oz Levy Faculty of Industrial Engineering and Technology Management, Holon Institute of Technology (HIT) Holon, Israel ozl@my.hit.ac.il Ilya Dikman Faculty of Industrial Engineering and Technology Management, Holon Institute of Technology (HIT) Holon, Israel ilyad@my.hit.ac.il Natan Levy School of Computer Science and Engineering Hebrew University Jerusalem (HUJI) Jerusalem, Israel Natan.Levy1@mail.huji.ac.il Michael Winokur Faculty of Industrial Engineering and Technology Management, Holon Institute of Technology (HIT) Holon, Israel michaelw@hit.ac.il Abstract 
+
+Artificial Intelligence (AI) is increasingly intro-duced into systems engineering activities, particu-larly within requirements engineering (RE), where quality assessment and validation remain heavily de-pendent on expert judgment. While recent AI tools demonstrate promising capabilities in analyzing and generating requirements, their role within formal systems engineering processes—and their alignment with established INCOSE criteria—remains insuffi-ciently understood. This paper investigates the ex-tent to which AI-based tools can support systems engineers in evaluating requirement quality, with-out replacing professional expertise. The research adopts a structured systems engineering methodol-ogy to compare AI-assisted requirement evaluation with human expert assessment. A controlled study was conducted in which system requirements were evaluated against established INCOSE “good require-ment” criteria by both experienced systems engi-neers and an AI-based assessment tool. The evalu-ation focused on consistency, completeness, clarity, and testability, examining not only accuracy but also the decision logic underlying each assessment. Re-sults indicate that AI tools can provide consistent and rapid preliminary assessments, particularly for syn-tactic and structural quality attributes. However, ex-pert judgment remains essential for contextual inter-pretation, ambiguity resolution, and trade-off rea-soning. Rather than positioning AI as a replace-ment for systems engineers, the findings support its role as a decision-support mechanism within the RE lifecycle. From a systems engineering perspective, this study contributes empirical evidence on how AI can be integrated into RE workflows while preserv-ing traceability, accountability, and engineering con-sistency. The paper further discusses implications for SE practice, including workload reduction, qual-ity assurance processes, and the boundaries of au-tomation. The results inform both practitioners and researchers seeking to responsibly integrate AI into systems engineering processes. 
+
+> arXiv:2604.15222v1 [cs.SE] 16 Apr 2026
+
+Keywords 
+
+Requirements engineering, large language models, requirement quality, functional and non-functional requirements, human-in-the-loop, AI-assisted engi-neering 
+
+# Introduction 
+
+In recent years, AI has revolutionized various aspects of life and industry, becoming a key tool in processes once considered inapplicable to automated mecha-nisms (AI Index Steering Committee, 2024). Leading organizations like Tesla and NASA have integrated AI into large-scale projects (Tesla, 2025; NASA, 2016). For instance, Baidya (Baidya et al., 2022) explored the opportunities and challenges of using AI in crit-ical projects like robotics and aeronautics, where AI assists with data analysis and provides insights into complex engineering tasks. In systems engineering, AI is expected to enhance the ability to analyze and classify engineering require-ments, which form the foundation for product design and development. Existing research has explored AI’s role in classifying requirements in software and quality management systems (Cheligeer et al., 2022 ,Tamai and Anzai, 2018). However, these studies pri-marily cover specific, categorized tasks in software or quality requirements rather than providing a tool for comprehensive, standardized classification as per the International Council on Systems Engineering (IN-COSE) standards (INCOSE, 2023), which classify re-quirements into categories such as functional and non-functional. With increasing demands for prod-uct quality and precision, analyzing requirements based on criteria like necessity, clarity, and verifia-bility is crucial. AI may enhance this process, offering rapid and accurate analyses that increase systems en-gineers’ efficiency. However, significant challenges remain due to AI’s tendency to generate misinter-pretations, as seen in various applications (Maleki et al., 2024,Martínez et al., 2023). Such inaccura-cies could have severe consequences in complex engi-neering projects (Hadar et al., 2022,Pérez-Cerrolaza et al., 2024). This study, therefore, proposes to eval-uate the accuracy and reliability of AI models in such contexts, asking whether AI could match a systems engineer’s judgment or remains merely an auxiliary tool, similar to calculators. This research also exam-ines the feasibility of integrating AI into engineer-ing education, emphasizing how AI-based tools can equip engineers with 21st-century skills while fos-tering responsible engineering practices to address ethical challenges in critical systems. By bridging the gap between research and practical application, it aims to equip engineers with essential tools for to-day’s technological landscape. 
+
+# Background and Related Work 
+
+Requirements engineering is a cornerstone of suc-cessful system development, providing a clear def-inition of what a system must do and under what conditions (Siddique, 2022b). High-quality require-ments serve as the foundation for design and ver-ification, whereas poorly defined requirements can lead to costly rework and project failures . Tradition-ally, requirements are documented in natural lan-guage due to its accessibility and legal familiarity in contracts . However, alternate media (such as mod-els, diagrams, or prototypes) have been explored as complementary ways to express requirements, aim-ing to improve understanding and reduce ambigu-ity (Kolligs and Thomas, 2025). In parallel, the use of AI in RE has been growing. AI techniques have a long history in RE, from early knowledge-based sys-tems to today’s data-driven approaches (Dalpiaz and Niu, 2020b). With modern AI breakthroughs – in-cluding powerful language models like GPT-4, An-thropic’s Claude (Sonnet series), and Meta’s LLaMA – there is renewed potential to automate and enhance many RE activities. 
+
+# Engineering Requirements 
+
+Definition and Role in Systems Engineering 
+
+In systems engineering a requirement is typically a statement of needed functionality, constraint, or property that a system must satisfy to meet stake-holder objectives (Siddique, 2022a). Requirements engineering involves eliciting these needs and trans-lating them into precise system specifications (Sid-dique, 2022a). Well-written requirements ensure that development teams and stakeholders share a common understanding of the system’s goals. 
+
+> 2Figure 1. Requirements Engineering Process: A Flowchart of Core Stages.
+
+Conversely, inadequate requirements are often cited as a primary cause of project issues – “low qual-ity requirements are among the first potential mis-takes. . . felt downstream in the form of increased costs and schedule overruns” (Kolligs and Thomas, 2025). Clear and precise requirements make it eas-ier to verify the system and avoid costly late-stage changes (INCOSE, 2023). 
+
+# Classification of Requirements 
+
+Requirements can be classified along several dimen-sions. A common classification is functional vs. non-functional requirements. Functional requirements specify the services, behaviors, or functions a system must execute – essentially, what the system should do. Non-functional requirements (NFRs), in con-trast, define how the system should perform or the qualities it must have (Siddique, 2022a). These in-clude performance metrics, security levels, usabil-ity, reliability, and other quality attributes or con-straints. For example, an online service’s functional requirement might be the ability to register a new user, while a non-functional requirement could stip-ulate that the registration response occurs within 2 seconds (a performance constraint). Both types are vital: functional requirements ensure the system’s features meet user needs, and NFRs ensure the sys-tem is usable and trustworthy under real-world con-ditions (Siddique, 2022a). 
+
+# Distinguishing Effective from Deficient Requirements 
+
+The distinction between effective and deficient re-quirements in this study follows the quality char-acteristics defined in the INCOSE Guide to Writing Requirements (GtWR) (INCOSE, 2023). Rather than redefining these principles here, the paper adopts the operational definition and evaluation criteria de-scribed in the Methodology section below, where re-quirement quality is assessed using seven INCOSE-aligned attributes suitable for objective human and AI evaluation (INCOSE, 2023). 
+
+# Language Models 
+
+Historical Evolution and Breakthroughs in AI 
+
+Artificial intelligence has progressed through three main waves, each reshaping how RE activities are au-tomated and supported. 
+
+> Figure 2. The Evolution of Artificial Intelligence in Requirements Engineering: A Chronological Perspective.
+
+1. Symbolic AI (mid-1950s – early 1990s). The first wave focused on symbolic reasoning, in which expert systems captured domain knowl-edge with IF–THEN rules and formal logic. Dur-ing the 1980s, such rule-based engines were al-ready inspecting requirements documents for internal consistency (Dalpiaz and Niu, 2020a). Although effective for narrow domains, these systems struggled with ambiguous natural lan-guage and quickly became brittle as project scope grew. 2. Data-Driven Machine Learning (1990s – late 2000s). Rising computational power en-abled statistical natural-language processing and classical machine-learning (ML) algo-rithms for example, support-vector machines and decision trees. Researchers began to prior-itize, classify and cluster large sets of require-ments, reducing manual workload while high-lighting potential defects (Dalpiaz and Niu, 2020a). At the same time, automated detectors of vague or subjective terms emerged, flagging words such as fast or user-friendly that under-mine precision in software specifications (Kol-ligs and Thomas, 2025). 3. Deep Learning and Large Language Models (2010s – present). The third wave was trig-gered by multilayer neural networks and, above all, the Transformer architecture (Vaswani et 
+
+> 3
+
+al., 2017). Deep models trained on vast cor-pora achieved state-of-the-art results across computer vision, speech and NLP. Transfer learning allowed researchers to fine-tune pre-trained language models (e.g., BERT) on mod-est RE datasets, yielding substantial gains in tasks such as functional/non-functional clas-sification (Kaur and Kaur, 2024). Martínez-Fernández(Martínez-Fernández et al., 2022) describes this period as the “rising wave of deep learning,” characterized by increasingly context-aware techniques that can parse entire specification documents, map traceability links and even generate draft requirements. Together, these three waves chart a shift from manu-ally encoded rules to data-centric, context-sensitive analysis transforming RE from labour-intensive bookkeeping into a semi-automated, insight-driven discipline. 
+
+# Artificial Intelligence in Requirements Engineering 
+
+AI has been increasingly applied to support RE, pri-marily through natural language processing (NLP) and machine learning techniques aimed at reduc-ing manual effort and improving consistency. Early work focused on narrow, task-specific automation such as classifying requirements as functional or non-functional, detecting vague or subjective lan-guage, or clustering requirements by topic. Sys-tematic reviews show that, given sufficient training data, machine-learning models can achieve high ac-curacy on well-defined classification tasks, particu-larly in software requirements datasets (e.g., Dalpiaz and Niu, 2020b, Kaur and Kaur, 2024). Recent advances in large language models (LLMs) have expanded these capabilities. Transformer-based models can process longer contexts and cap-ture semantic intent beyond surface-level keywords, enabling more nuanced classification and annotation of requirements. Systems such as NLP4ReF demon-strate that LLM-based approaches can outperform traditional NLP pipelines in requirement classifica-tion and even generate candidate requirements at low cost and high speed (Peer et al., 2024). These results indicate that AI can meaningfully assist with routine RE activities, especially in large-scale or time-constrained projects. However, existing research remains largely frag-mented and domain-specific. Most studies focus on isolated tasks (e.g., FR/NFR classification or require-ment generation), are grounded in software-centric datasets, or rely on accuracy metrics without compar-ing AI behavior to professional systems-engineering judgment. Moreover, while several approaches im-plicitly reference quality attributes, few explicitly align AI evaluations with the structured criteria de-fined in the INCOSE Guide to Writing Requirements. As a result, it remains unclear to what extent AI as-sessments correspond to how experienced systems engineers reason about requirement quality, ambi-guity, and acceptability. Another limitation concerns explainability and ac-countability. Although prompt engineering, expert personas, and structured outputs have been shown to improve AI performance and usability, AI systems still lack access to technical truth, system context, and cross-requirement reasoning. Consequently, the literature consistently emphasizes that AI should function as a decision-support tool rather than an autonomous evaluator, with human experts retain-ing responsibility for validation and trade-off deci-sions (Bender et al., 2021, Shneiderman, 2020). Taken together, prior work suggests strong poten-tial for AI to support RE, but also reveals a gap be-tween task-level automation and engineering-grade evaluation aligned with INCOSE practice. Address-ing this gap requires empirical comparison between AI-based assessments and human expert judgment, using clearly defined quality criteria and controlled experimental design. The following section presents the methodology adopted in this study to evaluate AI performance against experienced systems engi-neers across both requirement quality assessment and functional/non-functional classification. 
+
+# Methodology 
+
+This section explains how the research was de-signed and carried out. The goal was to evaluate how well AI can understand, classify, and assess engineering requirements compared to human ex-perts. The methodology combines traditional sys-tems engineering practices with modern AI tech-niques, creating a structured process from data col-lection to result analysis. Two main datasets were used, one from a real-world case study (Dr. Tools )(Hadar et al., 2022) and another public dataset (PROMISE)(Cleland-Huang et al., 2006) to test AI performance in different contexts. Each step of the process, from requirement review and prompt de-
+
+> 4
+
+sign to model execution and human comparison, was carefully planned to ensure reliable and mean-ingful results. The following subsections describe each stage of the methodology in detail. Figure 3 presents the complete process of the AI research and development journey, from collecting requirements to reporting results. The workflow includes several key stages: acquiring and analyzing data, design-ing prompts, validating inputs with experts, and per-forming AI-based classification. Human benchmarks are then collected to compare AI performance with expert evaluations, followed by accuracy, agreement, and robustness checks to ensure reliability. The pro-cess concludes with synthesis and reporting, where all findings are integrated into a comprehensive sum-mary of results. 
+
+> Figure 3. The Journey of AI Research and Development: From Requirements Acquisition to Findings Reporting
+
+This adaptation preserves the conceptual integrity of INCOSE while enabling a standardized, AI-friendly evaluation framework. The methodology addresses three research questions: 1. RQ1: To what extent can AI classify engineer-ing requirements according to INCOSE “good requirement” criteria compared to an experi-enced systems engineer? 2. RQ2: How effectively can AI distinguish be-tween functional and non-functional require-ments compared to an experienced systems en-gineer? 3. RQ3: What are the advantages and limitations of AI compared to human experts in under-standing and classifying engineering require-ments? 
+
+# Data Collection 
+
+Two independent datasets were used: Project A – DR Tool Case Study: Originating from a graduate engineering project at the Holon Institute of Tech-nology, this dataset involves an RFID-enabled inven-tory management system for operating rooms. It in-cludes 31 stakeholder and 76 optimized system re-quirements, covering: 1. Functional goals: real-time instrument local-ization, set verification before incision, and au-tomated alerts. 2. Non-functional goals: reliability, security, and integration with hospital IT systems. The context diagram (Figure 4) illustrates the sys-tem’s environment, highlighting interactions among surgical staff, sterile-processing departments, and hospital databases. This rich requirement set serves as a benchmark for evaluating AI classification against expert systems engineering practice. 
+
+> Figure 4. Context Diagram of Dr. Tools system.
+
+Project B – PROMISE Dataset: This publicly avail-able corpus contains 969 software requirements (444 functional, 525 non-functional), distributed across twelve non-functional sub-classes (e.g., Security, Usability, Performance). To address class imbal-ance, SMOTE–Tomek resampling was applied within a stratified ten-fold cross-validation pipeline. Logis-tic regression achieved 76.16 % ± 2.58 % accuracy, a significant improvement over the 58.31 % ± 2.05 % baseline, underscoring the value of balanced training data. The bar chart in Figure 5, titled “Number of Exam-ples per Class,” presents the distribution of require-ment examples across different categories. The data show that Functional Requirements (F) dominate the dataset with 444 examples, significantly more than any other class. Following this, Security (SE) has 125 examples, Usability (US) 85, Operability (O) 77, and Performance (P) 67. The remaining classes such as Look-and-Feel (LF), Availability (A), Maintainability (MN), Scalability (SC), Fault Tolerance (FT), Legal (L), 
+
+> 5
+
+and Portability (PO) contain relatively few examples, ranging from 49 down to 17. This indicates a strong imbalance in the dataset, with functional require-ments being the most represented category by a large margin. 
+
+> Figure 5. Requirement type distribution in the PROMISE dataset.
+
+# How the Requirements Were Reviewed 
+
+The process of reviewing the requirements aimed to ensure that each statement met recognized quality standards and could be effectively analyzed by the proposed AI framework. To achieve this, the study followed the principles outlined in the INCOSE Guide to Writing Requirements (GtWR), which defines the characteristics of a “good requirement.” These prin-ciples served as both the foundation for human re-view and the benchmark for automated evaluation. According to INCOSE, a good requirement must be clear, precise, and feasible. Building on this foun-dation, the present research examined how Natural Language Processing (NLP) and Machine Learning (ML) techniques can assist in automatically analyz-ing and classifying requirements. The proposed AI pipeline integrates text classification, clustering, and topic modeling using models such as Support Vec-tor Machines (SVM), Convolutional Neural Networks (CNNs), and Latent Dirichlet Allocation (LDA). To differentiate between functional and non-functional requirements, the Quality Requirements Mining and Classification Process was applied, com-bining Word2Vec and Doc2Vec vectorization meth-ods with CNN architectures. This enables large-scale analysis of Software Requirements Specifications (SRS) in accordance with ISO/IEC 25030 standards. Additionally, the methodology includes AI-assisted test case generation, where LSTM and Transformer-based models extract contextual information to au-tomatically produce preliminary test cases . As part of the review framework, INCOSE’s nine quality traits were used as the reference point, with terminology adapted to align with ISO/IEC/IEEE 29148:2018, IEEE 830:1998, and the NASA Systems Engineering Hand-book (2016). The traits Necessary and Appropriate were replaced with Essential and Independent, em-phasizing the need for requirements to be indispens-able and solution neutral. The terms Correct and Conforming were excluded from automated assess-ment, as they require domain-specific and organi-zational context not yet measurable by AI. Thus, the review process focused on seven key attributes that could be objectively evaluated: Essential, Inde-pendent, Unambiguous, Complete, Singular, Feasi-ble, and Verifiable ensuring that each requirement was both human-validated and machine-assessable according to international quality standards. Two characteristics “Correct” and “Conforming” were in-tentionally omitted from the automated evaluation because: 1. Correct requires domain-specific verification against underlying analysis. 2. Conforming depends on organization-specific style and pattern guidelines. Since these attributes cannot be reliably evaluated through current AI/NLP methods, the research fo-cuses on the seven characteristics that can be as-sessed objectively: 1. Essential: Defines a necessary capability or con-straint. 2. Independent: Specifies what is needed, not how to implement it. 3. Unambiguous: Can be interpreted in only one way. 4. Singular: Expresses a single idea. 5. Feasible: Achievable within project constraints. 6. Verifiable: Can be validated through inspection, analysis, or testing. For the DR Tool, three certified systems engineers independently reviewed each requirement, classify-ing it as either “good” or “not good.” For require-ments deemed not good, they also documented the specific reasons for the quality issues. The reviewers then held a consensus meeting to resolve discrepan-cies and agree on a final classification. This review and consensus process aligns with the evaluation ap-proach described in Section 3.5. For PROMISE, exist-ing expert labels were validated by a single expert re-viewer before use, in accordance with the validation process outlined in Section 3.6. 
+
+> 6
+
+# Prompt Engineering 
+
+Two separate prompt templates were developed: 
+
+• Experiment 1 – DR Tool: The prompt instructed the model to evaluate each requirement against the seven INCOSE criteria and explain which were met or violated. The goal was to assess requirement quality. [Appendix B]. 
+
+• Experiment 2 – PROMISE: The prompt in-structed the model to classify each requirement as Functional or Non-Functional and, for the latter, specify the appropriate NF sub-category. Together, these experiments provide complementary insights: quality evaluation (DR Tool) vs. type clas-sification (PROMISE). 
+
+# Model Execution 
+
+Model Execution All data were processed in batches of ≤ 3,000 tokens using PromptTag. Each batch was evaluated by ChatGPT-4, Claude Sonnet 3.5, and Meta Llama 3. Raw outputs were stored verbatim for subsequent analysis. 
+
+# Human Survey (Project A) 
+
+To benchmark AI performance against human judg-ment, a Google Forms survey was distributed to over 300 systems engineers worldwide. A set of 20 re-quirements selected based on model disagreement was used. Participants (n = 21 complete, 2 partial) performed two tasks per requirement: 1. Indicate whether the requirement is acceptable or problematic. 2. Identify which of the seven INCOSE - like crite-ria are violated. The survey was pilot tested with a small group of par-ticipants to identify potential issues and refine ques-tion clarity before being distributed to the broader user base. Results from a two-layer human baseline: overall acceptability and specific quality violations [Appendix A]. 
+
+# AI-Only Evaluation (Project B) 
+
+PROMISE requirements were classified by the three models without human intervention. Each model as-signed a label (F/NF) and, where relevant, an NF sub-class (e.g., Reliability, Security). Predictions were compared against reference labels. 
+
+# Comparative Analysis 
+
+Performance metrics were computed in Python 3.11 for each model and dataset: 
+
+• Accuracy (quality classification for DR Tool; F/NF for PROMISE) 
+
+• Inter-model agreement 
+
+• Precision, recall, and F1 scores (against the hu-man baseline for Project A) Areas of disagreement between AI and humans were analyzed to reveal systematic ambiguity patterns. 
+
+# Synthesis and Reporting 
+
+The results from AI evaluations, expert review, and human surveys were triangulated to ensure method-ological Validity. A detailed flow diagram outlines in-puts, processes, validation gates, and outputs, lead-ing to actionable recommendations for operational-izing AI in requirements engineering. 
+
+# Results 
+
+This chapter presents the outcomes of applying the methodology described in Chapter 3. The evalua-tion consisted of two complementary analyses. First, the ability of a LLM to identify poorly defined sys-tem engineering requirements according to the IN-COSE Guide to Writing Requirements was compared against survey results provided by professional engi-neers. Second, the LLM’s capability to classify software requirements into functional and non-functional categories was assessed against the pre-labeled PROMISE_exp dataset. 
+
+# AI Model Performance in Requirements Classification 
+
+Section 4.1 presents an in-depth empirical analysis that goes beyond traditional consensus-based eval-uation to examine individual engineer assessments across the complete dataset. Rather than simply comparing AI models against a single consensus out-come, we analyze 420 individual assessment points (21 engineers × 20 requirements) to provide a more nuanced understanding of AI model performance in requirements quality assessment. 
+
+Introduction and Expanded Methodology. The ex-panded methodology examines how three state-of-
+
+> 7
+
+the-art AI language models Claude Sonnet 3.5, GPT-4, and Llama 3 perform when compared against each individual engineer’s assessment, revealing patterns of agreement and disagreement that are obscured by consensus-only analysis. This granular approach provides insights into the variability of human ex-pert judgment and the consistency of AI assessments across different evaluation perspectives. 
+
+Dataset Overview and Expert Panel Statistics. 
+
+• Total Engineers: 21 systems engineering pro-fessionals 
+
+• Requirements Evaluated: 20 medical equip-ment tracking system requirements 
+
+• Individual Assessment Points: 420 ( 21 × 20 )
+
+• Valid Responses: 380 (19 engineers × 20 re-quirements due to some missing responses) 
+
+• Experience Distribution: 86% with 8+ years, 14% with less than 8 years 
+
+• AI Models Tested: Claude Sonnet 3.5, GPT-4, Llama 3 Figure 6 presents the distribution of requirements as classified by the engineers who responded to the survey, based on the quality criteria that they fail to meet. Each requirement may be considered non-compliant with more than one criterion, and the per-centages represent the proportion of requirements that fail to meet the standards for each criterion. 74% of the requirements were found to be unambiguous , 66% fail the Complete criterion, and 42% Verifi-able criterion. Furthermore, 32% Independent crite-rion, 26% Singular criterion (i.e., they express more than one idea), and when looking at the low percent-ages, 11% Essential criterion and 9% Feasible crite-rion (i.e., they are not achievable). This data indi-cates that clarity is strong, but practicality and testa-bility are limited. 
+
+> Figure 6. INCOSE Quality Criteria Violations.
+
+Individual Engineer Assessment Patterns. Anal-ysis of individual engineer assessments reveals sig-nificant variability in quality evaluation stringency. While some engineers identified issues in nearly all requirements, others were more lenient in their as-sessments. This variability provides a crucial context for understanding AI model performance. Engineer agreement varies significantly across re-quirements, ranging from 10% (RS19.1.1) to 84% (RS1.1.1 and RS11.0.1) finding quality issues. This variation indicates that some requirements have ob-vious defects while others are subject to interpreta-tion differences among experts. 
+
+AI Model Performance Against Individual Engi-neers. When comparing AI models against individ-ual engineer assessments rather than just consen-sus, a more complex performance picture emerges. We calculate accuracy for each AI model against all 380 individual assessment points, providing a statis-tically robust evaluation of model performance. 
+
+Detailed Performance Metrics. 
+
+Table ?? summarizes how often each model produced the same answer as the engineers. 
+
+• Claude Sonnet 3.5 achieved the strongest per-formance, matching human judgments in 85% of the comparisons. 
+
+• GPT-4 and Llama 3 showed substantially lower agreement, at approximately 45-48%. The final column, Standard Deviation (Std. Deviation) ,indicates how consistent each model was across dif-ferent engineers: 
+
+• A smaller value (e.g., ±12 .3% ) indicates stable behavior, meaning the model performed simi-larly with all evaluators. 
+
+• A larger value (around ±18% ) suggests the model’s accuracy varied significantly, agreeing well with some engineers but poorly with oth-ers. In summary, Claude Sonnet 3.5 was both the most ac-curate and the most consistent model. In contrast, 
+
+GPT-4 and Llama 3 demonstrated lower accuracy and greater variability across individual evaluators. 
+
+Key Findings and Implications. The key findings reveal strong differentiation in model performance and human consistency. When compared against 380 individual engineer evaluations, Claude Son-net 3.5 achieved an impressive 85% accuracy, sig-nificantly outperforming GPT-4 (45%) and Llama 3 
+
+> 8
+
+Req. ID Engineers Finding Issues Total Responses Percentage Consensus RS1.1.1 16 19 84% Not Good RS2.0.1 14 19 74% Not Good RS3.0.1 13 19 68% Not Good RS5.1.2 10 19 53% Not Good RS6.0.1 12 19 63% Not Good RS9.1.1 15 20 75% Not Good RS11.0.1 16 19 84% Not Good RS14.0.1 16 20 80% Not Good RS19.2.3 11 20 55% Not Good RS19.2.4 12 20 60% Not Good RS8.0.1 13 20 65% Not Good RS11.0.2 14 20 70% Not Good RS24.1.1 11 20 55% Not Good RS18.2.2 15 20 75% Not Good RS1.2.1 14 20 70% Not Good RS9.1.2 16 20 80% Not Good RS15.0.1 13 20 65% Not Good RS17.0.1 8 20 40% Disputed RS19.1.1 2 20 10% Good RS19.2.1 12 20 60% Not Good 
+
+> Table 1. Engineers findings per requirement
+
+Model Point Estimate 95% CI Lower 95% CI Upper Margin of Error 
+
+Claude Sonnet 3.5 85.0% 81.2% 88.3% 3.55% GPT-4o 45.0% 40.1% 49.8% 4.85% Llama 3 47.9% 42.8% 53.1% 5.15%   
+
+> Table 2. Performance Confidence Intervals (95% CI) via Bootstrap Resampling ( n= 10 ,000 )
+
+(47.9%). Claude also showed the highest consis-tency across evaluators, with a performance range of only 25%, while GPT-4 and Llama 3 fluctuated more widely (range: 35%). These performance gaps are statistically significant, as demonstrated by the non-overlapping 95% confidence intervals derived via bootstrap resampling with 10,000 iterations. 
+
+# Classification of Functional and Non-Functional Software Requirements (LLM vs. PROMISE_exp Dataset) 
+
+The PROMISE_exp dataset comprises 969 software requirements, of which 444 are functional and 525 are non-functional. The non-functional require-ments are further divided into eleven subcategories: Quality (SE, 125), Usability (US, 85), Interface (O, 77), Performance (PE, 67), Legal and Finance (LF, 49), Availability (A, 31), Maintainability (MN, 24), Secu-rity (SC, 22), Fault Tolerance (FT, 18), and Portability (L, 15 & PO, 12). Three large language models Claude 3.5 Sonnet, GPT-4o, and Llama 3.0 were tasked first with distinguishing functional vs. non-functional re-quirements and then assigning non-functional items to the correct subcategory. Model outputs were compared against the ground-truth labels to assess per-category accuracy, identify best performers, and quantify performance gaps. NASA and INCOSE do not explicitly prescribe a fixed taxonomy for non-functional requirements (NFRs). In practice, several frameworks are used, and in Israel, a common ap-proach is to map PROMISE dataset codes to standard Systems Engineering (SE) NFR categories. Table 3 presents a mapping that enables a unified classification across projects, applied in our working environment as stated above, facilitating compara-tive analysis and traceability. Table 4 (Original Promise_ext break down), provided fundamental insights into the distribution of re-quirement types used in the study. This data served as the bedrock for evaluating the performance of 
+
+> 9
+
+SE NFR (Canonical) PROMISE Types Mapped 
+
+Functional FSecurity SE Usability (incl. Look-and-feel) US, LF Operability / Supportability OPerformance PE Availability AMaintainability MN Scalability SC Reliability (incl. Fault-Tolerance) FT Legal / Compliance LPortability PO 
+
+> Table 3. Aligning PROMISE_exp requirements with systems-engineering non-functional taxonomy.
+
+Requirement Type Code Count 
+
+Functional Requirement F 444 Availability A 31 Legal L 15 Look-and-feel LF 49 Maintainability MN 24 Operability O 77 Performance PE 67 Scalability SC 22 Security SE 125 Usability US 85 Fault Tolerance FT 18 Portability PO 12 
+
+Total 969 
+
+> Table 4. Original Promise_ext break down
+
+the artificial intelligence models in classifying soft-ware requirements as Functional (FR) versus Non-Functional (NFR). 
+
+Classification Distribution. Figure 7 illustrates how different models compare to the reference classifica-tion by showing the proportion of items each one as-signs to the two categories. It highlights the over-all tendency of each model and allows a visual com-parison of how their distributions align with or di-verge from the reference pattern. It summarizes the comparative distribution of functional and non-functional classifications across the ground truth and three large language models. Figure 7. FR vs. NFR Prediction Distribution 
+
+As we can observe in figure 7 the original data base exhibits a relatively balanced distribution, with 45.8% of the requirements labeled as Functional and 54.2% as Non-Functional. In contrast, Claude 3.5 displays a strong functional bias, assigning 70.6% of the items to the Functional category and only 29.4% 
+
+> 10
+
+to the Non-Functional category. GPT-4o shows a milder deviation, producing 37.4% Functional and 62.6% Non-Functional classifications, indicating a moderate inclination toward Non-Functional label-ing. Llama 3.0 diverges the most from the ground truth, with 29.3% classified as Functional and 70.7% as Non-Functional, reflecting a pronounced non-functional bias. Collectively, these discrepancies highlight systematic tendencies within each model, demonstrating that none of them accurately repli-cates the empirical distribution. Each model exhibits a distinct directional bias—functional overestima-tion in Claude and non-functional overestimation in GPT-4o and Llama—indicating differing sensitivities to linguistic cues present in the dataset. 
+
+Model Performance Observations. The following points highlight behavior differences identified be-tween models, addressing recall differences, subtype trends, and category-specific patterns. Recall mea-sures a model’s ability to correctly identify all rele-vant instances of a given class, defined as the pro-portion of true positives among all actual positives, reflecting how many relevant instances are success-fully detected versus missed. These results are sum-marized in Table 5. 
+
+Functional Requirements ( n = 444 ): 
+
+• Llama 3.0 achieved the highest recall at 86.3%, representing a 41.7-point advantage over Claude. This performance is attributed to ef-fective pattern matching when “shall. . . ” con-structs are used in requirement statements. 
+
+• Claude exhibited low recall (44.6%), indicating a bias toward labeling requirements as non-functional. 
+
+Non-Functional Requirement Subcategories (n = 525 ): 
+
+• Claude 3.5 Sonnet dominated all NFR subtypes, with particularly strong performance in Main-tainability (91.7%) and Fault Tolerance (88.9%), reflecting its strength in detecting nuanced attribute-oriented language. 
+
+• The largest performance gaps were observed in less frequent categories (FT, MN, LF), where specialized terminology and smaller sample sizes amplify inter-model differences. 
+
+• Perfect scores in Portability (L and PO) indicate consistent keyword cues that the model reliably captures. This study demonstrates that large language mod-els can effectively automate the distinction between functional requirements (FR) and non-functional re-quirements (NFR); however, performance varies by task formulation and prompting strategy. Specifi-cally: 
+
+• FR versus NFR classification is best handled by 
+
+GPT-4o (approximately 85% accuracy) when us-ing a clear, single-label prompt (“Classify as Functional or Non-Functional”). 
+
+• NFR subcategory assignment benefits from models specialized in attribute-based lan-guage; Claude 3.5 Sonnet consistently outper-formed other models across quality, perfor-mance, security, and reliability categories. 
+
+• Simple “shall. . . ” statements representing pure functional requirements are reliably recog-nized by Llama 3.0 ; however, it tends to under-detect NFRs without additional prompting. Claude 3.5 processed all 969 requirements correctly. GPT-4o and Llama 3.0 produced 12 % duplicate or split entries. 
+
+# Conclusions and Contributions 
+
+This research examined the use of Large Language Models (LLMs) as AI “copilots” in requirements en-gineering, with a focus on their ability to support requirement quality assessment and classification within an INCOSE-aligned framework. The findings demonstrate that AI can assume a portion of routine analytical work, provided its deployment is embed-ded within a structured human-in-the-loop (HITL) process. Regarding RQ1 , the study shows that modern LLMs can classify requirements according to INCOSE “good requirement” criteria with accuracy comparable to experienced systems engineers. High alignment was observed in identifying problematic require-ments, particularly for structural and linguistic de-fects. However, a consistent rationale gap was identi-fied: while AI and human experts often agree on the need for revision, they may differ on the underlying cause. AI emphasizes formal rule violations, whereas human experts prioritize ambiguity, missing context, and conceptual intent. For RQ2 , the analysis confirms that AI can distin-guish between functional and non-functional re-quirements by identifying underlying intent rather than relying solely on syntax. Different models ex-                      
+
+> 11 Model Task Recall (%) Key Observations
+> Llama 3.0 Functional Requirements (FR) 86.3% Highest recall among all mod-els; demonstrates strong pat-tern matching, especially for ex-plicit “shall”-based requirement formulations. GPT 4.0 Functional Requirements (FR) 44.6% Low recall due to systematic bias toward labeling requirements as non-functional, even when func-tional intent is explicit. Claude 3.5 Sonnet Non-Functional Requirements (NFR) >88% (up to 91.7%) Dominates all NFR subcategories; excels in Maintainability (91.7%) and Fault Tolerance (88.9%) due to sensitivity to nuanced, attribute-oriented language.
+> Table 5. Comparative recall performance across models for Functional and Non-Functional Requirement classification.
+
+hibit distinct classification biases, indicating that model selection must align with project priorities, especially in safety-critical or performance-driven systems. In addressing RQ3 , the results highlight AI’s primary advantages in efficiency, consistency, and repeata-bility. AI applies evaluation criteria uniformly and does not suffer from cognitive fatigue or subjective drift. Conversely, AI’s limitations remain noticeable at this stage of the technology: it does not provide totally accurate performance with regard to technical truth, physical feasibility, and cross-document engi-neering logic, and remains susceptible to hallucina-tions. These gaps between AI capabilities and human ex-pertise directly inform how AI should be operational-ized. Rather than viewing AI’s limitations as a bar-rier, they define a clear boundary for a workflow shift 
+
+in requirements engineering. By delegating struc-tural and linguistic auditing to AI, systems engineers can redirect cognitive effort toward high-value val-idation activities, including feasibility assessment, trade-off analysis, and architectural reasoning. To operationalize this shift, we propose a concrete, AI-assisted workflow allocation. Table 6 maps the specific responsibilities of the AI copilot versus the human expert across the seven evaluated INCOSE cri-teria. Based on this allocation, a recommended three-step workflow emerges for industrial practice: 1. Initial AI Pre-Audit: The LLM autonomously scans draft requirements, resolving Singu-lar/Unambiguous violations and tagging issues related to Verifiability and Independence. 2. Human Review & Reconciliation: The systems engineer reviews AI-flagged items, accepting or modifying the structural recommendations and resolving contextual nuances. 3. Expert Validation: Relieved of basic syntax checking, the engineer focuses deeply on the Essential and Feasible criteria, applying do-main expertise and architectural judgment. This approach demonstrates that LLM-based tools can perform structural and linguistic analysis in alignment with INCOSE guidelines, achieving near expert-level agreement for routine tasks. By intro-ducing AI as a standardized pre-audit layer, organi-zations can reduce early lifecycle review effort and peer-review bottlenecks, while strictly preserving ex-pert authority over system validation and decision-making. 
+
+# Future Applications and Potential Challenges 
+
+AI presents significant opportunities for RE that can be expected, including automated requirements elic-itation from stakeholder interviews, synthesis of re-quirements from high-level goals, personalization of documentation for diverse audiences, and con-tinuous monitoring for evolving needs. Large lan-guage models can already draft candidate require-ments, detect ambiguities, and propose refinements and are continuously evolving. Integration of AI with alternative media such as visual models could en-hance clarity and stakeholder communication (Kaur and Kaur, 2024). Key challenges remain: ensur-ing validation and trust in AI outputs, establishing accountability for AI-generated requirements, safe-
+
+> 12
+
+INCOSE Criterion AI Copilot Role (Pre-Audit) Human Expert Role (Validation & De-cision) 
+
+Unambiguous Flags vague terminology and linguistic in-consistencies. Resolves domain-specific ambiguity and contextual nuances. 
+
+Singular Identifies and splits compound require-ments (e.g., detecting "and/or"). Reviews and approves the separated re-quirement statements. 
+
+Independent Detects implementation-specific lan-guage and design bias. Ensures true solution neutrality based on system architecture. 
+
+Complete Highlights missing parameters, units, or standard constraints. Validates conceptual completeness against stakeholder needs. 
+
+Verifiable Checks for quantifiable metrics and mea-surable targets. Confirms actual testability within project resources and constraints. 
+
+Essential Limited. Flags potential duplicates or out-of-scope keywords. 
+
+Primary Driver. Determines necessity for the system’s core mission. 
+
+Feasible Limited. Flags extreme metric anomalies based on training data. 
+
+Primary Driver. Assesses technical, bud-getary, and schedule realism. 
+
+> Table 6. Decision Allocation: Mapping AI vs. Human Responsibilities across INCOSE Quality Criteria.
+
+guarding sensitive data, maintaining ethical and reg-ulatory compliance, and integrating AI tools into the inherently social RE process. Training engineers to use AI effectively is also critical, especially in the range of possibilities for automation, but also no-tably in the limitations as described in this research. There is a need for further empirical evidence on real-world adoption, frameworks for responsible AI use, and multidisciplinary collaboration. With careful governance, AI combined with established RE prac-tices is starting to show a potential to improve ef-ficiency, manage complexity, and enhance require-ment quality, ultimately leading to better systems, but as noted, more empirical research is required. 
+
+# Acknowledgments 
+
+The conceptual design of the research, its implemen-tation, analysis of results and conclusions are origi-nal authors’ work. ChatGPT 5.2 assisted with con-sistency checking of the structure and flow of the paper, assisting in identifying repetitive paragraphs, and English corrections. It assisted in a limited way in the generation of the paper’s abstract which was extensively revised by the authors. 
+
+# References 
+
+AI Index Steering Committee. (2024). AI index 2024 annual report. Baidya, S., Das, S. K., Uddin, M. H., Kosek, C., & Summers, C. (2022). Digital twin in safety-critical robotics applications: Opportunities and challenges. Proceedings of the 2022 IEEE International Performance, Computing, and Communications Conference (IPCCC) , 101– 107. https:// doi.org/ 10.1109/ IPCCC55026. 2022.9894313 Bender, E. M., Gebru, T., McMillan-Major, A., & Shmitchell, S. (2021). On the dangers of stochastic parrots: Can language models be too big? Proceedings of the 2021 ACM Con-ference on Fairness, Accountability, and Trans-parency (FAccT ’21) , 610–623. Cheligeer, C., Huang, J., Wu, G., Bhuiyan, N., Xu, Y., & Zeng, Y. (2022). Machine learning in re-quirements elicitation: A literature review. AI EDAM , 36 , e32. https : / / doi . org / 10 . 1017 / S0890060422000103 Cleland-Huang, J., Settimi, R., Zou, X., & Solc, P. (2006). The detection and classification of non-functional requirements. Proceedings of the 14th IEEE International Requirements En-gineering Conference (RE’06) , 39–48. https:// doi.org/10.1109/RE.2006.65 Dalpiaz, F., & Niu, N. (2020a). Requirements engi-neering in the days of artificial intelligence. 
+
+IEEE Software , 37 (4), 7–10. https : / / doi . org / 10.1109/MS.2020.2986047 Dalpiaz, F., & Niu, N. (2020b). Requirements engi-neering in the days of artificial intelligence. 
+
+IEEE Software , 38 (4), 7–12. https : / / doi . org / 10.1109/MS.2020.2973364 Hadar, A., Levy, N., & Winokur, M. (2022). Manage-ment and detection system for medical surgi-cal equipment. https:// arxiv.org/ abs/ 2211. 02351 INCOSE. (2023). Guide to writing requirements (ver-sion 4) . International Council on Systems En-gineering. https : / / www . incose . org / 
+
+> 13
+
+docs / default - source / working - groups / requirements-wg/gtwr/incose_rwg_gtwr_v4_ 040423_final_drafts.pdf?sfvrsn=5c877fc7_2 Kaur, K., & Kaur, P. (2024). The application of AI techniques in requirements classification: A systematic mapping. Artificial Intelligence Re-view , 57 , Article 57. https://doi.org/10.1007/ s10462-023-10667-1 Kolligs, J. W., & Thomas, L. D. W. (2025). Character-izing efficacy of alternative media for require-ments expression. Systems , 13 (5), 314. https: //doi.org/10.3390/systems13050314 Maleki, N., Soni, P., Padmanabhan, K., & Dutta, K. (2024). AI hallucinations: A misnomer worth clarifying. 2024 IEEE Conference on Artificial Intelligence (CAI) , 133–138. https:// doi.org/ 10.1109/CAI58096.2024.00026 Martínez, G., Conde, J., Reviriego, P., Merino-Gómez, E., Hernández, J. A., & Lombardi, F. (2023). How many words does Chat-GPT know? the answer is ChatWords. arXiv preprint arXiv:2309.16777 . https : / / doi . org / 10.48550/arXiv.2309.16777 Martínez-Fernández, S., Bogner, J., Franch, X., Oriol, M., Siebert, J., Trendowicz, A., et al. (2022). Software engineering for AI-based systems: A survey. ACM Transactions on Software En-gineering and Methodology , 31 (4). https://doi. org/10.1145/3557944 NASA. (2016). Nasa systems engineering handbook, chapter 2.0: Fundamentals of systems engineer-ing [NASA/SP-2016-6105 Rev 2]. National Aeronautics and Space Administration. https: / / www . nasa . gov / reference / 2 - 0 -fundamentals-of-systems-engineering/ Peer, J., Mordecai, Y., & Reich, Y. (2024). NLP4ReF: Requirements classification and forecasting: From model-based design to large language models. 2024 IEEE Aerospace Conference , 1– 16. https : / / doi . org / 10 . 1109 / AERO58547. 2024.10521022 Pérez-Cerrolaza, J., Abella, J., Borg, M., Donzella, C., Cerquides, J., Cazorla, F. J., & Flores, J. L. (2024). Artificial intelligence for safety-critical systems in industrial and transporta-tion domains: A survey. ACM Computing Sur-veys , 56 (7), 1–40. https : / / doi . org / 10 . 1145 / 3626314 Shneiderman, B. (2020). Human-centered artificial intelligence: Reliable, safe & trustworthy. In-ternational Journal of Human-Computer Inter-action , 36 (6), 495–504. Siddique, I. M. (2022a). Harnessing artificial intelli-gence for systems engineering: Promises and pitfalls. European Journal of Advances in En-gineering and Technology , 9(9), 67–72. https: //doi.org/10.5281/zenodo.11545453 Siddique, I. M. (2022b). Systems engineering in com-plex systems: Challenges and strategies for success. European Journal of Advances in En-gineering and Technology , 9(9), 61–66. https: //doi.org/10.5281/zenodo.11545350 Tamai, T., & Anzai, T. (2018). Quality requirements analysis with machine learning. Proceedings of the 13th International Conference on Evalua-tion of Novel Approaches to Software Engineer-ing (ENASE) , 241–248. Tesla. (2025). Artificial intelligence at Tesla. Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, Ł., & Polo-sukhin, I. (2017). Attention is all you need. 
+
+Advances in Neural Information Processing Systems , 30 . https://arxiv.org/abs/1706.03762
