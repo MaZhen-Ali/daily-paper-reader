@@ -1,0 +1,54 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2604.18770v1/fig-001.webp",
+      "caption": "TABLE IV SOLUTION SPACE OUTPUT ARTIFACTS: SIX CATEGORIES WITH COVERAGE AND SUB-ELEMENT REFERENCES (N=18)",
+      "page": 6,
+      "index": 1,
+      "width": 1060,
+      "height": 210
+    },
+    {
+      "url": "assets/figures/arxiv/2604.18770v1/fig-002.webp",
+      "caption": "TABLE VI STAGE COVERAGE RATING CRITERIA (ABBREVIATED)",
+      "page": 6,
+      "index": 2,
+      "width": 513,
+      "height": 245
+    },
+    {
+      "url": "assets/figures/arxiv/2604.18770v1/fig-003.webp",
+      "caption": "TABLE VII STAGE COVERAGE MATRIX: BP→MLS TRANSFORMATION (N=18)",
+      "page": 7,
+      "index": 3,
+      "width": 1051,
+      "height": 615
+    },
+    {
+      "url": "assets/figures/arxiv/2604.18770v1/fig-004.webp",
+      "caption": "TABLE VIII MAPPING BETWEEN ARTIFACT CATEGORIES AND ATP COMPONENTS",
+      "page": 7,
+      "index": 4,
+      "width": 508,
+      "height": 342
+    },
+    {
+      "url": "assets/figures/arxiv/2604.18770v1/fig-005.webp",
+      "caption": "TABLE I DATA EXTRACTION SCHEMA (19 FIELDS)",
+      "page": 3,
+      "index": 5,
+      "width": 504,
+      "height": 414
+    },
+    {
+      "url": "assets/figures/arxiv/2604.18770v1/fig-006.webp",
+      "caption": "TABLE II INVENTORY OF BP→AI TRANSFORMATION APPROACHES (N=18)",
+      "page": 4,
+      "index": 6,
+      "width": 1051,
+      "height": 408
+    }
+  ]
+}

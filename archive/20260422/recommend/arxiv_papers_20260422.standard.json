@@ -1,0 +1,568 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-04-22T20:16:57.011320+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 6,
+    "deep_cap": 6,
+    "deep_selected": 6,
+    "quick_candidates": 8,
+    "quick_skim_target": 11,
+    "quick_selected": 8
+  },
+  "deep_dive": [
+    {
+      "id": "2604.15222v1",
+      "source": "arxiv",
+      "title": "AI-Assisted Requirements Engineering: An Empirical Evaluation Relative to Expert Judgment",
+      "abstract": "Artificial Intelligence is increasingly introduced into systems engineering activities, particularly within requirements engineering, where quality assessment and validation remain heavily dependent on expert judgment. While recent AI tools demonstrate promising capabilities in analyzing and generating requirements, their role within formal systems engineering processes-and their alignment with established INCOSE criteria-remains insufficiently understood. This paper investigates the extent to which AI-based tools can support systems engineers in evaluating requirement quality, without replacing professional expertise. The research adopts a structured systems engineering methodology to compare AI-assisted requirement evaluation with human expert assessment. A controlled study was conducted in which system requirements were evaluated against established INCOSE ``good requirement'' criteria by both experienced systems engineers and an AI-based assessment tool. The evaluation focused on consistency, completeness, clarity, and testability, examining not only accuracy but also the decision logic underlying each assessment. Results indicate that AI tools can provide consistent and rapid preliminary assessments, particularly for syntactic and structural quality attributes. However, expert judgment remains essential for contextual interpretation, ambiguity resolution, and trade-off reasoning. Rather than positioning AI as a replacement for systems engineers, the findings support its role as a decision-support mechanism within the RE lifecycle. From a systems engineering perspective, this study contributes empirical evidence on how AI can be integrated into RE workflows while preserving traceability, accountability, and engineering consistency.",
+      "authors": [
+        "Oz Levy",
+        "Ilya Dikman",
+        "Natan Levy",
+        "Michael Winokur"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-04-16T16:53:57+00:00",
+      "link": "https://arxiv.org/pdf/2604.15222v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "AI-assisted requirement quality assessment and validation in systems engineering",
+      "llm_evidence_cn": "系统工程中AI辅助的需求质量评估与验证",
+      "llm_evidence": "系统工程中AI辅助的需求质量评估与验证",
+      "canonical_evidence": "系统工程中AI辅助的需求质量评估与验证",
+      "llm_tldr_en": "Evaluates AI tools for requirement quality assessment against expert judgment and INCOSE criteria.",
+      "llm_tldr_cn": "评估AI工具在需求质量评估中相对于专家判断和INCOSE标准的表现。",
+      "llm_tldr": "评估AI工具在需求质量评估中相对于专家判断和INCOSE标准的表现。",
+      "llm_tags": [
+        "query:re-us:composite"
+      ],
+      "matched_query_tag": "query:re-us:composite",
+      "matched_query_text": "Papers central to 需求工程领域的用户故事相关的论文, especially work that connects or combines: User stories in software development and requirements engineering; Requirements engineering methodologies and practices; Agile requirements engineering and management; Quality assessment and improvement of user stories; Automated extraction of user stories from text; Defining and validating user story acceptance criteria; State of the art in user story research for requirements engineering; Automated tools for user story generation and validation; Impact of user story quality on software project success.",
+      "matched_requirement_id": "req-composite-re-us",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2604.18228v1",
+      "source": "arxiv",
+      "title": "Towards an Agentic LLM-based Approach to Requirement Formalization from Unstructured Specifications",
+      "abstract": "Early-stage specifications of safety-critical systems are typically expressed in natural language, making it difficult to derive formal properties suitable for verification and needed to guarantee safety. While recent Large Language Model (LLM)-based approaches can generate formal artifacts from text, they mainly focus on syntactic correctness and do not ensure semantic alignment between informal requirements and formally verifiable properties. We propose an agentic methodology that automatically extracts verification-ready properties from unstructured specifications. The modular pipeline combines requirement extraction, compatibility filtering with respect to a target formalism, and translation into formal properties. Experimental results across three scenarios show that the pipeline generates syntactically and semantically aligned formal properties with a 77.8% accuracy. By explicitly accounting for modeling and verification constraints, the approach is a paving step towards exploiting Artificial Intelligence (AI) to bridge the gap between informal descriptions and semantically meaningful formal verification.",
+      "authors": [
+        "Alberto Tagliaferro",
+        "Bruno Guindani",
+        "Livia Lestingi",
+        "Matteo Rossi"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-04-20T13:12:04+00:00",
+      "link": "https://arxiv.org/pdf/2604.18228v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Requirement extraction and formalization from unstructured specifications",
+      "llm_evidence_cn": "从非结构化规范中提取需求并进行形式化",
+      "llm_evidence": "从非结构化规范中提取需求并进行形式化",
+      "canonical_evidence": "从非结构化规范中提取需求并进行形式化",
+      "llm_tldr_en": "Proposes an agentic pipeline to extract and formalize requirements from natural language specifications.",
+      "llm_tldr_cn": "提出了一种从自然语言规范中自动提取并形式化需求的智能体流水线。",
+      "llm_tldr": "提出了一种从自然语言规范中自动提取并形式化需求的智能体流水线。",
+      "llm_tags": [
+        "query:re-us:composite"
+      ],
+      "matched_query_tag": "query:re-us:composite",
+      "matched_query_text": "Papers central to 需求工程领域的用户故事相关的论文, especially work that connects or combines: User stories in software development and requirements engineering; Requirements engineering methodologies and practices; Agile requirements engineering and management; Quality assessment and improvement of user stories; Automated extraction of user stories from text; Defining and validating user story acceptance criteria; State of the art in user story research for requirements engineering; Automated tools for user story generation and validation; Impact of user story quality on software project success.",
+      "matched_requirement_id": "req-composite-re-us",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2604.13814v1",
+      "source": "arxiv",
+      "title": "Cognitive Offloading in Agile Teams: How Artificial Intelligence Reshapes Risk Assessment and Planning Quality",
+      "abstract": "Recent advances in artificial intelligence (AI) have shown promise in automating key aspects of Agile project management, yet their impact on team cognition remains underexplored. In this work, we investigate cognitive offloading in Agile sprint planning by conducting a controlled, three-condition experiment comparing AI-only, human-only, and hybrid planning models on a live client deliverable at a mid-sized digital agency. Using quantitative metrics -- including estimation accuracy, rework rates, and scope change recovery time -- alongside qualitative indicators of planning robustness, we evaluate each model's effectiveness beyond raw efficiency. We find that while AI-only planning minimizes time and cost, it significantly degrades risk capture rates and increases rework due to unstated assumptions, whereas human-only planning excels at adaptability but incurs substantial overhead. Drawing on these findings, we propose a theoretical framework for hybrid AI-human sprint planning that assigns algorithmic tools to estimation and backlog formatting while mandating human deliberation for risk assessment and ambiguity resolution. Our results challenge the assumption that efficiency equates to effectiveness, offering actionable governance strategies for organizations seeking to augment rather than erode team cognition.",
+      "authors": [
+        "Adriana Caraeni",
+        "Alexander Shick",
+        "Andrew Lan"
+      ],
+      "primary_category": "cs.HC",
+      "categories": [
+        "cs.HC",
+        "cs.AI"
+      ],
+      "published": "2026-04-15T12:48:29+00:00",
+      "link": "https://arxiv.org/pdf/2604.13814v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "AI in Agile sprint planning and risk assessment",
+      "llm_evidence_cn": "敏捷迭代计划和风险评估中的人工智能",
+      "llm_evidence": "敏捷迭代计划和风险评估中的人工智能",
+      "canonical_evidence": "敏捷迭代计划和风险评估中的人工智能",
+      "llm_tldr_en": "Investigates how AI impacts cognitive offloading and planning quality in Agile team environments.",
+      "llm_tldr_cn": "研究了人工智能如何影响敏捷团队环境中的认知卸载和计划质量。",
+      "llm_tldr": "研究了人工智能如何影响敏捷团队环境中的认知卸载和计划质量。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Agile requirements engineering and management",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2604.16198v1",
+      "source": "arxiv",
+      "title": "Bridging the Gap between User Intent and LLM: A Requirement Alignment Approach for Code Generation",
+      "abstract": "Code generation refers to automatically producing executable programs from user requirements. Recently, researchers have explored approaches to enhance the correctness of generated code with advanced large language models. Although achieving improvements, existing approaches focus on designing reasoning strategies or post-refinement methods to enhance code generation performance. Despite their differences, all these methods share a common assumption: the LLM can correctly understand the given requirement. However, this assumption does not always hold. To fill this gap, we propose REA-Coder, a requirement alignment approach to enhance the code generation performance of LLMs. REA-Coder involves first identifying the requirement content that does not align with LLMs and aligning the requirements. Then, based on the aligned requirements, LLMs generate code and further verify whether the generated code aligns with the requirements, iterating this process of requirement alignment and code generation until generating correct code or achieving the maximum number of iterations. Experimental results show that REA-Coder outperforms all advanced baselines on four LLMs across five programming benchmarks. Concretely, REA-Coder achieves average improvements of 7.93%, 30.25%, 26.75%, 8.59%, and 8.64% on the five benchmark datasets, demonstrating the effectiveness of requirement alignment for improving the code generation performance of LLMs.",
+      "authors": [
+        "Jia Li",
+        "Ruiqi Bai",
+        "Yangkang Luo",
+        "Yiran Zhang",
+        "Wentao Yang",
+        "Zeyu Sun",
+        "Tiankuo Zhao",
+        "Dongming Jin",
+        "Lei Li",
+        "Zhi Jin"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-04-17T16:08:05+00:00",
+      "link": "https://arxiv.org/pdf/2604.16198v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "requirement alignment for code generation",
+      "llm_evidence_cn": "代码生成的需求对齐",
+      "llm_evidence": "代码生成的需求对齐",
+      "canonical_evidence": "代码生成的需求对齐",
+      "llm_tldr_en": "Proposes REA-Coder to align user requirements with LLM understanding for better code generation.",
+      "llm_tldr_cn": "提出了REA-Coder，将用户需求与LLM理解对齐，以实现更好的代码生成。",
+      "llm_tldr": "提出了REA-Coder，将用户需求与LLM理解对齐，以实现更好的代码生成。",
+      "llm_tags": [
+        "query:re-us:composite"
+      ],
+      "matched_query_tag": "query:re-us:composite",
+      "matched_query_text": "Papers central to 需求工程领域的用户故事相关的论文, especially work that connects or combines: User stories in software development and requirements engineering; Requirements engineering methodologies and practices; Agile requirements engineering and management; Quality assessment and improvement of user stories; Automated extraction of user stories from text; Defining and validating user story acceptance criteria; State of the art in user story research for requirements engineering; Automated tools for user story generation and validation; Impact of user story quality on software project success.",
+      "matched_requirement_id": "req-composite-re-us",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2604.17186v1",
+      "source": "arxiv",
+      "title": "Persona-Based Requirements Engineering for Explainable Multi-Agent Educational Systems: A Scenario Simulator for Clinical Reasoning Training",
+      "abstract": "As Artificial Intelligence (AI) and Agentic AI become increasingly integrated across sectors such as education and healthcare, it is critical to ensure that Multi-Agent Education System (MAES) is explainable from the early stages of requirements engineering (RE) within the AI software development lifecycle. Explainability is essential to build trust, promote transparency, and enable effective human-AI collaboration. Although personas are well-established in human-computer interaction to represent users and capture their needs and behaviors, their role in RE for explainable MAES remains underexplored. This paper proposes a human-first, persona-driven, explainable MAES RE framework and demonstrates the framework through a MAES for clinical reasoning training. The framework integrates personas and user stories throughout the RE process to capture the needs, goals, and interactions of various stakeholders, including medical educators, medical students, AI patient agent, and clinical agents (physical exam agent, diagnostic agent, clinical intervention agent, supervisor agent, evaluation agent). The goals, underlying models, and knowledge base shape agent interactions and inform explainability requirements that guided the clinical reasoning training of medical students. A post-usage survey found that more than 78\\% of medical students reported that MAES improved their clinical reasoning skills. These findings demonstrate that RE based on persona effectively connects technical requirements with non-technical medical students from a human-centered approach, ensuring that explainable MAES are trustworthy, interpretable, and aligned with authentic clinical scenarios from the early stages of the AI system engineering. The partial MAES for the clinical scenario simulator is~\\href{https://github.com/2sigmaEdTech/MAS/}{open sourced here}.",
+      "authors": [
+        "Weibing Zheng",
+        "Laurah Turner",
+        "Jess Kropczynski",
+        "Matthew Kelleher",
+        "Murat Ozer",
+        "Shane Halse"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI",
+        "cs.ET",
+        "cs.HC",
+        "cs.MA"
+      ],
+      "published": "2026-04-19T01:18:44+00:00",
+      "link": "https://arxiv.org/pdf/2604.17186v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "persona-based requirements engineering framework for AI systems",
+      "llm_evidence_cn": "基于画像的AI系统需求工程框架",
+      "llm_evidence": "基于画像的AI系统需求工程框架",
+      "canonical_evidence": "基于画像的AI系统需求工程框架",
+      "llm_tldr_en": "Introduces a persona-driven requirements engineering framework for explainable multi-agent educational systems.",
+      "llm_tldr_cn": "为可解释的多智能体教育系统提出了一种基于用户画像的需求工程框架。",
+      "llm_tldr": "为可解释的多智能体教育系统提出了一种基于用户画像的需求工程框架。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2604.18770v1",
+      "source": "arxiv",
+      "title": "From Business Problems to AI Solutions: Where Does Transformation Support Fail",
+      "abstract": "Translating business problems into well-specified machine learning solutions is a prerequisite for successful AI systems, yet this upstream translation is still one of the least supported steps in existing methodologies. We conduct a structured narrative literature review of 18 approaches spanning requirements engineering (RE), machine learning (ML) project management, and automation. We organize these approaches into a taxonomy of four families and compare them across six input artifact categories, six output artifact categories, and a transformation framework of seven stages, grounded in RE refinement theory and ML lifecycle process. Our study shows that most approaches list ML task or algorithm specification among their expected outputs, yet only four provide partial guidance for deriving it, and none provides systematic guidance. We characterize this gap as the Analytics Translation Problem (ATP) and derive five research recommendations addressing multi-formulation exploration, task derivation guidance, constraint-algorithm filtering, probabilistic traceability, and data-triggered revision.",
+      "authors": [
+        "Abir Trabelsi",
+        "Imen Benzarti",
+        "Hafedh Mili",
+        "Darine Ameyed"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-04-20T19:26:22+00:00",
+      "link": "https://arxiv.org/pdf/2604.18770v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "review of requirements engineering refinement theory for AI solutions",
+      "llm_evidence_cn": "对AI解决方案需求工程细化理论的综述",
+      "llm_evidence": "对AI解决方案需求工程细化理论的综述",
+      "canonical_evidence": "对AI解决方案需求工程细化理论的综述",
+      "llm_tldr_en": "Reviews methodologies for translating business problems into AI requirements using RE refinement theory.",
+      "llm_tldr_cn": "基于需求工程细化理论，综述了将业务问题转化为AI需求的方法论。",
+      "llm_tldr": "基于需求工程细化理论，综述了将业务问题转化为AI需求的方法论。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2604.14624v1",
+      "source": "arxiv",
+      "title": "Asking What Matters: Reward-Driven Clarification for Software Engineering Tasks",
+      "abstract": "Humans often specify tasks incompletely, so assistants must know when and how to ask clarifying questions. However, effective clarification remains challenging in software engineering tasks as not all missing information is equally valuable, and questions must target information users can realistically provide. We study clarification in real software engineering tasks by quantifying which types of information most affect task success and which questions elicit useful responses from simulated users. Using Shapley attribution and distributional comparisons, we identify two key properties of effective clarification: task relevance (which information predicts success) and user answerability (what users can realistically provide). We operationalize these properties as multi-stage reinforcement learning rewards to train CLARITI, an 8B-parameter clarification module, that matches GPT-5's resolution rate on underspecified issues while generating 41% fewer questions. Our results suggest that grounding reward design in empirical analysis of information impact and user answerability improves clarification efficiency.",
+      "authors": [
+        "Sanidhya Vijayvargiya",
+        "Vijay Viswanathan",
+        "Graham Neubig"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-04-16T05:11:02+00:00",
+      "link": "https://arxiv.org/pdf/2604.14624v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "clarification for incomplete task specifications in software engineering",
+      "llm_evidence_cn": "针对软件工程任务中不完整规范的澄清机制",
+      "llm_evidence": "针对软件工程任务中不完整规范的澄清机制",
+      "canonical_evidence": "针对软件工程任务中不完整规范的澄清机制",
+      "llm_tldr_en": "Proposes a reward-driven clarification framework to handle incomplete task specifications in software engineering.",
+      "llm_tldr_cn": "提出一种奖励驱动的澄清框架，用于处理软件工程任务中不完整的规范说明。",
+      "llm_tldr": "提出一种奖励驱动的澄清框架，用于处理软件工程任务中不完整的规范说明。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2604.13559v1",
+      "source": "arxiv",
+      "title": "WebMAC: A Multi-Agent Collaborative Framework for Scenario Testing of Web Systems",
+      "abstract": "Scenario testing is an important technique for detecting errors in web systems. Testers draft test scenarios and convert them into test scripts for execution. Early methods relied on testers to convert test scenarios into test scripts. Recent LLM-based scenario testing methods can generate test scripts from natural language descriptions of test scenarios. However, these methods are not only limited by the incompleteness of descriptions but also overlook test adequacy criteria, making it difficult to detect potential errors. To address these limitations, this paper proposes WebMAC, a multi-agent collaborative framework for scenario testing of web systems. WebMAC can complete natural language descriptions of test scenarios through interactive clarification and transform adequate instantiated test scenarios via equivalence class partitioning. WebMAC consists of three multi-agent modules, responsible respectively for completing natural language descriptions of test scenarios, transforming test scenarios, and converting test scripts. We evaluated WebMAC on four web systems. Compared with the SOTA method, WebMAC improves the execution success rate of generated test scripts by 30%-60%, increases testing efficiency by 29%, and reduces token consumption by 47.6%. Furthermore, WebMAC can effectively detect more errors in web systems.",
+      "authors": [
+        "Zhenyu Wan",
+        "Gong Chen",
+        "Qing Huang",
+        "Xiaoyuan Xie"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-04-15T07:07:30+00:00",
+      "link": "https://arxiv.org/pdf/2604.13559v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Scenario testing and completion of natural language descriptions",
+      "llm_evidence_cn": "场景测试与自然语言描述的补全",
+      "llm_evidence": "场景测试与自然语言描述的补全",
+      "canonical_evidence": "场景测试与自然语言描述的补全",
+      "llm_tldr_en": "A framework for web scenario testing that completes natural language descriptions to improve test adequacy.",
+      "llm_tldr_cn": "一种Web场景测试框架，通过补全自然语言描述来提高测试充分性。",
+      "llm_tldr": "一种Web场景测试框架，通过补全自然语言描述来提高测试充分性。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Defining and validating user story acceptance criteria",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2604.16258v1",
+      "source": "arxiv",
+      "title": "Characterising LLM-Generated Competency Questions: a Cross-Domain Empirical Study using Open and Closed Models",
+      "abstract": "Competency Questions (CQs) are a cornerstone of requirement elicitation in ontology engineering. CQs represent requirements as a set of natural language questions that an ontology should satisfy; they are traditionally modelled by ontology engineers together with domain experts as part of a human-centred, manual elicitation process. The use of Generative AI automates CQ creation at scale, therefore democratising the process of generation, widening stakeholder engagement, and ultimately broadening access to ontology engineering. However, given the large and heterogeneous landscape of LLMs, varying in dimensions such as parameter scale, task and domain specialisation, and accessibility, it is crucial to characterise and understand the intrinsic, observable properties of the CQs they produce (e.g., readability, structural complexity) through a systematic, cross-domain analysis. This paper introduces a set of quantitative measures for the systematic comparison of CQs across multiple dimensions. Using CQs generated from well defined use cases and scenarios, we identify their salient properties, including readability, relevance with respect to the input text and structural complexity of the generated questions. We conduct our experiments over a set of use cases and requirements using a range of LLMs, including both open (KimiK2-1T, LLama3.1-8B, LLama3.2-3B) and closed models (Gemini 2.5 Pro, GPT 4.1). Our analysis demonstrates that LLM performance reflects distinct generation profiles shaped by the use case.",
+      "authors": [
+        "Reham Alharbi",
+        "Valentina Tamma",
+        "Terry R. Payne",
+        "Jacopo de Berardinis"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-04-17T17:16:32+00:00",
+      "link": "https://arxiv.org/pdf/2604.16258v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "requirement elicitation using natural language questions",
+      "llm_evidence_cn": "使用自然语言问题的需求获取",
+      "llm_evidence": "使用自然语言问题的需求获取",
+      "canonical_evidence": "使用自然语言问题的需求获取",
+      "llm_tldr_en": "Studies LLM-generated competency questions as a method for automated requirement elicitation.",
+      "llm_tldr_cn": "研究了LLM生成的胜任力问题，作为一种自动化需求获取的方法。",
+      "llm_tldr": "研究了LLM生成的胜任力问题，作为一种自动化需求获取的方法。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2604.14034v1",
+      "source": "arxiv",
+      "title": "Large Language Models to Enhance Business Process Modeling: Past, Present, and Future Trends",
+      "abstract": "Recent advances in Generative Artificial Intelligence, particularly Large Language Models (LLMs), have stimulated growing interest in automating or assisting Business Process Modeling tasks using natural language. Several approaches have been proposed to transform textual process descriptions into BPMN and related workflow models. However, the extent to which these approaches effectively support complex process modeling in organizational settings remains unclear. This article presents a literature review of AI-driven methods for transforming natural language into BPMN process models, with a particular focus on the role of LLMs. Following a structured review strategy, relevant studies were identified and analyzed to classify existing approaches, examine how LLMs are integrated into text-to-model pipelines, and investigate the evaluation practices used to assess generated models. The analysis reveals a clear shift from rule-based and traditional NLP pipelines toward LLM-based architectures that rely on prompt engineering, intermediate representations, and iterative refinement mechanisms. While these approaches significantly expand the capabilities of automated process model generation, the literature also exposes persistent challenges related to semantic correctness, evaluation fragmentation, reproducibility, and limited validation in real-world organizational contexts. Based on these findings, this review identifies key research gaps and discusses promising directions for future research, including the integration of contextual knowledge through Retrieval-Augmented Generation (RAG), its integration with LLMs, the development of interactive modeling architectures, and the need for more comprehensive and standardized evaluation frameworks.",
+      "authors": [
+        "João Bettencourt",
+        "Sérgio Guerreiro"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI",
+        "cs.IR"
+      ],
+      "published": "2026-04-15T16:15:03+00:00",
+      "link": "https://arxiv.org/pdf/2604.14034v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "transforming textual process descriptions into formal models",
+      "llm_evidence_cn": "将文本流程描述转换为正式模型",
+      "llm_evidence": "将文本流程描述转换为正式模型",
+      "canonical_evidence": "将文本流程描述转换为正式模型",
+      "llm_tldr_en": "Reviews AI methods for transforming natural language descriptions into business process models.",
+      "llm_tldr_cn": "综述了将自然语言描述转换为业务流程模型的AI方法。",
+      "llm_tldr": "综述了将自然语言描述转换为业务流程模型的AI方法。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Automated extraction of user stories from text",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2604.17464v1",
+      "source": "arxiv",
+      "title": "Project Prometheus: Bridging the Intent Gap in Agentic Program Repair via Reverse-Engineered Executable Specifications",
+      "abstract": "The transition from neural machine translation to agentic workflows has revolutionized Automated Program Repair (APR). However, existing agents, despite their advanced reasoning capabilities, frequently suffer from the ``Intent Gap'' -- the misalignment between the generated patch and the developer's original intent. Current solutions relying on natural language summaries or adversarial sampling often fail to provide the deterministic constraints required for surgical repairs.   In this paper, we introduce \\textsc{Prometheus}, a novel framework that bridges this gap by prioritizing \\textit{Specification Inference} over code generation. We employ Behavior-Driven Development (BDD) as an executable contract, utilizing a multi-agent architecture to reverse-engineer Gherkin specifications from runtime failure reports. To resolve the ``Hallucination of Intent,'' we propose a \\textbf{Requirement Quality Assurance (RQA) Loop}, a mechanism that leverages ground-truth code as a proxy oracle to validate inferred specifications.   We evaluated \\textsc{Prometheus} on 680 defects from the Defects4J benchmark. The results are transformative: our framework achieved a total correct patch rate of \\textbf{93.97\\%} (639/680). More significantly, it demonstrated a \\textbf{Rescue Rate of 74.4\\%}, successfully repairing 119 complex bugs that a strong blind agent failed to resolve. Qualitative analysis reveals that explicit intent guides agents away from structurally invasive over-engineering toward precise, minimal corrections. Our findings suggest that the future of APR lies not in larger models, but in the capability to align code with verified, \\textbf{Executable Specifications} -- whether pre-existing or reverse-engineered.",
+      "authors": [
+        "Yongchao Wang",
+        "Zhiqiu Huang"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-04-19T14:27:27+00:00",
+      "link": "https://arxiv.org/pdf/2604.17464v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Behavior-Driven Development as executable contract",
+      "llm_evidence_cn": "行为驱动开发作为可执行契约",
+      "llm_evidence": "行为驱动开发作为可执行契约",
+      "canonical_evidence": "行为驱动开发作为可执行契约",
+      "llm_tldr_en": "Uses BDD to bridge the gap between developer intent and code via executable specifications.",
+      "llm_tldr_cn": "利用行为驱动开发（BDD）通过可执行规范弥合开发者意图与代码之间的差距。",
+      "llm_tldr": "利用行为驱动开发（BDD）通过可执行规范弥合开发者意图与代码之间的差距。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Defining and validating user story acceptance criteria",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2604.14820v1",
+      "source": "arxiv",
+      "title": "SWE-TRACE: Optimizing Long-Horizon SWE Agents Through Rubric Process Reward Models and Heuristic Test-Time Scaling",
+      "abstract": "Resolving real-world software engineering (SWE) issues with autonomous agents requires complex, long-horizon reasoning. Current pipelines are bottlenecked by unoptimized demonstration data, sparse execution rewards, and computationally prohibitive inference scaling, which collectively exacerbate token bloat, reward hacking, and policy degradation. We present SWE-TRACE (Trajectory Reduction and Agentic Criteria Evaluation), a unified framework optimizing the SWE agent lifecycle across data curation, reinforcement learning (RL), and test-time inference. First, we introduce an LLM multi-task cascading method, utilizing stepwise oracle verification to distill a 60K-instance Supervised Fine-Tuning (SFT) corpus strictly biased toward token-efficient, shortest-path trajectories. Second, to overcome the instability of sparse outcome rewards, we design a MemoryAugmented Agentic RL pipeline featuring a Rubric-Based Process Reward Model (PRM). An auxiliary Rubric-Agent provides dense, fine-grained heuristic feedback on intermediate steps, guiding the model through long-horizon tasks. Finally, we bridge training and inference by repurposing the PRM for heuristic-guided Test-Time Scaling (TTS). By dynamically evaluating and pruning action candidates at each step, SWE-TRACE achieves superior search efficiency without the latency overhead of standard parallel sampling. Extensive experiments on standard SWE benchmarks demonstrate that SWE-TRACE significantly advances the state-of-the-art, maximizing resolution rates while drastically reducing both token consumption and inference latency.",
+      "authors": [
+        "Hao Han",
+        "Jin Xie",
+        "Xuehao Ma",
+        "Weiquan Zhu",
+        "Ziyao Zhang",
+        "ZhiLiang Long",
+        "Hongkai Chen",
+        "Qingwen Ye"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-04-16T09:41:47+00:00",
+      "link": "https://arxiv.org/pdf/2604.14820v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "agentic criteria evaluation and stepwise verification in software engineering",
+      "llm_evidence_cn": "软件工程中的智能体准则评估与逐步验证",
+      "llm_evidence": "软件工程中的智能体准则评估与逐步验证",
+      "canonical_evidence": "软件工程中的智能体准则评估与逐步验证",
+      "llm_tldr_en": "Optimizes software engineering agents using rubric-based criteria evaluation and verification processes.",
+      "llm_tldr_cn": "利用基于量表的准则评估和验证流程优化软件工程智能体。",
+      "llm_tldr": "利用基于量表的准则评估和验证流程优化软件工程智能体。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Defining and validating user story acceptance criteria",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2604.19390v1",
+      "source": "arxiv",
+      "title": "Towards Formalising Stakeholder Context using SysML v2",
+      "abstract": "This paper presents a framework to bridge the gap between subjective stakeholder context and formal system architecture. This is achieved using Soft Systems Methodology (SSM) and Systems Modelling Language version 2 (SysML v2). The methodology utilises the precision of Kernel Modelling Language (KerML) and the alignment of SysML v2 with ISO 42010 to define a reference architecture for the mapping of SSM outputs to SysML v2 concepts such as stakeholders and concerns. Application of the framework is demonstrated through the use of a case study, highlighting the traceable path from stakeholder context to system architecture. The structured mapping and increased semantic precision of SysML v2 are anticipated to reduce the risk of misinterpretation compared to less formal approaches, though empirical validation across diverse stakeholder contexts remains as future work. The primary identified trade-off is the increased barrier to entry associated with SysML v2's textual notation.",
+      "authors": [
+        "Matthew Harrison",
+        "John Carlin",
+        "Chengyuan Liu",
+        "Sarah Dunnett",
+        "Siyuan Ji"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-04-21T12:16:03+00:00",
+      "link": "https://arxiv.org/pdf/2604.19390v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Formalizing stakeholder context and mapping to system architecture using SysML v2",
+      "llm_evidence_cn": "将利益相关者上下文形式化并映射到SysML v2系统架构",
+      "llm_evidence": "将利益相关者上下文形式化并映射到SysML v2系统架构",
+      "canonical_evidence": "将利益相关者上下文形式化并映射到SysML v2系统架构",
+      "llm_tldr_en": "Proposes a framework to bridge subjective stakeholder context with formal system architecture using SysML v2.",
+      "llm_tldr_cn": "提出一个使用SysML v2将主观利益相关者上下文与正式系统架构联系起来的框架。",
+      "llm_tldr": "提出一个使用SysML v2将主观利益相关者上下文与正式系统架构联系起来的框架。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2604.19667v1",
+      "source": "arxiv",
+      "title": "Chat2Workflow: A Benchmark for Generating Executable Visual Workflows with Natural Language",
+      "abstract": "At present, executable visual workflows have emerged as a mainstream paradigm in real-world industrial deployments, offering strong reliability and controllability. However, in current practice, such workflows are almost entirely constructed through manual engineering: developers must carefully design workflows, write prompts for each step, and repeatedly revise the logic as requirements evolve-making development costly, time-consuming, and error-prone. To study whether large language models can automate this multi-round interaction process, we introduce Chat2Workflow, a benchmark for generating executable visual workflows directly from natural language, and propose a robust agentic framework to mitigate recurrent execution errors. Chat2Workflow is built from a large collection of real-world business workflows, with each instance designed so that the generated workflow can be transformed and directly deployed to practical workflow platforms such as Dify and Coze. Experimental results show that while state-of-the-art language models can often capture high-level intent, they struggle to generate correct, stable, and executable workflows, especially under complex or changing requirements. Although our agentic framework yields up to 5.34% resolve rate gains, the remaining real-world gap positions Chat2Workflow as a foundation for advancing industrial-grade automation. Code is available at https://github.com/zjunlp/Chat2Workflow.",
+      "authors": [
+        "Yi Zhong",
+        "Buqiang Xu",
+        "Yijun Wang",
+        "Zifei Shan",
+        "Shuofei Qiao",
+        "Guozhou Zheng",
+        "Ningyu Zhang"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL",
+        "cs.AI",
+        "cs.CV",
+        "cs.LG",
+        "cs.MA"
+      ],
+      "published": "2026-04-21T16:49:11+00:00",
+      "link": "https://arxiv.org/pdf/2604.19667v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Generating executable workflows from natural language requirements",
+      "llm_evidence_cn": "从自然语言需求生成可执行工作流",
+      "llm_evidence": "从自然语言需求生成可执行工作流",
+      "canonical_evidence": "从自然语言需求生成可执行工作流",
+      "llm_tldr_en": "Introduces a benchmark and framework for automating the generation of executable workflows from natural language.",
+      "llm_tldr_cn": "引入了一个基准和框架，用于自动化从自然语言生成可执行工作流的过程。",
+      "llm_tldr": "引入了一个基准和框架，用于自动化从自然语言生成可执行工作流的过程。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Automated tools for user story generation and validation",
+      "matched_requirement_id": "req-8",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}

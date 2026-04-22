@@ -1,0 +1,963 @@
+Title: Towards Formalising Stakeholder Context using SysML v2
+
+URL Source: https://arxiv.org/pdf/2604.19390v1
+
+Published Time: Wed, 22 Apr 2026 01:29:14 GMT
+
+Number of Pages: 14
+
+Markdown Content:
+# Towards Formalising Stakeholder Context using SysML v2 
+
+Matthew Harrison Loughborough University Epinal Way Loughborough, Leicestershire, LE11 3TU M.Harrison2@lboro.ac.uk John Carlin Nuclear Waste Services Pelham House, Pelham Drive Calderbridge, Cumbria, CA20 1DB john.carlin@ nuclearwasteservices.uk Chengyuan Liu Loughborough University Epinal Way Loughborough, Leicestershire, LE11 3TU C.Liu10@lboro.ac.uk Sarah Dunnett Loughborough University Epinal Way Loughborough, Leicestershire, LE11 3TU S.J.Dunnett@lboro.ac.uk Siyuan Ji Loughborough University Epinal Way Loughborough, Leicestershire, LE11 3TU S.Ji@lboro.ac.uk  
+
+> Copyright © 2026 by the author(s). Permission granted to INCOSE to publish and use.
+
+Abstract 
+
+This paper presents a framework to bridge the gap between subjective stakeholder context and formal system architecture. This is achieved using Soft Systems Methodology (SSM) and Systems Modelling Language version 2 (SysML v2). The methodology utilises the precision of Kernel Modelling Language (KerML) and the alignment of SysML v2 with ISO 42010 to define a reference architecture for the map-ping of SSM outputs to SysML v2 concepts such as stakeholders and concerns. Application of the frame-work is demonstrated through the use of a case study, highlighting the traceable path from stakeholder context to system architecture. The structured map-ping and increased semantic precision of SysML v2 are anticipated to reduce the risk of misinterpreta-tion compared to less formal approaches, though em-pirical validation across diverse stakeholder contexts remains as future work. The primary identified trade-off is the increased barrier to entry associated with SysML v2’s textual notation. 
+
+Keywords 
+
+MBSE, SysML v2, Soft Systems Methodology, ISO 42010, Stakeholder Context. 
+
+## 1. Introduction 
+
+Soft Systems Methodology (SSM) has long been used by engineers to make sense of complex systems, where objectives may be interdisciplinary, unclear or conflicting (Checkland, 1981). By framing the re-quirements of a complex system using the viewpoints of the stakeholders involved, SSM creates models that capture system context, which is often miss-ing from hard systems engineering methodologies such as Model-Based Systems Engineering (MBSE). A common and long-standing criticism of MBSE is that, by applying strict logic to ambiguous requirements, the wrong problem is solved effectively (Mitroff and Featheringham, 1974). While SSM excels at providing context, there re-mains the need for a formal language to define the resulting system architecture. Historically, the lan-guage of choice has been Systems Modelling Lan-guage (SysML), an extension of the Unified Modelling Language (UML). However, the software-centric UML 
+
+> 1
+> arXiv:2604.19390v1 [cs.SE] 21 Apr 2026
+
+was never fully suited to the modelling of physical systems. This disconnect, combined with an ambigu-ous standard (Amissah et al., 2018), can lead to an uneven implementation and lack of precision (Sal-ado and Wach, 2019). This is mitigated using frame-works such as Unified Architecture Framework (UAF) (Object Management Group, 2022) to define high-level relationships, although this lacks a procedure for the transition to modelling. Leaving the trans-lation of the high-level stakeholder needs into ex-ecutable models at the discretion of the individual risks inconsistency between the framework and the implementation (Morkevicius et al., 2021). Prior applications of SSM using SysML have success-fully used conceptual models as the basis for both UML (Bustard et al., 1999) and SysML (Cloutier et al., 2015) models, providing a starting point to top-level system architecture. However, the suitability of SysML’s semantic structure to capture the conclu-sions of the conceptual models was questioned, with the enforcement of semantic discipline highlighted as a possible disincentive to using this combination. SysML version 2 (SysML v2) addresses the root of this problem by introducing a bespoke metalanguage, Kernel Modelling Language (KerML), as well as a tex-tual notation underpinning a more dynamic version of the graphical representation SysML is known for. SysML v2 is still in the early stages of application and the core semantics of KerML are likely to be refined (Almeida et al., 2025). Current research includes in-vestigations into the current state of SysML v2’s se-mantic capabilities (Litwin et al., 2024) and possi-ble methods of application, such as bespoke profiles (Kausch et al., 2025), new tools which utilise the tex-tual notation (Vaicenavičius et al., 2025), and meth-ods of structuring models to optimize data exchange (Li et al., 2024). A standardised approach for captur-ing context using SysML v2 concepts remains a sig-nificant research gap. Establishing such an approach presents the opportunity to tailor future refinements of KerML and SysML v2 to this specific application. This paper proposes a framework to capture stake-holder context by providing a reference architecture that maps SSM outputs directly to SysML v2 ele-ments, bridging the gap between ambiguous stake-holder needs and rigorous system architecture. This aligns with the ISO 15288 System Architecture Def-inition process, providing the transition from stake-holder needs to the requirements definition process (International Organization for Standardization et al., 2023). The relevant elements of SSM and SysML v2 and their alignment are described, using ISO 42010 (Interna-tional Organization for Standardization et al., 2022) as an intermediary. This is formalised using a refer-ence architecture (Harrison, 2025), the application of which is demonstrated using a generic case study, de-tailing the transition from stakeholder context to a system architecture in SysML v2. 
+
+## 2. Background 
+
+2.1 Soft Systems Methodology 
+
+The overall process proposed by Checkland (Check-land, 1981) is shown in Figure 1. It is noted that this framework will be familiar to many, as reflected by the age of the citations, but for the sake of context, the areas which are relevant to the proposed frame-work (1-5) are summarised. 
+
+2.1.1 Rich Picture 
+
+The goal of the rich picture in SSM is to represent a situation from a number of viewpoints using an il-lustration, allowing for parallel processing of the in-formation therein (Wilson, 2001) without the con-straints of a formal language. This process is flexible; a group of stakeholders may create a rich picture to-gether, or a research team may create one based on interviews (Mukotekwa and Carson, 2007), although it has been noted that the latter, while capable of gathering more information, runs the risk of missing key insights (Gisby et al., 2023). If questions are too open, then key insights may be missed, whilst guid-ing the direction too forcefully risks introducing the interviewer’s own bias. There is also the risk of an inference gap, where context is misinterpreted or in-vented by the interviewer, since the stakeholders are not producing the rich picture themselves. 
+
+2.1.2 Root Definitions 
+
+Wilson describes a Root Definition (RD) as “a way of capturing the essence (root) of the purpose to be served” (Wilson, 2001). A root definition should de-tail a transformation process, i.e. an input being transformed into an output. In the complex systems that SSM was designed to tackle, there may be vast numbers of these processes, from the high-level to the domain-specific, analytical models (Checkland, 1981). Each of these may then serve a different pur-pose depending on the viewpoint of the stakeholder 
+
+> 2
+
+who is accessing the system. By defining the individ-ual transformations taking place, the purpose of each process can be defined from the viewpoint of each stakeholder, leading to accurate requirement defini-tion and system structure. 1. Find out   
+
+> about the
+> situation
+> 2. Express the
+> situation
+> 3. Define
+> Definitions
+> relevant to the
+> situation
+> 4. Develop
+> Conceptual
+> Models
+> 5. Compare
+> 6. Define
+> Changes
+> -Desirable?
+> -Feasible?
+> 7. Take action
+> Real World
+> Systems
+> Thinking about
+> the Real World
+> Figure 1. Checkland SSM.
+
+The application of the CATWOE mnemonic (Figure 2) serves to define a transformation process from the view of a particular stakeholder. The mandatory el-ements of the CATWOE are the transformation, de-fined by a verb, and the worldview, which details what must be believed for the RD to make sense. Indi-viduals are defined as the customer (beneficiary of the transformation), actor (participant in the trans-formation) and owner (overall decision-maker with performance concerns) elements. By specifying the role an individual plays using the CATWOE structure, their role in the transformation can be defined uni-formly. Environmental Constraints are taken as fac-tors significant to the transformation process, which are external to the system itself. 
+
+2.1.3 Conceptual Models 
+
+The purpose of the Conceptual Model (CM) is to model the transformation outlined in the RD as a se-ries of activities, including the logical relationships between them, as well as a control sub-system. The purpose of the control sub-system is to define activ-ities which monitor the performance of the activities and act on this to ensure the core activities serve their purpose. The CM expands on the RD transformation by explor-ing how to acquire the input, how to reach the output, and how to make the output available for the trans-formation detailed by the RD (Wilson, 2001). The monitor-and-control system is then applied. These questions are to be answered logically (not based on any pre-existing systems and solutions) to ensure the model remains conceptual. I.e., rather than specify-ing how or why Person A needs to make money for Person B, the CM would be modelled as a “system to make money”. Transformation 
+
+> CATWOE Actor
+> Customer
+> Environmental
+> Constraints
+> Owner
+> Worldview
+> Mandatory
+> Recommended
+> Figure 2. CATWOE Elements.
+
+The resulting CM should be defensible against the Formal Systems Model (FSM). This ensures that the resulting model describes a “system that is capable of purposeful activity without failure” (Peters et al., 2023). The application of the FSM is a Verification process (International Organization for Standardiza-tion et al., 2023), rather than an Architecture Defini-tion process, falling outside the scope of this frame-work. 
+
+2.2 SysML v2 
+
+One of the mandatory requirements of SysML v2 was alignment with ISO 42010 (Object Management Group, 2017). This means the elements and relation-ships in the SysML v2 specification (Object Manage-ment Group, 2025), including stakeholders, concerns and viewpoints, are already positioned to accurately capture the intended meaning of the SSM outputs. To support this, several semantic relationships have been introduced, including: 
+
+• Definition and Usage The Definition and Usage relationship allows for subsetting (:>), allowing a usage to be de-clared as one of the usages of another element, as well as redefinition (:»), where the inherited feature is replaced by a context-specific usage. 
+
+• Metadata This replaces the SysML v1 stereotype. Data can now be tagged as inherent properties of an element rather than an annotation. 
+
+• View Specification 
+
+> 3
+
+The SysML view can now specify filter condi-tions to query specific parts of the model. This can then be visualised using a specified render-ing usage. 
+
+• Requirements as Constraints The SysML v2 requirement is a specialised con-straint, which allows for the integration of tex-tual description and logic, creating an exe-cutable natural language requirement. As features of SysML v2 are applied during the frame-work section, context will be added to aid compre-hension for newcomers to the language. 
+
+## 3. Methodology 
+
+The proposed framework seeks to specify a method-ology for the uniform modelling of systems using SysML v2, defined first using SSM. This is accom-plished in 2 stages: SSM modelling (utilising stake-holder interviews) and the application of a reference architecture for mapping SSM elements to SysML v2 elements. Modelling was completed using CATIA Magic System of Systems Architect, version 2026x. 
+
+3.1 Rich Picture 
+
+When engaging stakeholders to create a rich picture, it is recommended that 1-1 interviews are conducted, with the interviewer then producing a rich picture based on the results. While previously noted that this runs the risk of misinterpretation, there are existing models that can aid the formation of a question set to minimise this risk, ensuring relevant information is acquired. Of these models, this framework recom-mends the use of POPIT (People, Organisation, Pro-cesses, Information, Technology) (Paul et al., 2020) when forming a question set. Unlike a more tra-ditional People-Process-Tools model (Leavitt, 1965), this ensures that data and artefacts, defined by POPIT as “information”, are considered separately from the technology used to access it. This distinction is cru-cial, as it enables the CATWOE Transformation, in-cluding inputs and outputs, to be captured accu-rately. The rich picture is then created using the in-terview dataset. The use of targeted questions ad-dresses the risk of lost context during the interviews, but there remains the risk of misinterpretation. It is therefore recommended that the development of the rich picture be an iterative, collaborative process in-volving the individual stakeholders (Figure 3). Process Interview 
+
+> Data
+> Draft Rich
+> Picture
+> Validate Draft
+> Inspect Draft
+> Reject Draft
+> Inspect Draft
+> Approve Draft
+> Formalise Rich
+> Picture
+> Stakeholder
+> Tasks
+> Figure 3. Collaborative Process with Stakeholder Involvement for Rich Picture Development.
+
+Creating an initial, individual rich picture for each stakeholder and using follow-up sessions to vali-date the captured context will improve the accuracy of subsequent modelling and minimise potential re-work. 
+
+3.2 Root Definitions 
+
+To ensure the framework for modelling CATWOE el-ements using SysML v2 is accurate and effective, each CATWOE concept is mapped onto a (or a set of) SysML v2 element. This mapping was based on how the original intent of CATWOE can be represented most accurately using the enhanced semantic disci-pline of SysML v2, as depicted in the ontological in-terpretation of a subset of modelling concepts ex-tracted from the SysML v2 metamodel, captured in Figure 4. To take advantage of the alignment with ISO 42010, the relationships contained within the 
+
+> 4
+
+Stakeholder Context Architecture 
+
+Viewpoints 
+
+Architectural Descriptions 
+
+transition 
+
+state 
+
+targets/switches 
+
+action triggers 
+
+part 
+
+performs 
+
+exhibits 
+
+use case 
+
+subject 
+
+concerns 
+
+usage of 
+
+contains 
+
+view constraint 
+
+constrains 
+
+viewpoint 
+
+conforms assumes 
+
+rationale documented by 
+
+requirement satifies 
+
+concern 
+
+exposes 
+
+rendering 
+
+usage 
+
+filter 
+
+conditions 
+
+specifies 
+
+frames manifests 
+
+Stakeholder 
+
+A
+
+T
+
+E
+
+W
+
+O
+
+Tool User 
+
+: Actor 
+
+Tool User 
+
+: Actor 
+
+Process 
+
+Owner : 
+
+Stakeholder 
+
+Process 
+
+Owner : 
+
+Stakeholder  
+
+> <<viewpoint>>
+> Process Owner
+> doc "Provide
+> appropriate access to
+> relevant Tool Users".
+> <<constraint>>
+> Access Criteria
+> <<part>>
+> Process Owner
+> <<part>>
+> IT Department
+
+C
+
+Actor Actor 
+
+benefits 
+
+> <<use case>>
+> <<viewpoint>>
+> Rationale
+> <<constraint>>
+
+Ontology Case Study 
+
+Missing steps: 
+
+- Subject. Need to decide on 
+
+how a part is selected from 
+
+CATWOE. 
+
+- Activity. How to decompose 
+
+use case (T) into a series of 
+
+action/transition/states. 
+
+- Requirement. Outside 
+
+scope? 
+
+- Concern. Mention how 
+
+Concern comes from W, may 
+
+show how a new W may 
+
+expand on a previous 
+
+viewpoint rather than make a 
+
+new one? 
+
+- View conditions. How to get 
+
+these based on Rationale, 
+
+Concern.                 
+
+> A System owned by O to do W by A by means of T given the constraints of E in order to achieve X for
+> C
+> A System owned by Manager to provide appropriate access to a tool, by Manager and IT, by means
+> of contacting IT to change permissions given the constraints of Licenses and Job Role to achieve
+> appropriate access for New HIre
+> New Hire
+> Manager, IT
+> Give Appropriate Access To New Hire
+> New Hires need Appropriate Access to Tool, can be
+> achieved by contacting IT and requesting change
+> Manager
+> Licenses, Job Role
+> A System owned by a Manager to provide appropriate
+> access to a tool , by Manager and IT , by means of
+> contacting IT to change permissions given the
+> constraints of Licenses and Job Role to achieve
+> appropriate access for New HIre
+> Input -Job Role Access Level, Tool Access Register
+> Transformation -Add Appropriate Access to Register
+> Output -Register contains Appropriate Access for Job Role
+> What has to be done to acquire the input?
+> -Find appropriate access level
+> What has to be done to reach the output?
+> -Request IT to add access level to Register
+> -Add to register
+> What has to be done to make output available?
+> -Notify new hire
+> Define the state
+> machine
+> Define the triggers,
+> guards and actions for
+> this
+> Define the part which
+> exhibits the state
+> machine
+> Define the part which
+> performs the actions
+> within the state
+> machine
+> Define requirements
+> that the part states
+> satisfy
+> Link this part as a
+> subject to an actor via
+> a use case
+
+Conceptu 
+
+Providing Acc 
+
+> <<use case>>
+> Giving Access to Tool
+> Request
+> Permissions
+> Change from IT
+> IT Changes
+> Permissions
+> Manager Identifies
+> Specific Job Role
+> Permissions
+> Monitor Job Role
+> Permissions
+> Maintain
+> Appropriate
+> Access for Job Role
+> C.A.
+> Manager Accesses
+> Job Role Tool
+> Requirements
+> IT Checks License
+> Constraints
+> Monitor Required
+> Number of
+> Licenses
+> Maintain
+> Appropriate
+> Number of
+> Licenses
+> C.A.
+> Job Role Tool Requirements
+> License Information
+> <<actor>>
+> <<actor>>
+> <<stakeholder>>
+
+A
+
+T
+
+E
+
+W
+
+O
+
+C
+
+<<use case>> 
+
+<<viewpoint>> 
+
+Rationale 
+
+<<constraint>> 
+
+<<stakeholder>> 
+
+<<actor>> 
+
+<<stakeholder>> Figure 4. Derivation of key SysML v2 concepts used in the framework. 
+
+SysML v2 metamodel has been laid out using the fa-miliar concepts of a stakeholder context domain, ar-chitecture models, and the viewpoints which define them. This serves to summarise how different SysML v2 elements relate semantically, as well as defining the overall role they play in the architecture descrip-tion. CATWOE and SysML v2 share common terms, such as actor . For clarity, CATWOE elements shall henceforth be capitalised. A summary of the mapping of SysML v2 and CATWOE elements is provided in Table 1. 
+
+CATWOE Element SysML v2 Element 
+
+Customer Individual as Stakeholder. Actor Individual as Actor. Transformation Use Case. Worldview Viewpoint (with Rationale). Owner Individual as Stakeholder. Environmental Constraints Requirements with Constraint. 
+
+Table 1. Summary of the SSM - SysML v2 Element mapping. 
+
+3.2.1 Actors 
+
+The CATWOE Actors are the individuals who are per-forming the Transformation. In SysML v1, the actor was a boundary object which lacked internal func-tional behaviour, which limited traceability from the context to the structure and behaviour of the system. SysML v2 addresses this problem by classifying actors as usages of part definitions, allowing for local usages to be defined by global definitions. As this frame-work will be modelling real individuals, it is useful to include the new individual feature. By specifying a person as an individual definition, then creating a usage (occurrence) of that definition, SysML v2 al-lows for the usage to be directly associated with sys-tem structure and behaviour (Figure 5). If this usage is specified within a use case, for example, this usage will only exist within this use case, limiting traceabil-ity. To maximise extensibility, the individual should be specified outside the use case. The local actor us-age within the use case should then subset (:>) this high-level usage. This modelling pattern allows for all usages of the individual to be traced back to the occurrence. Academic  Version  for  Teaching  Only 
+
+> Commercial  Development  is  strictly  Proh
+> Academic  Version  for  Teaching  Only
+> Commercial  Development  is  strictly  Prohibited
+
+Use Case Actor :> Person B :>> Use Case Actor 
+
+actors 
+
+Specialised Use Case :> Use Case 
+
+«use case» Use Case Actor :> Person A
+
+actors 
+
+Use Case 
+
+«use case» Concern Stakeholder :> Person A
+
+stakeholders 
+
+Concern 
+
+«concern» 
+
+Person 
+
+«individual occurrence def» 
+
+Person A : Person 
+
+«individual occurrence» 
+
+Person B : Person 
+
+«individual occurrence» 
+
+Figure 5. Modelling of an individual both as a stakeholder and an actor. 
+
+3.2.2 Environmental Constraints 
+
+In SysML v1, an external constraint could be mod-elled in one of two ways: as a requirement, which was text-based, or as a constraint block, which contained logic and equations. This meant a trade-off between legibility and functionality. The CATWOE Environ-
+
+5mental Constraint is perhaps the element which ben-efits the most from the switch to SysML v2. Require-ments are now defined as specialised constraints, containing both the description of the requirement and at least one constraint. SysML v2 constraints can be specified in 3 ways: re-quire, assume and assert. Require constraints serve to formalise the “shall” statement in the require-ment. These are generally more suited to system re-quirements. The assume constraint specifies a list of conditions which must be satisfied before the require constraints apply, useful for modelling assumptions. The assert constraint specifies a condition that must be satisfied at all times. The Environmental Constraints should be modelled as requirements, which contain textual information about the constraint. The constraint can then be for-malised using mathematics, with the exact applica-tion of the constraint decided on a case-by-case ba-sis. By modelling this constraint at the start of the modelling process, it ensures that it can be traced to system elements, and the constraint can be adhered to. 
+
+3.2.3 Transformation and Customer 
+
+The CATWOE Transformation is defined “either as an input-output conversion or the process itself” (Wil-son, 2001). This distinction is important as, follow-ing the strict input-output definition, it would sug-gest the modelling of Transformation as an action. The SysML v2 action is performed by a part, and is defined by its inputs and outputs, which are gener-ally parts or items. The action imposes an effect on its inputs and their parameters to define its outputs. This alone, however, lacks the high-level abstraction captured by the CATWOE Root Definition. The SysML v2 use case can be used to address the above issue. Specifically, a use case can be used to represent the high-level intent captured by the Transformation, while the actions embedded within the use case can be used to model the actual steps taken to achieve it. These actions are performed by the actors that are associated with the use case via the relationship shown in Figure 5. The subject of a use case will be the subject of the Transformation, which generally will be a part usage. The use case will also reference a requirement. As per CATWOE, the beneficiary of the Transforma-tion is the Customer. This will be represented using the SysML v2 stakeholder. A stakeholder has a con-cern, which is framed by the requirement satisfied by the use case, ensuring complete traceability. The stakeholder embedded in the concern can subset the individual occurrence as in Figure 5. This allows an individual to act as both a stakeholder and an actor while maintaining traceability to a single source. 
+
+3.2.4 Worldview and Owner 
+
+In SysML v2, a viewpoint is defined as framing a con-cern which, according to ISO 42010 (International Organization for Standardization et al., 2022), is a “matter of interest to one or more stakeholders”. Un-like a SysML v2 Actor, which directly participates in the satisfaction of a requirement, a SysML v2 Stake-holder has concerns related to a requirement, to align more closely with ISO 42010. Therefore, the CAT-WOE Owner can be modelled as a SysML v2 stake-holder, as whilst they have concerns related to the Transformation, they do not (generally) directly per-form it as an actor. Maintaining the pattern detailed in Figure 5 can allow an individual to act as both Owner and Actor, but the role of Owner itself is spec-ified using a stakeholder element. The CATWOE Worldview is a “statement of belief” (Wilson, 2001) stating, from the perspective of the Owner, what the Transformation will achieve and how it will achieve it. As this comes from the point of view of the Owner, this is captured by a viewpoint, but this alone would not fully capture the intent be-hind the subjective view of the Owner. For example, a viewpoint may state what concern it is addressing, but it lacks the explanation of how and why this view-point was chosen. SysML v2 has introduced rationale as a native ele-ment in KerML, as opposed to the somewhat ad-hoc implementation in SysML v1. This allows for textual descriptions to be defined as an inherent property of an element. By including the Worldview as a ra-tionale attached to the viewpoint, the intent of the Owner can be captured, ensuring clear traceability between the implementation and the original intent. 
+
+3.3 Conceptual Model Mapping 
+
+The initial mapping detailed in Table 1 can provide a starting point to begin further system modelling with SysML v2. However, further system structure and be-haviour can be modelled using the outputs from the SSM Conceptual Models. This includes the detailed decomposition of the use case, definition of require-
+
+> 6
+
+ments and definition of views. The theory behind the CM is simple (2.1.3 Concep-tual Models). The challenge is to define a method for capturing it completely using SysML v2. It is there-fore necessary to elaborate on the key capabilities of the SysML v2 Use Case. The use case will specify a subject; generally, this is a part. This framework will specify the subject as the part which is being transformed. The exact change in the part can be specified in two ways: us-ing the input and output items of an action to show the change of parameters, or specifying states which the part can exhibit, and modelling the transition be-tween them. The choice of method will be dependent on the Transformation itself, so both methods will be demonstrated in this framework. When an action is performed in a use case, an out item can be specified. If this item is modelling a signal, it is more useful to model the system separately, using the use case to model the actor’s interaction with the system via that signal. If the item itself is being transformed, then this can be modelled within the use case. Both methods are demonstrated in the following section. 
+
+3.3.1 Use Case Modelling 
+
+The SysML v2 part is a kind of item which can per-form an action (Object Management Group, 2025). The item element itself can be used to represent the input and output of actions and parts and can have attributes of its own. This naturally aligns with the input and output of the Transformation, so it is rec-ommended that, when specifying the behaviour of a system in a use case, one uses the following structure. The key features are detailed in Figure 6. The sim-ple example of using a kettle to boil water is used. An individual has a concern, which is framed by a requirement. The requirement includes both a de-scription and a mathematical constraint. The subject of the concern and the use case should be the same to maintain consistency. The individual subsets the 
+
+actor usage in the use case , performing the actions 
+
+which represent their interaction with the system, with the kettle itself performing the heating action .The use case references a requirement in its objective ,providing formal traceability from stakeholder con-cerns to system behaviour. Two kinds of system behaviour are demonstrated within this use case . Actions can have an effect on the subject as well as the parts it comprises. The ac-tions turnOn , pressButton , and turnOff each contain an assign , which modifies attributes of the kettle to represent functional changes. Input and output ref-erence usages define what enters and exits the sys-tem, aligning with the Transformation. For more complex systems, it can be more sensible to define structural behaviour separately. A power-ful example of this is the SysML v2 state. Figure 6 shows how the state feature, formerly known as the state machine, can be defined within a part to specify its behaviour. Three states are exhibited by the ket-tle, with transitions defined using guards and by the acceptance of a send action within the use case, both following the standard trigger[guard]/action format. The use case specifies which parts of the system are interacted with, while the behaviour of those parts is specified separately. Academic  Version  for  Teaching  Only Commercial  Development  is  strictly  Prohibited                                                                                                               
+
+> Academic  Version  for  Teaching  Only
+> Commercial  Development  is  strictly  Prohibited
+> Academic  Version  for  Teaching  Only Commercial  Development  is  strictly  Prohibited
+> Academic  Version  for  Teaching  Only
+> Commercial  Development  is  strictly  Prohibited
+> Academic  Version  for  Teaching  Only Commercial  Development  is  strictly  Prohibited Academic  Version  for  Teaching  Only Commercial  Development  is  strictly  Prohibited
+> require Boiling Water
+> objective
+> Kettle :> Person AKettle Human :> Person A
+> actors
+> water :> Person AKettle.kettleWater
+> subject
+> Boil Water
+> «use case»
+> perform actions
+> boilWater
+> «action» new BoilSignal() to Kettle «send»
+> perform actions
+> turnOff
+> «action» Kettle.Power Supply := false «assign»
+> fillCup
+> «action»
+> turnOn
+> «action» Kettle.Power Supply := true «assign»
+> pressButton
+> «action» Kettle.Button.isOn := true «assign»
+> fillKettle
+> «action»
+> Human :> Person A
+> «performer»
+> Kettle :> Person AKettle
+> «performer»
+> Person AKettle
+> «part»
+> Kettle Power States
+> «exhibit state»
+> on
+> «state»
+> off
+> «state»
+> standby
+> «state» «entry» isOn :Boolean =false
+> attributes
+> Button
+> «part»
+> Power Supply :Boolean
+> «attribute»
+> kettleWater :Water
+> «item»
+> coldWater :> tap.tapWater
+> «in ref»
+> boiledWater :> kettleWater
+> «out ref» targetTemp :CelsiusTemperatureValue := 100
+> attributes
+> BoilSignal
+> «item def»
+> targetTemp :CelsiusTemperatureValue
+> «attribute» Stakeholder :> Person A
+> stakeholders
+> water :> Person AKettle.kettleWater
+> subject
+> Water Temperature
+> «concern» Water Temperature
+> frames
+> Temperature Goal {water.waterTemp == 100}
+> require constraints
+> water :> Person AKettle.kettleWater
+> subject
+> Water shall be heated to 100 C.
+> doc
+> Boiling Water
+> «requirement»
+> tap
+> «part»
+> cup
+> «part» waterIn :Water waterOut :Water Water waterOut :Water waterIn :Water Water boiledWater :Water coldWater :Water Water Water ['Power Supply' == false] [Button.isOn == true] ['Power Supply' == true] ['Power Supply' == false] BoilSignal Water Water
+
+Figure 6. Use Case Modelling. 
+
+3.3.2 Conceptual Model Mapping 
+
+Initial modelling details the input and output of the system, i.e., what is being transformed. The Trans-formation is then elaborated on, to define how the input is acquired, how to reach the output and how to make the output available. This is used to define a series of activities, their ordering and a monitor-and-control subsystem, which is itself made up of activi-ties and relationships. The input and output will be the use case subject, either a part or an item. The activities can be defined as SysML v2 actions, which 
+
+7generate effects on the subject, in the order specified in the CM. 
+
+3.3.3 Requirement Definition 
+
+The individuals defined by the RD (Actor, Customer and Owner) can all be defined as a stakeholder, actor, or both. The actor is specified in the use case, and the stakeholder is specified in a high-level concern, i.e., safety. A requirement then frames that concern. In practice, however, the requirements will be defined separately. By framing the concern, it then falls un-der the umbrella of the concern, along with the other requirements which frame safety. As previously stated, the CATWOE Environmen-tal Constraints will be modelled using the new requirement-constraint relationship. These will only inform the system from outside the boundary, how-ever. To elicit a complete requirement set, a set of functional requirements should be elicited from the Transformation modelled, as well as the associ-ated elements. Any industry-standard protocol can be followed to complete this and the ensuing non-functional requirements. 
+
+3.3.4 View Definition 
+
+The primary application of the stakeholder-concern relationship in this framework is the ability to narrow the scope of the total system model to only the ele-ments which are relevant to a particular concern. A SysML v2 view achieves this by exposing a portion of the model, filtering based on metadata, and then ren-dering in a manner of the modeller’s choosing, such as graphical, tabular, etc. This view then satisfies one or more viewpoints, which in turn frame one or more concerns held by one or more stakeholders. By specifying the subject of the transformation (use case) as the subject of the concern, traceability from the concern to the model elements is realised, allow-ing views to be specified according to a stakeholder’s root concern. 
+
+3.3.5 Metadata Definitions 
+
+SysML v2 introduces metadata definitions, allowing new attribute sets to be defined and used across sys-tem elements. This metadata definition allows the specification of attributes of the metadata, such as a textual description. This implementation means that, as opposed to a stereotype or a tag in UML, el-ements can be queried and filtered within the tool. Usage of metadata in elements will allow a more con-crete reference with which filters can render views. These definitions can specify attributes, such as a textual description (Figure 7). When specifying a us-age of that metadata in an element, that attribute can then be redefined. The definition of Rationale in the SysML v2 specification (Object Management Group, 2025) contains the string attribute “Text” which can be redefined. This is available in the “Modeling Meta-data” library package, or can be modelled manually by following the specification. The metadata defini-tion CATWOE contains an attribute “CATWOE Ele-ment”, which is typed by a list of enumerations. CATWOE Element[1..*] : Elements                
+
+> attributes
+> CATWOE
+> «metadata def»
+> text ="Rationale details."
+> Rationale
+> Description ="Information concerning New Metadata."
+> New Metadata metadata
+> Part
+> «part» Environment Owner Worldview Transformation Actor Customer
+> enums
+> Elements
+> «enum def» Description :String
+> attributes
+> New Metadata
+> «metadata def»
+> Figure 7. Metadata Modelling.
+
+## 4. Case Study System 
+
+In the previous section, the technical foundation of the framework was detailed. In order to aid compre-hension of the framework, a reference architecture has been populated using the outputs of a case study. This reference architecture and completed case study architecture can be found in the dedicated GitHub Repository (Harrison, 2025). Studying the textual notation and graphical views available in the reposi-tory is strongly advised to support understanding of the key concepts used in the framework. Descriptions of the foundational concepts are provided in the fol-lowing sections. SysML v2 elements used for each stage are italicised for differentiation from normal concepts and also for emphasis. To produce the SSM outputs, a portion of a larger rich picture was taken and anonymised. The overall rich picture was created based on a one-to-one in-terview with an individual who is a manager in their organisation. The question set used was designed to account for all elements of the POPIT model and is available in the GitHub Repository (Harrison, 2025).   
+
+> 8I'm the New Hire,
+> for Job A!
+> I'm the New Hire,
+> for Job A!
+> IT IT
+> Give License to
+> New Hire for Job
+> A!
+> Give License to
+> New Hire for Job
+> A!
+> IT IT
+> TOOL A
+> 6 CAPACITY
+> 5 TAKEN
+> 1 REMAINING
+> TOOL A -APPROVED USERS
+> NEW HIRE
+> PERSON E PERSON A
+> PERSON B
+> PERSON C
+> PERSON D
+> IT IT
+> APPROPRIATE ACCESS
+> JOB A
+> JOB B
+> JOB C
+> TOOL A
+> TOOL B
+> TOOLC
+
+MANAGER - IT 
+
+PROCEDURE FOR NEW 
+
+HIRE, JOB A Figure 8. Case Study Rich Picture. 
+
+The segment of the rich picture used in this case study (Figure 8) captured a process which the individ-ual, henceforth referred to as the manager, engages with in their workplace. When a new hire enters the business, they require access to certain tools as per their job responsibilities. The manager then sends a request to the IT department, henceforth referred to as IT, who will assign an available license for the tool that job requires to the new hire. This particular ex-cerpt was chosen as it is a common occurrence in the workplace. Following the SSM process (3.2 Root Definitions), the following RD was created: 
+
+A system owned by IT, to maintain appro-priate access and license capacity, by IT and the manager, by means of assigning an available license for the correct tool to a new hire, given the constraints of their job role specification and the license availabil-ity, to resolve a work request for the man-ager. 
+
+Given that the rich picture intends to capture the sys-tem from the worldview of the manager, it can be tempting to assume that the Owner of the process is the manager. However, the rich picture shows that the Transformation, the assignment of a license, is performed by IT, and the action of the manager func-tions as the trigger of this Transformation. Thus, the Owner of the process should be defined as IT. Given this RD, the following CATWOE Elements were identified, and then subsequently modelled using SysML v2 based on the mapping defined in 3.2: 
+
+• Customer: Manager 
+
+• Actors: IT, Manager 
+
+• Transformation: Assign available license for correct tool to new hire 
+
+• Worldview: Appropriate access should be given to new hires and license availability recorded 
+
+• Owner: IT 
+
+• Environmental Constraints: Job role specifica-tion, license availability 
+
+4.1 Stakeholder Context 
+
+4.1.1 Individuals 
+
+The three individuals were modelled as individual oc-currences which were defined by the individual defi-nition Employee. This feature typing relationship al-lows for the possible extension of traceability and in-herited properties at a later stage of model maturity. The attribute “name” was modelled at the definition 
+
+level and redefined at the usage level. The occurrences 
+
+were tagged with the appropriate CATWOE role using 
+
+metadata .The central concern here was taken as “Resources”, typed by the “OwnerConcern” definition . This may be replaced by an existing concern if the outputs of this framework are to be integrated into an existing model. IT’s role of Owner was then formalised by the local stakeholder usage subsetting the occurrence “it” (Figure 9). Academic Version for Teaching Only Commercial Development is strictly Prohibited                                          
+
+> :>> name ="Manager"
+> attributes
+> CATWOE Element =(Customer, Actor)
+> CATWOE metadata
+> manager :Employee
+> «individual occurrence»
+> stakeholders
+> :> it
+> subject
+> license :License
+> resources :OwnerConcern
+> «concern»
+> attributes
+> :>> name ="IT"
+> CATWOE metadata
+> CATWOE Element =(Actor, Owner)
+> it :Employee
+> «individual occurrence»
+> attributes
+> :>> name ="New Hire"
+> newHire :Employee
+> «individual occurrence»
+> CATWOE metadata
+> CATWOE Element =Owner
+> OwnerConcern
+> «concern def»
+> attributes
+> name :String
+> Employee
+> «individual occurrence def» :> it
+
+Figure 9. Case Study Individual Modelling. 
+
+4.1.2 System Structure 
+
+To further elaborate on the stakeholder context, it is useful to begin modelling high-level system ele-ments at this point. From the viewpoint of the manager, the purpose of the system is to give the new hire access to a tool by submitting a request to IT, who will add them to the appropriate tool license according to their job role. This immediately provides the references for three system elements (role, tool and license), which could be modelled using parts , as shown in Figure 11. As 
+
+9these are part usages , to ensure model completeness and to enable reuse, a corresponding system element type for each of the usages is modelled using part def-inition (Figure 10). Academic Version for Teaching Only 
+
+Commercial Development is strictly Prohibited 
+
+Academic Version for Teaching Only Commercial Development is strictly Prohibited 
+
+mic Version for Teaching Only 
+
+rcial Development is strictly Prohibited                                                                            
+
+> CATWOE Element =Environment
+> CATWOE metadata
+> EnvironmentalConstraints
+> «requirement def» toolName :String
+> attributes
+> ref license[0..1] :License
+> parts
+> Tool
+> «part def»
+> licenseState
+> «exhibit state»
+> capacityUnavailable
+> «state»
+> capacityAvailable
+> «state» New hires shall be given access to atool only when
+> there is availability.
+> doc
+> {toollicense.available >0}
+> require constraints
+> toollicense :License
+> subject
+> EC2 :> EnvironmentalConstraints
+> «requirement def» New hires shall be given access to tool necessary to
+> perform their Job Role.
+> doc
+> role :Role
+> subject
+> EC1 :> EnvironmentalConstraints
+> «requirement def» /available :Integer =capacity -allocated allocated :Integer capacity :Integer
+> attributes
+> License
+> «part def» ref requiredTool :Tool ref assignedEmployee :Employee
+> parts
+> Role
+> «part def» [license.available >0] [license.available <= 0] toollicense :License role :Role <refinement>
+
+Figure 10. Case Study Initial System Structure - Definition. Academic  Version  for  Teaching  Only Commercial  Development  is  strictly  Prohibited Academic  Version  for  Teaching  Only                                                      
+
+> Commercial  Development  is  strictly  Prohibited
+> ref requiredToolA :>> requiredTool
+> parts
+> roleA :Role
+> «part»
+> ^assignedEmployee :Employee
+> «ref part»
+> requiredToolA :>> requiredTool
+> «ref part»
+> ec1
+> «satisfy» :>> toolName ="ToolA"
+> attributes
+> toolA :Tool
+> «part»
+> license :>> license
+> «ref part»
+> licenseA :License
+> «part» toollicense
+> subject
+> New hires in Role Ashall be assigned alicense
+> to Tool Aonly when there is available capacity.
+> doc
+> ec2 :EC2
+> «requirement» role
+> subject
+> New hires in Role Ashall be assigned the
+> apropriate tools and license.
+> doc
+> ec1 :EC1
+> «requirement» ==toollicense =role =
+
+Figure 11. Case Study Initial System Structure - Usage. 
+
+Reference parts were modelled at the definition stage to explicitly state what type of elements should be referenced. For example, a Tool requires a License, which it may or may not currently have. Therefore, a reference part typed by the part definition License is modelled, with the optionality captured by the [0..1] multiplicity. These reference parts were redefined at the usage level and associated with the relevant us-age through binding .It was also noted that when a License is available, there will be a finite capacity. License therefore con-tains a record of the total capacity and the current al-location, producing a derived attribute which models the availability. This provides other model elements, such as the state exhibited by Tool, with a dynamic level of license availability for use in guard conditions .
+
+4.1.3 Environmental Constraints 
+
+The RD defines two constraints: the allocated per-missions for license access according to the job role and the availability of the associated license. These constraints were modelled as separate requirement definitions , typed by definition “EnvironmentalCon-straints” to inherit the Environment metadata tag .Before modelling the actions , the constraints of the 
+
+use case must first be specified, as well as the require-ments the use case will satisfy. The first requirement definition , EC1, states that “New Hires shall be given access to tools necessary to perform their Job Role”, while the second requirement definition , EC2, refines 
+
+the first requirement further, stating that “New hires shall be given access to a tool only when there is availability”. As EC2 concerns the parameter which models li-cense availability, a require constraint can be defined (Figure 10). Require was chosen as the constraint is the condition to be satisfied by the Transformation, rather than a background assumption. 
+
+4.2 Architecture Viewpoints 
+
+4.2.1 Worldview 
+
+The stakeholder concern, “resources : OwnerCon-cern”, was framed using a viewpoint , “licenseMan-agement : ResourceAllocation”. This captures the Worldview using the Rationale metadata . The defin-ing viewpoint definition was tagged with the “World-view” metadata , allowing for this to be captured in the usage .A view , “License Allocation”, was then modelled, which satisfies viewpoint “licenseManagement : Re-sourceAllocation”. This view can expose specific sys-
+
+10 tem elements and filter them based on metadata and 
+
+typing . This was not found to be sufficiently mature enough to define a generic view specification, so was left blank as an illustrative view .Academic Version for Teaching Only 
+
+Commercial Development is strictly Prohibited 
+
+Academic Version for Teaching Only Commercial Development is strictly Prohibited 
+
+Academic Version for Teaching Only 
+
+Commercial Development is strictly Prohibited                                     
+
+> resources
+> frames
+> text ="Appropriate access should be given to new hires and license availability recorded."
+> Rationale metadata
+> licenseManagement :ResourceAllocation
+> «viewpoint»
+> CATWOE Element =Worldview
+> CATWOE metadata
+> ResourceAllocation
+> «viewpoint def» licenseManagement
+> satisfy requirements
+> licenseA_Allocation :LicenseAllocation
+> «view» newEmployeeRole :Role :>> transformationSubject
+> subject
+> AssignLicense :> CATWOE_Transformation
+> «use case def» transformationSubject
+> subject
+> CATWOE Element =Transformation
+> CATWOE metadata
+> CATWOE_Transformation
+> «use case def»
+> LicenseAllocation
+> «view def»
+
+Figure 12. Architecture Viewpoint Modelling. 
+
+4.2.2 Transformation 
+
+The high-level Transformation was defined using a 
+
+use case , with the local actor usages subsetting indi-viduals “it” and “manager”. This use case was typed 
+
+by use case definition “AssignLicense”, which speci-fies that the subject must be typed by the definition 
+
+“Role”. “AssignLicense” is typed by the use case def-inition “CATWOE_Transformation” and tagged using the Transformation CATWOE label. At this stage, all six CATWOE elements have been modelled and tagged using metadata . To further de-compose the Transformation and system structure, the CM can be referred to (Figure 13), which was 
+
+Figure 13. Case Study Conceptual Model. 
+
+developed using the process described previously (2.1.3 Conceptual Models). The central activity sys-tem details the activities which comprise the Trans-formation and were assigned to either the manager or IT by colour. These activities were modelled using 
+
+actions . Two monitor-and-control systems are also included, which specify necessary control actions, as well as required sources of information. These may inform the further elicitation of requirements and their formalised constraints, although this was not included in this stage of the modelling process. According to the RD, it is known that IT will add the new hire to the appropriate license, but the specifics are not known. Therefore, the implementation pro-cess is left abstract during modelling, with greater focus on the information which will be required to enable each of the activities. If, during specific ap-plications of this framework, a greater level of detail is required, it is recommended that this is developed in collaboration with the relevant stakeholder as per Figure 3. This will ensure that the resulting solution meets the specific needs of the stakeholder, eliminat-ing the possibility of wasted effort and rework. 
+
+4.3 Architectural Descriptions 
+
+4.3.1 Use Case 
+
+To model the usage of this use case , a subject must be selected. A part “transformationSystem” was created, which includes the use case usage and the “Role A” usage to be occupied by New Hire, “roleA_NewHire”, which fills the role of subject via 
+
+subsetting . The overall part “transformationSystem” details the process by which the Transformation is performed, including the sources of information re-quired by each action . By modelling a part which includes the use case as the Transformation, rather than the use case alone, the full Transformation pro-cess and all necessary elements can be captured, answering the three questions previously described (2.1.3). This top-level part can also be exposed to generate the view , although the level of specificity shown in Figure 14 currently cannot be achieved through the generic use of filter and expose alone. The use case details illustrative steps for completing the Transformation, with actions being performed by 
+
+actors . The exact location of different attributes is also defined using binding to reference usages . The two branches of the decision result in different out-puts, one with a message , the other with an assign ac-
+
+11 Academic Version for Teaching Only Commercial Development is strictly Prohibited Academic Version for Teaching Only Commercial Development is strictly Prohibited 
+
+Academic Version for Teaching Only Commercial Development is strictly Prohibited Academic Version for Teaching Only Commercial Development is strictly Prohibited 
+
+Academic Version for Teaching Only Commercial Development is strictly Prohibited Academic Version for Teaching Only Commercial Development is strictly Prohibited 
+
+Academic Version for Teaching Only Commercial Development is strictly Prohibited Academic Version for Teaching Only Commercial Development is strictly Prohibited 
+
+Academic Version for Teaching Only 
+
+Commercial Development is strictly Prohibited                                                                    
+
+> criptions
+> CATWOE metadata
+> CATWOE Element =Transformation
+> transformationSystem
+> «part» require ec2 doc Allocation of alicense for Tool Ato New Hire.
+> objective
+> it manager
+> actors
+> :Role :>> newEmployeeRole
+> subject
+> assignLicenseA :AssignLicense
+> «use case»
+> perform actions
+> assign licenseOut.allocated := licenseIn.allocated +1
+> actions
+> ec2
+> satisfy requirements
+> provisionAccess
+> «action»
+> evaluateAvailability
+> «action»
+> informUnavailable
+> «action»
+> it
+> «performer»
+> perform actions
+> rejectionReception
+> «action»
+> reviewAndRequest
+> «action»
+> manager
+> «performer»
+> targetLicense :> roleA_NewHire.requiredToolA.license
+> «ref part»
+> targetRole :> roleA_NewHire
+> «ref part»
+> roleA_NewHire :> roleA
+> «part»
+> employee :>> assignedEmployee
+> «ref part»
+> ^requiredToolA :>> requiredTool
+> «ref part»
+> ^license[0..1] :License
+> «ref part»
+> UnavailableNotice
+> «item def» ref requestedRole :Role
+> parts
+> AccessRequest
+> «item def» licenseIn :License licenseOut :License ==incomingRequest :AccessRequest notice :UnavailableNotice UnavailableNotice notice :UnavailableNotice request :AccessRequest newHireIn :Role AccessRequest AvailabilityDecision [evaluateAvailability.incomingRequest.requestedRole...] =[evaluateAvailability.incomingRequest.requestedRole...]
+
+Figure 14. Case Study Transformation Use Case. 
+
+tion which alters an attribute . By explicitly linking the possible scenarios to model elements, the accuracy and comprehensibility of the model are increased. 
+
+## 5. Conclusions 
+
+The application of the framework to a case study re-vealed the following findings. Firstly, the textual notation has greatly enhanced the ease of precise modelling, making the use of feature typing and redefinition a natural part of the mod-elling process. Beyond using the textual notation it-self, the language also allows the modeller to ver-ify traceability when modelling graphically. As the size of the textual notation grew, however, it became more important to rely on the graphical representa-tion to keep a clearer image of the entire model. This may present a barrier to entry for less experienced modellers, although it is anticipated that develop-ments in the use of Large Language Models (LLMs) will address this as the area of research matures. The use of a framework provides a structured mapping of concepts, creating an ideal environment for an LLM to be leveraged. This could include automated generation of new model elements which adhere to the framework, natural language explanations of the modelled concepts, and facilitating the definition of complex views. The graphical representation was found to be flexible, allowing for the modeller to present the system in the manner of their choosing without interacting with the underlying logic. How-ever, it is noted that this risks misrepresenting the system structure and behaviour. This demonstrates further the requirement for the formalisation of view definitions using SysML v2. By applying filtering con-ditions, the benefits of the graphical notation can be maintained whilst helping an individual modeller avoid misrepresenting an already-defined system. The use of the SSM process was decidedly useful in producing a formalised and reproducible set of ini-tial system elements. Using a reference architecture to model this was also successful. By providing the outputs, as well as the template and SSM outputs, to a subject matter expert or external entity responsi-
+
+12 ble for modelling, the likelihood of accurate models should be increased. There were two significant challenges that were left unaddressed, however: further modelling of system elements, and integration with existing system ele-ments. The use of a standardised format and a tem-plate should assist with the integration with other systems using the framework, but the integration with systems modelled using another framework, or no framework, should be investigated. This study has established a framework for applying Soft Systems Methodology practices and formalising its outputs using SysML v2 in a uniform and reasoned manner. By mapping CATWOE elements to specific SysML v2 elements via the reference architecture and applying this to a case study, the risk of solving the wrong problem is addressed, as the context is no longer ambiguous. This allows accurate communi-cation of that context and, therefore, more accurate MBSE models. Whilst it was noted that the balance between textual and graphical modelling may require some nuance and expertise, it ultimately made en-forcing precision on the model a more inherent part of the process, which can be carried into subsequent modelling activities. 
+
+## 6. Future Directions 
+
+This framework has set out a methodology for for-malising stakeholder context within the current lim-itations of initial SysML v2 deployment. To further develop the capabilities of the framework, it is nec-essary to explore the filter conditions of the view el-ement, as well as how to query the model. By explor-ing these capabilities, extended frameworks can be defined for specific modelling applications, ensuring the accuracy of the graphical notation. Validation against the Formal Systems Model (FSM) was not completed as part of this framework. How-ever, it is recommended that the SSM protocol in-clude an FSM comparison in future extensions of this framework. The resulting use case modelling process can then be compared to that of this framework to ex-plore potential benefits of an expanded SSM protocol, potentially offering increased levels of resolution. Thirdly, it is recommended that a case study be con-ducted investigating the application of this frame-work by individuals of varying MBSE and SSM expe-rience. The benefits previously outlined may differ in weight depending on the modelling skill of the user. By doing so, the results can be compared and act as a verification and validation process for the frame-work. Lastly, the monitor-and-control loops in Figure 13 have not been modelled in detail, to avoid confusion for the reader. It is recommended that the framework be extended to include a separate procedure for this using a sophisticated monitor-and-control system. This will further explore the capabilities of SysML v2 whilst also providing a second model, which can be used to investigate the integration of two systems modelled using this framework. 
+
+## Acknowledgments 
+
+Gemini was used for initial checking of grammar and continuity of figures. Corrections were verified be-fore being applied by the authors. 
+
+## References 
+
+Almeida, J. P. A., Pires, L. F., Guizzardi, G., & Wagner, G. (2025). An analysis of the semantic foun-dation of KerML and SysML v2. Lecture Notes in Computer Science (including subseries Lec-ture Notes in Artificial Intelligence and Lecture Notes in Bioinformatics) , 15238 LNCS . https : //doi.org/10.1007/978-3-031-75872-0_8 Amissah, M., Toba, A.-L., Handley, H. A. H., & Seck, M. (2018). Towards a framework for exe-cutable systems modeling: An executable systems modeling language (ESYSML). 
+
+SpringSim .Bustard, D. W., He, Z., & Wilkie, F. G. (1999). Soft sys-tems and use-case modelling: Mutually sup-portive or mutually exclusive? Proceedings of the Hawaii International Conference on System Sciences . https://doi.org/10.1109/hicss.1999. 772894 Checkland, P. (1981). Systems thinking, systems prac-tice . John Wiley & Sons. Cloutier, R., Sauser, B., Bone, M., & Taylor, A. (2015). Transitioning systems thinking to model-based systems engineering: Systemigrams to SysML models. IEEE Transactions on Systems, Man, and Cybernetics: Systems , 45 (4). https : //doi.org/10.1109/TSMC.2014.2379657 Gisby, A., Ross, C., Francis-Smythe, J., & Anderson, K. (2023). The ‘rich pictures’ method: Its use and value, and the implications for HRD re-search and practice. Human Resource Develop-
+
+> 13
+
+ment Review , 22 (2). https://doi.org/10.1177/ 15344843221148044 Harrison, M. (2025). Github repository (Version 1.0). https://github.com/maatt1199/SSM-SysML-v2-Reference-Architecture International Organization for Standardization, In-ternational Electrotechnical Commission, & Institute of Electrical and Electronics Engi-neers. (2022). Software, systems and enterprise — architecture description . ISO/IEC/IEEE. https://www.iso.org/standard/74393.html International Organization for Standardization, In-ternational Electrotechnical Commission, & Institute of Electrical and Electronics En-gineers. (2023, March). ISO/IEC/IEEE inter-national standard - systems and software engineering–system life cycle processes. https : / / doi . org / 10 . 1109 / IEEESTD . 2023 . 10123367 Kausch, H., Pfeiffer, M., Raco, D., Rumpe, B., & Schweiger, A. (2025). Model-driven develop-ment for functional correctness of avionics systems: A verification framework for SysML specifications. CEAS Aeronautical Journal ,
+
+16 (1). https://doi.org/10.1007/s13272-024-00762-6 Leavitt, H. J. (1965). Applied organizational change in industry: Structural, technological and hu-manistic approaches. In J. G. March (Ed.), 
+
+Handbook of organisations (pp. 1144–1170). Rand McNally. Li, Z., Faheem, F., & Husung, S. (2024). Collabo-rative model-based systems engineering us-ing dataspaces and SysML v2. Systems , 12 (1). https://doi.org/10.3390/systems12010018 Litwin, K., Amundson, I., Verma, D., & McDermott, T. (2024). Transforming AADL models into SysML 2.0: Insights and recommendations. 
+
+SAE Technical Papers . https : / / doi . org / 10 . 4271/2024-01-1947 Mitroff, I. I., & Featheringham, T. R. (1974). On sys-temic problem solving and the error of the third kind. Behavioral Science , 19 (6). https:// doi.org/10.1002/bs.3830190605 Morkevicius, A., Aleksandraviciene, A., & Krisciu-niene, G. (2021). From UAF to SysML: Transi-tioning from system of systems to systems ar-chitecture. INCOSE International Symposium ,
+
+31 (1). https://doi.org/10.1002/j.2334-5837. 2021.00856.x Mukotekwa, C., & Carson, E. (2007). Improving the discharge planning process: A systems study. 
+
+Journal of Research in Nursing , 12 (6). https:// doi.org/10.1177/1744987107078897 Object Management Group. (2017). Object man-agement group systems modeling language (SysML ®) v2 request for proposal (RFP) (tech. rep.). Object Management Group. http : / / www.omg.org/cgi-bin/doc.cgi?ad/2017-12-2 Object Management Group. (2022). Unified archi-tecture framework (UAF) domain metamodel (DMM) version 1.2 (tech. rep.). Object Man-agement Group. https://www.omg.org/spec/ UAF/1.2 Object Management Group. (2025). About the OMG system modeling language specification ver-sion 2.0. https://www.omg.org/spec/SysML/ 2.0/ Paul, D., Cadle, J., Eva, M., Rollason, C., & Hunsley, J. (2020). Business analysis (4th ed.). BCS, The Chartered Institute for IT. Peters, G., Fortune, J., & White, D. (2023). The for-mal system model. Journal of Systems Think-ing , 3(1). https : / / doi . org / 10 . 54120 / jost . 0000010 Salado, A., & Wach, P. (2019). Constructing true model-based requirements in SysML. Sys-tems , 7(2). https : / / doi . org / 10 . 3390 / systems7020019 Vaicenavičius, J., Wiklund, T., Kavolis, D., Draukšas, S., Kalkauskas, A., & Vaicenavičius, R. (2025). SysIDE: SysML v2 textual editing and analy-sis system: Overview and applications. CEAS Space Journal . https : / / doi . org / 10 . 1007 / s12567-025-00595-x Wilson, B. (2001). Soft systems methodology: Con-ceptual model building and its contribution 
+
+(1st ed.). John Wiley & Sons.
