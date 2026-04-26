@@ -1,0 +1,611 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-04-26T19:57:39.779017+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 6,
+    "deep_cap": 6,
+    "deep_selected": 6,
+    "quick_candidates": 9,
+    "quick_skim_target": 11,
+    "quick_selected": 9
+  },
+  "deep_dive": [
+    {
+      "id": "2604.18228v1",
+      "source": "arxiv",
+      "title": "Towards an Agentic LLM-based Approach to Requirement Formalization from Unstructured Specifications",
+      "abstract": "Early-stage specifications of safety-critical systems are typically expressed in natural language, making it difficult to derive formal properties suitable for verification and needed to guarantee safety. While recent Large Language Model (LLM)-based approaches can generate formal artifacts from text, they mainly focus on syntactic correctness and do not ensure semantic alignment between informal requirements and formally verifiable properties. We propose an agentic methodology that automatically extracts verification-ready properties from unstructured specifications. The modular pipeline combines requirement extraction, compatibility filtering with respect to a target formalism, and translation into formal properties. Experimental results across three scenarios show that the pipeline generates syntactically and semantically aligned formal properties with a 77.8% accuracy. By explicitly accounting for modeling and verification constraints, the approach is a paving step towards exploiting Artificial Intelligence (AI) to bridge the gap between informal descriptions and semantically meaningful formal verification.",
+      "authors": [
+        "Alberto Tagliaferro",
+        "Bruno Guindani",
+        "Livia Lestingi",
+        "Matteo Rossi"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-04-20T13:12:04+00:00",
+      "link": "https://arxiv.org/pdf/2604.18228v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "agentic methodology for requirement extraction and formalization from unstructured text",
+      "llm_evidence_cn": "从非结构化文本中提取需求并形式化的代理方法",
+      "llm_evidence": "从非结构化文本中提取需求并形式化的代理方法",
+      "canonical_evidence": "从非结构化文本中提取需求并形式化的代理方法",
+      "llm_tldr_en": "Proposes an agentic pipeline to automatically extract and formalize requirements from unstructured specifications.",
+      "llm_tldr_cn": "提出一种从非结构化规范中自动提取并形式化需求的代理流水线。",
+      "llm_tldr": "提出一种从非结构化规范中自动提取并形式化需求的代理流水线。",
+      "llm_tags": [
+        "query:re-us:composite"
+      ],
+      "matched_query_tag": "query:re-us:composite",
+      "matched_query_text": "Papers central to 需求工程领域的用户故事相关的论文, especially work that connects or combines: User stories in software development and requirements engineering; Requirements engineering methodologies and practices; Agile requirements engineering and management; Quality assessment and improvement of user stories; Automated extraction of user stories from text; Defining and validating user story acceptance criteria; State of the art in user story research for requirements engineering; Automated tools for user story generation and validation; Impact of user story quality on software project success.",
+      "matched_requirement_id": "req-composite-re-us",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2604.17186v1",
+      "source": "arxiv",
+      "title": "Persona-Based Requirements Engineering for Explainable Multi-Agent Educational Systems: A Scenario Simulator for Clinical Reasoning Training",
+      "abstract": "As Artificial Intelligence (AI) and Agentic AI become increasingly integrated across sectors such as education and healthcare, it is critical to ensure that Multi-Agent Education System (MAES) is explainable from the early stages of requirements engineering (RE) within the AI software development lifecycle. Explainability is essential to build trust, promote transparency, and enable effective human-AI collaboration. Although personas are well-established in human-computer interaction to represent users and capture their needs and behaviors, their role in RE for explainable MAES remains underexplored. This paper proposes a human-first, persona-driven, explainable MAES RE framework and demonstrates the framework through a MAES for clinical reasoning training. The framework integrates personas and user stories throughout the RE process to capture the needs, goals, and interactions of various stakeholders, including medical educators, medical students, AI patient agent, and clinical agents (physical exam agent, diagnostic agent, clinical intervention agent, supervisor agent, evaluation agent). The goals, underlying models, and knowledge base shape agent interactions and inform explainability requirements that guided the clinical reasoning training of medical students. A post-usage survey found that more than 78\\% of medical students reported that MAES improved their clinical reasoning skills. These findings demonstrate that RE based on persona effectively connects technical requirements with non-technical medical students from a human-centered approach, ensuring that explainable MAES are trustworthy, interpretable, and aligned with authentic clinical scenarios from the early stages of the AI system engineering. The partial MAES for the clinical scenario simulator is~\\href{https://github.com/2sigmaEdTech/MAS/}{open sourced here}.",
+      "authors": [
+        "Weibing Zheng",
+        "Laurah Turner",
+        "Jess Kropczynski",
+        "Matthew Kelleher",
+        "Murat Ozer",
+        "Shane Halse"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI",
+        "cs.ET",
+        "cs.HC",
+        "cs.MA"
+      ],
+      "published": "2026-04-19T01:18:44+00:00",
+      "link": "https://arxiv.org/pdf/2604.17186v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Persona-driven requirements engineering framework for AI systems",
+      "llm_evidence_cn": "面向AI系统的基于画像的需求工程框架",
+      "llm_evidence": "面向AI系统的基于画像的需求工程框架",
+      "canonical_evidence": "面向AI系统的基于画像的需求工程框架",
+      "llm_tldr_en": "Proposes a persona-based RE framework to ensure explainability in multi-agent educational systems.",
+      "llm_tldr_cn": "提出一种基于用户画像的需求工程框架，以确保多智能体教育系统的可解释性。",
+      "llm_tldr": "提出一种基于用户画像的需求工程框架，以确保多智能体教育系统的可解释性。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2604.17464v1",
+      "source": "arxiv",
+      "title": "Project Prometheus: Bridging the Intent Gap in Agentic Program Repair via Reverse-Engineered Executable Specifications",
+      "abstract": "The transition from neural machine translation to agentic workflows has revolutionized Automated Program Repair (APR). However, existing agents, despite their advanced reasoning capabilities, frequently suffer from the ``Intent Gap'' -- the misalignment between the generated patch and the developer's original intent. Current solutions relying on natural language summaries or adversarial sampling often fail to provide the deterministic constraints required for surgical repairs.   In this paper, we introduce \\textsc{Prometheus}, a novel framework that bridges this gap by prioritizing \\textit{Specification Inference} over code generation. We employ Behavior-Driven Development (BDD) as an executable contract, utilizing a multi-agent architecture to reverse-engineer Gherkin specifications from runtime failure reports. To resolve the ``Hallucination of Intent,'' we propose a \\textbf{Requirement Quality Assurance (RQA) Loop}, a mechanism that leverages ground-truth code as a proxy oracle to validate inferred specifications.   We evaluated \\textsc{Prometheus} on 680 defects from the Defects4J benchmark. The results are transformative: our framework achieved a total correct patch rate of \\textbf{93.97\\%} (639/680). More significantly, it demonstrated a \\textbf{Rescue Rate of 74.4\\%}, successfully repairing 119 complex bugs that a strong blind agent failed to resolve. Qualitative analysis reveals that explicit intent guides agents away from structurally invasive over-engineering toward precise, minimal corrections. Our findings suggest that the future of APR lies not in larger models, but in the capability to align code with verified, \\textbf{Executable Specifications} -- whether pre-existing or reverse-engineered.",
+      "authors": [
+        "Yongchao Wang",
+        "Zhiqiu Huang"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-04-19T14:27:27+00:00",
+      "link": "https://arxiv.org/pdf/2604.17464v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Reverse-engineered executable specifications using BDD",
+      "llm_evidence_cn": "使用BDD逆向工程生成可执行规范",
+      "llm_evidence": "使用BDD逆向工程生成可执行规范",
+      "canonical_evidence": "使用BDD逆向工程生成可执行规范",
+      "llm_tldr_en": "Uses BDD to infer executable specifications that align generated code with developer intent.",
+      "llm_tldr_cn": "利用BDD推断可执行规范，使生成的代码与开发者的原始意图保持一致。",
+      "llm_tldr": "利用BDD推断可执行规范，使生成的代码与开发者的原始意图保持一致。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Defining and validating user story acceptance criteria",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2604.18770v1",
+      "source": "arxiv",
+      "title": "From Business Problems to AI Solutions: Where Does Transformation Support Fail",
+      "abstract": "Translating business problems into well-specified machine learning solutions is a prerequisite for successful AI systems, yet this upstream translation is still one of the least supported steps in existing methodologies. We conduct a structured narrative literature review of 18 approaches spanning requirements engineering (RE), machine learning (ML) project management, and automation. We organize these approaches into a taxonomy of four families and compare them across six input artifact categories, six output artifact categories, and a transformation framework of seven stages, grounded in RE refinement theory and ML lifecycle process. Our study shows that most approaches list ML task or algorithm specification among their expected outputs, yet only four provide partial guidance for deriving it, and none provides systematic guidance. We characterize this gap as the Analytics Translation Problem (ATP) and derive five research recommendations addressing multi-formulation exploration, task derivation guidance, constraint-algorithm filtering, probabilistic traceability, and data-triggered revision.",
+      "authors": [
+        "Abir Trabelsi",
+        "Imen Benzarti",
+        "Hafedh Mili",
+        "Darine Ameyed"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-04-20T19:26:22+00:00",
+      "link": "https://arxiv.org/pdf/2604.18770v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "literature review of approaches spanning requirements engineering (RE) for AI solutions",
+      "llm_evidence_cn": "对涵盖 AI 解决方案需求工程 (RE) 方法的文献综述",
+      "llm_evidence": "对涵盖 AI 解决方案需求工程 (RE) 方法的文献综述",
+      "canonical_evidence": "对涵盖 AI 解决方案需求工程 (RE) 方法的文献综述",
+      "llm_tldr_en": "Reviews methodologies for translating business problems into AI requirements using RE refinement theory.",
+      "llm_tldr_cn": "基于需求工程细化理论，综述了将业务问题转化为 AI 需求的各种方法。",
+      "llm_tldr": "基于需求工程细化理论，综述了将业务问题转化为 AI 需求的各种方法。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2604.20436v1",
+      "source": "arxiv",
+      "title": "Shift-Up: A Framework for Software Engineering Guardrails in AI-native Software Development -- Initial Findings",
+      "abstract": "Generative AI (GenAI) is reshaping software engineering by shifting development from manual coding toward agent-driven implementation. While vibe coding promises rapid prototyping, it often suffers from architectural drift, limited traceability, and reduced maintainability. Applying the design science research (DSR) methodology, this paper proposes Shift-Up, a framework that reinterprets established software engineering practices, like executable requirements (BDD), architectural modeling (C4), and architecture decision records (ADRs), as structural guardrails for GenAI-native development. Preliminary findings from our exploratory evaluation compare unstructured vibe coding, structured prompt engineering, and the Shift-Up approach in the development of a web application. These findings indicate that embedding machine-readable requirements and architectural artifacts stabilizes agent behavior, reduces implementation drift, and shifts human effort toward higher-level design and validation activities. The results suggest that traditional software engineering artifacts can serve as effective control mechanisms in AI-assisted development.",
+      "authors": [
+        "Petrus Lipsanen",
+        "Liisa Rannikko",
+        "François Christophe",
+        "Konsta Kalliokoski",
+        "Vlad Stirbu",
+        "Tommi Mikkonen"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-04-22T10:55:57+00:00",
+      "link": "https://arxiv.org/pdf/2604.20436v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Executable requirements and BDD as guardrails for AI development",
+      "llm_evidence_cn": "可执行需求和BDD作为AI开发的护栏",
+      "llm_evidence": "可执行需求和BDD作为AI开发的护栏",
+      "canonical_evidence": "可执行需求和BDD作为AI开发的护栏",
+      "llm_tldr_en": "Uses BDD and executable requirements as structural guardrails for AI-native software development.",
+      "llm_tldr_cn": "利用行为驱动开发(BDD)和可执行需求作为AI原生软件开发的结构化护栏。",
+      "llm_tldr": "利用行为驱动开发(BDD)和可执行需求作为AI原生软件开发的结构化护栏。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Defining and validating user story acceptance criteria",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2604.21380v1",
+      "source": "arxiv",
+      "title": "Conjecture and Inquiry: Quantifying Software Performance Requirements via Interactive Retrieval-Augmented Preference Elicitation",
+      "abstract": "Since software performance requirements are documented in natural language, quantifying them into mathematical forms is essential for software engineering. Yet, the vagueness in performance requirements and uncertainty of human cognition have caused highly uncertain ambiguity in the interpretations, rendering their automated quantification an unaddressed and challenging problem. In this paper, we formalize the problem and propose IRAP, an approach that quantifies performance requirements into mathematical functions via interactive retrieval-augmented preference elicitation. IRAP differs from the others in that it explicitly derives from problem-specific knowledge to retrieve and reason the preferences, which also guides the progressive interaction with stakeholders, while reducing the cognitive overhead. Experiment results against 10 state-of-the-art methods on four real-world datasets demonstrate the superiority of IRAP on all cases with up to 40x improvements under as few as five rounds of interactions.",
+      "authors": [
+        "Wang Shi Hai",
+        "Chen Tao"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI",
+        "cs.CL"
+      ],
+      "published": "2026-04-23T07:50:49+00:00",
+      "link": "https://arxiv.org/pdf/2604.21380v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "quantifying software performance requirements via preference elicitation",
+      "llm_evidence_cn": "通过偏好获取量化软件性能需求",
+      "llm_evidence": "通过偏好获取量化软件性能需求",
+      "canonical_evidence": "通过偏好获取量化软件性能需求",
+      "llm_tldr_en": "Proposes IRAP to quantify vague natural language performance requirements into mathematical functions.",
+      "llm_tldr_cn": "提出了IRAP方法，将模糊的自然语言性能需求量化为数学函数。",
+      "llm_tldr": "提出了IRAP方法，将模糊的自然语言性能需求量化为数学函数。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2604.16756v1",
+      "source": "arxiv",
+      "title": "Mitigating Prompt-Induced Cognitive Biases in General-Purpose AI for Software Engineering",
+      "abstract": "Prompt-induced cognitive biases are changes in a general-purpose AI (GPAI) system's decisions caused solely by biased wording in the input (e.g., framing, anchors), not task logic. In software engineering (SE) decision support (where problem statements and requirements are natural language) small phrasing shifts (e.g., popularity hints or outcome reveals) can push GPAI models toward suboptimal decisions. We study this with PROBE-SWE, a dynamic benchmark for SE that pairs biased and unbiased versions of the same SE dilemmas, controls for logic and difficulty, and targets eight SE-relevant biases (anchoring, availability, bandwagon, confirmation, framing, hindsight, hyperbolic discounting, overconfidence). We ask whether prompt engineering mitigates bias sensitivity in practice, focusing on actionable techniques that practitioners can apply off-the-shelf in real environments. Testing common strategies (e.g., chain-of-thought, self-debiasing) on cost-effective GPAI systems, we find no statistically significant reductions in bias sensitivity on a per-bias basis. We then adopt a Prolog-style view of the reasoning process: solving SE dilemmas requires making explicit any background axioms and inference assumptions (i.e., SE best practices) that are usually implicit in the prompt. So, we hypothesize that bias-inducing features short-circuit assumptions elicitation, pushing GPAI models toward biased shortcuts. Building on this, we introduce an end-to-end method that elicits best practices and injects axiomatic reasoning cues into the prompt before answering, reducing overall bias sensitivity by 51% on average (p < .001). Finally, we report a thematic analysis that surfaces linguistic patterns associated with heightened bias sensitivity, clarifying when GPAI use is less advisable for SE decision support and where to focus future countermeasures.",
+      "authors": [
+        "Francesco Sovrano",
+        "Gabriele Dominici",
+        "Alberto Bacchelli"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-04-18T00:11:35+00:00",
+      "link": "https://arxiv.org/pdf/2604.16756v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "impact of phrasing in requirements and problem statements on AI decisions",
+      "llm_evidence_cn": "需求和问题陈述中的措辞对 AI 决策的影响",
+      "llm_evidence": "需求和问题陈述中的措辞对 AI 决策的影响",
+      "canonical_evidence": "需求和问题陈述中的措辞对 AI 决策的影响",
+      "llm_tldr_en": "Analyzes how biased wording in software requirements affects AI-driven decision support systems.",
+      "llm_tldr_cn": "分析了软件需求中的偏见措辞如何影响 AI 驱动的决策支持系统。",
+      "llm_tldr": "分析了软件需求中的偏见措辞如何影响 AI 驱动的决策支持系统。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Quality assessment and improvement of user stories",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2604.19667v1",
+      "source": "arxiv",
+      "title": "Chat2Workflow: A Benchmark for Generating Executable Visual Workflows with Natural Language",
+      "abstract": "At present, executable visual workflows have emerged as a mainstream paradigm in real-world industrial deployments, offering strong reliability and controllability. However, in current practice, such workflows are almost entirely constructed through manual engineering: developers must carefully design workflows, write prompts for each step, and repeatedly revise the logic as requirements evolve-making development costly, time-consuming, and error-prone. To study whether large language models can automate this multi-round interaction process, we introduce Chat2Workflow, a benchmark for generating executable visual workflows directly from natural language, and propose a robust agentic framework to mitigate recurrent execution errors. Chat2Workflow is built from a large collection of real-world business workflows, with each instance designed so that the generated workflow can be transformed and directly deployed to practical workflow platforms such as Dify and Coze. Experimental results show that while state-of-the-art language models can often capture high-level intent, they struggle to generate correct, stable, and executable workflows, especially under complex or changing requirements. Although our agentic framework yields up to 5.34% resolve rate gains, the remaining real-world gap positions Chat2Workflow as a foundation for advancing industrial-grade automation. Code is available at https://github.com/zjunlp/Chat2Workflow.",
+      "authors": [
+        "Yi Zhong",
+        "Buqiang Xu",
+        "Yijun Wang",
+        "Zifei Shan",
+        "Shuofei Qiao",
+        "Guozhou Zheng",
+        "Ningyu Zhang"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL",
+        "cs.AI",
+        "cs.CV",
+        "cs.LG",
+        "cs.MA"
+      ],
+      "published": "2026-04-21T16:49:11+00:00",
+      "link": "https://arxiv.org/pdf/2604.19667v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "generating executable visual workflows directly from natural language as requirements evolve",
+      "llm_evidence_cn": "随着需求演变，直接从自然语言生成可执行的可视化工作流",
+      "llm_evidence": "随着需求演变，直接从自然语言生成可执行的可视化工作流",
+      "canonical_evidence": "随着需求演变，直接从自然语言生成可执行的可视化工作流",
+      "llm_tldr_en": "Introduces a benchmark and agentic framework for automating workflow generation from natural language requirements.",
+      "llm_tldr_cn": "引入了一个基准和代理框架，用于根据自然语言需求自动生成工作流。",
+      "llm_tldr": "引入了一个基准和代理框架，用于根据自然语言需求自动生成工作流。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Automated tools for user story generation and validation",
+      "matched_requirement_id": "req-8",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2604.16756v2",
+      "source": "arxiv",
+      "title": "Mitigating Prompt-Induced Cognitive Biases in General-Purpose AI for Software Engineering",
+      "abstract": "Prompt-induced cognitive biases are changes in a general-purpose AI (GPAI) system's decisions caused solely by biased wording in the input (e.g., framing, anchors), not task logic. In software engineering (SE) decision support (where problem statements and requirements are natural language) small phrasing shifts (e.g., popularity hints or outcome reveals) can push GPAI models toward suboptimal decisions. We study this with PROBE-SWE, a dynamic benchmark for SE that pairs biased and unbiased versions of the same SE dilemmas, controls for logic and difficulty, and targets eight SE-relevant biases (anchoring, availability, bandwagon, confirmation, framing, hindsight, hyperbolic discounting, overconfidence). We ask whether prompt engineering mitigates bias sensitivity in practice, focusing on actionable techniques that practitioners can apply off-the-shelf in real environments. Testing common strategies (e.g., chain-of-thought, self-debiasing) on cost-effective GPAI systems, we find no statistically significant reductions in bias sensitivity on a per-bias basis. We then adopt a Prolog-style view of the reasoning process: solving SE dilemmas requires making explicit any background axioms and inference assumptions (i.e., SE best practices) that are usually implicit in the prompt. So, we hypothesize that bias-inducing features short-circuit assumption elicitation, pushing GPAI models toward biased shortcuts. Building on this, we introduce an end-to-end method that elicits best practices and injects axiomatic reasoning cues into the prompt before answering, reducing overall bias sensitivity by 51% on average (p < .001). Finally, we report a thematic analysis that surfaces linguistic patterns associated with heightened bias sensitivity, clarifying when GPAI use is less advisable for SE decision support and where to focus future countermeasures.",
+      "authors": [
+        "Francesco Sovrano",
+        "Gabriele Dominici",
+        "Alberto Bacchelli"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-04-18T00:11:35+00:00",
+      "link": "https://arxiv.org/pdf/2604.16756v2",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "impact of phrasing in requirements and problem statements on AI decisions",
+      "llm_evidence_cn": "需求和问题陈述中的措辞对 AI 决策的影响",
+      "llm_evidence": "需求和问题陈述中的措辞对 AI 决策的影响",
+      "canonical_evidence": "需求和问题陈述中的措辞对 AI 决策的影响",
+      "llm_tldr_en": "Analyzes how biased wording in software requirements affects AI-driven decision support systems.",
+      "llm_tldr_cn": "分析了软件需求中的偏见措辞如何影响 AI 驱动的决策支持系统。",
+      "llm_tldr": "分析了软件需求中的偏见措辞如何影响 AI 驱动的决策支持系统。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Quality assessment and improvement of user stories",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2604.21570v1",
+      "source": "arxiv",
+      "title": "SpecSyn: LLM-based Synthesis and Refinement of Formal Specifications for Real-world Program Verification",
+      "abstract": "Program verification is a formal technique to rigorously ensure the correctness and fault-freeness of software systems. However, constructing comprehensive interprocedural specifications for full verification obligations is time-consuming and labor-intensive, giving rise to automated specification generation approaches. Despite the significant advancements in these approaches brought by Large Language Models (LLMs), existing LLM-empowered approaches still suffer from significant limitations: they lack effective strategies for handling sizable input programs, and are typically equipped with no mechanisms to evaluate and guarantee the strength of the generated specifications. The limitations impair their ability to extract precise specifications from real-world complicated programs to support the verification of target properties, thereby hindering the applicability of existing approaches in verification tasks on real-world programs. To remedy this gap, we propose SpecSyn, a novel LLM-based specification generation method. SpecSyn first decomposes the input program into individual segments, which are handled respectively by the subsequent iterative specification generation process. Innovatively, we incorporate into the process a specification refinement mechanism based on semantic-non-equivalent program mutations and variant discrimination, assessing and enhancing the semantic strength of the generated specifications. Extensive experiments show that SpecSyn maintains high precision over 90% and outstanding recall over 75%, significantly outperforming existing LLM-based approaches. In further evaluations, SpecSyn successfully handles 1071 out of 1365 target properties for open-source programs, proving its applicability on real-world program verification tasks.",
+      "authors": [
+        "Lezhi Ma",
+        "Shangqing Liu",
+        "Yi Li",
+        "Qiong Wu",
+        "Han Wang",
+        "Lei Bu"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-04-23T11:46:19+00:00",
+      "link": "https://arxiv.org/pdf/2604.21570v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Automated synthesis and refinement of formal specifications",
+      "llm_evidence_cn": "形式化规范的自动合成与完善",
+      "llm_evidence": "形式化规范的自动合成与完善",
+      "canonical_evidence": "形式化规范的自动合成与完善",
+      "llm_tldr_en": "Synthesizes and refines formal specifications using LLMs to ensure software correctness.",
+      "llm_tldr_cn": "利用大模型合成并完善形式化规范，以确保软件的正确性。",
+      "llm_tldr": "利用大模型合成并完善形式化规范，以确保软件的正确性。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Automated tools for user story generation and validation",
+      "matched_requirement_id": "req-8",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2604.21505v1",
+      "source": "arxiv",
+      "title": "Assessing the Impact of Requirement Ambiguity on LLM-based Function-Level Code Generation",
+      "abstract": "Software requirement ambiguity is ubiquitous in real-world development, stemming from the inherent imprecision of natural language and the varying interpretations of stakeholders. While Large Language Models (LLMs) have demonstrated impressive capabilities in generating code from precise specifications, such ambiguity poses a significant obstacle to reliable automated code generation. Existing benchmarks typically assume clear and unambiguous requirements, leaving an empirical gap in understanding how LLMs behave when faced with the inherent uncertainty of real-world software requirements. In this paper, we introduce Orchid, the first code generation benchmark specifically designed with ambiguous requirements. It comprises 1,304 function-level tasks covering four distinct types of ambiguity: lexical, syntactic, semantic, and vagueness. Leveraging this dataset, we conduct the first systematic empirical study to evaluate the impact of requirement ambiguity on LLM-based code generation. Our results demonstrate that ambiguity consistently degrades the performance of all evaluated LLMs, with the most pronounced negative effects observed in highly advanced models. Furthermore, we observe that LLMs frequently produce functionally divergent implementations for the same ambiguous requirement and lack the capability to identify or resolve such ambiguity autonomously. These findings reveal a significant performance gap between clear and ambiguous requirements, underscoring the urgent need for ambiguity-aware techniques in the next generation of automated software engineering tools. The Orchid benchmark is publicly available at https://huggingface.co/datasets/SII-YDD/Orchid.",
+      "authors": [
+        "Di Yang",
+        "Xinou Xie",
+        "Xiuwen Yang",
+        "Ming Hu",
+        "Yihao Huang",
+        "Yueling Zhang",
+        "Weikai Miao",
+        "Ting Su",
+        "Chengcheng Wan",
+        "Geguang Pu"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-04-23T10:07:33+00:00",
+      "link": "https://arxiv.org/pdf/2604.21505v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Impact of requirement ambiguity on code generation and quality",
+      "llm_evidence_cn": "需求模糊性对代码生成和质量的影响",
+      "llm_evidence": "需求模糊性对代码生成和质量的影响",
+      "canonical_evidence": "需求模糊性对代码生成和质量的影响",
+      "llm_tldr_en": "Introduces a benchmark to assess how requirement ambiguity affects LLM-based code generation quality.",
+      "llm_tldr_cn": "引入基准测试以评估需求模糊性如何影响基于大模型的代码生成质量。",
+      "llm_tldr": "引入基准测试以评估需求模糊性如何影响基于大模型的代码生成质量。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Quality assessment and improvement of user stories",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2604.21771v1",
+      "source": "arxiv",
+      "title": "Generalizing Test Cases for Comprehensive Test Scenario Coverage",
+      "abstract": "Test cases are essential for software development and maintenance. In practice, developers derive multiple test cases from an implicit pattern based on their understanding of requirements and inference of diverse test scenarios, each validating a specific behavior of the focal method. However, producing comprehensive tests is time-consuming and error-prone: many important tests that should have accompanied the initial test are added only after a significant delay, sometimes only after bugs are triggered. Existing automated test generation techniques largely focus on code coverage. Yet in real projects, practical tests are seldom driven by code coverage alone, since test scenarios do not necessarily align with control-flow branches. Instead, test scenarios originate from requirements, which are often undocumented and implicitly embedded in a project's design and implementation. However, developer-written tests are frequently treated as executable specifications; thus, even a single initial test that reflects the developer's intent can reveal the underlying requirement and the diverse scenarios that should be validated. In this work, we propose TestGeneralizer, a framework for generalizing test cases to comprehensively cover test scenarios. TestGeneralizer orchestrates three stages: (1) enhancing the understanding of the requirement and scenario behind the focal method and initial test; (2) generating a test scenario template and crystallizing it into various test scenario instances; and (3) generating and refining executable test cases from these instances. We evaluate TestGeneralizer against three state-of-the-art baselines on 12 open-source Java projects. TestGeneralizer achieves significant improvements: +31.66% and +23.08% over ChatTester, in mutation-based and LLM-assessed scenario coverage, respectively.",
+      "authors": [
+        "Binhang Qi",
+        "Yun Lin",
+        "Xinyi Weng",
+        "Chenyan Liu",
+        "Hailong Sun",
+        "Gordon Fraser",
+        "Jin Song Dong"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-04-23T15:29:09+00:00",
+      "link": "https://arxiv.org/pdf/2604.21771v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "deriving test cases based on understanding of requirements and scenarios",
+      "llm_evidence_cn": "基于对需求和场景的理解推导测试用例",
+      "llm_evidence": "基于对需求和场景的理解推导测试用例",
+      "canonical_evidence": "基于对需求和场景的理解推导测试用例",
+      "llm_tldr_en": "Explores generalizing test cases from requirement patterns to improve scenario coverage.",
+      "llm_tldr_cn": "探索从需求模式中泛化测试用例，以提高测试场景的覆盖率。",
+      "llm_tldr": "探索从需求模式中泛化测试用例，以提高测试场景的覆盖率。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Defining and validating user story acceptance criteria",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2604.21554v1",
+      "source": "arxiv",
+      "title": "Engaged AI Governance: Addressing the Last Mile Challenge Through Internal Expert Collaboration",
+      "abstract": "Under the EU AI Act, translating AI governance requirements into software development practice remains challenging. While AI governance frameworks exist at industry and organizational levels, empirical evidence of team-level implementation is scarce. We address this \"Last Mile\" Challenge through insider action research embedded within an AI startup. We present a legal-text-to-action pipeline that translates EU AI Act requirements into actionable strategies through internal expert collaboration by extracting requirements from legal text, engaging practitioners in assessment and ideation, and prioritizing implementation through collective evaluation. Our analysis reveals three patterns in how practitioners perceive regulatory requirements: convergence (compliance aligns with development priorities), existing practice (current work already satisfies requirements), and disconnection (requirements perceived as administrative overhead). Based on these patterns, we discuss when governance might be treated genuinely or performatively. Practitioners prioritize requirements that serve end-users or their own development needs, but view verification-oriented requirements as box-ticking exercises. This distinction suggests a translation challenge: regulatory requirements risk superficial treatment unless practitioners understand how compliance serves system quality and user protection. Expert collaboration offers a practical mechanism for transforming governance from external imposition to shared ownership and making previously invisible governance work visible and collective.",
+      "authors": [
+        "Simon Jarvers",
+        "Orestis Papakyriakopoulos"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-04-23T11:27:36+00:00",
+      "link": "https://arxiv.org/pdf/2604.21554v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "extracting requirements from legal text and translating into actionable strategies",
+      "llm_evidence_cn": "从法律文本中提取需求并转化为可执行策略",
+      "llm_evidence": "从法律文本中提取需求并转化为可执行策略",
+      "canonical_evidence": "从法律文本中提取需求并转化为可执行策略",
+      "llm_tldr_en": "Presents a pipeline to translate AI governance requirements into actionable software development strategies.",
+      "llm_tldr_cn": "提出了一种将AI治理需求转化为可执行软件开发策略的流水线方法。",
+      "llm_tldr": "提出了一种将AI治理需求转化为可执行软件开发策略的流水线方法。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2604.21599v1",
+      "source": "arxiv",
+      "title": "Verifying Machine Learning Interpretability Requirements through Provenance",
+      "abstract": "Machine Learning (ML) Engineering is a growing field that necessitates an increase in the rigor of ML development. It draws many ideas from software engineering and more specifically, from requirements engineering. Existing literature on ML Engineering defines quality models and Non-Functional Requirements (NFRs) specific to ML, in particular interpretability being one such NFR. However, a major challenge occurs in verifying ML NFRs, including interpretability. Although existing literature defines interpretability in terms of ML, it remains an immeasurable requirement, making it impossible to definitively confirm whether a model meets its interpretability requirement. This paper shows how ML provenance can be used to verify ML interpretability requirements. This work provides an approach for how ML engineers can save various types of model and data provenance to make the model's behavior transparent and interpretable. Saving this data forms the basis of quantifiable Functional Requirements (FRs) whose verification in turn verifies the interpretability NFR. Ultimately, this paper contributes a method to verify interpretability NFRs for ML models.",
+      "authors": [
+        "Lynn Vonderhaar",
+        "Juan Couder",
+        "Daryela Cisneros",
+        "Omar Ochoa"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.LG"
+      ],
+      "published": "2026-04-23T12:22:10+00:00",
+      "link": "https://arxiv.org/pdf/2604.21599v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "verifying Non-Functional Requirements (NFRs) specific to ML using RE principles",
+      "llm_evidence_cn": "利用需求工程原理验证机器学习特有的非功能性需求 (NFR)",
+      "llm_evidence": "利用需求工程原理验证机器学习特有的非功能性需求 (NFR)",
+      "canonical_evidence": "利用需求工程原理验证机器学习特有的非功能性需求 (NFR)",
+      "llm_tldr_en": "Explores the verification of immeasurable ML interpretability requirements through provenance techniques.",
+      "llm_tldr_cn": "探索通过溯源技术验证机器学习中难以衡量的解释性需求的方法。",
+      "llm_tldr": "探索通过溯源技术验证机器学习中难以衡量的解释性需求的方法。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2604.21715v1",
+      "source": "arxiv",
+      "title": "Automated LTL Specification Generation from Industrial Aerospace Requirements",
+      "abstract": "In the development and verification of safety-critical aero-space software, Linear Temporal Logic (LTL) has been widely used to specify complex system properties derived from requirements. However, a significant gap remains in industrial practice: translating natural language (NL) requirements into formal LTL properties is a labor-intensive and error-prone process that requires rare expertise in both aerospace control engineering and formal methods. While recent NL-to-LTL tools (e.g., NL2SPEC, NL2TL, NL2LTL) are capable of automating parts of this process, they often fail on real requirement documents in industrial settings, due to complex domain terminology or implicit temporal and logical structure. To address these challenges, we present AeroReq2LTL, a framework that automates LTL property generation for aerospace requirements using large language models (LLMs), with two key industrial innovations: (i) a data dictionary that normalizes technical jargon into precise atomic propositions; and (ii) a template-based requirement language that makes temporal cues and logical relations explicit before translation. On a real aerospace dataset, AeroReq2LTL achieves 85% precision and 88% recall in LTL generation, and its outputs can be directly consumed by existing verification tools.",
+      "authors": [
+        "Zhi Ma",
+        "Xiao Liang",
+        "Cheng Wen",
+        "Rui Chen",
+        "Bin Gu",
+        "Shengchao Qin",
+        "Cong Tian",
+        "Mengfei Yang"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-04-21T01:20:33+00:00",
+      "link": "https://arxiv.org/pdf/2604.21715v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "automated LTL specification generation from industrial natural language requirements",
+      "llm_evidence_cn": "从工业自然语言需求中自动生成 LTL 规范",
+      "llm_evidence": "从工业自然语言需求中自动生成 LTL 规范",
+      "canonical_evidence": "从工业自然语言需求中自动生成 LTL 规范",
+      "llm_tldr_en": "Automates the translation of natural language requirements into formal specifications for safety-critical software.",
+      "llm_tldr_cn": "实现了将安全关键软件的自然语言需求自动转换为形式化规范。",
+      "llm_tldr": "实现了将安全关键软件的自然语言需求自动转换为形式化规范。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Automated tools for user story generation and validation",
+      "matched_requirement_id": "req-8",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    }
+  ]
+}

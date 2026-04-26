@@ -1,0 +1,373 @@
+Title: From Business Problems to AI Solutions: Where Does Transformation Support Fail
+
+URL Source: https://arxiv.org/pdf/2604.18770v1
+
+Published Time: Wed, 22 Apr 2026 00:10:09 GMT
+
+Number of Pages: 12
+
+Markdown Content:
+# From Business Problems to AI Solutions: Where Does Transformation Support Fail? 
+
+Abir Trabelsi ∗, Imen Benzarti ∗, Hafedh Mili †, Darine Ameyed ‡∗Software and IT Engineering , ´Ecole de technologie sup´ erieure , Montreal, Canada abir.trabelsi.1@ens.etsmtl.ca, imen.benzarti@etsmtl.ca 
+
+> †
+
+Computer Science department , Universit´ e du Qu´ ebec ` a Montr´ eal , Montreal, Canada mili.hafedh@uqam.ca 
+
+> ‡
+
+Computer Science and Mathematics , Universit´ e du Qu´ ebec ` a Chicoutimi , Chicoutimi, Canada darine ameyed@uqac.ca 
+
+Abstract —Translating business problems into well-specified machine learning solutions is a prerequisite for successful AI systems, yet this upstream translation is still one of the least supported steps in existing methodologies. We conduct a struc-tured narrative literature review of 18 approaches spanning requirements engineering (RE), machine learning (ML) project management, and automation. We organize these approaches into a taxonomy of four families and compare them across six input artifact categories, six output artifact categories, and a transformation framework of seven stages, grounded in RE refinement theory and ML lifecycle process. Our study shows that most approaches list ML task or algorithm specification among their expected outputs, yet only four provide partial guidance for deriving it, and none provides systematic guidance. We characterize this gap as the Analytics Translation Problem (ATP) and derive five research recommendations addressing multi-formulation exploration, task derivation guidance, constraint-algorithm filtering, probabilistic traceability, and data-triggered revision. These findings outline a focused research agenda for the translation step largely left to practitioner intuition. 
+
+Index Terms —Requirements Engineering, AI Systems, Business-IT Alignment, Data Science, Literature Review 
+
+I. I NTRODUCTION 
+
+AI projects fail at rates estimated to be twice those of conventional IT projects [1]. Misalignment between the busi-ness problem stakeholders intend to solve and the technical formulation delivered to data science teams has been iden-tified as a recurring root cause through interviews with 65 practitioners [1]. When stakeholders express a need such as ”reduce customer churn” or ”detect fraudulent transactions”, data science teams must determine what machine learning (ML) task to formulate (e.g., classification, survival analysis, clustering), which data to collect, and which metrics oper-ationalize success. This upstream translation from business problem (BP) to ML solution specification (MLS) is still mostly ad hoc, reliant on individual expertise, and weakly supported by existing methodologies. As a result, teams may construct technically sound models that do not address the in-tended business objective, or spend extended periods iterating on problem formulation before modeling begins [2], [3]. This challenge is, at its core, a requirements engineer-ing (RE) problem. The steps of eliciting stakeholder needs, specifying system requirements, ensuring problem-solution alignment, and validating that solutions address original needs are central concerns of RE research [4]–[6]. Yet, the BP →MLS transformation differs from traditional RE in a fundamental way. Such transformation requires cross-domain derivation ,translating business characterizations expressed in the lan-guage of goals, decisions, and constraints into statistical and algorithmic constructs (ML paradigms, task types, evaluation metrics) that have no semantic correspondence in the original problem statement. This is what sets the problem apart from classical goal-to-requirement refinement [4], [5], and it goes a long way toward explaining why neither traditional RE methods nor data science process models have managed to support it systematically. Recent RE research addressed AI-specific concerns, in-cluding requirements for ML-enabled systems [7], [8], non-functional requirements for ML [9], and development chal-lenges for AI-intense systems [3]. In parallel, the data science community has developed lifecycle models such as CRISP-DM [10], [11], MLOps frameworks [12], RE-inspired ap-proaches (GR4ML [13], RE4HCAI [14]), and automation-oriented approaches that address algorithm selection down-stream [15]. Still, these efforts are fragmented and, as we demonstrate, provide little systematic guidance for deriving the ML task from business characterizations. To address this fragmentation, we conduct a narrative liter-ature review examining how 18 existing approaches, spanning requirements engineering, data science project management, and automation, support the BP →MLS transformation. We analyze these approaches through a common analytical view (input/output artifacts, transformation mechanisms, and stage coverage) to identify where support exists, where it fails, and what a transformation framework would need to provide. In this paper, we first propose a four-family taxonomy that organizes 18 BP →AI transformation approaches from fragmented research streams into a coherent landscape (Sec-tion IV). Second, we provide a comparative artifact- and stage-based analysis revealing the limitations in existing trans-formation mechanisms (Section V). Third, we characterize the Analytics Translation Problem (ATP) as the absence of explicit, traceable, and operationalizable mappings between business characterizations and ML formulations (Section VI). 
+
+> arXiv:2604.18770v1 [cs.SE] 20 Apr 2026
+
+Fourth, we derive five evidence-based recommendations (R1– R5) specifying what future transformation frameworks should provide to address the gaps (Section VI). This work positions the BP →MLS transformation as a distinct RE research prob-lem and aims to move the translation step from practitioner intuition toward principled, traceable refinement mechanisms. II. B ACKGROUND 
+
+This section defines key terms: 
+
+Business Problem (BP). We define a BP as a measurable gap an organization seeks to close, characterized by four elements: strategic objectives , decision needs that stakeholders want to support with data-driven insights, performance gaps 
+
+between current and target indicators, and constraints (budget, timeline, regulatory, ethical, technical) [4], [16]–[18]. BPs are multi-causal and articulated at varying abstraction levels, consequently, they require progressive refinement to achieve addressable formulations [19]. 
+
+ML Solution Specification (MLS). We define an MLS as the specification bridging business requirements and ML implementation. An MLS comprises the ML paradigm (su-pervised, unsupervised, reinforcement, or hybrid), the task type (classification, regression, clustering, anomaly detection, etc.), data requirements , constraint operationalization (e.g., “explainable” → interpretability requirements), evaluation cri-teria aligned with business thresholds, and operational con-text [2], [20]. 
+
+Transformation. We define transformation as deriving a specified MLS from a characterized BP such that the MLS addresses the BP, the conceptual link is explicit and traceable, and stakeholders can validate that the intent has been captured. III. R EVIEW METHODOLOGY 
+
+This section presents the research design of our review, cov-ering the research questions, search strategy, data extraction, and analysis framework. 
+
+A. Research Questions 
+
+Our review is guided by four research questions that pro-gressively characterize the BP →MLS transformation land-scape:  
+
+> •
+
+RQ1: How can existing BP →MLS approaches be orga-nized by methodological orientation?  
+
+> •
+
+RQ2: What problem-space and solution-space artifacts do these approaches consume and produce?  
+
+> •
+
+RQ3: What types of transformation mechanisms do these approaches employ?  
+
+> •
+
+RQ4: Which transformation stages receive systematic support, and where do approaches fail to specify how 
+
+to derive outputs from inputs? 
+
+B. Review Design and Search Strategy 
+
+We adopt a narrative literature review methodology [21], appropriate for synthesizing diverse research streams and identifying conceptual gaps across heterogeneous approaches. A systematic review [22] was not feasible here because our corpus spans multiple fields, requirements engineering, data science, and automation that use incompatible terminologies and contribution types, making uniform quality scoring and quantitative aggregation impractical. The structured extraction schema and classification procedures we employ are intended to enhance transparency and support the replicability of our analysis, rather than to achieve the inferential validity of an SLR. We made the complete extraction data publicly available. We searched five digital libraries (IEEE Xplore, ACM Dig-ital Library, Springer Link, ScienceDirect, arXiv) and targeted venues spanning RE and data science communities. The search combined terms across three domains problem (”business problem”, ”business goal”, ”problem formulation”), solution (”machine learning”, artificial intelligence, ”data science”), and transformation (”requirements engineering” ,”specifica-tion”, ”process model”) using Boolean operators. Our four-stage selection process yielded 129 initial articles (Stage 1), reduced to 101 after title/abstract screening and deduplication (Stage 2), then to 36 candidates after full-text review for concrete BP → AI transformation approaches (Stage 3). Quality and scope filtering produced the final corpus of 18 approaches (Stage 4), the 18 excluded candi-dates addressed only a single downstream activity, provided insufficient methodological detail, or were superseded by a more comprehensive version already retained. Inclusion required that a paper (i) propose a concrete approach, (ii) address transformation from business needs to AI/ML specifications, (iii) provide sufficient methodological detail, and (iv) appear in a peer-reviewed venue. We ex-cluded pure algorithm papers, deployment-only papers without upstream formulation, position papers without a concrete methodology, and superseded versions. When multiple papers described the same approach (e.g., GR4ML [13], [23]–[27]), we selected the most comprehensive version. Theoretical sat-uration served as the stopping rule. We continued the search until new articles no longer introduced novel approach types or mechanisms. Specifically, the last five articles reviewed (chronologically) mapped entirely onto existing families and mechanism types, introducing no new coverage patterns. 
+
+C. Data Extraction 
+
+We developed a structured schema comprising 19 fields organized into five categories, as shown in Table I. The first author performed the extraction. The second author verified and validated the extraction through discussions. 
+
+D. Analysis Framework 
+
+We grouped the 18 approaches into four families by method-ological orientation: RE for AI, Data-Centric RE, Project Man-agement Processes, and Automation-Oriented. Each approach was assigned to the family matching its primary contribution, when one straddled two families, we went with its dominant focus. Coverage was assessed against a seven-stage transformation framework (S1–S7), whose stages are grounded in established RE and data science process theory (see Section V). Each TABLE I DATA EXTRACTION SCHEMA (19 F IELDS )                    
+
+> Field Description
+> ID Unique identifier (1–18) Title Full article title Publication Type Journal / Conference / Other Venue Publication venue name Year Publication year Solution Family RE4AI / Data-Centric / PM / Automation Transformation? Yes / No / Partially Problem Category Business problem / User need / Requirement Solution Category AI / ML / DL / Data Mining / Data Science Models Problem? Yes / No / Partially Problem Properties Free text: what problem aspects are modeled Models AI Solution? Yes / No / Partially Solution Properties Free text: what solution aspects are modeled Solution Type Process / Model / Framework / Catalogue / Ontology Steps Description Free text: methodology steps or phases Validated? Yes / No Validation Method Industrial case / Academic case / Expert evaluation / None Limitations Free text: explicitly stated limitations Related Articles References to related or prior work
+
+approach was rated per stage as strong ( ••• , explicit guidance with concrete mechanisms), partial ( • • ◦ , mentioned but not operationalized), or minimal ( • ◦ ◦ , absent or only a passing reference). To assess rating reliability, the second author independently rated six approaches—spanning all four families, across all seven stages using Table VI, without seeing the first author’s ratings. Weighted Cohen’s kappa came to κ = 0 .83 (linear weighting), which indicates excellent agreement. On S3, the stage most central to our findings, agreement was perfect. The six disagreements all fell between adjacent categories; a calibration session resolved them, with two ratings changed. For gap identification, we worked bottom-up: we started from the limitations each paper’s own authors stated, looked for recurring weakness patterns in the coverage data, and then synthesized these into capability gaps shared by the majority of approaches. IV. R ESULTS I: T AXONOMY OF BP-TO -AI TRANSFORMATION APPROACHES 
+
+This section addresses RQ1 by presenting a taxonomy of 18 identified approaches organized into four families based on methodological orientation. Table II presents the complete inventory of 18 approaches with their classification, solution type, and validation status. 
+
+A. Family A: Requirements Engineering for AI (RE4AI) 
+
+This family comprises five approaches extending traditional RE practices with AI-specific catalogues, models, or frame-works. We cluster them into two categories: The first category comprises approaches focused on specification that propose catalogs, perspectives, and UML models for organizing AI requirements. However, they lack transformation mechanisms. RE4HCAI [14] captures human-centered concerns through three layers, the Catalogue of Concerns [28] organizes five per-spectives (ML Objectives, UX, Infrastructure, Model, Data), and RM4ML [30] models ML components via UML. The second category consists of approaches that explicitly attempt a connection from business to technical. GR4ML [13] extends goal-oriented RE through three views (Business, Analytics Design, Data Preparation), which constitute the most explicit bridging attempt in this family, but industrial validation re-vealed that the Business →Analytics transition remains under-specified. ML Snapshot [29] uses metamorphic relations for behavioral specifications but has been narrowly validated. 
+
+B. Family B: Data-Centric Requirements Engineering 
+
+Three approaches prioritize data requirements as the bridge between business problems and ML solutions. Extended AMDiRE [31] augments a traditional three-layer artifact model with a data-centric layer covering datasets, algorithms, and metrics. MLC Specification [32] introduces a web-based ontology to support unambiguous domain conceptualization and dataset benchmarking. The Multi-layered Framework [33] targets safety-critical ML through Problem, Data, and Evi-dence layers and is validated on pedestrian detection datasets. Despite their differences, Extended AMDiRE [31] lacks em-pirical validation, and MLC Specification [32] omits task formulation. 
+
+C. Family C: Project Management processes for AI/DS 
+
+Eight approaches provide lifecycle models that define when activities occur. We cluster them into two categories: The first category encompass approaches focusing on Life-cycle Management . These approaches emphasize governance, quality assurance, and operational concerns. CRISP-DM [10], [11], the most widely adopted model (6 phases), provides min-imal guidance on Business Understanding despite its indus-trial ubiquity. DST [34] extends CRISP-DM with exploratory activities, AI Lifecycle revised models [35] add Go/No-Go gates and monitoring, CRISP-ML(Q) [36] merges Business and Data Understanding with quality checkpoints, CRISP-ML framework [37] emphasizes interpretability throughout 7 phases, MAISTRO [39] focuses on ethics and bias. The second category encompass formulation approaches .These approaches explicitly address task formulation. BDDS [2] addresses data requirements by deriving the ”right data” from the ”right question” identified through root cause analysis and supports feasibility assessment through its DIEM framework. The framework classifies business situa-tions across four quadrants based on the understanding of relevant system dependencies and data availability, prescribing AI methods (Quadrant 1) when dependencies are opaque but data are plentiful, but, the guidance is still qualitative with-out specific algorithm recommendations. AI Use Cases [38] provides explicit problem-to-AI capability matching through cognitive function mapping and problem–solution matrices, validated via expert interviews but lacking real-project vali-dation. However, this mapping continues to be at the level of abstract capabilities: knowing that a problem requires TABLE II INVENTORY OF BP →AI T RANSFORMATION APPROACHES (N=18)                                                                                                                   
+
+> ID Approach Year Family Solution Type Solution Category Validated
+> 1RE4HCAI [14] 2023 RE4AI Conceptual Framework AI Industrial 4Catalogue of Concerns [28] 2022 RE4AI Catalogue + Template ML Focus Group 6ML Snapshot Framework [29] 2022 RE4AI Framework ML Academic 7GR4ML [13] 2021 RE4AI Process + Catalogues ML Industrial 8RM4ML [30] 2025 RE4AI Process ML Industrial 2Extended AMDiRE [31] 2021 Data-Centric Model AI/ML Not Validated 3MLC Specification [32] 2019 Data-Centric Ontology ML Not Validated 5Multi-layered Framework [33] 2023 Data-Centric Process + Template ML Academic 11 CRISP-DM [10], [11] 2006 PM Process Data Mining Industrial 12 DST [34] 2021 PM Model Data Science Industrial 13 AI Lifecycle Revisions [35] 2021 PM Model DS/ML Industrial 14 CRISP-ML(Q) [36] 2021 PM Process DS/ML Not Validated 15 Interpretability ML [37] 2021 PM Conceptual Framework DS/ML Industrial 9AI Use Case Development [38] 2020 PM Process AI Expert Interviews 10 BDDS [2] 2024 PM Process AI Industrial 16 MAISTRO [39] 2025 PM Process AI Academic 17 MLOps Architecture [12] 2023 Automation Process ML Expert Interviews 18 SmartML [15] 2019 Automation Framework ML Academic Validation categories: Industrial = real-world case study, Academic = fictitious/simulated case, Focus Group/Expert Interviews = expert evaluation, Illustrative = example-based demonstration.
+
+prediction does not indicate whether linear regression, gradient boosting, or a recurrent neural network is appropriate, nor how data or operational constraints should guide the choice. 
+
+D. Family D: Automation-Oriented Approaches 
+
+We identify two approaches that focus on downstream automation, explicitly assuming upstream formulation is com-plete. MLOps Architecture [12] defines a reference archi-tecture (Feature Engineering, Experimentation, Automated Pipeline) and addresses operational challenges but does not elaborate on Project Initiation and assumes business under-standing is already established. SmartML [15] tackles al-gorithm selection and hyperparameter tuning through meta-learning—matching dataset meta-features against a knowledge base built from 50 OpenML, UCI, and Kaggle datasets. SmartML handles algorithm choice once the ML task is fixed, not based on the business problem. 
+
+E. Cross-Family Analysis 
+
+Empirical grounding varies across families. Eight ap-proaches report industrial validation, four rely on academic cases, and three lack validation entirely. All 18 approaches provide partial transformation support. Each family addresses different transformation aspects re-quirements organization (Family A), data specification (Family B), lifecycle management (Family C), and post-formulation optimization (Family D). The translation from BP to MLS remains largely implicit across all families. V. R ESULTS II: C OMPARATIVE ANALYSIS OF 
+
+TRANSFORMATION SUPPORT 
+
+This section addresses RQ2 (What artifacts are produced?), 
+
+RQ3 (What mechanism types do approaches employ?), and 
+
+RQ4 (What coverage and gaps exist?) through a systematic comparative analysis of the 18 identified approaches. We examined input/output artifacts, transformation mechanisms, and coverage completeness using a common analytical lens. 
+
+A. Input and Output Artifacts (RQ2) 
+
+We analyze the artifacts each approach consume as inputs and produce as outputs to understand the transformation sup-port each approach provides, Table III summarizes problem-space (input) modeling and Table IV summarizes solution-space (output) modeling. 
+
+1) Problem Space Modeling (Input Artifacts): By synthe-sizing across approaches, we identify six categories of input artifacts that characterize problem-space modeling, as shown in Table III. Most approaches capture strategic objectives and domain context, with formalization ranging from informal descriptions [10], [34] to structured goal hierarchies [2], [13]. Fewer than half model stakeholder specifications or data characteristics as explicit input artifacts. 
+
+2) Solution Space Modeling (Output Artifacts): We identify six output categories in Table IV. Data requirements [10], [31], [33], [34], [36], [39] are most commonly modeled, reflecting the data-centric nature of ML. Recent approaches [31], [36], [39] increasingly emphasize AI-specific quality attributes be-yond traditional NFRs. Evaluation criteria are often underspec-ified, with approaches listing metrics without defining thresh-olds or business-aligned acceptance criteria. PM-driven [10], [36], [39] and automation-oriented approaches [12] address deployment, while RE4AI approaches [13], [14], [28]–[30] largely stop at specification. Only four approaches [13], [15], [31], [38] explicitly address algorithm or task selection. These four receive partial rather than strong S3 ratings because each addresses only a fragment of ML task formulation. SmartML automates algorithm selection within a predefined task (e.g., selecting among classifiers) but cannot determine whether 
+
+classification is the appropriate task. AI Use Cases maps cog-nitive functions to problem types but yields coarse categories TABLE III PROBLEM SPACE INPUT ARTIFACTS : S IX CATEGORIES WITH COVERAGE AND SUB -E LEMENT REFERENCES (N=18)               
+
+> Input Artifact Category Coverage Sub-Elements with References Strategic Objectives 67% (12/18) Business goals [2], [10], [13], [28], [31], [33]–[37], [39], Success criteria [36], [39], Performance gaps [2], [29]
+> Constraints and Rules 50% (9/18) Constraints [14], [29]–[31], [36], [37], Regulatory/Legal [35], [38], Ethical criteria [36], [38], [39], Quality attributes [30], [31]
+> Domain Context 56% (10/18) Business processes [31], Operational environment [29], [30], [33], [36]–[39], Domain aspects [28], [31]–[33]
+> Data Characteristics 56% (10/18) Data availability [12], [32], [35]–[37], Data quality [12], [32], [35]–[37], Features [14], [15], [29], [32], [33], [38], Datasets [12], [32], [35]
+> Stakeholder Specification 44% (8/18) User identification [13], [14], [28], Stakeholder maps [31], [35], [37], [39], Actors/Roles [13], [30]
+> Feasibility Assessment 50% (9/18) Go/No-Go criteria [2], [14], [30], [35], [36], [38], Risk analysis [33], [35], [37], [39], Viability evaluation [37]
+
+(e.g., “prediction”) without specifying task type, paradigm, or data constraints. GR4ML decomposes goals into question goals but provides no derivation rules from questions to ML tasks. BDDS uses root-cause analysis to frame questions but is still qualitative. Strong S3 would require guiding practitioners from a business question to a specified ML task, none of the four does this. 
+
+B. Transformation Mechanisms and Explicitness (RQ3) 
+
+We classify each approach by its primary mechanism type (Table II, column 5). Process/Methodology dominates (9/18), followed by Framework (4/18), Model (3/18), Catalogue (1/18), and Ontology (1/18). Several approaches [13], [28], [33] combine multiple types. Regardless of mechanism, all share a limitation in this respect: processes define when transformation activities occur (phase sequencing) but do not provide guidance about how to execute decisions within phases, models and catalogues specify what to capture but not how to derive ML formulations from the captured information and automation tools optimize within a predefined task without guiding task selection. 
+
+C. Coverage and Completeness (RQ4) 
+
+This subsection examines the completeness of each ap-proach’s transformation support by mapping coverage against a stage framework to identify where gaps exist. 
+
+1) Transformation Stage Framework: To assess cover-age systematically, we define seven stages that a complete BP →MLS transformation should address. Table V provides definitions for each stage. Stages S1–S2 constitute the problem space, S4–S7 consti-tute the solution space, S3 represents the translation point where business characterizations must be converted into ML formulations. Each stage is grounded in sources external to the reviewed corpus (Table V, column 4), ensuring that the identified gaps reflect the absences in existing practice rather than artifacts of our framework design. 
+
+2) Stage Coverage Analysis: Table VII presents our stage-by-stage assessment using the criteria defined in Table VI. Ratings are grounded in documented capabilities and the authors’ stated limitations. 
+
+a) Finding 1: Incompleteness of the approaches: All 18 approaches exhibit at least one stage with minimal coverage (• ◦ ◦ ). This uniform incompleteness spans all four method-ological families. The approach closest to completeness is GR4ML [13] with strong coverage of S1, S2, and S4, and partial coverage of S3. GR4ML provides three complemen-tary views: Business View, Analytics Design View, and Data Preparation View linked through the central concept of Insight ,defined as the output produced by an ML model to answer a business question. Yet, industrial validation in the healthcare domain revealed that the Business View to Analytics Design View transition continues to be underspecified [13]. Practi-tioners are required to rely on intuition for paradigm selection despite the framework’s otherwise rigorous structure. 
+
+b) Finding 2: The S2–S3 Discontinuity: The coverage matrix exhibits a discontinuity at stages S2–S3. Strong cov-erage drops sharply across the transformation boundary: S1 (28%) → S2 (11%) → S3 (0%) → S4 (28%). Only 2 of the 18 approaches (GR4ML, BDDS) provide strong support for S2 through explicit decision-goal constructs and Theory of Constraints (TOC)–based root-cause analysis. In contrast, the remaining 16 approaches either move directly from high-level objectives to data preparation or fail to provide a rigorous and explicit intermediate decision formulation. At S3, none of the 18 approaches provides strong guidance for ML task selection, only four approaches (GR4ML, AI Use Cases, BDDS, and SmartML) offer partial support in this regard. Encoding coverage as Strong=3, Partial=2, Minimal=1, the per-stage means confirm the pattern: S1 ( ¯x = 2.11 ), S2 (¯x = 1 .50 ), S3 ( ¯x = 1 .22 , the lowest of all seven stages), S4 ( ¯x = 2 .22 ), S5 ( ¯x = 1 .61 ), S6 ( ¯x = 1 .83 ), S7 ( ¯x = 1 .61 ). The deficit is consistent across families: mean S3 is 1.20 for RE4AI, 1.00 for Data-Centric, 1.25 for PM, and 1.50 for Automation, none exceeds ”partial” and 15 of 18 approaches score higher downstream (S4–S7) than upstream (S1–S3). 
+
+c) Finding 3: Family-Level Coverage Profiles: 
+
+Family A (RE4AI). RE4AI approaches provide partial-to-strong coverage of S1 (problem characterization) and S4 (data specification) and perform well in cataloging AI-specific con-cerns and organizing requirements. However, all five offer only minimal or partial support for S3 (ML task selection). RM4ML provides no mechanism for translating business goals into task formulations [30]. In general, these approaches specify what 
+
+to capture, not how to formulate the ML approach. 
+
+Family B (Data-Centric). Approaches in this family show varied S4 coverage: Multi-layer achieves strong data ex-ploration, while Extended AMDiRE and MLC Spec. offer only partial coverage. All three score minimal on S3. Al-though AMDiRE supports traceability via annotations, it intro-duces algorithm-related artifacts without defining a systematic TABLE IV SOLUTION SPACE OUTPUT ARTIFACTS : S IX CATEGORIES WITH COVERAGE AND SUB -E LEMENT REFERENCES (N=18) 
+
+Output Artifact Category Coverage Sub-Elements with References Data Requirements 94% (17/18) Dataset specifications [30], [31], [33], Data quality criteria [2], [14], [28], [29], [32], [33], [39], Feature definitions [12], [13], [31], [35], Data preparation [2], [10], [12]–[14], [34]–[39] 
+
+Algorithm/Task Specification 83% (15/18) ML task formulation [13], Algorithm selection [10], [12]–[15], [28], [30], [31], [34]–[37], [39], AI solution types [2], [38], Cognitive function mapping [38] 
+
+Evaluation Criteria 78% (14/18) Performance metrics [10], [12]–[14], [28], [30], [31], [34]–[37], [39], Validation methods [10], [34], Acceptance criteria [28], [29], [33], [36], Bias detection [35], [37], [39] 
+
+Quality Attributes / NFRs 67% (12/18) Explainability [14], [28], [31], Fairness [30], [31], [35], [36], [39], Robustness [13], [29], [33], Trustworthiness [31], [38], Interpretability [30], [35], [37] 
+
+Deployment Considerations 56% (10/18) Operational integration [10], [12], [34]–[39], Infrastructure [28], Monitoring [12], [35]–[37], [39], Maintenance [28], [36], [38], Feedback mechanisms [14] 
+
+Traceability Links 33% (6/18) Goal-to-algorithm mapping [2], [13], [34], [36], Requirements traceability [31], Layer connections [33] 
+
+TABLE V BP →MLS T RANSFORMATION STAGE FRAMEWORK 
+
+Stage Name Description External Grounding 
+
+S1 Problem Framing Identify business goals, stakeholders, performance gaps, and decision needs i* framework [4], BABOK [16] S2 Decision/ Question Formulation Translate goals into specific questions or decisions the system should support GQM paradigm [40], goal refinement [5] S3 ML Task Formulation Derive ML paradigm and task type (classification, regression, etc.) ML taxonomy [41], task mapping [42] S4 Data Requirements Specify data needs, quality criteria, availability, and feasibility ISO/IEC 25012 [43], Datasheets [44] S5 Constraints Integration Incorporate NFRs, ethical and regulatory constraints into specifications ISO/IEC 25010 [45], NFRs for ML [9] S6 Evaluation Criteria Define metrics, thresholds, and validation approach aligned with business goals Sokolova & Lapalme [46], Flach [47] S7 Deployment Assumptions Specify operational context, monitoring, and maintenance expectations ML technical debt [48], MLOps [12] 
+
+TABLE VI STAGE COVERAGE RATING CRITERIA (A BBREVIATED )
+
+Stage Strong ( • • • ) Coverage Criteria 
+
+S1 3+ problem elements (goals, stakeholders, constraints) OR a dedicated problem-modeling phase S2 Explicit “decision goals” OR “question goals” artifacts S3 Algorithm-selection guidance OR paradigm mapping OR task-derivation rules S4 A dedicated data layer OR 3+ data elements (datasets, quality, features) S5 3+ AI-specific attributes (explainability, fairness, ethics, robustness) S6 Metrics AND business-aligned thresholds S7 Deployment + monitoring/maintenance phases Partial ( • • ◦ ): 1 or 2 elements OR mention without detail. Minimal ( • ◦ ◦ ): No coverage OR explicit absence stated. Full criteria and evidence mapping are available in the online repository. 
+
+derivation process from business-level requirements [31]. Sim-ilarly, MLC Spec. and Multi-layer define data requirements based on pre-assumed tasks rather than deriving them from the characteristics of the problem [32], [33]. Multi-layer starts from a fixed objective (e.g.“detect pedestrians”), where the ML decision is implicitly assumed and data are specified accordingly. Likewise, MLC Spec. begins with a predefined concept (e.g., “pedestrian”) as the MLC target, focusing on concept scoping instead of deriving the task from the problem context. 
+
+Family C (Project Management). Process approaches show balanced downstream coverage, with CRISP-ML(Q) achieving strong S7 through quality assurance and opera-tional governance [36]. However, 6 of 8 score minimal on S3 and 5 of 8 on S2: they define when transformation occurs (phase sequencing, governance checkpoints) but do not provide guidance about how to execute it. CRISP-DM provides minimal guidance for Business Understanding despite industrial ubiquity. Partial exceptions exist: BDDS achieves strong S2 coverage via the TOC, AI Use Cases provides partial S3 support through cognitive function mapping. Both are qualitative and offer no algorithm recommendations [2], [38]. 
+
+Family D (Automation). Automation-oriented approaches exhibit inverted profiles, partial-to-strong downstream cover-age and minimal upstream coverage. MLOps achieves S4 and S7 strong through operational principles, yet scores minimal on S1–S2, explicitly assuming that business understanding exists [12]. SmartML provides partial S3 coverage within constraints : given a pre-defined classification task, it automates algorithm selection, but cannot determine whether a business problem should be classification, regression, or clustering [15]. Thus, both approaches begin where formulation guidance effectively ends. VI. S YNTHESIS : T HE ATP AND RESEARCH 
+
+RECOMMENDATIONS 
+
+This section synthesizes findings from our coverage anal-ysis. We first characterize the core transformation challenge as the Analytics Translation Problem (Section VI-A), and then derive recommendations from the identified gaps (Sec-tion VI-B). 
+
+A. The Analytics Translation Problem (ATP) 
+
+The capability gaps shown by our coverage analysis con-verge on a single challenge, which we characterize as the 
+
+Analytics Translation Problem (ATP). Figure 1 frames the ATP as a problem statement rather than a formal specification: it identifies the input and output component spaces that a future translation function must relate, without prescribing TABLE VII STAGE COVERAGE MATRIX : BP →MLS T RANSFORMATION (N=18) 
+
+ID Approach S1 S2 S3 S4 S5 S6 S7 Complete?             
+
+> Characterize Formulate Select Specify Define Establish Plan Problem Decisions ML Task Data Reqs Constraints Evaluation Deployment
+
+Family A: RE for AI (RE4AI) 
+
+1 RE4HCAI [14] • • ◦ • ◦ ◦ • ◦ ◦ • • • • • ◦ • • ◦ • ◦ ◦ No 4 Catalogue [28] • • ◦ • • ◦ • ◦ ◦ • • ◦ • • ◦ • • ◦ • • ◦ No 6 ML Snapshot [29] • • ◦ • ◦ ◦ • ◦ ◦ • • ◦ • • ◦ • • ◦ • ◦ ◦ No 7 GR4ML [13] • • • • • • • • ◦ • • • • • ◦ • • ◦ • ◦ ◦ No 8 RM4ML [30] • • ◦ • ◦ ◦ • ◦ ◦ • • ◦ • • ◦ • • ◦ • ◦ ◦ No 
+
+Family B: Data-Centric RE 
+
+2 Ext. AMDiRE [31] • • • • ◦ ◦ • ◦ ◦ • • ◦ • • ◦ • ◦ ◦ • ◦ ◦ No 3 MLC Spec. [32] • ◦ ◦ • ◦ ◦ • ◦ ◦ • • ◦ • ◦ ◦ • ◦ ◦ • ◦ ◦ No 5 Multi-layer [33] • • • • • ◦ • ◦ ◦ • • • • ◦ ◦ • • ◦ • ◦ ◦ No 
+
+Family C: Project Management processes 
+
+9 AI Use Cases [38] • • ◦ • • ◦ • • ◦ • • ◦ • ◦ ◦ • ◦ ◦ • ◦ ◦ No 10 BDDS [2] • • ◦ • • • • • ◦ • • ◦ • ◦ ◦ • ◦ ◦ • ◦ ◦ No 11 CRISP-DM [10], [11] • • ◦ • ◦ ◦ • ◦ ◦ • • ◦ • ◦ ◦ • • ◦ • • ◦ No 12 DST [34] • • ◦ • • ◦ • ◦ ◦ • • ◦ • ◦ ◦ • • ◦ • • ◦ No 13 AI Lifecycle [35] • • ◦ • ◦ ◦ • ◦ ◦ • • ◦ • ◦ ◦ • • ◦ • • ◦ No 14 CRISP-ML(Q) [36] • • ◦ • ◦ ◦ • ◦ ◦ • • • • • • • • • • • • No 15 Interpret. ML [37] • • • • ◦ ◦ • ◦ ◦ • • ◦ • • ◦ • • ◦ • • ◦ No 16 MAISTRO [39] • • • • ◦ ◦ • ◦ ◦ • • ◦ • • ◦ • • • • • • No 
+
+Family D: Automation-Oriented 
+
+17 MLOps [12] • ◦ ◦ • ◦ ◦ • ◦ ◦ • • • • ◦ ◦ • • ◦ • • • No 18 SmartML [15] • ◦ ◦ • ◦ ◦ • • ◦ • ◦ ◦ • ◦ ◦ • ◦ ◦ • ◦ ◦ No 
+
+Strong Coverage ( • • • ) 5 2 0 5 1 2 3 0/18 % Strong Coverage 28% 11% 0% 28% 5% 11% 17% 0% Stages: S1=Characterize Problem, S2=Formulate Decisions, S3=Select ML Task/Paradigm, S4=Specify Data Requirements, S5=Define Quality Constraints, S6=Establish Evaluation Criteria, S7=Plan Deployment & Operations. 
+
+• • • = Strong (explicit guidance), • • ◦ = Partial (some guidance), • ◦ ◦ = Minimal (little/no guidance). Shaded column indicates the important gap. 
+
+the function’s form. Characterizing what must be mapped is a prerequisite for formalizing how , the latter requires the empirical work outlined in our future directions. 
+
+Input: BP Characterization Output: ML Formulation 
+
+O: Objectives 
+
+C: Constraints 
+
+D: Data Availability 
+
+R: User Requirements 
+
+P : ML Paradigm 
+
+T : Task Type 
+
+A: Algorithm Constraints 
+
+E: Evaluation Criteria  
+
+> fATP :undefined
+
+−−−−−−−−−−−→
+
+Fig. 1. The Analytics Translation Problem: the S2–S3 formulation gap. 
+
+Table VIII shows the relationship between ATP components and the artifact categories from Tables III–IV. On the in-put side, Strategic Objectives and Stakeholder Specification jointly define what the organization needs ( O, R), Constraints and Rules define the boundaries within which any solution must operate ( C), and Data Characteristics determine which learning approaches are feasible (D). Domain Context is excluded because it provides the frame within which inputs are understood but is not itself transformed into an ML construct. Feasibility Assessment is excluded because it operates as a validation gate rather than a translation input. On the output side, Algorithm/Task Specification maps to the core formula-tion decisions ( P , T , A) and Evaluation Criteria to success metrics ( E). Other outputs, Data Requirements, Deployment Considerations, and Traceability Links, are derived from the formulation and do not constitute it. 
+
+TABLE VIII MAPPING BETWEEN ARTIFACT CATEGORIES AND ATP C OMPONENTS 
+
+Artifact Category ATP Role 
+
+Input (Table III) 
+
+Strategic Objectives O Goals and decision needs Stakeholder Specification R Trust and control expectations Constraints & Rules C Solution boundaries Data Characteristics D Feasible learning approaches Domain Context — Interpretive frame (not transformed) Feasibility Assessment — Validation gate (not translated) 
+
+Output (Table IV) 
+
+Algorithm/Task Spec. P, T, A Core formulation decisions Evaluation Criteria E Success metrics aligned with O
+
+Data Requirements — Derived from selected P, T 
+
+Quality Attr. / NFRs — Input via C; constrains A
+
+Deployment Considerations — Post-formulation (S7) Traceability Links — Cross-cutting quality (R4) 
+
+Our coverage analysis shows that approaches model in-put and output components individually, but none pro-vides the translation function fATP mapping (O, C, D, R ) →
+
+(P, T, A, E ). The following recommendations target the spe-cific gaps that prevent this translation. B. Research Recommendations 
+
+Each recommendation draws on evidence from the corpus and includes an illustrative example. We stress that these examples sketch the shape of a solution, not its final form, the specific thresholds, ratings, and formulations would need calibration through expert input and industrial case studies before anyone should adopt them. Operationalizing the rec-ommendations into a working framework is a future work. 
+
+1) R1: Support Multi-Formulation Exploration: Gap. Asingle business problem admits multiple valid ML formula-tions classification versus regression, supervised versus un-supervised each with different data requirements, feasibility constraints, and trade-offs. GR4ML [13] provides a multi-view representation, AI Use Cases [38] maps business capabilities to multiple AI solution types, and BDDS [2] uses root cause analysis to explore alternative framings. Yet, all treat views as sequential refinements toward a single solution, rather than as parallel alternatives for systematic comparison. 
+
+Recommendation. Future frameworks should extend GR4ML’s multi-view structure with an explicit formulation space representation. While GR4ML transitions linearly from the Business View to the Analytics Design View, an extended approach would maintain alternative formulations as artifacts throughout specification, with structured comparison criteria including data requirements, feasibility indicators, business alignment, and implementation cost. 
+
+Example. Given objective “reduce customer churn,” a for-mulation space might contain:            
+
+> Formulation Data Req. Feasib. Trade-off
+> Predict who churns Churn labels High Direct but reactive Predict timing Temporal data Medium Enables proaction Identify segments No labels High Less precise Recommend actions Feedback loop Low Optimizes retention
+
+2) R2: Provide Task Derivation Guidance: Gap. The S2 →S3 translation consists of the transition from decision questions to ML task specification. Practitioners independently determine whether a problem requires classification, regres-sion, clustering, or other tasks, relying on expertise rather than systematic guidance. GR4ML [13] decomposes goals into question goals but provides no formal guidance for select-ing which ML task produces the required insight, question goals may be vague, and the approach lacks mechanisms for prioritization or alignment with business value. BDDS [2] adds the TOC for focused decomposition but addresses root causes rather than task selection. AI Use Cases [38] maps seven cognitive functions to problem types but provides coarse categories without decision rules. Data-Centric ap-proaches [31]–[33] encode implicit paradigm selection based on data characteristics but leave this logic undocumented. The question “should this be classification or clustering?” receives no systematic support. 
+
+Recommendation. Future frameworks should combine GR4ML’s goal decomposition with explicit derivation rules, leveraging AI Use Cases’ cognitive mapping and making explicit what Data-Centric approaches leave implicit. Task-type selection should be supported through two rule categories: 
+
+structural rules , linking question types to task categories based on what the question asks, and data rules , filtering candidates according to available data characteristics. 
+
+Example. Derivation rules and data feasibility filters:            
+
+> If data shows... Then exclude...
+> Labels unavailable Supervised tasks No temporal structure Forecasting, survival No feedback mechanism Reinforcement learning
+> If question asks... Then candidate task...
+> Which category does X belong to? Classification What is the value of Y? Regression When will event Z occur? Survival, forecasting What groups exist? Clustering Is this observation unusual? Anomaly detection What action maximizes outcome? Reinforcement learning
+
+3) R3: Enable Constraint-Algorithm Filtering: Gap. Con-straints such as explainability, fairness, latency, and inter-pretability are captured as requirements but rarely translated into algorithm selection guidance. RE4HCAI [14] and the Catalogue of Concerns [28] provide constraint taxonomies, Extended AMDiRE [31] structures constraints within artifact models, and CRISP-ML(Q) [36] incorporates constraints into model selection by narrowing the set of candidate models against quality dimensions, but without specifying how indi-vidual constraints exclude particular algorithm families. Most approaches catalogue what constraints exist without specifying 
+
+how they restrict algorithm choice. Constraint verification occurs post-hoc after algorithm selection rather than guiding it. If a real-time application requires sub-second latency and auditable fairness, no systematic guidance exists for determin-ing compatible algorithm families. 
+
+Recommendation. Future frameworks should extend RE4HCAI’s constraint taxonomy with compatibility matrices 
+
+mapping constraint types to algorithm family suitability. Rather than post-hoc verification, an extended approach would enable pre-selection filtering through eliminative reasoning: constraints progressively exclude incompatible algorithm families, yielding candidates that satisfy all requirements before detailed selection begins. 
+
+Example. Given C = {latency <100ms, fairness auditable },compatibility filtering yields:              
+
+> Constraint Neural Ensemble Linear
+> Latency <100ms ✗✓✓
+> Fairness auditable Partial Partial ✓
+> High accuracy important ✓✓Partial
+
+4) R4: Implement Probabilistic Traceability: Gap. Tra-ditional traceability assumes binary satisfaction, a require-ment is either met or not. ML solutions, still, partially satisfy objectives with quantifiable uncertainty: a classifier achieving 85% accuracy addresses the goal imperfectly but potentially usefully. Stakeholders cannot assess specification adequacy without understanding expected performance ranges. GR4ML [13] introduces the Insight concept linking business questions to analytics outputs, but provides structural links without expected performance. Multi-layered Framework [33] quantifies uncertainty, but only for data fitness rather than for business-objective satisfaction. CRISP-ML(Q) [36] maintains quality documentation but does not propagate implications to business objectives. Most of the approaches lack explicit traceability from business objectives through requirements to ML decisions, when models underperform, tracing which objective is affected becomes impossible. 
+
+Recommendation. Future frameworks should extend GR4ML’s Insight-based traceability with probabilistic annotations: (1) expected performance ranges based on domain benchmarks or preliminary analysis, (2) confidence levels indicating estimated reliability, and (3) business impact translations specifying what ranges mean for objective satisfaction. Such annotations would propagate through the traceability chain, transforming it from documentation into actionable decision support. 
+
+Example. Annotated trace from business goal to metric:          
+
+> Goal: Reduce fraud losses by 20%
+> ↓[expected: 12–25%, confidence: medium]
+> Decision: Flag fraudulent transactions for review
+> ↓[expected: 80% caught, 5% false positive]
+> Task: Binary classification with threshold
+> ↓[basis: 50K samples, domain benchmarks]
+> Metric: Precision ≥0.85 at recall ≥0.80
+
+5) R5: Define Data-Triggered Revision Paths: Gap. Formu-lation feasibility depends on data characteristics discoverable only through exploration label quality, feature-target relation-ships, and distributional properties. Unlike traditional RE, where iteration is stakeholder-triggered, BP →MLS requires data-triggered revision where empirical findings invalidate upstream decisions. CRISP-DM [10], [11] acknowledges it-eration through circular process arrows but without specify-ing conditions. CRISP-ML(Q) [36] introduces quality check-points but verifies quality without defining revision triggers. AI Lifecycle revisions [35] add Go/No-Go gates but make binary proceed/stop decisions rather than indicating which upstream decision to revise. MAISTRO [39] demonstrates ethics-triggered revision but does not generalize to data find-ings. Without explicit triggers, teams may abandon promising directions prematurely or persist with infeasible formulations. 
+
+Recommendation. Future frameworks should extend CRISP-ML(Q)’s checkpoint mechanism with explicit revision triggers 
+
+and revision paths : (1) diagnostic conditions under which data findings mandate reconsideration, and (2) targeted paths indicating which specific upstream recommendation (R1, R2, or R3) to revisit. Building on MAISTRO’s ethics triggers, such mechanisms could generalize to data-quality, feasibility, and bias conditions. 
+
+Example. Revision trigger structure:                 
+
+> Data finding Revise Alternative path
+> Labels <threshold R2 (paradigm) Consider unsupervised Imbalance >ratio R2 (task) Anomaly detection Signal <threshold R1 (objective) May be infeasible Bias detected R3 (constr.) Add fairness requirement
+
+6) Integration: The five recommendations can work as a pipeline in practice. The process begins with R1: rather than committing to a single ML formulation, the team lays out alternatives for the same business problem. R2 populates that space—derivation rules match question types to candidate tasks and eliminate those lacking suitable data. R3 then narrows the field further, filtering out candidates that violate non-functional requirements like latency or fairness. With a shortlist in hand, stakeholders need a basis for comparison. R4 provides this by attaching expected performance ranges and tracing them back to business objectives. Finally, R5 defines when to revisit earlier decisions: if data exploration shows the label scarcity, severe class imbalance, or weak signal, the team returns to R1, R2, or R3 rather than forcing a formulation that the data cannot support. Taken together, the recommendations specify what a future framework would need to do : generate alternatives, derive tasks, filter by constraints, inform selection, and trigger revision. Our five recommendations thus define a research agenda not only for methodological frameworks but for the design of effective human-AI collaboration in an important phase of AI projects. VII. D ISCUSSION 
+
+A. Implications for Requirements Engineering 
+
+The upstream transformation problem, i.e., translating busi-ness characterizations into ML formulations, remains un-deraddressed even in approaches aiming to bring RE rigor to AI development [8], [49]. Existing RE4AI research has made progress in listing AI-specific concerns [14], [28] and structuring non-functional requirements [9], [30]. However, these contributions predominantly focus on the solution space: specifying what an AI system should satisfy once the ML task is known [7], [31]. The step of deciding which ML task to formulate remains outside the scope of all five RE4AI ap-proaches we reviewed. We argue that established RE concepts are suitable for constructing the ATP if they are extended to support cross-domain derivation. Goal decomposition [4], [5], illustrated by GR4ML’s three-view structure [13], provides a structured pathway for refinement from business objectives to technical formulations. Quality requirement frameworks [9], [45] can model constraint–algorithm compatibility relations, as articulated in R3. Traceability mechanisms [31], [33], extended with the probabilistic annotations proposed in R4, can preserve the business-to-technical reasoning chain that current approaches lack. The RE constructs exist; the hard part is adapting them to work across the business-to-ML boundary. B. Implications for Practice 
+
+We argue that practitioners should treat ML task formulation as an explicit requirements activity rather than an implicit data science decision. Our stage coverage analysis shows that the S2–S3 transition is where methodological support is weakest. To reduce the misalignment identified in [1] practitioners should make this step explicit with documented alternatives, clear selection rationale, and stakeholder validation. The input and output artifact categories in Tables III and IV can serve as a completeness checklist. Our analysis indicates that no approach covers all six input categories. This means that practitioners who rely on only one methodology are likely to encounter blind spots. Cross-referencing artifacts across dif-ferent families—for example, combining BDDS’s root cause analysis with RE4HCAI’s constraint taxonomy and a Data-Centric approach’s data quality criteria can provide broader coverage than any single approach alone. Our findings show that the BP →MLS transformation requires iteration based on empirical data results, not solely on stakeholder feedback. Therefore, project plans should include explicit decision points where insights from data exploration can prompt revisiting earlier choices, without treating such revision as a project failure. 
+
+C. Threats to Validity 
+
+Internal validity. Extraction and classification were pri-marily conducted by the first author, with co-authors review and discussions on limited to ambiguous cases. Inter-rater reliability was assessed on a 30% sample ( κ = 0 .83 , see Section III-D). The three-level rating scale involves subjec-tive judgment, which we mitigated through explicit criteria (Table VI) and the public availability of all extracted data. 
+
+External validity. Our corpus of 18 approaches may not include unpublished industry practices or work published outside our search scope. We mitigated selection bias by searching five digital libraries, targeting key RE and AI venues, and applying a theoretical saturation stopping rule. That said, approaches published after our search period are not covered. 
+
+Construct validity. The seven-stage framework (S1–S7) is deliberately derived from the corpus rather than imposed externally. This way, the gaps we find are gaps in current practice and not assumptions external to the reviewed ap-proaches. We limited the resulting circularity by grounding stages externally (Section V-C) and by interpreting gaps as inconsistencies revealed by the approaches. The 18 approaches themselves consider S2–S3 as necessary steps, yet none offers concrete mechanisms for carrying them out. We interpret this as a recognized inconsistency not a failure measured against an external benchmark. Validation of the framework on real project workflows is left for future work. The four-family taxonomy captures dominant methodological orientations, al-though some approaches could be classified differently under alternative criteria. VIII. R ELATED WORK 
+
+Recent systematic reviews converge on the same conclusion about RE4AI. Habiba et al. [50] found that analysis and elicitation dominate (104 and 87 of 126 studies), while process support continues to be marginal. Ahmad et al. [8], [49] reached a similar conclusion: among 43 studies, only three frameworks addressed elicitation-level concerns, and none guided ML task determination. Villamizar et al. [51] and Nasri et al. [52] confirmed that existing approaches primarily operate after the ML task has been decided, with specification accounting for 62% of contributions and validation receiving far less attention.The pattern extends beyond RE. Shimaoka et al. [53] reviewed 17 CRISP-DM adaptations and found that none restructures Business Understanding to formalize task derivation, even upstream variants assume the learning task is predefined. Alcobac ¸a and de Carvalho [54] synthesized 52 AutoML surveys and observed the same boundary: AutoML automates modeling under a given task but does not address how that task emerges from a business problem. Across all three streams, RE4AI, data science processes, and AutoML, ML task derivation is largely implicit. Our work addresses the prior step. Where existing reviews deal with the specification of requirements for AI systems, in this paper, we focus on deriving the ML task itself from the business problem. IX. C ONCLUSION AND FUTURE WORK 
+
+This paper examines how 18 approaches from requirements engineering, ML project management, and automation support the translation from business problems to ML solution specifi-cations. Most approaches specify what outputs an ML project should produce. However, they provide little guidance on how to derive them from business characterizations. The upstream stages, decision formulation and ML task selection, have not yet been supported across all four families, even though the approaches themselves acknowledge these stages as necessary. We characterize this gap as the Analytics Translation Problem (ATP). ATP is the absence of operationalizable mappings between business intents and ML formulations. We derive five research recommendations (R1–R5) that define what a future transformation framework would need to provide. The building blocks are already present across the reviewed approaches (e.g., goal decomposition, constraint taxonomies, quality checkpoints). However, no approach assembles them into a complete pipeline. Our recommendations identify where these pieces exist and what is still missing. Several directions are open. First, the ATP formalization and proposed recommendations require empirical validation through industrial case studies to assess their practical util-ity. Second, the seven-stage framework should be evaluated against real project workflows to confirm that it captures the activities practitioners perform. Third, the illustrative examples accompanying R1–R5 need calibration via domain expert elic-itation and benchmark studies before they can serve as oper-ational guidance. This work reframes the BP →MLS transfor-mation as a distinct cross-domain refinement problem within RE. In addition, we establish a conceptual and analytical foundation for developing principled, traceable mechanisms to replace the current reliance on practitioner intuition. These findings are especially timely as organizations integrate gen-erative AI assistants into their workflows. Thus, formalizing the ATP is a prerequisite for AI tools that can meaningfully assist this translation. DATA AVAILABILITY STATEMENT 
+
+We provide the replication package for this study, containing the literature review dataset (BP2AIS) on Zenodo 1.REFERENCES [1] J. Ryseff, B. F. De Bruhl, and S. J. Newberry, “The root causes of failure for artificial intelligence projects and how they can succeed: Avoiding the anti-patterns of AI,” RAND Corporation, Tech. Rep. RR-A2680-1, 2024. [Online]. Available: https://www.rand.org/pubs/ research reports/RRA2680-1.html [2] M. Rodgers, S. Mukherjee, B. Melamed, A. Baveja, and A. Kapoor, “Solving business problems: the business-driven data-supported pro-cess,” Annals of Operations Research , vol. 332, pp. 705–741, 2024. [3] H.-M. Heyn, E. Knauss, A. P. Muhammad, O. Eriksson, J. Linder, P. Subbiah, S. K. Pradhan, and S. Tungal, “Requirement engineering challenges for AI-intense systems development,” arXiv preprint , 2021. [Online]. Available: https://arxiv.org/abs/2103.10270 [4] E. S. K. Yu, “Towards modelling and reasoning support for early-phase requirements engineering,” in Proceedings of ISRE ’97: 3rd IEEE International Symposium on Requirements Engineering , Annapolis, MD, USA, 1997, pp. 226–235. [5] J. Horkoff and E. Yu, “Interactive goal model analysis for early re-quirements engineering,” Requirements Engineering , vol. 21, pp. 29–61, 2016. [6] A. Lapouchnian, “Goal-oriented requirements engineering: An overview of the current research,” Department of Computer Science, University of Toronto, Toronto, ON, Canada, Tech. Rep., 2005, accessed: Jul. 15, 2025. [Online]. Available: https://www.cs.utoronto.ca/ ∼alexei/pub/ Lapouchnian-Depth.pdf [7] A. Gjorgjevikj, K. Mishev, L. Antovski, and D. Trajanov, “Requirements engineering in machine learning projects,” IEEE Access , vol. 11, pp. 72 186–72 208, 2023. [8] K. Ahmad, M. Abdelrazek, C. Arora, M. Bano, and J. Grundy, “Requirements engineering for artificial intelligence systems: Asystematic mapping study,” arXiv preprint , 2022. [Online]. Available: https://arxiv.org/abs/2212.10693 [9] J. Horkoff, “Non-functional requirements for machine learning: Chal-lenges and new directions,” in 2019 IEEE 27th International Require-ments Engineering Conference (RE) , 2019, pp. 386–391. [10] G. Mariscal, ´ O. Marb´ an, and C. Fern´ andez, “A survey of data mining and knowledge discovery process models and methodologies,” The Knowledge Engineering Review , vol. 25, no. 2, pp. 137–166, 2010. [11] L. A. Kurgan and P. Musilek, “A survey of knowledge discovery and data mining process models,” The Knowledge Engineering Review , vol. 21, no. 1, pp. 1–24, 2006. [12] D. Kreuzberger, N. K¨ uhl, and S. Hirschl, “Machine learning operations (MLOps): Overview, definition, and architecture,” IEEE Access , vol. 11, pp. 31 866–31 879, 2023. [13] S. Nalchigar, E. Yu, and K. Keshavjee, “Modeling machine learning requirements from three perspectives: a case report from the healthcare domain,” Requirements Engineering , vol. 26, pp. 237–254, 2021. [14] K. Ahmad, M. Abdelrazek, C. Arora, J. Grundy, and M. Bano, “Requirements elicitation and modelling of artificial intelligence systems: An empirical study,” arXiv preprint , 2023. [Online]. Available: https://arxiv.org/abs/2302.06034 [15] M. Maher and S. Sakr, “SmartML: A meta learning-based framework for automated selection and hyperparameter tuning for machine learning algorithms,” in Proceedings of the 22nd International Conference on Extending Database Technology (EDBT) . OpenProceedings.org, 2019. 
+
+> 1
+
+https://doi.org/10.5281/zenodo.18779531 [16] International Institute of Business Analysis, A Guide to the Business Analysis Body of Knowledge (BABOK ® Guide), Version 3 . Toronto, ON, Canada: International Institute of Business Analysis, 2015. [17] J. Horkoff, D. Barone, L. Jiang, E. Yu, D. Amyot, A. Borgida, and J. My-lopoulos, “Strategic business modeling: representation and reasoning,” 
+
+Software and Systems Modeling , vol. 13, pp. 1015–1041, 2014. [18] D. Barone, E. Yu, J. Won, L. Jiang, and J. Mylopoulos, “Enterprise modeling for business intelligence,” in The Practice of Enterprise Modeling , ser. Lecture Notes in Business Information Processing, P. van Bommel, S. Hoppenbrouwers, S. Overbeek, E. Proper, and J. Barjis, Eds., vol. 68. Berlin, Heidelberg: Springer Berlin Heidelberg, 2010, pp. 31–45. [Online]. Available: https://www.cs.utoronto.ca/pub/eric/eric/ PoEM10-bim.pdf [19] L. Saleh, H. Mili, M. Boukadoum, and A. Leshob, “Matching problems to solutions: An explainable way of solving machine learning problems,” 
+
+arXiv preprint arXiv:2406.15662 , 2024. [20] D. K. Griffin, “The Big Three: A methodology to increase data science ROI by answering the questions companies care about,” arXiv preprint ,2020. [Online]. Available: https://arxiv.org/abs/2002.07069 [21] B. N. Green, C. D. Johnson, and A. Adams, “Writing narrative literature reviews for peer-reviewed journals: Secrets of the trade,” Journal of Chiropractic Medicine , vol. 5, no. 3, pp. 101–117, 2006. [22] B. Kitchenham and S. Charters, “Guidelines for performing system-atic literature reviews in software engineering,” Keele University and Durham University, Tech. Rep. EBSE-2007-01, 2007. [23] S. Nalchigar, E. Yu, and R. Ramani, “A conceptual modeling framework for business analytics,” in Conceptual Modeling , ser. Lecture Notes in Computer Science, I. Comyn-Wattiau, K. Tanaka, I.-Y. Song, S. Ya-mamoto, and M. Saeki, Eds., vol. 9974. Cham: Springer International Publishing, 2016, pp. 35–49. [24] S. Nalchigar and E. Yu, “Conceptual modeling for business analytics: A framework and potential benefits,” in 2017 IEEE 19th Conference on Business Informatics (CBI) , vol. 01, 2017, pp. 369–378. [25] ——, “Business-driven data analytics: A conceptual modeling framework,” Data & Knowledge Engineering , vol. 117, pp. 359– 372, 2018. [Online]. Available: https://www.sciencedirect.com/science/ article/pii/S0169023X18301691 [26] ——, “Designing business analytics solutions: A model-driven ap-proach,” Business & Information Systems Engineering , vol. 62, pp. 61– 75, 2020. [27] S. Nalchigar, E. Yu, Y. Obeidi, S. Carbajales, J. Green, and A. Chan, “Solution patterns for machine learning,” in Advanced Information Systems Engineering . Cham: Springer International Publishing, 2019, pp. 627–642. [28] H. Villamizar, M. Kalinowski, and H. Lopes, “A catalogue of concerns for specifying machine learning-enabled systems,” arXiv preprint , 2022. [Online]. Available: https://arxiv.org/abs/2204.07662 [29] X. Wang and W. Miao, “A framework for requirements specification of machine-learning systems,” in Proceedings , 2022, pp. 7–12, [Accessed: Jul. 24, 2025]. [Online]. Available: https://doi.org/10.18293/ seke2022-143 [30] Y. Yang, B. Zeng, and J. Gao, “RM4ML: Requirements model for machine learning-enabled software systems,” Requirements Engineering ,2025, [Accessed: Aug. 21, 2025]. [Online]. Available: https://link. springer.com/article/10.1007/s00766-024-00431-4 [31] T. Chuprina, D. Mendez, and K. Wnuk, “Towards artefact-based requirements engineering for data-centric systems,” arXiv preprint ,2021. [Online]. Available: https://arxiv.org/abs/2103.05233 [32] M. Rahimi, J. L. Guo, S. Kokaly, and M. Chechik, “Toward requirements specification for machine-learned components,” in 2019 IEEE 27th International Requirements Engineering Conference Workshops (REW) ,2019, pp. 241–244. [33] S. Dey and S.-W. Lee, “A multi-layered collaborative framework for evidence-driven data requirements engineering for machine learning-based safety-critical systems,” in Proceedings of the 38th ACM/SIGAPP Symposium on Applied Computing , ser. SAC ’23. New York, NY, USA: Association for Computing Machinery, 2023, pp. 1404—-1413. [Online]. Available: https://doi.org/10.1145/3555776.3577647 [34] F. Mart´ ınez-Plumed, L. Contreras-Ochando, C. Ferri, J. Hern´ andez-Orallo, M. Kull, N. Lachiche, M. J. Ram´ ırez-Quintana, and P. Flach, “CRISP-DM twenty years later: From data mining processes to data science trajectories,” IEEE Transactions on Knowledge and Data Engi-neering , vol. 33, no. 8, pp. 3048–3061, 2021. [35] M. Haakman, L. Cruz, H. Huijgens, and A. van Deursen, “AI lifecycle models need to be revised,” Empirical Software Engineering , vol. 26, no. 95, 2021. [36] S. Studer, T. B. Bui, C. Drescher, A. Hanuschkin, L. Winkler, S. Peters, and K.-R. M¨ uller, “Towards CRISP-ML(Q): A machine learning process model with quality assurance methodology,” Machine Learning and Knowledge Extraction , vol. 3, no. 2, pp. 392–413, 2021. [Online]. Available: https://www.mdpi.com/2504-4990/3/2/20 [37] I. Kolyshkina and S. Simoff, “Interpretability of machine learning solutions in industrial decision engineering,” in Data Mining , T. D. Le, K.-L. Ong, Y. Zhao, W. H. Jin, S. Wong, L. Liu, and G. Williams, Eds. Singapore: Springer Singapore, 2019, pp. 156–170. [38] P. Hofmann, J. J¨ ohnk, D. Protschky, and N. Urbach, “Developing purposeful AI use cases - a structured method and its application in project management,” in Wirtschaftsinformatik , 2020. [Online]. Available: https://api.semanticscholar.org/CorpusID:209179056 [39] N. S. M. Petrin, J. Carlos, M. N´ eto, and H. C. Mariano, “MAISTRO: Towards an agile methodology for AI system development projects,” Applied Sciences , vol. 15, no. 5, 2025. [Online]. Available: https://www.mdpi.com/2076-3417/15/5/2628 [40] V. R. Basili, G. Caldiera, and H. D. Rombach, “The goal question metric approach,” Encyclopedia of Software Engineering , pp. 528–532, 1994. [41] C. M. Bishop, Pattern Recognition and Machine Learning . Springer, 2006. [42] P. Domingos, “A few useful things to know about machine learning,” 
+
+Communications of the ACM , vol. 55, no. 10, pp. 78–87, 2012. [43] ISO/IEC, 25012: Software Engineering — Software Product Quality Requirements and Evaluation (SQuaRE) — Data Quality Model , In-ternational Organization for Standardization Std., 2008. [44] T. Gebru, J. Morgenstern, B. Vecchione, J. W. Vaughan, H. Wallach, H. Daum´ e III, and K. Crawford, “Datasheets for datasets,” in Commu-nications of the ACM , vol. 64, no. 12, 2021, pp. 86–92. [45] ISO/IEC, 25010: Systems and Software Engineering — Systems and Software Quality Requirements and Evaluation (SQuaRE) — System and Software Quality Models , International Organization for Standardization Std., 2011. [46] M. Sokolova and G. Lapalme, “A systematic analysis of performance measures for classification tasks,” Information Processing & Manage-ment , vol. 45, no. 4, pp. 427–437, 2009. [47] P. Flach, Machine Learning: The Art and Science of Algorithms that Make Sense of Data . Cambridge University Press, 2012. [48] D. Sculley, G. Holt, D. Golovin, E. Davydov, T. Phillips, D. Ebner, V. Chaudhary, M. Young, J.-F. Crespo, and D. Dennison, “Hidden technical debt in machine learning systems,” in Advances in Neural Information Processing Systems , vol. 28, 2015. [49] K. Ahmad, M. Bano, M. Abdelrazek, C. Arora, and J. Grundy, “What’s up with requirements engineering for artificial intelligence systems?” in 2021 IEEE 29th International Requirements Engineering Conference (RE) , 2021, pp. 1–12. [50] U. e Habiba, M. Haug, J. Bogner, and S. Wagner, “How mature is requirements engineering for AI-based systems? a systematic mapping study on practices, challenges, and future research directions,” Require-ments Engineering , vol. 29, no. 4, pp. 567–600, 2024. [51] H. Villamizar, T. Escovedo, and M. Kalinowski, “Requirements engi-neering for machine learning: A systematic mapping study,” in 2021 47th Euromicro Conference on Software Engineering and Advanced Applications (SEAA) , 2021, pp. 29–36. [52] Z. Nasri, “Requirements engineering practices for AI/ML-based systems: A systematic literature review,” SSRN, Tech. Rep., October 2025. [Online]. Available: https://ssrn.com/abstract=5563700 [53] A. M. Shimaoka, R. C. Ferreira, and A. Goldman, “The evolution of CRISP-DM for data science: Methods, processes and frameworks,” 
+
+SBC Computing Reviews , vol. 4, no. 1, pp. 28–43, Oct. 2024. [Online]. Available: https://journals-sol.sbc.org.br/index.php/reviews/article/view/ 3757 [54] E. Alcobac ¸a and A. C. P. L. F. de Carvalho, “A literature review on automated machine learning,” Artificial Intelligence Review , vol. 59, p. 5, 2026.

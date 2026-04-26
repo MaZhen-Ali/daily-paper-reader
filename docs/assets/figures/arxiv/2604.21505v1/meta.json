@@ -1,0 +1,102 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2604.21505v1/fig-001.webp",
+      "caption": "Figure 1: An ambiguous requirement results in LLMs generating functionally distinct code snippets. Here, \"filtered by\" is implemented in two different ways: (A) retaining items above the threshold; and (B) keeping only those below it.",
+      "page": 1,
+      "index": 1,
+      "width": 498,
+      "height": 329
+    },
+    {
+      "url": "assets/figures/arxiv/2604.21505v1/fig-002.webp",
+      "caption": "Figure 6: Overview of Orchid Construction Process.",
+      "page": 6,
+      "index": 2,
+      "width": 1050,
+      "height": 249
+    },
+    {
+      "url": "assets/figures/arxiv/2604.21505v1/fig-003.webp",
+      "caption": "Figure 7: Orchid Benchmark Statistics. The chart displays the distribution of data sources and lists the covered ambiguity types, while the table details token length and perplexity for original and ambiguous requirements.",
+      "page": 6,
+      "index": 3,
+      "width": 1023,
+      "height": 228
+    },
+    {
+      "url": "assets/figures/arxiv/2604.21505v1/fig-004.webp",
+      "caption": "Table 1: Code Generation Benchmarks.",
+      "page": 2,
+      "index": 4,
+      "width": 1056,
+      "height": 417
+    },
+    {
+      "url": "assets/figures/arxiv/2604.21505v1/fig-005.webp",
+      "caption": "Table 4: Pass@K of LLMs on original and ambiguous requirement.",
+      "page": 7,
+      "index": 5,
+      "width": 1036,
+      "height": 555
+    },
+    {
+      "url": "assets/figures/arxiv/2604.21505v1/fig-006.webp",
+      "caption": "Table 5: Conflict Rate of LLMs on original and ambiguous requirements.",
+      "page": 8,
+      "index": 6,
+      "width": 1002,
+      "height": 231
+    },
+    {
+      "url": "assets/figures/arxiv/2604.21505v1/fig-007.webp",
+      "caption": "Figure 8: Functional diversity of LLMs on Orchid.",
+      "page": 8,
+      "index": 7,
+      "width": 908,
+      "height": 251
+    },
+    {
+      "url": "assets/figures/arxiv/2604.21505v1/fig-008.webp",
+      "caption": "Figure 4: A semantic ambiguity from Orchid-HEval task #26, where ’duplicate occurrences’ is interpreted differently.",
+      "page": 4,
+      "index": 8,
+      "width": 519,
+      "height": 471
+    },
+    {
+      "url": "assets/figures/arxiv/2604.21505v1/fig-009.webp",
+      "caption": "Table 2: Types of Ambiguities in Function-Level Code Generation [36].",
+      "page": 4,
+      "index": 9,
+      "width": 1050,
+      "height": 183
+    },
+    {
+      "url": "assets/figures/arxiv/2604.21505v1/fig-010.webp",
+      "caption": "Figure 2: A lexical ambiguity example from Orchid-HEval task #7, where ’pattern’ is interpreted in multiple ways.",
+      "page": 4,
+      "index": 10,
+      "width": 520,
+      "height": 359
+    },
+    {
+      "url": "assets/figures/arxiv/2604.21505v1/fig-011.webp",
+      "caption": "Figure 3: A syntactic ambiguity example from Orchid-HEval task #34, where the pronoun “it” has an unclear reference.",
+      "page": 4,
+      "index": 11,
+      "width": 520,
+      "height": 266
+    },
+    {
+      "url": "assets/figures/arxiv/2604.21505v1/fig-012.webp",
+      "caption": "Figure 5: A vagueness ambiguity example fromOrchid-HEval task #131, where the term “digits” is unspecified.",
+      "page": 5,
+      "index": 12,
+      "width": 520,
+      "height": 340
+    }
+  ]
+}
