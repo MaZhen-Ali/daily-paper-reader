@@ -1,0 +1,78 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2604.22207v1/fig-001.webp",
+      "caption": "Table 4: Exemplars of Few-shot examples used either for prompting the ’generator’ or the ’critic’ LLM. Other instances can be found in the online appendix.",
+      "page": 6,
+      "index": 1,
+      "width": 533,
+      "height": 833
+    },
+    {
+      "url": "assets/figures/arxiv/2604.22207v1/fig-002.webp",
+      "caption": "Table 6: Example of output produced by the proposed system when processing the Urban Maintenance use case under the Few-shot setting. Red text represents false positives, while blue highlights false negatives. Examples of false positives are the high-level goals related to account registration and management. While low-level goals have not been reported for brevity, we observed that the relative low-level goals have not been consistently generated.",
+      "page": 6,
+      "index": 2,
+      "width": 546,
+      "height": 533
+    },
+    {
+      "url": "assets/figures/arxiv/2604.22207v1/fig-003.webp",
+      "caption": "Table 8: Performancemetrics for the Actor identification task using Few-shot prompting, disaggregated by the individual software projects within the ground truth and ordered by precision.",
+      "page": 7,
+      "index": 3,
+      "width": 525,
+      "height": 493
+    },
+    {
+      "url": "assets/figures/arxiv/2604.22207v1/fig-004.webp",
+      "caption": "Table 1: Average cosine similarities between the Shot examples used in the prompts for the generator agent — i.e., GPT — and the different software projects constituting our ground truth dataset.",
+      "page": 3,
+      "index": 4,
+      "width": 466,
+      "height": 362
+    },
+    {
+      "url": "assets/figures/arxiv/2604.22207v1/fig-005.webp",
+      "caption": "Table 2: Average cosine similarities between the Shot examples fed to the critic agent — i.e., Llama — in each task and the different software projects forming the ground truth.",
+      "page": 3,
+      "index": 5,
+      "width": 466,
+      "height": 362
+    },
+    {
+      "url": "assets/figures/arxiv/2604.22207v1/fig-006.webp",
+      "caption": "Table 11: Performance metrics for the Low-level goals identification task using Few-shot prompting, disaggregated by the individual software projects within the ground truth and ordered by precision.",
+      "page": 8,
+      "index": 6,
+      "width": 519,
+      "height": 394
+    },
+    {
+      "url": "assets/figures/arxiv/2604.22207v1/fig-007.webp",
+      "caption": "Table 10: Performance metrics for the high-level goals identification task using Few-shot prompting, disaggregated by the individual software projects within the ground truth and ordered by precision.",
+      "page": 8,
+      "index": 7,
+      "width": 525,
+      "height": 485
+    },
+    {
+      "url": "assets/figures/arxiv/2604.22207v1/fig-008.webp",
+      "caption": "Figure 1: Schema of the proposed architecture, consisting of a LLM chain",
+      "page": 4,
+      "index": 8,
+      "width": 740,
+      "height": 388
+    },
+    {
+      "url": "assets/figures/arxiv/2604.22207v1/fig-009.webp",
+      "caption": "Table 3: Prompts provided to the LLM model to accomplish the different tasks of the proposed pipeline.",
+      "page": 5,
+      "index": 9,
+      "width": 1001,
+      "height": 1313
+    }
+  ]
+}
