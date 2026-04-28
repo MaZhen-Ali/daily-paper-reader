@@ -1,0 +1,683 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-04-28T20:26:01.902984+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 9,
+    "deep_cap": 6,
+    "deep_selected": 6,
+    "quick_candidates": 15,
+    "quick_skim_target": 11,
+    "quick_selected": 11
+  },
+  "deep_dive": [
+    {
+      "id": "2604.22003v1",
+      "source": "arxiv",
+      "title": "Documentless Assessments Using Nominal Group Interviews",
+      "abstract": "This paper describes a group interview technique designed to support documentless process assessments while promoting at the same time collaboration among assessment participants. The method was successfully used in one consulting assignment where it got previously discording participants, talking to each other and agreeing on the issues. The technique borrows from agile software development the concept of user stories to cast CMMIs specific practices in concrete terms and the Planning Poker technique, instead of document reviews and audit like interviews, for fact finding and corroboration.",
+      "authors": [
+        "Eduardo Miranda"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-04-23T18:43:44+00:00",
+      "link": "https://arxiv.org/pdf/2604.22003v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Uses user stories and Planning Poker for process assessment",
+      "llm_evidence_cn": "使用用户故事和计划扑克进行过程评估",
+      "llm_evidence": "使用用户故事和计划扑克进行过程评估",
+      "canonical_evidence": "使用用户故事和计划扑克进行过程评估",
+      "llm_tldr_en": "Applies agile user story concepts to facilitate documentless process assessments and collaboration.",
+      "llm_tldr_cn": "应用敏捷用户故事概念来促进无文档的过程评估和团队协作。",
+      "llm_tldr": "应用敏捷用户故事概念来促进无文档的过程评估和团队协作。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Agile requirements engineering and management",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2604.18228v1",
+      "source": "arxiv",
+      "title": "Towards an Agentic LLM-based Approach to Requirement Formalization from Unstructured Specifications",
+      "abstract": "Early-stage specifications of safety-critical systems are typically expressed in natural language, making it difficult to derive formal properties suitable for verification and needed to guarantee safety. While recent Large Language Model (LLM)-based approaches can generate formal artifacts from text, they mainly focus on syntactic correctness and do not ensure semantic alignment between informal requirements and formally verifiable properties. We propose an agentic methodology that automatically extracts verification-ready properties from unstructured specifications. The modular pipeline combines requirement extraction, compatibility filtering with respect to a target formalism, and translation into formal properties. Experimental results across three scenarios show that the pipeline generates syntactically and semantically aligned formal properties with a 77.8% accuracy. By explicitly accounting for modeling and verification constraints, the approach is a paving step towards exploiting Artificial Intelligence (AI) to bridge the gap between informal descriptions and semantically meaningful formal verification.",
+      "authors": [
+        "Alberto Tagliaferro",
+        "Bruno Guindani",
+        "Livia Lestingi",
+        "Matteo Rossi"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-04-20T13:12:04+00:00",
+      "link": "https://arxiv.org/pdf/2604.18228v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "automatically extracts verification-ready properties from unstructured specifications",
+      "llm_evidence_cn": "从非结构化规范中自动提取可验证的属性",
+      "llm_evidence": "从非结构化规范中自动提取可验证的属性",
+      "canonical_evidence": "从非结构化规范中自动提取可验证的属性",
+      "llm_tldr_en": "An agentic LLM approach to automatically extract and formalize requirements from unstructured text.",
+      "llm_tldr_cn": "一种基于智能体LLM的方法，用于从非结构化文本中自动提取并形式化需求。",
+      "llm_tldr": "一种基于智能体LLM的方法，用于从非结构化文本中自动提取并形式化需求。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Automated extraction of user stories from text",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2604.20436v1",
+      "source": "arxiv",
+      "title": "Shift-Up: A Framework for Software Engineering Guardrails in AI-native Software Development -- Initial Findings",
+      "abstract": "Generative AI (GenAI) is reshaping software engineering by shifting development from manual coding toward agent-driven implementation. While vibe coding promises rapid prototyping, it often suffers from architectural drift, limited traceability, and reduced maintainability. Applying the design science research (DSR) methodology, this paper proposes Shift-Up, a framework that reinterprets established software engineering practices, like executable requirements (BDD), architectural modeling (C4), and architecture decision records (ADRs), as structural guardrails for GenAI-native development. Preliminary findings from our exploratory evaluation compare unstructured vibe coding, structured prompt engineering, and the Shift-Up approach in the development of a web application. These findings indicate that embedding machine-readable requirements and architectural artifacts stabilizes agent behavior, reduces implementation drift, and shifts human effort toward higher-level design and validation activities. The results suggest that traditional software engineering artifacts can serve as effective control mechanisms in AI-assisted development.",
+      "authors": [
+        "Petrus Lipsanen",
+        "Liisa Rannikko",
+        "François Christophe",
+        "Konsta Kalliokoski",
+        "Vlad Stirbu",
+        "Tommi Mikkonen"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-04-22T10:55:57+00:00",
+      "link": "https://arxiv.org/pdf/2604.20436v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "executable requirements (BDD) as guardrails for AI development",
+      "llm_evidence_cn": "可执行需求（BDD）作为AI开发的护栏",
+      "llm_evidence": "可执行需求（BDD）作为AI开发的护栏",
+      "canonical_evidence": "可执行需求（BDD）作为AI开发的护栏",
+      "llm_tldr_en": "Proposes Shift-Up, using SE practices like BDD and C4 as guardrails for GenAI-native development.",
+      "llm_tldr_cn": "提出Shift-Up框架，将BDD等软件工程实践作为生成式AI开发的结构化护栏。",
+      "llm_tldr": "提出Shift-Up框架，将BDD等软件工程实践作为生成式AI开发的结构化护栏。",
+      "llm_tags": [
+        "query:re-us:composite"
+      ],
+      "matched_query_tag": "query:re-us:composite",
+      "matched_query_text": "Papers central to 需求工程领域的用户故事相关的论文, especially work that connects or combines: User stories in software development and requirements engineering; Requirements engineering methodologies and practices; Agile requirements engineering and management; Quality assessment and improvement of user stories; Automated extraction of user stories from text; Defining and validating user story acceptance criteria; State of the art in user story research for requirements engineering; Automated tools for user story generation and validation; Impact of user story quality on software project success.",
+      "matched_requirement_id": "req-composite-re-us",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2604.18770v1",
+      "source": "arxiv",
+      "title": "From Business Problems to AI Solutions: Where Does Transformation Support Fail",
+      "abstract": "Translating business problems into well-specified machine learning solutions is a prerequisite for successful AI systems, yet this upstream translation is still one of the least supported steps in existing methodologies. We conduct a structured narrative literature review of 18 approaches spanning requirements engineering (RE), machine learning (ML) project management, and automation. We organize these approaches into a taxonomy of four families and compare them across six input artifact categories, six output artifact categories, and a transformation framework of seven stages, grounded in RE refinement theory and ML lifecycle process. Our study shows that most approaches list ML task or algorithm specification among their expected outputs, yet only four provide partial guidance for deriving it, and none provides systematic guidance. We characterize this gap as the Analytics Translation Problem (ATP) and derive five research recommendations addressing multi-formulation exploration, task derivation guidance, constraint-algorithm filtering, probabilistic traceability, and data-triggered revision.",
+      "authors": [
+        "Abir Trabelsi",
+        "Imen Benzarti",
+        "Hafedh Mili",
+        "Darine Ameyed"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-04-20T19:26:22+00:00",
+      "link": "https://arxiv.org/pdf/2604.18770v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "requirements engineering for machine learning solutions",
+      "llm_evidence_cn": "机器学习解决方案的需求工程",
+      "llm_evidence": "机器学习解决方案的需求工程",
+      "canonical_evidence": "机器学习解决方案的需求工程",
+      "llm_tldr_en": "Reviews 18 approaches for translating business problems into ML requirements and specifications.",
+      "llm_tldr_cn": "综述了18种将业务问题转化为机器学习需求和规范的方法。",
+      "llm_tldr": "综述了18种将业务问题转化为机器学习需求和规范的方法。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2604.21380v1",
+      "source": "arxiv",
+      "title": "Conjecture and Inquiry: Quantifying Software Performance Requirements via Interactive Retrieval-Augmented Preference Elicitation",
+      "abstract": "Since software performance requirements are documented in natural language, quantifying them into mathematical forms is essential for software engineering. Yet, the vagueness in performance requirements and uncertainty of human cognition have caused highly uncertain ambiguity in the interpretations, rendering their automated quantification an unaddressed and challenging problem. In this paper, we formalize the problem and propose IRAP, an approach that quantifies performance requirements into mathematical functions via interactive retrieval-augmented preference elicitation. IRAP differs from the others in that it explicitly derives from problem-specific knowledge to retrieve and reason the preferences, which also guides the progressive interaction with stakeholders, while reducing the cognitive overhead. Experiment results against 10 state-of-the-art methods on four real-world datasets demonstrate the superiority of IRAP on all cases with up to 40x improvements under as few as five rounds of interactions.",
+      "authors": [
+        "Wang Shi Hai",
+        "Chen Tao"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI",
+        "cs.CL"
+      ],
+      "published": "2026-04-23T07:50:49+00:00",
+      "link": "https://arxiv.org/pdf/2604.21380v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Quantifying software performance requirements via preference elicitation",
+      "llm_evidence_cn": "通过偏好获取量化软件性能需求",
+      "llm_evidence": "通过偏好获取量化软件性能需求",
+      "canonical_evidence": "通过偏好获取量化软件性能需求",
+      "llm_tldr_en": "IRAP quantifies vague natural language performance requirements into mathematical functions.",
+      "llm_tldr_cn": "IRAP 将模糊的自然语言性能需求量化为数学函数。",
+      "llm_tldr": "IRAP 将模糊的自然语言性能需求量化为数学函数。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2604.21505v1",
+      "source": "arxiv",
+      "title": "Assessing the Impact of Requirement Ambiguity on LLM-based Function-Level Code Generation",
+      "abstract": "Software requirement ambiguity is ubiquitous in real-world development, stemming from the inherent imprecision of natural language and the varying interpretations of stakeholders. While Large Language Models (LLMs) have demonstrated impressive capabilities in generating code from precise specifications, such ambiguity poses a significant obstacle to reliable automated code generation. Existing benchmarks typically assume clear and unambiguous requirements, leaving an empirical gap in understanding how LLMs behave when faced with the inherent uncertainty of real-world software requirements. In this paper, we introduce Orchid, the first code generation benchmark specifically designed with ambiguous requirements. It comprises 1,304 function-level tasks covering four distinct types of ambiguity: lexical, syntactic, semantic, and vagueness. Leveraging this dataset, we conduct the first systematic empirical study to evaluate the impact of requirement ambiguity on LLM-based code generation. Our results demonstrate that ambiguity consistently degrades the performance of all evaluated LLMs, with the most pronounced negative effects observed in highly advanced models. Furthermore, we observe that LLMs frequently produce functionally divergent implementations for the same ambiguous requirement and lack the capability to identify or resolve such ambiguity autonomously. These findings reveal a significant performance gap between clear and ambiguous requirements, underscoring the urgent need for ambiguity-aware techniques in the next generation of automated software engineering tools. The Orchid benchmark is publicly available at https://huggingface.co/datasets/SII-YDD/Orchid.",
+      "authors": [
+        "Di Yang",
+        "Xinou Xie",
+        "Xiuwen Yang",
+        "Ming Hu",
+        "Yihao Huang",
+        "Yueling Zhang",
+        "Weikai Miao",
+        "Ting Su",
+        "Chengcheng Wan",
+        "Geguang Pu"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-04-23T10:07:33+00:00",
+      "link": "https://arxiv.org/pdf/2604.21505v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "impact of requirement ambiguity on automated code generation",
+      "llm_evidence_cn": "需求模糊性对自动代码生成的影响",
+      "llm_evidence": "需求模糊性对自动代码生成的影响",
+      "canonical_evidence": "需求模糊性对自动代码生成的影响",
+      "llm_tldr_en": "Introduces a benchmark to assess how software requirement ambiguity affects LLM-based code generation.",
+      "llm_tldr_cn": "引入了一个基准来评估软件需求模糊性如何影响基于大模型的代码生成。",
+      "llm_tldr": "引入了一个基准来评估软件需求模糊性如何影响基于大模型的代码生成。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Quality assessment and improvement of user stories",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2604.22207v1",
+      "source": "arxiv",
+      "title": "Evaluating LLM-Based Goal Extraction in Requirements Engineering: Prompting Strategies and Their Limitations",
+      "abstract": "Due to the textual and repetitive nature of many Requirements Engineering (RE) artefacts, Large Language Models (LLMs) have proven useful to automate their generation and processing. In this paper, we discuss a possible approach for automating the Goal-Oriented Requirements Engineering (GORE) process by extracting functional goals from software documentation through three phases: actor identification, high and low-level goal extraction. To implement these functionalities, we propose a chain of LLMs fed with engineered prompts. We experimented with different variants of in-context learning and measured the similarities between input data and in-context examples to better investigate their impact. Another key element is the generation-critic mechanism, implemented as a feedback loop involving two LLMs. Although the pipeline achieved 61% accuracy in low-level goal identification, the final stage, these results indicate the approach is best suited as a tool to accelerate manual extraction rather than as a full replacement. The feedback-loop mechanism with Zero-shot outperformed stand-alone Few-shot, with an ablation study suggesting that performance slightly degrades without the feedback cycle. However, we reported that the combination of the feedback mechanism with Few-shot does not deliver any advantage, possibly suggesting that the primary performance ceiling is the prompting strategy applied to the 'critic' LLM. Together with the refinement of both the quantity and quality of the Shot examples, future research will integrate Retrieval-Augmented Generation (RAG) and Chain-of-Thought (CoT) prompting to improve accuracy.",
+      "authors": [
+        "Anna Arnaudo",
+        "Riccardo Coppola",
+        "Maurizio Morisio",
+        "Flavio Giobergia",
+        "Andrea Bioddo",
+        "Angelo Bongiorno",
+        "Luca Dadone"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI",
+        "cs.CL"
+      ],
+      "published": "2026-04-24T04:22:17+00:00",
+      "link": "https://arxiv.org/pdf/2604.22207v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Automated goal extraction from software documentation",
+      "llm_evidence_cn": "从软件文档中自动提取目标",
+      "llm_evidence": "从软件文档中自动提取目标",
+      "canonical_evidence": "从软件文档中自动提取目标",
+      "llm_tldr_en": "Evaluates LLM-based extraction of functional goals from software documentation in requirements engineering.",
+      "llm_tldr_cn": "评估了在需求工程中利用大模型从软件文档中提取功能性目标的有效性。",
+      "llm_tldr": "评估了在需求工程中利用大模型从软件文档中提取功能性目标的有效性。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Automated extraction of user stories from text",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "8plus"
+    },
+    {
+      "id": "2604.19667v1",
+      "source": "arxiv",
+      "title": "Chat2Workflow: A Benchmark for Generating Executable Visual Workflows with Natural Language",
+      "abstract": "At present, executable visual workflows have emerged as a mainstream paradigm in real-world industrial deployments, offering strong reliability and controllability. However, in current practice, such workflows are almost entirely constructed through manual engineering: developers must carefully design workflows, write prompts for each step, and repeatedly revise the logic as requirements evolve-making development costly, time-consuming, and error-prone. To study whether large language models can automate this multi-round interaction process, we introduce Chat2Workflow, a benchmark for generating executable visual workflows directly from natural language, and propose a robust agentic framework to mitigate recurrent execution errors. Chat2Workflow is built from a large collection of real-world business workflows, with each instance designed so that the generated workflow can be transformed and directly deployed to practical workflow platforms such as Dify and Coze. Experimental results show that while state-of-the-art language models can often capture high-level intent, they struggle to generate correct, stable, and executable workflows, especially under complex or changing requirements. Although our agentic framework yields up to 5.34% resolve rate gains, the remaining real-world gap positions Chat2Workflow as a foundation for advancing industrial-grade automation. Code is available at https://github.com/zjunlp/Chat2Workflow.",
+      "authors": [
+        "Yi Zhong",
+        "Buqiang Xu",
+        "Yijun Wang",
+        "Zifei Shan",
+        "Shuofei Qiao",
+        "Guozhou Zheng",
+        "Ningyu Zhang"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL",
+        "cs.AI",
+        "cs.CV",
+        "cs.LG",
+        "cs.MA"
+      ],
+      "published": "2026-04-21T16:49:11+00:00",
+      "link": "https://arxiv.org/pdf/2604.19667v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Generating executable workflows directly from natural language requirements",
+      "llm_evidence_cn": "直接从自然语言需求生成可执行工作流",
+      "llm_evidence": "直接从自然语言需求生成可执行工作流",
+      "canonical_evidence": "直接从自然语言需求生成可执行工作流",
+      "llm_tldr_en": "Chat2Workflow benchmarks the automated generation of visual workflows from natural language requirements.",
+      "llm_tldr_cn": "Chat2Workflow 评估了从自然语言需求自动生成可视化工作流的能力。",
+      "llm_tldr": "Chat2Workflow 评估了从自然语言需求自动生成可视化工作流的能力。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Automated tools for user story generation and validation",
+      "matched_requirement_id": "req-8",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2604.19012v1",
+      "source": "arxiv",
+      "title": "Security Is Relative: Training-Free Vulnerability Detection via Multi-Agent Behavioral Contract Synthesis",
+      "abstract": "Deep learning for vulnerability detection has shown promising results on early benchmarks, but recent evaluations reveal catastrophic degradation: models achieving F1 > 0.68 on legacy datasets collapse to 0.031 under strict deduplication. We identify the root cause as the semantic ambiguity problem: identical code can be secure or vulnerable depending on project-specific behavioral contracts, rendering global classification fundamentally inadequate. We propose Phoenix, a training-free multi-agent framework that resolves this ambiguity through Behavioral Contract Synthesis. Phoenix decomposes detection into three stages: a Semantic Slicer extracting minimal vulnerability-relevant context, a Requirement Reverse Engineer synthesizing Gherkin behavioral specifications encoding the security contract, and a Contract Judge evaluating code against these specifications via strict compliance checking. On PrimeVul Paired, Phoenix achieves F1 = 0.825 and Pair-Correct = 64.4%, surpassing RASM-Vul (F1 = 0.668) and VulTrial (F1 = 0.563) while using open-source models up to 48x smaller (7-14B vs. 671B). Ablation across 25 configurations demonstrates Gherkin specifications as the decisive driver (+0.09 to +0.35 F1). Error analysis reveals 18% of \"False Positives\" identify genuine security concerns in patched code, demonstrating that security is a relative property defined against behavioral contracts, not an absolute property of code syntax.",
+      "authors": [
+        "Yongchao Wang",
+        "Zhiqiu Huang"
+      ],
+      "primary_category": "cs.CR",
+      "categories": [
+        "cs.CR",
+        "cs.SE"
+      ],
+      "published": "2026-04-21T03:02:34+00:00",
+      "link": "https://arxiv.org/pdf/2604.19012v1",
+      "tags": [
+        "keyword:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Requirement reverse engineering to resolve semantic ambiguity in code",
+      "llm_evidence_cn": "通过需求逆向工程解决代码中的语义歧义",
+      "llm_evidence": "通过需求逆向工程解决代码中的语义歧义",
+      "canonical_evidence": "通过需求逆向工程解决代码中的语义歧义",
+      "llm_tldr_en": "Phoenix uses requirement reverse engineering to detect vulnerabilities by synthesizing behavioral contracts.",
+      "llm_tldr_cn": "Phoenix 通过需求逆向工程合成行为契约，从而检测代码漏洞。",
+      "llm_tldr": "Phoenix 通过需求逆向工程合成行为契约，从而检测代码漏洞。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2604.23124v1",
+      "source": "arxiv",
+      "title": "ArgRE: Formal Argumentation for Conflict Resolution in Multi-Agent Requirements Negotiation",
+      "abstract": "As software systems grow in complexity, they must satisfy an increasing number of competing quality attributes, making it essential to balance them in a principled manner -- for example, a safety requirement for sensor-fusion verification may conflict with a tight planning-cycle budget. Multi-agent large language model frameworks support this balancing process by assigning specialized agents to different objectives. However, their conflict resolution is typically heuristic. Requirements are aggregated implicitly without explicit acceptance or rejection, limiting auditability in regulated domains. We present ArgRE, a multi-agent requirements negotiation system that embeds Dung-style abstract argumentation into the negotiation stage. Each proposal, critique, and refinement is modeled as an argument, conflicts are represented as directed attack relations, and the accepted set of arguments is computed under grounded and preferred semantics. The pipeline further integrates KAOS goal modeling, multi-layer verification, and standards-oriented artifact generation. Evaluation across five case studies spanning safety-critical, financial, and information-system domains shows that ArgRE provides argument-level traceability absent from existing frameworks. Independent evaluators rated its decision justifications significantly higher than those of heuristic synthesis (4.32 vs. 3.07, p < 0.001), indicating improved auditability, while semantic intent preservation remains comparable (94.9% BERTScore F1) and compliance coverage reaches 84.7% versus 47.6%--47.8% for baselines. Structural analysis further confirms that the default pairwise protocol yields acyclic graphs in which grounded and preferred semantics coincide, whereas cross-pair arbitration introduces controlled cyclicity, leading to predictable divergence between the two semantics.",
+      "authors": [
+        "Haowei Cheng",
+        "Milhan Kim",
+        "Chong Liu",
+        "Teeradaj Racharak",
+        "Truong Vinh Truong Duy",
+        "Phan Thi Huyen Thanh",
+        "Jialong Li",
+        "Naoyasu Ubayashi",
+        "Hironori Washizaki"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-04-25T03:28:13+00:00",
+      "link": "https://arxiv.org/pdf/2604.23124v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Multi-agent requirements negotiation and conflict resolution",
+      "llm_evidence_cn": "多智能体需求协商与冲突解决",
+      "llm_evidence": "多智能体需求协商与冲突解决",
+      "canonical_evidence": "多智能体需求协商与冲突解决",
+      "llm_tldr_en": "Presents a multi-agent system using formal argumentation for requirements negotiation and conflict resolution.",
+      "llm_tldr_cn": "介绍了一个使用形式化论证进行需求协商和冲突解决的多智能体系统。",
+      "llm_tldr": "介绍了一个使用形式化论证进行需求协商和冲突解决的多智能体系统。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "8plus"
+    },
+    {
+      "id": "2604.21380v2",
+      "source": "arxiv",
+      "title": "Conjecture and Inquiry: Quantifying Software Performance Requirements via Interactive Retrieval-Augmented Preference Elicitation",
+      "abstract": "Since software performance requirements are documented in natural language, quantifying them into mathematical forms is essential for software engineering. Yet, the vagueness in performance requirements and uncertainty of human cognition have caused highly uncertain ambiguity in the interpretations, rendering their automated quantification an unaddressed and challenging problem. In this paper, we formalize the problem and propose IRAP, an approach that quantifies performance requirements into mathematical functions via interactive retrieval-augmented preference elicitation. IRAP differs from the others in that it explicitly derives from problem-specific knowledge to retrieve and reason the preferences, which also guides the progressive interaction with stakeholders, while reducing the cognitive overhead. Experiment results against 10 state-of-the-art methods on four real-world datasets demonstrate the superiority of IRAP on all cases with up to 40x improvements under as few as five rounds of interactions.",
+      "authors": [
+        "Shihai Wang",
+        "Tao Chen"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI",
+        "cs.CL"
+      ],
+      "published": "2026-04-23T07:50:49+00:00",
+      "link": "https://arxiv.org/pdf/2604.21380v2",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "quantifying software performance requirements from natural language via preference elicitation",
+      "llm_evidence_cn": "通过偏好启发将自然语言描述的软件性能需求量化",
+      "llm_evidence": "通过偏好启发将自然语言描述的软件性能需求量化",
+      "canonical_evidence": "通过偏好启发将自然语言描述的软件性能需求量化",
+      "llm_tldr_en": "Proposes IRAP to quantify vague performance requirements into mathematical functions using RAG.",
+      "llm_tldr_cn": "提出IRAP方法，利用检索增强生成将模糊的性能需求量化为数学函数。",
+      "llm_tldr": "提出IRAP方法，利用检索增强生成将模糊的性能需求量化为数学函数。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2604.21599v1",
+      "source": "arxiv",
+      "title": "Verifying Machine Learning Interpretability Requirements through Provenance",
+      "abstract": "Machine Learning (ML) Engineering is a growing field that necessitates an increase in the rigor of ML development. It draws many ideas from software engineering and more specifically, from requirements engineering. Existing literature on ML Engineering defines quality models and Non-Functional Requirements (NFRs) specific to ML, in particular interpretability being one such NFR. However, a major challenge occurs in verifying ML NFRs, including interpretability. Although existing literature defines interpretability in terms of ML, it remains an immeasurable requirement, making it impossible to definitively confirm whether a model meets its interpretability requirement. This paper shows how ML provenance can be used to verify ML interpretability requirements. This work provides an approach for how ML engineers can save various types of model and data provenance to make the model's behavior transparent and interpretable. Saving this data forms the basis of quantifiable Functional Requirements (FRs) whose verification in turn verifies the interpretability NFR. Ultimately, this paper contributes a method to verify interpretability NFRs for ML models.",
+      "authors": [
+        "Lynn Vonderhaar",
+        "Juan Couder",
+        "Daryela Cisneros",
+        "Omar Ochoa"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.LG"
+      ],
+      "published": "2026-04-23T12:22:10+00:00",
+      "link": "https://arxiv.org/pdf/2604.21599v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "verifying non-functional requirements in machine learning engineering",
+      "llm_evidence_cn": "验证机器学习工程中的非功能性需求",
+      "llm_evidence": "验证机器学习工程中的非功能性需求",
+      "canonical_evidence": "验证机器学习工程中的非功能性需求",
+      "llm_tldr_en": "Explores using provenance to verify immeasurable ML requirements like interpretability.",
+      "llm_tldr_cn": "探索使用溯源技术来验证机器学习中如可解释性等不可衡量的需求。",
+      "llm_tldr": "探索使用溯源技术来验证机器学习中如可解释性等不可衡量的需求。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2604.23509v1",
+      "source": "arxiv",
+      "title": "Uncovering Business Logic Bugs via Semantics-Driven Unit Test Generation",
+      "abstract": "Business logic bugs violate intended business semantics and are particularly prevalent in enterprise software. Yet most existing unit test generation techniques are code-centric, making such bugs difficult to expose. We present SeGa, a semantics-driven unit test generation technique for uncovering business logic bugs. SeGa constructs a semantic knowledge base from product requirement documents, represented as a set of functionality entries that group related requirements under a common business intent. Given a focal method, SeGa retrieves the relevant functionality entries and derives fine-grained business scenarios with explicit preconditions, triggering actions, expected outcomes, and semantic constraints to guide LLM-based test generation. We evaluate SeGa on four industrial Go projects containing 60 real-world business logic bugs. SeGa detects 22-25 more bugs than four state-of-the-art LLM-based techniques and improves precision by 26.9%-34.3%. Deployment across 6 production repositories further uncovers 16 previously unknown business logic bugs that were confirmed and fixed by developers. From our industrial study, we summarize a series of lessons and suggestions for practical use and future research.",
+      "authors": [
+        "Chen Yang",
+        "Junjie Chen"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-04-26T03:06:16+00:00",
+      "link": "https://arxiv.org/pdf/2604.23509v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "deriving business scenarios from requirement documents for test generation",
+      "llm_evidence_cn": "从需求文档中推导业务场景用于测试生成",
+      "llm_evidence": "从需求文档中推导业务场景用于测试生成",
+      "canonical_evidence": "从需求文档中推导业务场景用于测试生成",
+      "llm_tldr_en": "Uses requirement documents to guide semantic unit test generation for uncovering business logic bugs.",
+      "llm_tldr_cn": "利用需求文档指导语义单元测试生成，以发现业务逻辑漏洞。",
+      "llm_tldr": "利用需求文档指导语义单元测试生成，以发现业务逻辑漏洞。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Defining and validating user story acceptance criteria",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "8plus"
+    },
+    {
+      "id": "2604.21554v1",
+      "source": "arxiv",
+      "title": "Engaged AI Governance: Addressing the Last Mile Challenge Through Internal Expert Collaboration",
+      "abstract": "Under the EU AI Act, translating AI governance requirements into software development practice remains challenging. While AI governance frameworks exist at industry and organizational levels, empirical evidence of team-level implementation is scarce. We address this \"Last Mile\" Challenge through insider action research embedded within an AI startup. We present a legal-text-to-action pipeline that translates EU AI Act requirements into actionable strategies through internal expert collaboration by extracting requirements from legal text, engaging practitioners in assessment and ideation, and prioritizing implementation through collective evaluation. Our analysis reveals three patterns in how practitioners perceive regulatory requirements: convergence (compliance aligns with development priorities), existing practice (current work already satisfies requirements), and disconnection (requirements perceived as administrative overhead). Based on these patterns, we discuss when governance might be treated genuinely or performatively. Practitioners prioritize requirements that serve end-users or their own development needs, but view verification-oriented requirements as box-ticking exercises. This distinction suggests a translation challenge: regulatory requirements risk superficial treatment unless practitioners understand how compliance serves system quality and user protection. Expert collaboration offers a practical mechanism for transforming governance from external imposition to shared ownership and making previously invisible governance work visible and collective.",
+      "authors": [
+        "Simon Jarvers",
+        "Orestis Papakyriakopoulos"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-04-23T11:27:36+00:00",
+      "link": "https://arxiv.org/pdf/2604.21554v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "extracting requirements from legal text and translating to actionable strategies",
+      "llm_evidence_cn": "从法律文本中提取需求并转化为可执行策略",
+      "llm_evidence": "从法律文本中提取需求并转化为可执行策略",
+      "canonical_evidence": "从法律文本中提取需求并转化为可执行策略",
+      "llm_tldr_en": "Presents a pipeline to extract and translate AI governance requirements into software development practices.",
+      "llm_tldr_cn": "展示了一个将AI治理需求提取并转化为软件开发实践的流水线。",
+      "llm_tldr": "展示了一个将AI治理需求提取并转化为软件开发实践的流水线。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Automated extraction of user stories from text",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2604.23090v1",
+      "source": "arxiv",
+      "title": "Towards Automated Ontology Generation from Unstructured Text: A Multi-Agent LLM Approach",
+      "abstract": "Automatically generating formal ontologies from unstructured natural language remains a central challenge in knowledge engineering. While large language models (LLMs) show promise, it remains unclear which architectural design choices drive generation quality and why current approaches fail. We present a controlled experimental study using domain-specific insurance contracts to investigate these questions. We first establish a single-agent LLM baseline, identifying key failure modes such as poor Ontology Design Pattern compliance, structural redundancy, and ineffective iterative repair. We then introduce a multi-agent architecture that decomposes ontology construction into four artifact-driven roles: Domain Expert, Manager, Coder, and Quality Assurer. We evaluate performance across architectural quality (via a panel of heterogeneous LLM judges) and functional usability (via competency question driven SPARQL evaluation with complementary retrieval augmented generation based assessment). Results show that the multi-agent approach significantly improves structural quality and modestly enhances queryability, with gains driven primarily by front-loaded planning. These findings highlight planning-first, artifact-driven generation as a promising and more auditable path toward scalable automated ontology engineering.",
+      "authors": [
+        "Abid Talukder",
+        "Maruf Ahmed Mridul",
+        "Oshani Seneviratne"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-04-25T00:58:17+00:00",
+      "link": "https://arxiv.org/pdf/2604.23090v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Automated extraction of formal structures from unstructured text using multi-agent LLMs",
+      "llm_evidence_cn": "利用多智能体大模型从非结构化文本中自动提取形式化结构",
+      "llm_evidence": "利用多智能体大模型从非结构化文本中自动提取形式化结构",
+      "canonical_evidence": "利用多智能体大模型从非结构化文本中自动提取形式化结构",
+      "llm_tldr_en": "Explores multi-agent LLM architectures for automated knowledge engineering and ontology generation from text.",
+      "llm_tldr_cn": "探讨了利用多智能体大模型架构从文本中自动进行知识工程和本体生成的路径。",
+      "llm_tldr": "探讨了利用多智能体大模型架构从文本中自动进行知识工程和本体生成的路径。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Automated extraction of user stories from text",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2604.21715v1",
+      "source": "arxiv",
+      "title": "Automated LTL Specification Generation from Industrial Aerospace Requirements",
+      "abstract": "In the development and verification of safety-critical aero-space software, Linear Temporal Logic (LTL) has been widely used to specify complex system properties derived from requirements. However, a significant gap remains in industrial practice: translating natural language (NL) requirements into formal LTL properties is a labor-intensive and error-prone process that requires rare expertise in both aerospace control engineering and formal methods. While recent NL-to-LTL tools (e.g., NL2SPEC, NL2TL, NL2LTL) are capable of automating parts of this process, they often fail on real requirement documents in industrial settings, due to complex domain terminology or implicit temporal and logical structure. To address these challenges, we present AeroReq2LTL, a framework that automates LTL property generation for aerospace requirements using large language models (LLMs), with two key industrial innovations: (i) a data dictionary that normalizes technical jargon into precise atomic propositions; and (ii) a template-based requirement language that makes temporal cues and logical relations explicit before translation. On a real aerospace dataset, AeroReq2LTL achieves 85% precision and 88% recall in LTL generation, and its outputs can be directly consumed by existing verification tools.",
+      "authors": [
+        "Zhi Ma",
+        "Xiao Liang",
+        "Cheng Wen",
+        "Rui Chen",
+        "Bin Gu",
+        "Shengchao Qin",
+        "Cong Tian",
+        "Mengfei Yang"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-04-21T01:20:33+00:00",
+      "link": "https://arxiv.org/pdf/2604.21715v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Automated translation of natural language requirements",
+      "llm_evidence_cn": "自然语言需求的自动化转换",
+      "llm_evidence": "自然语言需求的自动化转换",
+      "canonical_evidence": "自然语言需求的自动化转换",
+      "llm_tldr_en": "Automates the translation of natural language requirements into formal LTL specifications.",
+      "llm_tldr_cn": "将自然语言需求自动转换为形式化的线性时序逻辑(LTL)规范。",
+      "llm_tldr": "将自然语言需求自动转换为形式化的线性时序逻辑(LTL)规范。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Automated extraction of user stories from text",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2604.21771v1",
+      "source": "arxiv",
+      "title": "Generalizing Test Cases for Comprehensive Test Scenario Coverage",
+      "abstract": "Test cases are essential for software development and maintenance. In practice, developers derive multiple test cases from an implicit pattern based on their understanding of requirements and inference of diverse test scenarios, each validating a specific behavior of the focal method. However, producing comprehensive tests is time-consuming and error-prone: many important tests that should have accompanied the initial test are added only after a significant delay, sometimes only after bugs are triggered. Existing automated test generation techniques largely focus on code coverage. Yet in real projects, practical tests are seldom driven by code coverage alone, since test scenarios do not necessarily align with control-flow branches. Instead, test scenarios originate from requirements, which are often undocumented and implicitly embedded in a project's design and implementation. However, developer-written tests are frequently treated as executable specifications; thus, even a single initial test that reflects the developer's intent can reveal the underlying requirement and the diverse scenarios that should be validated. In this work, we propose TestGeneralizer, a framework for generalizing test cases to comprehensively cover test scenarios. TestGeneralizer orchestrates three stages: (1) enhancing the understanding of the requirement and scenario behind the focal method and initial test; (2) generating a test scenario template and crystallizing it into various test scenario instances; and (3) generating and refining executable test cases from these instances. We evaluate TestGeneralizer against three state-of-the-art baselines on 12 open-source Java projects. TestGeneralizer achieves significant improvements: +31.66% and +23.08% over ChatTester, in mutation-based and LLM-assessed scenario coverage, respectively.",
+      "authors": [
+        "Binhang Qi",
+        "Yun Lin",
+        "Xinyi Weng",
+        "Chenyan Liu",
+        "Hailong Sun",
+        "Gordon Fraser",
+        "Jin Song Dong"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-04-23T15:29:09+00:00",
+      "link": "https://arxiv.org/pdf/2604.21771v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Deriving test cases from understanding of requirements and scenarios",
+      "llm_evidence_cn": "基于对需求和场景的理解推导测试用例",
+      "llm_evidence": "基于对需求和场景的理解推导测试用例",
+      "canonical_evidence": "基于对需求和场景的理解推导测试用例",
+      "llm_tldr_en": "Proposes generalizing test cases based on requirement patterns rather than just code coverage.",
+      "llm_tldr_cn": "提出基于需求模式而非仅基于代码覆盖率来泛化测试用例的方法。",
+      "llm_tldr": "提出基于需求模式而非仅基于代码覆盖率来泛化测试用例的方法。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Defining and validating user story acceptance criteria",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    }
+  ]
+}
