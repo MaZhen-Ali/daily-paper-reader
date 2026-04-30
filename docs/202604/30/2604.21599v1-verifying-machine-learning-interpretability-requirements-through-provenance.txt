@@ -1,0 +1,1302 @@
+Title: Paper Title (use style: paper title)
+
+URL Source: https://arxiv.org/pdf/2604.21599v1
+
+Published Time: Fri, 24 Apr 2026 00:49:52 GMT
+
+Number of Pages: 8
+
+Markdown Content:
+Verifying Machine Learning Interpretability 
+
+# Requirements through Provenanc e
+
+Lynn Vonderhaar 
+
+Dept. of Electrical Engineering 
+
+and Computer Science 
+
+Embry -Riddle Aeronautical 
+
+University 
+
+Da ytona Beach, USA 
+
+vonderhl@my .erau.edu 
+
+Juan Couder 
+
+Dept. of Electrical Engineering 
+
+and Computer Science 
+
+Embry -Riddle Aeronautical 
+
+University 
+
+Da ytona Beach, USA 
+
+orti zcoj@my.erau .edu 
+
+Daryela Cisneros 
+
+Dept. of Electrical Engineering 
+
+and Computer Science 
+
+Embry -Riddle Aeronautical 
+
+University 
+
+Da ytona Beach, USA 
+
+cisnerd4@my.erau.edu 
+
+Omar Ochoa 
+
+Dept. of Electrical Engineering 
+
+and Computer Science 
+
+Embry -Riddle Aeronautical 
+
+University 
+
+Da ytona Beach, USA 
+
+ochoao@erau.edu 
+
+Abstract —Machine Learning (ML) Engineering is a growing field 
+
+that necessitates an increase in the rigor of ML development. It 
+
+draws many ideas from Software Engineering and more 
+
+specifically, from Requirements Engineering. Existing literature 
+
+on ML Engineering defines quality models and Non -Functional 
+
+Requirements (NFRs) specific to ML, in particular 
+
+interpretability being one such NFR. However, a major challenge 
+
+occurs in verifying ML NFRs, including interpretability. Although 
+
+existing literature defines interpretability in terms of ML, it 
+
+remains an immeasurable requirement, making it impossible t o
+
+definitively confirm whether a model meets its interpretability 
+
+requirement . This paper shows how ML provenance can be used 
+
+to verify ML interpretability requirements. This work provides an 
+
+approach for how ML engineers can save various types of model 
+
+and data provenance to make the model’s behavior transparent 
+
+and interpretable . Saving this data forms the basis of quantifiable 
+
+Functional Requirements (FRs) whose verification in turn verifies 
+
+the interpretability NFR. Ultimately , this paper contributes a 
+
+method to verify interpretability NFRs for ML models .
+
+Keywords —Machine Learning , Requirements Engineering ,
+
+Interpretability , Provenance , Verification 
+
+I. INTRODUCTION 
+
+As Machine Learning (ML) models are continuously more 
+
+heavily relied on, it is becoming critical that their development 
+
+embodies the same level of rigor as that of traditional software 
+
+systems. This is especially true as safety -critical domains, 
+
+which tend to have stricter rules and regulations, explore the 
+
+potential uses of ML [1] . Towards this goal, existing literature 
+
+has drawn parallels between ML Engineering (MLE) and 
+
+Requirements Engineering (RE), including defining ML -
+
+specific Non -Functional Requirements (NFRs) [2] . However, 
+
+these definitions often lack a clear description of how the NFRs 
+
+can be measured [2, 3] . Some literature notes that in addition 
+
+to NFR measurement being difficult, decompositions from one 
+
+NFR to another might also change for ML systems [3] . This 
+
+work addresses both of these challenges for interpretability, 
+
+which is defined in literature as an ML NFR, by decomposing 
+
+it into provenance and using that provenance to implicitly 
+
+verify it [2, 4] .
+
+Provenance is the origin of something [5, 6] . I n the case of 
+
+ML , it is the origin of model behavior. It includes various data 
+
+throughout the model development process that contributes to 
+
+the development of model behavior including datasets, 
+
+preprocessing steps, and hyperparameters [4] . This contributes 
+
+to behavioral transparency, which lends itself well to ML 
+
+interpretability methods, e.g., anchors or decision rules .
+
+Therefore, this work proposes using provenance to decompose 
+
+and verify model interpretability requirements by specifying 
+
+which provenance data to save. 
+
+A. Positioning within Existing Literature 
+
+This work contributes to RE for ML, so its contributions are 
+
+requirements -based. It is important to note that although this 
+
+work includes interpretability NFRs, it does not replace the 
+
+interpretability methods found in literature. The purpose of this 
+
+work is to define the provenance data necessary to use the 
+
+standard interpretability methods found in literature. Defining 
+
+this provenance provides a structured way to confirm that a 
+
+system can be interpreted. This structure aligns with standard 
+
+software verifi cation techniques in RE. The contributions of 
+
+this work are as follows: 
+
+1.  Decomposing ML interpretability requirements into 
+
+provenance requirements. 
+
+2.  Verifying ML interpretability requirements using 
+
+provenance Functional Requirements (FRs). 
+
+II. BACKGROUND 
+
+Before describing this paper’s approach, it is critical to first 
+
+have clear definitions for RE, ML interpretability, and ML 
+
+provenance. 
+
+A. Requirements Engineering 
+
+RE is the systematic process of defining, documenting, and 
+
+managing the requirements of a software or system. It ensures 
+
+that the final product meets the needs of its stakeholders 
+
+(customers, users, regulators, developers, etc.) and reduces the 
+
+risk of bui lding the “wrong” system [7] . RE is a crucial phase 
+
+in the traditional Software Development Life Cycle (SDLC) 
+
+because requirements act as the foundation for design, 
+
+implementation, and testing. RE includes a series of activities 
+
+which lead to requirement specifications , i.e., the formal, 
+
+documented statement of what the system must do and the 
+
+constraints under which it must operate. After these 
+
+specifications are complete and finalized, they are used for 
+
+Validation and Verification (V&V), ensuring the requirements 
+
+are correct, complet e, and reflect the stakeholders’ needs [8] .RE for ML -based systems is still an emerging topic that 
+
+requires additional application and adaptation of RE practices 
+
+to the development of ML -based systems, with attention to 
+
+data, model behavior, and uncertainty [9] . RE for ML is still the 
+
+process of gathering, analyzing, documenting, validating, and 
+
+managing requirements for ML -based systems , but it now 
+
+handles not only functional needs, but also data quality, model 
+
+performance, and fairness. At the end of th is process, the 
+
+requirements are still captured in requirement specifications, 
+
+much like for traditional software [10] . However, t he content of 
+
+requirements specifications is different from those of traditional 
+
+software as it must now capture data requirements, ML 
+
+evaluation metrics, newly emerging NFRs, and system 
+
+monitoring and retraining [11] . V&V is also still important in 
+
+RE for ML -based systems, but literature notes that there are not 
+
+yet methods for verifying some of the newly emerging NFRs 
+
+[12, 2, 3] . Habibullah, et al. present a quality model for ML -
+
+based systems, but note that some ML -specific NFRs, e.g., 
+
+interpretability, do not yet have measurements and are therefore 
+
+difficult to verify [2] .
+
+B. ML Interpretability 
+
+ML model interpretability encompasses methods that allow 
+
+model users to understand the underlying patterns within the 
+
+data [2, 13] . This is distinct from explainability methods , which 
+
+are means of understanding the model mechanics when making 
+
+decisions. In other words, interpretability aims to provide 
+
+insight into the data, while explainability provides insight into 
+
+the model. 
+
+There are many existing interpretability methods and 
+
+various surveys that organize them in unique ways [1, 14, 15, 
+
+16] . Some examples are: 
+
+• Global versus local interpretability where global 
+
+interpretability methods show the model’s generalized 
+
+behavior, while local interpretability methods clarify 
+
+reasons for a specific decision [14, 13] ,
+
+• Pre -hoc versus post -hoc interpretability where pre -hoc 
+
+interpretability design takes place before and during 
+
+model training, while post -hoc interpretability methods 
+
+are applied only after model training [1, 15] ,
+
+• Model -specific versus model -agnostic interpretability 
+
+where model -specific methods change based on the 
+
+architecture of the black box model while model -agnostic 
+
+methods do not [16] , and 
+
+• Explanation type where interpretability methods are 
+
+categorized based on their output, e.g., rule -based 
+
+interpretability and saliency maps [17] .
+
+For the purposes of this work, interpretability methods are 
+
+categorized by their underlying description mechanism so that 
+
+a single example from each category will suffice to represent a 
+
+provenance decomposition for each method in that category. 
+
+The categor ization of popular interpretability methods is shown 
+
+in Table I. Table I is not meant to be a full survey of 
+
+interpretability methods, but rather examples of popular 
+
+methods for the purpose of verifying this work. 
+
+The interpretability methods in Table I are separated into 
+
+three categories based on their underlying description 
+
+mechanism: inherently interpretable models, surrogate models, 
+
+and feature attribution. Inherently interpretable models have a 
+
+simpler structur e that allows developers and users to simulate 
+
+their behavior [15] . Surrogate models are inherently 
+
+interpretable mode ls that train alongside more complex models 
+
+and provide an approximate explanation for the complex 
+
+model’s behavior [14] . Feature attribution includes methods 
+
+that directly describe the black box model’s behavior with 
+
+respect to input values [18] . While Table I is not a complete 
+
+survey of interpretability methods, it provides some popular 
+
+methods with which to verify this paper’s approach. 
+
+C. ML Provenance 
+
+In its literal meaning, provenance means the origin of 
+
+something [5, 6] . In ML , this refers to the origin, history, and 
+
+transformations of data, models, and processes throughout the 
+
+ML lifecycle [19] . In our previous work, we defined many types 
+
+of provenance data in ML development, but this work focuses 
+
+on two main categories: data and model [4] . The specific 
+
+provenance in each of these categories is shown in Table II. 
+
+Data provenance is the record that describes the origins and 
+
+processing of data. Data provenance helps with fairness, 
+
+accountability, transparency, and explainability in AI systems 
+
+[20] . Data provenance focuses on the lineage and history of 
+
+data, answering questions about its source or origin, the 
+
+methods of collection (such as human input, sensors, or web 
+
+scraping), and the types of transformations applied, including 
+
+cleaning, normalizati on, feature extraction, augmentation, or 
+
+aggregation. It also captures who made modifications to the 
+
+data, essentially tracing how the data changed and reached its                 
+
+> TABLE I. CATEGORIZATION OF POPULAR INTERPRETABILITY METHODS .SYNTHESIZED INFORMATION FROM [1, 14, 15, 16, 13, 35, 4, 37, 18, 38] .
+> Category Interpretability Method Output Format
+> Inherently interpretable models
+> Linear regression Mathematical function
+> Logistic regression Mathematical function
+> Decision trees If -then rule(s)
+> Decision rules If -then rule(s)
+> Surrogate models Local Interpretable Model -agnostic
+> Explanations (LIME)
+> Any output format of inherently
+> interpretable models, e.g., mathematical
+> function or if -then rules
+> Feature attribution
+> Shapley values Mathematical function
+> SHapley Additive exPlanations (SHAP) Mathematical function
+> Counterfactual explanations If -then rule(s)
+> Anchors If -then rule(s)
+
+current state through specific contexts or decisions [20] . Data 
+
+provenance focuses on documenting the history of the data ,
+
+from its origin to all the evolution and transformations until it 
+
+reached its final state, so that it can be trusted, reused, and 
+
+reproduced. Model provenance is very similar to data 
+
+provenance, but it focuses on the model rather than the data. It 
+
+captures the creation, origin, and evolution of the model by 
+
+addressing questions related to its architecture, different 
+
+versions, the changes it unde rgoes across those versions, the 
+
+parameters and hyperparameters used, as well as the code, 
+
+libraries, and environments involved [21] . Model provenance 
+
+focuses on the history of how a model was built, trained, and 
+
+modified, including its architecture, parameters, datasets, and 
+
+environment , by keeping a record of all the changes the model 
+
+itself has gone through .
+
+ML provenance, just like regular provenance, is a key 
+
+aspect on increasing the authenticity, and trust in an ML model 
+
+by increasing the chances of reproducing the same conditions 
+
+the model had when training, and making the results as 
+
+reproducible as possib le [19] . Without being able to get similar 
+
+results as the creators, there is no way to guarantee that the 
+
+behavior demonstrated by the model is not an outlier instead of 
+
+the norm. 
+
+III. APPROACH AND VERIFICATION 
+
+This approach uses ML provenance as a lower -level NFR to 
+
+decompose interpretability, then decomposes provenance into 
+
+verifiable FRs by defining what provenance data a system will 
+
+collect. The verification of these FRs then by extension verifies 
+
+that the provenance and interpretability NFRs have been met 
+
+for the system. Given that interpretability is the ability for 
+
+humans to draw connections among model data, training, and 
+
+behavio r, the storage of model provenance throughout 
+
+development allows for humans to trace behavior from training 
+
+data to model deployment, making the model interpretable. For 
+
+the purpose of verifying this approach, this section includes 
+
+requirement specifications and implementation for one 
+
+interpretability method from each format categor y.                                              
+
+> Figure 1. The three “Starting Point” classes and some of their subclasses in PROV -O[28] .
+> TABLE II.TYPES OF ML PROVENANCE DATA RELEVANT TO INTERPRETABILITY .ADAPTED FROM [4] .
+> Data
+> •Datasets [21]
+> •Data type
+> •Data source
+> •Data fidelity (real or synthetic)
+> •Data metadata, as applicable (resolution, size/length, contrast,
+> etc.)
+> •Synthetic data metadata, as applicable (prompt, seed, etc.)
+> •Method of collection, collector, date of collection [21]
+> •Inclusion/exclusion criteria (person, date)
+> •Preprocessing steps (transformations, cleaning, denoising,
+> resizing, cropping, normalization) (person and date for each) [21]
+> •Labeling (annotation type, annotator, date of annotating) [21]
+> •Feature selection, if relevant (person and date) [21]
+> •Training/validation/testing split
+> •Training/validation/testing dataset class proportions
+> Model
+> •Pretraining provenance, if applicable and available (model
+> comparison and selection) (person and date)
+> •Model size
+> •Model speed
+> •Parameters (weights and biases) [21]
+> •Hyperparameters (number of layers, learning rate, batch size,
+> dropout) [21]
+> •Architecture comparisons
+> •Optimization algorithms [21]
+> •Pipelines [21]
+> •Execution logs and statistics [21]
+> •Environment configurations [21]
+> •Source code (Jupyter notebooks, library dependencies) [21]
+
+A. Provenance Storage 
+
+There are several platforms meant to help developers save 
+
+model provenance including MLFlow, Data Version Control 
+
+(DVC), Weights & Biases (W&B), Neptune AI, and Comet [22, 
+
+23, 24, 25, 26] . Each of these tools can track dataset versions, 
+
+model versions, hyperparameters, and other common 
+
+provenance data. However, they are not built to handle more 
+
+unique provenance data as defined in our previous work , e.g., 
+
+preprocessing steps or feature selection choices [4] . To 
+
+accommodate additional necessary provenance tracking, this 
+
+approach uses yProv4ML, which is compliant with the World 
+
+Wide Web Consortium’s (W3C’s) PROVenance Ontology 
+
+(PROV -O) [27] .
+
+PROV -O is an ontology defined using the Web Ontology 
+
+Language (OWL) that expresses the PROV Data Model 
+
+(PROV -DM) [28, 29] . It’s three “Starting Point” classes, 
+
+Activity, Entity, and Agent, are shown in Figure 1 along with 
+
+some of their subclasses [28] . Ontologies represent the structure 
+
+of entities within a domain [30] . This ontology provides a 
+
+schema, or structure, for the collected provenance data. 
+
+yProv4ML then instantiates the structure using PROV -JSON ,
+
+which can easily be formatted into a graph for readability [27] .
+
+yProv4ML is a Python library that handles all of the 
+
+provenance formatting , making this approach accessible to ML 
+
+developers, even those without ontology experience [27] . Its 
+
+usage requires only a small learning curve to know the 
+
+appropriate function calls for each provenance data type. The 
+
+output can be viewed either as JSON or as a graph. 
+
+B. Linear Regression Experiment 
+
+Linear regression models are inherently interpretable models. 
+
+Therefore, saving development provenance allows the model’s 
+
+training and predictions to be simulated and verif ies the 
+
+interpretability NFR. This process is shown in this section. 
+
+Requirement Specifications – Linear Regression 
+
+The first step is deciding what provenance to save to decompose 
+
+and verify the interpretability NFR. This provenance may not 
+
+be the same for all models. The purpose of interpretability is to 
+
+gather information about the underlying trends in the data and 
+
+to simulate the model’s behavior as a result. To do that for linear 
+
+regression, one must be able to reproduce the line of best fit for 
+
+the data and make future predictions using that function. 
+
+Therefore, the necessary provenance includes the training and 
+
+tes ting datasets, the preprocessing steps, e.g., any data 
+
+trimming, and the resulting function for the line of best fit. This 
+
+example uses simple linear regression, so these provenance 
+
+types are sufficient, however additional provenance may be 
+
+important for multiple linear regression problems, e.g., feature 
+
+selection. The requirement specifications are as follows: 
+
+[Req. 1] The model’s development pipeline shall incorporate 
+
+prediction interpretations for the user. 
+
+[Req. 2] The model’s development artifacts shall be 
+
+traceable throughout its lifecycle to ensure 
+
+interpretability. 
+
+[Req. 3] The model’s development pipeline shall save 
+
+development provenance to ensure development 
+
+artifact traceability to model specifications. 
+
+[Req. 4] The model’s development pipeline shall save 
+
+the training dataset to the provenance 
+
+documentation. 
+
+[Req. 5] The model’s development pipeline shall save 
+
+the testing dataset to the provenance 
+
+documentation. 
+
+[Req. 6] The model’s development pipeline shall save 
+
+the data preprocessing steps to the provenance 
+
+documentation. 
+
+[Req. 7] The model’s development pipeline shall save 
+
+the model’s linear regression function to the 
+
+provenance documentation. 
+
+Requirement Specification V erification – Linear Regression 
+
+A simple Kaggle example of linear regression is sufficient for 
+
+the purposes of this experiment [31] . Per the requirement 
+
+specifications for this experiment, the model’s development 
+
+pipeline needs to save the training and testing datasets, the data 
+
+preprocessing steps, and the model’s linear regression function. 
+
+Figure 2 is an example of how the training dataset is stored to 
+
+the provenance documentation .
+
+The full code for this experiment, along with the full 
+
+provenance JSON file and provenance graph can be found at 
+
+https://github.com/lynndalou/ProvInterpretExplain .
+
+Two section s of the provenance graph are shown in Figure s
+
+3 and 4. Figure 3 shows how the model is saved to the graph 
+
+and Figure 4 shows the model parameters saved to the graph. 
+
+The purpose of saving this provenance data is to interpret 
+
+and simulate the model’s behavior to verify the overarching 
+
+interpretability NFR. This verification follows the provenance 
+
+step -by -step to achieve the same result as the Kaggle linear 
+
+regression example [31] . Microsoft Excel is used for verifying 
+
+this experimental result. The full Excel file can be found at 
+
+https://github.com/lynndalou/ProvInterpretExplain . Per the 
+
+saved provenance data, the following steps were taken: 
+
+> Figure 2. Example Python code for saving provenance data.
+
+yprov4ml.start_run( 
+
+prov_user_namespace= "www.example.og" ,
+
+experiment_name= "linear_regression" ,
+
+provenance_save_dir= "/ save/path /" 
+
+)
+
+yprov4ml.log_dataset(train_data, "train_data" )
+
+yprov4ml.log_dataset(test_data, "test_data" )
+
+yprov4ml.end_run(create_graph= True , create_svg= True )1.  Removing N/A or empty datapoints from the training 
+
+and testing datasets. 
+
+2.  Standardizing the independent variable for the training 
+
+and testing datasets. 
+
+3.  Using the Analysis Toolpak to calculate the linear 
+
+regression line [32] .
+
+These steps lead to the same linear regression function as 
+
+the Kaggle code, thereby simulating the behavior of the ML 
+
+model. 
+
+C. Counterfactual Explanation Experiment 
+
+Inherently interpretable models are unique in that provenance 
+
+allows their behavior to be simulated, as was shown in the linear 
+
+regression experiment. Other methods are more complex 
+
+because they can no longer simulate the model’s behavior 
+
+directly. However , provenance can still be used to map the 
+
+model’s behavior to an input space as a way to understand it. 
+
+Counterfactual Explanations (CEs) will be used in this 
+
+experiment to demonstrate how to do this. 
+
+Requirement Specifications – Counterfactual Explanations 
+
+[Req. 1] The model’s development pipeline shall incorporate 
+
+prediction interpretations for the user via 
+
+counterfactual explainations .
+
+[Req. 2] The model’s development artifacts shall be 
+
+traceable throughout its lifecycle to ensure 
+
+interpretability. 
+
+[Req. 3] The model’s development pipeline shall save 
+
+development provenance to ensure development 
+
+artifact traceability to model specifications. 
+
+[Req. 4] The model’s development pipeline shall save 
+
+the training dataset to the provenance 
+
+documentation. 
+
+[Req. 5] The model’s development pipeline shall save 
+
+the testing dataset to the provenance 
+
+documentation. 
+
+[Req. 6] The model’s development pipeline shall save 
+
+the data preprocessing steps to the provenance 
+
+documentation. 
+
+[Req. 7] The model’s development pipeline shall save 
+
+the selected features to the provenance 
+
+documentation. 
+
+[Req. 8] The model’s development pipeline shall save 
+
+the counterfactual explanations to the 
+
+provenance documentation. 
+
+Requirement Specification Verification – Counterfactual 
+
+Explanations 
+
+This experiment utilizes a simple binary classification example 
+
+with Diverse Counterfactual Explanations (DiCE) [33, 34] . The 
+
+full code for this experiment and the provenance data saved 
+
+during the experiment can be found at 
+
+https://github.com/lynndalou/ProvInterpretExplain . The goal 
+
+of this experiment is still to understand the black box model’s 
+
+behavior in human -understandable terms, but it is 
+
+accomplished a bit differently than the linear regression 
+
+example because the behavior can no longer be simulated. 
+
+However, provena nce data can still help to verify this 
+
+interpretability requirement. 
+
+CEs offer ways to change the inputs to a model that would 
+
+produce a different output [35, 33] . Therefore, these 
+
+explanations can be used to map the input space that produces 
+
+the possible outputs, as is shown in Figure 5. The provenance    
+
+> Figure 3. Section of the linear regression provenance graph.
+> Figure 4. Model parameters saved to the provenance graph.
+
+data required to accomplish this understanding is outlined in the 
+
+requirement specifications for this experiment. Some of the 
+
+provenance data is the same as in the first experiment, but this 
+
+experiment requires feature selection data. As is shown in 
+
+Figure 5, three of the selected features are “age”, “education”, 
+
+and “hours per week”. The space then shows “positive” 
+
+predications, in this case predictions of “high income”, within 
+
+the sphere and “negative” predictions outside of the sphere. 
+
+Model developers a nd users can utilize this provenance -based 
+
+technique to visualize how input changes affect the model’s 
+
+predictions. 
+
+IV. DISCUSSION 
+
+These experiments utilize on e method from each category in 
+
+Table I, with the exception of surrogate models because th ey 
+
+are also inherently interpretable models, just used in a different 
+
+way. Each experiment is meant to represent how provenance 
+
+decomposes an interpretability requirement for any method 
+
+within their category. Therefore, the decomposition for a 
+
+decision tree would be similar to that of linear regression 
+
+because the goal of both is to replicate and simulate the model’s 
+
+behavior. Similarly, the goal of any feature attribution method 
+
+is to understand how changes in the model’s inputs affect the 
+
+model’s predictions, so any method within that category would 
+
+follow a similar decomposition to CE. 
+
+These experiments are proofs of concept , but developers 
+
+can save additional provenance based on their needs . Figure 5 
+
+is also an example visualization that developers and users may 
+
+find useful in understanding their model’s behavior but is by no 
+
+means the only way to verify interpretability using the saved 
+
+provenance. Developers may choose to adjust the visualization 
+
+as needed to fit their needs .
+
+The two experiments work with yProv4ML , which saves 
+
+most of the data as needed. However, as Figure 4 shows, the 
+
+preprocessing steps had to be saved as model parameters, which 
+
+is incorrect. Therefore, this work would benefit from a new 
+
+provenance tool that could handle more data types, e.g., 
+
+preprocessing steps. 
+
+V. RELATED WORK 
+
+Our previous work has identified provenance as an ML -specific 
+
+NFR that can decompose interpretability [4] . However, it does 
+
+not verify the method with experiments, which this work does. 
+
+Other authors have linked provenance to interpretability or 
+
+other similar ML quality attributes [5, 36] . Kale, et al. show 
+
+how provenance contributes to model transparency and by 
+
+extension, to model explainability [5] . Their literature review 
+
+discusses how provenance can increase the trustworthiness of 
+
+ML systems and also mentions how PROV -O and JSON can be 
+
+used to format and store ML provenance. Although this has 
+
+greatly influenced this work, it does not show practica l
+
+examples of how provenance can be used to verify such quality 
+
+attributes. Meanwhile, Nakagawa, et al. connect provenance 
+
+and model traceability to ML quality assurance [36] . The 
+
+authors extend W3C’s PROV model to include ML quality 
+
+characteristics. Although the authors connect provenance to 
+
+quality verification, this work is distinct in that it frames 
+
+provenance as a requirement specification that can be used to 
+
+verify inter pretability NFRs. 
+
+VI. LIMIATIONS AND FUTURE WORK 
+
+This work successfully verifie s the interpretability NFR for two 
+
+ML models. However, this work does not include a complete 
+
+survey of interpretability methods. Future work could expand  
+
+> Figure 5. A depiction of how counterfactuals can verify an interpretability requirement.
+
+to additional interpretability methods to ensure that this 
+
+approach verif ies all of them. 
+
+It is important to note that early difficulties for this work 
+
+stemmed from confusion in literature as to the exact differences 
+
+between interpretability and explainability. Future work will 
+
+compare and contrast the two ML NFRs and analyze how 
+
+provenance can be used to verify each of them. 
+
+Finally, it was noted in the approach section that none of 
+
+the available ML development and provenance tracking tools 
+
+were capable of correctly tracking all of the necessary 
+
+provenance for this work, e.g., data preprocessing steps. 
+
+Therefore, future work will include the development of a more 
+
+complete ML provenance tracking tool that is compatible with 
+
+other development platforms. 
+
+VII. CONCLUSION 
+
+The purpose of this work is to provide a method of measuring 
+
+and verifying interpretability NFRs for ML -based systems. 
+
+This is done by decomposing the interpretability NFR into a 
+
+provenance requirement and then specifying FRs based on what 
+
+provenance data to save. Developers can then use the saved 
+
+provenance to simulate or map the black box model’s behavior 
+
+in human -unders tandable terms. 
+
+This method was verified in two experiments. The first 
+
+used provenance to verify interpretability for a linear regression 
+
+model. Because this model is inherently interpretable, the goal 
+
+of saving provenance was to replicate and simulate the model’s 
+
+behavio r, which was successfully accomplished. In contrast, 
+
+the binary classifier in the second experiment could not be 
+
+replicated and simulated, but provenance was still helpful in 
+
+mapping the classifier’s decisions to the input space to 
+
+understand how changes i n the input features affected the 
+
+model’s predictions. In each case, the provenance data was used 
+
+to interpret the model’s behavior and thereby verify the 
+
+interpretability NFR. Future work includes verifying that this 
+
+approach works for additional interpretability methods and 
+
+expanding this research to encompass how provenance may 
+
+also verify explainability requirements. 
+
+REFERENCES 
+
+[1]  D. V. Carvalho, E. M. Pereira and J. S. Cardoso, "Machine Learning 
+
+Interpretability: A Survey on Methods and Metrics," Electronics, vol. 8, 
+
+no. 8, 2019. 
+
+[2]  K. M. Habibullah, G. Gay and J. Horkoff, "Non -functional requirements 
+
+for machine learning: an exploration of system scope and interest," in 
+
+SE4RAI '22: Proceedings of the 1st Workshop on Software Engineering 
+
+for Responsible AI , Pittsburg, PA, USA, 2022. 
+
+[3]  J. Horkoff, "Non -Functional Requirements for Machine Learning: 
+
+Challenges and New Directions," in 2019 IEEE 27th International 
+
+Requirements Engineering Conference (RE) , Jeju, South Korea, 2019. 
+
+[4]  xxx, "xxx ," in IEEE Artificial Intelligence x Software Engineering 
+
+(AIxSE) , Laguna Hills, CA, USA, 2025. 
+
+[5]  A. Kale, T. Nguyen, F. C. Harris Jr., C. Li, J. Zhang and X. Ma, 
+
+"Provenance Documentation to Enable Explainable and Trustworthy AI: 
+
+A Literature Review," Data Intelligence, vol. 5, no. 1, pp. 139 -162, 2023. 
+
+[6]  S. Scherzinger, C. Seifert and L. Wiese, "The Best of Both Worlds: 
+
+Challenges in Linking Provenance and Explainability in Distributed 
+
+Machine Learning," in IEEE 39th International Conference on 
+
+Distributed Computing Systems (ICDCS) , Dallas, TX, USA, 2019. 
+
+[7]  B. Nuseibeh and S. Easterbrook, "Requirements engineering: a
+
+roadmap," in Proceedings of the Conference on the Future of Software 
+
+Engineering , 2000. 
+
+[8]  L. A. Macaulay, Requirements engineering, Springer Science &
+
+Business Media, 2012. 
+
+[9]  H. Villamizar, T. Escovedo and M. Kalinowski, "Requirements 
+
+engineering for machine learning: A systematic mapping study," in 2021 
+
+47th Euromicro conference on software engineering and advanced 
+
+applications (SEAA) , 2021. 
+
+[10]  M. Rahimi, J. L. Guo, S. Kokaly and M. Chechik, "Toward requirements 
+
+specification for machine -learned components," in 2019 IEEE 27th 
+
+international requirements engineering conference workshops (REW) ,
+
+2019. 
+
+[11]  Z. Pei, L. Liu, C. Wang and J. Wang, "Requirements engineering for 
+
+machine learning: A review and reflection," in 2022 IEEE 30th 
+
+International Requirements Engineering Conference Workshops (REW) ,
+
+2022. 
+
+[12]  S. R. Kaminwar, J. Goschenhofer, J. Thomas, I. Thon and B. Bischl, 
+
+"Structured verification of machine learning models in industrial 
+
+settings," Big Data, vol. 11, no. 3, pp. 181 -198, 2023. 
+
+[13]  I. Namatēvs, K. Sudars and A. Dobrājs, "Interpretability versus 
+
+Explainability: Classification for Understanding Deep Learning Systems 
+
+and Models," Engineering Optimization, vol. 29, no. 4, pp. 297 -356, 
+
+2022. 
+
+[14]  R. Elshawi, Y. Sherif, M. Al -Mallah and S. Sakr, "Interpretability in 
+
+Healthcare: A Comparative Study of Local Machine Learning 
+
+Interpretability Techniques," Computational Intelligence, vol. 37, pp. 
+
+1633 -1650, 2021. 
+
+[15]  J. W. Murdoch, C. Singh, K. Kumbier, R. Abbasi -Asl and B. Yu, 
+
+"Interpretable Machine Learning: Definitions, Methods, and 
+
+Applications," arXiv, 2019. 
+
+[16]  M. Tulio Ribeiro, S. Singh and C. Guestrin, "Model -Agnostic 
+
+Interpretability of Machine Learning," arXiv, 2016. 
+
+[17]  R. Marcinkevičs and J. E. Vogt, "Interpretable and explainable machine 
+
+learning: A methods -centric overview with concrete examples," WIREs 
+
+Data Mining and Knowledge Discovery, vol. 13, no. 3, 2023. 
+
+[18]  L. H. Gilpin, D. Bau, B. Z. Yuan, A. Bajwa, M. Specter and L. Kagal, 
+
+"Explaining Explanations: An Overview of Interpretability of Machine 
+
+Learning," in 2018 IEEE 5th International Conference on Data Science 
+
+and Advanced Analytics (DSAA) , Turin, Italy, 2018. 
+
+[19]  S. Samuel, F. Löffler and . B. König -Ries, "Machine learning pipelines: 
+
+provenance, reproducibility and FAIR data principles," in International 
+
+Provenance and Annotation Workshop , 2020. 
+
+[20]  K. Werder, B. Ramesh and R. Zhang, "Establishing data provenance for 
+
+responsible artificial intelligence systems," ACM Transactions on 
+
+Management Information Systems (TMIS), vol. 13, no. 2, pp. 1 -23, 22. 
+
+[21]  M. Schlegel and K. -U. Sattler, "Management of machine learning 
+
+lifecycle artifacts: A survey," ACM SIGMOD Record, vol. 51, no. 4, pp. 
+
+18 -35, 2023. 
+
+[22]  "Deliver production -ready AI," MLFlow, 2025. [Online]. Available: 
+
+https://mlflow.org/. [Accessed 2025]. 
+
+[23]  "Data Version Control," DVC, 2025. [Online]. Available: 
+
+https://dvc.org/. [Accessed 2025]. 
+
+[24]  "Weights & Biases," CoreWeave, 2025. [Online]. Available: 
+
+https://wandb.ai/site/. [Accessed 2025]. 
+
+[25]  "Neptune.AI," Neptune.AI, 2025. [Online]. Available: 
+
+https://neptune.ai/. [Accessed 2025]. 
+
+[26]  "Where AI Developers Build," Comet, 2025. [Online]. Available: 
+
+https://www.comet.com/site/. [Accessed 2025]. [27]  G. Padovani, V. Anantharaj and S. Fiore, "yProv4ML: Effortless 
+
+provenance tracking for machine learning systems," SoftwareX, vol. 31, 
+
+2025. 
+
+[28]  "PROV -O: The PROV Ontology," World Wide Web Consortium 
+
+(W3C), 2013. [Online]. Available: https://www.w3.org/TR/prov -o/. 
+
+[Accessed 2025]. 
+
+[29]  "PROV -DM: The PROV Data Model," World Wide Web Consortium, 
+
+2013. [Online]. Available: https://www.w3.org/TR/2013/REC -prov -dm -
+
+20130430/. [Accessed 2025]. 
+
+[30]  R. Arp, B. Smith and A. D. Spear, Building Ontologies with Basic 
+
+Formal Ontology, MIT Press, 2015. 
+
+[31]  F. Elmenshawii, "Linear Regression from Scratch," Kaggle, 2023. 
+
+[Online]. Available: 
+
+https://www.kaggle.com/code/fareselmenshawii/linear -regression -
+
+from -scratch/notebook. [Accessed 2025]. 
+
+[32]  "Use the Analysis ToolPak to perform complex data analysis," 
+
+Microsoft, 2025. [Online]. Available: https://support.microsoft.com/en -
+
+us/office/use -the -analysis -toolpak -to -perform -complex -data -analysis -
+
+6c67ccf0 -f4a9 -487c -8dec -bdb5a2cefab6. [Accessed 2025]. 
+
+[33]  R. K. Mothilal, A. Sharma and C. Tan, "Diverse Counterfactual 
+
+Explanations (DiCE) for ML," InterpretML, 2020. [Online]. Available: 
+
+https://interpret.ml/DiCE/. [Accessed 2025]. 
+
+[34]  A. Sharma, "Quick introduction to generating counterfactual 
+
+explanations using DiCE," GitHub, 2022. [Online]. Available: 
+
+https://github.com/interpretml/DiCE/blob/main/docs/source/notebooks/ 
+
+DiCE_getting_started.ipynb. [Accessed 2025]. 
+
+[35]  C. Molnar, Interpretable Machine Learning: A Guide for Making Black 
+
+Box Models Explainable, Munich, Germany: Self -published, 2025. 
+
+[36]  T. Nakagawa, K. Narita and K. -S. Kim, "How Provenance helps Quality 
+
+Assurance Activities in AI/ML Systems," in AIMLSystems '22: 
+
+Proceedings of the Second International Conference on AI -ML Systems ,
+
+Bangalore, India, 2022. 
+
+[37]  R. K. Mothilal, A. Sharma and C. Tan, "Explaining machine learning 
+
+classifiers through diverse counterfactual explanations," in FAT* '20: 
+
+Proceedings of the 2020 Conference on Fairness, Accountability, and 
+
+Transparency , Barcelona, Spain, 2020. 
+
+[38]  Z. Yang, A. Sudjianto, X. Li and A. Zhang, "Inherently Interpretable 
+
+Tree Ensemble Learning," arXiv, 2024. 
+
+[39]  P. Buneman, S. Khanna and T. Wang -Chiew, "Why and where: A 
+
+characterization of data provenance," in International conference on 
+
+database theory , 2001. 
+
+[40]  "The PROV -JSONLD Serialization," World Wide Web Consortium, 
+
+2024. [Online]. Available: 
+
+https://www.w3.org/submissions/2024/SUBM -prov -jsonld -20240825/. 
+
+[Accessed 2025]. 
+
+[41]  "JSON -LD 1.1," World Wide Web Consortium, 2020. [Online]. 
+
+Available: https://www.w3.org/TR/json -ld11/. [Accessed 2025]. 
+
+[42]  "JSON for Linking Data," JSON -LD, 2025. [Online]. Available: 
+
+https://json -ld.org/. [Accessed 2025]. 
+
+[43]  digitalbazaar, "PyLD," GitHub, 2025. [Online]. Available: 
+
+https://github.com/digitalbazaar/pyld. [Accessed 2025].
