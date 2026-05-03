@@ -1,0 +1,434 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-05-03T19:59:07.460350+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 3,
+    "deep_cap": 6,
+    "deep_selected": 3,
+    "quick_candidates": 8,
+    "quick_skim_target": 11,
+    "quick_selected": 8
+  },
+  "deep_dive": [
+    {
+      "id": "2604.26572v1",
+      "source": "arxiv",
+      "title": "PICKLES: a Natural Language Framework for Requirement Specification and Model-Based Testing",
+      "abstract": "This paper combines methods from the fields of Model-Based Testing (MBT) and Behaviour-Driven Development (BDD) to define a testing approach with human-readable specifications and test cases, as in BDD, while using the modelling techniques and automatic test generation algorithms from MBT. We introduce PICKLES, a Precise Input and Control-flow Keyword-based Language for tEst Scenarios; an extension of Gherkin-style BDD scenarios, specified in structured natural language. We provide a bi-directional translation from Pickles scenarios to formal models, where both specifications and tests are human-readable, and a method to obtain a so-called master model combining all translated scenarios. Standard MBT algorithms can then be applied to automatically derive test cases from it. We implement a prototype of the translation and composition steps, which we use on an industrial case study: a software component from a traffic management system. With it, we illustrate the pipeline and show how Pickles can achieve significantly higher coverage with respect to BDD from the same set of scenarios.",
+      "authors": [
+        "María Belén Rodríguez",
+        "Petra van den Bos"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-04-29T11:54:23+00:00",
+      "link": "https://arxiv.org/pdf/2604.26572v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Gherkin-style BDD scenarios for requirement specification and testing",
+      "llm_evidence_cn": "用于需求规范和测试的Gherkin风格BDD场景",
+      "llm_evidence": "用于需求规范和测试的Gherkin风格BDD场景",
+      "canonical_evidence": "用于需求规范和测试的Gherkin风格BDD场景",
+      "llm_tldr_en": "A framework combining BDD and MBT for human-readable requirement specifications and automated testing.",
+      "llm_tldr_cn": "结合BDD和MBT的框架，用于人类可读的需求规范和自动化测试。",
+      "llm_tldr": "结合BDD和MBT的框架，用于人类可读的需求规范和自动化测试。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Defining and validating user story acceptance criteria",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2604.23124v1",
+      "source": "arxiv",
+      "title": "ArgRE: Formal Argumentation for Conflict Resolution in Multi-Agent Requirements Negotiation",
+      "abstract": "As software systems grow in complexity, they must satisfy an increasing number of competing quality attributes, making it essential to balance them in a principled manner -- for example, a safety requirement for sensor-fusion verification may conflict with a tight planning-cycle budget. Multi-agent large language model frameworks support this balancing process by assigning specialized agents to different objectives. However, their conflict resolution is typically heuristic. Requirements are aggregated implicitly without explicit acceptance or rejection, limiting auditability in regulated domains. We present ArgRE, a multi-agent requirements negotiation system that embeds Dung-style abstract argumentation into the negotiation stage. Each proposal, critique, and refinement is modeled as an argument, conflicts are represented as directed attack relations, and the accepted set of arguments is computed under grounded and preferred semantics. The pipeline further integrates KAOS goal modeling, multi-layer verification, and standards-oriented artifact generation. Evaluation across five case studies spanning safety-critical, financial, and information-system domains shows that ArgRE provides argument-level traceability absent from existing frameworks. Independent evaluators rated its decision justifications significantly higher than those of heuristic synthesis (4.32 vs. 3.07, p < 0.001), indicating improved auditability, while semantic intent preservation remains comparable (94.9% BERTScore F1) and compliance coverage reaches 84.7% versus 47.6%--47.8% for baselines. Structural analysis further confirms that the default pairwise protocol yields acyclic graphs in which grounded and preferred semantics coincide, whereas cross-pair arbitration introduces controlled cyclicity, leading to predictable divergence between the two semantics.",
+      "authors": [
+        "Haowei Cheng",
+        "Milhan Kim",
+        "Chong Liu",
+        "Teeradaj Racharak",
+        "Truong Vinh Truong Duy",
+        "Phan Thi Huyen Thanh",
+        "Jialong Li",
+        "Naoyasu Ubayashi",
+        "Hironori Washizaki"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-04-25T03:28:13+00:00",
+      "link": "https://arxiv.org/pdf/2604.23124v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Multi-agent requirements negotiation and conflict resolution",
+      "llm_evidence_cn": "多智能体需求协商与冲突解决",
+      "llm_evidence": "多智能体需求协商与冲突解决",
+      "canonical_evidence": "多智能体需求协商与冲突解决",
+      "llm_tldr_en": "ArgRE uses formal argumentation and LLMs to resolve conflicts in multi-agent requirements negotiation.",
+      "llm_tldr_cn": "ArgRE利用形式化论证和大语言模型解决多智能体需求协商中的冲突。",
+      "llm_tldr": "ArgRE利用形式化论证和大语言模型解决多智能体需求协商中的冲突。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2604.27825v1",
+      "source": "arxiv",
+      "title": "Requirements Debt in AI-Enabled Perception Systems Development: An Industrial RE4AI Perspective",
+      "abstract": "AI integration in automotive perception systems shifts requirements from static specifications to continuously evolving entities shaped by data, models, and operating contexts. When such changes are not consistently documented, validated, and traced, they accumulate as Requirements Debt (ReD), an underexplored but critical subtype of technical debt. This study conceptualises and empirically investigates how evolving functional and non-functional requirements create and propagate ReD across the AI-enabled automotive perception system lifecycle. We conducted 16 semi-structured interviews with experts from 13 international automotive companies and 3 European research institutes, and analysed the data using thematic analysis. As one of the first empirical studies connecting technical debt theory with RE4AI, the work identifies key ReD mechanisms. Evolving functional requirements (e.g., algorithm updates, sensor fusion, architectural changes, real-time constraints) drive semantic drift, validation backlogs, and integration debt when verification lags behind rapid iteration. In parallel, evolving non-functional requirements (e.g., safety, cybersecurity, reliability, scalability, transparency, trustworthiness) create assurance lag, compliance misalignment, and transparency and reliability debt as standards and ethical expectations shift. These interacting mechanisms propagate ReD across data, models, and system artefacts, undermining auditability, reliability, and certification readiness in safety-critical perception systems.",
+      "authors": [
+        "Hina Saeeda",
+        "Soniya Abraham"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-04-30T13:11:35+00:00",
+      "link": "https://arxiv.org/pdf/2604.27825v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "requirements engineering methodologies for AI-enabled perception systems",
+      "llm_evidence_cn": "AI 赋能感知系统的需求工程方法论",
+      "llm_evidence": "AI 赋能感知系统的需求工程方法论",
+      "canonical_evidence": "AI 赋能感知系统的需求工程方法论",
+      "llm_tldr_en": "Investigates Requirements Debt in AI-enabled automotive systems, focusing on evolving functional requirements.",
+      "llm_tldr_cn": "调查了 AI 赋能汽车系统中的需求债务，重点关注不断演进的功能需求。",
+      "llm_tldr": "调查了 AI 赋能汽车系统中的需求债务，重点关注不断演进的功能需求。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2604.23285v1",
+      "source": "arxiv",
+      "title": "Towards Agentic Test-Driven Quality Assurance for 6G Networks",
+      "abstract": "This work proposes an agentic, intent-driven end-to-end (E2E) orchestration framework that integrates intent co-creation with a Test-Driven Quality Assurance paradigm. In this framework, autonomous agents iteratively refine a user's initial intent into a confirmed, auditable specification. Furthermore, the system automatically derives validation tests from these intents before provisioning, directly mirroring the Test-Driven Development workflow in software engineering to ensure proactive Service Level Agreement (SLA) compliance. The architecture is grounded in a standards-aligned knowledge representation using TM Forum (TMF) information models and catalogs. This enables deterministic graph traversal from high-level Product Offerings down to granular Service/Resource and Test specifications. We prototyped this architecture by extending OpenSlice with a message-driven, multi-agent pattern and integrating MCP-enabled (Model Context Protocol) tool access for real-time knowledge retrieval. Currently, our evaluation of the agents targets the intent co-creation phase as a baseline toward full-scale orchestration. Building on experiments with multiple open-source Large Language Model (LLM) backends integrated with the TMF-based knowledge base, we observe substantial variability in tool-use reliability and hallucination patterns, underscoring the critical importance of robust knowledge integration in agentic 6G systems.",
+      "authors": [
+        "Christos Tranoris",
+        "Besiana Agko",
+        "Kostis Trantzas",
+        "Irene Denazi"
+      ],
+      "primary_category": "cs.NI",
+      "categories": [
+        "cs.NI",
+        "cs.SE"
+      ],
+      "published": "2026-04-25T12:58:36+00:00",
+      "link": "https://arxiv.org/pdf/2604.23285v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "refining user intent into auditable specifications and validation tests",
+      "llm_evidence_cn": "将用户意图细化为可审计的规范和验证测试",
+      "llm_evidence": "将用户意图细化为可审计的规范和验证测试",
+      "canonical_evidence": "将用户意图细化为可审计的规范和验证测试",
+      "llm_tldr_en": "Framework for refining user intent into specifications and automated validation tests.",
+      "llm_tldr_cn": "将用户意图细化为规范和自动化验证测试的框架。",
+      "llm_tldr": "将用户意图细化为规范和自动化验证测试的框架。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Defining and validating user story acceptance criteria",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2604.23090v1",
+      "source": "arxiv",
+      "title": "Towards Automated Ontology Generation from Unstructured Text: A Multi-Agent LLM Approach",
+      "abstract": "Automatically generating formal ontologies from unstructured natural language remains a central challenge in knowledge engineering. While large language models (LLMs) show promise, it remains unclear which architectural design choices drive generation quality and why current approaches fail. We present a controlled experimental study using domain-specific insurance contracts to investigate these questions. We first establish a single-agent LLM baseline, identifying key failure modes such as poor Ontology Design Pattern compliance, structural redundancy, and ineffective iterative repair. We then introduce a multi-agent architecture that decomposes ontology construction into four artifact-driven roles: Domain Expert, Manager, Coder, and Quality Assurer. We evaluate performance across architectural quality (via a panel of heterogeneous LLM judges) and functional usability (via competency question driven SPARQL evaluation with complementary retrieval augmented generation based assessment). Results show that the multi-agent approach significantly improves structural quality and modestly enhances queryability, with gains driven primarily by front-loaded planning. These findings highlight planning-first, artifact-driven generation as a promising and more auditable path toward scalable automated ontology engineering.",
+      "authors": [
+        "Abid Talukder",
+        "Maruf Ahmed Mridul",
+        "Oshani Seneviratne"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-04-25T00:58:17+00:00",
+      "link": "https://arxiv.org/pdf/2604.23090v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "automated generation from unstructured natural language text",
+      "llm_evidence_cn": "从非结构化自然语言文本中自动生成",
+      "llm_evidence": "从非结构化自然语言文本中自动生成",
+      "canonical_evidence": "从非结构化自然语言文本中自动生成",
+      "llm_tldr_en": "Investigates multi-agent LLM architectures for automated ontology generation from unstructured text.",
+      "llm_tldr_cn": "研究了用于从非结构化文本中自动生成本体的多智能体LLM架构。",
+      "llm_tldr": "研究了用于从非结构化文本中自动生成本体的多智能体LLM架构。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Automated extraction of user stories from text",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2604.23509v1",
+      "source": "arxiv",
+      "title": "Uncovering Business Logic Bugs via Semantics-Driven Unit Test Generation",
+      "abstract": "Business logic bugs violate intended business semantics and are particularly prevalent in enterprise software. Yet most existing unit test generation techniques are code-centric, making such bugs difficult to expose. We present SeGa, a semantics-driven unit test generation technique for uncovering business logic bugs. SeGa constructs a semantic knowledge base from product requirement documents, represented as a set of functionality entries that group related requirements under a common business intent. Given a focal method, SeGa retrieves the relevant functionality entries and derives fine-grained business scenarios with explicit preconditions, triggering actions, expected outcomes, and semantic constraints to guide LLM-based test generation. We evaluate SeGa on four industrial Go projects containing 60 real-world business logic bugs. SeGa detects 22-25 more bugs than four state-of-the-art LLM-based techniques and improves precision by 26.9%-34.3%. Deployment across 6 production repositories further uncovers 16 previously unknown business logic bugs that were confirmed and fixed by developers. From our industrial study, we summarize a series of lessons and suggestions for practical use and future research.",
+      "authors": [
+        "Chen Yang",
+        "Junjie Chen"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-04-26T03:06:16+00:00",
+      "link": "https://arxiv.org/pdf/2604.23509v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "derives business scenarios from product requirement documents for validation",
+      "llm_evidence_cn": "从产品需求文档中导出业务场景进行验证",
+      "llm_evidence": "从产品需求文档中导出业务场景进行验证",
+      "canonical_evidence": "从产品需求文档中导出业务场景进行验证",
+      "llm_tldr_en": "Uses semantic knowledge from requirements to generate unit tests for business logic validation.",
+      "llm_tldr_cn": "利用需求中的语义知识生成单元测试，以进行业务逻辑验证。",
+      "llm_tldr": "利用需求中的语义知识生成单元测试，以进行业务逻辑验证。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Defining and validating user story acceptance criteria",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2604.24621v1",
+      "source": "arxiv",
+      "title": "Evaluation of LLM-Based Software Engineering Tools: Practices, Challenges, and Future Directions",
+      "abstract": "Large Language Models (LLMs) are increasingly embedded in software engineering (SE) tools, powering applications such as code generation, automated code review, and bug triage. As these LLM-based AI for Software Engineering (AI4SE) systems transition from experimental prototypes to widely deployed tools, the question of what it means to evaluate their behavior reliably has become both critical and unanswered. Unlike traditional SE or machine learning systems, LLM-based tools often produce open-ended, natural language outputs, admit multiple valid answers, and exhibit non-deterministic behavior across runs. These characteristics fundamentally challenge long-standing evaluation assumptions such as the existence of a single ground truth, deterministic outputs, and objective correctness. In this paper, we examine LLM evaluation as a general, task-dependent concept through the lens of SE tasks. We discuss why reliable evaluation is essential for trust, adoption, and meaningful assessment of LLM-based tools, summarize the current state of evaluation practices, and highlight their limitations in realistic AI4SE settings. We then identify key challenges facing current approaches, including the absence of stable ground truth, subjectivity and multi-dimensional quality, evaluation instability due to non-determinism, limitations of automated and model-based evaluation, and fragmentation of evaluation practices. Finally, we outline future directions aimed at advancing LLM evaluation toward more robust, scalable, and trustworthy methodologies, to stimulate discussion on principled evaluation practices that can keep pace with the growing role of LLMs in SE.",
+      "authors": [
+        "Utku Boran Torun",
+        "Veli Karakaya",
+        "Ali Babar",
+        "Eray Tüzün"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-04-27T15:51:22+00:00",
+      "link": "https://arxiv.org/pdf/2604.24621v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "evaluation of LLM-based software engineering tools",
+      "llm_evidence_cn": "基于LLM的软件工程工具评估",
+      "llm_evidence": "基于LLM的软件工程工具评估",
+      "canonical_evidence": "基于LLM的软件工程工具评估",
+      "llm_tldr_en": "Discusses challenges and practices for evaluating LLM-based tools in software engineering.",
+      "llm_tldr_cn": "讨论了评估软件工程中基于LLM的工具的挑战与实践。",
+      "llm_tldr": "讨论了评估软件工程中基于LLM的工具的挑战与实践。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Automated tools for user story generation and validation",
+      "matched_requirement_id": "req-8",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2604.24478v1",
+      "source": "arxiv",
+      "title": "Putting a Face to the Issue: Fostering User Empathy of Open Source Software Developers With PersonaFlow",
+      "abstract": "Open-source software (OSS) developers often struggle to understand and respond to user context, while existing tools, such as issue trackers (for handling bugs, requests, and feedback), largely focus on technical discussion. Although personas could help, limited resources and UX expertise make them hard to scale. We present PersonaFlow, a tool that generates editable user personas from OSS repository artifacts and integrates them alongside issue reports. In a user study with 13 OSS developers, most reported shifts in how they understood users, and more than half modified their responses by adding empathetic language, tailoring explanations, or raising priority ratings. We found two pathways to this change: some connected emotionally to personas as people, while others used them pragmatically for triaging. Both appeared to lead to more user-centered behavior. We contribute design implications for persona-based tools relevant to OSS and other contexts where efficiency-driven systems or workflows obscure valuable human elements.",
+      "authors": [
+        "Boniface Bahati Tadjuidje",
+        "Jin L. C. Guo",
+        "Jinghui Cheng"
+      ],
+      "primary_category": "cs.HC",
+      "categories": [
+        "cs.HC",
+        "cs.SE"
+      ],
+      "published": "2026-04-27T13:45:24+00:00",
+      "link": "https://arxiv.org/pdf/2604.24478v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "generating user personas from repository artifacts to understand user context",
+      "llm_evidence_cn": "从仓库工件生成用户画像以理解用户上下文",
+      "llm_evidence": "从仓库工件生成用户画像以理解用户上下文",
+      "canonical_evidence": "从仓库工件生成用户画像以理解用户上下文",
+      "llm_tldr_en": "PersonaFlow generates user personas from OSS artifacts to help developers understand user needs and context.",
+      "llm_tldr_cn": "PersonaFlow 从开源软件工件中生成用户画像，帮助开发人员理解用户需求和上下文。",
+      "llm_tldr": "PersonaFlow 从开源软件工件中生成用户画像，帮助开发人员理解用户需求和上下文。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "User stories in software development and requirements engineering",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2604.25880v1",
+      "source": "arxiv",
+      "title": "From Threads to Trajectories: A Multi-LLM Pipeline for Community Knowledge Extraction from GitHub Issue Discussions",
+      "abstract": "Resolution of complex post-production issues in large-scale open-source software (OSS) projects requires significant cognitive effort, as developers need to go through long, unstructured and fragmented issue discussion threads before that. In this paper, we present SWE-MIMIC-Bench, an issue trajectory dataset generated from raw GitHub discussions using an automated multi-LLM pipeline. Unlike simple summarization, this pipeline utilizes a group of closed-source LLMs to perform granular tasks: analyzing individual comments with awareness of externally-linked resources, classifying comment analyses into label-specific fields (e.g., root cause, solution plan, implementation progress), and synthesizing label-aware trajectories which capture a structured and coherent narrative of the entire discussion thread. Our pipeline uses five closed-source LLM configurations for distinct purposes: label classification, inline code block and external link summarization, comment analysis, label-specific field classification and trajectory synthesis. By generating concise and reliable trajectories from complex conversation threads, this system can assist developers and researchers of broader software engineering community to understand the experience-driven collaborative approach for issue diagnosis. Furthermore, the generated trajectories can be used to train modern LLM agents to think and act like an expert developer. We evaluated our system on 800 real-world GitHub issues drawn from the SWE-Bench-Pro, SWE-Bench-Multilingual and SWE-Bench-Verified dataset, achieving a 91.7% success rate in extracting 734 high-fidelity reasoning trajectories.",
+      "authors": [
+        "Nazia Shehnaz Joynab",
+        "Soneya Binta Hossain"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-04-28T17:21:46+00:00",
+      "link": "https://arxiv.org/pdf/2604.25880v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "automated extraction of solution plans and root causes from issue discussions",
+      "llm_evidence_cn": "从问题讨论中自动提取解决方案计划和根本原因",
+      "llm_evidence": "从问题讨论中自动提取解决方案计划和根本原因",
+      "canonical_evidence": "从问题讨论中自动提取解决方案计划和根本原因",
+      "llm_tldr_en": "Presents a pipeline to extract structured knowledge and trajectories from unstructured GitHub issue discussions.",
+      "llm_tldr_cn": "提出了一种从非结构化 GitHub 问题讨论中提取结构化知识和轨迹的流水线。",
+      "llm_tldr": "提出了一种从非结构化 GitHub 问题讨论中提取结构化知识和轨迹的流水线。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Automated extraction of user stories from text",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2604.27311v1",
+      "source": "arxiv",
+      "title": "Pragmos: A Process Agentic Modeling System",
+      "abstract": "The advent of Large Language Models (LLMs) has significantly transformed tasks across Software Engineering. In the context of Business Process Management, LLMs are now being explored as tools to derive process models directly from textual descriptions. Existing approaches range from chatbot-driven systems that assist with iterative, text-based modeling to fully automated end-to-end modeling assistants. However, we argue that process modeling is inherently complex and cannot be effectively addressed through black-box solutions. Instead, we envision modeling as an open-ended conversational activity, best supported by an interactive, iterative process involving both humans and LLM. In our approach, the modeling task is decomposed into smaller, manageable steps. Each step results in intermediate artifacts and explicitly documents the rationale behind each modeling decision. During this process, we incrementally uncover simple behavioral relations that guide the construction of the model. Given the current limitations of LLMs in reasoning about complex dependencies, we complement them with specialized tools developed in the field to structure process models based on behavioral relations. This hybrid approach enables the generation of sound, yet comprehensible models that evolve through transparent and explainable steps. In this paper, we present our research agenda and introduce Pragmos, a prototype system that operationalizes this vision. Pragmos demonstrates how LLMs can collaborate with human users as both domain and modeling experts to co-create evolving process models through a structured and explainable workflow.",
+      "authors": [
+        "Pedro-Aarón Hernández-Ávalos",
+        "Luciano García-Bañuelos"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-04-30T01:49:19+00:00",
+      "link": "https://arxiv.org/pdf/2604.27311v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "deriving process models from textual descriptions",
+      "llm_evidence_cn": "从文本描述中推导过程模型",
+      "llm_evidence": "从文本描述中推导过程模型",
+      "canonical_evidence": "从文本描述中推导过程模型",
+      "llm_tldr_en": "Introduces an agentic system for interactive process modeling from natural language text.",
+      "llm_tldr_cn": "介绍了一种用于从自然语言文本进行交互式过程建模的代理系统。",
+      "llm_tldr": "介绍了一种用于从自然语言文本进行交互式过程建模的代理系统。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Automated extraction of user stories from text",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2604.27419v1",
+      "source": "arxiv",
+      "title": "InteractWeb-Bench: Can Multimodal Agent Escape Blind Execution in Interactive Website Generation?",
+      "abstract": "With the advancement of multimodal large language models (MLLMs) and coding agents, the website development has shifted from manual programming to agent-based project-level code synthesis. Existing benchmarks rely on idealized assumptions, especially for well-structured, information-rich inputs and static execution settings. In contrast, real-world development is constrained by a critical bottleneck: the semantic misalignment between ambiguous, low-quality instructions from non-expert users and model understanding, which results in a failure mode that we term blind execution. To address this gap, we introduce InteractWeb-Bench, the first multimodal interactive benchmark for website generation under non-expert low-code user conditions. InteractWeb-Bench introduces four types of user agents and persona-driven instruction perturbations to systematically simulate diverse user behaviors, including ambiguity, redundancy, and contradiction, grounded in requirement engineering defect taxonomies. We develop an interactive execution environment for agents, featuring a unified action space comprising Clarify, Implement, Verify, and Submit, enabling iterative intent refinement, code synthesis, and visual feedback-based validation. Extensive experiments and analysis reveal that frontier MLLM-based agents remain trapped in blind execution, exposing limitations in intent recognition and adaptive interaction.",
+      "authors": [
+        "Qiyao Wang",
+        "Haoran Hu",
+        "Longze Chen",
+        "Hongbo Wang",
+        "Hamid Alinejad-Rokny",
+        "Yuan Lin",
+        "Min Yang"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ],
+      "published": "2026-04-30T04:49:34+00:00",
+      "link": "https://arxiv.org/pdf/2604.27419v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "addressing semantic misalignment between ambiguous user instructions and model understanding",
+      "llm_evidence_cn": "解决模糊用户指令与模型理解之间的语义不匹配",
+      "llm_evidence": "解决模糊用户指令与模型理解之间的语义不匹配",
+      "canonical_evidence": "解决模糊用户指令与模型理解之间的语义不匹配",
+      "llm_tldr_en": "Benchmark for website generation focusing on low-quality instructions from non-expert users.",
+      "llm_tldr_cn": "针对非专家用户低质量指令的网站生成基准测试。",
+      "llm_tldr": "针对非专家用户低质量指令的网站生成基准测试。",
+      "llm_tags": [
+        "query:re-us:composite"
+      ],
+      "matched_query_tag": "query:re-us:composite",
+      "matched_query_text": "Papers central to 需求工程领域的用户故事相关的论文, especially work that connects or combines: User stories in software development and requirements engineering; Requirements engineering methodologies and practices; Agile requirements engineering and management; Quality assessment and improvement of user stories; Automated extraction of user stories from text; Defining and validating user story acceptance criteria; State of the art in user story research for requirements engineering; Automated tools for user story generation and validation; Impact of user story quality on software project success.",
+      "matched_requirement_id": "req-composite-re-us",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}

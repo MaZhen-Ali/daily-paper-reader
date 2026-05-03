@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2604.25880v1/fig-001.webp",
+      "caption": "Figure 1: Overview of Issue Trajectory Generation Approach.",
+      "page": 4,
+      "index": 1,
+      "width": 1040,
+      "height": 447
+    }
+  ]
+}
