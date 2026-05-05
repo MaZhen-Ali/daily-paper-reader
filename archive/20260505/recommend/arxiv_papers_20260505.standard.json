@@ -1,0 +1,317 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-05-05T20:42:20.240853+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 2,
+    "deep_cap": 6,
+    "deep_selected": 2,
+    "quick_candidates": 6,
+    "quick_skim_target": 11,
+    "quick_selected": 6
+  },
+  "deep_dive": [
+    {
+      "id": "2604.26572v1",
+      "source": "arxiv",
+      "title": "PICKLES: a Natural Language Framework for Requirement Specification and Model-Based Testing",
+      "abstract": "This paper combines methods from the fields of Model-Based Testing (MBT) and Behaviour-Driven Development (BDD) to define a testing approach with human-readable specifications and test cases, as in BDD, while using the modelling techniques and automatic test generation algorithms from MBT. We introduce PICKLES, a Precise Input and Control-flow Keyword-based Language for tEst Scenarios; an extension of Gherkin-style BDD scenarios, specified in structured natural language. We provide a bi-directional translation from Pickles scenarios to formal models, where both specifications and tests are human-readable, and a method to obtain a so-called master model combining all translated scenarios. Standard MBT algorithms can then be applied to automatically derive test cases from it. We implement a prototype of the translation and composition steps, which we use on an industrial case study: a software component from a traffic management system. With it, we illustrate the pipeline and show how Pickles can achieve significantly higher coverage with respect to BDD from the same set of scenarios.",
+      "authors": [
+        "María Belén Rodríguez",
+        "Petra van den Bos"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-04-29T11:54:23+00:00",
+      "link": "https://arxiv.org/pdf/2604.26572v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Gherkin-style BDD scenarios for requirement specification and validation",
+      "llm_evidence_cn": "用于需求规范和验证的Gherkin风格BDD场景",
+      "llm_evidence": "用于需求规范和验证的Gherkin风格BDD场景",
+      "canonical_evidence": "用于需求规范和验证的Gherkin风格BDD场景",
+      "llm_tldr_en": "PICKLES bridges BDD and MBT to provide human-readable, verifiable requirement specifications.",
+      "llm_tldr_cn": "PICKLES结合了BDD和模型检测，提供可读且可验证的需求规范与测试场景。",
+      "llm_tldr": "PICKLES结合了BDD和模型检测，提供可读且可验证的需求规范与测试场景。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Defining and validating user story acceptance criteria",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2605.01562v1",
+      "source": "arxiv",
+      "title": "Neuro-Symbolic Agents for Hallucination-Free Requirements Reuse",
+      "abstract": "The Object-Oriented Method for Requirements Authoring and Management (OOMRAM) is a requirements reuse framework that relies on exact identifier matching and rigid templates, limiting its ability to adapt specifications across diverse contexts. While Large Language Models (LLMs) offer the flexibility to overcome this bottleneck, they introduce the risk of generating structurally invalid or inconsistent requirement combinations. To address this tension, we present a neuro-symbolic multi-agent system that re-conceptualizes requirements reuse as a \\textbf{Model-Driven Elicitation process}. In this paradigm, an LLM serves as a \\textbf{non-deterministic heuristic} for traversing a \\textbf{deterministic domain model} represented by a formal OOMRAM requirement lattice. A deterministic, symbolic validator enforces all structural constraints within the agent loop, effectively eliminating hallucinated requirement combinations by construction. Evaluated on an autonomous benchmark across two application families, our system achieves 100\\% requirement coverage and a constraint-violation rate of only 0.2\\%. Although the F1-score against a single gold standard is moderate (0.47--0.51), every generated specification is structurally valid and satisfies all mandatory domain requirements. The model-agnostic implementation scales to larger lattices via subgraph navigation and provides transparent audit trails for regulatory compliance.",
+      "authors": [
+        "Ahmed Ibrahim"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-05-02T18:16:04+00:00",
+      "link": "https://arxiv.org/pdf/2605.01562v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "requirements authoring, management, and model-driven elicitation",
+      "llm_evidence_cn": "需求编写、管理和模型驱动的启发",
+      "llm_evidence": "需求编写、管理和模型驱动的启发",
+      "canonical_evidence": "需求编写、管理和模型驱动的启发",
+      "llm_tldr_en": "Presents a neuro-symbolic system for hallucination-free requirements reuse and elicitation.",
+      "llm_tldr_cn": "提出了一种用于无幻觉需求重用和启发的神经符号多智能体系统。",
+      "llm_tldr": "提出了一种用于无幻觉需求重用和启发的神经符号多智能体系统。",
+      "llm_tags": [
+        "query:re-us:composite"
+      ],
+      "matched_query_tag": "query:re-us:composite",
+      "matched_query_text": "Papers central to 需求工程领域的用户故事相关的论文, especially work that connects or combines: User stories in software development and requirements engineering; Requirements engineering methodologies and practices; Agile requirements engineering and management; Quality assessment and improvement of user stories; Automated extraction of user stories from text; Defining and validating user story acceptance criteria; State of the art in user story research for requirements engineering; Automated tools for user story generation and validation; Impact of user story quality on software project success.",
+      "matched_requirement_id": "req-composite-re-us",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2605.01160v1",
+      "source": "arxiv",
+      "title": "The Productivity-Reliability Paradox: Specification-Driven Governance for AI-Augmented Software Development",
+      "abstract": "Since 2022, AI-powered coding assistants have produced contradictory evidence: controlled studies report 20-56% productivity gains on well-scoped tasks, while the most rigorous RCT documents a 19% slowdown for experienced developers, and telemetry across 10,000+ developers shows 98% more pull requests but 91% longer review times with flat delivery metrics. This paper argues these findings constitute the Productivity-Reliability Paradox (PRP): a systematic phenomenon emerging from non-deterministic code generators and insufficient specification discipline. Through a multivocal literature review of 67 sources (2022-2026), this paper: (1) formally defines the PRP with three moderating variables (task abstraction, codebase maturity, developer experience) and two amplifying mechanisms (code review bottleneck, context window constraint); (2) proposes the AI-Augmented Methodology Taxonomy (AAMT), classifying six methodologies under three AI integration tiers; (3) introduces the Specification Governance Model (SGM), grounded in Transaction Cost Economics, with a practical governance decision guide; and (4) evaluates Spec Kit and TDAD as SGM instantiations via a four-month pilot study. Specification discipline, not model capability, is the binding constraint on AI-assisted software dependability.",
+      "authors": [
+        "Sabry E. Farrag"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-05-01T23:37:50+00:00",
+      "link": "https://arxiv.org/pdf/2605.01160v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "specification-driven governance in software development",
+      "llm_evidence_cn": "软件开发中的规范驱动治理",
+      "llm_evidence": "软件开发中的规范驱动治理",
+      "canonical_evidence": "软件开发中的规范驱动治理",
+      "llm_tldr_en": "Explores the need for rigorous specification discipline to solve the productivity-reliability paradox in AI coding.",
+      "llm_tldr_cn": "探讨了通过严格的规范纪律来解决AI编程中生产力与可靠性悖论的必要性。",
+      "llm_tldr": "探讨了通过严格的规范纪律来解决AI编程中生产力与可靠性悖论的必要性。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2604.24478v1",
+      "source": "arxiv",
+      "title": "Putting a Face to the Issue: Fostering User Empathy of Open Source Software Developers With PersonaFlow",
+      "abstract": "Open-source software (OSS) developers often struggle to understand and respond to user context, while existing tools, such as issue trackers (for handling bugs, requests, and feedback), largely focus on technical discussion. Although personas could help, limited resources and UX expertise make them hard to scale. We present PersonaFlow, a tool that generates editable user personas from OSS repository artifacts and integrates them alongside issue reports. In a user study with 13 OSS developers, most reported shifts in how they understood users, and more than half modified their responses by adding empathetic language, tailoring explanations, or raising priority ratings. We found two pathways to this change: some connected emotionally to personas as people, while others used them pragmatically for triaging. Both appeared to lead to more user-centered behavior. We contribute design implications for persona-based tools relevant to OSS and other contexts where efficiency-driven systems or workflows obscure valuable human elements.",
+      "authors": [
+        "Boniface Bahati Tadjuidje",
+        "Jin L. C. Guo",
+        "Jinghui Cheng"
+      ],
+      "primary_category": "cs.HC",
+      "categories": [
+        "cs.HC",
+        "cs.SE"
+      ],
+      "published": "2026-04-27T13:45:24+00:00",
+      "link": "https://arxiv.org/pdf/2604.24478v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Generating user personas from repository artifacts to understand user context",
+      "llm_evidence_cn": "从仓库制品生成用户画像以理解用户上下文",
+      "llm_evidence": "从仓库制品生成用户画像以理解用户上下文",
+      "canonical_evidence": "从仓库制品生成用户画像以理解用户上下文",
+      "llm_tldr_en": "Generates user personas from OSS artifacts to help developers empathize with users.",
+      "llm_tldr_cn": "通过开源仓库制品生成用户画像，帮助开发者更好地理解用户需求。",
+      "llm_tldr": "通过开源仓库制品生成用户画像，帮助开发者更好地理解用户需求。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "User stories in software development and requirements engineering",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2605.01209v1",
+      "source": "arxiv",
+      "title": "ClarifySTL: An Interactive LLM Agent Framework for STL Transformation through Requirements Clarification",
+      "abstract": "Signal Temporal Logic (STL) is a formal language for specifying real-time behaviors of cyber-physical systems (CPS). Automatically transforming natural language requirements into STL specifications has received growing attention. Recent efforts leveraging large language models (LLMs) have demonstrated impressive performance, but some natural language requirements in practice contain vague or ambiguous information, which remains challenging for LLMs to handle. To address these challenges, we propose ClarifySTL, an interactive LLM-agent framework that enhances STL transformation through requirements clarification. ClarifySTL first detects vague expressions that indicate underspecified information in a requirement. If any vagueness is detected, it generates targeted clarification queries to guide users in supplementing the requirement until all necessary details are provided. Subsequently, if ClarifySTL detects ambiguities, it formulates focused ambiguity clarification queries and updates the requirements based on user feedback until all ambiguities are resolved. Finally, the requirements with vagueness and ambiguity clarified are transformed into STL specifications using LLMs. This interactive framework ensures that the resulting STL formulas faithfully capture user intent while reducing the burden on the user. We evaluate ClarifySTL on the representative benchmarks DeepSTL and STL-DivEn, as well as our newly introduced AmbiEval benchmark, which is specifically designed to assess the performance of the agents in handling vagueness and ambiguity, including both detection and query generation. The experimental results show that ClarifySTL is effective.",
+      "authors": [
+        "Yue Fang",
+        "Zhi Jin",
+        "Jie An",
+        "Hongshen Chen",
+        "Xiaohong Chen",
+        "Naijun Zhan"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.FL"
+      ],
+      "published": "2026-05-02T02:55:06+00:00",
+      "link": "https://arxiv.org/pdf/2605.01209v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Transforming natural language requirements into formal specifications",
+      "llm_evidence_cn": "将自然语言需求转换为形式化规范",
+      "llm_evidence": "将自然语言需求转换为形式化规范",
+      "canonical_evidence": "将自然语言需求转换为形式化规范",
+      "llm_tldr_en": "An LLM framework that clarifies vague requirements to generate formal STL specifications.",
+      "llm_tldr_cn": "通过需求澄清将模糊的自然语言转换为形式化STL规范的框架。",
+      "llm_tldr": "通过需求澄清将模糊的自然语言转换为形式化STL规范的框架。",
+      "llm_tags": [
+        "query:re-us:composite"
+      ],
+      "matched_query_tag": "query:re-us:composite",
+      "matched_query_text": "Papers central to 需求工程领域的用户故事相关的论文, especially work that connects or combines: User stories in software development and requirements engineering; Requirements engineering methodologies and practices; Agile requirements engineering and management; Quality assessment and improvement of user stories; Automated extraction of user stories from text; Defining and validating user story acceptance criteria; State of the art in user story research for requirements engineering; Automated tools for user story generation and validation; Impact of user story quality on software project success.",
+      "matched_requirement_id": "req-composite-re-us",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2604.25880v1",
+      "source": "arxiv",
+      "title": "From Threads to Trajectories: A Multi-LLM Pipeline for Community Knowledge Extraction from GitHub Issue Discussions",
+      "abstract": "Resolution of complex post-production issues in large-scale open-source software (OSS) projects requires significant cognitive effort, as developers need to go through long, unstructured and fragmented issue discussion threads before that. In this paper, we present SWE-MIMIC-Bench, an issue trajectory dataset generated from raw GitHub discussions using an automated multi-LLM pipeline. Unlike simple summarization, this pipeline utilizes a group of closed-source LLMs to perform granular tasks: analyzing individual comments with awareness of externally-linked resources, classifying comment analyses into label-specific fields (e.g., root cause, solution plan, implementation progress), and synthesizing label-aware trajectories which capture a structured and coherent narrative of the entire discussion thread. Our pipeline uses five closed-source LLM configurations for distinct purposes: label classification, inline code block and external link summarization, comment analysis, label-specific field classification and trajectory synthesis. By generating concise and reliable trajectories from complex conversation threads, this system can assist developers and researchers of broader software engineering community to understand the experience-driven collaborative approach for issue diagnosis. Furthermore, the generated trajectories can be used to train modern LLM agents to think and act like an expert developer. We evaluated our system on 800 real-world GitHub issues drawn from the SWE-Bench-Pro, SWE-Bench-Multilingual and SWE-Bench-Verified dataset, achieving a 91.7% success rate in extracting 734 high-fidelity reasoning trajectories.",
+      "authors": [
+        "Nazia Shehnaz Joynab",
+        "Soneya Binta Hossain"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-04-28T17:21:46+00:00",
+      "link": "https://arxiv.org/pdf/2604.25880v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "automated extraction of knowledge from issue discussions",
+      "llm_evidence_cn": "从议题讨论中自动提取知识",
+      "llm_evidence": "从议题讨论中自动提取知识",
+      "canonical_evidence": "从议题讨论中自动提取知识",
+      "llm_tldr_en": "A pipeline for extracting structured knowledge from GitHub issue discussions using multiple LLMs.",
+      "llm_tldr_cn": "一种利用多个大语言模型从GitHub议题讨论中提取结构化知识的流水线。",
+      "llm_tldr": "一种利用多个大语言模型从GitHub议题讨论中提取结构化知识的流水线。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Automated extraction of user stories from text",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2604.26142v1",
+      "source": "arxiv",
+      "title": "ImproBR: Bug Report Improver Using LLMs",
+      "abstract": "Bug tracking systems play a crucial role in software maintenance, yet developers frequently struggle with low-quality user-submitted reports that omit essential details such as Steps to Reproduce (S2R), Observed Behavior (OB), and Expected Behavior (EB). We propose ImproBR, an LLM-based pipeline that automatically detects and improves bug reports by addressing missing, incomplete, and ambiguous S2R, OB, and EB sections. ImproBR employs a hybrid detector combining fine-tuned DistilBERT, heuristic analysis, and an LLM analyzer, guided by GPT-4o mini with section-specific few-shot prompts and a Retrieval-Augmented Generation (RAG) pipeline grounded in Minecraft Wiki domain knowledge. Evaluated on Mojira, ImproBR improved structural completeness from 7.9% to 96.4%, more than doubled the proportion of executable S2R from 28.8% to 67.6%, and raised fully reproducible bug reports from 1 to 13 across 139 challenging real-world reports.",
+      "authors": [
+        "Emre Furkan Akyol",
+        "Mehmet Dedeler",
+        "Eray Tüzün"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-04-28T22:03:43+00:00",
+      "link": "https://arxiv.org/pdf/2604.26142v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Automated improvement of user-submitted reports and structural completeness",
+      "llm_evidence_cn": "自动化改进用户提交的报告和结构完整性",
+      "llm_evidence": "自动化改进用户提交的报告和结构完整性",
+      "canonical_evidence": "自动化改进用户提交的报告和结构完整性",
+      "llm_tldr_en": "Uses LLMs to detect and improve incomplete bug reports, sharing methodological parallels with user story quality.",
+      "llm_tldr_cn": "利用LLM检测并改进不完整的缺陷报告，在方法论上与用户故事质量改进相似。",
+      "llm_tldr": "利用LLM检测并改进不完整的缺陷报告，在方法论上与用户故事质量改进相似。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Quality assessment and improvement of user stories",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2604.26384v1",
+      "source": "arxiv",
+      "title": "Asset Administration Shell-Based OCL Validation Framework for Model-Based System Engineering",
+      "abstract": "Increasing complexity of modern enterprise systems and the demand for automation and interoperability require consistent and semantically validated models in Model-Based Systems Engineering (MBSE). The Object Constraint Language (OCL) supports formal definition of such constraint validations. However, MBSE models and OCL constraints are typically managed in separate tools, causing manual effort during model constraint application and result interpretation. To address this gap, this paper proposes an approach to managing OCL constraints and their validation results through Asset Administration Shells (a well-established technology for interoperability in enterprise systems). The methodology is demonstrated through a fictional industrial scenario, and to support reproducibility, all artifacts are publicly available in a GitHub repository.",
+      "authors": [
+        "Om Parkash",
+        "Jannik Bauer",
+        "Vincent Schmitt",
+        "Thomas Greiner",
+        "Rainer Drath"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "eess.SY"
+      ],
+      "published": "2026-04-29T07:51:29+00:00",
+      "link": "https://arxiv.org/pdf/2604.26384v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "model-based systems engineering and formal validation",
+      "llm_evidence_cn": "基于模型的系统工程与形式化验证",
+      "llm_evidence": "基于模型的系统工程与形式化验证",
+      "canonical_evidence": "基于模型的系统工程与形式化验证",
+      "llm_tldr_en": "A framework for managing OCL constraints and validation results in model-based systems engineering.",
+      "llm_tldr_cn": "一种在基于模型的系统工程中管理OCL约束和验证结果的框架。",
+      "llm_tldr": "一种在基于模型的系统工程中管理OCL约束和验证结果的框架。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
