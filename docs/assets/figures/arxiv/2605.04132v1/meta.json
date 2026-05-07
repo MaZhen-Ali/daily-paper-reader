@@ -1,0 +1,222 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2605.04132v1/fig-001.webp",
+      "caption": "Table 3",
+      "page": 6,
+      "index": 1,
+      "width": 928,
+      "height": 189
+    },
+    {
+      "url": "assets/figures/arxiv/2605.04132v1/fig-002.webp",
+      "caption": "Table 7",
+      "page": 11,
+      "index": 2,
+      "width": 635,
+      "height": 313
+    },
+    {
+      "url": "assets/figures/arxiv/2605.04132v1/fig-003.webp",
+      "caption": "Figure 6: Temporal analysis of the Evolution of using contributing discipline in RE process",
+      "page": 11,
+      "index": 3,
+      "width": 685,
+      "height": 373
+    },
+    {
+      "url": "assets/figures/arxiv/2605.04132v1/fig-004.webp",
+      "caption": "Table 14",
+      "page": 25,
+      "index": 4,
+      "width": 957,
+      "height": 568
+    },
+    {
+      "url": "assets/figures/arxiv/2605.04132v1/fig-005.webp",
+      "caption": "Table 13",
+      "page": 21,
+      "index": 5,
+      "width": 974,
+      "height": 193
+    },
+    {
+      "url": "assets/figures/arxiv/2605.04132v1/fig-006.webp",
+      "caption": "Table 19",
+      "page": 34,
+      "index": 6,
+      "width": 852,
+      "height": 394
+    },
+    {
+      "url": "assets/figures/arxiv/2605.04132v1/fig-007.webp",
+      "caption": "Table 20",
+      "page": 34,
+      "index": 7,
+      "width": 967,
+      "height": 471
+    },
+    {
+      "url": "assets/figures/arxiv/2605.04132v1/fig-008.webp",
+      "caption": "Figure 5: RE phases covered by the PSs",
+      "page": 10,
+      "index": 8,
+      "width": 490,
+      "height": 296
+    },
+    {
+      "url": "assets/figures/arxiv/2605.04132v1/fig-009.webp",
+      "caption": "Table 6",
+      "page": 10,
+      "index": 9,
+      "width": 977,
+      "height": 208
+    },
+    {
+      "url": "assets/figures/arxiv/2605.04132v1/fig-010.webp",
+      "caption": "Table 9",
+      "page": 14,
+      "index": 10,
+      "width": 960,
+      "height": 966
+    },
+    {
+      "url": "assets/figures/arxiv/2605.04132v1/fig-011.webp",
+      "caption": "Table 18",
+      "page": 33,
+      "index": 11,
+      "width": 953,
+      "height": 240
+    },
+    {
+      "url": "assets/figures/arxiv/2605.04132v1/fig-012.webp",
+      "caption": "Table 17",
+      "page": 33,
+      "index": 12,
+      "width": 960,
+      "height": 438
+    },
+    {
+      "url": "assets/figures/arxiv/2605.04132v1/fig-013.webp",
+      "caption": "Table 23",
+      "page": 35,
+      "index": 13,
+      "width": 974,
+      "height": 317
+    },
+    {
+      "url": "assets/figures/arxiv/2605.04132v1/fig-014.webp",
+      "caption": "Table 21",
+      "page": 35,
+      "index": 14,
+      "width": 921,
+      "height": 212
+    },
+    {
+      "url": "assets/figures/arxiv/2605.04132v1/fig-015.webp",
+      "caption": "Table 22",
+      "page": 35,
+      "index": 15,
+      "width": 967,
+      "height": 268
+    },
+    {
+      "url": "assets/figures/arxiv/2605.04132v1/fig-016.webp",
+      "caption": "Table 24",
+      "page": 35,
+      "index": 16,
+      "width": 942,
+      "height": 340
+    },
+    {
+      "url": "assets/figures/arxiv/2605.04132v1/fig-017.webp",
+      "caption": "Figure 1: Distribution of PSs by year",
+      "page": 8,
+      "index": 17,
+      "width": 685,
+      "height": 394
+    },
+    {
+      "url": "assets/figures/arxiv/2605.04132v1/fig-018.webp",
+      "caption": "Figure 2: Distribution of PSs by study type",
+      "page": 8,
+      "index": 18,
+      "width": 490,
+      "height": 310
+    },
+    {
+      "url": "assets/figures/arxiv/2605.04132v1/fig-019.webp",
+      "caption": "Table 25",
+      "page": 36,
+      "index": 19,
+      "width": 977,
+      "height": 1337
+    },
+    {
+      "url": "assets/figures/arxiv/2605.04132v1/fig-020.webp",
+      "caption": "Table 12",
+      "page": 19,
+      "index": 20,
+      "width": 902,
+      "height": 877
+    },
+    {
+      "url": "assets/figures/arxiv/2605.04132v1/fig-021.webp",
+      "caption": "Table 15",
+      "page": 32,
+      "index": 21,
+      "width": 892,
+      "height": 564
+    },
+    {
+      "url": "assets/figures/arxiv/2605.04132v1/fig-022.webp",
+      "caption": "Table 16",
+      "page": 32,
+      "index": 22,
+      "width": 914,
+      "height": 258
+    },
+    {
+      "url": "assets/figures/arxiv/2605.04132v1/fig-023.webp",
+      "caption": "Figure 7: Organizing framework for the HC-RE research agenda. Layer 1 represents the theoretical core of the C-F pathway;",
+      "page": 24,
+      "index": 23,
+      "width": 923,
+      "height": 696
+    },
+    {
+      "url": "assets/figures/arxiv/2605.04132v1/fig-024.webp",
+      "caption": "Figure 4: Number of PSs per application domain",
+      "page": 9,
+      "index": 24,
+      "width": 685,
+      "height": 321
+    },
+    {
+      "url": "assets/figures/arxiv/2605.04132v1/fig-025.webp",
+      "caption": "Figure 3: Number of PSs per Techniques used to involve users in RE process",
+      "page": 9,
+      "index": 25,
+      "width": 685,
+      "height": 331
+    },
+    {
+      "url": "assets/figures/arxiv/2605.04132v1/fig-026.webp",
+      "caption": "Table 2",
+      "page": 5,
+      "index": 26,
+      "width": 974,
+      "height": 321
+    },
+    {
+      "url": "assets/figures/arxiv/2605.04132v1/fig-027.webp",
+      "caption": "Table 10",
+      "page": 16,
+      "index": 27,
+      "width": 902,
+      "height": 1067
+    }
+  ]
+}
