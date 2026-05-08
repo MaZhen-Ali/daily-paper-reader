@@ -1,0 +1,46 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2605.05828v1/fig-001.webp",
+      "caption": "Fig. 1. Motivation of this work. Left: Free-form LLM chat produces adhoc questions, resulting in redundancy and incomplete coverage of implicit requirements; Right: Experienced analysts implicitly follow a structured interview experience to systematically explore requirement dimensions",
+      "page": 1,
+      "index": 1,
+      "width": 520,
+      "height": 350
+    },
+    {
+      "url": "assets/figures/arxiv/2605.05828v1/fig-002.webp",
+      "caption": "Fig. 4. Turn-level IRE progression across six representative scenarios.",
+      "page": 10,
+      "index": 2,
+      "width": 1044,
+      "height": 441
+    },
+    {
+      "url": "assets/figures/arxiv/2605.05828v1/fig-003.webp",
+      "caption": "TABLE IV PERFORMANCE OF OntoAgent ON DIFFERENT LLM BACKBONES.",
+      "page": 8,
+      "index": 3,
+      "width": 529,
+      "height": 371
+    },
+    {
+      "url": "assets/figures/arxiv/2605.05828v1/fig-004.webp",
+      "caption": "TABLE V ASPECT-LEVEL IMPLICIT REQUIREMENT ELICITATION PERFORMANCE. IRE_INT, IRE_CON, AND IRE_STY DENOTE THE ELICITATION RATIOS FOR interaction, content, AND style REQUIREMENTS, RESPECTIVELY.",
+      "page": 8,
+      "index": 4,
+      "width": 529,
+      "height": 323
+    },
+    {
+      "url": "assets/figures/arxiv/2605.05828v1/fig-005.webp",
+      "caption": "Fig. 2. Overview of OntoAgent framework.",
+      "page": 4,
+      "index": 5,
+      "width": 964,
+      "height": 325
+    }
+  ]
+}
