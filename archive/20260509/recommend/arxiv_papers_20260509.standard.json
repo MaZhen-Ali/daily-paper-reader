@@ -1,0 +1,322 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-05-09T19:45:54.680919+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 3,
+    "deep_cap": 6,
+    "deep_selected": 3,
+    "quick_candidates": 5,
+    "quick_skim_target": 11,
+    "quick_selected": 5
+  },
+  "deep_dive": [
+    {
+      "id": "2605.01562v2",
+      "source": "arxiv",
+      "title": "Neuro-Symbolic Agents for Hallucination-Free Requirements Reuse",
+      "abstract": "The Object-Oriented Method for Requirements Authoring and Management (OOMRAM) is a requirements reuse framework that relies on exact identifier matching and rigid templates, limiting its ability to adapt specifications across diverse contexts. While Large Language Models (LLMs) offer the flexibility to overcome this bottleneck, they introduce the risk of generating structurally invalid or inconsistent requirement combinations. To address this tension, we present a neuro-symbolic multi-agent system that re-conceptualizes requirements reuse as a Model-Driven Elicitation process. In this paradigm, an LLM serves as a non-deterministic heuristic for traversing a deterministic domain model represented by a formal OOMRAM requirement lattice. A deterministic, symbolic validator enforces all structural constraints within the agent loop, effectively eliminating hallucinated requirement combinations by construction. Evaluated on an autonomous benchmark across two application families, our system achieves 100% requirement coverage and a constraint-violation rate of only 0.2%. Although the F1-score against a single gold standard is moderate (0.47-0.51), every generated specification is structurally valid and satisfies all mandatory domain requirements. The model-agnostic implementation scales to larger lattices via subgraph navigation and provides transparent audit trails for regulatory compliance.",
+      "authors": [
+        "Ahmed F. Ibrahim"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-05-02T18:16:04+00:00",
+      "link": "https://arxiv.org/pdf/2605.01562v2",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "neuro-symbolic system for requirements authoring and management",
+      "llm_evidence_cn": "用于需求编写和管理的神经符号系统",
+      "llm_evidence": "用于需求编写和管理的神经符号系统",
+      "canonical_evidence": "用于需求编写和管理的神经符号系统",
+      "llm_tldr_en": "Introduces a neuro-symbolic multi-agent system for hallucination-free requirements reuse and elicitation.",
+      "llm_tldr_cn": "引入一种神经符号多代理系统，用于无幻觉的需求重用和启发。",
+      "llm_tldr": "引入一种神经符号多代理系统，用于无幻觉的需求重用和启发。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2605.04132v1",
+      "source": "arxiv",
+      "title": "Two Integration Pathways in Human-Centered Requirements Engineering: A Systematic Mapping Study of Structural Gaps",
+      "abstract": "Human-centered Requirements Engineering (HC-RE) integrates user cognition, emotions, and social interactions into the RE process through contributions from disciplines such as psychology, cognitive science, design thinking, and human-computer interaction. Despite growing interest, how these multidisciplinary contributions are structured and why they remain fragmented across the RE lifecycle is not well understood.   This systematic mapping study analyzes 56 primary studies across seven dimensions, including RE phases, user involvement techniques, contributing disciplines, and evaluation methods. Results show that 70\\% of approaches involve multidisciplinary contributions, yet only 39% have been empirically evaluated and 48% address only the elicitation phase. A cross-study analysis reveals a structural separation between two parallel integration traditions: a Cognitive-Formal (C-F) pathway grounded in goal-based frameworks and formal modeling, and a Participatory-Iterative (P-I) pathway grounded in scenario-based frameworks and iterative design. Each pathway has developed complementary strengths, but their near-total disconnection explains the persistent lifecycle concentration and theory-practice gap observed in the corpus.   The findings identify the absence of translation mechanisms between human-centered artifacts and formal RE specifications as the field's primary structural gap, provide a structured research agenda organized into four priority tiers, and establish the empirical foundation for Experience-Centered Requirements Engineering, a direction in which user experience is explicitly operationalized as a first-class concern in requirements specification.",
+      "authors": [
+        "Imen Benzarti",
+        "Ikram Darif",
+        "Abderrahmane Leshob",
+        "Hafedh Mili",
+        "Darine Amayed"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.HC"
+      ],
+      "published": "2026-05-05T17:17:15+00:00",
+      "link": "https://arxiv.org/pdf/2605.04132v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "systematic mapping of human-centered requirements engineering",
+      "llm_evidence_cn": "以人为本的需求工程系统映射研究",
+      "llm_evidence": "以人为本的需求工程系统映射研究",
+      "canonical_evidence": "以人为本的需求工程系统映射研究",
+      "llm_tldr_en": "Analyzes the integration of multidisciplinary contributions across the requirements engineering lifecycle.",
+      "llm_tldr_cn": "分析了需求工程生命周期中多学科贡献的整合情况。",
+      "llm_tldr": "分析了需求工程生命周期中多学科贡献的整合情况。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2605.05828v1",
+      "source": "arxiv",
+      "title": "From Chat to Interview: Agentic Requirements Elicitation with an Experience Ontology",
+      "abstract": "Requirements elicitation interviews are crucial and time-consuming in requirements engineering, but heavily rely on the experience of requirements analysts. Although recent advancements in large language models (LLMs) have created new opportunities to automate this process, existing approaches rely solely on LLMs for free-form chat without taking into account the interview and development experience. That leads to the omission of implicit requirements and redundant questions. Practically, experienced analysts implicitly follow a structured cognitive framework when conducting requirements elicitation. Inspired by this observation, this paper proposes an interview agent named OntoAgent for the elicitation of requirements guided by an experience ontology. OntoAgent automatically analyzes domain-specific requirements descriptions to construct an experience ontology, which organizes requirements concerns into an ontology to support systematic and explainable interviews. During the interview, OntoAgent first performs four operations (i.e., ParseUser, ScoreOnto, ReRankOnto, GatePrune) guided by the ontology to identify the relevant requirement concerns. The selected concern is then combined with the current dialogue context to generate the elicitation question. To validate OntoAgent, we conduct comprehensive quantitative experiments using the widely adopted website application domain. The results show that OntoAgent significantly outperforms existing baselines in both elicitation effectiveness and questioning efficiency, achieving a 33% improvement in IRE and a 21% improvement in TKQR. Ablation studies further validate the contribution of each key design component. In addition, a qualitative user study demonstrates its practical advantages in real-world scenarios. We believe that OntoAgent can also be extended to requirements interview tasks in other domains.",
+      "authors": [
+        "Dongming Jin",
+        "Zhi Jin",
+        "Yaotian Yang",
+        "Linyu Li",
+        "Zheng Fang",
+        "Yuanpeng He",
+        "Wenchun Jing",
+        "Xiaohong Chen"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-05-07T08:03:03+00:00",
+      "link": "https://arxiv.org/pdf/2605.05828v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Automated requirements elicitation using LLM agents and experience ontology",
+      "llm_evidence_cn": "使用大模型智能体和经验本体进行自动需求获取",
+      "llm_evidence": "使用大模型智能体和经验本体进行自动需求获取",
+      "canonical_evidence": "使用大模型智能体和经验本体进行自动需求获取",
+      "llm_tldr_en": "Proposes OntoAgent, an LLM-based agent that uses an experience ontology to guide structured requirements elicitation.",
+      "llm_tldr_cn": "提出OntoAgent，一种利用经验本体指导结构化需求获取的大模型智能体。",
+      "llm_tldr": "提出OntoAgent，一种利用经验本体指导结构化需求获取的大模型智能体。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2605.01209v1",
+      "source": "arxiv",
+      "title": "ClarifySTL: An Interactive LLM Agent Framework for STL Transformation through Requirements Clarification",
+      "abstract": "Signal Temporal Logic (STL) is a formal language for specifying real-time behaviors of cyber-physical systems (CPS). Automatically transforming natural language requirements into STL specifications has received growing attention. Recent efforts leveraging large language models (LLMs) have demonstrated impressive performance, but some natural language requirements in practice contain vague or ambiguous information, which remains challenging for LLMs to handle. To address these challenges, we propose ClarifySTL, an interactive LLM-agent framework that enhances STL transformation through requirements clarification. ClarifySTL first detects vague expressions that indicate underspecified information in a requirement. If any vagueness is detected, it generates targeted clarification queries to guide users in supplementing the requirement until all necessary details are provided. Subsequently, if ClarifySTL detects ambiguities, it formulates focused ambiguity clarification queries and updates the requirements based on user feedback until all ambiguities are resolved. Finally, the requirements with vagueness and ambiguity clarified are transformed into STL specifications using LLMs. This interactive framework ensures that the resulting STL formulas faithfully capture user intent while reducing the burden on the user. We evaluate ClarifySTL on the representative benchmarks DeepSTL and STL-DivEn, as well as our newly introduced AmbiEval benchmark, which is specifically designed to assess the performance of the agents in handling vagueness and ambiguity, including both detection and query generation. The experimental results show that ClarifySTL is effective.",
+      "authors": [
+        "Yue Fang",
+        "Zhi Jin",
+        "Jie An",
+        "Hongshen Chen",
+        "Xiaohong Chen",
+        "Naijun Zhan"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.FL"
+      ],
+      "published": "2026-05-02T02:55:06+00:00",
+      "link": "https://arxiv.org/pdf/2605.01209v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Interactive framework for clarifying vague natural language requirements",
+      "llm_evidence_cn": "用于澄清模糊自然语言需求的交互式框架",
+      "llm_evidence": "用于澄清模糊自然语言需求的交互式框架",
+      "canonical_evidence": "用于澄清模糊自然语言需求的交互式框架",
+      "llm_tldr_en": "Introduces ClarifySTL to detect and resolve ambiguities in natural language requirements for formal specification.",
+      "llm_tldr_cn": "引入ClarifySTL，用于检测并解决自然语言需求中的歧义，以生成形式化规范。",
+      "llm_tldr": "引入ClarifySTL，用于检测并解决自然语言需求中的歧义，以生成形式化规范。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2605.01160v1",
+      "source": "arxiv",
+      "title": "The Productivity-Reliability Paradox: Specification-Driven Governance for AI-Augmented Software Development",
+      "abstract": "Since 2022, AI-powered coding assistants have produced contradictory evidence: controlled studies report 20-56% productivity gains on well-scoped tasks, while the most rigorous RCT documents a 19% slowdown for experienced developers, and telemetry across 10,000+ developers shows 98% more pull requests but 91% longer review times with flat delivery metrics. This paper argues these findings constitute the Productivity-Reliability Paradox (PRP): a systematic phenomenon emerging from non-deterministic code generators and insufficient specification discipline. Through a multivocal literature review of 67 sources (2022-2026), this paper: (1) formally defines the PRP with three moderating variables (task abstraction, codebase maturity, developer experience) and two amplifying mechanisms (code review bottleneck, context window constraint); (2) proposes the AI-Augmented Methodology Taxonomy (AAMT), classifying six methodologies under three AI integration tiers; (3) introduces the Specification Governance Model (SGM), grounded in Transaction Cost Economics, with a practical governance decision guide; and (4) evaluates Spec Kit and TDAD as SGM instantiations via a four-month pilot study. Specification discipline, not model capability, is the binding constraint on AI-assisted software dependability.",
+      "authors": [
+        "Sabry E. Farrag"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-05-01T23:37:50+00:00",
+      "link": "https://arxiv.org/pdf/2605.01160v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Impact of specification discipline on AI-augmented software development productivity",
+      "llm_evidence_cn": "需求规范纪律对AI辅助软件开发生产力的影响",
+      "llm_evidence": "需求规范纪律对AI辅助软件开发生产力的影响",
+      "canonical_evidence": "需求规范纪律对AI辅助软件开发生产力的影响",
+      "llm_tldr_en": "Analyzes the Productivity-Reliability Paradox in AI coding, emphasizing the need for rigorous specification discipline.",
+      "llm_tldr_cn": "分析AI编程中的生产力-可靠性悖论，强调了严格需求规范纪律的必要性。",
+      "llm_tldr": "分析AI编程中的生产力-可靠性悖论，强调了严格需求规范纪律的必要性。",
+      "llm_tags": [
+        "query:re-us:composite"
+      ],
+      "matched_query_tag": "query:re-us:composite",
+      "matched_query_text": "Papers central to 需求工程领域的用户故事相关的论文, especially work that connects or combines: User stories in software development and requirements engineering; Requirements engineering methodologies and practices; Agile requirements engineering and management; Quality assessment and improvement of user stories; Automated extraction of user stories from text; Defining and validating user story acceptance criteria; State of the art in user story research for requirements engineering; Automated tools for user story generation and validation; Impact of user story quality on software project success.",
+      "matched_requirement_id": "req-composite-re-us",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2605.01562v1",
+      "source": "arxiv",
+      "title": "Neuro-Symbolic Agents for Hallucination-Free Requirements Reuse",
+      "abstract": "The Object-Oriented Method for Requirements Authoring and Management (OOMRAM) is a requirements reuse framework that relies on exact identifier matching and rigid templates, limiting its ability to adapt specifications across diverse contexts. While Large Language Models (LLMs) offer the flexibility to overcome this bottleneck, they introduce the risk of generating structurally invalid or inconsistent requirement combinations. To address this tension, we present a neuro-symbolic multi-agent system that re-conceptualizes requirements reuse as a \\textbf{Model-Driven Elicitation process}. In this paradigm, an LLM serves as a \\textbf{non-deterministic heuristic} for traversing a \\textbf{deterministic domain model} represented by a formal OOMRAM requirement lattice. A deterministic, symbolic validator enforces all structural constraints within the agent loop, effectively eliminating hallucinated requirement combinations by construction. Evaluated on an autonomous benchmark across two application families, our system achieves 100\\% requirement coverage and a constraint-violation rate of only 0.2\\%. Although the F1-score against a single gold standard is moderate (0.47--0.51), every generated specification is structurally valid and satisfies all mandatory domain requirements. The model-agnostic implementation scales to larger lattices via subgraph navigation and provides transparent audit trails for regulatory compliance.",
+      "authors": [
+        "Ahmed Ibrahim"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-05-02T18:16:04+00:00",
+      "link": "https://arxiv.org/pdf/2605.01562v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Neuro-symbolic multi-agent system for requirements authoring and management",
+      "llm_evidence_cn": "用于需求编写和管理的神经符号多智能体系统",
+      "llm_evidence": "用于需求编写和管理的神经符号多智能体系统",
+      "canonical_evidence": "用于需求编写和管理的神经符号多智能体系统",
+      "llm_tldr_en": "Combines LLMs with formal domain models to enable hallucination-free requirements reuse and elicitation.",
+      "llm_tldr_cn": "结合大模型与形式化领域模型，实现无幻觉的需求重用与获取。",
+      "llm_tldr": "结合大模型与形式化领域模型，实现无幻觉的需求重用与获取。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2605.02455v1",
+      "source": "arxiv",
+      "title": "LLM-Assisted Repository-Level Generation with Structured Spec-Driven Engineering",
+      "abstract": "State-of-the-art Large Language Models (LLMs) excel in code generation at the function level. However, the output quality significantly declines when scaling to repository-level systems. Current workflows relying only on natural language prompts suffer from inherent ambiguity and a lack of verifiability. To address this, we propose structured spec-driven engineering (SSDE), a paradigm that leverages structured artifacts to guide LLM generation. We argue that structured specifications as LLM inputs make high-quality, repository-level code generation a tangible goal, while at the same time offering superior verifiability, leading to significant potential for improvement. We first investigate the feasibility of this vision through a pilot study generating Model-View-Controller (MVC) business logic for three software systems using five LLMs, and then highlight the potential, challenges, and future roadmap for SSDE.",
+      "authors": [
+        "Shuzhao Feng",
+        "Boqi Chen",
+        "Brett H Meyer",
+        "Gunter Mussbacher"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-05-04T10:58:22+00:00",
+      "link": "https://arxiv.org/pdf/2605.02455v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "structured spec-driven engineering for verifiability",
+      "llm_evidence_cn": "用于可验证性的结构化规范驱动工程",
+      "llm_evidence": "用于可验证性的结构化规范驱动工程",
+      "canonical_evidence": "用于可验证性的结构化规范驱动工程",
+      "llm_tldr_en": "Proposes a structured specification paradigm to improve code generation quality and verifiability in engineering.",
+      "llm_tldr_cn": "提出了一种结构化规范范式，以提高工程中的代码生成质量和可验证性。",
+      "llm_tldr": "提出了一种结构化规范范式，以提高工程中的代码生成质量和可验证性。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2605.05400v1",
+      "source": "arxiv",
+      "title": "Mise en Place for Agentic Coding: Deliberate Preparation as Context Engineering Methodology",
+      "abstract": "The rapid adoption of AI coding agents has produced a dominant workflow pattern -- often called \"vibe coding\" -- that prioritizes speed of implementation over deliberate preparation. We argue that this approach creates a systematic alignment problem: agents that lack sufficient context produce code requiring extensive debugging and refactoring, consuming substantial development time. Drawing on the culinary concept of mise en place (everything in its place; abbreviated MEP), we propose a three-phase preparation methodology for agentic coding: (1) contextual grounding, where domain expertise and tacit knowledge are externalized into structured documents; (2) collaborative specification, where human-agent dialogue produces detailed design artifacts; and (3) task decomposition, where specifications are converted into structured, dependency-aware task records. We report on the application of MEP during a competitive hackathon, where roughly two hours of preparation enabled a rapid parallel implementation of a full-stack educational platform by concurrent AI agents. We introduce the concept of context fluency as an emerging developer skill -- the ability to create rich, structured context that agents can act on -- and connect it to established frameworks in backward design and tacit knowledge externalization. We conclude with a research agenda for empirically validating preparation-phase methodologies in AI-assisted software development.",
+      "authors": [
+        "Andrew Zigler"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI",
+        "cs.HC"
+      ],
+      "published": "2026-05-06T19:33:08+00:00",
+      "link": "https://arxiv.org/pdf/2605.05400v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "methodology for collaborative specification and contextual grounding",
+      "llm_evidence_cn": "协作规范和上下文落地的需求工程方法论",
+      "llm_evidence": "协作规范和上下文落地的需求工程方法论",
+      "canonical_evidence": "协作规范和上下文落地的需求工程方法论",
+      "llm_tldr_en": "Proposes a methodology for preparing context and specifications to improve AI agent coding alignment.",
+      "llm_tldr_cn": "提出一种准备上下文和规范的方法论，以改善AI代理编码的对齐问题。",
+      "llm_tldr": "提出一种准备上下文和规范的方法论，以改善AI代理编码的对齐问题。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    }
+  ]
+}
