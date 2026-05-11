@@ -6,52 +6,43 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-05-10
-- 运行时间：2026-05-10 19:48:46 UTC
+- 最新运行日期：2026-05-11
+- 运行时间：2026-05-11 21:07:09 UTC
 - 运行状态：成功
-- 本次总论文数：10
-- 精读区：4
-- 速读区：6
+- 本次总论文数：7
+- 精读区：3
+- 速读区：4
 
 ### 今日简报（AI）
-今日深度探索 AI 驱动的需求工程，重点攻克从智能访谈到无幻觉需求复用的核心挑战。
-推荐关注基于经验本体的代理访谈系统及神经符号技术，它们显著提升了需求获取的深度与复用可靠性。
-建议开发者重视“规范驱动”的治理框架，以化解 AI 辅助开发中生产力与可靠性并存的悖论。
-- 详情：[/202605/10/README](/202605/10/README)
+深度复盘 AI 在敏捷开发与需求工程中的实战表现，涵盖从用户故事拆解到智能需求访谈的前沿突破。
+重点推荐 AI 拆解用户故事的高分实践，以及利用经验本体驱动 Agent 实现高质量需求获取的创新方法。
+建议开发者关注 AI 原生敏捷宣言，并尝试通过上下文工程提升 Coding Agent 的工程化协作能力。
+- 详情：[/202605/11/README](/202605/11/README)
 
 ### 精读区论文标签
-1. [From Chat to Interview: Agentic Requirements Elicitation with an Experience Ontology](/202605/10/2605.05828v1-from-chat-to-interview-agentic-requirements-elicitation-with-an-experience-ontology)  
+1. [Splitting User Stories Into Tasks with AI -- A Foe or an Ally?](/202605/11/2605.07320v1-splitting-user-stories-into-tasks-with-ai----a-foe-or-an-ally)  
+   标签：评分：10.0/10、query:re-us
+   evidence：利用AI工具将用户故事拆分为任务
+2. [From Chat to Interview: Agentic Requirements Elicitation with an Experience Ontology](/202605/11/2605.05828v1-from-chat-to-interview-agentic-requirements-elicitation-with-an-experience-ontology)  
    标签：评分：9.0/10、query:re-us
-   evidence：基于经验本体的智能需求获取
-2. [Neuro-Symbolic Agents for Hallucination-Free Requirements Reuse](/202605/10/2605.01562v1-neuro-symbolic-agents-for-hallucination-free-requirements-reuse)  
+   evidence：基于经验本体引导的代理需求获取
+3. [Two Integration Pathways in Human-Centered Requirements Engineering: A Systematic Mapping Study of Structural Gaps](/202605/11/2605.04132v1-two-integration-pathways-in-human-centered-requirements-engineering-a-systematic-mapping-study-of-structural-gaps)  
    标签：评分：8.0/10、query:re-us
-   evidence：需求编写与管理框架 OOMRAM
-3. [Neuro-Symbolic Agents for Hallucination-Free Requirements Reuse](/202605/10/2605.01562v2-neuro-symbolic-agents-for-hallucination-free-requirements-reuse)  
-   标签：评分：8.0/10、query:re-us
-   evidence：需求编写与管理框架 OOMRAM
-4. [Two Integration Pathways in Human-Centered Requirements Engineering: A Systematic Mapping Study of Structural Gaps](/202605/10/2605.04132v1-two-integration-pathways-in-human-centered-requirements-engineering-a-systematic-mapping-study-of-structural-gaps)  
-   标签：评分：8.0/10、query:re-us
-   evidence：关于以人为本的需求工程方法论和用户参与技术的系统映射研究
+   evidence：以人为本的需求工程系统映射研究
 
 ### 速读区论文标签
-1. [The Productivity-Reliability Paradox: Specification-Driven Governance for AI-Augmented Software Development](/202605/10/2605.01160v1-the-productivity-reliability-paradox-specification-driven-governance-for-ai-augmented-software-development)  
+1. [SWE-WebDevBench: Evaluating Coding Agent Application Platforms as Virtual Software Agencies](/202605/11/2605.04637v1-swe-webdevbench-evaluating-coding-agent-application-platforms-as-virtual-software-agencies)  
    标签：评分：7.0/10、query:re-us
-   evidence：AI增强软件开发中的规格说明规范
-2. [ClarifySTL: An Interactive LLM Agent Framework for STL Transformation through Requirements Clarification](/202605/10/2605.01209v1-clarifystl-an-interactive-llm-agent-framework-for-stl-transformation-through-requirements-clarification)  
+   evidence：理解业务需求和应用创建请求
+2. [Mise en Place for Agentic Coding: Deliberate Preparation as Context Engineering Methodology](/202605/11/2605.05400v1-mise-en-place-for-agentic-coding-deliberate-preparation-as-context-engineering-methodology)  
    标签：评分：7.0/10、query:re-us
-   evidence：交互式需求澄清与转换
-3. [LLM-Assisted Repository-Level Generation with Structured Spec-Driven Engineering](/202605/10/2605.02455v1-llm-assisted-repository-level-generation-with-structured-spec-driven-engineering)  
+   evidence：协作规范与上下文工程方法论
+3. [The AI-Native Large-Scale Agile Software Development Manifesto](/202605/11/2605.07717v1-the-ai-native-large-scale-agile-software-development-manifesto)  
    标签：评分：7.0/10、query:re-us
-   evidence：用于仓库级生成的结构化规格驱动工程
-4. [SWE-WebDevBench: Evaluating Coding Agent Application Platforms as Virtual Software Agencies](/202605/10/2605.04637v1-swe-webdevbench-evaluating-coding-agent-application-platforms-as-virtual-software-agencies)  
-   标签：评分：7.0/10、query:re-us
-   evidence：评估编码智能体对业务需求的理解及产品经理视角
-5. [Mise en Place for Agentic Coding: Deliberate Preparation as Context Engineering Methodology](/202605/10/2605.05400v1-mise-en-place-for-agentic-coding-deliberate-preparation-as-context-engineering-methodology)  
+   evidence：AI原生大规模敏捷软件开发宣言
+4. [LLM-Assisted Repository-Level Generation with Structured Spec-Driven Engineering](/202605/11/2605.02455v1-llm-assisted-repository-level-generation-with-structured-spec-driven-engineering)  
    标签：评分：6.0/10、query:re-us
-   evidence：协作规范和上下文落地方法论
-6. [Constraint Decay: The Fragility of LLM Agents in Backend Code Generation](/202605/10/2605.06445v1-constraint-decay-the-fragility-of-llm-agents-in-backend-code-generation)  
-   标签：评分：6.0/10、query:re-us
-   evidence：遵循结构约束和非功能性需求
+   evidence：结构化规范驱动的仓库级生成工程
 
 
 <div class="dpr-home-promo-card">

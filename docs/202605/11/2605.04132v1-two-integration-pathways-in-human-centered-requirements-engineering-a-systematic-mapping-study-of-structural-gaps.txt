@@ -1,0 +1,739 @@
+Title: Two Integration Pathways in Human-Centered Requirements Engineering: A Systematic Mapping Study of Structural Gaps
+
+URL Source: https://arxiv.org/pdf/2605.04132v1
+
+Published Time: Thu, 07 May 2026 00:05:56 GMT
+
+Number of Pages: 36
+
+Markdown Content:
+# Highlights 
+
+## Two Integration Pathways in Human-Centered Requirements Engineering: A Systematic Mapping Study of Structural Gaps 
+
+Imen Benzarti, Ikram Darif, Abderrahmane Leshob, Hafedh Mili, Darine Amayed 
+
+• Systematic mapping of 56 studies on human-centered approaches in RE 
+
+• 70% of approaches integrate multidisciplinary knowledge into RE 
+
+• Four categories of discipline contributions to human-centered RE identified 
+
+• Personas are the most widely used cross-discipline technique 
+
+• Two-pathway taxonomy (Cognitive-Formal vs. Participatory-Iterative) with zero framework crossover across 56 studies 
+
+• Empirical foundation established for Experience-Centered Requirements Engineering (XCRE) 
+
+> arXiv:2605.04132v1 [cs.SE] 5 May 2026
+
+# Two Integration Pathways in Human-Centered Requirements Engineering: A Systematic Mapping Study of Structural Gaps 
+
+## Imen Benzarti a,∗, Ikram Darif a, Abderrahmane Leshob b, Hafedh Mili b and Darine Amayed c
+
+> a
+
+École de Technologie Supérieure, Montreal, Quebec, Canada 
+
+> b
+
+LATECE Laboratory, University of Quebec at Montreal, Montreal, Quebec, Canada 
+
+> c
+
+Department of Computer Science and Mathematics, University of Quebec at Chicoutimi, Chicoutimi, Quebec, Canada 
+
+A R T I C L E I N F O 
+
+Keywords :Systematic mapping study Requirements engineering Human-centered approaches Human factors User-centered design Multidisciplinary integration 
+
+A B S T R A C T 
+
+Human-centered Requirements Engineering (HC-RE) integrates user cognition, emotions, and social interactions into the RE process through contributions from disciplines such as psychol-ogy, cognitive science, design thinking, and human-computer interaction. Despite growing in-terest, how these multidisciplinary contributions are structured and why they remain fragmented across the RE lifecycle is not well understood. This systematic mapping study analyzes 56 primary studies across seven dimensions includ-ing RE phases, user involvement techniques, contributing disciplines, and evaluation methods. Results show that 70% of approaches involve multidisciplinary contributions, yet only 39% have been empirically evaluated and 48% address only the elicitation phase. A cross-study analysis reveals a structural separation between two parallel integration traditions: a Cognitive-Formal (C-F) pathway grounded in goal-based frameworks and formal modeling, and a Participatory-Iterative (P-I) pathway grounded in scenario-based frameworks and iterative design. Each pathway has developed complementary strengths, but their near-total disconnection explains the persistent lifecycle concentration and theory-practice gap observed in the corpus. The findings identify the absence of translation mechanisms between human-centered artifacts and formal RE specifications as the field’s primary structural gap, provide a structured research agenda organized into four priority tiers, and establish the empirical foundation for Experience-Centered Requirements Engineering, a direction in which user experience is explicitly operationalized as a first-class concern in requirements specification. 
+
+## 1. Introduction 
+
+Requirements Engineering (RE) is a foundational phase of Software Engineering (SE), concerned with defining and managing software requirements [57]. It focuses on specifying what a system should do , rather than how it should do it , and plays a central role in ensuring that software systems align with stakeholder needs and expectations. RE encompasses several interconnected activities, including elicitation, analysis, specification, validation, and evolution of requirements throughout the software lifecycle [58, 59]. Its importance is widely recognized: deficiencies in RE often propagate to later development stages, resulting in increased costs, project delays, and system failures [60]. Beyond its technical dimension, RE is inherently a socio-technical activity in which human factors play a critical role. Successful requirements engineering depends not only on formal methods and technical accuracy, but also on the ability to understand and integrate the perspectives, behaviors, and expectations of diverse stakeholders [61]. These stakeholders—including end users, customers, domain experts, analysts, and developers—must collaborate to develop a shared understanding of system goals [62]. Consequently, the consideration of human factors is not optional, but essential to effective RE. In response to this need, recent research has increasingly emphasized human-centered requirements engineering (HC-RE), which explicitly incorporates user needs, emotions, and values into the RE process [63, 64]. A wide range of techniques has been proposed, including emotional goal modeling, persona-based scenarios, co-creation workshops, and iterative user testing [65, 66, 67, 63]. These approaches are inherently multidisciplinary, drawing on fields such as psychology, cognitive science, human-computer interaction (HCI), and design thinking. As a result, they enable RE to account for cognitive load, emotional responses, and social interactions alongside functional requirements [68, 63, 69]. 
+
+> ∗
+
+imen.benzarti@etsmtl.ca (Imen Benzarti) 
+
+imen.benzarti@etsmtl.ca (I. Benzarti); ikram.darif@etsmtl.ca (I. Darif); leshob.abderrahmane@uqam.ca (A. Leshob); 
+
+mili.hafedh@uqam.ca (H. Mili); darine.amayed@uqac.ca (D. Amayed) 
+
+> ORCID
+
+(s): 0000-0003-0658-9605 (I. Benzarti) 
+
+Benzarti et al.: Preprint submitted to Elsevier Page 1 of 32 Two Integration Pathways in Human-Centered Requirements Engineering 
+
+Despite this diversity, a fundamental limitation remains. Existing secondary studies tend to focus on isolated aspects of HC-RE, such as team-related human factors [70], user involvement patterns [71], or specific techniques such as personas [72]. However, there is still a lack of comprehensive analysis of how multidisciplinary contributions are integrated across the RE lifecycle. In particular, little is known about the structural reasons why human-centered approaches are predominantly applied in early RE phases and remain weakly connected to downstream activities such as specification and validation. This limitation constrains the evolution of RE toward approaches in which user experience is explicitly represented and operationalized as a first-class concern in requirements specification. We refer to this direction as Experience-Centered Requirements Engineering (XCRE) .To address this gap, this paper presents a systematic mapping study (SMS) of 56 primary studies. The objective is to analyze how multidisciplinary contributions are structured within HC-RE, identify their limitations, and derive directions for more integrated approaches. The main contributions of this study are as follows: 
+
+• A systematic classification of 56 primary studies across seven analytical dimensions, including user involvement techniques, application domains, RE phases, frameworks, contributing disciplines, evaluation methods, and outcomes. 
+
+• A taxonomy of 11 contributing disciplines, organized into four categories based on their role in human-centered requirements engineering. 
+
+• A two-pathway taxonomy that reveals a structural separation between Cognitive-Formal and Participatory-Iterative integration traditions, with no crossover between framework types across the analyzed studies. 
+
+• A structured research agenda, organized into four priority tiers, that provides the empirical foundation for advancing Experience-Centered Requirements Engineering (XCRE). The remainder of this paper is organized as follows. Section 2 presents the conceptual background on human-centered RE. Section 3 describes the research methodology. Section 4 reports the results of the mapping study. Section 5 identifies key research gaps. Section 6 proposes a research agenda toward XCRE. Section 7 discusses related work. Section 8 examines threats to validity. Finally, Section 10 concludes the paper. 
+
+## 2. Background 
+
+Requirements Engineering (RE) concerns the systematic identification, analysis, specification, and validation of system requirements [59]. Within this context, the notion of human factors refers to the cognitive, psychological, and social characteristics of individuals involved in or affected by the RE process [73]. These factors include, among others, emotions, motivation, cognitive load, communication styles, and personal values, all of which influence how requirements are expressed, interpreted, and negotiated. Research on human factors in RE has evolved along two complementary directions. The first focuses on internal team dynamics, including personality traits, motivation, communication patterns, and collaboration mechanisms among requirements engineers and analysts [70]. The second direction, which is the focus of this study, examines how external disciplines contribute methods and techniques that enhance the RE process by making it more responsive to user needs, behaviors, and experiences. This perspective is commonly referred to as human-centered requirements engineering (HC-RE). In this paper, we use the umbrella term human-centered RE to denote approaches that explicitly involve users or address human factors—such as cognition, emotions, and usability—with the goal of improving requirements elicitation, analysis, and validation. A defining characteristic of HC-RE is its multidisciplinary nature. Disciplines such as psychology and cognitive science provide theoretical models for understanding user behavior and decision-making processes. Design thinking and user-centered design (UCD) introduce iterative and participatory practices that structure user involvement. Human-computer interaction (HCI) and user experience (UX) contribute concrete artifacts, including personas, interaction models, and usability guidelines, that help translate user insights into design-relevant representations. More recently, emerging technologies such as virtual reality (VR) and large language models (LLMs) have extended the range of techniques available for user involvement and requirements elicitation. Understanding how these diverse contributions relate to one another is essential for advancing HC-RE toward more coherent and effective methodologies. Despite this richness, the relationships between these disciplinary contributions and their distribution across the RE lifecycle remain insufficiently understood. In particular, it is unclear how these contributions interact, how they                
+
+> Benzarti et al.: Preprint submitted to Elsevier Page 2 of 32 Two Integration Pathways in Human-Centered Requirements Engineering
+> Intervention Human-centered approaches in RE
+> Outcomes A structured understanding of human-centered RE approaches, including their impact on the RE process and their classification into distinct methodological categories.
+> Context Requirements Engineering
+> Population Software engineering researchers and practitioners applying or proposing human-centered approaches in RE
+> Comparison Not applicable (mapping study; no controlled comparison between specific interventions is performed)
+> Table 1
+> PICOC framework for research questions.
+
+are integrated across different RE phases, and why human-centered practices tend to remain concentrated in early elicitation activities rather than being systematically propagated into specification and validation. Addressing this limitation requires a more structured understanding of how multidisciplinary approaches are organized and applied in practice. This study contributes to this understanding through a systematic analysis of 56 primary studies. The results reveal a structural separation between formal and participatory integration traditions, which helps explain the limited lifecycle integration of human-centered practices. This observation provides the empirical foundation for Experience-Centered Requirements Engineering (XCRE) , a research direction in which user experience—including cognitive, emotional, and social dimensions—is explicitly modeled and operationalized as a first-class concern within requirements specification, rather than remaining implicit or confined to early RE activities. 
+
+## 3. Research Methodology 
+
+This Systematic Mapping Study (SMS) aims to identify, synthesize, and compare human-centered and user-centered approaches in Requirements Engineering (RE). The objective is to provide an in-depth analysis of existing research relevant to our research questions. To achieve this, we follow Petersen et al.’s guidelines for systematic mapping studies [74], complemented by Kitchenham’s general procedures for evidence synthesis [75]. The SMS consists of three main phases: planning, conducting, and reporting. During the planning phase , we define the SMS objectives and establish the review protocol. This protocol includes: (1) defining the research questions, (2) formulating the search query, and (3) identifying inclusion and exclusion criteria. In the conducting phase , we apply the review protocol to select relevant primary studies. The steps in this phase include: (1) conducting a search using the predefined search query, (2) selecting relevant primary studies based on predefined criteria, and (3) extracting and synthesizing data to answer the research questions. Finally, the reporting phase presents the SMS findings, highlights research gaps, and provides recommendations. The following sections detail the steps taken during the planning and conducting phases. 
+
+3.1. Research Questions 
+
+We developed the research questions using the PICOC framework (Population, Intervention, Comparison, Out-come, and Context), which is widely applied in empirical software engineering studies [76, 77]. Based on the framework presented in Table 1, we developed the following questions: 
+
+• RQ1: Under what circumstances are human-centered approaches used? This question examines the contexts in which human-centered approaches are applied in the RE process across different primary studies. It aims to identify techniques used to involve users in human-centered RE (e.g., interviews, surveys), application domains covered in primary studies (PSs), RE phases addressed in PSs (e.g., elicitation, specification), and RE frameworks employed (goal-based vs. scenario-based). 
+
+• RQ2: Which disciplines contribute to human-centered RE? This question investigates the disciplines that influence human-centered RE, including fields beyond computer science (e.g., psychology, cognitive science, social sciences) and sub-disciplines within computer science (e.g., Human-Computer Interaction (HCI), Virtual Reality (VR)).      
+
+> Benzarti et al.: Preprint submitted to Elsevier Page 3 of 32 Two Integration Pathways in Human-Centered Requirements Engineering
+> Human-centered Human-centered / Human-oriented / People-oriented / User-centered / User-centric
+> Human factors Human aspects
+> Requirements Engineering Requirements Elicitation / Requirements Specification / Requirements Analysis
+> Table 2
+> Alternative search terms.
+
+• RQ3: How do contributing disciplines complement the RE process? This question explores the impact of different disciplines on RE, focusing on techniques they introduce to the RE process, their influence on RE practices, and how they contribute to transforming RE into a human-centered process. 
+
+• RQ4: Which RE methodologies or techniques are used in human-centered approaches that do not rely on con-tributing disciplines? This question identifies human-centered RE methodologies developed exclusively within RE, without the integration of external disciplines such as psychology, HCI, or UX. It focuses on methodologies that enhance user involvement, emotional considerations, and usability while remaining discipline-specific. 
+
+• RQ5: How are human-centered RE approaches evaluated? This question examines evaluation methods used to assess human-centered RE approaches and the outcomes derived from these evaluations. 
+
+3.2. Identifying Relevant Literature 
+
+3.2.1. Search Query 
+
+To ensure a comprehensive selection of relevant primary studies, we incorporated alternative search terms (see Table 2). These alternatives were identified through a pilot study to enhance coverage. Using these terms, we formulated the following search query to focus on software engineering-related papers: 
+
+Search Query: 
+
+((( "human centered") OR ("human-centered") OR ("human factors") OR ("human oriented") OR ("people oriented") OR ("human aspects") OR ("user oriented") OR ("user centered") OR ("user-centric")) AND (("requirements engineering") OR ("requirements elicitation") OR ("requirements specification") OR ("require-ments analysis")) AND ("software") ) 
+
+3.2.2. Primary and Secondary Search Process 
+
+To conduct the search, we selected Engineering Village 1, which uses the Compendex and Inspec databases. We chose Engineering village because it is widely used by the software engineering community, and it aggregates multiple major bibliographic databases, including IEEE, ACM, Springer, Elsevier, and other major publishers in software engineering and related disciplines (e,g., Darif et al. [78]). No time range was specified to allow an analysis of how these approaches have evolved over time. The search process was conducted using both automatic and manual methods: (1) Automatic search: conducted using the Engineering Village search engine, (2) Manual search: performed by scanning primary studies identified through the automatic search, and (3) Backward and forward snowballing: used to identify additional relevant studies. The snowballing process followed Wohlin’s guidelines [79]. Both backward snowballing (examining reference lists of selected studies) and forward snowballing (identifying studies citing the selected papers) were performed. This process yielded 19 candidate studies, of which 9 met the inclusion criteria after full-text review. To mitigate the risk of missing relevant studies, we complemented the automatic search with this snowballing process, which contributed 9 additional papers not captured by the primary search, resulting in a final dataset of 56 primary studies.                          
+
+> 1https://www.engineeringvillage.com/search/quick.url
+> Benzarti et al.: Preprint submitted to Elsevier Page 4 of 32 Two Integration Pathways in Human-Centered Requirements Engineering
+> ID Criterion
+> I1 The paper’s full text published as journal or conference paper that comply with RE. I2 The paper is written in English. I3 The paper proposes an approach for human centered RE. I4 The paper proposes an approach for human centered software engineering including RE phase.
+> Table 3
+> Inclusion criteria.
+> ID Criterion
+> E1 Less that 4 pages length short paper. E2 A paper about RE but not discussing human centered issues. E3 A paper about human centered issues within development teams. E4 A paper about human centered software engineering not concerned with RE phase. E5 Extended journal article of a same paper.
+> Table 4
+> Exclusion criteria. Initial Paper Count First Screening Second Screening Third Screening Primary Search 551 127 67 47 Secondary Search 19 19 99Total final paper count (Primary + Secondary) 56
+> Table 5
+> Detailed Paper Count Analysis
+
+3.3. Paper Selection Criteria 
+
+3.3.1. Inclusion and Exclusion Criteria 
+
+The selection of studies was conducted based on 4 inclusion criteria (see table 3) and 5 exclusion criteria (see table 4) to filter the papers found and ensure that the final articles were aligned with our review objectives and research questions. Specifically, we focused on studies written in English, more than 4 pages long, and which address human-centered RE from a user-focused perspective. Zotero Library was used to maintain the relevant records of the papers from the initial step to the final screening. Since all included papers are peer-reviewed, we consider the peer-review process itself as a baseline quality control mechanism. 
+
+3.3.2. Filtering of the Papers 
+
+The filtering process involved three screening stages. Initially, 551 potentially relevant papers were retrieved from Engineering Village using the defined search string. After removing duplicates, 431 unique papers remained, which were then assessed based on the inclusion and exclusion criteria. In the first screening, a selection based on titles and abstracts reduced the pool to 127 papers for further analysis. The second screening involved a more detailed review of the introduction, methodology, results, and conclusions, further narrowing the selection to 67 papers. Finally, in the third screening, additional refinement during the data extraction process led to the final inclusion of 47 papers. After the filtering process, we obtained 47 papers from our primary database search and 19 papers from snowballing search, filtered to 9 papers. This resulted in a total of 56 included papers. We used the tool Rayyan 2 during the filtering process. The first and second authors performed the filtering independently in blind mode and then compared their selections of the relevant papers. 
+
+3.4. Data Extraction Strategy 
+
+To ensure consistency in data extraction, we developed a Google Form with 27 sections and 52 questions, listed in Appendix A, covering key aspects of human-centered Requirements Engineering (RE). The form collected information on general details (title, authors, venue), research focus (goal, research questions, application domain), user and expert involvement, RE phases targeted, influence of contributing disciplines (e.g., HCI, UX, psychology), methodologies and techniques used, evaluation methods, and study outcomes.   
+
+> 2https://www.rayyan.ai/
+> Benzarti et al.: Preprint submitted to Elsevier Page 5 of 32 Two Integration Pathways in Human-Centered Requirements Engineering
+
+A pilot study was conducted to refine the extraction process. The first and second authors independently extracted data from 10 randomly selected papers in blind mode using the standardized form. Discrepancies were discussed until consensus was reached. After three iterations of refinement, the final version of the extraction form was validated. The classification categories used in the analysis (e.g., contributing disciplines, RE phases, application domains, technique categories) were developed inductively through iterative open coding. During the extraction process, both authors independently assigned descriptive labels to each paper based on its content. These labels were then consolidated through discussion, grouping related codes into higher-level categories. For example, the four categories of discipline contribution in RQ3 — Understanding Human Cognition, Enhancing User-Centered Design, Improving User Satisfaction, and Simulating/Automating Elicitation — emerged from clustering the techniques and contributions observed across the 39 discipline-influenced studies. Similarly, the three categories of RE-internal approaches in RQ4 (User-Centric Requirements, Social and Organizational Contextualization, and Linguistic and Cognitive Workload Considerations) were derived by grouping the techniques proposed by the 17 studies that did not rely on external disciplines. This inductive approach follows established practices for qualitative data analysis in systematic mapping studies [74]. The first and second authors conducted the screening independently in blind mode using the Rayyan tool 3. After independent screening, inclusion decisions were compared and disagreements were resolved through discussion. In cases where consensus could not be reached, a third author was consulted for final adjudication. To support transparency and reproducibility, we provide a replication package publicly available at [80]. The package includes the complete list of retrieved papers with inclusion and exclusion decisions at each screening stage, the data extraction form, and the completed extraction data for all 56 primary studies. 
+
+## 4. Findings 
+
+4.1. Preliminary Findings 
+
+Figure 1 shows publication trends over time. The first primary study appeared in 1993, with sporadic contributions until 2010, after which publications rose steadily. Studies from 2016–2024 account for 53% of the corpus (27 studies, including 7 journal papers), with peak years in 2019 and 2021 (six publications each). As shown in Figure 2, conferences dominate as the primary publication venue, while journals and workshops contribute to a lesser extent. The 56 PSs span 47 different venues covering requirements engineering, software engineering, HCI, health informatics, design, and cognitive science — reflecting the inherently multidisciplinary nature of the research area and corroborating the discipline taxonomy developed in RQ2. Regarding how authors characterize their work, 39% of PSs use the term user-centered (or user-centric), 22% use human-centered, and 29% carry no explicit qualification. Our analysis finds no significant analytical distinction between these terms; they are used interchangeably throughout this paper. 
+
+4.2. RQ1: Under what circumstances are human-centered approaches applied? 
+
+In this research question, we study the circumstances where the human-centered approaches are applied. We focus on user involvement techniques, the applications domains, covered RE phases, and used RE frameworks. 
+
+4.2.1. How are users involved in the human-centered RE process? 
+
+User involvement in the human-centered RE process ensures that the system accurately reflects their needs and expectations. Among the 56 primary studies, users were involved in the RE process in 61% (34 studies) Studies that involve users used a variety of research techniques. The most frequently used techniques were interviews (37.25%), prototypes (17.64%), focus groups (11.76%), and observation (9.80%). Less commonly used techniques included storytelling and surveys (5.88% each), questionnaires and reviews (3.92% each), with even fewer studies utilizing methods like gaming and co-creation (see Figure 3). Among 30 studies, 14 used more than one technique to involve users and 6 used more than two techniques [1, 2, 3, 4, 5, 6]. For instance, the approach in [4] combined prototype, interviews, focus groups, observation and conversation, and the approach in [6] combined prototype, storytelling, interviews, and storyboards. The dominance of interviews and prototypes reflects their maturity and ease of integration into existing RE practices. These techniques are well-established and require limited methodological adaptation. However, the limited use of more interactive approaches such as co-creation and gaming suggests that more participatory and immersive     
+
+> 3https://www.rayyan.ai/
+> Benzarti et al.: Preprint submitted to Elsevier Page 6 of 32 Two Integration Pathways in Human-Centered Requirements Engineering
+> Figure 1: Distribution of PSs by year
+> Figure 2: Distribution of PSs by study type
+
+techniques remain underexplored. This may be due to higher implementation complexity, lack of methodological guidance, or limited tool support. 
+
+4.2.2. What application domains are covered? 
+
+Among the 56 primary studies, 35 (62%) are generic and 21 (36%) are domain-specific. The most common application domains are healthcare (6 studies), e-learning (4 studies), and socio-technical systems (3 studies) (see Figure 4). These domains involve strong interactions between software and human actors and emphasize the importance of considering human factors in the design and development process. The prominence of these domains can be explained by their sensitivity to human interaction, where user behavior and experience directly impact system effectiveness. However, the limited representation of other domains suggests that the applicability of human-centered approaches across a broader range of contexts remains insufficiently explored. This imbalance indicates that current research may prioritize domains where human factors are already well recognized, potentially limiting the transfer of human-centered practices to less explored domains [81]. 
+
+4.2.3. Which RE phases are covered? 
+
+Among the 56 primary studies, 49 (88%) were specific to the RE process, while 7 (12%) covered the entire software engineering life cycle. As illustrated in Figure 5, 48% of the primary studies focus on the elicitation phase, which     
+
+> Benzarti et al.: Preprint submitted to Elsevier Page 7 of 32 Two Integration Pathways in Human-Centered Requirements Engineering
+> Figure 3: Number of PSs per Techniques used to involve users in RE process
+> Figure 4: Number of PSs per application domain
+
+involves user participation to identify their requirements. Among the 49 RE-specific studies, 27 covered only one phase, while the remaining studies addressed two or more phases. The strong concentration on the elicitation phase suggests that human-centered approaches are primarily applied during early stages of RE, where direct interaction with users is most accessible. However, this also indicates a limited integration of human-centered practices in later phases such as specification, validation, and maintenance. This imbalance implies that while user needs are actively captured, they are not systematically preserved and operationalized throughout the full RE lifecycle. Among the 56 primary studies (PSs), 20 used an existing requirements engineering (RE) framework. As shown in Table 6, goal-based frameworks are the most utilized, with 11 PSs, while the remaining studies primarily rely on scenario-based frameworks. Most studies extend existing frameworks rather than proposing entirely new ones. Specifically, all PSs that utilized scenario-based frameworks introduced extensions, while five PSs extended goal-based models. This preference for extending rather than redesigning existing frameworks reflects an incremental integration strategy. More importantly, the framework type reveals a structural alignment that anticipates the cross-pathway taxonomy in Section 4.7: without exception, every study using a goal-based framework draws on formal and cognitive disciplines (psychology, cognitive science, RE-internal emotional modeling), while every study using a scenario-based framework draws on participatory disciplines (design thinking, UCD, HCI). This zero-crossover alignment constitutes one of the clearest structural signals in the corpus. However, regardless of framework type, most adaptations remain concentrated in early RE phases, with limited propagation of human-centered concepts into specification, validation, or maintenance.                 
+
+> Benzarti et al.: Preprint submitted to Elsevier Page 8 of 32 Two Integration Pathways in Human-Centered Requirements Engineering
+> Figure 5: RE phases covered by the PSs
+> Framework Type Framework Extended Not extended
+> Goal based Contextual goal modelling [7] GRL [8] I* [9, 10] Agent-oriented goal model [11, 12] Motivational goal model [13], [14, 15] Tropos [16] [17] Scenario based Agile [18, 19, 4, 20] Scrum [21, 1, 22] Use cases [23, 24]
+> Table 6
+> Extended RE frameworks in PSs
+
+Lessons Learned from RQ1 
+
+Human-centered RE is predominantly applied as an elicitation activity, with limited integration across later RE phases. This reveals a lack of continuity in translating user insights into specification and validation, highlighting the need for end-to-end human-centered RE approaches. 
+
+4.3. RQ2: Which disciplines contribute to human-centered RE? 
+
+RE is a multidisciplinary field that integrates principles from various disciplines to better understand user needs and interactions. This research question aims to explore the contributing disciplines that impact the human-centered RE process. Among 56 primary studies (PSs), 39 PSs (70%) are influenced by contributing disciplines. This high proportion indicates that human-centered RE rarely relies solely on traditional RE methods and instead depends on external knowledge domains to capture and model human aspects. Within these 39 studies, the user-centered design emerges as the most popular field, with 10 studies incorporating its principles, as shown in Table 7. Psychology stands out as the second most common discipline, influencing 7 studies. Design thinking and human-computer interaction (HCI) contribute to 5 studies. The dominance of user-centered design and psychology suggests that current approaches primarily focus on understanding user behavior, needs, and experiences, rather than deeply integrating cognitive or social mechanisms into RE models. Notably, some studies incorporate multiple disciplines. For instance, in [18], both user experience and psychology are involved in the RE process. Similarly, [6] integrates HCI and user-centered design. This combination of disciplines indicates an emerging trend toward hybrid approaches, where multiple perspectives are combined to better capture complex human factors. However, such integrations remain limited and are not yet systematically structured. We conducted a temporal analysis to understand the emergence of using these disciplines in RE, as shown in Figure 6. Our analysis reveals that the first study involving contributing discipline was [37] in 2004, where                                          
+
+> Benzarti et al.: Preprint submitted to Elsevier Page 9 of 32 Two Integration Pathways in Human-Centered Requirements Engineering
+> Discipline PSs #%
+> User centered design [7, 25, 26, 17, 4, 20, 5, 27, 28, 6] 10 25.64 Psychology [18, 29, 8, 15, 30, 31, 32] 717.95 Design thinking [21, 1, 22, 33, 34] 512.82 HCI [19, 35, 6, 36] 410.26 Cognitive science [37, 38, 39] 37.69 Interaction design [40, 23, 24] 37.69 User experience [18, 41] 25.13 Virtual reality [42, 43] 25.13 Marketing Engineering [44] 12.56 Social engineering [45] 12.56 Large Language Models [46] 12.56
+> Total 39 100.0 Table 7
+> Contributing disciplines involved in the RE process of PSs
+> Figure 6: Temporal analysis of the Evolution of using contributing discipline in RE process
+
+cognitive science provided the framework for modeling users’ intentions, beliefs, and desires. In 2005, the authors of [44] applied techniques from marketing engineering to identify user preferences across multiple product attributes, such as functionality, design, and price. By 2007, [24] adopted the persona technique from interaction design to pinpoint requirements specific to various user categories. From 2010 onwards, we observe an increased integration of contributing disciplines in requirements engineering. Notably, the first papers involving HCI [6, 36] and user-centered design [25, 27, 39] were published in 2010. This trend continued with psychology [30] in 2011, user experience [41] in 2016, social engineering [45] in 2016, design thinking [1] in 2018, virtual reality [43] in 2021 and large language models [46]. This temporal evolution shows a progressive expansion from cognitive and behavioral disciplines toward more interactive and technology-driven domains such as virtual reality and large language models. This shift suggests a transition from understanding user needs to actively shaping and simulating user experiences within the RE process.   
+
+> Benzarti et al.: Preprint submitted to Elsevier Page 10 of 32 Two Integration Pathways in Human-Centered Requirements Engineering
+
+Lessons Learned from RQ2 
+
+• Human-centered RE relies heavily on external disciplines, confirming its multidisciplinary nature. 
+
+• However, the integration remains dominated by design-oriented and behavioral disciplines, with limited incorporation of deeper cognitive and social theories. 
+
+• The recent emergence of technologies such as VR and LLMs indicates a shift toward more immersive and automated forms of user involvement. 
+
+4.4. RQ3: How do contributing disciplines complement the RE process? 
+
+In this research question, we analyze the impact of each discipline on the RE process in terms of: 1) techniques used in the RE process (see table 8), 2) impact on the RE process (see table 9), and 3) transformation of the RE process to a human-centered RE process. This analysis aims to move beyond identifying disciplines to understanding how their contributions structurally transform the RE process. 
+
+4.4.1. What techniques do contributing disciplines introduce? 
+
+Table 8 presents various techniques introduced into the Requirements Engineering (RE) process by contributing disciplines, categorized into three main goals: Understanding Human Cognition and Decision-Making , Enhanc-ing User-Centered Design and Interaction , and Simulating and Automating Requirements Elicitation . These categories reveal that contributing disciplines do not only introduce isolated techniques, but fundamentally extend RE along three complementary dimensions: understanding users, structuring interactions, and augmenting elicitation through technology. Understanding Human Cognition and Decision-Making category involves disciplines that help in analyzing user behavior, mental processes, and decision-making models. For instance, Cognitive Science contributes through cognitive and mental models, while Psychology introduces psychological models, theories, and taxonomies to enhance understanding of user behavior and decision-making. Social Engineering provides scenario-based decision analysis, and Marketing Engineering applies conjoint analysis to identify user preferences, reinforcing the cognitive understanding aspect of RE. Enhancing the User-Centered Design and Interaction category involves disciplines that provide methods for integrating user needs, usability, and human-centric interactions in the RE process. These disciplines define usability standards, refine interaction techniques, and integrate human-centered design methodologies. For instance, user Experience contributes through interview techniques and UXD patterns, to ensure usability-driven requirements gathering. Simulating and Automating Requirements Elicitation involves emerging disciplines that focus on AI-driven automation, immersive environments, and advanced tools for capturing requirements efficiently. for instance, VR environments facilitate the simulation of user interactions, providing immersive scenarios for requirements validation. LLMs enhance RE by generating AI-driven personas and user profiles, automating persona creation and requirements elicitation. Among these techniques, personas are widely used across multiple disciplines, including HCI, Interaction Design, and User-Centered Design, as a means to bridge the gap between technical requirements and user needs. A persona is a detailed, fictional representation of target users that provides insights into their goals, behaviors, and challenges [67]. The widespread use of personas across disciplines indicates their role as a central bridging artifact, translating abstract human characteristics into actionable requirements representations. 
+
+4.4.2. How does each discipline impact the RE process? 
+
+We analyzed how different disciplines influence the RE process. We distinguished three categories of approaches as shown in the table 9. The first category of approaches modifies an existing RE process. Several disciplines influence existing RE processes by integrating their methodologies. For example, Design Thinking [21] adds its steps (empathize, define, ideate, prototype, test) to the Scrum framework to improve user stories. User-Centered Design [25] brings user-centric techniques into the Tropos framework, focusing on early user involvement, active participation in the design process, function allocation between user and system, user feedback incorporation, and iterative design with prototypes. Similarly, Interaction Design [40] introduces steps like contextual analysis, interface engineering, and prototype                                                                
+
+> Benzarti et al.: Preprint submitted to Elsevier Page 11 of 32 Two Integration Pathways in Human-Centered Requirements Engineering
+> Proposed Technique Discipline PSs #PSs Understanding Human Cognition and Decision-Making
+> Cognitive Models Cognitive Science [38, 39] 2Mental Models Cognitive Science [37] 1Psychological Models Psychology [18, 29, 8, 30] 4Psychological Theories Psychology [15, 32] 2Taxonomies Psychology [31] 1Scenarios Social Engineering [45] 1Conjoint Analysis Marketing Engineering [44] 1
+> Enhancing User-Centered Design and Interaction
+> Persona HCI, Interaction Design, User-Centered Design [7, 25, 19, 27, 28, 23, 36] 7Processes Design Thinking, Interaction Design, User-Centered Design, HCI [21, 1, 22, 40, 33, 17] 6HCI Design Patterns HCI [35, 6] 2Comics Design Thinking [34] 1User Objectives User-Centered Design [20] 1User Stories User-Centered Design [4] 1Guidelines User-Centered Design [26] 1UCD Model User-Centered Design [5] 1Interview Techniques User Experience [41] 1UXD Patterns User Experience [18] 1
+> Simulating and Automating Requirements Elicitation
+> VR Environments Virtual Reality [42, 43] 2AI-Generated Personas Large Language Models [46] 1
+> Total 38 Table 8
+> Techniques Contributed by Various Disciplines in the RE Process (Sorted by Goal-Based Categories)
+
+evaluation for requirements elicitation. HCI [35, 6, 36] uses scenario-based design, HCI design patterns, and persona definition activities within requirements activities. Cognitive Science [39] adds cognitive engineering phases, while Interaction Design [24] includes persona and requirements value analysis. The second category of approaches suggests entirely new RE processes. Design Thinking [1, 22] proposes processes with phases like exploration, alpha prototyping, and user tests, blending design thinking with Scrum. Cognitive Science [38] offers a three-phase process (contextualization, analysis, modeling) incorporating cognitive modeling to understand professional tasks. User-Centered Design [17, 5] presents new processes that combine goal-oriented RE techniques with user-centered design tools, including object-oriented system analysis, model-based task analysis, and prototyping. The third category of approaches imports a new process from other disciplines. For instance, Design Thinking [33] adopts the double diamond process for RE, which includes stages like data gathering (interviews, stakeholder maps), data synthesis (concept maps, personas, empathy maps), development (bodystorming), and delivery (prototyping) (see table 9). These three forms of impact indicate increasing levels of transformation, ranging from incremental adaptation of existing RE processes to the introduction of entirely new human-centered workflows. 
+
+4.4.3. How does each discipline transform RE into a human-centered process? 
+
+We examined how each discipline contributes to the RE process and transforms it into a human-centered approach. Detailed analysis of each discipline’s contribution to the RE process — including the specific techniques introduced, integration mode, and transformative effect — is provided in Tables 16 through 24 of Appendix B. Across these contributions, a pattern of complementarity emerges rather than redundancy. Psychology and cognitive science operate primarily at the individual level , providing models and theories that explain user emotions, cognitive constraints, and decision-making processes — addressing why users behave and feel the way they do. Design thinking, UCD, and interaction design operate at the process level , providing structured methods such as empathy mapping, iterative prototyping, and contextual analysis that embed user participation into RE workflows — addressing how to involve users effectively. UX, HCI, and interaction design bridge both levels by offering concrete artifacts such as personas,   
+
+> Benzarti et al.: Preprint submitted to Elsevier Page 12 of 32
+
+Two Integration Pathways in Human-Centered Requirements Engineering 
+
+Impact on RE process PS Details on impact Discipline 
+
+[21] Integrates design thinking into Scrum, following five phases: 1) empathize, 2) define, 3) ideate, 4) prototype, and 5) test to define user stories. Design thinking [25] Uses user-centric techniques in Tropos framework, including: 1) early user focus, 2) active user involvement, 3) user-system function allocation, 4) integration of user feedback, and 5) iterative prototyping. User centered design [40] Enhances requirements elicitation with the SPID framework, incorporating three steps: 1) contextual analysis, 2) interface engineering, and 3) prototype evaluation. Interaction design [35] Applies scenario-based design in iterative cycles with HCI techniques: 1) scenarios, 2) storyboards, and 3) prototypes to refine requirements and design. HCI [6] Extends scenario-based design by incorporating HCI design patterns into iterative requirement elicitation and user feedback cycles. HCI, User centered design [39] Introduces cognitive engineering into requirements elicitation to enhance understanding of user cognition. Cognitive modelling [24] Integrates personas into scenario-based design using two steps: 1) persona analysis and 2) requirement value analysis. Interaction design Modifying an existing RE process [36] Adapts persona definition into requirements activities: 1) elicitation, 2) analysis, 3) specification, and 4) validation. HCI [1] Defines a new three-phase process: 1) exploration (design thinking), 2) alpha prototyping, and 3) user testing and market launch (guided by Scrum). Design thinking [38] Develops a three-phase process: 1) Contextualization, 2) analysis, and 3) modeling, integrating cognitive modeling to analyze professionals’ task performance in healthcare. Cognitive science [22] Combines Scrum and design thinking into an eight-phase process: 1) reframing, 2) analysis and synthesis, 3) ideation, 4) planning, 5) prototyping, 6) replanning, 7) development, and 8) evaluation. Design thinking [17] Defines a four-phase process: 1) exploration, 2) problem identification, 3) envisioning, 4) evaluation, using goal-oriented RE and user-centered design tools. User centered design Proposing a new RE process [5] Develops a three-phase process: 1) classical object-oriented analysis, 2) model-based task analysis, and 3) prototyping via executable system models. User centered design A process from another discipline [33] Adapts the double diamond design thinking process for RE: 1) data gathering (interviews, stakeholder maps), 2) data synthesis (concept maps, personas, empathy maps), 3) development (bodystorming), and 4) delivery (prototypes). Design thinking [34] Workshop-based structured process aligned with design thinking: 1) problem understanding, 2) solution exploration, and 3) prototyping and testing. Design thinking 
+
+Table 9 
+
+Impact of disciplines on the RE process 
+
+design patterns, and journey maps that translate individual-level insights into process-level inputs. VR and LLMs represent an emerging tool level , automating or simulating aspects of user involvement that were previously manual. This layered complementarity suggests that effective human-centered RE benefits from combining disciplines across levels rather than adopting any single discipline in isolation. Only a handful of primary studies — notably [18, 6] — explicitly combine multiple disciplines, indicating that this integrative potential remains largely unrealized in practice. This layered structure is the direct empirical precursor to the two-pathway taxonomy developed in Section 4.7. 
+
+Benzarti et al.: Preprint submitted to Elsevier Page 13 of 32 Two Integration Pathways in Human-Centered Requirements Engineering 
+
+Lessons Learned from RQ3 
+
+• Human-centered RE is structured as a layered integration of disciplines operating at individual, process, artifact, and tool levels. 
+
+• Current approaches combine these levels only partially, limiting the full potential of multidisciplinary integration. 
+
+• Effective human-centered RE requires coordinated integration across these levels rather than isolated use of individual disciplines. 
+
+4.5. RQ4: Which RE methodologies are used in human-centered approaches without external disciplines? 
+
+In this research question, we analyze the primary studies that rely solely on the RE field to propose human-centered approaches. We identified the techniques proposed by each approach and examined how these methodologies transform the RE process into a human-centered one. Our analysis highlights that these approaches contribute to human-centered RE by incorporating emotional, social, organizational, linguistic, and cognitive aspects, which enhance user engagement, improve communication, and ensure system alignment with human needs and behaviors. 
+
+4.5.1. User-Centric Requirements and Behavior-Driven RE 
+
+A significant portion of the analyzed studies focuses on integrating emotional aspects into the RE process (see table 10). Several methodologies embed emotional goals directly into goal models. For example, studies [13, 11, 14, 12, 9, 10, 16] extend the goal framework by incorporating additional dimensions such as emotional, cognitive, and workload considerations into system requirements. A subset of these approaches—[13, 11, 14, 12, 16]—specifically extend goal frameworks by incorporating emotion-related requirements. These studies introduce structured methods to capture and model. However, they do not propose a systematic approach to transform emotional requirements into functional and quality goals, except for [12], which proposes decomposing emotional goals into sub-goals and matching them to system characteristics that fulfill them. These studies primarily rely on extensive interviews and direct user engagement to elicit human-centered requirements, compensating for the absence of external disciplines such as psychology or cognitive science that traditionally provide structured explanations for aspects like emotions, motivation, and decision-making. 
+
+4.5.2. Social and Organizational Contextualization 
+
+Beyond individual user behavior, other studies emphasize the need to consider broader social, organizational, and cultural contexts in the RE process. These methodologies recognize that requirements are shaped not only by personal preferences but also by collective behaviors, work environments, and societal norms. For instance, approaches that focus on human, social, and organizational factors [2] highlight the necessity of embedding organizational structures, social interactions, and workplace constraints into RE processes. The goal is to uncover hidden requirements, implicit constraints, and unarticulated needs that arise in complex work environments. Similarly, studies that examine cultural differences in RE [3] reveal that user requirements are often shaped by regional, linguistic, and societal influences. 
+
+4.5.3. Linguistic and Cognitive Workload Considerations 
+
+One of the major challenges in RE is ensuring that users, stakeholders, and developers share a mutual understanding of system requirements. For instance, near-natural specification languages [47] aim to bridge the gap between technical teams and end-users by allowing requirements to be expressed in a format that is intuitive and comprehensible to non-experts. Beyond linguistic accessibility, studies focusing on information flows [9], workload, and communication [10] provide essential insights into how human agents interact with systems and handle cognitive complexity. Workload analysis techniques, for instance, identify potential areas where human users might experience excessive cognitive demands. Comparing the RE-internal approaches identified in RQ4 with the discipline-driven approaches from RQ3 reveals an important asymmetry. The RE-internal approaches excel at modeling emotional and social constructs within established RE formalisms, for example by extending goal models with emotional goals [11, 12] or incorporating   
+
+> Benzarti et al.: Preprint submitted to Elsevier Page 14 of 32
+
+Two Integration Pathways in Human-Centered Requirements Engineering 
+
+PS Techniques proposed by the approach How this methodology transforms RE into a human-centered process 
+
+Social and Organizational Contextualization 
+
+[2] Human, social, and organizational factors of users The HSO process highlights user, social, and organizational factors to uncover hidden services or system constraints. [3] Cultural differences in RE The findings highlight cultural characteristics unique to requirements engineering across different regions. [48] User segmentation Segmenting users based on goal-based criteria to better understand their characteristics and optimize system usability and accessibility. 
+
+User-Centric Requirements and Behavior-Driven RE 
+
+[29] Acceptance requirements A model and a meta-model that capture acceptance and gamification knowledge, facilitating a systematic acceptance requirements analysis based on gamification. [13] Emotional goals Motivational goal models incorporate emotional goals to enhance user engagement and satisfaction. [11] Goal models with emotional goals Integrates emotional considerations from the early requirements phase, ensuring they are not overlooked in later development stages. [14] Emotional requirements Emotional requirements elicitation gathers real-time user feedback on prototypes via multimedia and semi-structured interviews. [12] Transforming emotional goals into quality and functional goals Ensures traceability of emotional goals by linking them to functional and quality goals, allowing their impact to be considered in system design. [49] User desires and intentions extracted from usage history Extracts user behavioral and environmental context data to capture implicit requirements that might not emerge in traditional requirement workshops. [16] Positive and negative emotions Captures and models emotions, developing detailed scenarios based on emotional responses to improve user experience and satisfaction. [50] Human concern annotations Human concern annotations link model elements to stakeholder perspectives, desired outcomes, and potential issues, ensuring a user-centered approach. 
+
+Linguistic and Cognitive Workload Considerations 
+
+[47] Near-natural specification language for requirements specification Near-natural specification language facilitates requirement definition in a format easily understood by development teams. [9] Information flows between agents in the system and its environment Models discourse and communication between agents to improve understanding of collaborative processes and cognitive workload in human-centered systems. [51] Concepts of explicit incompleteness and unspecified relations A semi-formal notation providing concepts to represent vagueness, incompleteness, and contradictions inherent in user requirements within socio-technical systems. [10] Workload in terms of communication and task handling Analyzes workload and cognitive complexity to prevent system-induced overload on human users, ensuring a balanced operational scenario. 
+
+Table 10 
+
+Human-centered approaches in RE. 
+
+cultural factors [3]. However, they lack the theoretical grounding that external disciplines provide for understanding 
+
+why these human factors matter. For instance, psychology offers validated models of emotion such as the Theory of Constructed Emotion [15] that pure RE extensions do not leverage. Conversely, discipline-driven approaches bring rich theoretical foundations but often struggle to integrate seamlessly with existing RE frameworks and artifacts. This gap between theoretical depth and practical integration represents one of the most significant challenges for the field and directly motivates the conceptual framework proposed in Section 6. 
+
+Benzarti et al.: Preprint submitted to Elsevier Page 15 of 32 Two Integration Pathways in Human-Centered Requirements Engineering 
+
+Lessons learned from RQ4 
+
+• RE-internal approaches successfully integrate human aspects (emotional, social, cognitive) into existing RE models. 
+
+• However, they rely mainly on empirical elicitation and lack strong theoretical grounding. 
+
+• This creates a gap between practical integration and theoretical understanding, limiting the maturity of human-centered RE. 
+
+4.6. RQ5: How are human-centered RE approaches evaluated? 
+
+In this research question, we examine: 1) the evaluation methods of human-centered RE approaches and 2) the outcomes of the PSs. 
+
+4.6.1. What evaluation methods are used? 
+
+Our analysis revealed that only 39% (22 out of 56) of the approaches have been evaluated. This low evaluation rate indicates that the field remains largely exploratory, with many approaches proposed without sufficient empirical validation. This highlights a significant gap in the validation of human-centered RE methodologies, raising concerns about the effectiveness and reliability of the remaining approaches that lack rigorous evaluation. In the following, we delve into the various evaluation methods employed by the studies, providing insights into how effectiveness is measured in the field of human-centered RE. The table 11 presents the various evaluation methods used to assess the effectiveness of human-centered approaches in RE across 56 primary studies. The most frequently employed method is the case study, utilized by 13 studies. A case study is conducted to investigate a single entity or phenomenon in its real-life context, within a specific time space [76]. For example, [2] evaluated the HSO process applied to software products in government sectors, focusing on automating processes and financial settlements, while [12] combined an industry case study with a user study to assess a mobile learning application, analyzing emotional goals and usability through participant feedback. [3] conducted a case study on cultural differences in RE, highlighting 11 cultural characteristics unique to Papua New Guinea’s indigenous culture. [15] assessed the impact of gamification and acceptance requirements through a case study involving various stakeholder groups. These case studies typically evaluated the practicality, usability, and impact of the proposed methodologies on real-world projects. This focus on usability and user satisfaction indicates that evaluation is centered on immediate user perception rather than long-term impact on RE outcomes. User studies used in [38, 35, 11, 12, 45, 6, 10], observe and analyze how real users interact with a system or approach, focusing on usability, user satisfaction, and feedback [82]. For instance, [38] involved interviews with professionals to evaluate models representing work activities and technological support needs, ensuring that the models accurately reflected user requirements. [6] conducted two cycles of evaluation after the requirements exploration-design phase to capture user attitudes, system performance, and satisfaction through task completion and feedback. [10] evaluated tools and methods with 11 research staff, including those with HCI and RE experience, to gather comprehensive feedback on usability and practical application. These user studies often highlighted specific aspects such as task completion efficiency, user satisfaction, emotional response, and the practicality of integrating user feedback into the design process. Field studies, used by 1 study [44], collect data in natural settings to provide insights into how methodologies perform in real-life conditions. Just like case studies, field studies are observational methods [76]. In [44], authors employed a field study to evaluate the proposed methodology by applying it to mobile phone product lines with over 150 users, providing insights into the methodology’s effectiveness and revealing practical lessons learned from real-world application over a year-long period. This field study offered a broad perspective on how the methodology performed in a natural uncontrolled environment. However, the very limited use of field studies and controlled empirical evaluations highlights a lack of robust validation methods in the field. Empirical evaluations, also used by 1 study [7], involving systematic observation and measurement through the Goal-Question-Metric (GQM) framework. This study evaluated the efficiency and feasibility of an algorithm by testing goal achievability and planning outcomes for modeled personas. Notably, two studies ([11, 12]) utilized multiple evaluation methods. [11] combined a user study and a case study to evaluate emergency alarm systems. The user study involved comparing different notations and collecting qualitative                     
+
+> Benzarti et al.: Preprint submitted to Elsevier Page 16 of 32 Two Integration Pathways in Human-Centered Requirements Engineering
+> Evaluation method PSs # of PSs % of PSs
+> Case study [1],[22],[2],[40],[3], [11] ,[12] ,[9],[51],[48],[15],[49],[24] 13 54% User study [38],[35], [11] ,[12] ,[45],[6],[10],[46],[32] 938% Field study [44] 14% Empirical evaluation [7] 14% Total 22 100% No evaluation [21, 37, 52, 18, 53, 25, 42, 29, 26, 54, 55, 33, 17, 19], [41, 13, 47, 4, 8, 20, 5, 27, 14, 28, 39, 23] [43, 36, 16, 30, 31] 34 61%
+> Table 11
+> Evaluation of human-centered RE approaches
+
+feedback, while the case study modeled emotional, functional, and quality goals based on ethnographic data collected from interviews with participants. Similarly, [12] combined an industry case study with a user study to evaluate a mobile learning application. The case study analyzed emotional goals and usability through participant feedback, while the user study involved tasks and qualitative questions to evaluate the effectiveness of different analysis techniques. In evaluating the impact of human-centered approaches in RE, we analyzed primary studies to compare these approaches with traditional methods that do not consider the human aspects. Out of the 56 PSs, only a subset of 6 studies evaluated the human-centered impact in a comparative manner. This lack of comparative evaluation makes it difficult to demonstrate the added value of human-centered approaches over traditional RE practices. This subset constitutes only 11.76% of the total number of PSs and 30% of the evaluated PSs. The findings reveal a generally positive impact on user satisfaction, requirement completeness, and overall process improvement. For instance, [22] demonstrated that Design Thinking combined with Scrum achieved 100% user satisfaction and over 95% completeness in requirements. [2] quantified the positive impact of the HSO process, identifying 23% new or changed requirements in one case and 17% in another. [11] highlighted the importance of addressing users’ emotional needs in system design, resulting in an improved user experience with the developed prototype. [12] showed that the approach effectively identified functional and non-functional goals for addressing emotional needs. [6] illustrated the successful user engagement and satisfaction through the use of HCI patterns and UCD methods in health informatics tools. [48] emphasized improvements in the RE process quality, enhancing requirement consistency, correctness, and completeness by understanding potential and target users. 
+
+4.6.2. What are the outcomes of the primary studies? 
+
+Table 12 categorizes the outcomes of various studies on human-centered approaches in RE, providing a compre-hensive overview of the frameworks, methods, modeling techniques, guidelines, and insights derived from the research. The "Frameworks and Methods" category shows a range of integrated frameworks and processes designed to enhance RE. Notable entries include the Design Thinking and Scrum Integrated Framework ([21, 22]), the Human, Social, and Organizational (HSO) Framework for eliciting requirements [2], and the Emotion-Oriented Goals (EMOG) Framework [8]. These frameworks aim to systematically incorporate human-centered elements into the RE process, addressing social, emotional, and organizational aspects. The "Modeling and Specification Techniques" category highlights methods that facilitate a more nuanced understanding and representation of user requirements. Examples include the Visual Notation for Safety-Critical Systems [37] and the Persona-Based Modeling Approach [7], which emphasize the importance of accurately capturing user contexts and personas in RE. In the "Guidelines" category, studies like [40] and [4] provide practical recommendations for enhancing RE processes. The guidelines for the effectiveness of the SPID process from interaction design [40] and the application of user stories in assistive technology projects [4] offer actionable insights for practitioners. Lastly, the "Insights" category reveals valuable findings on cultural characteristics, stakeholder empathy, and learning through social engineering. Studies such as [3, 33] emphasize the importance of understanding user diversity and the context in which systems are deployed. Overall, the categorization underscores the approaches and tools available for making RE more human-centered, highlighting the importance of integrating emotional, social, and organizational factors into the development process. This structured synthesis provides a valuable reference for researchers and practitioners aiming to enhance the human-centricity of RE methodologies. The low evaluation rate (39%) raises concerns about the maturity of the field. The majority of proposed human-centered RE approaches have not been subjected to empirical scrutiny. Overall, this suggests that human-centered RE   
+
+> Benzarti et al.: Preprint submitted to Elsevier Page 17 of 32
+
+Two Integration Pathways in Human-Centered Requirements Engineering 
+
+Category Studies Details 
+
+Frameworks and Methods [21, 22] Design Thinking and Scrum Integrated Framework [2] Human, Social, and Organisational (HSO) Framework for eliciting requirements [29] Systematic Acceptance Requirements Analysis Framework based on Gamification (Agon Framework) [55] Design Process for Decision-Oriented Systems [19] Context-Based Persona Story Metamodel [47] Function Module System (FMs) for User-Oriented Analysis [8] Emotion-Oriented Goals (EMOG) Framework [44] Hanako Method Combining Persona-Scenario-Based Analysis and Conjoint Analysis [11] Goal Models Involving Emotional Goals [14] Emotional Goal Systematic Analysis Technique (EG-SAT) [51] SeeMe Diagramming Technique for Socio-Technical Systems [39] A Virtual Environment to Support the Societal participation Education of Low-literates (VESSEL) [10] Method and Tools for Analyzing Workload [48] User Segmentation in RE [49] Automated Method to Identify User Intentions using inSitu Framework [36] Incorporating and Adapting HCI Personas Technique [56] UrbanMobility Co-Design Canvas framework (UMCDC) [50] human-centered methodology for designing Cyber-Physical Systems [46] A persona generation tool [34] A method for collaborative vision creation (Cartooneering) [32] A gamified requirements engineering (RE) environment Modeling and Specification Techniques [37] Visual Notation for Safety-Critical Systems [7] Persona-Based Modeling Approach [25] Annotated BPM Providing Semantics to BPM Activities [9] Method for Modelling Requirements for Complex Sociotechnical Systems Guidelines [29] Guidelines for Effectiveness of SPID Process from Interaction Design [4] Results of the Application of User Stories in Assistive Technologies Projects Insights [3] Cultural Characteristics of PNG’s Indigenous Culture [33] Techniques for Stakeholder Empathy and Understanding [45] Learning about Social Engineering Acts Through Gameplay 
+
+Table 12 
+
+The outcomes of the PSs and their categories 
+
+lacks standardized evaluation frameworks, limiting both its scientific maturity and its adoption in industrial practice. Moreover, among the evaluated studies, there is a notable absence of comparative evaluations: only 6 studies (11.76%) explicitly compare human-centered approaches against traditional RE methods. This makes it difficult to assess whether the additional effort of integrating multidisciplinary techniques yields measurable improvements over conventional practices. The dominance of case studies (54% of evaluated work) over controlled experiments also limits the ability to draw causal conclusions about the effectiveness of specific techniques. These observations point to a clear need for the community to invest in controlled, comparative evaluations that measure concrete outcomes such as requirement completeness, stakeholder satisfaction, and defect rates attributable to human-centered RE practices. Beyond evaluation frequency, the absence of shared operationalizations of human-centered outcomes points to a deeper problem. No primary study defines measurable criteria for what it means for a system to satisfy an experience requirement, a requirement specifying constraints on users’ cognitive, emotional, or social states during interaction. This absence is precisely what separates current HC-RE practice from the XCRE vision: without the ability to specify 
+
+Benzarti et al.: Preprint submitted to Elsevier Page 18 of 32 Two Integration Pathways in Human-Centered Requirements Engineering 
+
+and evaluate experience requirements formally, human-centered insights remain implicit and unverifiable throughout the RE lifecycle. Lessons Learned from RQ5 
+
+• Human-centered RE approaches are weakly evaluated, with most studies relying on case studies and user studies. 
+
+• The lack of comparative and standardized evaluation limits the ability to assess their effectiveness against traditional RE methods. 
+
+• Stronger empirical validation frameworks are needed to support the maturity and adoption of human-centered RE. 
+
+4.7. Cross-RQ Synthesis: Two Integration Pathways in Human-Centered RE 
+
+A cross-reading of all five RQs together reveals a structural pattern that no single RQ captures: the 56 primary studies organize into two parallel integration traditions that are opposite in method and almost entirely disconnected in practice. We term these the Cognitive-Formal (C-F) pathway and the Participatory-Iterative (P-I) pathway , and identify a small set of Bridge studies that span both. This taxonomy is not imposed on the data; it emerges from three classification signals that are already present in the RQ1–RQ5 tables and that, taken together, produce a clean and consistent separation. 
+
+4.7.1. Classification Criteria 
+
+Each primary study is assigned to a pathway based on three criteria: 
+
+• Discipline orientation. C-F studies draw on psychology, cognitive science, marketing engineering, social engineering, or RE-internal formal modeling. P-I studies draw on user-centered design (UCD), design thinking, human-computer interaction (HCI), interaction design, user experience (UX), virtual reality (VR), or large language models (LLMs). 
+
+• Framework type. When a study extends an existing RE framework, C-F studies exclusively use goal-based frameworks (i*, GRL, Tropos, motivational goal models, agent-oriented goal models). P-I studies exclusively use scenario-based frameworks (Agile, Scrum, use cases). This distinction holds without exception across all 56 primary studies. 
+
+• Artifact and integration mode. C-F studies produce formal notations, cognitive models, emotional goal ex-tensions, and taxonomies. P-I studies produce personas, process adaptations, design guidelines, and prototyping workflows. A study is classified as Bridge when it explicitly combines disciplines, frameworks, or artifact types from both pathways as co-equal contributions, not when one pathway element appears incidentally. Two studies (PS5, PS16) lacked sufficient detail in the extracted data for classification and are marked unclassified. Table 25 (Appendix C) presents the complete classification of all 56 primary studies across the two pathways. 
+
+4.7.2. Pathway Statistics and Structural Findings 
+
+Table 13 summarizes the distribution of key characteristics across the two pathways and the Bridge group. Four structural findings emerge directly from this distribution. 
+
+Finding 1 : Near-equal distribution across pathways. Among the 54 classifiable studies, excluding 2 unclassified studies ([52, 54]) and counting [30] under the C-F pathway on the basis of its conceptual-formal integration mechanism, the corpus yields 25 C-F studies and 24 P-I studies, with 5 Bridge studies spanning both. This near-equal distribution reflects equal investment by the field in two structurally distinct integration strategies that have nonetheless developed largely independently of one another. 
+
+Finding 2 : Framework type as a pathway predictor. Every study using a goal-based framework is C-F or Bridge; every study using a scenario-based framework is P-I or Bridge. This means the two most established families of RE frameworks, goal modeling and scenario-based development, have been developed by different disciplinary traditions                
+
+> Benzarti et al.: Preprint submitted to Elsevier Page 19 of 32 Two Integration Pathways in Human-Centered Requirements Engineering
+> Table 13
+> Summary statistics by integration pathway. C-F includes PS50 (n=25); Bridge excludes PS50 (n=5). Two studies (PS5, PS16) are unclassified and excluded.
+> Metric C-F (n=25) P-I (n=24) Br (n=5)
+> Evaluated PSs 13 (52%) 7 (29%) 2 (40%) Goal-based framework 10 03Scenario-based framework 071No framework 15 17 1
+
+that do not communicate. A practitioner working within Tropos or i* encounters psychology and cognitive science contributions; one working within Scrum or Agile encounters design thinking and UCD. A practitioner working within Tropos or i* will find psychology and cognitive science contributions; one working within Scrum or Agile will find design thinking and UCD contributions, and the two communities do not cross-reference each other. 
+
+Finding 3 : Evaluation rate reversal. C-F studies are evaluated at nearly twice the rate of P-I studies (54% vs. 29%). This is counterintuitive, formal approaches are typically assumed to be harder to evaluate, but it is consistent with the data. Formal notations and goal model extensions produce discrete, testable contributions amenable to case studies and user studies. P-I studies, which more frequently propose new end-to-end methodologies, produce contributions that are harder to evaluate comparatively. 
+
+Finding 4 : Multi-phase coverage advantage of C-F. C-F studies show slightly broader RE phase coverage (11 of 25 cover multiple phases) than P-I studies (8 of 24). This means that the elicitation concentration identified in RQ1 is not a property of human-centered RE in general, but a property of the P-I pathway specifically. C-F approaches, anchored in goal modeling, tend naturally to span elicitation, analysis, and specification within a single formal framework. 
+
+4.7.3. The Five Bridge Studies 
+
+The Bridge studies [7, 18, 25, 17, 32] are the most consequential finding of this cross-RQ synthesis precisely because they are so rare. Each combines disciplines, frameworks, or artifact types from both pathways: [7] and [25] and [17] apply UCD disciplines (P-I) within goal-based frameworks (C-F); [18] combines psychology (C-F theory) with UX patterns (P-I artifact); and [32] combines motivation theories from psychology (C-F) with a gamification process (P-I). Of the five Bridge studies, only two — [7] and [32] have been empirically evaluated. None has achieved widespread adoption or citation within either pathway’s primary community. This suggests that cross-pathway integration is not only rare but structurally unrewarded: the field’s review and citation patterns do not surface bridge work as the exemplary contribution it represents. The five Bridge studies should be treated as existence proofs that cross-pathway integration is methodologically feasible, and as the primary starting points for the research agenda proposed in Section 6. Lessons Learned from Cross-RQ Synthesis 
+
+• Human-centered RE has evolved into two structurally parallel and empirically disconnected traditions, each comprising 24 of the 56 primary studies. 
+
+• Framework type is a near-perfect pathway predictor: all goal-based frameworks appear in the C-F pathway, all scenario-based frameworks in P-I, with zero crossover across 56 studies. 
+
+• The field’s central challenge is not developing more approaches within either pathway, but creating systematic methodological bridges between them. 
+
+• The structural separation between pathways, combined with the absence of Layer 3 translation mech-anisms and standardized evaluation criteria, defines the gap that Experience-Centered Requirements Engineering (XCRE) must address: making user experience a first-class, formally specified, and empirically verifiable concern in RE.   
+
+> Benzarti et al.: Preprint submitted to Elsevier Page 20 of 32 Two Integration Pathways in Human-Centered Requirements Engineering
+
+## 5. Research Gaps 
+
+The cross-pathway analysis presented in Section 4.7 provides a structural explanation for the research gaps identified across individual research questions. The observed 24/24 split between the Cognitive-Formal (C-F) and Participatory-Iterative (P-I) pathways reveals that these gaps are not incidental but reflect a fundamental pattern of specialization. Each pathway has developed distinct strengths while neglecting complementary aspects addressed by the other. The near-absence of bridge studies, with only 5 out of 56 studies attempting integration and only 2 providing empirical evaluation, indicates that these complementary strengths have not been systematically combined. Consequently, the research gaps identified in this section should be understood as manifestations of pathway separation rather than isolated deficiencies. Addressing them requires deliberate cross-pathway integration rather than incremental refinement within individual traditions. A first critical gap concerns the concentration of existing approaches in the elicitation phase. Nearly half of the studies (48%) focus on elicitation, reflecting the central role of user interaction in capturing requirements, with user involvement reported in 61% of primary studies. In contrast, subsequent phases such as analysis (22%) and specification (29%) receive significantly less attention. This imbalance is particularly problematic in the context of human-centered requirements, as elicitation activities often generate insights related to emotions, values, and social identities that require systematic analysis and formalization. While several studies address the modeling of such aspects, a comprehensive approach that ensures their transformation into functional and quality requirements across the full lifecycle remains largely absent. Existing work provides only partial solutions, indicating a fundamental gap in lifecycle integration. This limitation is strongly pathway-dependent. The concentration in elicitation is primarily driven by Participatory-Iterative approaches, which rely on scenario-based frameworks and iterative design processes that emphasize early-stage activities. In contrast, Cognitive-Formal approaches, anchored in goal-based modeling, demonstrate broader lifecycle coverage, with 11 out of 25 studies spanning multiple phases compared to 8 out of 24 for P-I approaches. This observation suggests that lifecycle discontinuity is not an inherent limitation of human-centered requirements engineering, but rather a structural consequence of the current dominance of P-I approaches in the corpus. It further indicates that goal-oriented modeling may provide a critical mechanism for extending human-centered insights beyond elicitation. A second major gap concerns domain coverage. The literature shows a strong concentration in healthcare and e-learning, which are traditional domains for human-centered approaches. In contrast, domains characterized by complex human–technology interaction, such as assistive technologies, augmented reality, cyber-physical systems, and smart cities, remain significantly underexplored. This imbalance limits the generalizability of existing findings and indicates a critical need to extend HC-RE approaches to emerging domains where human-centered considerations are particularly essential. A third gap relates to the integration of multidisciplinary contributions into the requirements engineering process. While multiple external disciplines have introduced methods and techniques that influence how requirements are elicited, analyzed, and validated, their integration remains partial and inconsistent. The influence of design thinking on agile practices, particularly Scrum, illustrates the potential of such integration, enabling iterative and user-focused development processes. However, these advances have not yet been systematically incorporated into the broader RE lifecycle. This highlights a fundamental need to redefine the RE process to fully integrate multidisciplinary and human-centered methodologies. The cross-pathway analysis further reveals a critical risk associated with the wholesale adoption of processes from external disciplines. Among the studies that import complete processes, such as design frameworks or immersive environments, the majority belong to the Participatory-Iterative pathway, and none provide comparative evaluation against established RE methods. This pattern represents a high-risk mode of contribution, characterized by significant process transformation without empirical validation. Addressing this gap requires rigorous evaluation of imported methods before their adoption in industrial contexts. A fourth gap concerns the limited exploration and validation of alternative elicitation techniques. Traditional methods, particularly interviews, remain dominant, while emerging approaches such as gaming, co-creation, and comic-based techniques are only marginally explored. The lack of systematic comparative studies prevents a clear understanding of their effectiveness, applicability, and limitations. Similarly, emerging AI-based techniques, including those based on large language models, remain insufficiently evaluated. This gap highlights the need for controlled empirical studies that compare traditional and innovative techniques across domains and user populations.   
+
+> Benzarti et al.: Preprint submitted to Elsevier Page 21 of 32 Two Integration Pathways in Human-Centered Requirements Engineering
+
+A fifth gap concerns the absence of comprehensive and generalizable frameworks that integrate human-centered approaches across all phases of the requirements engineering lifecycle, with only five Bridge studies [7, 18, 25, 17, 32] address multiple phases, and these are typically limited to case-specific implementations rather than reusable methodologies. This indicates a fundamental lack of holistic frameworks capable of supporting end-to-end human-centered requirements engineering. Finally, the identified Bridge studies provide critical insights into the feasibility of cross-pathway integration. These studies represent the only instances in which formal modeling and participatory processes are combined within a single approach. However, their limited number, lack of systematic evaluation, and absence of generalization highlight a major missed opportunity. These studies should be treated as foundational reference points for future work, enabling the systematic development of integrated HC-RE approaches rather than isolated contributions within individual pathways. 
+
+## 6. Recommendations and Research Agenda 
+
+The cross-pathway analysis presented in Section 4.7 highlights that the main challenge in human-centered requirements engineering is not the lack of approaches within individual traditions, but the absence of validated integration between them. The Cognitive-Formal (C-F) pathway provides strong theoretical foundations, while the Participatory-Iterative (P-I) pathway has driven significant process innovation. However, neither has produced a fully integrated, end-to-end HC-RE approach, and existing studies rarely connect the two in a systematic manner. To address this limitation, this section proposes an organizing framework that identifies where integration gaps occur, and derives a structured research agenda organized into four priority tiers. Together, these elements provide a foundation for advancing Experience-Centered Requirements Engineering (XCRE) , in which user experience is explicitly operationalized as a first-class concern in requirements specification. 
+
+6.1. The HC-RE Organizing Framework 
+
+The organizing framework illustrated in Figure 7 synthesizes the two-pathway taxonomy into a structured view of the field. Rather than prescribing a specific methodology, it provides an explanatory model of how existing research is distributed and where critical gaps remain. The framework is derived from the analysis of 56 primary studies and reflects the layered structure underlying current HC-RE approaches. Layer 1 corresponds to the theoretical core of the C-F pathway. It draws on disciplines such as psychology, cognitive science, marketing engineering, and social engineering to explain why users behave and feel in certain ways. Layer 2 represents the artifact and process core of the P-I pathway, relying on HCI, UX, interaction design, design thinking, and UCD to define how users are involved in RE. Layer 3, however, remains largely underdeveloped. It represents the critical step of translating insights from Layer 1 and artifacts from Layer 2 into formal RE specifications, including functional and quality requirements. Only a small number of studies explicitly address this translation. From an XCRE perspective, this layer is essential, as it is where experience requirements —that is, requirements capturing constraints on users’ cognitive, emotional, or social states—must be formalized and made verifiable. To illustrate this gap, consider the following example. A C-F approach may identify that users experience cognitive overload during a task (Layer 1), while a P-I approach may represent this insight through personas or journey maps (Layer 2). What remains missing is a systematic method to translate these insights into verifiable requirements, such as constraints on interaction complexity or measurable cognitive load thresholds. Addressing this gap is central to advancing HC-RE toward XCRE. 
+
+6.2. Structured Research Agenda 
+
+Based on this framework, we identify four priority areas for future research. These priorities reflect the key investments needed to bridge the C-F and P-I pathways and to support the development of integrated, lifecycle-spanning HC-RE approaches. 
+
+6.2.1. Priority 1: Cross-Pathway Integration Mechanisms 
+
+The most pressing need is the development of mechanisms that connect the different layers of the framework. This involves translating theoretical insights (e.g., cognitive models, emotional profiles) into design artifacts (e.g., personas, journey maps), and subsequently into formal specifications. From an XCRE perspective, this corresponds to transforming user experience into explicit, verifiable requirements.   
+
+> Benzarti et al.: Preprint submitted to Elsevier Page 22 of 32
+
+Two Integration Pathways in Human-Centered Requirements Engineering Layer 1 
+
+Cognitive-Formal pathway 
+
+> Discipline concepts transposed into formal RE artifacts
+
+External disciplines 
+
+> Psychology Cognitive science
+
+Formal frameworks 
+
+> Agent-oriented models Motivational goal models
+
+Conceptual artifacts   
+
+> Formal notations Taxonomies ·Models
+> Layer 3
+
+Layer 3 — Integrating human factors into system requirements   
+
+> C-F insights not yet translated into system-level specifications ·sparsely populated
+> Layer 2
+
+Participatory-Iterative pathway 
+
+> Users co-construct requirements through iterative design cycles
+
+HC disciplines   
+
+> User-centered design HCI ·Design thinking
+
+Process artifacts     
+
+> Personas ·Scenarios Prototypes ·User stories
+
+Iterative frameworks     
+
+> Agile ·Scrum Use cases ·Co-design
+> Bridge studies
+
+Figure 7: Organizing framework for the HC-RE research agenda. Layer 1 represents the theoretical core of the C-F pathway; Layer 2 captures the artifact and process core of the P-I pathway; Layer 3 corresponds to the integration layer, where insights must be translated into formal requirements. 
+
+Personas represent a promising bridge artifact, as they originate from participatory approaches but encapsulate information that can be aligned with formal RE models. Future work should aim to formalize personas as structured RE artifacts, with defined schemas, traceability mechanisms, and integration rules linking them to goal models and user stories. In addition, existing approaches that map emotional or experiential concepts to functional and quality requirements should be generalized into reusable methods applicable across different contexts. 
+
+6.2.2. Priority 2: Lifecycle Integration Beyond Elicitation 
+
+Current HC-RE approaches are strongly concentrated in the elicitation phase. This is particularly evident in P-I approaches, which rely on scenario-based frameworks that are less suited to later RE stages. In contrast, C-F approaches, often based on goal-oriented models, tend to span multiple phases of the lifecycle. Future research should therefore focus on extending human-centered practices beyond elicitation. This includes ensuring that user-related insights—such as emotional goals, values, and cognitive characteristics—are preserved, transformed, and validated throughout analysis, specification, and validation. From an XCRE perspective, this requires establishing traceability mechanisms that allow experience requirements to be maintained and evaluated across the entire lifecycle. 
+
+Benzarti et al.: Preprint submitted to Elsevier Page 23 of 32 Two Integration Pathways in Human-Centered Requirements Engineering 
+
+Table 14 
+
+Comparison of related secondary studies with this SMS.                                                  
+
+> Study Type Focus Multidisciplinary integration What is missing
+> Hidellaarachchi et al. [70] SLR Team-internal human aspects (personality, motivation, communication, culture, gender) affecting RE practitioners; 74 studies across IEEE, ACM, Springer, Wiley Not addressed; explicitly identified as an open research direction Does not examine how ex-ternal disciplines contribute methods to RE to capture end-user needs; the gap our SMS directly addresses Abelein & Paech [71] SMS Impact of user involvement on system outcomes Not addressed Does not explain which dis-ciplines produce user in-volvement or why involve-ment fails beyond elicitation Wang et al. [72] Empirical Persona adoption patterns in industrial RE Single technique only Does not analyze the dis-ciplinary grounding of per-sonas or their integration across RE phases and frame-work types Grundy et al. [73] Position paper Diversity of human charac-teristics in SE Identifies need; does not analyze it No systematic mapping; calls for integration without examining how it has occurred
+> This study SMS How external disciplines integrate into RE to cap-ture end-user needs, emo-tions, and values Central focus: 11 disciplines, two-pathway taxonomy, 56 primary studies —
+
+6.2.3. Priority 3: Empirical Maturation 
+
+The field remains weakly validated from an empirical perspective. A limited proportion of studies provide rigorous evaluation, and existing evaluation methods are often inconsistent across approaches. Moreover, the C-F and P-I pathways rely on different evaluation paradigms, making comparison difficult. To address this issue, future work should develop shared evaluation frameworks with clearly defined metrics, such as requirement completeness, stakeholder satisfaction, and defect reduction. In the context of XCRE, these frameworks should also include measures of user experience, such as perceived cognitive load, emotional response, and usability. Particular attention should be given to emerging techniques and tools, which require systematic validation in comparison with established methods. 
+
+6.2.4. Priority 4: Domain and Technique Expansion 
+
+Existing research is concentrated in a limited set of domains, particularly healthcare and e-learning. Other domains characterized by complex human-technology interaction, such as cyber-physical systems, assistive technologies, and smart environments, remain underexplored. Future research should extend HC-RE approaches to these domains by identifying their specific human-centered requirements and adapting existing methods accordingly. In parallel, a broader range of elicitation and interaction techniques should be explored and evaluated in controlled settings. Comparative studies are needed to assess their effectiveness with respect to different user populations, RE phases, and quality criteria. Such efforts are essential to improve the generalizability and practical applicability of human-centered RE approaches. 
+
+## 7. Related Work 
+
+Table 14 positions this study with respect to the most directly related secondary studies. The distinguishing dimension is the explicit focus on multidisciplinary integration. While prior work acknowledges the importance of human factors in requirements engineering (RE), no existing study systematically analyzes the contribution of external disciplines to RE as its primary unit of analysis. 
+
+Benzarti et al.: Preprint submitted to Elsevier Page 24 of 32 Two Integration Pathways in Human-Centered Requirements Engineering 
+
+The systematic literature review of Hidellaarachchi et al. [70] focuses on the individuals performing RE activities, analyzing how factors such as personality, motivation, communication, and organizational culture influence RE outcomes. In contrast, this study addresses a fundamentally different but complementary perspective by examining the disciplines that inform RE practices. Specifically, it analyzes how external fields contribute methods, models, and artifacts to capture end-user needs, emotions, and values. Together, these perspectives reflect the two dimensions of human factors in RE identified in Section 2. Importantly, Hidellaarachchi et al. explicitly identify cross-disciplinary collaboration as a critical and unresolved research direction. They highlight the need for RE researchers to extend beyond traditional software engineering knowledge and engage with other disciplines to improve the RE process [70]. This study provides a direct and systematic response to that call by mapping, structuring, and analyzing how such cross-disciplinary contributions have been realized in practice. Abelein and Paech [71] demonstrate that user involvement has a positive impact on RE outcomes, but they also identify a fundamental limitation: the absence of methods that extend user involvement across multiple phases of the RE lifecycle. This limitation directly motivates the lifecycle analysis developed in RQ1 of this study. Wang et al. [72] provide empirical insights into persona adoption in industrial contexts, identifying practical barriers but treating personas as an isolated technique. They do not analyze their theoretical foundations or their integration across RE phases and methodological frameworks. In contrast, this study situates personas within a broader multidisciplinary and lifecycle perspective through the proposed two-pathway taxonomy. Grundy et al. [73] argue for the importance of integrating human characteristics into software engineering, but their contribution remains conceptual. They call for integration without providing a systematic analysis of how such integration has been achieved or operationalized. This limitation reflects a broader gap in the literature. Taken together, prior work consistently confirms the importance of human factors in RE. However, it does not address three questions in a unified manner: which external disciplines contribute to RE, how their contributions differ in terms of integration mechanisms, and why these contributions remain fragmented. This study addresses these questions through a systematic mapping of 56 primary studies, the identification of 11 contributing disciplines, and the development of a two-pathway taxonomy that explains the structural separation between theoretical and process-oriented contributions. 
+
+## 8. Threats to Validity 
+
+This section critically assesses the validity of the study following the framework proposed by Zhou et al. [83]. The objective is to explicitly identify potential limitations and to clarify the measures taken to mitigate their impact. 
+
+8.1. Construct Validity 
+
+Construct validity concerns the extent to which the search and data collection procedures accurately capture the intended body of knowledge. The primary search was conducted using Engineering Village (Compendex and Inspec), which index the major software engineering publishers, including IEEE, ACM, Springer, and Elsevier. This choice ensures strong coverage of high-quality and relevant venues. The application of backward and forward snowballing identified nine additional studies, representing 16% of the final corpus. The observed inclusion rate of 47% suggests that the primary search achieved near-saturation, consistent with established snowballing practices [79]. Nevertheless, a residual threat remains, as studies indexed exclusively in databases such as Scopus or Web of Science may not have been captured. Future replications should therefore extend the search strategy to include at least one additional database to further reduce this risk. To mitigate interpretation bias, all cases in which primary studies did not explicitly report relevant information were systematically documented and cross-validated by at least two authors. This process reduces the risk of construct misinterpretation and ensures traceability of analytical decisions. 
+
+8.2. Internal Validity 
+
+Internal validity concerns the reliability and consistency of the study selection and data extraction processes. To ensure methodological rigor, the first and second authors independently conducted all three screening stages and performed data extraction for the full set of 56 primary studies. All disagreements were systematically resolved through discussion, and a third author was consulted when consensus could not be reached. This full-corpus dual-review process, applied to every study rather than a subset, constitutes a strong control mechanism that minimizes selection and extraction bias. Although no formal inter-rater agreement statistic was   
+
+> Benzarti et al.: Preprint submitted to Elsevier Page 25 of 32 Two Integration Pathways in Human-Centered Requirements Engineering
+
+computed, the exhaustive resolution of disagreements across the entire corpus is consistent with established guidelines for systematic mapping studies [74]. The two-pathway taxonomy represents a post-hoc analytical construct and therefore introduces a potential classification bias. This threat was mitigated by defining explicit classification criteria and resolving all borderline cases collaboratively. The two studies that could not be reliably classified (PS5 and PS16) were excluded from all quantitative analyses, ensuring that reported results are not affected by uncertain categorizations. 
+
+8.3. External Validity 
+
+External validity concerns the generalizability of the findings. The corpus includes 56 studies published between 1993 and 2024, covering multiple domains, geographical contexts, and phases of the requirements engineering lifecycle. This diversity supports a broad level of representativeness and strengthens the generalizability of the identified patterns. However, the restriction to English-language publications introduces a potential bias by excluding relevant contributions from non-English-speaking research communities. While this limitation is common in systematic studies, it remains a factor that may affect the completeness of the analysis. 
+
+8.4. Conclusion Validity 
+
+Conclusion validity concerns the robustness of the inferences drawn from the data. The study follows established guidelines for systematic mapping studies [74, 77], and all methodological steps are fully documented in the publicly available replication package [80], supporting transparency and reproducibility. The identification of the Layer 3 gap, based on a single primary study ([12]), represents a critical but preliminary finding. It should be interpreted as a well-supported hypothesis rather than a definitive conclusion. Targeted empirical validation is required to confirm its generality and to assess its implications for the design of integrated HC-RE methods. 
+
+## 9. Discussion 
+
+This study provides a structured and empirically grounded understanding of human-centered requirements engineering (HC-RE) through the analysis of 56 primary studies and the synthesis of their underlying patterns. The cross-RQ analysis shows that the four dominant patterns identified in the literature—multidisciplinary fragmentation, concentration on elicitation, the theory–practice gap, and limited evaluation—are not independent issues. Rather, they reflect a deeper structural condition: the separation between the Cognitive-Formal (C-F) and Participatory-Iterative (P-I) pathways, which have evolved in parallel with little systematic integration. Each pathway exhibits complementary strengths as well as important limitations. The C-F pathway, based on goal-oriented frameworks and formal modeling, tends to cover multiple phases of the RE lifecycle (11 out of 25 studies) and shows a higher level of empirical evaluation (54%). However, it provides limited support for participatory processes. In contrast, the P-I pathway emphasizes iterative design and user involvement, producing richer interaction processes and artifacts, but remains largely concentrated in the elicitation phase and shows a lower evaluation rate (29%). The theory–practice gap identified in this study can be directly explained by this separation: C-F approaches offer theoretical depth, while P-I approaches provide practical integration mechanisms. From the perspective of Experience-Centered Requirements Engineering (XCRE), this structural separation has important implications. The C-F pathway models aspects of user experience—such as cognition, emotion, and goals—but does not translate them into verifiable system requirements. The P-I pathway captures user experience through participatory artifacts, but does not formalize these insights within RE models. As a result, user experience remains implicit and fragmented, and is rarely preserved in specification and validation activities. Although a small number of studies demonstrate the feasibility of cross-pathway integration, their limited number and lack of strong empirical validation indicate that this direction remains underdeveloped. 
+
+9.1. Implications of the Two-Pathway Taxonomy 
+
+The two-pathway taxonomy provides a concrete explanation of why user experience has not yet become a first-class concern in requirements engineering. Several key implications follow. First, experience-related insights require explicit traceability mechanisms that allow them to be carried from elicitation through to specification and validation. Goal-oriented models provide a promising structural basis for such traceability, and their combination with participatory practices represents a key direction for future work.   
+
+> Benzarti et al.: Preprint submitted to Elsevier Page 26 of 32 Two Integration Pathways in Human-Centered Requirements Engineering
+
+Second, personas emerge as a central bridging artifact. While they originate in participatory approaches, their content—user goals, values, and emotional characteristics—can be aligned with formal RE representations. Formaliz-ing personas as structured and traceable artifacts would enable a more systematic transformation of user insights into requirements. Third, the lack of a shared evaluation framework across pathways limits the ability to compare approaches and accumulate evidence. Establishing common evaluation criteria—such as requirement completeness, user satisfaction, cognitive load, and perceived usability—is essential for assessing the effectiveness of HC-RE methods. Finally, existing cross-pathway studies should be treated as key reference points for future research. Understanding how these studies combine theoretical and participatory elements can inform the design of more integrated and scalable approaches. 
+
+9.2. Implications for Practice 
+
+This study also provides several implications for practitioners. First, human factors—including emotions, cognitive load, and user values—should not only be elicited, but systematically incorporated into requirements analysis and specification. This requires moving beyond early-stage user involvement and ensuring that such insights are preserved throughout the development process. Second, personas should be used as formal RE artifacts rather than informal design tools. Structuring personas and linking them to goal models or user stories can support traceability across development phases. Third, practitioners should exercise caution when adopting approaches imported from other disciplines, such as design thinking, virtual reality, or large language models, without adequate empirical validation in RE contexts. Finally, approaches grounded in goal-oriented modeling provide useful templates for extending human-centered practices across the RE lifecycle, and can serve as a foundation for more integrated methodologies. 
+
+## 10. Conclusion 
+
+This paper presented a systematic mapping study of human-centered approaches in requirements engineering, analyzing how these approaches are applied, which disciplines contribute to them, and why their integration remains limited. The analysis of 56 primary studies published between 1993 and 2024 shows that, although the field increasingly draws on multidisciplinary knowledge, it remains structurally fragmented across the RE lifecycle. The main contribution of this work is the identification of a two-pathway structure, comprising Cognitive-Formal and Participatory-Iterative approaches. These two traditions have developed in parallel, with limited interaction. The C-F pathway offers theoretical depth and broader lifecycle coverage, while the P-I pathway provides participatory processes and user-centered artifacts. However, neither has produced a fully integrated HC-RE approach, Although five Bridge studies [7, 18, 25, 17, 32] attempt to bridge the gap between them. Based on this analysis, the paper proposes a structured research agenda focusing on four key priorities: cross-pathway integration mechanisms, lifecycle extension beyond elicitation, empirical maturation, and domain expansion. These priorities define the main steps required to advance toward Experience-Centered Requirements Engineering, in which user experience is explicitly represented, operationalized, and validated throughout the RE lifecycle. Several research challenges remain. Human-centered approaches are still underexplored in domains characterized by complex human–technology interactions, such as assistive systems, augmented reality, and cyber-physical systems. Emerging techniques—including gaming, co-creation, and AI-based persona generation—lack systematic evaluation. Moreover, existing methods for translating human-centered artifacts into formal requirements are limited and have not been widely replicated. Addressing these challenges requires a shift from isolated methodological innovation toward integrated, empirically validated approaches that connect disciplines, artifacts, and RE phases. Such a shift is necessary to fully realize the potential of human-centered requirements engineering and to establish user experience as a first-class concern in software development. 
+
+## Primary Studies     
+
+> [PS1] J. Hehn, F. Uebernickel, The use of design thinking for requirements engineering: an ongoing case study in the field of innovative software-intensive systems, in: 2018 IEEE 26th international requirements engineering conference (RE), IEEE, 2018, pp. 400–405. [PS2] A. S. Andreou, Promoting software quality through a human, social and organisational requirements elicitation process, Requirements Engineering 8 (2003) 85–101.
+> Benzarti et al.: Preprint submitted to Elsevier Page 27 of 32
+
+Two Integration Pathways in Human-Centered Requirements Engineering 
+
+[PS3] P. Yalamu, A. Al Mahmud, C. Chua, Considerations for indigenous cultural aspects in software development: A case study, in: International Conference on Evaluation of Novel Approaches to Software Engineering, Springer, 2021, pp. 29–43. [PS4] I. C. S. Zacharias, C. Campese, T. B. dos Santos, L. P. da Cunha, J. M. H. Costa, User stories method and assistive technology product development: A new approach to requirements elicitation, in: Proceedings of the Design Society: International Conference on Engineering Design, Vol. 1, Cambridge University Press, 2019, pp. 3781–3790. [PS5] L. Teixeira, C. Ferreira, B. S. Santos, User-centered requirements engineering in health information systems: A study in the hemophilia field, Computer methods and programs in biomedicine 106 (3) (2012) 160–174. [PS6] A. Sutcliffe, S. Thew, O. De Bruijn, I. Buchan, P. Jarvis, J. McNaught, R. Procter, User engagement by user-centred design in e-health, Philosophical Transactions of the Royal Society A: Mathematical, Physical and Engineering Sciences 368 (1926) (2010) 4209–4224. [PS7] G. Nunes Rodrigues, C. Joel Tavares, N. Watanabe, C. Alves, R. Ali, A persona-based modelling for contextual requirements, in: Requirements Engineering: Foundation for Software Quality: 24th International Working Conference, REFSQ 2018, Utrecht, The Netherlands, March 19-22, 2018, Proceedings 24, Springer, 2018, pp. 352–368. [PS8] S. Alwidian, Towards extending the goal-oriented requirements language with emotion-oriented goals to support socio-technical systems, in: Proceedings of the 25th International Conference on Model Driven Engineering Languages and Systems: Companion Proceedings, 2022, pp. 306–311. [PS9] A. Sutcliffe, Requirements engineering for complex collaborative systems, in: Proceedings Fifth IEEE International Symposium on Requirements Engineering, IEEE, 2001, pp. 110–117. [PS10] A. Gregoriades, J.-E. Shih, A. Sutcliffe, Human-centred requirements engineering, in: Proceedings. 12th IEEE International Requirements Engineering Conference, 2004., IEEE, 2004, pp. 154–163. [PS11] T. Miller, S. Pedell, A. A. Lopez-Lorca, A. Mendoza, L. Sterling, A. Keirnan, Emotion-led modelling for people-oriented requirements engineering: the case study of emergency systems, Journal of Systems and Software 105 (2015) 54–71. [PS12] M. Sherkat, T. Miller, A. Mendoza, R. Burrows, Emotionalism within people-oriented software design, Frontiers in Computer Science 3 (2021) 717787. [PS13] E. A. Oliveira, V. Maram, L. Sterling, Transitioning from motivational goal models to user stories within user-centred software design., in: RESOSY@ APSEC, 2021. [PS14] E. Jackson, A. Norta, Design of a remote emotional requirement elicitation feedback method, in: 2020 IEEE Third International Workshop on Affective Computing in Requirements Engineering (AffectRE), IEEE, 2020, pp. 3–8. [PS15] T. Iqbal, J. G. Marshall, K. Taveter, A. Schmidt, Theory of constructed emotion meets re: An industrial case study, Journal of Systems and Software 197 (2023) 111544. [PS16] S. F. Zulkifli, C. W. Shiang, M. A. bin Khairuddin, N. bt Jali, Modeling emotion oriented approach through agent-oriented approach, Int. J. Adv. Sci. Eng. Inf. Technol 10 (2) (2020) 647â. [PS17] A. Perini, N. Seyff, M. Stade, A. Susi, Exploring re knowledge for gamification: Can re achieve a high score?, in: 2018 1st International Workshop on Affective Computing for Requirements Engineering (AffectRE), IEEE, 2018, pp. 14–19. [PS18] P. Kamthan, N. Shahmir, Beyond utility and usability: towards affectability in agile software requirements engineering, in: 2018 International Conference on Computational Science and Computational Intelligence (CSCI), IEEE, 2018, pp. 846–851. [PS19] J. Sedeño, E.-M. Schön, C. Torrecilla-Salinas, J. Thomaschewski, M. J. Escalona, M. Mejias, Modelling agile requirements using context-based persona stories, in: International Conference on Web Information Systems and Technologies, Vol. 2, SCITEPRESS, 2017, pp. 196– 203. [PS20] B. Losada, Flexible requirement development through user objectives in an agile-ucd hybrid approach, in: Proceedings of the XIX International Conference on Human Computer Interaction, 2018, pp. 1–8. [PS21] A. Alhazmi, S. Huang, Integrating design thinking into scrum framework in the context of requirements engineering management, in: Proceedings of the 3rd International Conference on Computer Science and Software Engineering, 2020, pp. 33–45. [PS22] R. d. S. Braz, J. R. Merlin, D. Freitas Guilhermino Trindade, C. Eduardo Ribeiro, E. M. Sgarbi, F. d. S. Junior, Design thinking and scrum in software requirements elicitation: A case study, in: Design, User Experience, and Usability. Design Philosophy and Theory: 8th International Conference, DUXU 2019, Held as Part of the 21st HCI International Conference, HCII 2019, Orlando, FL, USA, July 26–31, 2019, Proceedings, Part I 21, Springer, 2019, pp. 179–194. [PS23] A. Dittmar, P. Forbrig, Integrating personas and use case models, in: Human-Computer Interaction–INTERACT 2019: 17th IFIP TC 13 International Conference, Paphos, Cyprus, September 2–6, 2019, Proceedings, Part I 17, Springer, 2019, pp. 666–686. [PS24] M. Aoyama, Persona-scenario-goal methodology for user-centered requirements engineering, in: 15th IEEE International Requirements Engineering Conference (RE 2007), IEEE, 2007, pp. 185–194. [PS25] C. Di Francescomarino, C. Leonardi, A. Marchetto, C. D. Nguyen, N. A. Qureshi, L. Sabatucci, A. Perini, A. Susi, P. Tonella, M. Zancanaro, et al., A bit of" persona", a bit of" goal", a bit of" process"... a recipe for analyzing user intensive software systems., in: iStar, 2010, pp. 36–40. [PS26] H. M. T. Tran, F. Anvari, A five-dimensional requirements elicitation framework for e-learning systems, International Journal of Information and Electronics Engineering 6 (3) (2016) 185. [PS27] J. Dörflinger, T. Gross, Bottom billion architecture: An extensible software architecture for ict access in the rural developing world, in: Proceedings of the 4th ACM/IEEE International Conference on Information and Communication Technologies and Development, 2010, pp. 1–10. [PS28] A. A. Lopez-Lorca, T. Miller, S. Pedell, A. Mendoza, A. Keirnan, L. Sterling, One size doesn’t fit all: diversifying" the user" using personas and emotional scenarios, in: Proceedings of the 6th International Workshop on Social Software Engineering, 2014, pp. 25–32. [PS29] L. Piras, E. Paja, P. Giorgini, J. Mylopoulos, Goal models for acceptance requirements analysis and gamification design, in: Conceptual Modeling: 36th International Conference, ER 2017, Valencia, Spain, November 6–9, 2017, Proceedings 36, Springer, 2017, pp. 223–230. 
+
+Benzarti et al.: Preprint submitted to Elsevier Page 28 of 32 Two Integration Pathways in Human-Centered Requirements Engineering 
+
+[PS30] R. Proynova, B. Paech, S. H. Koch, A. Wicht, T. Wetter, Investigating the influence of personal values on requirements for health care information systems, in: Proceedings of the 3rd workshop on software engineering in health care, 2011, pp. 48–55. [PS31] T. Schweiß, L. Thomaschewski, A. Kluge, B. Weyers, Software engineering for ar-systems considering user centered design approaches, Mensch und Computer 2019 - Workshopband (2019). doi:10.18420/muc2019-ws-622 .[PS32] N. Unkelos-Shpigel, B. Berencwaig, S. Kas, Revise that again: Are you motivated?, in: Proceedings of the 2nd International Workshop on Gamification in Software Development, Verification, and Validation, 2023, pp. 6–12. [PS33] J. C. de Souza Filho, W. T. Nakamura, L. M. Teixeira, R. P. da Silva, B. F. Gadelha, T. U. Conte, Towards a data-driven requirements elicitation tool through the lens of design thinking., in: ICEIS (2), 2021, pp. 283–290. [PS34] S. Storck, N. Bartels, S. A. Scherr, S. Ludborzs, E. Janke, Cartooneering-a collaborative workshop approach to develop scenarios with users., in: REFSQ Workshops, 2024. [PS35] A. Sutcliffe, S. Thew, P. Jarvis, Experience with user-centred requirements engineering, Requirements Engineering 16 (2011) 267–280. [PS36] J. W. Castro, S. T. Acuña, N. Juristo, Integrating the personas technique into the requirements analysis activity, in: 2008 Mexican International Conference on Computer Science, IEEE, 2008, pp. 104–112. [PS37] M. Cebulla, Modeling concepts for safety-related requirements in sociotechnical systems, in: Computer Safety, Reliability, and Security: 23rd International Conference, SAFECOMP 2004, Potsdam, Germany, September 21-24, 2004. Proceedings 23, Springer, 2004, pp. 87–100. [PS38] A. Jatoba, A. M. da Cunha, M. C. Vidal, C. M. Burns, P. V. de Carvalho, Contributions from cognitive engineering to requirements specifications for complex sociotechnical systems: A case study in the context of healthcare in brazil, Human Factors and Ergonomics in Manufacturing & Service Industries 29 (1) (2019) 63–77. [PS39] D. G. Schouten, R. T. Paulissen, M. Hanekamp, A. Groot, M. A. Neerincx, A. H. Cremers, Low-literates’ support needs for societal participation learning: Empirical grounding of theory-and model-based design, Cognitive Systems Research 45 (2017) 30–47. [PS40] J. C. Rosa, B. B. d. Rêgo, F. A. Garrido, P. D. Valente, N. J. Nunes, E. Matos, Interaction design and requirements elicitation integrated through spide: a feasibility study, in: Proceedings of the 19th Brazilian Symposium on Human Factors in Computing Systems, 2020, pp. 1–10. [PS41] I. Hastreiter, S. Krause, T. Schneidermeier, C. Wolff, Developing ux for collaborative mobile prototyping, in: Design, User Experience, and Usability. Theories, Methods, and Tools for Designing the User Experience: Third International Conference, DUXU 2014, Held as Part of HCI International 2014, Heraklion, Crete, Greece, June 22-27, 2014, Proceedings, Part I 3, Springer, 2014, pp. 104–114. [PS42] N. Chong, E. Chu, A. Nadonza, S. M. Rodriguez, S. Tith, J. Shan, J. Grundy, Y. Wang, B. Cheng, T. Hoang, An empathetic approach to human-centric requirements engineering using virtual reality, in: 2023 IEEE 47th Annual Computers, Software, and Applications Conference (COMPSAC), IEEE, 2023, pp. 1717–1724. [PS43] Y. Wang, B. Cheng, T. Hoang, C. Arora, X. Liu, Virtual reality enabled human-centric requirements engineering, in: 2021 36th IEEE/ACM International Conference on Automated Software Engineering Workshops (ASEW), IEEE, 2021, pp. 159–164. [PS44] M. Aoyama, Persona-and-scenario based requirements engineering for software embedded in digital consumer products, in: 13th IEEE International Conference on Requirements Engineering (RE’05), IEEE, 2005, pp. 85–94. [PS45] K. Beckers, S. Pape, A serious game for eliciting social engineering security requirements, in: 2016 IEEE 24th International Requirements Engineering Conference (RE), IEEE, 2016, pp. 16–25. [PS46] D. Karolita, J. Grundy, T. Kanij, H. O. Obie, J. McIntosh, Crafter: A persona generation tool for requirements engineering., in: ENASE, 2024, pp. 674–683. [PS47] M. Li, A cooperative solving model supporting users-oriented requirements analysis, in: 1996 IEEE International Conference on Systems, Man and Cybernetics. Information Intelligence and Systems (Cat. No. 96CH35929), Vol. 2, IEEE, 1996, pp. 1568–1573. [PS48] M. Sherkat, T. Miller, A. Mendoza, Does it fit me better? user segmentation in requirements engineering, in: 2016 23rd Asia-Pacific Software Engineering Conference (APSEC), IEEE, 2016, pp. 65–72. [PS49] J. Yang, C. K. Chang, H. Ming, A situation-centric approach to identifying new user intentions using the mtl method, in: 2017 IEEE 41st Annual Computer Software and Applications Conference (COMPSAC), Vol. 1, IEEE, 2017, pp. 347–356. [PS50] T. E. Jost, P. Grünbacher, C. Stary, Digital process twins for interleaving requirements elicitation and design of cyber-physical systems, in: 2024 IEEE 32nd International Requirements Engineering Conference (RE), IEEE, 2024, pp. 345–353. [PS51] T. Herrmann, M. Hoffmann, K.-U. Loser, K. Moysich, Semistructured models are surprisingly useful for user-centered design., in: COOP, 2000, pp. 159–174. [PS52] I. S. MacLeod, Scenario-based requirements capture for human factors integration, Cognition, Technology & Work 10 (3) (2008) 191–198. [PS53] L. Costa, J. Carneiro, M. Temporao, Designing an app for nursing homes to clinical users, in: Proceedings of the 5th International Conference on Medical and Health Informatics, 2021, pp. 150–157. [PS54] M. Ehn, M. Derneborg, Å. Revenäs, A. Cicchetti, User-centered requirements engineering to manage the fuzzy front-end of open innovation in e-health: A study on support systems for seniors’ physical activity, International Journal of Medical Informatics 154 (2021) 104547. [PS55] M. L. Metersky, A decision-oriented approach to system design and development, IEEE transactions on systems, man, and cybernetics 23 (4) (1993) 1024–1037. [PS56] Y. Gebremichael, J. Saad-Sulonen, A. Knutas, Game on: Using serious tabletop games to enhance user engagement and optimize requirements engineering for smart city urban mobility solutions, in: Proceedings of the 2024 International Conference on Information Technology for Social Good, 2024, pp. 404–407. 
+
+## References 
+
+[57] IEEE, Iso/iec/ieee international standard - systems and software engineering – life cycle processes – requirements engineering, ISO/IEC/IEEE 29148:2018(E) (2018) 1–104 doi:10.1109/IEEESTD.2018.8559686 .
+
+Benzarti et al.: Preprint submitted to Elsevier Page 29 of 32 Two Integration Pathways in Human-Centered Requirements Engineering 
+
+[58] A. Van Lamsweerde, Requirements engineering in the year 00: A research perspective, in: Proceedings of the 22nd international conference on Software engineering, 2000, pp. 5–19. [59] B. Nuseibeh, S. Easterbrook, Requirements engineering: a roadmap, in: Proceedings of the Conference on the Future of Software Engineering, 2000, pp. 35–46. [60] A. Chakraborty, M. K. Baowaly, A. Arefin, A. N. Bahar, The role of requirement engineering in software development life cycle, Journal of emerging trends in computing and information sciences 3 (5) (2012). [61] F. Dalpiaz, P. Giorgini, J. Mylopoulos, Adaptive socio-technical systems: a requirements-based approach, Requirements engineering 18 (2013) 1–24. [62] R. Snijders, A. Ozum, S. Brinkkemper, F. Dalpiaz, Crowd-centric requirements engineering: A method based on crowdsourcing and gamification, Department of Information and Computing Sciences, Utrecht University, Tech. Rep. UU-CS-2015 4 (2015). [63] G. A. Boy, Human-centered design of complex systems: An experience-based approach, Design Science 3 (2017) e8. [64] R. Kasauli, E. Knauss, J. Horkoff, G. Liebel, F. G. de Oliveira Neto, Requirements engineering challenges and practices in large-scale agile system development, Journal of Systems and Software 172 (2021) 110851. [65] W. Hussain, H. Perera, J. Whittle, A. Nurwidyantoro, R. Hoda, R. A. Shams, G. Oliver, Human values in software engineering: Contrasting case studies of practice, IEEE Transactions on Software Engineering 48 (5) (2020) 1818–1833. [66] A. Sutcliffe, P. Sawyer, N. Bencomo, The implications of ‘soft’requirements, in: 2022 IEEE 30th International Requirements Engineering Conference (RE), IEEE, 2022, pp. 178–188. [67] D. Karolita, J. McIntosh, T. Kanij, J. Grundy, H. O. Obie, Use of personas in requirements engineering: A systematic mapping study, Information and Software Technology 162 (2023) 107264. [68] C. Leonardi, L. Sabatucci, A. Susi, M. Zancanaro, Design as intercultural dialogue: coupling human-centered design with requirement engineering methods, in: Human-Computer Interaction–INTERACT 2011: 13th IFIP TC 13 International Conference, Lisbon, Portugal, September 5-9, 2011, Proceedings, Part III 13, Springer, 2011, pp. 485–502. [69] D. Sangiorgi, F. Lima, L. Patrício, M. P. Joly, C. Favini, A human-centred, multidisciplinary, and transformative approach to service science: a service design perspective, Handbook of Service Science, Volume II (2019) 147–181. [70] D. Hidellaarachchi, J. Grundy, R. Hoda, K. Madampe, The effects of human aspects on the requirements engineering process: A systematic literature review, IEEE Transactions on Software Engineering 48 (6) (2021) 2105–2127. doi:10.1109/TSE.2021.3055521 .[71] U. Abelein, B. Paech, Understanding the influence of user participation and involvement on system success–a systematic mapping study, Empirical Software Engineering 20 (1) (2015) 28–81. [72] Y. Wang, C. Arora, X. Liu, T. Hoang, V. Malhotra, B. Cheng, J. Grundy, Who uses personas in requirements engineering: The practitioners’ perspective, arXiv preprint arXiv:2403.15917 (2024). [73] J. C. Grundy, Impact of end user human aspects on software engineering., in: ENASE, 2021, pp. 9–20. [74] K. Petersen, S. Vakkalanka, L. Kuzniarz, Guidelines for conducting systematic mapping studies in software engineering: An update, Information and software technology 64 (2015) 1–18. [75] B. Kitchenham, Procedures for performing systematic reviews, Keele, UK, Keele University 33 (2004) (2004) 1–26. [76] C. Wohlin, P. Runeson, M. Höst, M. C. Ohlsson, B. Regnell, A. Wesslén, et al., Experimentation in software engineering, Vol. 236, Springer, 2012. [77] S. Keele, et al., Guidelines for performing systematic literature reviews in software engineering, Tech. rep., Technical report, ver. 2.3 ebse technical report. ebse (2007). [78] I. Darif, G. E. Boussaidi, S. Kpodjedo, C. Politowski, Controlled natural language for requirements specification: A systematic literature review, ACM Computing Surveys 58 (7) (2026) 1–36. doi:10.1145/3778169 .[79] C. Wohlin, Guidelines for snowballing in systematic literature studies and a replication in software engineering, in: Proceedings of the 18th International Conference on Evaluation and Assessment in Software Engineering, 2014, pp. 1–10. doi:10.1145/2601248.2601268 .[80] I. Benzarti, A. Leshob, I. Darif, H. Mili, D. Amayed, Two integration pathways in human-centered requirements engineering: A system-atic mapping study of structural gaps, available at: https://doi.org/10.5281/zenodo.20029273 (2026). doi:10.5281/zenodo. 20029273 .[81] M.-A. Storey, N. A. Ernst, C. Williams, E. Kalliamvakou, The who, what, how of software engineering research: a socio-technical framework, Empirical Software Engineering 25 (2020) 4097–4129. [82] R. P. Buse, C. Sadowski, W. Weimer, Benefits and barriers of user evaluation in software engineering research, in: Proceedings of the 2011 ACM international conference on Object oriented programming systems languages and applications, 2011, pp. 643–656. [83] X. Zhou, Y. Jin, H. Zhang, S. Li, X. Huang, A map of threats to validity of systematic literature reviews in software engineering, in: 2016 23rd Asia-Pacific Software Engineering Conference (APSEC), 2016, pp. 153–160. doi:10.1109/APSEC.2016.031 .
+
+## A. Data extraction form fields 
+
+The following table summarizes the eight thematic categories of the data extraction form used to collect information from all 56 primary studies. The form comprised 27 sections and 52 questions in total; the complete list of individual questions is available in the replication package [80]. 
+
+Benzarti et al.: Preprint submitted to Elsevier Page 30 of 32 Two Integration Pathways in Human-Centered Requirements Engineering 
+
+Table 15 
+
+Data extraction form: thematic categories and question counts 
+
+Category Questions Key items covered 
+
+General study information 7 Paper ID, year, title, authors, affiliation, source type, venue name Research focus and framing 5 Paper goal, research questions, applica-tion domain, approach type, genericity User and expert involvement 4 User involvement (Y/N), involvement techniques, expert involvement, type RE phases and lifecycle scope 2 Targeted RE phase(s), RE-specific vs. full software lifecycle Contributing disciplines and their impact 7 Disciplines involved (Y/N), impact on RE, techniques introduced, artifact types, transformation mechanism RE framework integration 4 Framework extension (Y/N), model ex-tended, framework type (goal-based /scenario-based) RE-internal methodologies and tech-niques 6 Technique or methodology used, impact on RE, information type added, transfor-mation mechanism, framework extension Evaluation and outcomes 17 Evaluated (Y/N), evaluation method, human-centered impact assessed, impact direction, study outcomes, framework produced, citation count, search source (screening / snowballing) 
+
+Technique PS What kind of information do these disciplines add (model/tools/process)? How do these disciplines transform RE into a human-centered process? 
+
+Situated Cognitive Engineering [39] Iterative method for software design and development. Captures context in societal participation learning and translates it into system specifications. Mental model [37] Represents user intentions, beliefs, and desires. Enhances understanding of human behavior in sociotechnical systems. Cognitive models [38] Represents human capabilities and task performance. Analyzes how healthcare professionals perform complex tasks. 
+
+Table 16 
+
+Impact of cognitive science on the human-centered RE process 
+
+## B. Detailed impact of the various disciplines 
+
+The following tables provide a detailed breakdown of how each contributing discipline transforms the RE process into a human-centered one, specifying for each primary study the technique introduced, the type of information added, and the mechanism through which the RE process is made more human-centered. These tables support the analytical synthesis presented in RQ3 (Section 4) and are referenced throughout that section. 
+
+## C. Classification of All 56 Primary Studies by Integration Pathway 
+
+The following table presents the complete two-pathway classification of all 56 primary studies derived from the cross-RQ synthesis in Section 4.7. Studies are grouped by pathway — Cognitive-Formal (C-F), Participatory-Iterative (P-I), and Bridge — and sorted within each group by primary discipline and then by framework type, both alphabetically. The two unclassified studies (PS5, PS16) are excluded from the table due to insufficient methodological 
+
+Benzarti et al.: Preprint submitted to Elsevier Page 31 of 32 Two Integration Pathways in Human-Centered Requirements Engineering 
+
+Technique PS What is the kind of information these disciplines add (model/tools/process)? How these disciplines transform RE to human centric process? 
+
+Design thinking process [21] Design thinking process to produce Epics Integrated into Scrum to produce epics. If a "Change Request" or "Problem request" occurs during a sprint, the team decides whether to start a new sprint or return to design thinking. Design thinking process [1] Design thinking process to elicit needs as mock-ups. Manages problem complexity through an iterative approach. Elicitation techniques (e.g., interviews, prototyping) are sequenced to build a shared understanding and product vision. Design thinking process [22] Unified process of Scrum and design thinking Enhances Scrum with human-centered tasks. Double diamond process [33] Double Diamond process for RE: 1) gather, 2) synthesize, 3) develop, and 4) deliver. Uses empathy, collaboration, and experimentation to align solutions with user needs and drive innovation. Comics [34] Comics visualize user interactions with the software. Engages users in shaping the software vision, ensuring their needs and preferences are reflected in the final product. 
+
+Table 17 
+
+Impact of design thinking on the human-centered RE process 
+
+Technique PS What kind of information do these disciplines add (model/tools/process)? How do these disciplines transform RE into a human-centric process? 
+
+SPID process [40] Sociocultural context of users and explores problems and possible solutions. Involves users in requirements elicitation. Persona [23] Archetype of a user with detailed needs, goals, and tasks. Fosters empathy and user understanding for designers. Persona [24] Model of user classes with insights on product usage and attitudes. Extracts requirements using the Hanako method. 
+
+Table 18 
+
+Impact of interaction design on the human-centered RE process 
+
+detail in the extracted data; their exclusion and its implications for the 24/24 symmetry claim are discussed in Section 4.7. 
+
+## CRediT authorship contribution statement 
+
+Imen Benzarti: Conceptualization, Methodology, Investigation, Data curation, Writing – Original draft. Ikram Darif: Methodology, Investigation, Validation, Writing – Review & editing. Abderrahmane Leshob: Validation, Writing – Review & editing. Hafedh Mili: Supervision, Writing – Review & editing. Darine Amayed: Writing – Review & editing. 
+
+## Declaration of Generative AI and AI-assisted technologies in the writing process 
+
+During the preparation of this work, the authors used AI-assisted tools for language editing and formatting purposes. The authors reviewed and edited all content as needed and take full responsibility for the content of the publication. 
+
+## Declaration of competing interest 
+
+The authors declare that they have no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper. 
+
+Benzarti et al.: Preprint submitted to Elsevier Page 32 of 32 Two Integration Pathways in Human-Centered Requirements Engineering 
+
+Technique PS What kind of information do these disciplines add (model/tools/process)? How do these disciplines transform RE into a human-centric process? 
+
+Persona [7] Personas defined by attributes, goals, and contextual details. Gives users a face, making them more tangible for design decisions. Persona [25] Persona descriptions include user empathy and motivations. Using personas with scenarios enhances system visualization and identifies requirement issues. Design guidelines [26] Guidelines for designing questionnaires UCD methodology prioritizes user goals. User stories [4] User feedback on prototype interactions. Build prototypes based on user input and refine user stories. TA model [5] Identifies sub-functionalities within a task sequence. Involves users in understanding system usability factors. Persona [28] Persona’s emotional scenario Uses scenarios to explore persona reactions in different contexts. User objectives [20] Defines functional and non-functional user needs. Integrates agile and UCD flexibly into projects. 
+
+Table 19 
+
+Impact of UCD on the human-centered RE process 
+
+Technique PS What is the kind of information these disciplines add (model/tools/process)? How these disciplines transform RE into a human-centric process? 
+
+Psychological models [18] Emotional aspects of requirements modeling Ensures user experience by considering emotions throughout development. Acceptance meta-model [29] Defines conditions for user system acceptance. Enhances engagement by addressing psychological factors affecting acceptance. Norman’s model [8] Emotion profiles of users Recognizes variations in emotional needs among stakeholders. Theory of constructed emotion [15] Explains how emotions shape goals in social settings. Supports design of emotive techniques for stakeholder engagement. Psychological models [30] Personal values in user needs Enhances persona and goal models for deeper user understanding. Taxonomy for AR systems [31] Four dimensions: social, technical, teamwork, and benefits. Addresses new requirement types for user-optimized AR systems. Motivation theories [32] Recognizes users as individuals with distinct needs. Aligns RE with user motivation to encourage participation. 
+
+Table 20 
+
+Impact of psychology on the human-centered RE process 
+
+## Data availability 
+
+The replication package including the search results, screening decisions, and data extraction forms is available at: 
+
+https://doi.org/10.5281/zenodo.20029273 [80]. 
+
+Benzarti et al.: Preprint submitted to Elsevier Page 33 of 32 Two Integration Pathways in Human-Centered Requirements Engineering 
+
+Technique PS What is the kind of information these disciplines add (model/tools/process)? How these disciplines transform RE into a human-centric process? 
+
+Persona [19] User needs and stakeholder values Personas foster empathy for users and prevent self-referential design. HCI design patterns [35], [6] Resolve design issues in early prototypes and storyboards. Enable intuitive interfaces aligned with domain models and user expectations. Persona [36] Activities to identify personas for integration into SE. Personas model real user characteristics to guide traditional RE activities. 
+
+Table 21 
+
+Impact of HCI on the human-centered RE process 
+
+Technique PS What is the kind of information these disciplines add (model/tools/process)? How these disciplines transform RE to human centric process ? 
+
+SHIRA [41] Abstract product qualities such as ’controllable’, ’simple’, ’impressive’ or ’innovative’ for a specific software product in a specific context of use. Focus on UX methods to get a deep insight not only on pragmatic features but also emotional demands (i.e. hedonic qualities). UXD patterns [18] UXD provides methodologies and patterns to validate the prototypes with users UXD provides methodologies and patterns to validate the prototypes with users 
+
+Table 22 
+
+Impact of UX on the human-centered RE process 
+
+Technique PS What is the kind of information these disciplines add (model/tools/process)? How these disciplines transform RE to human centric process ? 
+
+VR environment [42] A simulation of the environment with ADHD symptoms VR can assist software engineers in better understanding different viewpoints, challenges and behaviours of diverse end users and stakeholders through an empathetic approach. VR environment [43] Simulation of persona VR can easily simulate different environments and provide users with convenient interaction with the software prototype and immersive experience so as to reveal human-centric requirements. 
+
+Table 23 
+
+Impact of Virtual reality on the human-centered RE process 
+
+Discipline Technique PS What is the kind of information these disciplines add (model/tools /process)? How these disciplines transform RE into a human-centric process? 
+
+Marketing engineering Conjoint Analysis [44] Identifies user preferences for product attributes (e.g., function, design, price). Segments users (personas) with similar preferences. Social engineering Scenarios [45] Models user behaviors and game attack scenarios. Creates security training games that simulate real-world social engineering attacks and behavior patterns. Large Language Model Persona [46] Generates detailed persona descriptions. Creates context-aware personas by integrating human factors and user-specific needs. 
+
+Table 24 
+
+Impact of Marketing engineering, social engineering and large language models on the human-centered RE process Benzarti et al.: Preprint submitted to Elsevier Page 34 of 32 Two Integration Pathways in Human-Centered Requirements Engineering 
+
+Table 25 
+
+Classification of all 56 primary studies by integration pathway, sorted by pathway and evaluation status. C-F = Cognitive-Formal; P-I = Participatory-Iterative; Br = Bridge; U = Unclassified. 
+
+PS Path Primary Discipline(s) Framework Type Evaluated Cognitive-Formal pathway 
+
+[38] C-F Cognitive Science None (new 3-phase process) Yes [39] C-F Cognitive Science None (situated cog. eng.) No [37] C-F Cognitive Science None (visual notation) No [44] C-F Marketing Engineering None (conjoint analysis) Yes [8] C-F Psychology Goal (GRL) No [15] C-F Psychology Goal (POSE) Yes [29] C-F Psychology Goal (Tropos) No [31] C-F Psychology None (taxonomy) No [3] C-F RE-internal (cultural analysis) None Yes [55] C-F RE-internal (decision modeling) None No [11] C-F RE-internal (emotional goals) Goal (agent-oriented) Yes [13] C-F RE-internal (emotional goals) Goal (motivational) No [12] C-F RE-internal (emotional goals → formal) Goal (agent-oriented) Yes [14] C-F RE-internal (emotional requirements) Goal (POSE) No [50] C-F RE-internal (human concern annota-tions) None No [9] C-F RE-internal (information flows) Goal (i*) Yes [47] C-F RE-internal (linguistic specification) None No [16] C-F RE-internal (people-oriented SE) Goal (Tropos) No [51] C-F RE-internal (semi-formal notation) None (SeeMe) Yes [2] C-F RE-internal (social/organizational) None (HSO process) Yes [49] C-F RE-internal (usage history mining) None Yes [48] C-F RE-internal (user segmentation) None Yes [10] C-F RE-internal (workload/cognitive load) Goal (i*) Yes [45] C-F Social Engineering None (game scenarios) Yes [30] C-F Psychology (personal values) None No 
+
+Participatory-Iterative pathway 
+
+[53] P-I Design Thinking None (full SE lifecycle) No [21] P-I Design Thinking Scenario (Scrum) No [1] P-I Design Thinking Scenario (Scrum) Yes [22] P-I Design Thinking Scenario (Scrum) Yes [34] P-I Design Thinking (comics) None No [33] P-I Design Thinking (double diamond) None No [36] P-I HCI None (persona into RE) No [19] P-I HCI None (persona metamodel) No [35] P-I HCI None (scenario-based design) Yes [6] P-I HCI + UCD None (scenario-based) Yes [40] P-I Interaction Design None (SPID framework) Yes [23] P-I Interaction Design Scenario (use cases) No [24] P-I Interaction Design Scenario (use cases) Yes [46] P-I Large Language Models None Yes [56] P-I RE-internal (co-design canvas) None No [26] P-I UCD None (design guidelines) No [27] P-I UCD None (gaming, co-creation) No [5] P-I UCD None (new process) No [28] P-I UCD None (persona + scenarios) No [4] P-I UCD Scenario (user stories) No [20] P-I UCD Scenario (Agile) No [41] P-I UX None (SHIRA) No [42] P-I Virtual Reality None No [43] P-I Virtual Reality None (VR persona simulation) No 
+
+Bridge studies 
+
+[32] Br Psychology + gamification process None Yes [18] Br Psychology + UX Scenario (Agile) No [7] Br UCD + goal-based framework Goal (contextual) Yes [25] Br UCD + goal-based framework Goal (Tropos) No [17] Br UCD + goal-based framework Goal (Tropos) No 
+
+Unclassified 
+
+[52] U None identified None No [54] U None identified None No 
+
+Benzarti et al.: Preprint submitted to Elsevier Page 35 of 32

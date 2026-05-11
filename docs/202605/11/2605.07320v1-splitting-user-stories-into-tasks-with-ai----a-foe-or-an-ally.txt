@@ -1,0 +1,174 @@
+Title: Splitting User Stories Into Tasks with AI – A Foe or an Ally?
+
+URL Source: https://arxiv.org/pdf/2605.07320v1
+
+Published Time: Mon, 11 May 2026 00:45:34 GMT
+
+Number of Pages: 12
+
+Markdown Content:
+# Splitting User Stories Into Tasks with AI - A Foe or an Ally? 
+
+Luka Pavlič 1[0000 −0001 −5477 −4747] , Reinhard Bernsteiner 2[0000 −0002 −8142 −3544] ,Stephan Schlögl 2[0000 −0001 −7469 −4381] , and Christian Ploder 2[0000 −0002 −7064 −8465]  
+
+> 1
+
+University of Maribor, Faculty of Electrical Engineering and Computer Science Koroška cesta 46, 2000 Maribor, Slovenia  
+
+> 2
+
+Department of Management, Communication & IT, MCI Management Center Innsbruck, 6020 Innsbruck, Austria 
+
+Luka.Pavlic@um.si, {ReinhardChristian.Bernsteiner, Stephan.Schloegl, Christian.Ploder}@mci.edu 
+
+Abstract. In agile software development, breaking down user stories into actionable tasks is a critical yet time-consuming process. This paper investigates the potential of Generative AI tools to assist in task splitting, aiming to enhance planning efficiency. We conducted a controlled ex-periment comparing traditional task-splitting methods with AI-assisted approaches using GitLab Duo. Our findings indicate that while current AI tools are not yet mature enough to replace developers, they can aid in generating more granular task lists and ensuring no important tasks are overlooked. Participants favored a hybrid approach, combining AI tools with conventional methods to maintain high accuracy in planning. This study highlights the potential benefits and limitations of integrat-ing Generative AI into agile development processes, suggesting that AI tools can serve as valuable aids in task splitting, provided there is human oversight to filter out irrelevant tasks. 
+
+Keywords: Generative AI · agile development · iteration planning · task splitting 
+
+# 1 Introduction 
+
+In software engineering, defining a well-structured set of actionable items - such as activities, tasks, and software components - is crucial for delivering a complete product. In agile development, requirements are typically formulated as user stories, which are then broken down into tasks before implementation. This process usually takes place during planning activities. For instance, in Scrum, the development team creates a sprint backlog during sprint planning, where user stories are split into tasks for the upcoming sprint [2]. The industry standard for time allocated to planning is generally around 5% of the total project time [13]. In Scrum [15], the leading agile development framework [4], planning is conducted in a dedicated session that spans the first half day of every sprint.  
+
+> arXiv:2605.07320v1 [cs.HC] 8 May 2026 2L. Pavlič et al.
+
+Given that sprints typically last two weeks (10 working days), this means teams often approach or even exceed the recommended time for planning. Due to the time-intensive nature of sprint planning, various approaches have emerged to introduce automation into this process. Recent advancements in AI - particularly in Generative AI, which is transforming the software development landscape - suggest that novel tools could enhance planning efficiency. To explore the feasibility of AI-driven planning, we conducted a controlled experiment. In this study, development teams were given full access to an existing information system and tasked with upgrading it based on well-documented requirements. Before implementation, they planned their activities by breaking down user stories into tasks. The experimental group used a Generative AI-based tool (GitLab Duo) to assist in task splitting, while the control group relied on conventional methods, such as experience-based or analogy-based planning. Empirical data were collected through pre- and post-test questionnaires, as well as observations during the planning and development phases. One aspect of our research focused on evaluating the potential of Generative AI tools for effort estimation. Our findings [12] indicate that current Generative AI-based tools integrated into software development platforms are not yet ma-ture enough to replace human estimators. The average accuracy of automated effort estimation was only 16%, making it unsuitable for industrial applications [12]. However, preliminary results suggest that Generative AI tools could still be beneficial for assisting in task breakdown. Even in their current form, these tools can aid in generating tasks and ensuring that no important tasks are overlooked during traditional planning. Participants in our study expressed a clear prefer-ence for a hybrid approach, combining conventional methods with Generative AI tools to maintain high accuracy in planning. Building on these insights, we conducted a controlled experiment to evaluate a selected Generative AI- and LLM-based assistant in an iteration-long develop-ment cycle. Development teams were asked to split requirements into tasks and implement them. We analyzed empirical data gathered during the experiment to compare traditional task-splitting methods with AI-supported task generation. To achieve our research objective, we address the following research question: 
+
+– RQ: To what extent can Generative AI-supported tools assist development teams in breaking down user stories into tasks? To answer this question, we examine the similarities and differences between AI-generated and human-created task sets. Additionally, we assess whether AI-generated tasks were appropriate and useful during implementation. The method-ology used to investigate this research question is outlined in the “Research Method” section, following the “Related Work” section. After presenting the re-sults of our controlled experiment, we will discuss our findings, outline potential threats to validity, and conclude the paper. Splitting User Stories Into Tasks with AI - A Foe or an Ally? 3
+
+# 2 Related Work 
+
+Task splitting is a fundamental process in software development, ensuring effi-cient workflow and clear responsibility allocation. Traditional methods for task decomposition have been widely explored and applied in industry. Several estab-lished approaches exist for decomposing complex projects into manageable tasks [13, 7, 3, 6, 5]: 
+
+– Functional Decomposition is a technique that involves breaking down a system into smaller, manageable functions or modules, where each function represents a specific task or responsibility, facilitating easier development and maintenance. 
+
+– Top-Down and Bottom-Up Design: In top-down design, a system is de-composed from the highest level into smaller components, prioritizing the overall architecture before detailing specific parts. In contrast, bottom-up design begins with detailed components and integrates them to form a com-plete system. A hybrid approach is often used to leverage the advantages of both methods. 
+
+– Workflow Steps method involves analyzing the workflow associated with a user story and splitting it based on distinct steps or stages. By identi-fying each step required to achieve a goal, development teams can create tasks that correspond to these individual steps, ensuring a comprehensive implementation of the user story. 
+
+– SPIDR Technique , proposed by Mike Cohn, SPIDR stands for Spike, Path, Interface, Data, and Rules. This technique enables the systematic splitting of large user stories by investigating uncertainties (Spike), considering differ-ent execution paths (Path), focusing on interfaces (Interface), varying data inputs (Data), and applying business rules (Rules). 
+
+– Often employed INVEST Criteria stands for Independent, Negotiable, Valuable, Estimable, Small, and Testable. This guideline ensures that user stories are well-formed and can be effectively split into tasks. By adhering to these criteria, teams can create tasks that are manageable and deliver distinct value. Recent research has explored the application of AI-based approaches, par-ticularly machine learning techniques, in task decomposition. The study “User Story Splitting in Agile Software Development using Machine Learning” lever-ages machine learning techniques to automate user story splitting, enhancing the efficiency and accuracy of task decomposition. The thesis “Splitting User Stories Using Supervised Machine Learning” [10] introduces a novel approach for automatically splitting user stories into tasks using supervised machine learning algorithms, including random forest and de-cision trees. The goal is to improve development efficiency by reducing manual effort in task decomposition. The study “Machine Learning-Based Approach for User Story Clustering in Agile Engineering” [9] applies K-means and K-medoids clustering algorithms to 4 L. Pavlič et al. 
+
+organize user stories into cohesive clusters, facilitating better understanding and implementation at early development stages. In addition, several studies and tools have recently addressed the use of gen-erative AI for task decomposition. E.g. the research “Automated User Story Generation with Test Case Specification Using Large Language Models” [14] introduces "GeneUS," a tool leveraging GPT-4 to generate user stories from requirements documents, facilitating integration with project management sys-tems and streamlining requirements engineering. Authors [17] of “LLM-Based Agents for Automating the Enhancement of User Story Quality” explores the use of large language models to improve user story quality within agile teams. The researchers developed an autonomous LLM-based agent system to assess its effectiveness in enhancing user story quality. “MASAI: Modular Architecture for Software-Engineering AI Agents” [1] pro-poses a modular architecture for AI agents in software engineering, where dif-ferent LLM-powered sub-agents are instantiated with specific objectives. This approach enhances task decomposition and coordination among agents, improv-ing software development processes. The potential of generative AI in iteration planning has been highlighted in recent Gartner Research Reports [11]. By 2027, it is projected that the num-ber of platform engineering teams using AI to augment every phase of the soft-ware development lifecycle will increase from 5% to 40%. Additionally, Gartner’s 2024 report identified state-of-the-art automation tools for planning iterations, including Atlassian Intelligence, ClickUp, GitLab Duo, and OpenText. Based on Gartner’s recommendations and our preliminary tool selection and testing, we decided to use GitLab Duo, which is integrated into GitLab Enterprise. As one of the leading tools, it provides a strong foundation for generalizing our re-search findings. Our study is unique in that we apply generative AI explicitly for user story splitting, aligning with expert-based estimation techniques, such as planning poker. This distinction enables direct validation of our research and highlights its potential impact on industry practices. 
+
+# 3 Research Method 
+
+To investigate the research question, we designed a controlled experiment itera-tively, refining it based on a pilot study conducted in a small setting. The exper-iment follows a well-established scoping process used in empirical software engi-neering research [16]. Our goal was to evaluate the performance of two competing approaches to task splitting in software development: a conventional method and an AI-assisted approach integrated within a software development platform. The controlled experiment was structured as a one-factor experiment [8], where the independent variable was the method of task splitting. Participants were divided into two groups: 
+
+– Control Group : Used conventional task splitting techniques. 
+
+– Experimental Group : Utilized GitLab Duo, an AI-powered tool, to auto-matically generate tasks based on user story descriptions. Splitting User Stories Into Tasks with AI - A Foe or an Ally? 5
+
+We recruited higher-year computer science students, most of whom had in-dustry experience as software developers. A detailed breakdown of participant demographics is provided in Section Results. The experiment consisted of three sessions, simulating a sprint-long development: 
+
+– Session 1 : Requirement presentation, pre-test, and participant distribution. 
+
+– Session 2 : Requirement implementation. 
+
+– Session 3 : Acceptance of software increments and post-test questionnaire. 
+
+3.1 Session 1: Setup and Pre-Test 
+
+The participants were introduced to an existing information system built using Jakarta EE, with a relational database backend and a Jakarta Server Faces-based web interface. The system was designed for monitoring product storage temperatures and alerting deviations (see Figures 1 and 2). To ensure that tech-nological unfamiliarity did not bias results, all participants underwent a pre-test questionnaire assessing their experience with the technology stack.  
+
+> Fig. 1. Sample user interface of the system that participants were required to upgrade - list of all products.
+
+Participants were then randomly assigned to either the control or experi-mental group, with teams of three simulating agile development settings. Each team received eight user stories, designed to exceed a single iteration’s workload, requiring them to prioritize tasks. The user stories included functionalities such as: 
+
+– Email notifications for out-of-tolerance measurements. 
+
+– Monthly reporting of measurement deviations. 
+
+– Color-coded measurement history. 
+
+– Support for metric and imperial units. 
+
+– Graphical representation of product temperature trends. 
+
+– Importing data from offline sensors. 
+
+– Temperature trend visualization per product. 
+
+– Multi-language support (DE/EN/SI). 6 L. Pavlič et al. 
+
+Fig. 2. Sample user interface of the system that participants were required to upgrade - temperature history data. Splitting User Stories Into Tasks with AI - A Foe or an Ally? 7
+
+The control group created task sets using their chosen conventional tech-niques, while the experimental group used GitLab Duo. Participants in the ex-perimental group interacted with the AI assistant by providing prompts to gen-erate task breakdowns. They could refine their prompts but were not allowed to override the AI-generated results. 
+
+3.2 Session 2: Task Implementation 
+
+During this session, teams implemented selected user stories based on their gen-erated tasks. GitLab was used to manage tasks, tracking progress via issue move-ment on a kanban board. 
+
+3.3 Session 3: Increment Acceptance and Post-Test Questionnaire 
+
+After implementation, user stories were reviewed and tested for correctness. Only successfully implemented user stories were considered for analysis. Par-ticipants then completed a post-test questionnaire assessing their perceptions of AI-assisted task splitting. 
+
+# 4 Results and Discussion 
+
+4.1 Participant Demographics and Experiment Execution 
+
+The controlled experiment was conducted in April 2024, involving 42 developers who met the eligibility criteria based on their prior academic performance. All participants had experience with the technologies used in the information system they were tasked with upgrading, including JSF (Jakarta Server Faces), EJB (Jakarta Enterprise Beans), and JPA (Java Persistence API). Their experience levels were as follows: 
+
+– the majority ( 91% ) had between 1–3 years of development experience, 
+
+– 3% reported up to 5 years and 
+
+– 6% had less than 1 year of experience. Participant involvement was voluntary, ensuring motivation and engagement. A significant proportion ( 82% ) of participants had prior experience with AI tools such as ChatGPT, GitHub Copilot, Claude, and Superhuman .Notably, 85% expressed a willingness to use AI tools for breaking down user stories into tasks, while 3% opposed the idea, and 12% remained undecided. Participants were randomly assigned to either the experimental or control group. Each group was further divided into teams of three, forming 7 teams per group. However, one team from the experimental group withdrew, resulting in 39 participants being included in the final analysis (6 teams in the experimental group and 7 in the control group). 8 L. Pavlič et al. 
+
+4.2 Task Generation Differences 
+
+The experiment aimed to evaluate the differences between human-generated and AI-assisted task generation. The control group had complete autonomy in task creation and estimation, while the experimental group was required to use Git-Lab Duo. In addition to task breakdown, the experimental group also reported the prompts used for AI-based task generation. The analysis of task generation revealed notable differences between the two groups (see Table 1): 
+
+– The experimental group created a total of 260 tasks, averaging 5.4 tasks per user story, whereas the control group created only 184 tasks, averaging 3.2 tasks per user story. 
+
+– Human-generated tasks were more focused and directly relevant to fulfilling the user stories, while AI-generated tasks included additional tasks such as unit testing, documentation updates, and code refactoring. 
+
+– Some AI-generated tasks appeared unrelated to specific user stories, such as "Create a new page template and routing."            
+
+> Table 1. The number of generated tasks.
+> Experimental Group Control Group
+> Development teams 67User stories per development team 88Split user stories 48 56 Generated development tasks 260 184 Tasks per development team 43.33 26.29
+
+To demonstrate the differences between task sets generated manually, and those generated by the AI-enabled tool, we are outlining three user stories that were implemented by the most teams. In Tables 2, 3 and 4, we can see typi-cal tasks for each user story. The obvious observation is that manual generated tasks are smaller in volume. However, after analyzing actual implemented tasks, needed to fulfill the user story, it turned out, that development teams imple-mented on average only 59% of generated tasks , while teams, that created tasks manually, implemented all of them. Additional insight shows a clear dif-ference in tasks content - auto-generated task sets include tasks, that one would miss in manual-created lists (e.g. tasks, related to testing and updating docu-mentation). These findings suggest that AI tools can generate a more granular task list, which could be useful in highlighting overlooked steps. However, the AI-generated tasks also introduced potentially irrelevant activities, reinforcing the need for human oversight. Splitting User Stories Into Tasks with AI - A Foe or an Ally? 9
+
+Table 2. Email notifications for out-of-tolerance measurements. 
+
+Control Group Experimental Group 
+
+Create a new email account Add email dependency and configure MailSender Prepare the GUI Add error handling Configure email on the server Update measurement logic to check tolerances Implement the backend for sending Create email notification service Write tests Documentation Query database to get product details and tem-perature measurements Add interface for configuring email recipient Generate email with product details and measure-ment when out of range Configure service on startup 
+
+Table 3. Monthly reporting of measurement deviations. 
+
+Control Group Experimental Group 
+
+Display on the frontend Create new page template and route Develop the backend (methods, queries) Add new "Monthly Report" menu option Filter by drop-down list Add interface for configuring report parameters Display the number of non-compliant measure-ments for individual products Aggregate data and populate model Update data aggregation job Query database for measurements from last 30 days Implement service to query measurements and generate report Group report data by product Display data on new page Unit tests for report generation logic Integration tests for end-to-end report generation Call monthly report service on menu option selec-tion 
+
+Table 4. Color-coded measurement history. 
+
+Control Group Experimental Group 
+
+Cell coloring regarding measurement value Write CSS rules to color adequate measurement rows green and inadequate rows red Implement conditional color logic Write unit tests for the updated MeasurementHis-tory component Update documentation explaining the color thresholds and styling 10 L. Pavlič et al. 
+
+4.3 Final Remarks 
+
+In addition to assessing task generation differences, the study investigated partic-ipants’ perspectives on AI-assisted task breakdown. The post-test questionnaire revealed key insights: 
+
+– When asked about their preferred approach for future projects, all partic-ipants (100%) favored a combination of AI tools and conventional methods . None preferred exclusively AI-supported or conventional meth-ods. 
+
+– Regarding AI tools’ accuracy, only 10% believed AI tools provided more relevant tasks than conventional methods, while 55% disagreed, and 35% were uncertain. The empirical data supports the conclusion that AI tools can assist in task generation but should not be relied upon exclusively. The control group’s task lists were more contextually relevant, while the AI-generated lists included a broader scope of activities, some of which were not explicitly required. The experiment demonstrates that AI tools can enhance task generation by increasing granularity and identifying overlooked tasks. 
+
+# 5 Threats of Validity 
+
+Our experiment reflects the current state of generative AI, but rapid advance-ments may soon render our findings outdated. We used a leading AI tool in its general form, though fine-tuning for a specific domain or incorporating feed-back loops could improve accuracy. The experimental group’s estimates lacked developer-specific pre-knowledge, unlike the control group, affecting compara-bility. While participants were well-trained software engineering students, their lack of full-time industry experience may limit generalizability. The controlled setting ensured consistency but involved smaller-scale tasks and a shorter devel-opment phase than typical projects. Lastly, restricting the study to GitLab Duo, while justified by its industry standing, may limit the applicability of results to other AI-powered tools. 
+
+# 6 Conclusions 
+
+Task splitting is one of critical activities in agile software development. While traditionally time-consuming, recent advances in AI, especially generative AI, promise to streamline this process. To test these advancements, we conducted a controlled experiment to evaluate AI tools in task splitting during development. Our research found that current AI-based task splitting helper tools, like GitLab Duo, are not yet reliable replacements for human developers. However, they show potential as helpful aids in the task splitting process, offering valuable assistance in identifying overlooked tasks or verifying that all necessary tasks are included during iteration planning. Splitting User Stories Into Tasks with AI - A Foe or an Ally? 11 
+
+Our analysis revealed two key areas affected by AI-supported task splitting: identifying missing tasks that human assessors often forget, additional context-ignorant tasks generated automatically. In conclusion, generative AI tools can serve as valuable aids in the task splitting phase, helping ensure more compre-hensive and accurate task generation. 
+
+Acknowledgments. The authors acknowledge the financial support from the Slove-nian Research Agency (Research Core Funding No. P2-0057). 
+
+# References 
+
+1. Arora, D., Sonwane, A., Wadhwa, N., Mehrotra, A., Utpala, S., Bairi, R., Kanade, A., Natarajan, N.: Masai: Modular architecture for software-engineering ai agents. ArXiv abs/2406.11638 (2024), https://api.semanticscholar.org/CorpusID:270558999 2. Cohn, M.: Agile Estimating and Planning. Addison-Wesley Professional (2005) 3. Correa, C.G., Ho, M.K., Callaway, F., Daw, N.D., Griffiths, T.L.: Humans decom-pose tasks by trading off utility and computational cost. PLOS Computational Biology 19 (6), 1–31 (06 2023). https://doi.org/10.1371/journal.pcbi.1011087, https://doi.org/10.1371/journal.pcbi.1011087 4. Digital.AI: 15th State of Agile Report. https://digital.ai/resource-center/analyst-reports/state-of-agile-report, accessed: 2025_02_27 5. Future Architecture: The art of splitting long tasks in construction. https://futurearchi.blog/en/construction-tasks, accessed: 2025_01_27 6. Itemis: SPIDR – five simple techniques for a perfectly split user story. https://blogs.itemis.com/en/spidr-five-simple-techniques-for-a-perfectly-split-user-story, accessed: 2025_01_27 7. Khanfor, A.: Tasks decomposition approaches in crowdsourcing software develop-ment (02 2023). https://doi.org/10.48550/arXiv.2302.05099 8. Ko, A.J., LaToza, T.D., Burnett, M.M.: A practical guide to controlled exper-iments of software engineering tools with human participants. Empirical Softw. Engg. 20 (1), 110–141 (Feb 2015). https://doi.org/10.1007/s10664-013-9279-3, https://doi.org/10.1007/s10664-013-9279-3 9. Kumar, B., Tiwari, U., Dobhal, D.: Machine learning based approach for user story clustering in agile engineering. SN Computer Science 4 (09 2023). https://doi.org/10.1007/s42979-023-02212-2 10. Kumar, B., Tiwari, U., Dobhal, D.C.: User story splitting in agile software devel-opment using machine learning approach. In: 2022 Seventh International Confer-ence on Parallel, Distributed and Grid Computing (PDGC). pp. 167–171 (2022). https://doi.org/10.1109/PDGC56933.2022.10053226 11. Manjunath Bhat, Cameron Haight, B.B.: How Platform Engineering Teams Can Augment DevOps With AI. Gartner Reseaerch (2024) 12. Pavlič, L., Saklamaeva, V., Beranič, T.: Can large-language models re-place humans in agile effort estimation? lessons from a controlled experi-ment. Applied Sciences 14 (24) (2024). https://doi.org/10.3390/app142412006, https://www.mdpi.com/2076-3417/14/24/12006 13. PMI (ed.): A Guide to the Project Management Body of Knowledge (PMBOK Guide). Project Management Institute, Newtown Square, PA, 5 edn. (2013) 12 L. Pavlič et al. 14. Rahman, T., Zhu, Y., Maha, L., Roy, C., Roy, B., Schneider, K.: Take loads off your developers: Automated user story generation using large language model. In: 2024 IEEE International Conference on Software Maintenance and Evolution (ICSME). pp. 791–801. IEEE (2024) 15. Schwaber, K., Sutherland, J.: The Definitive Guide to Scrum: The Rules of the Game. Retrospectiva del Sprint de Nexus, Scrum.org. (2017), https://books.google.si/books?id=8ONgzgEACAAJ 16. Wohlin, C., Runeson, P., Höst, M., Ohlsson, M.C., Regnell, B., Wesslén, A., et al.: Experimentation in software engineering, vol. 236. Springer (2012) 17. Zhang, Z., Rayhan, M., Herda, T., Goisauf, M., Abrahamsson, P.: Llm-based agents for automating the enhancement of user story quality: An early report. In: Šmite, D., Guerra, E., Wang, X., Marchesi, M., Gregory, P. (eds.) Agile Processes in Software Engineering and Extreme Programming. pp. 117–126. Springer Nature Switzerland, Cham (2024)
