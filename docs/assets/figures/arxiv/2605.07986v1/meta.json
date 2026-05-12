@@ -1,0 +1,54 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2605.07986v1/fig-001.webp",
+      "caption": "Table 1: AI Use Case Worksheet",
+      "page": 6,
+      "index": 1,
+      "width": 968,
+      "height": 628
+    },
+    {
+      "url": "assets/figures/arxiv/2605.07986v1/fig-002.webp",
+      "caption": "Table 2: Scenario Elements and Definitions",
+      "page": 7,
+      "index": 2,
+      "width": 968,
+      "height": 755
+    },
+    {
+      "url": "assets/figures/arxiv/2605.07986v1/fig-003.webp",
+      "caption": "Figure 3: Example of Step 3 in Scenario Expansion Pipeline",
+      "page": 10,
+      "index": 3,
+      "width": 976,
+      "height": 815
+    },
+    {
+      "url": "assets/figures/arxiv/2605.07986v1/fig-004.webp",
+      "caption": "Figure 1: Diagram showing step-wise scenario expansion pipeline.",
+      "page": 8,
+      "index": 4,
+      "width": 976,
+      "height": 359
+    },
+    {
+      "url": "assets/figures/arxiv/2605.07986v1/fig-005.webp",
+      "caption": "Table 3: Guiding Questions for Scenario Rubric",
+      "page": 12,
+      "index": 5,
+      "width": 968,
+      "height": 866
+    },
+    {
+      "url": "assets/figures/arxiv/2605.07986v1/fig-006.webp",
+      "caption": "Figure 2: Example of Step 2 in Scenario Expansion Pipeline",
+      "page": 9,
+      "index": 6,
+      "width": 976,
+      "height": 513
+    }
+  ]
+}

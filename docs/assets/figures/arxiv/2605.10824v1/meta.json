@@ -1,0 +1,94 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2605.10824v1/fig-001.webp",
+      "caption": "Table 1: Category of elements used to create wireflows.",
+      "page": 11,
+      "index": 1,
+      "width": 802,
+      "height": 331
+    },
+    {
+      "url": "assets/figures/arxiv/2605.10824v1/fig-002.webp",
+      "caption": "Figure 2: CAA categories screen from the control group",
+      "page": 26,
+      "index": 2,
+      "width": 327,
+      "height": 679
+    },
+    {
+      "url": "assets/figures/arxiv/2605.10824v1/fig-003.webp",
+      "caption": "Figure 3: CAA categories screen from the experimental group",
+      "page": 26,
+      "index": 3,
+      "width": 329,
+      "height": 660
+    },
+    {
+      "url": "assets/figures/arxiv/2605.10824v1/fig-004.webp",
+      "caption": "Table 5: User Stories and Business Rules",
+      "page": 22,
+      "index": 4,
+      "width": 802,
+      "height": 380
+    },
+    {
+      "url": "assets/figures/arxiv/2605.10824v1/fig-005.webp",
+      "caption": "Table 13: Location of Defects Found in the Prototypes’ Interfaces",
+      "page": 33,
+      "index": 5,
+      "width": 612,
+      "height": 206
+    },
+    {
+      "url": "assets/figures/arxiv/2605.10824v1/fig-006.webp",
+      "caption": "Table 6: Distribution of participants’ prior experience in subjects across the experimental and control groups.",
+      "page": 23,
+      "index": 6,
+      "width": 680,
+      "height": 275
+    },
+    {
+      "url": "assets/figures/arxiv/2605.10824v1/fig-007.webp",
+      "caption": "Table 2: Heuristics, questions and description of each questioning point in Step 3 of StartFlow.",
+      "page": 13,
+      "index": 7,
+      "width": 818,
+      "height": 859
+    },
+    {
+      "url": "assets/figures/arxiv/2605.10824v1/fig-008.webp",
+      "caption": "Table 12: Comparison of the Top 5 Defects per Heuristic for Each Group",
+      "page": 32,
+      "index": 8,
+      "width": 794,
+      "height": 181
+    },
+    {
+      "url": "assets/figures/arxiv/2605.10824v1/fig-009.webp",
+      "caption": "Table 7: Technology Acceptance Model (TAM) questionnaire administered after wireflow completion.",
+      "page": 24,
+      "index": 9,
+      "width": 800,
+      "height": 354
+    },
+    {
+      "url": "assets/figures/arxiv/2605.10824v1/fig-010.webp",
+      "caption": "Figure 1: Example of wireflow created to represent scrapbook tile creation [29].",
+      "page": 9,
+      "index": 10,
+      "width": 748,
+      "height": 525
+    },
+    {
+      "url": "assets/figures/arxiv/2605.10824v1/fig-011.webp",
+      "caption": "Table 4: Study participant’s demographic information.",
+      "page": 16,
+      "index": 11,
+      "width": 810,
+      "height": 673
+    }
+  ]
+}
