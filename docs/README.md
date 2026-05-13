@@ -6,52 +6,64 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-05-12
-- 运行时间：2026-05-12 20:47:08 UTC
+- 最新运行日期：2026-05-13
+- 运行时间：2026-05-13 21:26:49 UTC
 - 运行状态：成功
-- 本次总论文数：10
-- 精读区：4
-- 速读区：6
+- 本次总论文数：14
+- 精读区：5
+- 速读区：9
 
 ### 今日简报（AI）
-聚焦 AI 赋能软件工程，深度解析从需求访谈到任务拆解的全流程智能化演进。
-满分论文揭示了 AI 拆解用户故事的实战利弊，并展示了基于经验本体的智能体如何实现专业级需求获取。
-建议开发者关注 AI 原生敏捷开发模式，尝试将结构化规范引入大规模代码生成的工程实践。
-- 详情：[/202605/12/README](/202605/12/README)
+今日深度复盘 14 篇前沿论文，聚焦 AI 如何重塑从需求访谈到任务拆解的软件工程全链路。
+满分论文深入探讨了 AI 拆解用户故事的实效性，同时 Agent 驱动的自动化需求获取已展现出极高的专业潜力。
+建议开发者重点关注“上下文工程”与任务规划，探索如何让 AI 在编码开始前就接管复杂的逻辑梳理工作。
+- 详情：[/202605/13/README](/202605/13/README)
 
 ### 精读区论文标签
-1. [Splitting User Stories Into Tasks with AI -- A Foe or an Ally?](/202605/12/2605.07320v1-splitting-user-stories-into-tasks-with-ai----a-foe-or-an-ally)  
+1. [Splitting User Stories Into Tasks with AI -- A Foe or an Ally?](/202605/13/2605.07320v1-splitting-user-stories-into-tasks-with-ai----a-foe-or-an-ally)  
    标签：评分：10.0/10、query:re-us
-   evidence：敏捷开发中将用户故事拆分为任务
-2. [From Chat to Interview: Agentic Requirements Elicitation with an Experience Ontology](/202605/12/2605.05828v1-from-chat-to-interview-agentic-requirements-elicitation-with-an-experience-ontology)  
+   evidence：用于将用户故事拆分为任务的AI工具
+2. [From Chat to Interview: Agentic Requirements Elicitation with an Experience Ontology](/202605/13/2605.05828v1-from-chat-to-interview-agentic-requirements-elicitation-with-an-experience-ontology)  
    标签：评分：9.0/10、query:re-us
-   evidence：使用经验本体进行代理式需求获取，以实现访谈自动化
-3. [Two Integration Pathways in Human-Centered Requirements Engineering: A Systematic Mapping Study of Structural Gaps](/202605/12/2605.04132v1-two-integration-pathways-in-human-centered-requirements-engineering-a-systematic-mapping-study-of-structural-gaps)  
+   evidence：使用经验本体和LLM代理进行自动需求获取
+3. [Read, Extract, Classify: A Tool for Smarter Requirements Engineering](/202605/13/2605.11045v1-read-extract-classify-a-tool-for-smarter-requirements-engineering)  
+   标签：评分：9.0/10、query:re-us
+   evidence：自动化需求工程中的提取和分类过程
+4. [Two Integration Pathways in Human-Centered Requirements Engineering: A Systematic Mapping Study of Structural Gaps](/202605/13/2605.04132v1-two-integration-pathways-in-human-centered-requirements-engineering-a-systematic-mapping-study-of-structural-gaps)  
    标签：评分：8.0/10、query:re-us
    evidence：以人为本的需求工程方法的系统映射研究
-4. [SWE-WebDevBench: Evaluating Coding Agent Application Platforms as Virtual Software Agencies](/202605/12/2605.04637v1-swe-webdevbench-evaluating-coding-agent-application-platforms-as-virtual-software-agencies)  
+5. [The AI-Native Large-Scale Agile Software Development Manifesto](/202605/13/2605.07717v1-the-ai-native-large-scale-agile-software-development-manifesto)  
    标签：评分：8.0/10、query:re-us
-   evidence：评估智能体对业务需求的理解及产品经理视角
+   evidence：AI原生大规模敏捷软件开发宣言
 
 ### 速读区论文标签
-1. [LLM-Assisted Repository-Level Generation with Structured Spec-Driven Engineering](/202605/12/2605.02455v1-llm-assisted-repository-level-generation-with-structured-spec-driven-engineering)  
+1. [SWE-WebDevBench: Evaluating Coding Agent Application Platforms as Virtual Software Agencies](/202605/13/2605.04637v1-swe-webdevbench-evaluating-coding-agent-application-platforms-as-virtual-software-agencies)  
    标签：评分：7.0/10、query:re-us
-   evidence：结构化规范驱动的仓库级生成工程
-2. [The AI-Native Large-Scale Agile Software Development Manifesto](/202605/12/2605.07717v1-the-ai-native-large-scale-agile-software-development-manifesto)  
+   evidence：评估编码代理对业务需求理解和业务就绪性的能力
+2. [Mise en Place for Agentic Coding: Deliberate Preparation as Context Engineering Methodology](/202605/13/2605.05400v1-mise-en-place-for-agentic-coding-deliberate-preparation-as-context-engineering-methodology)  
    标签：评分：7.0/10、query:re-us
-   evidence：AI原生大规模敏捷软件开发原则
-3. [Towards Apples to Apples for AI Evaluations: From Real-World Use Cases to Evaluation Scenarios](/202605/12/2605.07986v1-towards-apples-to-apples-for-ai-evaluations-from-real-world-use-cases-to-evaluation-scenarios)  
+   evidence：协作规范与上下文工程
+3. [Towards Apples to Apples for AI Evaluations: From Real-World Use Cases to Evaluation Scenarios](/202605/13/2605.07986v1-towards-apples-to-apples-for-ai-evaluations-from-real-world-use-cases-to-evaluation-scenarios)  
    标签：评分：7.0/10、query:re-us
-   evidence：通过结构化获取将高层用例转换为详细场景
-4. [U-Define: Designing User Workflows for Hard and Soft Constraints in LLM-Based Planning](/202605/12/2605.02765v1-u-define-designing-user-workflows-for-hard-and-soft-constraints-in-llm-based-planning)  
+   evidence：将用例转换为详细场景的方法论
+4. [From Code-Centric to Intent-Centric Software Engineering: A Reflexive Thematic Analysis of Generative AI, Agentic Systems, and Engineering Accountability](/202605/13/2605.11027v1-from-code-centric-to-intent-centric-software-engineering-a-reflexive-thematic-analysis-of-generative-ai-agentic-systems-and-engineering-accountability)  
+   标签：评分：7.0/10、query:re-us
+   evidence：从以代码为中心到以意图为中心的软件工程转型
+5. [HM-Req: A Framework for Embedding Values within CPS Human Monitoring Requirements](/202605/13/2605.12100v1-hm-req-a-framework-for-embedding-values-within-cps-human-monitoring-requirements)  
+   标签：评分：7.0/10、query:re-us
+   evidence：人类价值的需求获取与系统设计
+6. [ProgramBench: Can Language Models Rebuild Programs From Scratch?](/202605/13/2605.03546v1-programbench-can-language-models-rebuild-programs-from-scratch)  
    标签：评分：6.0/10、query:re-us
-   evidence：设计硬约束和软约束的工作流以表达用户意图
-5. [Mise en Place for Agentic Coding: Deliberate Preparation as Context Engineering Methodology](/202605/12/2605.05400v1-mise-en-place-for-agentic-coding-deliberate-preparation-as-context-engineering-methodology)  
+   evidence：根据文档和高层架构决策构建软件
+7. [MANTRA: Synthesizing SMT-Validated Compliance Benchmarks for Tool-Using LLM Agents](/202605/13/2605.06334v1-mantra-synthesizing-smt-validated-compliance-benchmarks-for-tool-using-llm-agents)  
    标签：评分：6.0/10、query:re-us
-   evidence：协作规范与上下文工程方法论
-6. [StartFlow: From Method Conception to Multi-Perspective Evaluation in UX Prototyping for Software Startups](/202605/12/2605.10824v1-startflow-from-method-conception-to-multi-perspective-evaluation-in-ux-prototyping-for-software-startups)  
+   evidence：从自然语言手册中合成可机器检查的合规性基准
+8. [Agentic Coding Needs Proactivity, Not Just Autonomy](/202605/13/2605.06717v1-agentic-coding-needs-proactivity-not-just-autonomy)  
    标签：评分：6.0/10、query:re-us
-   evidence：组织功能和构建线框流的结构化方法
+   evidence：主动代理任务的验收标准
+9. [StartFlow: From Method Conception to Multi-Perspective Evaluation in UX Prototyping for Software Startups](/202605/13/2605.10824v1-startflow-from-method-conception-to-multi-perspective-evaluation-in-ux-prototyping-for-software-startups)  
+   标签：评分：6.0/10、query:re-us
+   evidence：组织功能和用户流的结构化方法
 
 
 <div class="dpr-home-promo-card">
