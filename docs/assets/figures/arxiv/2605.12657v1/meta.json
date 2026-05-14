@@ -1,0 +1,38 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2605.12657v1/fig-001.webp",
+      "caption": "Figure 3: Distribution of the cross-examination of certainty of the raters vs. the correctness of the LLM’s evaluation. Left side: Absolute values. Right side: Relatively values, scaled by 239 (cases of LLM being correct) and 61 (cases of LLM being incorrect).",
+      "page": 7,
+      "index": 1,
+      "width": 850,
+      "height": 254
+    },
+    {
+      "url": "assets/figures/arxiv/2605.12657v1/fig-002.webp",
+      "caption": "Table 1 Overview of the apps which served as sources for user reviews, their respective Google Play-Store analytical data and their type of software.",
+      "page": 3,
+      "index": 2,
+      "width": 944,
+      "height": 181
+    },
+    {
+      "url": "assets/figures/arxiv/2605.12657v1/fig-003.webp",
+      "caption": "Figure 1: Data collection process for building a fully labeled dataset.",
+      "page": 4,
+      "index": 3,
+      "width": 834,
+      "height": 205
+    },
+    {
+      "url": "assets/figures/arxiv/2605.12657v1/fig-004.webp",
+      "caption": "Figure 2: Data analysis process with the final dataset and an initial prompt as input to the iterativ prompt evaluation process, which results in a new and optimized prompt that can be fed back into the process to further refine it.",
+      "page": 5,
+      "index": 4,
+      "width": 831,
+      "height": 245
+    }
+  ]
+}
