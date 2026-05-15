@@ -1,0 +1,62 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2605.13817v1/fig-001.webp",
+      "caption": "Figure 4: Effect of verifier feedback on question answering. (Left) accepted on the first attempt, fixed during repair, and rejected after the repair budget. (Right) Cumulative SMT-verified accuracy.",
+      "page": 7,
+      "index": 1,
+      "width": 822,
+      "height": 274
+    },
+    {
+      "url": "assets/figures/arxiv/2605.13817v1/fig-002.webp",
+      "caption": "Table 6: Sample of 10 handcrafted Experiment 2 evaluation questions, covering all three query types.",
+      "page": 14,
+      "index": 2,
+      "width": 830,
+      "height": 904
+    },
+    {
+      "url": "assets/figures/arxiv/2605.13817v1/fig-003.webp",
+      "caption": "Figure 1: Architecture of VERIMED.",
+      "page": 3,
+      "index": 3,
+      "width": 829,
+      "height": 355
+    },
+    {
+      "url": "assets/figures/arxiv/2605.13817v1/fig-004.webp",
+      "caption": "Figure 2: Ambiguity-resolution loop with a dialysate-temperature example. VERIMED samples N = 5 independent formalizations and compares them via bidirectional SMT equivalence. Here, ρ1, ρ2, and ρ3 express different boundary interpretations of the same temperature range: ρ1 excludes both endpoints, ρ2 includes both endpoints, and ρ3 excludes 33◦C but includes 40◦C. The solver returns concrete disagreement witnesses (e.g., 33◦C, 40◦C), which the LLM uses to rewrite the requirement with explicit boundary semantics. The loop repeats until all samples are semantically equivalent, then surfaces the clarified requirement for the user to review.",
+      "page": 3,
+      "index": 4,
+      "width": 829,
+      "height": 296
+    },
+    {
+      "url": "assets/figures/arxiv/2605.13817v1/fig-005.webp",
+      "caption": "Table 5: Original and clarified natural-language requirements for the 12 requirements whose repeated formalizations were ambiguity-sensitive before SMT-guided clarification.",
+      "page": 13,
+      "index": 5,
+      "width": 855,
+      "height": 901
+    },
+    {
+      "url": "assets/figures/arxiv/2605.13817v1/fig-006.webp",
+      "caption": "Figure 6: Ambiguity detection and resolution via repeated autoformalization. (A) Share of requirements flagged as ambiguity-sensitive versus non-ambiguous. (B) Distinct SMT encodings per flagged requirement, ranked by count. (C) Ambiguity-sensitive count across five rounds of SMT-guided clarification. (D) Pairwise SMT agreement.",
+      "page": 8,
+      "index": 6,
+      "width": 826,
+      "height": 273
+    },
+    {
+      "url": "assets/figures/arxiv/2605.13817v1/fig-007.webp",
+      "caption": "Table 3: The two requirements flagged as redundant by VERIMED’s audit (r11, r56), shown alongside the surrounding requirements that subsume them (r55, r42). Each subsuming requirement appears in the unsat core of the corresponding redundancy check.",
+      "page": 12,
+      "index": 7,
+      "width": 722,
+      "height": 195
+    }
+  ]
+}

@@ -1,0 +1,409 @@
+Title: HM-Req: A Framework for Embedding Values within CPS Human Monitoring Requirements
+
+URL Source: https://arxiv.org/pdf/2605.12100v1
+
+Published Time: Wed, 13 May 2026 01:18:28 GMT
+
+Number of Pages: 12
+
+Markdown Content:
+Accepted for publication at the 34th IEEE International Requirements Engineering Conference (RE’26). correspondence: Zoe.Pfister@uibk.ac.at 
+
+# HM-Req: A Framework for Embedding Values within CPS Human Monitoring Requirements 
+
+Preprint, compiled May 13, 2026 
+
+Zoe Pfister 1∗
+
+, Ruth Breu 1, and Michael Vierhauser 11University of Innsbruck, Department of Computer Science, Technikerstraße 21a, 6020 Innsbruck, Austria 
+
+## Abstract 
+
+Monitoring humans, for example, their movement or location, is essential for safe and efficient human-machine collaboration in Cyber-Physical Systems (CPS). This information allows CPS to ensure safety properties, adapt their behaviour dynamically, and coordinate with humans. To ensure that the design of a CPS respects ethical principles and the privacy of its stakeholders, system requirements, particularly those related to human monitoring, must reflect the human values of all involved stakeholders. However, human values are often underrepresented in Software Engineering – particularly during requirements elicitation and system design, crucial phases when introducing ethically critical functionality. Stakeholder values are often implicit and conflicting, yet rarely systematically captured. Furthermore, unstructured natural language requirements introduce ambiguity and vagueness, complicating conflict resolution. To address these problems, we propose HM-Req, a novel requirements elicitation framework including a Controlled Natural Language (CNL) for defining human monitoring requirements. These requirements are then augmented with human values from relevant stakeholders and integrated into a Value Dashboard to detect potential conflicts that require further discussion and resolution. Validation results, applying the CNL to different datasets and conducting a survey and expert interview, confirm the CNL’s ability to capture diverse human monitoring requirements and demonstrate HM-Req’s usefulness for requirements elicitation activities. 
+
+## 1 Introduction 
+
+Modern software-intensive systems increasingly operate in dy-namic environments, where runtime monitoring is essential to ensure that these systems operate as intended and adhere to their requirements [ 1 , 2]. This is particularly relevant in the context of Cyber-Physical Systems (CPS), such as drones or robotic applications, where monitoring typically involves more than “just” collecting data from software or hardware components, but, more importantly, also humans interacting with the system in different ways [ 3 , 4, 5]. For example, in a human-machine collaborative assembly task, the machine needs to track the posi-tions of humans in real-time to avoid collisions. Such systems may employ cameras for position tracking, or user-worn inertial sensors for gesture tracking [6]. However, monitoring humans at runtime and collecting poten-tially sensitive information such as their location, movement, or activities, poses significant challenges related to data protection, privacy, and other ethical aspects [ 7]. In the aforementioned assembly task example, the sensors required to track an operator may be used to infer their performance, such as detecting if the operator frequently makes inefficient movements, or pauses the task. In extreme cases, an operator may be deemed insufficiently productive, which could lead to termination of their contract [ 8]. Whittle et al. [ 9 ] argue for incorporating human values, such as Privacy, Security, or Self-Direction, as first-class citizens in Software Engineering (SE). This means that software design ac-tivities, such as Requirements Engineering (RE), must integrate diverse human values during system design to avoid involuntary data sharing or misuse [ 10 , 11 ]. This is particularly true when requirements involve the monitoring of human attributes. How-ever, human values may differ substantially between stakeholders and across requirements, leading to the need for discussion and subsequent conflict resolution. Stakeholders commonly articu-late value-related concerns in natural language, which can be imprecise, ambiguous, and difficult to translate into actual re-quirements. At the same time, formal languages offer precision, but require specialized knowledge or experts when used, and are rarely accessible to non-technical stakeholders. Value-based requirements engineering [ 9, 12 ] addresses this need by connect-ing requirements to stakeholder values, providing mechanisms to evaluate trade-offs when conflicting goals arise. By designing a controlled natural language (CNL) for eliciting monitoring requirements, we enable requirements engineers to formulate monitoring requirements using unambiguous vocabulary through a restricted set of available verbs and a well-defined structure, while preserving the natural language of the requirements. These requirements can then be associated with stakeholder-value pairs, facilitating the automatic detection of potential value conflicts that must then be resolved through stakeholder discussions. In this paper, we present the HM-Req framework that enables re-quirements engineers to specify human monitoring requirements (“requirements that, to be implemented successfully, involve the collection and processing of data about human stakeholder activities” ) in CPS and enriching them with stakeholder values derived from Schwartz’s taxonomy [ 13 ]. This process is enabled through our HM-Req CNL that enforces a clear structure for defin-ing human monitoring requirements. Additionally, we created the HM-Req Dashboard , a proof-of-concept prototype that (1) allows mapping stakeholder values to human monitoring require-ments and (2) automatically computes a Potential Value Conflict Score between stakeholders based on Schwartz’s smallest space analysis [ 13 ]. The intention of our approach is not to replace established requirements modelling approaches [ 14 , 15 , 16 ], but to complement them by developing novel methods to integrate 
+
+> arXiv:2605.12100v1 [cs.SE] 12 May 2026
+
+Preprint – HM-Req: A Framework for Embedding Values within CPS Human Monitoring Requirements 2human values in human monitoring focused requirements. The contributions of this paper are as follows: 1. Grounded in existing datasets, we introduce a novel CNL for specifying human monitoring requirements in CPS. 2. We develop a method to associate the human values of each stakeholder with a human monitoring requirement and detect potential human value conflicts between them, implemented as a proof-of-concept prototype. 3. We evaluate our approach by (i) assessing whether our CNL can capture real-world human monitoring requirements of diverse datasets, and (ii) by conducting a survey to collect information on the perceived usefulness of our CNL and Dashboard. The remainder of the paper is laid out as follows. In Section 2, we provide a brief introduction to domain-specific and controlled natural languages and present a motivating example. In Section 3, we introduce our HM-Req framework and its core components, and in Section 4, we detail the process of creating HM-Req 
+
+CNL . We then introduce our research questions and validation in Section 5. Finally, we discuss our findings in Section 6, threats to validity in Section 7, related work in Section 8, and conclude in Section 9. 
+
+## 2 Background and Motivating Example 
+
+Requirements are commonly formulated using unstructured natural language (NL) [ 17 , 18 ]. This, however, can lead to diverse issues such as word or phrase ambiguity, vagueness, or increased complexity [ 18 , 19 ]. Several approaches have been proposed in the RE community including template-based methods, such as EARS [ 19 ], and MASTeR [ 20 ], or goal-oriented methods [ 21 , 22 ] that help formalize, structure, and prioritize requirements. Template-based approaches further provide a clear sentence structure for requirements specification, aiming to address issues related to ambiguous and unclear requirements, but commonly do not restrict the vocabulary used, potentially leading to more ambiguity in the defined requirements [ 23 ]. Particularly, when dealing with requirements about collecting potentially sensitive information, i.e., human monitoring requirements (cf. Section 1), it is important to also consider human values of relevant stakeholders [9, 24, 25]. In the following, we discuss the background of (1) human values in RE, (2) domain-specific languages (DSL) and CNLs, and (3) WordNet and VerbNet, as the basis for the structured description of natural languages. 
+
+Human Values and Requirements: To integrate human values into requirements specifications, a taxonomy of potential human values is required. A widely adopted taxonomy, including in SE research, is Schwartz’s theory of basic human values [ 13 , 26 ], which consists of 10 core universal values and their respective sub-values that are recognized across cultures. Schwartz argues that the values form a circular structure, in which values adjacent to each other are complementary, while values with increasing distance between each other are opposing [ 13 ]. For example, the universal value Security contains the sub-value national security, which is opposed to the universal value Self-Direction 
+
+that includes freedom. We discuss related work of Values in SE in Section 8. 
+
+Domain-Specific and Controlled Natural Languages: While conceptually similar, DSLs and CNLs are different regarding the level of formalism of the language. While DSLs are commonly more formal and used to create domain-specific programming languages [ 27 ], CNLs are constructed languages based on a natural language aiming to preserve their NL properties while restricting their lexicon, syntax, or semantics [ 28 ]. We chose to develop a CNL in this work since preserving the NL properties of a requirement is beneficial for discussions with non-technical stakeholders [23]. A CNL’s natural language properties require grounding in exist-ing languages. We use both WordNet and VerbNet as a basis for the structure of our HM-Req CNL . WordNet [ 29 ] is a lexi-cal database of English words “grouped into sets of cognitive synonyms (synsets) that each express a context” and has been widely used in SE research, e.g., for semantic reasoning in NL queries [ 30 ] and RE tasks [ 31 ]. Each synset includes a definition and, in most cases, one or more brief sentences that demonstrate its use. For example, the word monitor is included in nine synsets, one of which ( monitor.v.01 ) includes the definition 
+
+keep tabs on; keep an eye on; keep under surveillance and the examples “we are monitoring the air quality” and “the police monitor the suspect’s moves”. VerbNet [ 32 ] is a lexical resource of English verbs grouped into verb classes and mapped to WordNet, allowing retrieval of their corresponding synsets. For example, verbs in the  
+
+> investigate-35.4
+
+class (e.g., monitor , surveil , examine )share a common syntactic structure: a noun phrase followed by a verb, a noun phrase specifying a location, and optional prepositional phrase (e.g., “The System monitors the environment [for workplace safety]” ). To illustrate the advantages and obstacles of human monitoring at runtime in CPS, we present an example use case aiming to enhance worker safety in a shop-floor setting [ 25 ]. In this scenario, the system must identify if a shop-floor worker enters a restricted or hazardous area, e.g., where autonomous robots operate. For this purpose, the system must constantly monitor a worker’s location and alert them if they cross a designated boundary. Hence, a system that implements such a use case can enhance worker safety, but in turn may introduce privacy concerns. For instance, a manager may evaluate the performance of workers through monitoring their location and reprimand them if they are deemed unproductive. Ultimately, the human values security of a product owner (protecting individuals from threats), power from a manager (having authority), and freedom 
+
+of a shop floor worker (personal privacy) need to be traded off against each other. HM-Req helps to clearly define requirements related to human monitoring and enrich these requirements with stakeholder human values for further value conflict analysis. 
+
+## 3 Framework 
+
+To address the challenges of capturing requirements related to human monitoring and corresponding stakeholder values, and detecting potential value conflicts between them, we present Preprint – HM-Req: A Framework for Embedding Values within CPS Human Monitoring Requirements 3Requirements Elicitation  and Specification 
+
+> HM-Req CNL
+
+1     
+
+> Redefine Human Monitoring Requirements
+> Formally Defined Human Monitoring Requirements
+> Natural Language Requirements
+> Identify Human Monitoring Requirements
+> 1.1
+> 1.2
+> 1.3
+> 1.4
+> Human Value Conflict Analysis and Resolution
+
+2
+
+> Value Conflict
+> Discussions
+> Defined & Agreed Value Augmented Monitoring Requirements
+> 2.4
+> Assign Stakeholder Values
+> Calculate Conflict Scores & Detect Conflicts
+> HM-Req Value
+> Dashboard
+> 2.1 & 2.2 2.3
+> System Stakeholders
+> Requirements Engineer
+
+Figure 1: Our Proposed HM-Req Framework, consisting of Require-ments Elicitation and Specification, and Human Value Conflict Analysis and Resolution. 
+
+our novel framework HM-Req (cf. Fig. 1). The goal, thereby, is twofold: First, to help requirements engineers in defining un-ambiguous, structured human monitoring requirements ( HMRs )using a CNL, addressing problems that arise in natural language requirements [ 19 ]. Second, to enable the enrichment of these requirements with human values [ 13 , 25 ] to detect potential value conflicts and provide a basis for conflict resolution in stakeholder meetings. 
+
+3.1 Elicitation & Specification of Requirements with HM-Req 
+
+Before HMRs can be specified, they first need to be identified or derived from existing functional and non-functional require-ments specifications. This starts with (1.1) existing system requirements, e.g., specified in natural language in a require-ments document. Then, (1.2) domain experts are required to help identify HMRs from the retrieved set of requirements. This ini-tial step involves manually filtering for requirements that involve the collection and processing of data about human stakeholder activities. In some cases, the requirements already provide some assumptions and hints on how the monitoring should be implemented (e.g., using GPS). The outcome of this step is a set of HMRs specified in unstructured natural language, which may still be ambiguous in their vocabulary and vague in definition. When considering our motivating example (cf. Section 2), an unstructured HMR could be “The location of shop floor workers shall be tracked (GPS) while they are working in dangerous areas.” .While this example already contains relevant information, it does not conform to a clear syntactic structure nor provide a list of all involved stakeholders required for completion, which is necessary for later stakeholder value assignments and discussions. To solve this, we redefine each HMR using our HM-Req CNL (1.3). The HM-Req CNL draws inspiration from EARS [ 19 ], a structured method for writing clear and consistent software requirements, and the work of [ 31 ]. We further limit the available syntactic  
+
+> 1
+
+ADVISE_37_9 :  
+
+> 2
+
+verb =( ’ notify ’ | ’ alert ’ | ’ inform ’)  
+
+> 3
+
+ArticleInLowercase ? recipient =[ Actor ]  
+
+> 4
+
+possibleRestriction =( ’ about ’ | ’ of ’ |...) ?  
+
+> 5
+
+topic = STRING ?; 
+
+Listing 1: Example of the Grammar Structure of advise-37.9 . 
+
+> 1
+
+Requirement :  
+
+> 2
+
+’ req ’ requirementID = ID ’: ’  
+
+> 3
+
+earsPreStatement = EARSPreStatement  
+
+> 4
+
+requirementContent = RequirementContent  
+
+> 5
+
+relevantStakeholders = RelevantStakeholders ;  
+
+> 67
+
+RequirementContent :  
+
+> 8
+
+actor =[ Actor ] ModalVerb Not ?  
+
+> 9
+
+requirementBlock = RequirementBlock ’. ’; 
+
+Listing 2: High-Level Structure of the HM-Req Grammar. 
+
+structures and vocabulary, aiming to reduce common problems that arise in natural language requirements, such as ambiguity, through a predefined set of usable verbs in the requirement block, or complexity, by enforcing a predefined structure [19, 23]. 
+
+CNL Creation: To create the HM-Req CNL , and establish its grammar, we selected HMRs from five openly accessible requirements datasets [ 33 , 34 , 35 , 36 , 37 ] and analysed their structure and vocabulary through natural language processing. Inspired by the approach of Veizaga et al. [ 31 ], we extract the verb lemmas 2 of each requirement. For each extracted verb, we then retrieve its respective VerbNet class and add all possible senses of the lemma. For each VerbNet code we found in this process, we leveraged the syntax definitions found in VerbNet to create the basic structure of the grammar. This resulted in the implementation of a total of 51 VerbNet class-based grammar rules with a total of 87 verbs. An example of a grammar rule based on the VerbNet class advise-37.9 can be seen in Listing 1. We go into further detail on the deduction of the HM-Req CNL in Section 4. Before defining requirements using our HM-Req CNL , a require-ments engineer must define the relevant stakeholders and actors. Listing 2 provides an overview of the structure of a requirement defined using our CNL.Each requirement starts with the keyword 
+
+req , followed by a unique identifier. The first part of the require-ment is similar to EARS, starting with preconditions or triggers (EARSPreStatement rule), followed by the main requirement content. This part consists of (1) the actor or system name, (2) the modal verb (e.g., shall ), (3) the requirement block – with custom grammar rules extracted from each selected VerbNet class of our requirements – and (4) a list of stakeholders that are relevant for completion of this requirement. Relevant stake-holders are stakeholders that may be affected by the monitoring aspect of the requirement or need to be involved in requirements discussions. The outcome of redefining requirements using our HM-Req CNL is a set of structured HMRs, each including its relevant stakeholders. Fig. 2 shows how the previously unstructured requirement of 
+
+> 2
+
+A lemma is a word’s base form (e.g., the lemma of monitoring is 
+
+monitor ). Preprint – HM-Req: A Framework for Embedding Values within CPS Human Monitoring Requirements 4Req. ID Precondition (when-clause) Requirement Block (advise-37.9)                      
+
+> Relevant-Stakeholders: Shop_Floor_Worker, Manager, Product_Owner.
+> the System shall notify the Shop_Floor_Worker about "leaving the area" .
+> EARS Syntax Main Requirement Content Additional Stakeholder Information
+> req Demo1: When aShop_Floor_Worker "enters adangerous area" ,
+
+Figure 2: Example of a Human Monitoring Requirement in HM-Req. 
+
+our motivating example is redefined using the HM-Req CNL .The example uses the structure defined in the grammar rule 
+
+advise-37.9 (cf. Listing 1). These rules and the respective names originate from their corresponding VerbNet class. In this example, the rule allows the use of the keywords notify , alert , or 
+
+inform followed by an actor ( the Shop_Floor_Worker ) and ending with an optional restriction keyword (i.e., about ) and topic (i.e., 
+
+"leaving the area" ). The requirement ends with a listing of all relevant stakeholders. In the example, the Shop_Floor_Worker ,the Manager , and the Product_Owner are relevant, as the Worker 
+
+will be monitored, the Manager may be overseeing the location of Workers , and the Product_Owner is concerned about the safety of their workers. 
+
+3.2 Value Conflict Analysis and Resolution 
+
+Once requirements are structured using our HM-Req CNL , the next step is to enrich them with the human value of each relevant stakeholder, enabling systematic definition of stakeholder values and identification of potential conflicts among them (e.g., free-dom vs. authority). This step addresses a critical gap identified by Whittle et al. [ 9 ], who argued that “human values are heav-ily underrepresented in SE methods”. The assignable human values are based on the original 56 human values presented by Schwartz [ 13 ] (e.g., power - authority or self-direction - freedom )and also include the reasoning of why a stakeholder chose a specific value for a requirement, articulated as a short value statement . We chose the value framework by Schwartz since it is widely used in existing SE literature [ 9, 38 , 39 ] and, with its smallest space analysis (SSA) [ 40 ], provides clear relationships between human values in 2D space. Once values are captured, a requirements engineer, in collaboration with stakeholders, can then manually go through each requirement and try to find potential value conflicts between stakeholders. However, man-ually detecting such conflicts, particularly involving numerous requirements, is a non-trivial and often tedious task. To further aid in detecting such potential value conflicts, we introduce a Value Conflict Score , based on the two-dimensional SSA [ 13 ], which maps correlations among 56 universal values. Within their configuration, values positioned in close spatial proximity are complementary, while diametrically opposed val-ues demonstrate conflicts [ 9, 13 ]. With this in mind, we calculate the Euclidean distance between all pairs of values and normalize them to get a pairwise potential conflict score between 0 (no conflict) and 1 (maximum conflict). We show the overall distribution of possible conflict scores and a selection of example mappings in Figures 3 and 4. Note that the Value Conflict Score provides a naïve baseline heuristic indication of potential value conflicts; it is not a measure of ethical correctness. It should be used to prioritize value conflicts for stakeholder negotiation, not to automate their resolution. With this information on potential conflict scores, a requirements engineer can prepare for stakeholder meetings to discuss potential refinements of a requirement (2.3) and come to a final decision on its definition (2.4). 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0 
+
+> Normalized
+> Distance
+> 1%
+> 10%
+> 25%
+> 50%
+> 75%
+> 90%
+> 99%
+> 0.053
+> 0.152
+> 0.255
+> 0.389
+> 0.547
+> 0.686
+> 0.906
+
+Figure 3: Distribution of possible Conflict Scores. Quartiles are Highlighted from Green (low) to Red (high), Signalling Potential Conflict Severity. social justice                                 
+
+> UNIVERSALISM
+> devout
+> TRADITION
+> creativity
+> SELF-DIRECTION
+> authority
+> POWER
+> healthy
+> SECURITY
+> spiritual life
+> BENEVOLENCE
+> politeness
+> CONFORMITY
+> intelligent
+> ACHIEVEMENT
+> enjoying life
+> HEDONISM
+> daring
+> STIMULATION
+> true friendship
+> BENEVOLENCE
+> obedient
+> CONFORMITY
+> pleasure
+> HEDONISM
+> 0.19 0.45 0.27 0.52 0.26 0.34 0.19 0.30 0.56 0.52
+> 0.37 0.24 0.56 0.56 0.35 0.36 0.12 0.49 0.73 0.75
+> 0.72 0.93 0.38 0.25 0.35 0.88 0.60 0.24 0.05 0.17
+> 0.0 0.2 0.4 0.6 0.8 1.0
+> Normalized Distance (Conflict Score)
+
+Figure 4: Examples of Potential Conflict Score Mappings. 
+
+Revisiting our motivating example, the requirement “While a Shop_Floor_Worker "is working in dangerous areas", the System shall track "the location" of the Shop_Floor_Worker by means of "a GPS sensor". Relevant-Stakeholders: Shop_Floor_Worker, Manager, Product_Owner.” , may be associated with several stakeholder values and corresponding value statements. A Shop Floor Worker may choose a value related to their privacy, such as 
+
+freedom (self-direction ) with the value statement “I do not want to be identified while being tracked.” . A Manager , however, may choose an opposing value related to their authority (power ) with the value statement “The system will allow me to find accountable individuals in case of an accident.” . Finally, the Product Owner 
+
+may choose a value related to healthiness , i.e., protection, of their workers ( security ). Based on these values, our calculation would result in a potential value conflict score of 0.55 between the Shop Floor Worker and the Manager , which is in the top 25% (cf. Fig. 3) of highest potential conflict scores, meaning a high chance of a potential value conflict. The value conflict between the Manager and the Product Owner is ≈0.27, which means a lower chance of conflict between these stakeholders on this specific requirement. These insights can then aid in stakeholder discussions related to value conflict resolutions and prioritization [12]. 
+
+3.3 Prototype Tool Support 
+
+To support requirements engineers and stakeholders in specifying HMRs using the HM-Req CNL and aid them in uncovering potential conflicts, we developed two prototype tools: a Visual Studio Code (VSC) extension and CLI to define HMRs using HM-Req CNL and a dashboard that allows assigning stakeholder values to requirements while automatically calculating potential value conflict scores. Preprint – HM-Req: A Framework for Embedding Values within CPS Human Monitoring Requirements 5
+
+> Figure 5: Overview Page and Detail Views (for Requirement R6) Including Potential Value Conflict Highlights.
+
+To define our HM-Req CNL , we used Eclipse Langium [41 ], an open-source language engineering tool. Langium enables deployment of a defined grammar as a VSC extension, providing syntax highlighting and basic autocompletion. Additionally, we used Langium to create a basic command-line interface for the HM-Req CNL to export requirements to JSON , e.g., for further processing in external applications. Additionally, we added basic language validation checks to ensure that only valid HM-Req 
+
+CNL requirements are exported. To incorporate human values and assist stakeholders in finding potential conflicts, we built a proof-of-concept tool ( HM-Req 
+
+Dashboard ) that allows association of human values based on the value taxonomy of Schwartz [ 13 ] to each relevant stakeholder of a given requirement. The tool allows importing HMRs defined with the HM-Req CNL which are then listed on an overview page (cf. Fig. 5). Each requirement can then be augmented with the human values [ 13 ] and value statements [ 25 ] of each respective stakeholder. After two or more stakeholders have defined their respective human values for a given requirement, the tool calculates the conflict scores of each stakeholder-value pair (cf. Section 3.2). The average of this value determines the intensity of red highlighting on the requirements overview page. If a user wants to gain more information on the potential value conflicts of a requirement, they can view them in a detail view (cf. Fig. 5). There, each respective stakeholder-value pair is shown together with its individual potential conflict score. 
+
+## 4 Defining the CNL Structure 
+
+To create our HM-Req CNL and identify core verbs and struc-tures, we followed a structured process inspired by the work of Veizaga et al. [ 31 ] where they developed a CNL specialized in defining functional requirements within the financial domain. In the following, we outline the steps for creating the HM-Req 
+
+CNL : First, (1) we collected a list of system requirements from requirements datasets (cf. Table 1 DS-1–5) containing potential HMRs, then, (2) we identified requirements from the dataset that are human monitoring related, and (3) split the selected HMRs into a training and testing set (for subsequent evaluation – cf. Section 5.1). For the training set, we (4) conducted a thorough analysis and analysed the verbs used within the requirements and mapped them to VerbNet codes and potential word senses. Once the mapping was complete, we (5) manually selected relevant verbs and senses, and (6) defined the grammar based on the sentence structure found in VerbNet and the respective requirements containing the applicable verb within the dataset. 
+
+4.1 Collecting Requirements (Steps 1-3) 
+
+We first extracted requirements from five publicly available datasets (cf. Table 1 DS-1–5). The datasets include requirements from different domains, ranging from Smart Living Environment Systems for the elderly [ 33 ] to Health Care Reporting and Evaluation Systems [ 36 ]. Some of the extracted requirements follow common patterns, such as EARS [ 19 ], while others are specified in unstructured natural language. After consolidation of the datasets and removal of duplicates, we obtained a list of 1596 requirements. The first and a second author of the paper then checked all requirements and manually marked them as HMRs if they fell into our definition (cf. Section 1). For example, the requirement “Detect when the shower is used” is classified as a HMR, since it requires some form of monitoring, whereas “The ratings shall be from a scale of 1-10” requires no human monitoring, and is thus not classified as a HMR. This procedure resulted in a total of 117 HMRs that we considered for further analysis. We selected a stratified random sample, in which each dataset is a separate stratum, with an 80% training and 20% testing split. This resulted in a total of 92 HMRs for developing our HM-Req CNL (training set) and 25 HMRs for evaluating our CNL (testing set). The respective amounts of requirements considered for training and testing can be seen in Table 1. Since our selection of HMRs is not evenly distributed across each dataset, our approach may lead to sampling bias, which we address in Section 7. 
+
+4.2 Analysing HMRs (Steps 4 and 5) 
+
+We applied automated natural language processing using NLTK [ 47 ] to the HMR training set. For the analysis, we used the wordnet2022 and verbnet3 corpora [ 48 ]. We first ex-tracted verb lemmas from each requirement and retrieved their corresponding VerbNet classes and associated WordNet senses that start with the given lemma. In cases where NLTK was unable to retrieve a VerbNet class for a lemma, we added that lemma, including its potential synonyms found in WordNet, to a list of auxiliary verbs for manual inspection. This process resulted in 177 different VerbNet classes found in our training set. In 18 cases, no applicable WordNet sense could be associated with their respective lemma-VerbNet class pair. For 16 lemmas, we were unable to associate a verb lemma to a VerbNet code. In a second step, two authors of the paper manually reviewed the individual VerbNet classes, along with their associated verb lemmas and their requirements contexts, to select VerbNet class-lemma pairs they deemed relevant for the human monitoring context. Out of the initially collected 177 VerbNet classes, we selected Preprint – HM-Req: A Framework for Embedding Values within CPS Human Monitoring Requirements 6                                                                                                   
+
+> Table 1: Datasets used for collecting HMRs and for manual testing of HM-Req. Monitoring Req. shows the total of selected requirements within training and testing splits. Definability shows if test-set requirements were definable using HM-Req CNL (green: definable, orange: partially definable, red: undefinable). The width of the bars represent relative percentage within a test-set. Dataset Source Viewed Req. Monitoring Req. Training Testing Definability of Testing Set DS-1: ACTIVAGE [33] 310 63 50 13 11 2
+> DS-2: MobSTr [34] 69 15 12 321
+> DS-3: NFR_EXP (PROMISE) [35] 968 15 12 312
+> DS-4: VHCURES [36] 180 17 13 431
+> DS-5: WHO SRH 21.4 (NFR) [37] 69 7522
+> DS-6: PURE-subsets [42] via [43] DS-6.1: nenios [42] 48 1-11
+> DS-6.2: phin [42] 129 24 -24 22 2
+> DS-6.3: ConnectedVehiclePilotNYC [42] 395 11 -11 74
+> DS-6.4: automated-insulin-pump [42] 15 2-22
+> DS-6.5: EHR-SystemFuncReq LA-DHS [42] 590 18 -18 13 41
+> DS-7: QuRE [44] 2187 20 -20 16 31
+> DS-8: WorldVista [45] 147 8-862
+> DS-9: Dronology HM-Generated Original: [46] -20 -20 13 7
+> Total 5107 221 92 129 98 28
+
+60 deemed relevant for human monitoring. In cases where no VerbNet code was assigned to the verb lemma, we looked at the verbs’ synonyms retrieved from WordNet and assigned a VerbNet class based on an applicable synonym. If no synonym was deemed applicable (i.e., the verb flag as in marking a specific situation ), we specified an applicable synonym with a corresponding VerbNet class. 
+
+4.3 Producing the Grammar (Step 6) 
+
+For each VerbNet code in our refined selection, we leveraged the syntax definitions found in VerbNet to create the basic structure of each grammar rule. When a lemma appeared in multiple VerbNet classes, we selected only the class most relevant to the domain-specific HMRs, resulting in a set of 52 different rules based on their VerbNet classes. After defining the initial version of our CNL, we attempted to specify all HMRs from the training set using our CNL. Whenever a requirement could not be expressed with the existing grammar rules and vocabulary, we iteratively refined the grammar to ensure it could capture the respective requirement. This resulted in the addition of several lemmas to existing VerbNet-class-based grammar rules, such as track in assessment-34.1 .Further, we added custom rules for the lemmas enable and 
+
+subject (to) as these do not appear in any existing VerbNet class. In these cases, we based the syntactic structure on the respective requirement structure included in the training set. Following this process, our HM-Req CNL includes 51 requirement-block rules based on VerbNet classes with a total of 87 verbs. We provide a full list of verbs, the grammar, and the training and testing datasets in the supplementary material. 
+
+## 5 Evaluation 
+
+In the following, we outline our three research questions and evaluation methodology. 
+
+RQ1: What concepts and structures are required in a CNL to adequately capture human monitoring requirements? 
+
+With the first research question, we aim to establish the neces-sary grammar rules for our language, and the general concepts needed to accurately depict HMRs. This includes selecting an overall requirement template (such as EARS [ 19 ]) and com-monly used verbs for capturing HMRs. Additionally, to support our validation, we developed a proof-of-concept tool enabling stakeholders to (1) specify requirements in an editor and (2) assign human values to each requirement to aid requirements engineers in detecting value conflicts in stakeholder meetings (cf. Section 5.1). 
+
+RQ2: Can the HM-Req CNL be used to represent require-ments of a real CPS? With the second research question, we evaluate whether our CNL is capable of capturing requirements of a previously unseen set of HMRs, more specifically, the Dronology [46] dataset (cf. Section 5.2). 
+
+RQ3: How do domain experts perceive the usefulness of our approach? Finally, with the third research question, in addition to evaluating our HM-Req CNL with testing datasets, we conducted a survey (n=17) and an additional in-depth interview with a domain expert. With this, we aim to gain feedback on the perceived usefulness and ease of use of our CNL and proof-of-concept value conflict detection tool HM-Req Dashboard 
+
+(cf. Section 5.3). 
+
+5.1 RQ1: Required CNL Concepts 
+
+To answer RQ1, we compiled a HMR dataset from five sources (cf. Table 1 DS-1–5) and divided it into a training and testing split (cf. Section 4.1). In a first step, we developed our HM-Req CNL 
+
+based on the training set and subsequently evaluated whether it could accurately capture the requirements of the testing set. Then, we collected several more human monitoring requirements datasets (cf. Table 1 DS-6–8) that were not utilized during the process of creating our HM-Req CNL . We use these additional Preprint – HM-Req: A Framework for Embedding Values within CPS Human Monitoring Requirements 7requirements to independently validate our HM-Req CNL .In total, our first testing set comprises 25 requirements (cf. Ta-ble 1). Out of these 25 requirements, we were able to fully specify 19 (76%) with our HM-Req CNL . In some cases, a requirement had to be divided into multiple requirements, reducing the com-plexity of the original unstructured requirement, while preserving its meaning. The remaining 6 (24%) requirements could only be captured partially , meaning that the requirement could be written in the language, but the grammar did not fully support (1) embedded actor representations, (2) duration statements, or (3) the original semantics. For example (1), requirement FR-7.2.3 
+
+“The system shall be able to identify ‘pedestrians, cars, [...]’” can only represent the Pedestrian actor as a string, but not as a symbol in the language. Further (2), our CNL lacks support for duration statements such as “during the night” . For example, requirement ISE_Rq_15 “Count the number of steps during the day of the user.” had to be captured as “The System shall track ‘the number of steps’ of the Patient every ‘single’ day .” .Lastly (3), the semantics of some requirements were slightly changed. Requirement VHCURES-5 , “The vendor shall be subject to all terms [...]” had to be altered to “The Vendor shall ensure 
+
+compliance with all terms [...]’”. Our second and fully independent (from creation of the HM-Req 
+
+CNL ) testing set includes 84 requirements. Similar to our initial testing set, we were able to fully specify 79% of all requirements with our HM-Req CNL without issue. In contrast to our initial testing set, 3 requirements (4%) were undefinable using our grammar. In these cases, our grammar lacked support for specific language constructs, such as an and connection in a When structure (cf. req. qure498). The remaining 18% could be partially captured, with the most common cause being unsupported embedded actor representation. Answering RQ1, 97% of all testing set requirements were cap-turable with our HM-Req CNL , 78% of which without any issue. 19% were partly captured, and 3% could not be captured with-out refinements to the grammar. With only minor grammar revisions, the HM-Req CNL would be able to capture the re-maining requirements, suggesting that our approach resulted in the development of a CNL that successfully captures the human monitoring requirements found in the testing sets. 
+
+5.2 RQ2: HM-Req CNL Usage 
+
+To answer RQ2, we searched for a dataset that contained require-ments for a system within the CPS domain. The Dronology dataset [ 46 ] provides several publicly available datasets for a drone mission planning and execution system developed at the University of Notre Dame. In our case, we selected the “Re-quirements Dataset (5/23/2018)” [ 49 ], which contains 99 natural language requirements, as well as several design definitions, tasks, and trace links to source code. Since the initial Dronology dataset did not contain explicit HMRs, we generated requirements using Google’s Gemini 2.5 Pro LLM [ 50 ]. We prompted the LLM with (1) the instruction to generate 20 HMRs, (2) our definition of HMRs, (3) the general EARS syntax template, (4) information on the Dronology system, and (5) the available system requirements of Dronology.The re-sulting requirements were initially validated by the first author for general correctness. To confirm that the generated requirements were, in fact, valid and relevant for a drone system, we asked two domain experts who had experience using Dronology to assess all requirements and adapt any that would not be valid in this context. This resulted in 10 requirements that could be accepted without edits, 4 requirements that could be accepted with minor edits, and 6 requirements that had to be rejected. To compensate the rejections, we manually added 6 new requirements with validation of a domain expert. Overall, we were able to capture all generated Dronology require-ments using our HM-Req CNL . 65% were definable without issue, whereas 35% were partially definable (cf. Table 1). Sim-ilar to the evaluation of our testing sets (cf. Section 5.1), the majority of partial representation came from unsupported actor embeddings. Nevertheless, actors were correctly representable within free-text blocks of the grammar. Answering RQ2, our results confirm that our HM-Req CNL is capable of correctly capturing human monitoring requirements from real-world CPS. 
+
+5.3 RQ3: Perceived Usefulness of the Approach 
+
+To gain first insights on the usefulness of both our HM-Req CNL 
+
+and the Dashboard , we conducted an exploratory anonymous survey (n=17) with questions based on a subset of the technology acceptance model [ 51 ]. The survey comprised 15 questions organized into three sections: (1) demographic profiling, (2) usefulness and ease-of-use assessment during HMR specification tasks using the HM-Req CNL , and (3) usefulness assessment of the value conflict detection prototype HM-Req Dashboard .Questions on the perceived usefulness and ease-of-use employed a 7-point Likert scale (labelled: extremely unlikely to extremely likely and fully disagree to fully agree , respectively). Both sections (2) and (3) contained optional open-ended feedback questions. 
+
+Setup/Tasks: In part 2, specification of HMRs using our HM-Req 
+
+CNL, participants were asked to define two HMRs based on unstructured text using our CNL in an online VS Code instance, and then rated their perceived usefulness and ease-of-use. In part 3, participants viewed screenshots and an online version of the 
+
+HM-Req Dashboard and then evaluated its perceived usefulness. 
+
+5.3.1 Demographic Results 
+
+In total, 17 participants completed our survey. Participants represented several professional backgrounds, including 8 re-searchers, 3 requirements engineers, 3 software engineers, and 3 in hybrid roles (2 SE/research; 1 SE/RE/research). We recruited participants through targeted email invitations sent to researchers and practitioners in the field of CPS, RE, and Value-Based Engi-neering. They were further encouraged to forward the study to potentially interested colleagues. The professional experience was distributed nearly evenly (0-2 years: 3; 3-5 years: 5; 6-10 years: 5; >10 years: 4). Further, most participants (15 out of 17) have had previous experience with requirements engineer-ing, and over 60% had prior experience with CPS. All but one participant were familiar with User Stories and Use Cases, 8 participants were familiar with unstructured natural language requirements, and 2 participants were familiar with EARS. The demographic data suggests that the participants had sufficient experience with requirements engineering to evaluate our tools. Preprint – HM-Req: A Framework for Embedding Values within CPS Human Monitoring Requirements 8However, their exposure to structured requirement approaches (i.e., EARS) was limited. 
+
+5.3.2 Usefulness and Ease of Use of HM-Req CNL 
+
+Participants considered our approach of using the CNL to specify HMRs as likely to be useful (slightly likely: 4, quite likely: 11, extremely likely: 2). Regarding the ease of specifying HMRs, four participants considered using the CNL extremely likely to be beneficial, while nine and four participants rated it as quite likely and slightly likely, respectively. 14 participants found the CNL to be at least quite likely to prevent misunderstandings between different stakeholders compared to requirements written in unrestricted natural language. All participants stated that the CNL would improve HMR quality, with responses ranging from extremely likely (5) to slightly likely (6). Feedback regarding usability was positive, with 16 out of 17 participants agreeing (10) or fully agreeing (6) that learning our CNL would be easy for them. A similar consensus was formed regarding the ease of use of our Visual Studio Code extension, with all but one participant being in slight or more agreement that using the CNL with our extension and defining HMRs is easy to use. Additionally, we asked if the predefined structure of the HM-Req 
+
+CNL , constraining the specification of requirements, guided them toward writing better, more precise requirements. A common sentiment of participants was that while the restrictions were inconvenient when trying out the grammar in Visual Studio Code, they were confident that with more practice, our CNL has the potential to improve the quality of their requirements. Looking at the HMR definition attempts of participants, we observed that several participants had trouble using our CNL correctly (i.e., using free-form text instead of verbs after the modal verb shall , missing punctuation) while others were able to correctly redefine the requirements. We expect users to gain more experience after using our CNL for some time, and providing tutorials. One participant mentioned that the recommendations from the extension helped them to follow the EARS template better without making mistakes. Another participant thought it was helpful for non-native English speakers to follow correct grammar rules. 
+
+5.3.3 Usefulness of our Proof-of-Concept Value Conflict Tool 
+
+All but one participant found our HM-Req Dashboard poten-tially useful, with 12 participants finding the Dashboard quite useful or better. Similarly, 14 participants specified it is quite or extremely likely to facilitate more effective stakeholder discus-sions and negotiations. Further, 16 participants found it quite or extremely likely that the HM-Req Dashboard would make it easier to detect potential stakeholder value conflicts. Regarding the definition of stakeholder values, 15 participants found the HM-Req Dashboard to be slightly likely to be useful or better, one stating it to be slightly unlikely, and one neither. Related to where the tool would fit in the participant’s workflow, most (10) stated in free-text that the tool would be best suited during initial stakeholder workshops. Specifically, participants stated that the tool could be used before going into detailed nego-tiation, “to catch certain disagreements beforehand”. However, two participants suggested that it may be too soon to use in early stakeholder workshops, since requirements evolve rapidly in the early design phases. They would prefer using the tool in the detailed system design stages. It was also suggested to be used in verification and validation phases (2), to “catch conflicts before going into development”. 
+
+5.3.4 Interview 
+
+In addition to the survey, we conducted a semi-structured inter-view with a domain expert in CPS (a researcher experienced in software engineering, human-machine interaction, and CPS application development) to obtain detailed feedback on our proof-of-concept approach. Before the interview, the participant participated in our survey. The goal was to gain additional in-depth insights on the approach of defining HMRs using our HM-Req CNL compared to their existing RE methods. The expert’s current approach for defining requirements mainly used unstructured text, collected through informal interviews, in GitHub issues. They stated that they liked the approach of having to follow a structure during requirements definition: “[...] if we are following the format, then the assumption is that the requirements will be much clearer for everyone else in the team or for all stakeholders to better understand [that requirement].” 
+
+Further, they suggested a two-step system, where natural language requirements would be translated into the HM-Req CNL and later manually adjusted within an editor. When asked what they would add to the language, they highlighted the need to clearly specify the feedback a human receives when interacting with humans: “[...] for example, as a drone pilot, I want to schedule a go-to-waypoint command and expect that the drone sends me an acknowledgement so that I know that drone is going to do that task and not something else.” Regarding how our potential value conflict tool would fit in their process, they stated while they had not previously considered it, they thought our method 
+
+“is something we need in terms of development. There was no formal analysis of how implementing these features are going to create these ethical conflicts or privacy issues.” .Answering RQ3, our results confirm a high participant agreement on the usefulness of our approach using our CNL and the HM-Req 
+
+Dashboard . We are therefore convinced that continuing to improve our approach based on the feedback will be valuable for researchers and CPS engineers. 
+
+## 6 Discussion 
+
+Based on the evaluation of our approach, this section discusses key findings, limitations, and promising directions for future work to enhance the HM-Req framework. 
+
+Extended Grammar: Our evaluation confirmed that while our grammar can capture a vast majority of requirements, there is still potential for improvement. As mentioned in Sections 5.1 and 5.2, we found that our CNL cannot capture all HMRs within our testing sets. A common occurrence was the limitation regarding requirements using timing-related statements (i.e., 
+
+during the night ), which we plan to add to the grammar in the next iteration. Participants also suggested specific additions (i.e., evaluate, authenticate) and removals (i.e., allow, change) from the grammar’s verb lexicon. Further, one participant was concerned about the HM-Req CNL allowing free text literals to restrict the future possibilities related to automated analysis. They suggested eliminating free text literals and adding the ability to define custom concepts in the language, replacing the current Preprint – HM-Req: A Framework for Embedding Values within CPS Human Monitoring Requirements 9free text literals. While we do believe that having some leniency through free text literals is beneficial in requirements elicitation, we agree that our grammar currently allows for excessive usage of them. We intend to address this by refining the EARS pre-statements of our grammar (cf. Listing 2) to conform to more specific grammar rules instead of using string literals. Beyond direct syntax, feedback proposes expanding the CNL’s conceptual scope. Our interview partner suggested incorporating the notion of feedback a human receives during human-machine interactions. While this can be modelled with additional require-ments in the current grammar, we recognize the value of making it a first-class concept. Participants also suggested that values should be included within the grammar to be cross-checked immediately while writing the requirement, enabling earlier detection of value conflicts and thus reduce resolution cost. We deliberately excluded value specification from the initial version of the HM-Req CNL to reduce its overall complexity, but it remains a compelling direction for future development. 
+
+Extended Tool Support: Some participants found that existing tooling was inconvenient to use, especially regarding in-line completion of our Visual Studio Code extension. This limitation stems from the current implementation, which relies on basic by-name completion (e.g., for Stakeholders, Actors, and other keywords) and lacks full abstract syntax tree (AST) awareness. An AST-based approach would enable context-sensitive sugges-tions and a more guided writing experience. Further suggestions included implementing clearer error messages and warnings in case the specified requirement does not follow the CNL and integrations with other IDEs. We plan to improve our tool to provide a more robust and intuitive user experience in the future, lowering the barrier to adoption for users of the CNL. 
+
+Extended Negotiation/Conflict Resolution Tool Support: Our survey participants provided valuable insights into potential future additions regarding the proof-of-concept HM-Req Dash-board . One suggestion was to expand the scope of our value analysis beyond a single requirement. Our current tool only detects potential value conflicts between stakeholders within one requirement, whereas a future version could support inter-requirement conflict detection. This would allow requirements engineers to identify how the values associated with one re-quirement might conflict with another, thus providing a clearer picture of the overall value landscape. This may be especially beneficial when working with requirements that focus on one stakeholder at a time. Another participant suggested better trace-ability and management of identified conflicts within the tool. They highlighted the need for functionality to formally document the resolution process, for example, by explicitly accepting avalue conflict and recording the reasoning for doing so. This would create a clear audit trail for design decisions and enhance accountability. 
+
+LLM-supported Requirements and Value Identification: Apromising topic for future work is the integration of LLMs into our HMR approach. Both survey participants and our interview partner highlighted the potential of integrating LLMs, for example, to automatically convert unstructured requirements to HM-Req CNL requirements. We believe that an LLM, when instructed to formulate unstructured requirements based on the syntax tree of our grammar, may be a valuable tool for helping to define HM-Req CNL requirements. Further, LLMs could be asked to generate potential values and value statements based on stakeholder user profiles or personas, which could then be imported into HM-Req Dashboard for potential conflict assessment. 
+
+## 7 Threats to Validity 
+
+Our work is subject to several validity threats. While we have shown that our CNL is applicable to real-world requirements, the limited number of use cases may result in other domains/types of systems not yet being fully covered. A potential threat to 
+
+external validity is the risk of sampling bias. Our training set of 92 HMRs was compiled from five datasets from different domains. However, the distribution of these requirements was not uniform across the source datasets. We attempted to mitigate this by using stratified sampling to ensure all source datasets were represented. Nevertheless, the imbalance may result in our HM-Req CNL be inadvertently optimized for the vocabulary and structures of the more dominant datasets. However, our results show that our HM-Req CNL can successfully define HMRs from several previously unseen datasets (cf. Sections 5.1 and 5.2), suggesting generalizability beyond the dataset it was trained on. Our manual selection of HMRs for training and testing is subject to potential selection bias . To mitigate this, the first author initially identified a candidate set of HMRs from the original datasets, which was then independently reviewed and validated by a senior researcher. Discrepancies were resolved through iterative discussions until a consensus was reached. The limited number of participants in the survey and interview poses a potential threat to the statistical conclusion validity of our study. Therefore, the feedback, while valuable, should be considered indicative and qualitative rather than a conclusive, generalizable measure of our HM-Req CNL’s and value conflict 
+
+Dashboard’s overall acceptance. To further assess the usefulness and usability of our HM-Req CNL and Dashboard , we intend to conduct a large-scale user study with a controlled experiment. The calculation of our naïve baseline potential Value Conflict Score poses a potential threat to the construct validity of our study. Since we did not have access to the underlying value data Schwartz used for their smallest space analysis, we had to resort to calculating the Euclidean distances between each value. Naturally, this introduces measurement imprecision and may lead to scores not being a true reflection of the underlying taxonomy. 
+
+## 8 Related Work 
+
+Approaches and DSLs for Requirements Specification: Sev-eral approaches and languages have been proposed for specifying different types of requirements. Early work by Fuchs and Schwit-ter [52] developed the Attempto CNL, which allows specifying system requirements that can then be translated into Prolog clauses. Veizaga et al. [ 31 ] defined a process to systematically build a CNL for requirements. Based on that process, they developed Rimay, a CNL to define functional requirements in the financial domain, which also provided the basis for our approach when developing the HM-Req CNL . Further, Gomez-Vazquez and Cabot [ 4] introduced MERLAN, a DSL for specifying re-quirements of multimodal interfaces for AI-enhanced systems. Similarly, SEMKIS [ 53 ], a DSL designed to support engineers in Preprint – HM-Req: A Framework for Embedding Values within CPS Human Monitoring Requirements 10 specifying requirements for recognizing skills of neural networks. Researchers at NASA built a restricted natural language called FRETISH [ 54 ], which enables the definition of system require-ments. In addition, they provided tooling support, including semantic hints and sentence structure colouring. While these approaches allow definition of structured software requirements using CNLs or DSLs, none of them focus on the specific domain of human monitoring in CPS. 
+
+Human Values & Value Conflicts: Whittle et al. [ 9] ex-plored how human values can be incorporated in the software-development process of real-world projects. They use Schwartz’s value taxonomy [ 13 ] as a starting point to define relevant stake-holder values as so-called value portraits. They argue that values capture the why of requirements engineering as an addition to the regular what (functional requirements) and how (non-functional requirements). Winter et al. [ 55 ] introduced Value Q-Sort , a mixed method combining semi-structured interviews with a sorting problem. Each statement from interviews was associated with Schwartz’s value taxonomy [ 13 ]. Wohlrab et al. [ 38 ] intro-duced the concept of value tactics , which are design decisions that suggest mechanisms to consider based on Schwartz [ 13 ] val-ues and sub-values. Besides academic literature, the standard for addressing ethical concerns during system design [ 12 ] describes a detailed process to design systems considering individual and societal ethical values. Instead of using a value taxonomy like Schwartz [ 13 ], they suggest identifying and prioritizing values based on the ethical theories utilitarian ethics , virtue ethics , and 
+
+duty ethics . Existing research provides methods for eliciting human values of stakeholders and integrating them into the software engineering process. However, they do not directly link HMRs to stakeholder values nor provide a quantifiable way to highlight potential value conflicts for stakeholder discussions. 
+
+Human Interaction/Collaboration and Monitoring: 
+
+Adams [ 56 ] made the case for the need to incorporate ma-chines in existing human team activities, such as search and rescue missions in contaminated areas. They suggest that before designing the system (i.e., specifying its requirements), one needs to understand the current human team’s activities. Agrawal et al. [ 57 ] conducted interviews with firefighters to gain insights on how a human-machine collaborative emergency response system could be improved by designing the system for situational awareness [ 58 ]. They defined Use Cases in unstructured language based on initial requirements discussions, but did not consider the human values of participants during elicitation. Calinescu et al. [ 59 ] proposed an approach using a MAPE control loop in combination with sensor arrays to collect a human’s biometric data to improve driver attentiveness in shared-control autonomous driving. They detail methods to collect data using sensors such as gaze position and heart rate, but do not specify formal HMRs. Current literature suggests that research in human-machine interaction rarely highlights human values or ethics conflicts of stakeholders that may arise during human monitoring. 
+
+## 9 Conclusion 
+
+In this paper, we addressed the challenge of defining unam-biguous, value-aware human monitoring requirements in CPS, introducing a novel framework HM-Req integrates (1) a CNL for formally specifying human monitoring requirements with (2) a method for systematically associating stakeholders’ hu-man values, based on Schwartz’s taxonomy [ 13 ]. Furthermore, we facilitate uncovering potential value conflicts between them through the calculation of a Value Conflict Score. We evaluated our approach through a mixed-methods evalua-tion: Results indicate that our HM-Req CNL is able to capture human monitoring requirements of real-world CPS and several requirements datasets, successfully capturing over 95% (75% fully, 21% partial) of human monitoring requirements from real-world datasets. Furthermore, an exploratory survey and expert interview confirmed that practitioners perceive our ap-proach as useful for both specifying requirements and enabling value-aware stakeholder discussions. Ultimately, our work proposes a method to specify structured human monitoring requirements, making value conflicts explicit and quantifiable during system design, aiming to elevate the con-sideration of human values during human-machine interaction from an abstract ideal into a systematic engineering practice. 
+
+Data availability: We provide all supplementary material and additional exemplar descriptions as part of an anony-mous repository: https://github.com/Ethical-Human-Machine-Interaction/hmreq .
+
+## References                 
+
+> [1] X. Zheng, C. Julien, R. Podorozhny, F. Cassez, and T. Rakotoariv-elo, “Efficient and scalable runtime monitoring for Cyber-Physical System,” IEEE Systems Journal , vol. 12, no. 2, pp. 1667–1678, 2016. [2] M. Vierhauser and A. Egyed, “Runtime monitoring for systems of system: A closer look on opportunities for manufacturers in the context of industry 4.0,” in Digital Transformation: Core Technologies and Emerging Topics from a Computer Science Perspective , pp. 203–222, Springer, 2023. [3] N. Nikolakis, V. Maratos, and S. Makris, “A cyber physical system (cps) approach for safe human-robot collaboration in a shared workplace,” Robotics and Computer-Integrated Manufacturing ,vol. 56, pp. 233–243, 2019. [4] M. Gomez-Vazquez and J. Cabot, “Towards a DSL to formal-ize multimodal requirements,” arXiv preprint arXiv:2508.14631 ,2025. [5] J. Cleland-Huang, T. Chambers, S. Zudaire, M. T. Chowdhury, A. Agrawal, and M. Vierhauser, “Human-Machine Teaming with Small Unmanned Aerial Systems in a Mape-K Environment,”
+> ACM Transactions on Autonomous and Adaptive Systems , 2023. [6] J. de Gea Fernández, D. Mronga, M. Günther, T. Knobloch, M. Wirkus, M. Schröer, M. Trampler, S. Stiene, E. Kirchner, V. Bargsten, T. Bänziger, J. Teiwes, T. Krüger, and F. Kirchner, “Multimodal sensor-based whole-body control for human–robot collaboration in industrial settings,” Robotics and Autonomous Systems , vol. 94, pp. 102–119, 2017. [7] R. Grant and C. Higgins, “Monitoring service workers via com-puter: The effect on employees, productivity, and service,” Na-tional Productivity Review , vol. 8, no. 2, pp. 101–113, 1989. [8] A. Sartori et al. , “Monitoring and surveillance in the workplace: an overview of national and international instruments to protect employees,” Recent Labour Law Issues: A Multilevel Perspective ,pp. 203–218, 2019.
+
+Preprint – HM-Req: A Framework for Embedding Values within CPS Human Monitoring Requirements 11 
+
+[9] J. Whittle, M. A. Ferrario, W. Simm, and W. Hussain, “A case for human values in software engineering,” IEEE Software , vol. 38, no. 1, pp. 106–113, 2021. [10] C. Detweiler and M. Harbers, “Value stories: Putting human values into requirements engineering.,” in REFSQ Workshops ,vol. 1138, pp. 2–11, 2014. [11] H. Perera, R. Hoda, R. A. Shams, A. Nurwidyantoro, M. Shahin, W. Hussain, and J. Whittle, “The impact of considering human values during requirements engineering activities,” arXiv preprint arXiv:2111.15293 , 2021. [12] IEEE Computer Society, “IEEE standard model process for ad-dressing ethical concerns during system design,” IEEE Std 7000-2021 , pp. 1–82, 2021. [13] S. H. Schwartz, “Universals in the content and structure of values: Theoretical advances and empirical tests in 20 countries,” in 
+
+Advances in Experimental Social Psychology , vol. 25, pp. 1–65, Elsevier, 1992. [14] E. Gonçalves, L. Monte, S. Souza, M. de Oliveira, and J. Araujo, “A systematic literature review of kaos extensions,” in International Working Conference on Requirements Engineering: Foundation for Software Quality , pp. 166–180, Springer, 2025. [15] F. Dalpiaz, X. Franch, and J. Horkoff, “istar 2.0 language guide,” 
+
+arXiv preprint arXiv:1605.07767 , 2016. [16] A. Fuxman, R. Kazhamiakin, M. Pistore, and M. Roveri, “Formal tropos: language and semantics,” University of Trento and IRST ,vol. 55, p. 123, 2003. [17] V. Ambriola and V. Gervasi, “Processing natural language re-quirements,” in Proc. of the 12th IEEE International Conference Automated Software Engineering , pp. 36–45, IEEE, 1997. [18] V. Gervasi and D. Zowghi, “Reasoning about inconsistencies in natural language requirements,” ACM Transactions on Software Engineering and Methodology (TOSEM) , vol. 14, no. 3, pp. 277– 330, 2005. [19] A. Mavin, P. Wilkinson, A. Harwood, and M. Novak, “Easy approach to requirements syntax (EARS),” in 2009 17th IEEE International Requirements Engineering Conference , pp. 317–322, 2009. [20] R. Kluge, »Schablonen für alle Fälle« . SOPHIST GmbH, 6 ed., 2024. [21] R. Ali, F. Dalpiaz, and P. Giorgini, “A goal-based framework for contextual requirements modeling and analysis,” Requirements Engineering , vol. 15, no. 4, pp. 439–458, 2010. [22] M. A. A. Elsood, H. A. Hefny, and E. S. Nasr, “A goal-based technique for requirements prioritization,” in Proc. of the 9th International Conference on Informatics and Systems , pp. SW–18, IEEE, 2014. [23] K. Pohl, Requirements Engineering . Springer-Verlag Berlin Hei-delberg, 2 ed., 2025. [24] S. Spiekermann, Value-Based Engineering . De Gruyter Textbook, Berlin, Boston: De Gruyter, 2023. [25] Z. Pfister, M. Vierhauser, R. Wohlrab, and R. Breu, “Towards a Value-Complemented Framework for Enabling Human Monitor-ing in Cyber-Physical Systems,” in Requirements Engineering: Foundation for Software Quality (A. Hess and A. Susi, eds.), vol. 15588, pp. 3–12, Springer Nature Switzerland, 2025. [26] S. Schwartz, “An Overview of the Schwartz Theory of Basic Values,” Online Readings in Psychology and Culture , vol. 2, no. 1, 2012. [27] A. Van Deursen, P. Klint, and J. Visser, “Domain-specific lan-guages: an annotated bibliography,” ACM SIGPLAN Notices ,vol. 35, no. 6, pp. 26–36, 2000. [28] T. Kuhn, “A survey and classification of controlled natural lan-guages,” Computational Linguistics , vol. 40, no. 1, pp. 121–170, 2014. [29] Princeton University, “About WordNet.” [30] Y. Liu, J. Lin, J. Cleland-Huang, M. Vierhauser, J. Guo, and S. Lohar, “Senet: a semantic web for supporting automation of software engineering tasks,” in Proc. of the IEEE 7th International Workshop on Artificial Intelligence for Requirements Engineering ,pp. 23–32, IEEE, 2020. [31] A. Veizaga, M. Alferez, D. Torre, M. Sabetzadeh, and L. Briand, “On systematically building a controlled natural language for functional requirements,” Empirical Software Engineering , vol. 26, no. 4, p. 79, 2021. [32] University of Colorado Boulder, “VerbNet. a computational lexical resource for verbs.,” 2006. [33] P. Sala, P. A. Jimenez, and S. Nunziata, “ACTIVAGE user needs_requirements and services.” [34] J.-P. Steghöfer, B. Koopmann, J. S. Becker, I. Stierand, M. Zeller, M. Bonner, D. Schmelter, and S. Maro, “The MobSTr dataset: Model-based safety assurance and traceability.” [35] M. Lima, V. Valle, E. a. Costa, F. Lira, and B. Gadelha, “Software engineering repositories: Expanding the PROMISE database,” in Proceedings of the XXXIII Brazilian Symposium on Software Engineering , SBES ’19, pp. 427–436, Association for Computing Machinery, 2019. [36] State of Vermont, “Functional and NonFunctional requirements for VHCURES 3.0,” 2018. [37] WHO, “Digital adaptation kit for antenatal care: Operational requirements for implementing WHO recommendations in digital systems,” 2021. [38] R. Wohlrab, M. Herrmann, C. Lazik, M. Wyrich, I. Nunes, K. Schneider, L. Gren, and R. Heinrich, “Supporting Value-Aware Software Engineering Through Traceability and Value Tactics,” in 
+
+Product-Focused Software Process Improvement. PROFES 2024. ,2024. [39] M. A. Ferrario and E. Winter, “Applying Human Values Theory to Software Engineering Practice: Lessons and Implications,” IEEE Transactions on Software Engineering , vol. 49, no. 3, pp. 973–990, 2023. [40] L. Guttman, “A General Nonmetric Technique for Finding the Smallest Coordinate Space for a Configuration of Points,” Psy-chometrika , vol. 33, pp. 469–506, Dec. 1968. [41] “Eclipse-Langium/Langium.” Eclipse Langium, 2025. [42] A. Ferrari, G. O. Spagnolo, and S. Gnesi, “PURE: A Dataset of Public Requirements Documents,” in 2017 IEEE 25th Interna-tional Requirements Engineering Conference (RE) , pp. 502–505, Sept. 2017. [43] C. K. Sahu, R. Rai, M. Wiecek, and D. Gorsich, “ReqNet and ReqSim: A Network and Semantic Similarity Dataset of Re-quirements From the Tree Structure of System Requirement Specifications,” Journal of Computing and Information Science in Engineering , vol. 25, Mar. 2025. [44] H. Femmer, F. Houdek, M. Unterbusch, and A. Vogelsang, “De-scription and Comparative Analysis of QuRE: A New Industrial Requirements Quality Dataset,” in 2025 IEEE 33rd International Requirements Engineering Conference Workshops (REW) , pp. 23– 29, 2025. [45] G. Malik, M. Cevik, and A. Başar, “Data Augmentation for Conflict and Duplicate Detection in Software Engineering Sentence Pairs,” in Proceedings of the 33rd Annual International Conference on Preprint – HM-Req: A Framework for Embedding Values within CPS Human Monitoring Requirements 12 
+
+Computer Science and Software Engineering , CASCON ’23, (USA), pp. 34–43, IBM Corp., Sept. 2023. [46] J. Cleland-Huang, M. Vierhauser, and S. Bayley, “Dronology: An incubator for cyber-physical system research,” 2018. [47] S. Bird, E. Klein, and E. Loper, Natural language processing with Python: analyzing text with the natural language toolkit . O’Reilly Media, Inc., 2009. [48] NLTK, “Nltk_data/packages/corpora.” https://github.com/nltk/nltk_data/ tree/gh-pages/packages/corpora. [49] University of Notre Dame, “Dronology A Software Engineering Research Environment using Unmanned Aerial Systems,” 2018. [50] G. Comanici, E. Bieber, M. Schaekermann, I. Pasupat, N. Sachdeva, I. Dhillon, M. Blistein, O. Ram, D. Zhang, and e. a. Rosen, “Gemini 2.5: Pushing the frontier with advanced rea-soning, multimodality, long context, and next generation agentic capabilities,” 2025. [51] F. D. Davis et al. , “Technology acceptance model: Tam,” Al-Suqri, MN, Al-Aufi, AS: Information Seeking Behavior and Technology Adoption , vol. 205, no. 219, p. 5, 1989. [52] N. E. Fuchs and R. Schwitter, “Attempto Controlled Natural Language for Requirements Specifications,” in Proc. Seventh Intl. Logic Programming Symp. Workshop Logic Programming Environments , 1995. [53] B. Jahić, N. Guelfi, and B. Ries, “Semkis-dsl: A domain-specific language to support requirements engineering of datasets and neural network recognition,” Information , vol. 14, no. 4, p. 213, 2023. [54] D. Giannakopoulou, A. Mavridou, J. Rhein, T. Pressburger, J. Schu-mann, and N. Shi, “Formal Requirements Elicitation with FRET,” in International Working Conference on Requirements Engineer-ing: Foundation for Software Quality , (Pisa), 2020. [55] E. Winter, S. Forshaw, L. Hunt, and M. A. Ferrario, “Advancing the Study of Human Values in Software Engineering,” in 2019 IEEE/ACM 12th International Workshop on Cooperative and Human Aspects of Software Engineering (CHASE) , pp. 19–26, 2019. [56] J. A. Adams, “Human-Robot Interaction Design: Understanding User Needs and Requirements,” Proceedings of the Human Factors and Ergonomics Society Annual Meeting , vol. 49, no. 3, pp. 447– 451, 2005. [57] A. Agrawal, S. J. Abraham, B. Burger, C. Christine, L. Fraser, J. M. Hoeksema, S. Hwang, E. Travnik, S. Kumar, W. Scheirer, J. Cleland-Huang, M. Vierhauser, R. Bauer, and S. Cox, “The Next Generation of Human-Drone Partnerships: Co-Designing an Emergency Response System,” in Proceedings of the 2020 CHI Conference on Human Factors in Computing Systems , CHI ’20, (New York, NY, USA), pp. 1–13, Association for Computing Machinery, 2020. [58] M. R. Endsley, Designing for Situation Awareness: An Approach to User-Centered Design . CRC Press, 2 ed., 2016. [59] R. Calinescu, N. Alasmari, and M. Gleirscher, “Maintaining driver attentiveness in shared-control autonomous driving,” in 2021 International Symposium on Software Engineering for Adaptive and Self-Managing Systems (SEAMS) , pp. 90–96, 2021.

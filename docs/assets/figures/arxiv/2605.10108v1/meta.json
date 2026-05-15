@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2605.10108v1/fig-001.webp",
+      "caption": "Figure 1: Overview of the GLiNER-Relex architecture.",
+      "page": 5,
+      "index": 1,
+      "width": 786,
+      "height": 1023
+    },
+    {
+      "url": "assets/figures/arxiv/2605.10108v1/fig-002.webp",
+      "caption": "Table 1: Hyperparameters for the released GLiNER-Relex checkpoint.",
+      "page": 10,
+      "index": 2,
+      "width": 764,
+      "height": 744
+    },
+    {
+      "url": "assets/figures/arxiv/2605.10108v1/fig-003.webp",
+      "caption": "Table 2: Zero-shot relation extraction performance (Micro-F1 %) on four benchmarks. Bold indicates the best performance per dataset across end-to-end systems. The “Entities” column indicates how each model obtains entity spans at inference time: predicted (joint extraction from raw text), prompted (LLM extracts entities and relations jointly from natural-language prompt), or gold (ground-truth entities supplied as input). The “Avg.” column reports the unweighted mean Micro-F1 across the four benchmarks. †GLiREL is a dedicated relation classifier evaluated with ground-truth entity spans and types, and is not directly comparable to the end-to-end systems; we include it as an upper-bound reference for specialized relation classification.",
+      "page": 12,
+      "index": 3,
+      "width": 936,
+      "height": 180
+    }
+  ]
+}
