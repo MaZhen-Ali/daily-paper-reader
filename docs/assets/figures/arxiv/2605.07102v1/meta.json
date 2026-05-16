@@ -1,0 +1,94 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2605.07102v1/fig-001.webp",
+      "caption": "Table 8: System reliability and quality assurance metrics",
+      "page": 11,
+      "index": 1,
+      "width": 499,
+      "height": 346
+    },
+    {
+      "url": "assets/figures/arxiv/2605.07102v1/fig-002.webp",
+      "caption": "Table 4: L6 exemplar matrix. H = High, M = Medium, L = Low. ∗LP structurally inaccessible (clones possess no future). †ME collapses at death but constitutes the story’s subject throughout. ‡MR suspended: narrative refuses moral adjudication.",
+      "page": 7,
+      "index": 2,
+      "width": 496,
+      "height": 258
+    },
+    {
+      "url": "assets/figures/arxiv/2605.07102v1/fig-003.webp",
+      "caption": "Table 7: Implementation specifications",
+      "page": 10,
+      "index": 3,
+      "width": 502,
+      "height": 362
+    },
+    {
+      "url": "assets/figures/arxiv/2605.07102v1/fig-004.webp",
+      "caption": "Table 1: Six-layer hierarchical evaluation framework",
+      "page": 4,
+      "index": 4,
+      "width": 496,
+      "height": 325
+    },
+    {
+      "url": "assets/figures/arxiv/2605.07102v1/fig-005.webp",
+      "caption": "Table 11: Genre comparison across three analytical dimensions (detailed)",
+      "page": 17,
+      "index": 5,
+      "width": 499,
+      "height": 255
+    },
+    {
+      "url": "assets/figures/arxiv/2605.07102v1/fig-006.webp",
+      "caption": "Table 13: Scoring rubric for dimension evaluation",
+      "page": 17,
+      "index": 6,
+      "width": 494,
+      "height": 295
+    },
+    {
+      "url": "assets/figures/arxiv/2605.07102v1/fig-007.webp",
+      "caption": "Table 12: Five-round iterative evaluation protocol",
+      "page": 17,
+      "index": 7,
+      "width": 496,
+      "height": 323
+    },
+    {
+      "url": "assets/figures/arxiv/2605.07102v1/fig-008.webp",
+      "caption": "Figure 2: Score convergence trajectories across five iterative rounds for each layer (L4–L6) and genre category. Scores stabilize rapidly by Round 3–4, with canonical and pulp fiction consistently scoring higher than LLM-generated stories across all layers and rounds.",
+      "page": 12,
+      "index": 8,
+      "width": 1054,
+      "height": 346
+    },
+    {
+      "url": "assets/figures/arxiv/2605.07102v1/fig-009.webp",
+      "caption": "Figure 3: Genre comparison across three analytical layers. Error bars indicate standard deviations. All pairwise differences between canonical and LLM-generated stories are significant at p < 0.001.",
+      "page": 12,
+      "index": 9,
+      "width": 500,
+      "height": 396
+    },
+    {
+      "url": "assets/figures/arxiv/2605.07102v1/fig-010.webp",
+      "caption": "Table 5: Evaluation corpus composition and distribution",
+      "page": 9,
+      "index": 10,
+      "width": 496,
+      "height": 309
+    },
+    {
+      "url": "assets/figures/arxiv/2605.07102v1/fig-011.webp",
+      "caption": "Figure 1: SAGE framework architecture. (a) Six-layer hierarchy: Layers 1–3 assess textual properties through rule-based metrics (dashed); Layers 4–6 evaluate interpretive dimensions through LLM-based analysis (solid). (b) Evaluation pipeline: each story is assessed in two modes (content-limit and title-limit) across three layers via a dual-track architecture comprising a five-round iterative evaluator and an independent validator, with inter-rater agreement analysis.",
+      "page": 5,
+      "index": 11,
+      "width": 1054,
+      "height": 610
+    }
+  ]
+}
