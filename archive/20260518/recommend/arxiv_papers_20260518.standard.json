@@ -1,0 +1,364 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-05-18T21:08:32.798093+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 2,
+    "deep_cap": 6,
+    "deep_selected": 2,
+    "quick_candidates": 7,
+    "quick_skim_target": 11,
+    "quick_selected": 7
+  },
+  "deep_dive": [
+    {
+      "id": "2605.11045v1",
+      "source": "arxiv",
+      "title": "Read, Extract, Classify: A Tool for Smarter Requirements Engineering",
+      "abstract": "This paper presents the ReXCL tool, which automates the extraction and classification processes in requirements engineering, enhancing the software development life-cycle. The tool features two main modules: Extraction, which processes raw requirement documents into a predefined schema using heuristics and predictive modeling, and Classification, which assigns class labels to requirements using adaptive fine-tuning of encoder-based models. The final output can be exported to external requirement engineering tools. Performance evaluations indicate that ReXCL significantly improves efficiency and accuracy in managing requirements, marking a novel approach to automating the schematization of semi-structured requirement documents.",
+      "authors": [
+        "Paheli Bhattacharya",
+        "Manojit Chakraborty",
+        "Santhosh Kumar Arumugam",
+        "Rishabh Gupta"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI",
+        "cs.LG"
+      ],
+      "published": "2026-05-11T09:52:27+00:00",
+      "link": "https://arxiv.org/pdf/2605.11045v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Automates extraction and classification of requirements from raw documents",
+      "llm_evidence_cn": "自动从原始文档中提取和分类需求",
+      "llm_evidence": "自动从原始文档中提取和分类需求",
+      "canonical_evidence": "自动从原始文档中提取和分类需求",
+      "llm_tldr_en": "ReXCL tool automates requirement extraction and classification to improve engineering efficiency.",
+      "llm_tldr_cn": "ReXCL工具通过自动化需求提取和分类，提高了需求工程的管理效率和准确性。",
+      "llm_tldr": "ReXCL工具通过自动化需求提取和分类，提高了需求工程的管理效率和准确性。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Automated extraction of user stories from text",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2605.12657v1",
+      "source": "arxiv",
+      "title": "User Reviews as a Source for Usability Requirements: A Precursor Study on Using Large Language Models",
+      "abstract": "It is known that user-centered approaches to requirements engineering in general lead to a better suited product for the end-users. LLM4RE provides promising approaches to support the requirements elicitation process (e.g. classification of requirements). Previous approaches focus on Machine-Learning (ML) or Deep-Learning (DL) aspects, which require intensive training with a large amount of manually labeled data. LLMs, on the other hand, are pre-trained on large amounts of user-generated text data, enabling a user-centric workflow to analyze requirements. In this paper, we explore the possibility of exploiting the improved natural language understanding of LLMs, rather than strict ML classification, together with the mass extraction of user reviews to analyze if the performance of LLMs in understanding user reviews is comparable to the performance of human raters. This enables a quick and cheap workflow for development teams to gather and process their userś requirements. This paper provides three major contributions: (1) We provide a completely coded dataset of 300 user reviews containing usability-relevant aspects from three different types of apps, that were labeled by two human raters and by an LLM. (2) We build an initial prompt, based on two prompt engineering iterations and specifically developed coding guidelines derived from the 10 Nielsen Usability Heuristics, for LLMs to filter usability relevant user reviews. (3) We determine that LLMs are generally able to recognize usability as a non-functional requirement in user reviews, in terms of their F-score, but the performance and reliability is strongly dependent on the prompt.",
+      "authors": [
+        "Cedric Wellhausen",
+        "Laura Reinhardt",
+        "Kurt Schneider"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-05-12T19:05:04+00:00",
+      "link": "https://arxiv.org/pdf/2605.12657v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "LLM-based requirements elicitation and classification from user reviews",
+      "llm_evidence_cn": "基于大语言模型的用户评论需求提取与分类",
+      "llm_evidence": "基于大语言模型的用户评论需求提取与分类",
+      "canonical_evidence": "基于大语言模型的用户评论需求提取与分类",
+      "llm_tldr_en": "Explores using LLMs to extract and classify usability requirements from user-generated text data.",
+      "llm_tldr_cn": "探索利用大语言模型从用户生成的文本数据中提取和分类可用性需求。",
+      "llm_tldr": "探索利用大语言模型从用户生成的文本数据中提取和分类可用性需求。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Automated extraction of user stories from text",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2605.11986v1",
+      "source": "arxiv",
+      "title": "On the Limitations of Large Language Models for Conceptual Database Modeling",
+      "abstract": "This article analyzes the use of Large Language Models (LLMs) as support for the conceptual modeling of relational databases through the automatic generation of Entity-Relationship (ER) diagrams from natural language requirements. The approach combines different language models with prompt engineering techniques to evaluate their ability to identify entities, relationships, and attributes in a conceptually consistent manner. The experimental evaluation involved three LLMs, each subjected to three prompting techniques (Zero-Shot, Chain of Thought, and Chain of Thought + Verifier), applied to the same requirements scenario with progressively increasing complexity. The generated diagrams were qualitatively analyzed through direct comparison with the textual requirements, considering the structural and semantic adherence of the modeled elements. The results indicate that, although LLMs show reasonable performance in less complex scenarios, their reliability decreases as the complexity of the requirements increases, with a rise in inconsistencies, ambiguities, and failures in representing constraints. These findings reinforce that, in their current state, LLMs are not sufficiently mature for reliable use in complex scenarios, and the cost of validation may offset the apparent productivity gains.",
+      "authors": [
+        "Arthur F. Siqueira",
+        "Carlos D. S. Nogueira",
+        "Eduarda Farias",
+        "Claudio E. C. Campelo",
+        "Júlia Menezes"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-05-12T11:35:59+00:00",
+      "link": "https://arxiv.org/pdf/2605.11986v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "generating conceptual models from natural language requirements",
+      "llm_evidence_cn": "从自然语言需求中生成概念模型",
+      "llm_evidence": "从自然语言需求中生成概念模型",
+      "canonical_evidence": "从自然语言需求中生成概念模型",
+      "llm_tldr_en": "Analyzes LLMs' ability to generate ER diagrams from natural language requirements using prompt engineering.",
+      "llm_tldr_cn": "分析了大语言模型通过提示工程从自然语言需求中生成实体关系图的能力。",
+      "llm_tldr": "分析了大语言模型通过提示工程从自然语言需求中生成实体关系图的能力。",
+      "llm_tags": [
+        "query:re-us:composite"
+      ],
+      "matched_query_tag": "query:re-us:composite",
+      "matched_query_text": "Papers central to 需求工程领域的用户故事相关的论文, especially work that connects or combines: User stories in software development and requirements engineering; Requirements engineering methodologies and practices; Agile requirements engineering and management; Quality assessment and improvement of user stories; Automated extraction of user stories from text; Defining and validating user story acceptance criteria; State of the art in user story research for requirements engineering; Automated tools for user story generation and validation; Impact of user story quality on software project success.",
+      "matched_requirement_id": "req-composite-re-us",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2605.10108v1",
+      "source": "arxiv",
+      "title": "GLiNER-Relex: A Unified Framework for Joint Named Entity Recognition and Relation Extraction",
+      "abstract": "Joint named entity recognition (NER) and relation extraction (RE) is a fundamental task in natural language processing for constructing knowledge graphs from unstructured text. While recent approaches treat NER and RE as separate tasks requiring distinct models, we introduce GLiNER-Relex, a unified architecture that extends the GLiNER framework to perform both entity recognition and relation extraction in a single model. Our approach leverages a shared bidirectional transformer encoder to jointly represent text, entity type labels, and relation type labels, enabling zero-shot extraction of arbitrary entity and relation types specified at inference time. GLiNER-Relex constructs entity pair representations from recognized spans and scores them against relation type embeddings using a dedicated relation scoring module. We evaluate our model on four standard relation extraction benchmarks: CoNLL04, DocRED, FewRel, and CrossRE, and demonstrate competitive performance against both specialized relation extraction models and large language models, while maintaining the computational efficiency characteristic of the GLiNER family. The model is released as an open-source Python package with a simple inference API that allows users to specify arbitrary entity and relation type labels at inference time and obtain both entities and relation triplets in a single call. All models and code are publicly available.",
+      "authors": [
+        "Ihor Stepanov",
+        "Oleksandr Lukashov",
+        "Mykhailo Shtopko",
+        "Vivek Kalyanarangan"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL",
+        "cs.LG"
+      ],
+      "published": "2026-05-11T07:23:49+00:00",
+      "link": "https://arxiv.org/pdf/2605.10108v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "information extraction from unstructured text",
+      "llm_evidence_cn": "从非结构化文本中提取信息",
+      "llm_evidence": "从非结构化文本中提取信息",
+      "canonical_evidence": "从非结构化文本中提取信息",
+      "llm_tldr_en": "A unified framework for entity and relation extraction, providing a technical bridge for user story extraction.",
+      "llm_tldr_cn": "一个统一的实体和关系提取框架，为用户故事提取提供了技术桥梁。",
+      "llm_tldr": "一个统一的实体和关系提取框架，为用户故事提取提供了技术桥梁。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Automated extraction of user stories from text",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2605.12100v1",
+      "source": "arxiv",
+      "title": "HM-Req: A Framework for Embedding Values within CPS Human Monitoring Requirements",
+      "abstract": "Monitoring humans, for example, their movement or location, is essential for safe and efficient human-machine collaboration in Cyber-Physical Systems (CPS). This information allows CPS to ensure safety properties, adapt their behaviour dynamically, and coordinate with humans. To ensure that the design of a CPS respects ethical principles and the privacy of its stakeholders, system requirements, particularly those related to human monitoring, must reflect the human values of all involved stakeholders. However, human values are often underrepresented in Software Engineering -- particularly during requirements elicitation and system design, crucial phases when introducing ethically critical functionality. Stakeholder values are often implicit and conflicting, yet rarely systematically captured. Furthermore, unstructured natural language requirements introduce ambiguity and vagueness, complicating conflict resolution. To address these problems, we propose HM-Req, a novel requirements elicitation framework including a Controlled Natural Language (CNL) for defining human monitoring requirements. These requirements are then augmented with human values from relevant stakeholders and integrated into a Value Dashboard to detect potential conflicts that require further discussion and resolution. Validation results, applying the CNL to different datasets and conducting a survey and expert interview, confirms the CNL's ability to capture diverse human monitoring requirements and show HM-Req's usefulness for requirements elicitation activities.",
+      "authors": [
+        "Zoe Pfister",
+        "Ruth Breu",
+        "Michael Vierhauser"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.HC"
+      ],
+      "published": "2026-05-12T13:15:39+00:00",
+      "link": "https://arxiv.org/pdf/2605.12100v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "requirements engineering methodologies and elicitation",
+      "llm_evidence_cn": "需求工程方法论与需求获取",
+      "llm_evidence": "需求工程方法论与需求获取",
+      "canonical_evidence": "需求工程方法论与需求获取",
+      "llm_tldr_en": "Proposes a framework for embedding human values into requirements elicitation for cyber-physical systems.",
+      "llm_tldr_cn": "提出了一种将人类价值观嵌入网络实体系统需求获取过程的框架。",
+      "llm_tldr": "提出了一种将人类价值观嵌入网络实体系统需求获取过程的框架。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2605.10824v1",
+      "source": "arxiv",
+      "title": "StartFlow: From Method Conception to Multi-Perspective Evaluation in UX Prototyping for Software Startups",
+      "abstract": "Context. Software startups face significant challenges in building minimum viable products, particularly in the early stages, when resources are limited and expertise in user experience is scarce. Objective. Introduce StartFlow, a structured method that helps non-specialized professionals create MVP prototypes using the wireflow technique, a combination of wireframes and user flows. StartFlow consists of three steps: (i) organizing features; (ii) building wireflows; and (iii) verifying and refining them based on usability heuristics. Method. To assess the method Startflow, we first conducted a focus group with researchers in Software Engineering, Human-Computer Interaction, and Software Startups. Afterward, we conducted a proof-of-concept study, which consisted of an experiment and a heuristic evaluation with experts. Results. The qualitative analysis of the focus group revealed that participants found the method straightforward, flexible, and helpful in structuring user flows and identifying visual components. However, they also pointed out the need to improve its presentation, clarify its iterative nature, and strengthen its connection to broader UX principles. The results of the proof-of-concept indicate that participants who used StartFlow created clearer prototypes, adhered to the proposed user stories and business rules, and presented fewer usability defects. Furthermore, the method was well evaluated for its ease of use and intended future adoption. Conclusion. The study reinforces the potential of StartFlow as an accessible tool to support user-centered development in software startups from the earliest stages of their product development.",
+      "authors": [
+        "Guilherme Corredato Guerino",
+        "João Pedro de Souza Olivo Tardivo",
+        "Renato Balancieri",
+        "Gislaine Camila Lapasini Leal"
+      ],
+      "primary_category": "cs.HC",
+      "categories": [
+        "cs.HC",
+        "cs.SE"
+      ],
+      "published": "2026-05-11T16:43:21+00:00",
+      "link": "https://arxiv.org/pdf/2605.10824v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Structured method for organizing features and verifying user flows in startups",
+      "llm_evidence_cn": "初创公司组织功能和验证用户流的结构化方法",
+      "llm_evidence": "初创公司组织功能和验证用户流的结构化方法",
+      "canonical_evidence": "初创公司组织功能和验证用户流的结构化方法",
+      "llm_tldr_en": "StartFlow helps non-specialists create and verify MVP prototypes using wireflows and usability heuristics.",
+      "llm_tldr_cn": "StartFlow方法帮助非专业人士通过线框流技术创建并验证MVP原型。",
+      "llm_tldr": "StartFlow方法帮助非专业人士通过线框流技术创建并验证MVP原型。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2605.10907v2",
+      "source": "arxiv",
+      "title": "Engineering Robustness into Personal Agents with the AI Workflow Store",
+      "abstract": "The dominant paradigm for AI agents is an \"on-the-fly\" loop in which agents synthesize plans and execute actions within seconds or minutes in response to user prompts. We argue that this paradigm short-circuits disciplined software engineering (SE) processes -- iterative design, rigorous testing, adversarial evaluation, staged deployment, and more -- that have delivered the (relatively) reliable and secure systems we use today. By focusing on rapid, real-time synthesis, are AI agents effectively delivering users improvised prototypes rather than systems fit for high-stakes scenarios in which users may unwittingly apply them?   This paper argues for the need to integrate rigorous SE processes into the agentic loop to produce production-grade, hardened, and deterministically-constrained agent *workflows* that substantially outperform the potentially brittle and vulnerable results of on-the-fly synthesis. Doing so may require extra compute and time, and if so, we must amortize the cost of rigor through reuse across a broad user community. We envision an *AI Workflow Store* that consists of hardened and reusable workflows that agents can invoke with far greater reliability and security than improvised tool chains. We outline the research challenges of this vision, which stem from a broader flexibility-robustness tension that we argue requires moving beyond the ``on-the-fly'' paradigm to navigate effectively.",
+      "authors": [
+        "Roxana Geambasu",
+        "Mariana Raykova",
+        "Pierre Tholoniat",
+        "Trishita Tiwari",
+        "Lillian Tsai",
+        "Wen Zhang"
+      ],
+      "primary_category": "cs.CR",
+      "categories": [
+        "cs.CR",
+        "cs.AI"
+      ],
+      "published": "2026-05-11T17:46:33+00:00",
+      "link": "https://arxiv.org/pdf/2605.10907v2",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "integrating rigorous software engineering processes into agentic loops",
+      "llm_evidence_cn": "将严格的软件工程流程整合到代理循环中",
+      "llm_evidence": "将严格的软件工程流程整合到代理循环中",
+      "canonical_evidence": "将严格的软件工程流程整合到代理循环中",
+      "llm_tldr_en": "Advocates for applying disciplined software engineering practices to improve the robustness of AI agents.",
+      "llm_tldr_cn": "主张应用严谨的软件工程实践来提高AI代理的鲁棒性。",
+      "llm_tldr": "主张应用严谨的软件工程实践来提高AI代理的鲁棒性。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2605.11027v1",
+      "source": "arxiv",
+      "title": "From Code-Centric to Intent-Centric Software Engineering: A Reflexive Thematic Analysis of Generative AI, Agentic Systems, and Engineering Accountability",
+      "abstract": "Generative artificial intelligence (GenAI) and agentic systems are moving software engineering from code-centric production toward intent-centric human-agent work in which natural language, repository context, tools, tests, and governance shape delivery. Prior studies examine code generation, AI pair programming, and software engineering agents, but less is known about how public technical discourse and peer-reviewed evidence together frame the profession's near-term transition. This study addresses that gap through a reflexive thematic analysis (RTA) dominant and interpretative phenomenological analysis (IPA) informed public-discourse and document analysis. The corpus combines peer-reviewed software engineering and AI literature, technical benchmarks, public talks and interviews, essays, product-facing technical announcements, and X-originated discourse from prominent AI and software engineering voices. Sources were organized through a corpus register, codebook, coding matrix, theme-to-source traceability table, DOI/reference audit, and reproducibility protocol. The analysis shows that GenAI lowers the cost of producing plausible code while increasing the importance of intent specification, context curation, architecture knowledge, verification, security, provenance, governance, and accountable human judgment. The findings indicate that software engineering is becoming less about isolated code authorship and more about supervising, validating, and governing socio-technical systems of humans, agents, tools, and evidence gates. This matters because speed-focused adoption can accumulate hidden technical debt and accountability gaps, whereas bounded autonomy can preserve quality, security, maintainability, and trust.",
+      "authors": [
+        "Elyson De La Cruz"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-05-10T20:45:06+00:00",
+      "link": "https://arxiv.org/pdf/2605.11027v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Transition from code-centric to intent-centric software engineering using natural language",
+      "llm_evidence_cn": "从以代码为中心转向以自然语言意图为中心的软件工程",
+      "llm_evidence": "从以代码为中心转向以自然语言意图为中心的软件工程",
+      "canonical_evidence": "从以代码为中心转向以自然语言意图为中心的软件工程",
+      "llm_tldr_en": "Analyzes the shift toward intent-centric SE where natural language and governance shape delivery.",
+      "llm_tldr_cn": "分析了软件工程向以意图为中心的转变，自然语言和治理在其中起关键作用。",
+      "llm_tldr": "分析了软件工程向以意图为中心的转变，自然语言和治理在其中起关键作用。",
+      "llm_tags": [
+        "query:re-us:composite"
+      ],
+      "matched_query_tag": "query:re-us:composite",
+      "matched_query_text": "Papers central to 需求工程领域的用户故事相关的论文, especially work that connects or combines: User stories in software development and requirements engineering; Requirements engineering methodologies and practices; Agile requirements engineering and management; Quality assessment and improvement of user stories; Automated extraction of user stories from text; Defining and validating user story acceptance criteria; State of the art in user story research for requirements engineering; Automated tools for user story generation and validation; Impact of user story quality on software project success.",
+      "matched_requirement_id": "req-composite-re-us",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2605.15865v1",
+      "source": "arxiv",
+      "title": "From Text to DSL: Evaluating Grammar-Based Model Generation Using Open LLMs",
+      "abstract": "Large Language Models (LLMs) have shown increasing potential in automating model-driven software engineering tasks, particularly in generating models conforming to Domain Specific Languages (DSLs) from natural language. While most existing approaches rely on large proprietary models, their high cost and limited deployability hinder broader adoption.   In this paper, we evaluate whether open-source LLMs of varying sizes (0.5B to 32B parameters) can generate DSL-conformant models using only few-shot prompting, without any fine-tuning. Our evaluation focuses on key model-driven engineering (MDE) requirements, including syntactic validity, semantic completeness, and inter-model reference consistency.   We extend our prior work by moving from generating user interface models (referred to as \"UI models\" in this paper) over fixed, predefined data schemas (\"data models\") to generating both the UI and data models entirely from scratch. This shift serves two purposes: first, it highlights the LLM's ability to infer domain-specific relationships and maintain consistency across multiple interconnected models; second, it allows us to generalize earlier findings by testing DSL generation across models of different natures and structural roles. Our structured evaluation combines automatic parsing and expert feedback across 39 LLMs, revealing that several compact models (e.g., \\texttt{gemma3:12b}, \\texttt{mistral:7b-instruct}) approach or match the quality of much larger models.   These findings demonstrate the feasibility of using smaller, open-source LLMs for grammar-conformant DSL generation in MDE workflows, offering a cost-effective and deployable alternative to closed LLMs.",
+      "authors": [
+        "Junaid Baber",
+        "Nicolas Hili",
+        "Didier Schwab",
+        "Léo Challier",
+        "Cécilia Satrin"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-05-15T11:33:48+00:00",
+      "link": "https://arxiv.org/pdf/2605.15865v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "generating models from natural language text",
+      "llm_evidence_cn": "从自然语言文本生成模型",
+      "llm_evidence": "从自然语言文本生成模型",
+      "canonical_evidence": "从自然语言文本生成模型",
+      "llm_tldr_en": "Evaluates open LLMs for generating domain-specific models from text, relevant to automated extraction tasks.",
+      "llm_tldr_cn": "评估了开源大模型从文本生成领域特定模型的能力，与自动化提取任务相关。",
+      "llm_tldr": "评估了开源大模型从文本生成领域特定模型的能力，与自动化提取任务相关。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Automated extraction of user stories from text",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
