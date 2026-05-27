@@ -1,0 +1,150 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2605.19180v1/fig-001.webp",
+      "caption": "Fig. 14. Example of the revised prompt.",
+      "page": 25,
+      "index": 1,
+      "width": 715,
+      "height": 223
+    },
+    {
+      "url": "assets/figures/arxiv/2605.19180v1/fig-002.webp",
+      "caption": "Fig. 13. The prompt for the ImprovAgent.",
+      "page": 25,
+      "index": 2,
+      "width": 754,
+      "height": 615
+    },
+    {
+      "url": "assets/figures/arxiv/2605.19180v1/fig-003.webp",
+      "caption": "Fig. 6. An example illustrating the mapping between main steps in the Configuration Roadmap section and the corresponding Procedure section main steps.",
+      "page": 15,
+      "index": 3,
+      "width": 535,
+      "height": 273
+    },
+    {
+      "url": "assets/figures/arxiv/2605.19180v1/fig-004.webp",
+      "caption": "Fig. 7. The prompt for roadmap–procedure mapping Agent.",
+      "page": 15,
+      "index": 4,
+      "width": 761,
+      "height": 542
+    },
+    {
+      "url": "assets/figures/arxiv/2605.19180v1/fig-005.webp",
+      "caption": "Fig. 12. The prompt for the EvalAgent.",
+      "page": 22,
+      "index": 5,
+      "width": 761,
+      "height": 630
+    },
+    {
+      "url": "assets/figures/arxiv/2605.19180v1/fig-006.webp",
+      "caption": "Fig. 2. An overview of our multi-agent framework for knowledge graph extraction, evaluation, and improvement.",
+      "page": 10,
+      "index": 6,
+      "width": 860,
+      "height": 554
+    },
+    {
+      "url": "assets/figures/arxiv/2605.19180v1/fig-007.webp",
+      "caption": "Fig. 5. Example roadmap extraction output and the corresponding KG triples constructed from the output.",
+      "page": 14,
+      "index": 7,
+      "width": 895,
+      "height": 805
+    },
+    {
+      "url": "assets/figures/arxiv/2605.19180v1/fig-008.webp",
+      "caption": "Fig. 9. An example of the Procedure section in the ESCM.",
+      "page": 18,
+      "index": 8,
+      "width": 629,
+      "height": 854
+    },
+    {
+      "url": "assets/figures/arxiv/2605.19180v1/fig-009.webp",
+      "caption": "Fig. 10. The prompt for procedure extraction agent.",
+      "page": 19,
+      "index": 9,
+      "width": 750,
+      "height": 594
+    },
+    {
+      "url": "assets/figures/arxiv/2605.19180v1/fig-010.webp",
+      "caption": "Table 4. Procedure Extraction Evaluation Results",
+      "page": 32,
+      "index": 10,
+      "width": 885,
+      "height": 239
+    },
+    {
+      "url": "assets/figures/arxiv/2605.19180v1/fig-011.webp",
+      "caption": "Table 3. Roadmap–Procedure Mapping Evaluation Results",
+      "page": 32,
+      "index": 11,
+      "width": 885,
+      "height": 232
+    },
+    {
+      "url": "assets/figures/arxiv/2605.19180v1/fig-012.webp",
+      "caption": "Table 2. Roadmap extraction evaluation results",
+      "page": 32,
+      "index": 12,
+      "width": 885,
+      "height": 232
+    },
+    {
+      "url": "assets/figures/arxiv/2605.19180v1/fig-013.webp",
+      "caption": "Fig. 4. The prompt for roadmap extraction agent.",
+      "page": 12,
+      "index": 13,
+      "width": 761,
+      "height": 529
+    },
+    {
+      "url": "assets/figures/arxiv/2605.19180v1/fig-014.webp",
+      "caption": "Fig. 3. An example of the Configuration Roadmap section in the ESCM.",
+      "page": 12,
+      "index": 14,
+      "width": 809,
+      "height": 390
+    },
+    {
+      "url": "assets/figures/arxiv/2605.19180v1/fig-015.webp",
+      "caption": "Fig. 1. Overview of the proposed knowledge graph (KG) schema.",
+      "page": 9,
+      "index": 15,
+      "width": 882,
+      "height": 425
+    },
+    {
+      "url": "assets/figures/arxiv/2605.19180v1/fig-016.webp",
+      "caption": "Table 1. Questionnaire designed for evaluating the generated test case specifications.",
+      "page": 31,
+      "index": 16,
+      "width": 747,
+      "height": 694
+    },
+    {
+      "url": "assets/figures/arxiv/2605.19180v1/fig-017.webp",
+      "caption": "Fig. 11. Example procedure extraction output and the corresponding KG triples constructed from the output.",
+      "page": 20,
+      "index": 17,
+      "width": 861,
+      "height": 890
+    },
+    {
+      "url": "assets/figures/arxiv/2605.19180v1/fig-018.webp",
+      "caption": "Fig. 8. Example roadmap–procedure mapping output and the corresponding KG triples constructed from the output.",
+      "page": 16,
+      "index": 18,
+      "width": 895,
+      "height": 842
+    }
+  ]
+}

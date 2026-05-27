@@ -1,0 +1,62 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2605.26144v1/fig-001.webp",
+      "caption": "Figure 3: Annotation interface used to inspect Figma-derived pages, match candidate nodes, and annotate interactable components and visual anchors.",
+      "page": 11,
+      "index": 1,
+      "width": 826,
+      "height": 390
+    },
+    {
+      "url": "assets/figures/arxiv/2605.26144v1/fig-002.webp",
+      "caption": "Table 3: Per-condition (top) and per-model (bottom) results. Combined is the structure-function score S; Comb. median is the median of per-run Combined scores. Bold marks the best value per column.",
+      "page": 7,
+      "index": 2,
+      "width": 568,
+      "height": 245
+    },
+    {
+      "url": "assets/figures/arxiv/2605.26144v1/fig-003.webp",
+      "caption": "Figure 2: Overview of model workflow trajectories. The left panel shows the action mix over normalized task progress, while the right panel shows transition probabilities between adjacent actions, with each row normalized by the current action.",
+      "page": 7,
+      "index": 3,
+      "width": 826,
+      "height": 355
+    },
+    {
+      "url": "assets/figures/arxiv/2605.26144v1/fig-004.webp",
+      "caption": "Figure 4: Workload-weighted action trajectory raster. Each row is one run, with the horizontal axis showing that run’s normalized progress from 0% to 100%. Rows are grouped by model family and sorted within each family by score residual (light green background: non-negative residual; light red: negative residual). Action colors are gray (inspect), blue (write), green (verify), red (failure), and orange (other); blue write blocks are widened in proportion to the number of files touched, so Codex batch writes are not undercounted relative to Claude per-file writes.",
+      "page": 14,
+      "index": 4,
+      "width": 798,
+      "height": 1245
+    },
+    {
+      "url": "assets/figures/arxiv/2605.26144v1/fig-005.webp",
+      "caption": "Table 1: Prompt-information conditions used in the benchmark. Visual fidelity increases from C0 (text only) to C3/C4 (Figma structure). Stack constraint varies independently: some conditions specify which stack(s) the agent must use, while others let the agent choose freely.",
+      "page": 3,
+      "index": 5,
+      "width": 806,
+      "height": 232
+    },
+    {
+      "url": "assets/figures/arxiv/2605.26144v1/fig-006.webp",
+      "caption": "Table 2: Dataset scale and human annotation statistics. Interactive annotations include buttons, links, inputs, menus, tabs, filters, and other controls expected to trigger visible behavior.",
+      "page": 4,
+      "index": 6,
+      "width": 582,
+      "height": 286
+    },
+    {
+      "url": "assets/figures/arxiv/2605.26144v1/fig-007.webp",
+      "caption": "Figure 1: Pipeline of the DOM-grounded interaction evaluator. Human-annotated mockup targets are aligned with the rendered application, matched to DOM elements, verified through behavior-specific checks, and aggregated into a joint localization-behavior score.",
+      "page": 5,
+      "index": 7,
+      "width": 790,
+      "height": 640
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2605.19362v1/fig-001.webp",
+      "caption": "Table 1. Coding rule families for corpus analysis.",
+      "page": 3,
+      "index": 1,
+      "width": 504,
+      "height": 502
+    },
+    {
+      "url": "assets/figures/arxiv/2605.19362v1/fig-002.webp",
+      "caption": "Table 3. Information that still required code inspection before constructing a first local check in the DNS/C2 subset.",
+      "page": 4,
+      "index": 2,
+      "width": 486,
+      "height": 255
+    }
+  ]
+}
