@@ -1,0 +1,38 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2607.03656v1/fig-001.webp",
+      "caption": "TABLE I SIGNAL-LAYER OBLIGATIONS AND REPAIR INFORMATION PRESERVATION",
+      "page": 6,
+      "index": 1,
+      "width": 529,
+      "height": 404
+    },
+    {
+      "url": "assets/figures/arxiv/2607.03656v1/fig-002.webp",
+      "caption": "Fig. 1. AUTOCEDAR as fixed-target construction plus verifier-guided search. Raw requirements D are indexed into a source DAG GD : stable source nodes and bounded context packets used to propose atoms. A is the set of approved schema and property atoms, Σ is the Cedar schema, Π is the boundary plan, and F , C,G are the approved floors, ceilings, and liveness slices. Some review-level constraints are derived: they are checked only after AUTOCEDAR compiles them into primitive verifier obligations. The model proposes candidates Pt from repair packets mt, while the Cedar checker validates Pt and runs cedar symcc to produce check records Qt against the fixed plan. The signal layer Φ turns failed records into the next repair packet; passing records produce an evidence package whose trace T records source spans, atoms, boundaries, checks, and associated candidate clauses.",
+      "page": 3,
+      "index": 2,
+      "width": 903,
+      "height": 279
+    },
+    {
+      "url": "assets/figures/arxiv/2607.03656v1/fig-003.webp",
+      "caption": "Fig. 2. The synthesis sandwich. The dashed rectangle is an intermediate candidate: it must stay inside the ceiling envelope, grow to include required access, and hit each live workflow slice. Final acceptance requires LΠ ⊆ sem(P ) ⊆ UΠ and sem(P ) ∩ Gk ̸= ∅. The same verifier call therefore induces different repair directions: a request outside the ceiling tightens, a missing floor loosens, and an empty liveness slice expands.",
+      "page": 4,
+      "index": 3,
+      "width": 497,
+      "height": 314
+    },
+    {
+      "url": "assets/figures/arxiv/2607.03656v1/fig-004.webp",
+      "caption": "TABLE VI REAL-WORLD PROPERTY AND SEMANTIC REQUEST RESULTS. BASELINE ROWS ARE CATEGORY 2; “REPAIR” MEANS ONLY TRIVIAL SYNTAX OR CASING FIXES. N/A INDICATES INVALID SCHEMA/POLICY.",
+      "page": 9,
+      "index": 4,
+      "width": 542,
+      "height": 248
+    }
+  ]
+}

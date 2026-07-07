@@ -1,0 +1,62 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2607.01980v1/fig-001.webp",
+      "caption": "Fig. 2. The Timeless requirements-to-Gherkin pipeline. Each stage runs as an asynchronous LLM call; the SSE stream updates the User Interface (UI) as each stage completes.",
+      "page": 6,
+      "index": 1,
+      "width": 670,
+      "height": 575
+    },
+    {
+      "url": "assets/figures/arxiv/2607.01980v1/fig-002.webp",
+      "caption": "Table 1. PURE documents selected for evaluation.",
+      "page": 7,
+      "index": 2,
+      "width": 728,
+      "height": 478
+    },
+    {
+      "url": "assets/figures/arxiv/2607.01980v1/fig-003.webp",
+      "caption": "Table 3. Requirement coverage: Timeless and naive LLM baseline. TF-IDF (τ=0.20) and semantic embeddings (τ=0.50). RCR = Requirement Coverage Rate; SSR = Spurious Scenario Rate.",
+      "page": 10,
+      "index": 3,
+      "width": 725,
+      "height": 316
+    },
+    {
+      "url": "assets/figures/arxiv/2607.01980v1/fig-004.webp",
+      "caption": "Fig. 3. Results overview. (a) Quality profile: six headline metrics normalized to [0, 1] (higher = better for all axes). Timeless (solid, filled) and the zero-shot baseline (dashed, open markers) are compared across structural validity, lexical and semantic coverage, and the three expert evaluation dimensions. (b) Lexical vs semantic RCR per document; filled circles = Timeless, open squares = baseline. Points above the diagonal (Lex=Sem) indicate TF-IDF underestimation of coverage. The CCTNS document shows the largest gap: Timeless achieves 44% lexical but 96% semantic RCR (+52 pp), confirming that TF-IDF systematically underestimates abstracted, epic-organized Gherkin.",
+      "page": 13,
+      "index": 4,
+      "width": 710,
+      "height": 344
+    },
+    {
+      "url": "assets/figures/arxiv/2607.01980v1/fig-005.webp",
+      "caption": "Table 4. Human expert evaluation results (mean scores, 4 raters). Correctness and Executability are per-scenario means; Completeness is per-document mean (1 rating per rater). κ = Fleiss’ kappa for Correctness ratings pooled across both systems per document; near-zero values reflect systematic rater scale-usage differences, not directional disagreement.",
+      "page": 12,
+      "index": 5,
+      "width": 725,
+      "height": 327
+    },
+    {
+      "url": "assets/figures/arxiv/2607.01980v1/fig-006.webp",
+      "caption": "Table 2. Automated structural quality metrics: Timeless and naive LLM baseline. SV = Structural Validity; SC = Step Completeness (100% in both systems; GPT-class capability floor, not a differentiating metric); NC = Negative Coverage; Dens = scenarios per requirement.",
+      "page": 9,
+      "index": 6,
+      "width": 725,
+      "height": 350
+    },
+    {
+      "url": "assets/figures/arxiv/2607.01980v1/fig-007.webp",
+      "caption": "Fig. 1. Timeless system architecture. The Manager Service coordinates the pipeline; SSE delivers real-time state updates to the React frontend.",
+      "page": 5,
+      "index": 7,
+      "width": 700,
+      "height": 498
+    }
+  ]
+}

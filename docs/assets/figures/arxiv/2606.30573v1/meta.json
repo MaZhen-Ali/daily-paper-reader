@@ -1,0 +1,62 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2606.30573v1/fig-001.webp",
+      "caption": "Figure 3. Average agent-user interaction count and average user tool calls per trial.",
+      "page": 6,
+      "index": 1,
+      "width": 709,
+      "height": 286
+    },
+    {
+      "url": "assets/figures/arxiv/2606.30573v1/fig-002.webp",
+      "caption": "Figure 1. SWE-INTERACT converts SWE benchmarks from one-shot implementation tasks into interactive developer workflows. Standard single-turn benchmarks provide the full task specification upfront and evaluate autonomous implementation. SWE-INTERACT exposes requirements through a multi-turn interaction driven by a persona-conditioned user simulator: the simulator starts with an incomplete request, reviews the agent’s plan, inspects the workspace with tools, and progressively reveals requirements through targeted feedback and revisions. This reframes benchmark difficulty around interaction, testing whether agents can discover user intent, incorporate evolving requirements, and preserve correctness across turns.",
+      "page": 2,
+      "index": 2,
+      "width": 722,
+      "height": 537
+    },
+    {
+      "url": "assets/figures/arxiv/2606.30573v1/fig-003.webp",
+      "caption": "Figure 6. Revision churn and overhead metrics.",
+      "page": 22,
+      "index": 3,
+      "width": 806,
+      "height": 325
+    },
+    {
+      "url": "assets/figures/arxiv/2606.30573v1/fig-004.webp",
+      "caption": "Figure 5. Failure-mode distribution over independently assessed semantic failure labels. Labels are not mutually exclusive, so the donut is over assigned labels rather than trajectories.",
+      "page": 8,
+      "index": 4,
+      "width": 987,
+      "height": 332
+    },
+    {
+      "url": "assets/figures/arxiv/2606.30573v1/fig-005.webp",
+      "caption": "Table 2. Change in agent trajectory shape and final performance with our Expert Nitpicker persona and a baseline neutral persona design. Parentheses in the Ours columns show the change relative to the neutral simulator; resolve-rate changes are percentage points, while step and turn changes are relative percentages.",
+      "page": 8,
+      "index": 5,
+      "width": 914,
+      "height": 219
+    },
+    {
+      "url": "assets/figures/arxiv/2606.30573v1/fig-006.webp",
+      "caption": "Figure 2. Our sandbox design separates the agent container, which holds the workspace, from the user-simulator container, which holds the persona, task instructions, and toolset. The user simulator has shell access to the agent’s workspace, while the agent can only send messages to the user.",
+      "page": 4,
+      "index": 6,
+      "width": 826,
+      "height": 316
+    },
+    {
+      "url": "assets/figures/arxiv/2606.30573v1/fig-007.webp",
+      "caption": "Table 1. Single-turn versus multi-turn resolve rate, steps, (non-cache) tokens, and cost results. Multi-turn metrics are averaged using 2 runs with Opus 4.7 and GPT 5.5 as the user simulator model. All models are run with high reasoning when applicable. Parentheses in the multi-turn rows show the change relative to the single-turn baseline.",
+      "page": 5,
+      "index": 7,
+      "width": 722,
+      "height": 421
+    }
+  ]
+}

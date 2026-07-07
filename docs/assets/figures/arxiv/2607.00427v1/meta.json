@@ -1,0 +1,158 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2607.00427v1/fig-001.webp",
+      "caption": "Fig. 2. Average F1 of the five instruction-tuned LLMs across the six prompting strategies on the three requirements-classification datasets. The⋆ marks the best-performing strategy for each model.",
+      "page": 26,
+      "index": 1,
+      "width": 827,
+      "height": 941
+    },
+    {
+      "url": "assets/figures/arxiv/2607.00427v1/fig-002.webp",
+      "caption": "Fig. 5. BT-APE Optimisation. Interactive or automatic execution of Algorithm 1. The iteration log and colored history strip (green = improvement, amber = backtrack), the live best prompt and its evolving optimizable section, and the per-class metrics are shown together, exposing the optimization trajectory.",
+      "page": 53,
+      "index": 2,
+      "width": 794,
+      "height": 516
+    },
+    {
+      "url": "assets/figures/arxiv/2607.00427v1/fig-003.webp",
+      "caption": "Fig. 6. Baselines and Results. (a) Each prompting strategy is run and scored per class. (b) The session summary contrasts the baselines with the BT-APE-optimized prompt; the optimized prompt yields the highest macro F1 and improves the weakest classes.",
+      "page": 53,
+      "index": 3,
+      "width": 827,
+      "height": 215
+    },
+    {
+      "url": "assets/figures/arxiv/2607.00427v1/fig-004.webp",
+      "caption": "Table 2. Overview of selected instruction-tuned LLMs used in this study.",
+      "page": 15,
+      "index": 4,
+      "width": 859,
+      "height": 591
+    },
+    {
+      "url": "assets/figures/arxiv/2607.00427v1/fig-005.webp",
+      "caption": "Table 8. Hypothesis Testing Results for RQ2",
+      "page": 30,
+      "index": 5,
+      "width": 827,
+      "height": 347
+    },
+    {
+      "url": "assets/figures/arxiv/2607.00427v1/fig-006.webp",
+      "caption": "Table 9. Best and Worst Performing (Dataset, LLM) Combinations",
+      "page": 30,
+      "index": 6,
+      "width": 622,
+      "height": 431
+    },
+    {
+      "url": "assets/figures/arxiv/2607.00427v1/fig-007.webp",
+      "caption": "Table 3. Classification results for the Refined Promise dataset (weighted F1).",
+      "page": 22,
+      "index": 7,
+      "width": 594,
+      "height": 539
+    },
+    {
+      "url": "assets/figures/arxiv/2607.00427v1/fig-008.webp",
+      "caption": "Table 11. Weighted F1 Scores for BT-APE-Informed vs. BT-APE-Uninformed Across LLMs and Datasets",
+      "page": 34,
+      "index": 8,
+      "width": 727,
+      "height": 312
+    },
+    {
+      "url": "assets/figures/arxiv/2607.00427v1/fig-009.webp",
+      "caption": "Fig. 7. Jaccard similarity scores across different models and datasets. Higher values would indicate greater overlap.",
+      "page": 54,
+      "index": 9,
+      "width": 827,
+      "height": 491
+    },
+    {
+      "url": "assets/figures/arxiv/2607.00427v1/fig-010.webp",
+      "caption": "Table 1. Overview of the Datasets Used in the Study.",
+      "page": 14,
+      "index": 10,
+      "width": 826,
+      "height": 389
+    },
+    {
+      "url": "assets/figures/arxiv/2607.00427v1/fig-011.webp",
+      "caption": "Table 12. Gains from Baseline for BT-APE-Informed and BT-APE-Uninformed",
+      "page": 35,
+      "index": 11,
+      "width": 785,
+      "height": 446
+    },
+    {
+      "url": "assets/figures/arxiv/2607.00427v1/fig-012.webp",
+      "caption": "Table 4. Classification results for the Promise NFR dataset (weighted F1).",
+      "page": 23,
+      "index": 12,
+      "width": 481,
+      "height": 541
+    },
+    {
+      "url": "assets/figures/arxiv/2607.00427v1/fig-013.webp",
+      "caption": "Fig. 1. Overview of the BT-APE workflow applied to requirements classification, alongside Algorithm 1. Steps are to be followed sequentially. The figure was generated with AI assistance and then reviewed, refined, and validated step by step by Author 1.",
+      "page": 8,
+      "index": 13,
+      "width": 806,
+      "height": 444
+    },
+    {
+      "url": "assets/figures/arxiv/2607.00427v1/fig-014.webp",
+      "caption": "Table 17. PE2 cumulative input tokens and final𝑤𝐹1 under varied (𝑛, 𝑘), averaged over three representative cells (𝑆 = 5 seeds each). BT-APE is included for reference. The right-most column reports the paired Wilcoxon 𝑝-value for the𝑤𝐹1 difference vs. BT-APE (𝑛 = 15 paired observations, two-sided).",
+      "page": 49,
+      "index": 14,
+      "width": 664,
+      "height": 265
+    },
+    {
+      "url": "assets/figures/arxiv/2607.00427v1/fig-015.webp",
+      "caption": "Table 10. Linear mixed-effects model results for prompt features predicting𝑤𝐹1. Random intercepts are fitted for each (dataset, LLM) trajectory (𝐽 = 15). Fixed-effect coefficients are standardised; 𝑝-values are reported before Holm–Bonferroni correction across the eight features and the corrected significance is indicated in the rightmost column (∗: significant after correction; n.s.: not significant).",
+      "page": 32,
+      "index": 15,
+      "width": 706,
+      "height": 244
+    },
+    {
+      "url": "assets/figures/arxiv/2607.00427v1/fig-016.webp",
+      "caption": "Table 5. Classification results for the Secreq dataset (weighted F1).",
+      "page": 24,
+      "index": 16,
+      "width": 544,
+      "height": 541
+    },
+    {
+      "url": "assets/figures/arxiv/2607.00427v1/fig-017.webp",
+      "caption": "Fig. 4. Prompt. The prompt is separated into a fixed task-framing part and an optimizable definitions part (highlighted); BT-APE rewrites only the latter.",
+      "page": 52,
+      "index": 17,
+      "width": 794,
+      "height": 249
+    },
+    {
+      "url": "assets/figures/arxiv/2607.00427v1/fig-018.webp",
+      "caption": "Fig. 3. Data & Config. The dataset is uploaded as a CSV (text first, label last); the tool infers the classes and their distribution, selects the backend and model, and exposes the run hyper-parameters as sliders.",
+      "page": 52,
+      "index": 18,
+      "width": 710,
+      "height": 524
+    },
+    {
+      "url": "assets/figures/arxiv/2607.00427v1/fig-019.webp",
+      "caption": "Table 16. Cumulative input tokens (mean ± SD, 𝑆 = 5 seeds) per (dataset, LLM) cell. Per-cell reduction is computed as Δ/𝑇PE2.",
+      "page": 48,
+      "index": 19,
+      "width": 623,
+      "height": 379
+    }
+  ]
+}

@@ -1,0 +1,2150 @@
+Title: A Quantitative Framework for Estimating System Complexity and Cost via Component Interface Analysis
+
+URL Source: https://arxiv.org/pdf/2607.00054v1
+
+Published Time: Tue, 07 Jul 2026 01:46:58 GMT
+
+Number of Pages: 29
+
+Markdown Content:
+© 2026 Timeleap Inc. This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike CC BY-NC-SA 4.0  
+
+> License. To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-sa/4.0/ .
+
+# A Quantitative Framework for Estimating 
+
+# System Complexity and Cost via Component 
+
+# Interface Analysis 
+
+Ken Y. Chan 
+
+Innovation Lab, Timeleap Inc. 
+
+Toronto, Ontario, Canada 
+
+{ken, innovation-lab}@timeleap.com 
+
+Abstract: This paper introduces a formal modeling framework designed to estimate the complexity and cost 
+
+associated with system changes induced by external requirements. We model a system as a directed graph of 
+
+couplings, capturing the intricate dependencies and information flows between components and elements within a 
+
+specific context. The proposed method enables the estimation of bounded change complexity through component 
+
+interfaces, even when internal logic remains opaque. Additionally, the framework provides a mechanism for 
+
+bounding the cost of system-wide modifications by associating external drivers and cost factors with individual 
+
+system elements. We propose a multi-view approach to the model, providing graphical, algebraic, and tabular 
+
+representations to suit different levels of abstraction and computational needs. By bridging the gap between 
+
+component-based modeling and project cost estimation, our method provides actionable insights for architecture 
+
+design, software engineering, and lifecycle operations. The model is validated through a case study involving the 
+
+integration of a large-scale retail banking platform. 
+
+Keywords: System Complexity, Cost Estimation, Coupling, Component-based Software Engineering, System 
+
+Structure, System Behaviours, Graph Theory, Complexity Theory, API, Architecture Pattern, Design Pattern, System 
+
+Engineering, Architecture and Design Decision, Agile Methodology, Scrum, User Stories, Project Management, 
+
+SOA, ESB, Microservices, Service Mesh, Self-Contained Systems, eCommerce, Retail Banking 
+
+OUTLINE 
+
+I.  Background 
+
+II.  Problem and Context Definition 
+
+III.  Our Contributions 
+
+IV.  Modeling Principles and Assumptions 
+
+V.  Graphical Models for Composable Components and System (CCM, CCSM) 
+
+VI.  Complexity Estimations for System and Components (SCCM) 
+
+VII.  Cost Estimation for System and Components (SCEM) 
+
+VIII.  Apply Graphical and Tabular Form To a Sample Retail Banking System Integration 
+
+IX.  Conclusion and Future Work 
+
+X.  References 
+
+I. B ACKGROUND 
+
+A fundamental tension exists in modern software engineering between the necessity for rigorous architectural 
+
+decision-making and the practical constraints of project environments. While the industry increasingly relies on 
+
+complex, distributed architectures, the processes used to evaluate these architectures remain largely heuristic-based. 
+
+In high-pressure environments characterized by truncated timelines and budget constraints, architects often lack the    
+
+> 1This material can only be used for non-commercial purposes. Please contact the author for commercial licensing terms. of 129 © 2026 Timeleap Inc. This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike CC BY-NC-SA 4.0
+> License. To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-sa/4.0/ .
+
+necessary data to move beyond intuition. This creates a "decision-making paradox": while the cost of architectural 
+
+error is high, the lack of empirical evidence forces a reliance on experience-based shortcuts. Consequently, a 
+
+reliance on sub-optimal, experience-driven decisions frequently leads to significant deviations from project 
+
+objectives, manifesting as cost overruns and technical debt. 
+
+Current architectural practices leverage various frameworks (e.g., TOGAF) and design patterns (e.g., EAI, SOA, 
+
+GoF) [13-15] to provide structure to the development lifecycle. Furthermore, the use of architectural patterns— 
+
+ranging from high-level enterprise patterns to low-level design patterns (e.g., Singleton, Observer)—serves to 
+
+standardize common solutions. However, these frameworks primarily offer structural guidance rather than 
+
+evaluative capability. 
+
+While architectural patterns provide a vocabulary for design, they do not provide a mechanism for quantitative 
+
+comparison. Similarly, while methodologies such as Agile or DevOps emphasize rapid iteration, they do not 
+
+inherently resolve the underlying uncertainty in architectural selection. The industry lacks a unified method to 
+
+bridge the gap between applying a pattern and quantifying its impact on the system’s long-term viability. 
+
+The evaluation of architectural decisions is further complicated by the multi-dimensional nature of "complexity" 
+
+and "cost." In software engineering, complexity is not a monolithic metric; it is a multifaceted attribute involving 
+
+structural, cognitive, and operational dimensions [1-7, 20-26]. Current approaches often struggle to distinguish 
+
+between architectural complexity (the arrangement of components) and implementation complexity (the intricacy of 
+
+the logic). 
+
+Furthermore, the economic impact of architectural choices is difficult to forecast. Standard estimation techniques, 
+
+such as those used in Waterfall project management model (e.g. work breakdown structure along with a project gantt 
+
+chart) [10, 11], Agile Story Pointing [8, 12] or traditional COCOMO-based models, focus on functional throughput 
+
+rather than the structural implications of architectural shifts. Because the cost of an architectural decision is often 
+
+deferred to the maintenance and evolution phases of the software lifecycle, the lack of a real-time, quantitative cost-
+
+benefit analysis remains a significant barrier to optimal decision-making [9]. 
+
+The literature presents a clear gap between the availability of architectural tools and the ability to perform 
+
+empirical evaluations. Current computational tools (e.g. CASE tools or architectural modeling software such as 
+
+Sparx Enterprise Architect [29-30], IBM Rational Rhapsody [31]) focus on the representation of architecture rather 
+
+than the assessment of it. While advanced modeling techniques exist, they are often too computationally expensive 
+
+or too data-intensive for use in active, fast-paced development cycles. 
+
+There is a critical need for a lightweight, mathematically grounded approach to architecture evaluation—one that 
+
+can ingest structural metadata and output actionable metrics regarding complexity, risk, and estimated cost. Bridging 
+
+this gap requires moving away from qualitative, experience-based assessments toward a model that can provide a 
+
+quantitative, reproducible, and scalable evaluation of architectural impact. 
+
+II. PROBLEM AND CONTEXT DEFINITION 
+
+For most organizations, the Total Cost of Ownership (TCO)—encompassing initial development, system 
+
+extensibility, and long-term maintenance—is the primary driver of project governance. However, a critical gap exists 
+
+in the transparency of architectural decision-making. Stakeholders frequently struggle to reconcile business 
+
+requirements with the resulting architectural complexity, specifically regarding the rationale for high-cost    
+
+> 1This material can only be used for non-commercial purposes. Please contact the author for commercial licensing terms. of 229 © 2026 Timeleap Inc. This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike CC BY-NC-SA 4.0
+> License. To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-sa/4.0/ .
+
+components and the financial implications of system interactions. There is a lack of granular, verifiable data to 
+
+justify how specific architectural choices contribute to the overall cost breakdown. To address this, this study utilizes 
+
+a comparative walkthrough of architectural alternatives to demonstrate the relationship between structural 
+
+complexity and cost estimation. 
+
+Figure 1 describes the user stories of two popular enterprise application integration (EAI) patterns: ESB [15], 
+
+Service Mesh [16-18]. It shows a ESB using a centralized bus or broker (e.g. API gateway [13, 15]) to coordinate 
+
+message exchanges between services. All the inbound requests from the client application to the API gateway are 
+
+labelled as M”, while the inbound brokered messages from API gateway to the enterprise services are labelled as 
+
+M’. All the internal requests from an enterprise service to another via the service broker (API gateway) are labelled 
+
+as M. On the other hand, a Service Mesh may use an API gateway to broker external communications between a 
+
+client application and microservices. However, the microservices communicate directly with each other via their 
+
+sidecar proxies [18]. 
+
+From a quick visual inspection, ESB appears to be less complex than a Service Mesh based on the number of 
+
+services and the associated integration points or paths (O(N)). Additionally, Service Mesh seems to outgrow ESB in 
+
+complexity with the number of integration points (O(N+N 2)) as the number of services (O(N)) increases. If the cost 
+
+is directly proportional to the number of services (components) and the the number of integration points in a system, 
+
+one would assume ESB being a better choice than Service Mesh, as in Figure 1. However, this is a simplistic view. 
+
+In practice, most organizations employ two popular methods for cost-effort estimation in a project: User Story 
+
+Points [8, 12] and Work Breakdown Structure (WBS) [9-11]. In the case of the user story point system, the team 
+
+may use either a fixed-point (e.g. 130) or relative point system in a sprint. Each contributor then allocates a portion    
+
+> 1This material can only be used for non-commercial purposes. Please contact the author for commercial licensing terms. of 329 © 2026 Timeleap Inc. This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike CC BY-NC-SA 4.0
+> License. To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-sa/4.0/ .
+
+of the points to the assigned user stories based on their relative priorities and complexities. In the case of WBS, the 
+
+team needs to identify the tasks that may be associated with individual integration points, user stories (user cases), or 
+
+components. A project manager would then consult each contributor for the effort estimate on the assigned task. 
+
+Figure 2 describes two sample User Story and Component Point Matrices for the ESB and Service Mesh patterns 
+
+in Figure 1. Each table entry represents an integration point between two components. We assign user story points 
+
+to entries based on their relative complexity to other components. We also assume that the communications from 
+
+the client application to the API Gateway are lightweight (1 point); the communications between API gateway and 
+
+services (microservices) are medium weight (external with 4 points and internal with 5 points). All user story points 
+
+by service are in increments of 5 points based on the number and complexity of the interactions involved. In 
+
+addition, we assume that every user story point and WBS point is translated to one person-day in effort. As a result, 
+
+the total user story points in that sprint is 130 for ESB and 165 for Service Mesh, respectively. 
+
+Figure 2 also illustrates two Effort Estimation by Integration Point with WBS Matrices for ESB and Service 
+
+Mesh. A table entry represents the estimated effort (in person-day) for the development task associated with the 
+
+component integration point. In the case of Effort Estimation by Integration Point with WBS matrices for ESB and    
+
+> 1This material can only be used for non-commercial purposes. Please contact the author for commercial licensing terms. of 429 © 2026 Timeleap Inc. This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike CC BY-NC-SA 4.0
+> License. To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-sa/4.0/ .
+
+Service Mesh, we allocate in 5 effort point increments per interaction point between two services (microservices). 
+
+As a result, the total amount of effort (in person-day) is 160 for ESB and 205 for Service Mesh, respectively. 
+
+Figure 3 outlines a sample enterprise architecture decision for an e-Commerce Enterprise Application Integration. 
+
+It outlines the problem context for deciding whether ESB or Service Mesh should be the preferred integration 
+
+pattern. Since the cost of building or maintaining the system is the key decision factor, our sample architecture 
+
+decision would be primarily based on the comparison of the cost estimation matrices between ESB and Service 
+
+Mesh in Figure 2. If we have a rate card of $500 USD per person-day in effort, then the labor cost for ESB and 
+
+Service Mesh would be $65K USD vs $82.5K USD (130 vs 165) for User Story Points, and $80K USD vs $102.5K 
+
+USD (160 vs 205) for WBS, respectively. Therefore, the decision would be to go with ESB because its complexity 
+
+and cost estimates are lower than Service Mesh. 
+
+Traditional estimation techniques present significant challenges for long-term architectural planning. 
+
+Methodologies like Story Pointing are optimized for short-term sprints, making them unsuitable for the high-level 
+
+foresight required in early project phases [8]. Additionally, the lack of standardized metrics leads to inconsistent 
+
+comparisons between different technical solutions. Most critically, cost estimation is often performed after a 
+
+decision has already been made, rather than being used as a primary tool for decision support. While we cannot    
+
+> 1This material can only be used for non-commercial purposes. Please contact the author for commercial licensing terms. of 529 © 2026 Timeleap Inc. This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike CC BY-NC-SA 4.0
+> License. To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-sa/4.0/ .
+
+easily eliminate human subjectivity, we can address the lack of standardized, measurable tools. This work focuses on 
+
+bridging that gap by providing a more consistent framework for architectural evaluation. 
+
+III. O UR CONTRIBUTIONS 
+
+This paper presents our formal model that can estimate the complexity and cost of a system and its components 
+
+solely based on the properties of the observable interfaces, with limited prior knowledge of their internals. It comes 
+
+in three forms: graphical, algebraic, and tabular, which are built upon our novel definitions and theorems. It offers 
+
+four key contributions that enable technologists to evaluate the complexity and cost of changes to the system due to 
+
+external activities. Our model is technology independent which is especially useful in the early stage of a project 
+
+because the team are still in planning mode; they do not know all the requirements and lack insights into the current 
+
+state; they may have started prototyping but have not finalized many architecture decisions. Hence, the team can 
+
+use our methods as a tool to refine their estimations, decisions, and scope during the course of the project. 
+
+This paper presents a novel framework for estimating the cost and complexity of software systems. The core 
+
+strength of our approach is its ability to provide estimates based only on observable interface properties, even when 
+
+internal implementation details are unknown. Our contributions are summarized as follows: 
+
+1.  Structural Representation via CCM and CCSM: We introduce a method to model systems (both monolithic 
+
+and distributed) using Composable Component Model (CCM) and Composable Component and System Model 
+
+(CCSM). By focusing on "contextual couplings," we can represent complex interactions as a set of 
+
+interconnected, observable interfaces. 
+
+2.  Predicting Complexity via SCCM: We develop a model called System Component and Complexity Model 
+
+(SCCM) in algebraic form to calculate how external changes affect a system's internal complexity. By using 
+
+measurable parameters like coupling strength and interface properties, we provide a way to predict the "ripple 
+
+effect" of changes without needing access to the source code. 
+
+3.  Predicting Cost via SCEM: We extend our complexity model to include cost estimation. This allows 
+
+architects to translate technical changes into budgetary impacts, providing a tool for evaluating the financial 
+
+feasibility of architectural evolutions. 
+
+4.  A Scalable, Tabular Toolset: We implement these models in a tabular format that is easy to use and scale. This 
+
+allows for the rapid aggregation of data across large, complex systems, making it an effective tool for both high-
+
+level planning and detailed architectural reviews. 
+
+We demonstrate the utility of this framework through a sample retail banking system, proving that our method 
+
+provides a much-needed link between software architecture and project cost management. 
+
+IV. M ODELING PRINCIPLES AND ASSUMPTIONS 
+
+To ensure the tractability and scalability of the proposed framework, the following modeling principles are 
+
+adopted:    
+
+> 1This material can only be used for non-commercial purposes. Please contact the author for commercial licensing terms. of 629 © 2026 Timeleap Inc. This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike CC BY-NC-SA 4.0
+> License. To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-sa/4.0/ .
+
+Scope and Granularity 
+
+The proposed model assumes a self-contained architecture where each component or system is treated as an 
+
+autonomous entity [27]. To ensure model integrity, all dependencies must be explicitly defined as direct couplings; 
+
+we exclude implicit dependencies and shared components between systems [4]. While we acknowledge that indirect 
+
+interactions and secondary side effects contribute to total system complexity [33-34], this study focuses exclusively 
+
+on primary-order, explicitly mapped couplings to ensure computational tractability. 
+
+Our model adopts an interface-centric approach, focusing on the observable interactions between components 
+
+rather than their internal logic. Traditionally, coupling and cohesion [5-7] as well as entropy [26] are important 
+
+concepts in complexity. Nonetheless, we assume that the complexity of a system is primarily driven by its structural 
+
+connections—specifically, the "contextual" interactions between elements. Consequently, we focus on contextual 
+
+couplings rather than internal attributes like cohesion. While we acknowledge that internal complexities (e.g., 
+
+concurrency [3], algorithmic complexity [21-22], or side effects [33-34]) exist, we assume they are secondary to the 
+
+structural overhead of managing inter-component dependencies. Furthermore, the model focuses on the boundaries 
+
+of the system; it assumes that while a system may rely on external services, the estimation is bounded by the visible 
+
+interfaces (APIs) of the components in scope. 
+
+Structural and Mathematical Foundations 
+
+The framework is built upon graph-theoretic foundations, where the system is represented as a set of vertices (V) 
+
+and edges ( E). We assume that: 
+
+• Independence of Connections: Each edge represents a discrete interaction, and the impact of one 
+
+connection is mathematically independent of others within the same layer. 
+
+• Attribute Attribution: Each vertex and edge possesses measurable, quantitative attributes (e.g., 
+
+throughput, frequency, or error rate) that can be used to drive cost/complexity estimations. 
+
+• Upper-Bound Estimation: To account for uncertainty in unobserved internal logic, the model adopts a 
+
+conservative estimation strategy, calculating the upper bound of complexity based on the potential 
+
+interaction of all identified interfaces. 
+
+Drivers of Change and Complexity 
+
+The model assumes that changes to the system are exogenous, driven by external actors performing specific 
+
+activities within a defined context. We assume that the primary driver of complexity is the requirement to adapt 
+
+existing interfaces to accommodate new operational needs. While we do not model the fine-grained evolution of 
+
+code, we assume that the structural impact of these changes—namely the addition or modification of connection 
+
+parameters—is a sufficient proxy for the effort required to maintain the system. 
+
+V. G RAPHICAL MODELS FOR COMPOSABLE COMPONENTS AND SYSTEM (CCM, CCSM) 
+
+Complexity is multifaceted and domain-specific [23]; however, this work addresses 'organized complexity'—the 
+
+web of interactions between system elements. Drawing on the principles of component-based architecture [32], we 
+
+define components as functional entities characterized by their interfaces. This allows for a bounded cost estimation    
+
+> 1This material can only be used for non-commercial purposes. Please contact the author for commercial licensing terms. of 729 © 2026 Timeleap Inc. This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike CC BY-NC-SA 4.0
+> License. To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-sa/4.0/ .
+
+approach that relies solely on quantifiable, external attributes. By bypassing the need for visibility into internal 
+
+component logic, our model provides a scalable way to estimate system costs based on observable interface 
+
+properties. 
+
+Figures 4 illustrate three examples of our Composable Component Model (CCM) that describes the structural and 
+
+behavioural view of a basic component in a graphical form. A component is composable because it exposes its 
+
+properties through its elements; thus, it can connect to other components using couplings through the elements. It 
+
+can also contain other components. As such, an element is an indivisible entity that also acts as a connector in our 
+
+model. An element can represent an instance or a type of an entity as well as an entity subtype. There are many 
+
+types of elements such as: interface, port, message, binding, and feature. An element is linked to another element 
+
+via a link also known as a coupling. A coupling can be considered as a special element; it is a measure of strength of 
+
+a connection between two elements [6]. Most importantly, c oupling is the basic unit of system complexity in our 
+
+formal model . There are two classes of couplings: relational and data-flow . A relational coupling represents a 
+
+relationship, association, aggregation, or dependency from one element to another element. On the other hand, a 
+
+data-flow coupling represents a data (message) flow from one element to another element. 
+
+Since a component is a structure with endpoints, links, and properties, it can be represented by a graph ( V, E )
+
+where an element is a vertex and a coupling is a directional edge or link [19]. Similarly, component composition    
+
+> 1This material can only be used for non-commercial purposes. Please contact the author for commercial licensing terms. of 829 © 2026 Timeleap Inc. This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike CC BY-NC-SA 4.0
+> License. To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-sa/4.0/ .
+
+can also be represented by graph composition in which a graph may contain other subgraphs. As such, a graph 
+
+represents the structure of an entity (system or component) while the labels and weights on a graph describe the 
+
+behaviours of the entity and its context . The concept of context is important to the estimation of complexity and 
+
+costs of a system and its components. Every element and coupling in our formal model is bound to a context which 
+
+extends from a set of business and system domains. For example, a system and its components may belong to a 
+
+business domain such as: software, infrastructure, system development, operation, and maintenance. It may belong 
+
+to either a relational or data-flow system domain. A system and its components may also belong to an activity 
+
+domain and be bound to different (external) development activities such as: creation, modification, evaluation, and 
+
+removal of elements or couplings, as well as the affects to their attributes and properties. 
+
+Figures 4 show three different views of a basic component. A component has a boundary that separates its 
+
+external structure and behaviours from its internal ones. Its bindings, interfaces, and ports serve as the demarcations 
+
+between its internal and external world. A component is connected through its couplings which are marked by a 
+
+prefix of D, R, or M as in Figures 4. They are associated to parameterized objects types of dependency, relationship, 
+
+and message flow, respectively. A component have two sets of couplings; internal couplings that reside within the 
+
+component boundary (dotted arrows) and external couplings that reside outside the component boundary (solid 
+
+arrows). We assume that it is not always possible to discover all the internal couplings within a component; 
+
+therefore, we can estimate the upper bound (maximum) amount of internal couplings by evaluating the maximum 
+
+number of couplings connecting from its inbound interfaces to its outbound interfaces. On the other hand, the 
+
+external couplings of a component can usually be observed through the external interfaces. In addition, our CCM is 
+
+analogous to SOA, a component can represent a service or microservice which consists of inbound service interfaces 
+
+(APIs), and a service implementation which contains outbound or call-out interfaces [32]. While the APIs aggregate 
+
+and normalize the inputs, the internal processes of a service implementation produces and distributes outputs to the 
+
+outbound interfaces. The outbound interfaces would then route the outputs to the target components [15-17, 32]. 
+
+Figure 4a shows a basic component C1 in our CCM that has two types of sub-components: client interface (API) 
+
+and component implementation [32]. A component instance has an implementation and one or more interfaces. The 
+
+inbound interfaces and bindings are classified as client interfaces (APIs) while the outbound interfaces, bindings, 
+
+and internal processes are part of a component implementation. A binding in a component consists of a collection of 
+
+interfaces that exhibit behaviours of a common feature in a subject area. That said, an interface or a binding relies 
+
+on its associated interface ports for structural and behavioural characteristics. An interface can have one or more 
+
+interface ports. Each port is associated to a parameterized object type which can either be a message, an event, or an 
+
+entity. Each parameterized object type may have many attributes that describe the external behaviours of the 
+
+component. In the case of a relational coupling, an interface port is analogous to a parameter or attribute for an 
+
+interface. In the case of a data-flow coupling, an interface port is analogous to a communication port that either 
+
+listens to the incoming messages or sends out an outgoing messages (inbound vs outbound interface port). 
+
+Figure 4b illustrates a sample CCM with relational couplings. A basic component C2 consists of inbound and 
+
+outbound bindings, as well as internal processes. It establishes a coupling from its outbound binding to the inbound 
+
+binding of the target component. An inbound and outbound bindings serve as the endpoints of all external couplings 
+
+that deal with other components. The internal processes within a component connect an inbound coupling with 
+
+another outbound couplings with an internal coupling. As an analogy, the internal processes act as a mixing function 
+
+that connects the inputs with the outputs. Figure 4c shows a sample CCM with data-flow couplings. A basic    
+
+> 1This material can only be used for non-commercial purposes. Please contact the author for commercial licensing terms. of 929 © 2026 Timeleap Inc. This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike CC BY-NC-SA 4.0
+> License. To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-sa/4.0/ .
+
+component C3 consists of inbound and outbound interfaces and ports, as well as internal processes. Unlike a 
+
+relational coupling, a component establishes a data-flow (message flow) coupling from an outbound interface port to 
+
+an inbound interface port. An interface port must be associated to one message type. An outbound interface port 
+
+always sends a message to an inbound interface port via a message channel in a data-flow coupling. Therefore, the 
+
+inbound and outbound interface ports serve as the endpoints of all data-flow couplings. Additionally, the internal 
+
+processes serve as a fan-in and fan-out function that produce and distribute outputs to the outbound interfaces by 
+
+consuming inputs from inbound interfaces. 
+
+Our CCM has so far demonstrated only interactions among basic components. However, a system model without 
+
+compositions of components is not particular useful for representing a generic system. Figures 5 illustrate two 
+
+examples of composite components in CCM. There are two types of components: basic component and composite 
+
+component . A basic component contains only elements whereas a composite component contains both elements and 
+
+(nested) components. Similar to a basic component, a composite component also has internal couplings and external 
+
+couplings. However, there are two main difference. First, its nested components can have external couplings with 
+
+each other. Secondly, a composite component also has internal couplings with its nested components . Therefore, 
+
+the couplings of a composite component is the sum of all its external couplings with other external components, all 
+
+its internal couplings with its nested components, and all the external couplings among its nested components, as 
+
+well as all the internal couplings of its nested components.    
+
+> 1This material can only be used for non-commercial purposes. Please contact the author for commercial licensing terms. of 10 29 © 2026 Timeleap Inc. This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike CC BY-NC-SA 4.0
+> License. To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-sa/4.0/ .
+
+Figure 5a shows a composite component C1, which consists of one basic nested component NC1 with relationship 
+
+couplings. Similar to a basic component, a composite component has internal and external bindings as the endpoints 
+
+of its external couplings; however it can also contain nested components. Therefore, the internal couplings of a 
+
+composite component consists of all the couplings between its nested components and the composite component, as 
+
+well as the couplings among the nested couplings and the internal couplings within the nested components. Figure 
+
+5b also shows a composite component C2 which consists of one basic nested component NC2 with data-flow 
+
+couplings. An outbound interface sending an outbound message to an inbound interface via a coupling that serves as 
+
+a message channel. Unlike bindings, the endpoints of a data-flow coupling are the interface ports which are specific 
+
+for message transport. By sending a message from its port to an inbound interface port of another component, an 
+
+outbound interface invokes the external behaviour of the target component. 
+
+Figures 6 show three types of coupling impacts in CCM: origination impact, target impact, and bi-lateral impact. 
+
+Coupling impact is defined as the property value of an element being dependent on the property value of another 
+
+element. It implies there is a mapping from one property of an element to another property fo another element. In 
+
+the case of Origination Impact as in Figure 6a, the originating component B0 extends all the external behaviours 
+
+(couplings) of the component B1 by initiating an outbound coupling to the target component B1. Therefore, all the 
+
+changes happen on component B0; there is no impact to component B1. In the case of Target Impact as in Figure    
+
+> 1This material can only be used for non-commercial purposes. Please contact the author for commercial licensing terms. of 11 29 © 2026 Timeleap Inc. This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike CC BY-NC-SA 4.0
+> License. To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-sa/4.0/ .
+
+6b, the originating component B0 instantiates and refines the target bindings of the component B1 by initiating 
+
+outbound couplings to the target component B1. Therefore, all the changes happen on component B1; there is no 
+
+impact to component B0. In the case of Bi-lateral Impact as in Figure 6c, the originating component B0 calls or 
+
+send a message to the target component B1 by sending a message or calling the inbound interface ports of to the 
+
+target component B1. Therefore, changes happen on both the originator and the target; there are impacts both 
+
+component B0 and B1. While the three types of coupling impacts are applicable to relational couplings, only the 
+
+target and bi-lateral impacts are applicable to data-flow couplings. The concept of coupling impacts is important to 
+
+the formulas and input-to-output mappings in the definitions and theorems of our algebraic form. That said, the 
+
+applicability of a coupling impact is specific the the nature of the system and its context. 
+
+The Composable Component System Model (CCML) is represented as a directed graph G(V,E) where nodes (V) 
+
+are connected by directional edges (E) (see Figure 7). The system consists of various composable components, 
+
+which are subgraphs that serve as containers for elements or other nested components. This model is highly flexible; 
+
+its structural constructs allow for the representation of various topologies, including dependencies, associations, and 
+
+compositions, across both instance-based and type-based relationships. 
+
+The formal foundation of our model is built upon existing complexity and coupling metrics [1, 3, 4] and system 
+
+modeling standards like UML [28] and SysML [29-31]. However, the CCSM is not a general-purpose modeling 
+
+language; rather, it is a specialized framework for high-level complexity and cost estimation. While the "coupling"    
+
+> 1This material can only be used for non-commercial purposes. Please contact the author for commercial licensing terms. of 12 29 © 2026 Timeleap Inc. This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike CC BY-NC-SA 4.0
+> License. To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-sa/4.0/ .
+
+in our model is inspired by traditional concepts, it is simplified to exclude complex control-flow and data-
+
+dependency logic, focusing instead on a streamlined architectural connection. 
+
+A key strength of the CCSM is its interoperability with existing modeling standards. Models from UML, SysML, 
+
+or UCM can be mapped into the CCSM framework for analysis. By attaching numerical properties to every 
+
+component, interface, and connection, the CCSM enables a quantitative approach to complexity and cost estimation, 
+
+as further detailed in the next section. 
+
+VI. C OMPLEXITY ESTIMATION FOR SYSTEM AND COMPONENTS (SCCM) 
+
+While the CCSM provides a structural overview, the System Component Complexity Model (SCCM) provides 
+
+a quantitative layer of analysis. The SCCM is built upon a formal framework of definitions and theorems 
+
+(Definitions 1–12 and Theorems 1–6) used to compute the complexity of a system. In this model, every element is 
+
+assigned a scalar property representing its weight or significance within a given context. By applying arithmetic 
+
+operations to these scalar values, the model calculates the upper bound of system complexity. 
+
+The application of the SCCM is contingent upon the concept of domain compatibility . For the model to be valid, 
+
+the target system must be mapped to a compatible domain where the structural elements and their relationships 
+
+satisfy the underlying definitions. This allows the SCCM to be applied to various scenarios, such as the initial design 
+
+of a system or the evaluation of an evolving architecture. 
+
+A critical component of this model is the analysis of internal coupling . In many scenarios, the internal logic of a 
+
+component is opaque; therefore, the SCCM treats such components as "black boxes." In these instances, the model 
+
+estimates complexity by analyzing the interaction between the component's external interfaces. Specifically, the 
+
+model calculates the potential complexity by evaluating the connectivity between all inbound and outbound 
+
+interfaces. By assuming a maximal connection density—where every inbound interface potentially interacts with 
+
+every outbound interface—the SCCM provides a rigorous upper bound on the system's total coupling complexity, as 
+
+in Figure 8. 
+
+Definition 1 (EQ1) shows that the total amount of couplings of a component c (CP(c)) is less than or equal to the 
+
+sum of the amounts of its internal couplings and external couplings. This is a generic definition that is applicable to 
+
+all types of components. An internal coupling (INTCP) is defined as a coupling from an inbound to an outbound 
+
+binding (interface port) within a component. Since it is not always possible to observe the interactions within a 
+
+component, we rely on observing the inputs and outputs at the bindings (interface ports) to estimate the internal 
+
+couplings within a component. The maximum number of internal couplings is less than or equal to the product of 
+
+the numbers of the inbound and outbound bindings (interface ports). An external couplings (EXTCP) is defined as a 
+
+coupling from an element of the component to another element of another component. We evaluate the external 
+
+couplings by observing the inputs and outputs at the bindings (interface ports). The maximum number of external 
+
+couplings is less than or equal to the sum of the numbers of the inbound and outbound bindings (interface ports).                                                                                                                                                                                                      
+
+> ∀cc,cc′∈Components∀ifc=ComponentInterfaces∀imp=ComponentImplemenation
+> ∀i,i′=anindexofInternalCouplingsinComponentc,c′
+> ∀j,j′=anindexofExternalCouplingsinComponentc,c′
+> ∀k,k′=anindexofInboundBindingsorInterfacePortsinComponentc,c′
+> 1This material can only be used for non-commercial purposes. Please contact the author for commercial licensing terms. of 13 29 © 2026 Timeleap Inc. This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike CC BY-NC-SA 4.0
+> License. To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-sa/4.0/ .
+
+Definition 2 (EQ2) shows that the amount of an internal coupling i (INTCP) for a given basic component c is less 
+
+than or equal to the sum of: the aggregated inbound properties (INPROP) at inbound binding (interface port) k, and 
+
+the aggregated outbound properties (OUTPROP) at outbound binding (interface port) l. While the maximum 
+
+number of external inbound couplings at an inbound binding is a, the maximum number of external outbound 
+
+couplings at an outbound binding is b. An inbound binding acts as an aggregator of its external inbound couplings 
+
+from other components. By connecting every inbound coupling k to the associated outbound couplings l within 
+
+basic component c, the internal coupling map acts as a mixing or fanning switch box in basic component c .
+
+∀l , l′ = a n i n d e x o f O u t b o u n d B i n d i n g s o r I n t e r f a c e P o r t s i n Co m p o n e n t c, c′
+
+∀m = T o t a l N u m b e r o f I n b o u n d B i n d i n g s o r I n t e r f a c e P o r t s i n Co m p o n e n t c
+
+∀n = T o t a l N u m b e r o f O u t b o u n d B i n d i n g s o r I n t e r f a c e P o r t s i n Co m p o n e n t c
+
+∀a = T h e N u m b e r o f I n b o u n d Co u p l i n g s c o n n e c t e d t o a n I n b o u n d B i n d i n g o r I n t e r f a c e P o r t k i n Co m p o n e n t c
+
+∀b = T h e N u m b e r o f O u t b o u n d Co u p l i n g s c o n n e c t e d t o a n O u t b o u n d B i n d i n g o r I n t e r f a c e P o r t l i n Co m p o n e n t c
+
+D e f i n i t i o n 1 : C P (c) ≤
+
+mi
+
+∑
+
+i=1
+
+I N T C P (c, i ) +
+
+mo
+
+∑
+
+j=1
+
+E X T C P (c, j ), ∀m i ≤ m × n , ∀m o ≤ m + n   
+
+> 1This material can only be used for non-commercial purposes. Please contact the author for commercial licensing terms. of 14 29 © 2026 Timeleap Inc. This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike CC BY-NC-SA 4.0
+> License. To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-sa/4.0/ .
+
+Definition 3 (EQ3) shows that the amount of an external coupling i (EXTCP) for a given basic component c is less 
+
+than or equal to the sum of: the amount of the external inbound couplings (ICP) at inbound binding (interface port) 
+
+k, and the amount of the e xternal outbound couplings (OCP) at outbound binding (interface port) l. While the 
+
+maximum number of external inbound couplings at an inbound binding is a, the maximum number of external 
+
+outbound couplings at an outbound binding is b. An inbound binding (interface port) acts as an aggregator of its 
+
+external inbound couplings from other components. In turn, the internal coupling map acts as a mixing or fanning 
+
+switch box, which connects an external inbound coupling at inbound binding k with one or more external outbound 
+
+couplings at outbound binding l within basic component c. 
+
+Previously, we indicate that external couplings consist of both external inbound and outbound couplings while 
+
+internal couplings connect these external inbound couplings with external outbound couplings. These couplings can 
+
+be either relational or data-flow that have one of the three coupling impacts (origination, target, and bilateral). The 
+
+value of a coupling, which is resulted from one of three coupling impacts, is equal to the sum of the weighted 
+
+property values of the two endpoints that are multiplied by an independent scaling constant. Alternatively, the value 
+
+of a coupling, which has either the target or bilateral coupling impact, is equal to the sum of the weighted property 
+
+values of the message and the impacted endpoint multiplied by a scaling constant. The property value of an element 
+
+such as message, binding, or interface (port) typically reflect the importance of the element. The value can be 
+
+absolute or relative to other elements. Nonetheless, the absolute value of a property is typically proportional to the 
+
+number of attributes in the element for simplicity reason. 
+
+Definition 4a (EQ4a) shows that an aggregated inbound properties k (INPROP) of an internal coupling i in basic 
+
+component c is equal to the product of: the weighted constant ( INK1) and the property value of an inbound binding 
+
+(INBIND). Definition 4b (EQ4b) shows that an aggregated outbound properties l (OUTPROP)) of an internal 
+
+coupling i in basic component c is equal to the product of: the weighted constant (OUTK1) and the property value of 
+
+an outbound binding (OUTBIND). Definition 4c (EQ4c) shows that an aggregated inbound properties k (INPROP) 
+
+of an internal coupling i in basic component c is equal to the product of: the weighted constant ( INK3) , the property 
+
+value of an inbound message (MSG), and the property value at port k of inbound interface i (INIFC) of basic 
+
+component c . Definition 4d (EQ4d) shows that an aggregated outbound properties l (OUTPROP)) of an internal 
+
+coupling i in basic component c is equal to the product of: the weighted constant (OUTK3), the property value of an 
+
+outbound message (MSG’), and the property value at port l of outbound interface i (OUTIFC) of basic component c. 
+
+Definition 5a (EQ5a) shows that an external inbound coupling k (ICP) o f an external coupling j in basic 
+
+component c is equal to the sum of: the product of the weighted constant (OUT K1) and the property value of an 
+
+inbound binding (INBIND), and the product of the weighted constant (OUTK2) and the property value of an                                                                                                                                                                                                                                                             
+
+> Definition2:INTCP(c,i)≤
+> a
+> ∑
+> k=1
+> INPROP(c,i,k)+
+> b
+> ∑
+> l=1
+> OUTPROP(c,i,l)
+> Definition3:EXTCP(c,j)≤
+> a
+> ∑
+> k=1
+> ICP(c,j,k)+
+> b
+> ∑
+> l=1
+> OCP(c,j,l)
+> Definition4a:INPROP(c,i,k)=INK1(c,i,k)×INBIND(c,i,k)
+> Definition4b:OUTPROP(c,i,l)=OUTK1(c,i,l)×OUTBIND(c,i,l)
+> Definition4c:INPROP(c,i,k)=INK3(c,i,k)×MSG(c,i,k)×INIFC(c,i,k)
+> Definition4d:OUTPROP(c,i,l)=OUTK3(c,i,l)×MSG′(c,i,l)×OUTIFC(c,i,l)
+> 1This material can only be used for non-commercial purposes. Please contact the author for commercial licensing terms. of 15 29 © 2026 Timeleap Inc. This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike CC BY-NC-SA 4.0
+> License. To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-sa/4.0/ .
+
+outbound binding (OUTBIND). Definition 5b (EQ5b) shows that an external inbound coupling l (ICP) of an 
+
+external coupling j in basic component c is equal to the product of: the weighted constant (OUT K4), the property 
+
+value of an outbound message (MSG), and the property value at port k of inbound interface i (INIFC) of basic 
+
+component c. Definition 5c (EQ5c) shows that an external outbound coupling l (OCP) of an external coupling j in 
+
+basic component c is equal to the sum of: the product of the weighted constant (OUTK1) and the property value of 
+
+an out bound binding (OUTBIND) of basic component c, and the product of the weighted constant (INK2) and the 
+
+property value of an inbound binding (INBIND) of external component c’ . Definition 5d (EQ5d) shows that an 
+
+external outbound coupling l (OCP) of an external coupling j is equal to the product of: the weighted constant 
+
+(OUTK4), the property value of an outbound message (MSG’), and the property value at port l of outbound interface 
+
+i (OUTIFC) of basic component c. 
+
+Like a basic component, a composite component is another subtype of a generic component which has internal 
+
+and external couplings. However, a composite component has two additional properties; it has internal couplings 
+
+with its nested components . Its nested components can also have external couplings with each other. Definition 6a 
+
+shows that the total number of external inbound couplings of c omposite component cc is less than or equal to the 
+
+product of: the number of its inbound bindings, the number of the outbound bindings of its external components, and 
+
+the number of its external components. Definition 6b shows that the total number of external outbound couplings of 
+
+composite component cc is less than or equal to the product of: the number of its outbound bindings, the number of 
+
+the inbound bindings of its external components, and the number of its external components. Definition 6c shows 
+
+that the total number of external couplings of c omposite component cc with its external components is less than or 
+
+equal to the sum of the numbers of its external inbound and outbound bindings. Definition 6d shows that the total 
+
+number of internal couplings of the nested components in c omposite component cc is less than or equal to the 
+
+product of the number of its inbound bindings, the number of outbound bindings, and the number of its nested 
+
+components. Definition 6e shows that the total number of external couplings between the nested components in 
+
+composite component cc is less than or equal to the product of: the sum of its inbound and outbound bindings and 
+
+the number of its nested components. Definition 6f shows that the total number of external couplings from the 
+
+nested components to the c omposite component cc is less than or equal to the product of: the sum of its inbound and 
+
+outbound bindings and the square of the number of its interconnecting nested components. 
+
+D e f i n i t i o n 5a : I C P (c, j, k ) = (I N K 1(c, j, k ) × I N B I N D (c, j, k )) + (OU T K 2(c′, j′, k′) × OU T B I N D (c′, j′, k′))
+
+D e f i n i t i o n 5b : I C P (c, j, k ) = I N K 4(c, j, k ) × M S G (c, j, k′) × I N I F C (c, j, k )
+
+D e f i n i t i o n 5c : O C P (c, j, l ) = (OU T K 1(c, j, l ) × OU T B I N D (c, j, l )) + (I N K 2(c′, j′, l′) × I N B I N D (c′, j′, l′))
+
+D e f i n i t i o n 5d : O C P (c, j, l ) = OU T K 4(c, j, l ) × M S G′(c, j, l′) × OU T I F C (c, j, l )
+
+∀c c, c c′ ∈ Co m p o s i t e Co m p o n e n t s ; ∀i f c = Co m p o n e n t I n t e r f a c e s ∀i m p = Co m p o n e n t I m p l e m e n a t i o n                                                                                                                                                                       
+
+> ∀exicp=TheNumberofExternalInboundCouplingsofCompositeComponentccwithitsExternalComponents
+> ∀exocp=TheNumberofExternalOutboundCouplingsofCompositeComponentccwithitsExternalComponents
+
+∀e x c p = T h e N u m b e r o f E x t e r n a l Co u p l i n g s o f Co m p o s i t e Co m p o n e n t c c w i t h i t s E x t e r n a l Co m p o n e n t s
+
+∀i n c p = T h e N u m b e r o f I n t e r n a l Co u p l i n g s o f Ne s t e d Co m p o n e n t s i n Co m p o s i t e Co m p o n e n t c c
+
+∀n e c p = T o t a l N u m b e r o f E x t e r n a l Co u p l i n g s b e t w e e n Ne s t e d Co m p o n e n t s i n Co m p o s i t e Co m p o n e n t c c
+
+∀n c c p = T o t a l N u m b e r o f E x t e r n a l Co u p l i n g s f r o m Ne s t e d Co m p o n e n t s t o Co m p o s i t e Co m p o n e n t c c
+
+∀e x = T o t a l N u m b e r o f E x t e r n a l Co m p o n e n t s f o r Co m p o s i t e Co m p o n e n t c c   
+
+> 1This material can only be used for non-commercial purposes. Please contact the author for commercial licensing terms. of 16 29 © 2026 Timeleap Inc. This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike CC BY-NC-SA 4.0
+> License. To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-sa/4.0/ .
+
+We derive Definition 7a using Definitions 1-6 to show that the total amount of couplings of a composite 
+
+component cc (CP(cc)) is less than or equal to the sum of: the amount of the internal couplings of its nested 
+
+components (INTCP(cc,ni’)) , the amount of the external couplings between its nested components (EXTCP(cc,nj)) ,
+
+the amount of the external couplings from its nested components (INTCP(cc,nk)) to the composite component cc, 
+
+and the amount of the external couplings of composite component cc with its external components ( EXTCP(cc,nl)) .
+
+Definitions 7b shows that the total amount of couplings of the nested component cc (CP(ci)) in composite 
+
+component cc is less than or equal to the sum of: the amount of the internal couplings of its nested components 
+
+(INTCP(cc,ni’)) , the amount of the external couplings between its nested components (EXTCP(cc,nj)) , and the 
+
+amount of the external couplings from its nested components (INTCP(cc,nk)) to the composite component cc. By 
+
+combining Definitions 7a and 7b, we arrive to Theorem 1 that shows the total amount of couplings of a composite 
+
+component cc is less than or equal to the sum of the couplings of its nested components and the external couplings 
+
+with its external components. 
+
+Definitions 8-9 describe the magnitude of complexity as couplings of the APIs and implementation of a 
+
+component. Definition 8a indicates that the complexity of the APIs (ifc) of a component c is less than or equal to the 
+
+sum of its external inbound couplings. Definition 8b demonstrates that the magnitude of complexity of the 
+
+implementation (imp) of a component c is less than or equal to the sum of its internal couplings and the sum of its 
+
+external outbound couplings. Definition 9a shows that the the magnitude of complexity of the APIs (ifc) of a 
+
+composite component cc is less than or equal to the sum of its external inbound couplings. Definition 9b shows that 
+
+∀n c = T o t a l N u m b e r o f Ne s t e d Co m p o n e n t s f o r Co m p o s i t e Co m p o n e n t c c
+
+∀c i = a n i n d e x o f Ne s t e d Co m p o n e n t s i n Co m p o n e n t c c
+
+∀n i = a n i n d e x o f I n t e r n a l Co u p l i n g s o f Ne s t e d Co m p o n e n t s i n Co m p o n e n t c c
+
+∀n j = a n i n d e x o f E x t e r n a l Co u p l i n g s f r o m Ne s t e d Co m p o n e n t s t o Co m p o n e n t c c
+
+∀n k = a n i n d e x o f E x t e r n a l Co u p l i n g s b e t w e e n Ne s t e d Co m p o n e n t s i n Co m p o n e n t c c
+
+∀n l = a n i n d e x o f E x t e r n a l Co u p l i n g s f r o m Co m p o n e n t c c t o i t s E x t e r n a l Co m p o n e n t s
+
+∀m , m′ = T o t a l N u m b e r o f I n b o u n d B i n d i n g s o r I n t e r f a c e P o r t s f o r a n y Co m p o n e n t s o r S y s t e m s
+
+∀n , n′ = T o t a l N u m b e r o f O u t b o u n d B i n d i n g s o r I n t e r f a c e P o r t s f o r a n y Co m p o n e n t s o r S y s t e m s
+
+D e f i n i t i o n 6a : e x i c p ≤ (m × n′ × e x)
+
+D e f i n i t i o n 6b : e x o c p ≤ (n × m′ × e x)
+
+D e f i n i t i o n 6c : e x c p ≤ e x i c p + e x o c p
+
+D e f i n i t i o n 6d : i n c p ≤ (m × n) × n c
+
+D e f i n i t i o n 6e : n e c p ≤ (m + n) × n c
+
+D e f i n i t i o n 6f : n c c p ≤ (m + n) × n c2
+
+D e f i n i t i o n 7a : C P (c c) ≤
+
+> incp
+
+∑
+
+> ni=1
+
+I N T C P (c c, n i ) + (
+
+> necp
+
+∑
+
+> nj=1
+
+E X T C P (c c, n j ) +
+
+> nccp
+
+∑
+
+> nk=1
+
+E X T C P (c c, n k )) +
+
+> excp
+
+∑
+
+> nl=1
+
+E X T C P (c c, n l )
+
+D e f i n i t i o n 7b :
+
+> nc
+
+∑
+
+> ci=1
+
+C P (c i ) ≤
+
+> incp
+
+∑
+
+> ni=1
+
+I N T C P (c c, n i ) + (
+
+> necp
+
+∑
+
+> nj=1
+
+E X T C P (c c, n j ) +
+
+> nccp
+
+∑
+
+> nk=1
+
+E X T C P (c c, n k ))
+
+Theorem 1 : C P (c c) ≤
+
+> nc
+
+∑
+
+> ci=1
+
+C P (c i ) +
+
+> excp
+
+∑
+
+> nl=1
+
+E X T C P (c c, n l )   
+
+> 1This material can only be used for non-commercial purposes. Please contact the author for commercial licensing terms. of 17 29 © 2026 Timeleap Inc. This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike CC BY-NC-SA 4.0
+> License. To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-sa/4.0/ .
+
+the magnitude of complexity of the implementation (imp) of a composite component cc is less than or equal to the 
+
+sum of the couplings of its nested components and its external outbound couplings with its external components. 
+
+Given that a component consisting of component interfaces and implementation, we arrive to Theorem 2 based on 
+
+Definitions 8a-8b to show that the complexity of a component c (CP(c)) is equal to the sum of its interface 
+
+complexity (CP(c,ifc)) and its implementation complexity (CP(c,imp)) . Similarly, we arrive to Theorem 3 based on 
+
+Definitions 9a-9b to show that the complexity of a composite component cc (CP(cc)) is equal to the sum of its 
+
+interface complexity (CP(cc,ifc)) and its implementation complexity (CP(cc,imp)) .
+
+Similar to a composite component, a self-contained system [27] consists of system-level components (system 
+
+components), which are nested components within a system, as in Figure 7. A system component can be either a 
+
+basic or composite component. Similar to a nested component within a composite component, a system component 
+
+has its internal couplings, its external couplings with the system, and its external couplings with other system 
+
+components. Based on Definitions 7a, 7b, and 10a-f, we arrive to Theorem 4 to show that the total amount of 
+
+couplings of a System sys (CP(sys)) is less than or equal to the sum of: the internal couplings of its system 
+
+components (INTCP(sys, si)) , the the external couplings between its system components (EXTCP(sys,sj)) , and the 
+
+external couplings from its system components (INTCP(sys,sk)) to the system, and its external couplings to its 
+
+external systems (EXTCP(sys,sl)) . Next, we derive Definition 11 based on Definition 7b and Theorem 4. Then, we 
+
+use Definition 11 to arrive to Theorem 5, which states that the complexity of a system (CP(sys)) is less than or equal 
+
+to the sum of the couplings of its system components and its external couplings with other external systems. 
+
+D e f i n i t i o n 8a : C P (c, i f c) ≤
+
+> m
+
+∑
+
+> j=1
+
+E X T C P (c, j )
+
+D e f i n i t i o n 8b : C P (c, i m p) ≤
+
+> mi
+
+∑
+
+> i=1
+
+I N T C P (c, i ) +
+
+> n
+
+∑
+
+> j=1
+
+E X T C P (c, j ), ∀m i ≤ m × n
+
+D e f i n i t i o n 9a : C P (c c, i f c) ≤
+
+> exicp
+
+∑
+
+> nl=1
+
+E X T C P (c c, n l )
+
+D e f i n i t i o n 9b : C P (c c, i m p) ≤
+
+> nc
+
+∑
+
+> ci=1
+
+C P (c i ) +
+
+> exocp
+
+∑
+
+> nl=1
+
+E X T C P (c c, n l )
+
+Theorem 2 : C P (c) = C P (c, i f c) + C P (c, i m p)
+
+Theorem 3 : C P (c c) = C P (c c, i f c) + C P (c c, i m p)
+
+∀s y s = S y s t e m ∀i f c = S y s t e m I n t e r f a c e s ∀i m p = S y s t e m I m p l e m e n a t i o n
+
+∀s x i c p = T h e N u m b e r o f E x t e r n a l I n b o u n d Co u p l i n g s o f S y s t e m s y s w i t h i t s E x t e r n a l S y s t e m s
+
+∀s x o c p = T h e N u m b e r o f E x t e r n a l O u t b o u n d Co u p l i n g s o f S y s t e m s y s w i t h i t s E x t e r n a l S y s t e m s
+
+∀s x c p = T h e N u m b e r o f E x t e r n a l Co u p l i n g s f o r S y s t e m s y s w i t h i t s E x t e r n a l S y s t e m s
+
+∀s i n c p = T h e N u m b e r o f I n t e r n a l Co u p l i n g s o f S y s t e m Co m p o n e n t s i n S y s t e m s y s
+
+∀s e c p = T o t a l N u m b e r o f E x t e r n a l Co u p l i n g s b e t w e e n S y s t e m Co m p o n e n t s i n S y s t e m s y s
+
+∀s c c p = T o t a l N u m b e r o f E x t e r n a l Co u p l i n g s f r o m S y s t e m Co m p o n e n t s t o S y s t e m s y s
+
+∀s c i = a n i n d e x o f S y s t e m Co m p o n e n t s i n S y s t e m s y s
+
+∀s e = T o t a l N u m b e r o f E x t e r n a l S y s t e m s f o r S y s t e m s y s
+
+∀s c = T o t a l N u m b e r o f S y s t e m Co m p o n e n t s i n S y s t e m s y s
+
+∀s i = a n i n d e x o f I n t e r n a l Co u p l i n g s o f S y s t e m Co m p o n e n t s i n S y s t e m s y s   
+
+> 1This material can only be used for non-commercial purposes. Please contact the author for commercial licensing terms. of 18 29 © 2026 Timeleap Inc. This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike CC BY-NC-SA 4.0
+> License. To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-sa/4.0/ .
+
+We formulate Definition 12a based on Definition 9a to show that the magnitude of complexity of the APIs (ifc) of 
+
+a system sys is less than or equal to the sum of its inbound external couplings. We also Definition 12b based on 
+
+Definition 9b to show that the magnitude of complexity of the implementation (imp) of a system sys is less than or 
+
+equal to the sum of the couplings of its system components and the external outbound couplings with other external 
+
+systems. Given that a system consisting of system interfaces and implementation, we derive Theorem 6 from 
+
+Definitions 12a, 12b, and Theorem 3 to show that the magnitude of complexity of a system sys is less than or equal 
+
+to the sum of its interface complexity (CP(sys,ifc)) and its implementation complexity (CP(sys,imp)) .
+
+Our coupling and complexity model is inspired by existing metrics, such as Cardoso’s Control Flow Complexity 
+
+[3], Quynh and Thang’s Dynamic Coupling Metrics [1], and Yang’s Indirect Coupling [4]. Our model differs 
+
+significantly from these approaches in that it is not software-specific and does not rely on analyzing internal 
+
+component logic. This simplified semantic approach requires fewer explicit parameters, making the model highly 
+
+effective for estimating high-level complexity and associated costs. 
+
+VII. C OST ESTIMATION FOR SYSTEM AND COMPONENTS (SCEM) 
+
+Building upon the foundation of the SCCM, we introduce the System Cost Estimation Model (SCEM). The 
+
+SCEM serves as an extension of the SCCM, augmenting the existing complexity framework with a cost-centric 
+
+dimension. While the SCCM characterizes the structural complexity of a system, the SCEM incorporates the 
+
+∀s j = a n i n d e x o f E x t e r n a l Co u p l i n g s f r o m S y s t e m Co m p o n e n t s t o S y s t e m s y s
+
+∀s k = a n i n d e x o f E x t e r n a l Co u p l i n g s b e t w e e n S y s t e m Co m p o n e n t s i n S y s t e m s y s
+
+∀s l = a n i n d e x o f E x t e r n a l Co u p l i n g s f r o m S y s t e m s y s t o i t s E x t e r n a l S y s t e m s
+
+D e f i n i t i o n 10 a : s x i c p ≤ (m × n′ × s e)
+
+D e f i n i t i o n 10 b : s x o c p ≤ (n × m′ × s e)
+
+D e f i n i t i o n 10 c : s x c p ≤ (m × n′ × s e) + (n × m′ × s e)
+
+D e f i n i t i o n 10 d : s i n c p ≤ (m × n) × s c
+
+D e f i n i t i o n 10 e : s e c p ≤ (m + n) × s c2
+
+D e f i n i t i o n 10 f : s c c p ≤ (m + n) × s c
+
+Theorem 4 : C P (s y s ) ≤
+
+> sincp
+
+∑
+
+> si=1
+
+I N T C P (s y s, s i ) + (
+
+> secp
+
+∑
+
+> sj=1
+
+E X T C P (s y s, s j ) +
+
+> sccp
+
+∑
+
+> sk=1
+
+E X T C P (s y s, s k )) +
+
+> sxcp
+
+∑
+
+> sl=1
+
+E X T C P (s y s, s l )
+
+D e f i n i t i o n 11 :
+
+> sc
+
+∑
+
+> sci=1
+
+C P (s c i ) ≤
+
+> sincp
+
+∑
+
+> si=1
+
+I N T C P (s y s, s i ) + (
+
+> secp
+
+∑
+
+> sj=1
+
+E X T C P (s y s, s j ) +
+
+> sccp
+
+∑
+
+> sk=1
+
+E X T C P (s y s, s k ))
+
+Theorem 5 : C P (s y s ) ≤
+
+> sc
+
+∑
+
+> sci=1
+
+C P (s c i ) +
+
+> sxcp
+
+∑
+
+> sl=1
+
+E X T C P (s y s, s l )
+
+D e f i n i t i o n 12 a : C P (s y s, i f c) ≤
+
+> sxicp
+
+∑
+
+> sl=1
+
+E X T C P (s y s, s l )
+
+D e f i n i t i o n 12 b : C P (s y s, i m p) ≤
+
+> sc
+
+∑
+
+> sci=1
+
+C P (s c i ) +
+
+> sxocp
+
+∑
+
+> sl=1
+
+E X T C P (s y s, s l )
+
+Theorem 6 : C P (s y s ) = C P (s y s, i f c) + C P (s y s, i m p)   
+
+> 1This material can only be used for non-commercial purposes. Please contact the author for commercial licensing terms. of 19 29 © 2026 Timeleap Inc. This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike CC BY-NC-SA 4.0
+> License. To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-sa/4.0/ .
+
+economic variables—such as labor effort and monetary expenditure—required for its realization. For instance, 
+
+whereas an SCCM analysis might evaluate the architecture of a payment system, the SCEM extends this to estimate 
+
+the human and financial resources necessary for its development. This progression is formally realized by expanding 
+
+our mathematical primitives, moving from Definitions 1–12 and Theorems 1–6 to the more comprehensive set of 
+
+Definitions 13–25 and Theorems 7–15. 
+
+Definition 13 shows that the total cost of a component c ( CTS) is less than or equal to the total cost of its elements 
+
+and the total cost of its couplings (CPCTS) . Definition 14 shows that the cost of an element (ELMCTS) is equal to 
+
+its cost factor (CFELM) multiplied by the property value of the element (ELEMENT) . Definition 15 shows that the 
+
+cost of the couplings of a component c (CPCTS) is less than or equal to the sum of the costs of its internal couplings 
+
+(INTCTS) and external couplings (EXTCTS) . Definition 16 shows that the cost of an internal coupling (INTCTS) is 
+
+less than or equal to the sum of the costs of its aggregated inbound properties (INPCTS) and aggregated outbound 
+
+properties (OUTPCTS) . Definition 17 shows that the cost of an external coupling (EXTCTS) is less than or equal to 
+
+the sum of the costs of its external inbound couplings (ICTS) and external outbound couplings (OCTS) .
+
+Definition 18a shows that the cost of an aggregated inbound property (INPCTS) is equal to the product of its cost 
+
+factor (CFPICP) and the amount of its aggregated inbound property (INPROP) . Definition 18b shows that the cost 
+
+of an external inbound coupling is equal to the product of its cost factor (CFICP) and the amount of the external 
+
+inbound coupling (ICP) . Definition 19a shows that the cost of an aggregated outbound property (OUTPCTS) is 
+
+equal to the product of its cost factor (CFOUTP) and the amount of its aggregated outbound property (OUTPROP) .
+
+Definition 19b shows that the cost of an external outbound coupling for external couplings is equal to the product of 
+
+its cost factor (CFOCP) and the amount of the external outbound coupling (OCP) .
+
+Definition 20a shows that the cost of a composite component (CPCTS(cc)) is less than or equal to the sum of: the 
+
+total cost of the internal couplings of its nested components (INTCTS(cc,ni)) , the total cost of the external couplings 
+
+between its nested components (EXTCTS(cc,nj)), the total cost of the external couplings from its nested components 
+
+to the composite component cc (EXTCTS(cc,nk)) , and the total cost of its external couplings (EXTCTS(cc,nl)) .
+
+Definition 20b shows that the total cost of the couplings of the nested components (CPCTS(ci)) in composite                                                                                                                                                                                                                                                                                                                                                                    
+
+> Definition13 :CTS(c)≤
+> ce
+> ∑
+> j=1
+> ELMCTS(j)+CPCTS(c),∀ce=m+n
+> Definition14 :ELMCTS(j)=CFELM(j)×ELEMENT(j)
+> Definition15 :CPCTS(c)≤
+> mi
+> ∑
+> i=1
+> INTCTS(c,i)+
+> mo
+> ∑
+> j=1
+> EXTCTS(c,j),∀mo≤m+n
+> Definition16 :INTCTS(c,i)≤
+> a
+> ∑
+> k=1
+> INPCTS(c,i,k)+
+> b
+> ∑
+> l=1
+> OUTPCTS(c,i,l)
+> Definition17 :EXTCTS(c,j)≤
+> a
+> ∑
+> k=1
+> ICTS(c,j,k)+
+> b
+> ∑
+> l=1
+> OCTS(c,j,l)
+> Definition18 a:INPCTS(c,i,k)=CFINP(c,i,k)×INPROP(c,i,k)
+> Definition18 b:ICTS(c,i,k)=CFICP(c,i,k)×ICP(c,i,k)
+> Definition19 a:OUTPCTS(c,j,)=CFOUTP(c,j,l)×OUTPROP(c,j,l)
+> Definition19 b:OCTS(c,j,l)=CFOCP(c,j,l)×OCP(c,j,l)
+> 1This material can only be used for non-commercial purposes. Please contact the author for commercial licensing terms. of 20 29 © 2026 Timeleap Inc. This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike CC BY-NC-SA 4.0
+> License. To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-sa/4.0/ .
+
+component cc is less than or equal to the sum of: the total cost of the internal couplings of its nested components 
+
+(INTCTS(cc,ni)) , the total cost of the external couplings between its nested components (EXTCTS(cc,nj)), and the 
+
+total cost of the external couplings from its nested components to the composite component cc (EXTCTS(cc,nk)) .
+
+Therefore, we arrive to Theorem 8 that shows the total cost of couplings of a composite component cc is less than 
+
+equal to the sum of the total cost of the couplings of the nested components (CPCTS(ci)) and the total cost of its 
+
+external couplings (EXTCTS(cc,nl)) . Theorem 9 shows that the cost of the composite component cc is less than or 
+
+equal to the total cost of its nested components (CPCTS(ci)) and the total cost of its couplings (CPCTS(cc)) .
+
+Definitions 22a-23b describe the costs of the APIs and implementation of a component. They are built upon 
+
+Definition 21, Theorems 8 and 9, and Definitions 20 and 20b. Definition 22a shows that the cost of the APIs (ifc) of 
+
+component c (CTS(c,ifc)) is less than or equal to the sum of the costs of the external inbound couplings (EXTCTS) 
+
+and the costs of the inbound elements (ELMCTS) . Definition 22b shows that the cost of the implementation (imp) of 
+
+component c (CTS(c,imp)) is less than or equal to the sum of: the costs of the internal couplings (INTCTS) of its 
+
+nested components, the costs of the external outbound couplings (EXTCTS) , and the costs of its outbound elements 
+
+(ELMCTS) . Definition 23a indicates that the cost of the APIs (ifc) of composite component cc (CTS(cc,ifc)) is less 
+
+than or equal to the sum of the costs of the external inbound couplings (EXTCTS) and the costs of its inbound 
+
+elements (ELMCTS) . Definition 23b shows that the cost of the implementation (imp) of composite component cc 
+
+(CTS(cc,imp)) is less than or equal to the sum of: the costs of its nested components (CTS(ci)) , the costs of the 
+
+external outbound couplings (EXTCTS) , and the costs of its outbound elements (ELMCTS) .                                                               
+
+> Definition20 a:CPCTS(cc)≤
+> incp
+> ∑
+> ni=1
+> INTCTS(cc,ni)+(
+> necp
+> ∑
+> nj=1
+> EXTCTS(cc,nj)+
+> nccp
+> ∑
+> nk=1
+> EXTCTS(cc,nk))+
+> excp
+> ∑
+> nl=1
+> EXTCTS(cc,nl)
+
+D e f i n i t i o n 20 b :
+
+> nc
+
+∑
+
+> ci=1
+
+C P C T S (c i ) ≤
+
+> incp
+
+∑
+
+> ni=1
+
+I N T C T S (c c, n i ) + (
+
+> necp
+
+∑
+
+> nj=1
+
+E X T C T S (c c, n j ) +
+
+> nccp
+
+∑
+
+> nk=1
+
+E X T C T S (c c, n k ))
+
+Theorem 8 : C P C T S (c c) ≤
+
+> nc
+
+∑
+
+> ci=1
+
+C P C T S (c i ) +
+
+> excp
+
+∑
+
+> nl=1
+
+E X T C T S (c c, n l )
+
+Theorem 9 : C T S (c c) ≤
+
+> nc
+
+∑
+
+> ci=1
+
+C T S (c i ) + C P C T S (c c)
+
+D e f i n i t i o n 21 : C T S (c c) ≤ (
+
+> nc
+
+∑
+
+> ci=1
+
+C P C T S (c i ) +
+
+> excp
+
+∑
+
+> nl=1
+
+E X T C T S (c c, n l )) + C P C T S (c c)
+
+D e f i n i t i o n 22 a : C T S (c, i f c) ≤
+
+> m
+
+∑
+
+> j=1
+
+E X T C T S (c, j ) +
+
+> m
+
+∑
+
+> j=1
+
+E L MC T S ( j )
+
+D e f i n i t i o n 22 b : C T S (c, i m p) ≤
+
+> mi
+
+∑
+
+> i=1
+
+I N T C T S (c, i ) +
+
+> n
+
+∑
+
+> j=1
+
+E X T C T S (c, j ) +
+
+> n
+
+∑
+
+> j=1
+
+E L MC T S ( j ), ∀m i ≤ m × n
+
+D e f i n i t i o n 23 a : C T S (c c, i f c) ≤
+
+> exicp
+
+∑
+
+> nl=1
+
+E X T C T S (c c, n l ) +
+
+> m
+
+∑
+
+> j=1
+
+E L MC T S ( j )
+
+D e f i n i t i o n 23 b : C T S (c c, i m p) ≤
+
+> nc
+
+∑
+
+> ci=1
+
+C T S (c i ) +
+
+> exocp
+
+∑
+
+> nl=1
+
+E X T C T S (c c, n l ) +
+
+> n
+
+∑
+
+> j=1
+
+E L MC T S ( j ), ∀m i ≤ m × n   
+
+> 1This material can only be used for non-commercial purposes. Please contact the author for commercial licensing terms. of 21 29 © 2026 Timeleap Inc. This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike CC BY-NC-SA 4.0
+> License. To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-sa/4.0/ .
+
+Theorem 10 indicates that the cost of a component c (CTS(c)) is less than or equal to the sum of the cost of its 
+
+interface complexity (CTS(c,ifc)) and the costs of its implementation complexity (CTS(c,imp)) . Theorem 11 
+
+indicates that the cost of a composite component cc (CTS(cc)) is less than or equal to the sum of the cost of its 
+
+interface complexity (CTS(cc,ifc)) and the costs of its implementation complexity (CTS(cc,imp)) .
+
+Theorem 12 shows that the cost of the couplings of system sys is less than or equal to the sum of: the total cost of 
+
+the internal couplings of its system components (INTCTS(sys,si)) , the total cost of the external couplings between its 
+
+system components (EXTCTS(sys,sj)), the total cost of the external couplings from its system components to the 
+
+system sys (EXTCTS(sys,sk)) , and the total cost of its external couplings (EXTCTS(sys,sl)) with other systems. 
+
+Definition 24 shows that the total cost of the couplings of the system components (CPCTS(sci)) in system sys is less 
+
+than or equal to the sum of: the total cost of the internal couplings of its system components (INTCTS(sys,si)) , the 
+
+total cost of the external couplings between its system components (EXTCTS(sys,sj)), the total cost of the external 
+
+couplings from its system components to the system sys (EXTCTS(sys,sk)) . Therefore, we arrive to Theorem 13 that 
+
+shows the total cost of couplings of system sys is less than equal to the sum of the total cost of the couplings of the 
+
+system components (CPCTS(sci)) and the total cost of its external couplings (EXTCTS(sys,sl)) with other systems. 
+
+Theorem 14 shows that the cost of system sys is less than or equal to the total cost of its system components 
+
+(CPCTS(sci)) and the total cost of its couplings (CPCTS(sys)) .
+
+Definition 25a indicates that the cost (CTS(sys,ifc)) of the APIs (ifc) of system sys is less than or equal to the sum 
+
+of the costs of the external inbound couplings (EXTCTS) and the costs of its inbound system elements (ELMCTS) .
+
+Definition 25b shows that the cost (CTS(sys,imp)) of the implementation (imp) of system sys is less than or equal to 
+
+the sum of: the costs of its system components (CTS(sci)) , the costs of the external outbound couplings 
+
+(EXTCTS(sys,sl)) , and the costs of its outbound system elements (ELMCTS) .
+
+Theorem 10 : C T S (c) = C T S (c, i f c) + C T S (c, i m p)
+
+Theorem 11 : C T S (c c) = C T S (c c, i f c) + C T S (c c, i m p)                                                            
+
+> Theorem12 :CPCTS(sys)≤
+> sincp
+> ∑
+> si=1
+> INTCTS(sys,si)+(
+> secp
+> ∑
+> sj=1
+> EXTCTS(sys,sj)+
+> sccp
+> ∑
+> sk=1
+> EXTCTS(sys,sk))+
+> sxicp
+> ∑
+> sl=1
+> EXTCTS(sys,sl)
+
+D e f i n i t i o n 24 :
+
+> sc
+
+∑
+
+> sci=1
+
+C P C T S (s c i ) ≤
+
+> sincp
+
+∑
+
+> si=1
+
+I N T C T S (s y s, s i ) + (
+
+> secp
+
+∑
+
+> sj=1
+
+E X T C T S (s y s, s j ) +
+
+> sccp
+
+∑
+
+> sk=1
+
+E X T C T S (s y s, s k ))
+
+Theorem 13 : C P C T S (s y s ) ≤
+
+> sc
+
+∑
+
+> sci=1
+
+C P C T S (s c i ) +
+
+> sxicp
+
+∑
+
+> sl=1
+
+E X T C T S (s y s, s l )
+
+Theorem 14 : C T S (s y s ) ≤
+
+> sc
+
+∑
+
+> sci=1
+
+C T S (s c i ) + C P C T S (s y s )
+
+D e f i n i t i o n 25 a : C T S (s y s, i f c) ≤
+
+> sxicp
+
+∑
+
+> sl=1
+
+E X T C T S (s y s, s l ) +
+
+> m
+
+∑
+
+> j=1
+
+E L MC T S ( j )
+
+D e f i n i t i o n 25 b : C T S (s y s, i m p) ≤
+
+> sc
+
+∑
+
+> sci=1
+
+C T S (s c i ) +
+
+> sxocp
+
+∑
+
+> sl=1
+
+E X T C T S (s y s, s l ) +
+
+> n
+
+∑
+
+> j=1
+
+E L MC T S ( j )   
+
+> 1This material can only be used for non-commercial purposes. Please contact the author for commercial licensing terms. of 22 29 © 2026 Timeleap Inc. This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike CC BY-NC-SA 4.0
+> License. To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-sa/4.0/ .
+
+Given that a system consisting of system interfaces and implementation, we derive Theorem 15 from Definitions 
+
+25a and 25b to show that the cost of system sys (CTS(sys)) is less than or equal to the sum of the cost of its interface 
+
+complexity (CTS(sys,ifc)) and the costs of its implementation complexity (CTS(sys,imp)) .
+
+The SCCM and its underlying definitions are used to construct a tabular version of the model; we apply this 
+
+representation to a practical example in the next section. 
+
+VIII. A PPLY GRAPHICAL AND TABULAR FORM TO A SAMPLE RETAIL BANKING SYSTEM INTEGRATION 
+
+Having established the theoretical framework, this section demonstrates the practical application of our model 
+
+through a case study of a ample retail banking integration. The objective is to evaluate two architectural patterns: 
+
+Enterprise Service Bus (ESB) and Service Mesh, as illustrated in Figure 9. To instantiate the model, we align the 
+
+business domain with the technical system by mapping functional requirements to technical components. This 
+
+alignment is achieved by identifying the shared elements—such as nodes and edges—inherent in both domains. 
+
+Furthermore, we extend this mapping to the cost dimension by associating the technical complexity with the effort 
+
+required for implementation. Specifically, we model the interaction as a set of request-response sequences, where 
+
+solid lines represent outgoing requests and dotted lines represent incoming responses, as illustrated in Figure 10. 
+
+Theorem 15 : C T S (s y s ) = C T S (s y s, i f c) + C T S (s y s, i m p)   
+
+> 1This material can only be used for non-commercial purposes. Please contact the author for commercial licensing terms. of 23 29 © 2026 Timeleap Inc. This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike CC BY-NC-SA 4.0
+> License. To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-sa/4.0/ .
+
+While a preliminary visual inspection of the architecture suggests that the Service Mesh pattern exhibits higher 
+
+complexity due to a greater density of interactions, our formal analysis provides a more nuanced comparison of the 
+
+underlying cost drivers. 
+
+To facilitate practical implementation, the SCCM and SCEM models are transformed into a tabular format 
+
+comprising twelve distinct calculation tables, as illustrated in Figure 11. These tables are categorized into four 
+
+functional groups: Properties, Couplings, Complexity, and Cost. The structural dimensionality of these tables varies; 
+
+Property tables are one-dimensional (indexed by component), whereas Coupling tables are two-dimensional 
+
+matrices representing the interactions between components. 
+
+The population of these tables relies on two distinct processes: manual assignment and algorithmic derivation. 
+
+While certain intrinsic properties and cost factors are manually assigned, the remaining values are derived through 
+
+the systematic application of the model's formal definitions. Specifically, the Coupling and Complexity values are 
+
+computed by applying Definitions 4 through 15 to the input properties, while the final Cost tables aggregate these 
+
+results to provide a complete view of the system's overhead.    
+
+> 1This material can only be used for non-commercial purposes. Please contact the author for commercial licensing terms. of 24 29 © 2026 Timeleap Inc. This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike CC BY-NC-SA 4.0
+> License. To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-sa/4.0/ .
+
+For the purpose of this exercise, we also make a number of assumptions on the SCCM models for the ESB and 
+
+Service Mesh integration patterns. First, the six banking services (microservice) has an average of 1 inbound and 
+
+outbound interface pairs, except for the deposit service which has 3 interface pairs as well as the API gateway which 
+
+has 7 interface pairs. Secondly, we assume that the property value of a message is equivalent to the magnitude of 
+
+the message which is equal to the number of attributes in the message. Thirdly, the weighted constants (INK1, 
+
+INK2, INK3, INK4, OUTK1, OUTK2, OUTK3, and OUTK4) are assigned with a value of 1. Lastly, we also assign 
+
+all the cost factors (e.g. CFELM, CFICP, CFOCP) with an effort-cost value of 1 person-hour. 
+
+Figures 11 illustrates the tabular version of our SCCM for the ESB alternative as in Figure 10. We assume that the 
+
+canonical ESB message format is twice as complex as the client-gateway message (e.g. 5 vs 10). Since it typically 
+
+requires more data processing overhead on the service requests than service responses, the property value of the 
+
+inbound interface on the ESB is assumed to be twice as complex as the outbound interface and four times as 
+
+complex as the client-gateway interface (e.g. 10, 20, 40). The tables show interesting results. The upper bounded 
+
+magnitude of complexity of the ESB alternative has a value of 64,500; 7,500 for interface (API) and 57,000 for 
+
+implementation. The upper bounded cost of implementing the ESB alternative from scratch requires 64,500 person-
+
+hours and $3.87M respective; 7,500 person-hours for interface (API) and 57,000 person-hours for implementation.    
+
+> 1This material can only be used for non-commercial purposes. Please contact the author for commercial licensing terms. of 25 29 © 2026 Timeleap Inc. This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike CC BY-NC-SA 4.0
+> License. To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-sa/4.0/ .
+
+Figure 12 illustrates a tabular version of our SCCM for the Service Mesh alternative as in Figure 10. We assume 
+
+that the microservice is lightweight; and therefore, its message format is also lightweight (e.g. 5). Since it typically 
+
+requires more data processing overhead on microservice requests than microservice responses, the property value of 
+
+the inbound interface on the ESB is assumed to be twice as complex as the outbound interface (e.g. 5, 10). The 
+
+tables in Figure 2 show interesting results. The upper-bounded magnitude of complexity of the Service Mesh 
+
+alternative has a value of 17,875; 1,625 for interface (API) and 16,250 for implementation. The upper-bounded cost 
+
+of implementing the ESB alternative from scratch requires 17,875 person-hours and $1.7M respectively; 1,625 
+
+person-hours for interfaces (APIs) and 16,250 person-hours for implementation. 
+
+Figure 13 shows a sample architecture decision for our Retail Banking System Integration. It outlines our 
+
+decisioning process by evaluating the results from the graphical and tabular forms of our formal model (Figure 
+
+10-12). Given that the build cost is the number one decision factor, the decision is to go with Service Mesh because 
+
+the upper-bounded build cost is much lower than ESB ($1.07M vs $3.87M); that is almost four fold. In addition, 
+
+Service Mesh appears to remain scalable and more cost-effective than ESB, provided that the microservices remain 
+
+lightweight and they do not need to communicate with each other in a full mesh.    
+
+> 1This material can only be used for non-commercial purposes. Please contact the author for commercial licensing terms. of 26 29 © 2026 Timeleap Inc. This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike CC BY-NC-SA 4.0
+> License. To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-sa/4.0/ .
+
+Traditional architectural analyses often restrict their scope to merely counting components and connections, 
+
+neglecting critical internal systemic properties. Our proposed methodology addresses this limitation by evaluating 
+
+both the inherent topology and the detailed properties of both components and the elements they comprise. This 
+
+enables comprehensive scenario exploration, allowing architects to model and quantify the impact of varying or 
+
+scaling fundamental constants and system properties. Crucially, we incorporate complex parameters such as inter-
+
+component coupling complexity and inherent cost factors into our decision model. We make a key differential 
+
+assumption regarding integration patterns: we postulate that service mesh architectures exhibit significantly higher 
+
+average interface and message property coupling values compared to traditional Enterprise Service Bus (ESB) 
+
+implementations. This assumption is grounded in the established complexity and resource overhead associated with 
+
+canonical message translation and processing inherent to ESBs. Furthermore, our framework is designed for 
+
+practicality, demonstrating that a robust system estimation model can be constructed using a limited set of high-level 
+
+input parameters, thereby enabling technologists to accurately estimate the cost and complexity profile of diverse 
+
+system architectures across various defined operational scenarios.    
+
+> 1This material can only be used for non-commercial purposes. Please contact the author for commercial licensing terms. of 27 29 © 2026 Timeleap Inc. This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike CC BY-NC-SA 4.0
+> License. To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-sa/4.0/ .
+
+X. C ONCLUSION AND FUTURE WORK 
+
+This paper presented a novel framework for estimating system complexity and cost by focusing on interface-
+
+driven metrics rather than internal component attributes. By utilizing the CCM, CCSM, SCCM, and SCEM models, 
+
+we demonstrated that it is possible to make informed architectural decisions—such as the selection between an ESB 
+
+or a Service Mesh—even when internal implementation details are unknown. Our approach moves beyond simple 
+
+structural analysis to quantify the impact of external interactions, proving that an architectural decision is not merely 
+
+a choice of pattern, but a calculated trade-off of cost and complexity. 
+
+The strength of this methodology lies in its versatility; the model is technology-agnostic and can be scaled from 
+
+simple service interactions to highly complex, distributed ecosystems. By applying algebraic transformations to 
+
+graph-based structures, we provided a way to estimate both worst-case (upper-bound) and average-case 
+
+complexities, allowing architects to plan for both scalability and resource constraints. Ultimately, this work bridges 
+
+the gap between high-level enterprise architecture and concrete project management, providing a mathematical 
+
+foundation for the strategic deployment of technologies across diverse industries, from finance to healthcare. 
+
+While the current framework provides a robust foundation for complexity estimation, several avenues for future 
+
+research remain. We intend to expand the integration of this model with automated CI/CD pipelines to enable real-
+
+time complexity monitoring during the software development lifecycle. Furthermore, we aim to refine the cost-
+
+estimation parameters by incorporating machine learning to better predict the 'cost-of-change' in evolving 
+
+microservices environments. Finally, we plan to continue the development of our proprietary toolset to automate the 
+
+transformation of architectural diagrams into actionable cost-complexity models, making this quantitative approach 
+
+accessible to all levels of stakeholders. 
+
+XI. REFERENCES 
+
+[1]  P. Quynh, H. Thang, “Dynamic Coupling Metrics for Service-Oriented Software”, 2009. 
+
+[2]  E. Arisholm, L. Briand, A. Foyen, “Dynamic Coupling Measurement for Object-Oriented Software”, 2004. 
+
+[3]  J. Cardoso, “Control-flow Complexity Measurement of Processes and Weyuker’s Properties”, 2005. 
+
+[4]  H. Yang, “Measuring Indirect Coupling”, Phd Thesis, University of Aukland New Zealand, 2010. 
+
+[5]  E. Fregnan, Tobias Baum, “A Survey on Software Coupling Relations and Tools,”, 2016. 
+
+[6]  J. Eder, G. Kappel, M. Schrefl, “Coupling and Cohesion in Object-Oriented Systems”, 1994. 
+
+[7]  A. Offutt, M. Harrold, Pl Kolte, “A Software Metric System for Module Coupling”, Journal of Systems and Software, pp20, 1993. 
+
+[8]  D. Radigan, “Story Points and Estimation”,  https://www.atlassian.com/agile/project-management/estimation , Atlassian, 2020. 
+
+[9]  L. Herszon, K. Keraminiyage, “ https://www.pmi.org/learning/library/dimensions-project-complexity-impact-cost-estimation-9354 , PMI 
+
+Global Congress, 2014. 
+
+[10]  S. Brotherton, T. Fried, E. Norman, “Applying the work breakdown structure to the project management lifecycle”,  https://www.pmi.org/ 
+
+learning/library/applying-work-breakdown-structure-project-lifecycle-6979 , PMI Global Congress, 2008. 
+
+[11]  E. Norman, S. Brotherton, R. Fried, “Work Breakdown Structures: The Foundation for Project Management Excellence”, 2010. 
+
+[12]  K. Schwaber, R. Hundhausen, D. Starr, “Agile Project Management with Scrum”, Microsoft Press, 2004. 
+
+[13]  G. Hohpe, B. Woolf, “Enterprise Integration Patterns”, 1st Edition, October 2003. 
+
+[14]  E. Gamma, R. Helm, R. Johnson, J. Vlissides, “Design Patterns”, Addison-Wesley, 1995. 
+
+[15]  IBM Cloud Education, “ESB (Enterprise Service Bus)”,  https://www.ibm.com/cloud/learn/esb , July 2019. 
+
+[16]  J. Lewis, M. Fowler, “Microservices - a definition of this new architectural term”,  https://martinfowler.com/articles/microservices.html ,
+
+2014. 
+
+[17]  N. Dragoni, S. Giallorenzo, A. Lafuente, M. Mazzara, F. Montesi, R. Mustafin, L. Safina, “Microservices: yesterday, today, and tomorrow”, 
+
+2016. 
+
+[18]  IBM Redhat, “What’s a service mesh”,  https://www.redhat.com/en/topics/microservices/what-is-a-service-mesh , 2020. 
+
+[19]  J. Gross, T. Tucker, “Topological Graph Theory”, John Wiley & Sons, 2001. 
+
+[20]  J. Tuner, R. Baker, “Complexity Theory: An Overview with Potential Applications for the Social Science”, Systems, January 19, 2019.. 
+
+[21]  W. Stevens, G. Myers, L. Constantine, “Structure Design”, IBM System Journal, 13(2):115-139, 1974. 
+
+[22]  T. McCabe, “A Complexity Measure”, IEEE Transactions on Software Engineering, pp. 308-320, 1976. 
+
+[23]  N. Fenton, A. Melton, “Software Measurement, Chapter Measurement Theory and Software Measurement”, pp27-38, International 
+
+Thomson Computer Press, 1996. 
+
+[24]  M. Halstead, “Elements of Software Science”, Elsevier, New York, 1977.    
+
+> 1This material can only be used for non-commercial purposes. Please contact the author for commercial licensing terms. of 28 29 © 2026 Timeleap Inc. This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike CC BY-NC-SA 4.0
+> License. To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-sa/4.0/ .
+
+[25]  IEEE Standard Glossary of Software Engineering Terminology, IEEE std 610.12-1990. 
+
+[26]  S. Pincus, “Approximate Entropy as a Measure of System Complexity”, Proceedings of the National Academy of Sciences, Vol. 88, pp. 
+
+2297-2301, April 1991. 
+
+[27]  “Self-Contained Systems”,  https://scs-architecture.org/ , 2020. 
+
+[28]  Object Management Group, “Unified Modeling Language”,  https://www.omg.org/spec/UML , 2017. 
+
+[29]  Sparx Systems, “Parametric Simulation using OpenModelica”,  https://sparxsystems.com/downloads/whitepapers/parametric-simulation-
+
+using-openmodelica.pdf , June 6, 2016. 
+
+[30]  T. Merriman, “Enterprise Architecture for Architecture Driven Planning”,  https://sparxsystems.com/press/articles/pdf/EAforADP.pdf , OAD 
+
+Consulting Inc., 2008. 
+
+[31]  IBM Rational Rhapsody, “IBM Engineering Systems Design Rhapsody”,  https://www.ibm.com/products/systems-design-rhapsody , 2020. 
+
+[32]  A, Brown, “Large-Scale, Component-Based Development”, Prentice Hall PTR, 1st Edition, May 30, 2000. 
+
+[33]  K.Y. Chan, “Methods for Designing Internet Telephony Services with Fewer Feature Interactions”,  https://github.com/kenchan-canuck/ken-
+
+public-docs/blob/master/ken_msee_final_thesis_highres.pdf , MASc. Thesis in Electrical Engineering, University of Ottawa, May 2003. 
+
+[34]  K.Y. Chan, G. v. Bochmann, “Modeling IETF Session Initiation Protocol with SDL”, pp.352-373, SDL 2003: System Design, 11th 
+
+International SDL Forum, July 2003.

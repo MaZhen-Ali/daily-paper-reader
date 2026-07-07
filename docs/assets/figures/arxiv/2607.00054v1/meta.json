@@ -1,0 +1,38 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2607.00054v1/fig-001.webp",
+      "caption": "Figures 11 illustrates the tabular version of our SCCM for the ESB alternative as in Figure 10. We assume that the canonical ESB message format is twice as complex as the client-gateway message (e.g. 5 vs 10). Since it typically requires more data processing overhead on the service requests than service responses, the property value of the inbound interface on the ESB is assumed to be twice as complex as the outbound interface and four times as complex as the client-gateway interface (e.g. 10, 20, 40). The tables show interesting results. The upper bounded magnitude of complexity of the ESB alternative has a value of 64,500; 7,500 for interface (API) and 57,000 for implementation. The upper bounded cost of implementing the ESB alternative from scratch requires 64,500 personhours and $3.87M respective; 7,500 person-hours for interface (API) and 57,000 person-hours for implementation.",
+      "page": 25,
+      "index": 1,
+      "width": 976,
+      "height": 783
+    },
+    {
+      "url": "assets/figures/arxiv/2607.00054v1/fig-002.webp",
+      "caption": "Figure 13 shows a sample architecture decision for our Retail Banking System Integration. It outlines our decisioning process by evaluating the results from the graphical and tabular forms of our formal model (Figure 10-12). Given that the build cost is the number one decision factor, the decision is to go with Service Mesh because",
+      "page": 26,
+      "index": 2,
+      "width": 976,
+      "height": 785
+    },
+    {
+      "url": "assets/figures/arxiv/2607.00054v1/fig-003.webp",
+      "caption": "Figure 1 describes the user stories of two popular enterprise application integration (EAI) patterns: ESB [15], Service Mesh [16-18]. It shows a ESB using a centralized bus or broker (e.g. API gateway [13, 15]) to coordinate message exchanges between services. All the inbound requests from the client application to the API gateway are",
+      "page": 3,
+      "index": 3,
+      "width": 868,
+      "height": 619
+    },
+    {
+      "url": "assets/figures/arxiv/2607.00054v1/fig-004.webp",
+      "caption": "Figure 3 outlines a sample enterprise architecture decision for an e-Commerce Enterprise Application Integration. It outlines the problem context for deciding whether ESB or Service Mesh should be the preferred integration pattern. Since the cost of building or maintaining the system is the key decision factor, our sample architecture decision would be primarily based on the comparison of the cost estimation matrices between ESB and Service Mesh in Figure 2. If we have a rate card of $500 USD per person-day in effort, then the labor cost for ESB and Service Mesh would be $65K USD vs $82.5K USD (130 vs 165) for User Story Points, and $80K USD vs $102.5K USD (160 vs 205) for WBS, respectively. Therefore, the decision would be to go with ESB because its complexity and cost estimates are lower than Service Mesh.",
+      "page": 5,
+      "index": 4,
+      "width": 976,
+      "height": 806
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2607.00711v1/fig-001.webp",
+      "caption": "Figure 1: An ambiguous code generation requirement.",
+      "page": 1,
+      "index": 1,
+      "width": 392,
+      "height": 406
+    },
+    {
+      "url": "assets/figures/arxiv/2607.00711v1/fig-002.webp",
+      "caption": "Figure 4: System prompt used in our interactive evaluation. The model must either output code or ask one clarification question.",
+      "page": 6,
+      "index": 2,
+      "width": 506,
+      "height": 898
+    },
+    {
+      "url": "assets/figures/arxiv/2607.00711v1/fig-003.webp",
+      "caption": "Figure 6: Hit rate across ambiguity types for non-thinking models.A hit means that an LLM asks a clarification question that matches the annotated key question for an ambiguity instance, while a miss means that no such matched clarification question is asked.",
+      "page": 7,
+      "index": 3,
+      "width": 485,
+      "height": 256
+    },
+    {
+      "url": "assets/figures/arxiv/2607.00711v1/fig-004.webp",
+      "caption": "Table 3: Clarification quality and code-generation performance.",
+      "page": 7,
+      "index": 4,
+      "width": 506,
+      "height": 248
+    },
+    {
+      "url": "assets/figures/arxiv/2607.00711v1/fig-005.webp",
+      "caption": "Figure 10: Time Limit Exceeded Case.",
+      "page": 10,
+      "index": 5,
+      "width": 1056,
+      "height": 631
+    },
+    {
+      "url": "assets/figures/arxiv/2607.00711v1/fig-006.webp",
+      "caption": "Figure 2: Pass@1 (%) under four input settings: Complete Requirement (Full Req.), Ambiguous Requirement (Ambig. Req.), Interactive Clarification (Interact. Clar.), and Oracle Clarification (Oracle Clar.).",
+      "page": 3,
+      "index": 6,
+      "width": 1023,
+      "height": 274
+    },
+    {
+      "url": "assets/figures/arxiv/2607.00711v1/fig-007.webp",
+      "caption": "Table 4: Average interaction turns, turn difference, and clarification quality across LLMs. Diff denotes the gap between the actual interaction turns and the ideal number of turns.",
+      "page": 8,
+      "index": 7,
+      "width": 506,
+      "height": 300
+    },
+    {
+      "url": "assets/figures/arxiv/2607.00711v1/fig-008.webp",
+      "caption": "Figure 8: Runtime Error Case. The highlighted sentence represents the requirement deleted from the full version of the task.",
+      "page": 9,
+      "index": 8,
+      "width": 506,
+      "height": 591
+    },
+    {
+      "url": "assets/figures/arxiv/2607.00711v1/fig-009.webp",
+      "caption": "Figure 9: Wrong Answer Case.",
+      "page": 9,
+      "index": 9,
+      "width": 506,
+      "height": 552
+    },
+    {
+      "url": "assets/figures/arxiv/2607.00711v1/fig-010.webp",
+      "caption": "Table 2: Ambiguity taxonomy used in our dataset. The taxonomy is grounded in requirement quality principles and instantiated for code-generation tasks.",
+      "page": 5,
+      "index": 10,
+      "width": 1056,
+      "height": 481
+    }
+  ]
+}

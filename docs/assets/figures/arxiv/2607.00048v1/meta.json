@@ -1,0 +1,38 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2607.00048v1/fig-001.webp",
+      "caption": "Figure 1: Overview of the experimental design.",
+      "page": 4,
+      "index": 1,
+      "width": 794,
+      "height": 448
+    },
+    {
+      "url": "assets/figures/arxiv/2607.00048v1/fig-002.webp",
+      "caption": "Figure 2: Average accuracy (%) by model and prompting strategy across 993 questions. The dashed line indicates the PSM I passing threshold (85%).",
+      "page": 5,
+      "index": 2,
+      "width": 481,
+      "height": 326
+    },
+    {
+      "url": "assets/figures/arxiv/2607.00048v1/fig-003.webp",
+      "caption": "Table 1: Mean accuracy (%) for topics with variable or low performance. Topics reaching perfect or near-perfect accuracy across all models and conditions are omitted. Shaded cells indicate values below 80% (darker = lower).",
+      "page": 7,
+      "index": 3,
+      "width": 640,
+      "height": 221
+    },
+    {
+      "url": "assets/figures/arxiv/2607.00048v1/fig-004.webp",
+      "caption": "Figure 3: Accuracy (%) by question format and prompting strategy across the three evaluated models.",
+      "page": 7,
+      "index": 4,
+      "width": 1019,
+      "height": 378
+    }
+  ]
+}

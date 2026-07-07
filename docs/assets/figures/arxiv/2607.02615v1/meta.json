@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2607.02615v1/fig-001.webp",
+      "caption": "Figure 1: Test-driven agentic generation loop. The agent alternates between tool-call exploration (left loop) and artifact generation. Failed tests produce actionable error messages appended to the conversation (right loop), driving iterative self-correction.",
+      "page": 3,
+      "index": 1,
+      "width": 500,
+      "height": 683
+    },
+    {
+      "url": "assets/figures/arxiv/2607.02615v1/fig-002.webp",
+      "caption": "Table 1: Tool and test assignments per pipeline stage. Builtin tools (notebook, recall, give up) are available to all agents.",
+      "page": 5,
+      "index": 2,
+      "width": 529,
+      "height": 276
+    },
+    {
+      "url": "assets/figures/arxiv/2607.02615v1/fig-003.webp",
+      "caption": "Figure 3: Ablation on MITRE ATT&CK mapping across 50 behaviors. (A) Post-hoc pass rate on the full five-test suite. (B) Mean token cost per artifact. Removing self-correction causes the largest quality drop; the full pipeline costs∼2.5× more. Error bars: SD across four folds.",
+      "page": 6,
+      "index": 3,
+      "width": 500,
+      "height": 248
+    }
+  ]
+}
