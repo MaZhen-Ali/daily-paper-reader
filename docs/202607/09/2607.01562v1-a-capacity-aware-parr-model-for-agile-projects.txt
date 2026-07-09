@@ -1,0 +1,681 @@
+Title: A Capacity-Aware Parr Model for Agile Projects
+
+URL Source: https://arxiv.org/pdf/2607.01562v1
+
+Published Time: Fri, 03 Jul 2026 00:21:52 GMT
+
+Number of Pages: 10
+
+Markdown Content:
+> 1
+
+# A Capacity-Aware Parr Model for Agile Projects 
+
+Pedro E. Colla 
+
+UADER-FCyT 
+
+colla.pedro@uader.edu.ar 
+
+Abstract —Classical software effort distribution models, in-cluding the Putnam–Norden–Rayleigh family and Parr’s alter-native curve, were designed to describe the time distribution of development effort under an implied staffing pattern. Their direct use in agile environments is limited when team capacity is fixed, partially fixed, or externally constrained: the original curve may prescribe a staff demand that the organization cannot allocate. This paper proposes a compact refactoring of Parr’s model as a capacity-aware forecasting layer for agile projects. The contribution is deliberately narrower than a full causal theory of project dynamics. A normalized Parr-shaped latent effort demand is combined with an observed or planned capacity trajectory. The resulting model forecasts aggregate progress, completion time, capacity deficit, and capacity slack without assuming that the same internal activity path is followed under resource restriction. The model uses a small parameter set: total effort K, a Parr shape parameter α, an origin constant c that can match nonzero initial staffing, and the capacity trajectory 
+
+C(t). A discrete sprint formulation is provided, together with a calibration method from ordinary Scrum records and a rolling-origin validation protocol against simple management baselines. 
+
+Index Terms —Parr model, effort forecasting, agile project management, Scrum, staff restriction, capacity planning, effort estimation, rolling forecast. 
+
+I. I NTRODUCTION 
+
+Software effort estimation has long combined two different questions that are often confused in practice: how much effort a project will require, and how that effort will be distributed over time. Parametric models such as COCOMO address the first problem through cost drivers and size estimates [1], while effort distribution models such as the Putnam–Norden– Rayleigh model (PNR) describe aggregate staffing or effort profiles over the project life cycle [2]. Parr proposed an alternative to the Rayleigh curve by deriving a symmetric effort density from a logistic view of revealed and unrevealed work [3]. Subsequent analysis observed both the mathematical appeal of the curve and the difficulty of using it as a resource estimation instrument without careful calibration and empirical support [4]. Agile delivery settings make the problem more visible. Scrum teams work in bounded sprints, inspect progress fre-quently, and select work based on past performance, upcoming capacity, and the ”definition of done” [5]. In such settings, staffing is often not the dependent variable predicted by a curve; rather, capacity is a managerial constraint. A stable team may be assigned to a project before the forecast is produced. A classical Parr curve may therefore prescribe more staff than the 
+
+> R&D effort part of the project UADER-PI/B 230/24.
+
+organization can allocate, or less staff than the team already has available. This paper proposes a refactored and deliberately parsimo-nious model. The aim is not to build a complete causal theory of agile project dynamics. The aim is to make a Parr-shaped effort curve usable as an aggregate forecasting component when capacity is externally constrained. The proposed model treats the Parr curve as a latent demand of effort , not as a mandatory staffing policy. Observed or planned capacity controls how fast this latent demand can be consumed. The model therefore supports three management uses: initial dura-tion forecast, sprint-by-sprint reforecast, and scenario analysis for capacity changes. II. B ACKGROUND AND POSITIONING 
+
+The PNR model represents software effort through aRayleigh-shaped profile and has been widely used in macro-level software sizing and estimating [2]. Parr’s model replaces the Rayleigh assumption with a curve derived from a logistic relationship between work already revealed and work remain-ing to be revealed [3]. If K is total effort, α is the curve shape parameter , and c shifts the origin, the classical Parr effort rate is proportional to 
+
+Kα 
+
+4 sech 2
+
+ αt + c
+
+2
+
+
+
+. (1) The parameter c is important because the visible project may start after some latent preparation or discovery has already occurred. It also permits nonzero staff demand at the recorded origin. Basili and Beane compared the Parr curve with other staffing distributions and emphasized the practical difficulty of estimating the curve and validating its staffing implications [4]. This criticism is central to the present work. Rather than claiming that Parr provides a complete staffing law, this paper uses it as a smooth, low-dimensional latent demand curve that must be calibrated and tested against observed agile data. 
+
+A. Agile Estimation Context 
+
+Agile effort estimation remains dominated by expert judg-ment, story-point practices, historical velocity, and increas-ingly data-driven methods [6]–[8]. Recent reviews continue to report estimation challenges related to information quality, team factors, process variation, changing requirements, and insufficient historical data [8], [10]. Replication studies of automated agile effort estimation also warn that complex models may fail to outperform simple baselines under realistic                    
+
+> arXiv:2607.01562v1 [cs.SE] 2 Jul 2026 2
+> TABLE I SCHEMATIC COMPARISON WITH RELATED MODEL FAMILIES .Model family Main role Capacity treatment Role in this pa-per Rayleigh /PNR Macro effort dis-tribution over time [2] Usually implicit in the fitted profile Baseline distri-bution family Parr Logistic-derived effort distribution [3] Not explicit in the original curve Latent demand source Gompertz /Richards Alternative asymmetric growth curves [12], [13] Not project-capacity specific Optional empirical alternatives Velocity baseline Agile completion forecast from past throughput [6] Capacity is embed-ded in velocity Main practical baseline Data-driven estimation Prediction from historical issue or project data [7], [9] Learned indirectly from data External benchmark class Proposed model Capacity-aware ag-gregate forecast Explicit capacity trajectory Main contribu-tion
+
+validation settings [9]. This motivates a conservative baseline-oriented validation protocol. The proposed model is not a replacement for sprint plan-ning, expert estimation, or backlog refinement. It is a project-level forecasting layer that connects total effort, planned capac-ity, and aggregate progress. It is also not a machine-learning model for estimating individual user stories. Its intended granularity is the project or release trajectory. The Table I summarizes the intended comparison. The paper does not attempt to reproduce every alternative effort distribution in de-tail. Instead, it positions the contribution against representative families that a reviewer would naturally expect. The proposed model should be interpreted as a phenomeno-logical aggregate forecasting mechanism rather than a detailed representation of agile project dynamics. Its use of the Parr curve reflects the practical need for a smooth, low-dimensional latent demand profile rather than an assumption that the logistic form fully captures discovery, rework, or coordination effects. The model therefore focuses on aggregate progress under externally constrained capacity and does not attempt to represent backlog dependency, architectural coupling, defect generation, or other internal path-dependent phenomena. This clarification reinforces that the curve shape is selected for parsimony and empirical convenience, not as a universal staffing law. III. U SE CASE AND MODELING ASSUMPTIONS 
+
+The organization might want to forecast aggregate comple-tion time and understand where the available team capacity is likely to constrain progress. In that regard the model assumes that: 1) The total project effort K is available as an initial estimate, a planning value, or a retrospective calibration value. 2) A low-dimensional Parr-shaped curve is a useful approx-imation of aggregate latent effort demand. 3) Capacity is externally observed or planned and may differ from the demand implied by the latent curve. 4) The state variable is aggregate completion, not a detailed network of tasks, dependencies, or defects. 5) Forecasting is performed at project or release level, not at individual user-story level. Based on this set of assumptions an intended use case for this model is to start with an initial estimate of total project effort K, a planned or observed capacity trajectory and one or more historical scrum records at sprint granularity and obtain a forecast of the dynamic evolution of the main project variables, specially effort. Also, with less expected precision, the model might be applied to forecast the evolution of a project given a partial history from itself. It’s likely that when available resources are constrained from the actual resources demand the total duration will increase, it’s hard to forecast if that increase will preserve some sort of path invariance or will introduce inefficiencies, therefore the analysis of such behaviour is left as part of a future work and kept outside the scope of the present work. IV. C APACITY -A WARE PARR FORMULATION 
+
+Let τ ≥ 0 denote a latent effort-maturity clock. The normalized Parr-shaped effort density is defined as 
+
+gα,c (τ ) =  
+
+> α
+> 4
+
+sech 2   ατ +c
+
+> 2
+
+
+
+A(c) , (2) where the factor A(c) is a normalization constant introduced to ensure that the shifted Parr density integrates to one over the project time domain t ≥ 0. Since the parameter c shifts the curve relative to the project origin, part of the unshifted curve may lie before t = 0 . Therefore, 
+
+A(c) = 
+
+Z ∞
+
+> 0
+
+α
+
+4 sech 2
+
+ αt + c
+
+2
+
+
+
+dt = 1 − tanh( c/ 2) 2 (3) Dividing by A(c) makes the latent effort-demand profile a proper normalized density on the observable project interval 
+
+[0 , ∞).Thus Z ∞
+
+> 0
+
+gα,c (τ )dτ = 1 . (4) For total effort K, the latent effort demand rate is 
+
+Dα,c,K (τ ) = Kg α,c (τ ) (5) The corresponding cumulative latent progress is 
+
+Fα,c (τ ) = tanh   ατ +c
+
+> 2
+
+ − tanh( c/ 2) 1 − tanh( c/ 2) (6) This function maps the latent clock into aggregate completion 
+
+x ∈ [0 , 1] .To obtain a state representation let use 
+
+x(t) ∈ [0 , 1] (7) be the fraction of total effort completed at real time t. The latent clock associated with the current state is 
+
+τ (x) = F −1 
+
+> α,c
+
+(x). (8) 3
+
+The demand rate at state x is therefore 
+
+Dα,c,K (x) = Kg α,c (τ (x)) . (9) The origin constant c is retained as a substantive model element. If the recorded project starts with nonzero assigned staff C0, the model can either choose c to match the initial demand approximately, 
+
+c⋆ = arg min  
+
+> c
+
+[Dα,c,K (0) − C0]2 , (10) or estimate c jointly with α using a penalty for initial mis-match. This is important in agile projects where the initial team may already exist at t = 0 .To introduce the management decision on the resources allocated to the project as a capacity restriction, let C(t) be the available capacity rate, measured in the same effort unit per time unit as Dα,c,K . The effective effort completion rate is 
+
+R(t) = min {C(t), D α,c,K (x(t)) } . (11) The aggregate project dynamics are 
+
+dx (t)
+
+dt = R(t)
+
+K , x(0) = 0 . (12) Equation (11) has a direct management interpretation. When latent demand exceeds available capacity, the project is capacity-constrained. When available capacity exceeds latent demand, the excess is not automatically transformed into progress. It may represent slack, coordination limits, work not yet ready, or capacity that can be reassigned. This avoids the unrealistic conclusion that any additional staffing necessarily compresses the project. Two diagnostic quantities follow immediately: 
+
+∆−(t) = [ Dα,c,K (x(t)) − C(t)] + , (13) 
+
+∆+(t) = [ C(t) − Dα,c,K (x(t))] + . (14) Here ∆− is capacity deficit and ∆+ is capacity slack. These diagnostics are useful even when the final duration forecast is uncertain. Because the logistic tail is asymptotic, practical completion is defined by a threshold 
+
+x(t) ≥ q, (15) where q may be chosen as 0.95 , 0.98 , or 0.99 depending on the desired planning convention. This threshold must be reported explicitly in empirical validation. V. SPRINT -L EVEL FORMULATION 
+
+For Scrum data, the model is used in discrete time. Let 
+
+k = 0 , 1, . . . index sprints and let ∆tk be sprint duration. Let 
+
+Ck be the average capacity rate during sprint k. Then 
+
+xk+1 = min 
+
+
+
+1, x k + ∆tk
+
+K min ( Ck, D α,c,K (xk)) 
+
+
+
+. (16) The predicted effort completed during sprint k is 
+
+ˆek = K(xk+1 − xk). (17) The predicted capacity deficit and slack are 
+
+ˆ∆− 
+
+> k
+
+= ∆ tk [Dα,c,K (xk) − Ck]+ , (18) 
+
+ˆ∆+ 
+
+> k
+
+= ∆ tk [Ck − Dα,c,K (xk)] + . (19) If capacity is recorded directly as effort available per sprint rather than as effort per time unit, the product ∆tkCk can be replaced by the observed sprint capacity ¯Ck and the discrete equation becomes 
+
+xk+1 = min 
+
+
+
+1, x k + 1
+
+K min   ¯Ck, ¯Dα,c,K (xk)
+
+, (20) where ¯Dα,c,K is the latent demand expressed per sprint. This version might be more convenient for industrial datasets. Having established the calibration mechanism, we now eval-uate the model’s empirical behavior under realistic validation protocols using real project datasets. VI. C ALIBRATION FROM SCRUM RECORDS 
+
+A. Available Data 
+
+The proposed calibration assumes ordinary project records rather than special experimental instrumentation. For project 
+
+j, the minimal dataset is 
+
+Dj = {k, ∆tjk , C jk , e jk , sp jk }nj
+
+> k=1
+
+, (21) where ∆tjk is the sprint time interval, Cjk is average staff or effort capacity, ejk is observed effort, and sp jk is completed story points. Total effort is 
+
+Kj =
+
+> nj
+
+X
+
+> k=1
+
+ejk (22) for retrospective calibration. In true forecasting, Kj must be replaced by an estimate available at the forecast origin. The preferred observed progress variable is effort-based: 
+
+xobs jk =
+
+Pki=1 eji 
+
+Kj
+
+. (23) If effort is unavailable but completed story points are consis-tently recorded, a story-point proxy may be used: 
+
+xobs,sp jk =
+
+Pki=1 sp ji 
+
+Pnj 
+
+> i=1
+
+sp ji 
+
+. (24) The two definitions should not be silently mixed; if both are used, they should be reported as separate analyses. 
+
+B. Project-Level Parameter Fit 
+
+For a single historical project, α and c are estimated by minimizing the discrepancy between observed and modeled cumulative progress: 
+
+exjk (α, c ) = xobs jk − xmod jk (α, c ; Kj , C j, 1: k),pj0(α, c ) = Dα,c,K j (0) − Cj0
+
+Kj
+
+.Jj (α, c ) = 
+
+> nj
+
+X
+
+> k=1
+
+wjk 
+
+exjk (α, c )2 + ω0 [pj0(α, c )] 2 .4
+
+(ˆ αj , ˆcj ) = arg min  
+
+> α> 0,c
+
+Jj (α, c ). (25) The first term fits the progress trajectory. The second term is optional and enforces consistency with initial assigned staff when Cj0 is reliable. The weights wjk may be uniform or may emphasize later forecast accuracy. This objective deliberately uses cumulative progress rather than only instantaneous staff. sprint-level effort and staff observations are noisy; cumulative progress is usually more stable and closer to the project management question of interest. When several projects are available, the organization can estimate a robust common value 
+
+αorg = median (ˆ α1, . . . , ˆαN ) , (26) while allowing cj to vary by project. This reflects the inter-pretation that α is a rough organizational or domain shape parameter, whereas c captures the recorded origin and initial allocation of a specific project. A hierarchical estimation approach could be used later, but the first empirical version should prefer robust summaries and confidence intervals over additional latent parameters. This is consistent with the paper’s central design constraint that the model should be calibrable from standard historical scrum records. The model explicitly does not assume that the internal project path remains invariant under restriction. It does not claim that dependencies, rework, communication, or archi-tectural choices are unchanged when the team is over- or under-staffed. Those effects are real, but they are outside the main model and should appear as forecast error, recalibration need, or future model extensions. The model relies on several operational assumptions that should be stated explicitly. First, the Parr curve is used as an approximate latent demand signal; its suitability in agile environments depends on its stability and low parameter count rather than on empirical proof of logistic effort revelation. Second, the conversion from staff to effective capacity is treated as linear for calibration purposes, although real projects may exhibit nonlinear or context dependent productivity. Third, the model is sensitive to errors in the total effort estimate K, which directly affects the scale of the latent demand and the resulting forecast. These sensitivities do not invalidate the formulation but should be acknowledged when interpreting results. Several complementary approaches exist in the literature, including throughput based forecasting, Little’s Law formu-lations, and stochastic flow models used in Kanban style environments. These approaches emphasize work in progress dynamics and queueing behavior rather than latent demand curves. Their integration is outside the scope of this paper, but they provide useful context for understanding the limitations of purely curve based aggregate forecasting. The present model is positioned as a compact alternative that explicitly incorporates capacity trajectories while retaining the interpretability of classical effort distribution families. 
+
+C. Project baseline fit 
+
+For a single historical Scrum project, the calibration does not estimate a universal organizational law. It estimates the pair of parameters (α, c ) that makes the capacity-constrained Parr trajectory reproduce, as closely as possible, the observed cumulative progress of that project. Let the project contain n sprints. Let ¯Ck denote the effective capacity available during sprint k, expressed in effort units per sprint, and let ek denote the effort actually recorded during that sprint. For retrospective calibration, total effort is 
+
+K =
+
+> n
+
+X
+
+> k=1
+
+ek. (27) The observed cumulative progress after sprint k is 
+
+xobs ∗ k =
+
+P ∗i = 1 kei
+
+K , k = 1 , . . . , n. (28) For each candidate pair (α, c ), the model generates acomplete simulated trajectory. The simulated state is initialized as 
+
+xmod  
+
+> 0
+
+(α, c ) = 0 . (29) Then, for k = 0 , . . . , n − 1, the next state is computed recursively as 
+
+dk(α, c ) = ¯Dα,c,K 
+
+ xmod k (α, c ) ,rk+1 (α, c ) = min  ¯Ck+1 , d k(α, c ) .xmod k+1 (α, c ) = min 
+
+
+
+1, x mod k (α, c ) + rk+1 (α, c )
+
+K
+
+
+
+. (30) The term ¯Dα,c,K (x) is the latent Parr demand expressed in effort units per sprint at aggregate state x. To make the calibration operational, it is convenient to write this demand directly as a function of x. Let 
+
+b = tanh( c/ 2) , z(x) = b + (1 − b)x. (31) Using the normalized Parr cumulative curve, the demand at state x can be written as 
+
+¯Dα,c,K (x) = Kα 
+
+21 − z(x)2
+
+1 − b . (32) The project-level fit is then obtained by minimizing the discrepancy between observed and simulated cumulative progress: 
+
+exk (α, c ) = xobs k − xmod k (α, c ),p0(α, c ) = ¯Dα,c,K (0) − ¯C0
+
+K .J(α, c ) = 
+
+> n
+
+X
+
+> k=1
+
+wk [exk (α, c )] 2 + ω0 [p0(α, c )] 2 .
+
+(ˆ α, ˆc) = arg min  
+
+> α> 0,c
+
+J(α, c ). (33) The first term fits the cumulative progress trajectory. The second term is optional and penalizes inconsistency between the initial model demand and the initial observed capacity. Setting ω0 = 0 gives a pure trajectory fit; using ω0 > 0
+
+is appropriate when the initial staff allocation is considered reliable and should be reflected by the origin parameter c.5
+
+This calibration should be interpreted carefully. With a single project, ˆα and ˆc are project-level fitted parameters. They are useful for explaining the observed trajectory and for initializing later organizational calibration, but they should not yet be interpreted as stable organizational constants. A robust organizational value of α requires several projects or a rolling-origin validation design. 
+
+D. Rolling Reforecast 
+
+For use during execution, the model is updated at sprint r.The observed state is 
+
+xobs r =
+
+Pri=1 ei
+
+ˆKr
+
+, (34) where ˆKr is the total effort estimate available at sprint r. The forecast then simulates (16) from r forward using a future capacity scenario. Two modes should be kept separate:  
+
+> •
+
+Ex-post capacity isolation : actual future capacity is used only to test the shape model, not as a deployable forecast.  
+
+> •
+
+True forecast : future capacity is estimated from informa-tion available at sprint r, for example planned allocation or recent average capacity. This distinction prevents data leakage and makes the validation credible. VII. V ALIDATION PROTOCOL 
+
+The empirical validation should answer whether the capacity-aware Parr model improves useful management fore-casts compared with simpler alternatives. The unit of valida-tion is the project, not a randomly selected sprint. Random sprint-level splits would mix training and future information from the same project and would overstate performance. 
+
+A. Baselines 
+
+The minimum baselines are: 1) Constant velocity : remaining story points divided by historical average velocity. 2) Constant capacity : remaining effort divided by historical average capacity. 3) Unconstrained Parr : the same normalized Parr curve without the capacity minimum in (11). 4) Naive median duration : historical median remaining duration from comparable projects, if enough projects exist. A Rayleigh/PNR curve can also be included as a shape baseline when sufficient data are available. 
+
+B. Forecast Metrics 
+
+For completion-time prediction, the primary metrics are 
+
+M AE T = 1
+
+M
+
+> M
+
+X
+
+> m=1
+
+ˆTm − Tm , (35) 
+
+RM SE T =
+
+vuut 1
+
+M
+
+> M
+
+X
+
+> m=1
+
+ ˆTm − Tm
+
+2
+
+. (36) For progress trajectory prediction, 
+
+RM SE x =
+
+s 1
+
+P 
+
+> j
+
+nj
+
+X
+
+> j
+
+X
+
+> k
+
+
+
+xobs jk − xmod jk 
+
+2
+
+. (37) If probabilistic forecasts are generated by bootstrap resampling or parameter sampling, interval coverage should be reported: 
+
+Coverage p = Pr 
+
+
+
+Treal ∈ [ ˆTp/ 2, ˆT1−p/ 2]
+
+
+
+. (38) When a very limited history information is available or even if only one scrum project dataset is available , the model cannot be externally validated as an organizational forecasting law. However, the dataset can still be used for three limited but useful purposes: project-level calibration, operational verification, and rolling-origin internal validation. Let the project contain n sprints. For each sprint k, the dataset contains the effective capacity ¯Ck, the recorded effort 
+
+ek, and optionally the completed story points sp k. For retro-spective project-level calibration, the total effort is computed as 
+
+K =
+
+> n
+
+X
+
+> k=1
+
+ek. (39) The observed cumulative effort progress after sprint k is 
+
+xobs ∗ k =
+
+P ∗i = 1 kei
+
+K , k = 1 , . . . , n. (40) For each candidate parameter pair (α, c ), the model is run over the same sprint capacity sequence observed in the project. The modeled progress starts at 
+
+xmod  
+
+> 0
+
+(α, c ) = 0 . (41) Then, for k = 0 , . . . , n − 1,
+
+dsk(α, c ) = ¯Dα,c,K 
+
+ xmod k (α, c ) ,rsk+1 (α, c ) = min  ¯Ck+1 , d sk(α, c ) .xmod k+1 (α, c ) = min 
+
+
+
+1, x mod k (α, c ) + rsk+1 (α, c )
+
+K
+
+
+
+. (42) The fitted project-level parameters are obtained by minimiz-ing the discrepancy between observed and modeled cumulative progress: 
+
+exk (α, c ) = xobs k − xmod k (α, c ),p0(α, c ) = ¯Dα,c,K (0) − ¯C0
+
+K .J(α, c ) = 
+
+> n
+
+X
+
+> k=1
+
+wk [exk (α, c )] 2 + ω0 [p0(α, c )] 2 .
+
+(ˆ α, ˆc) = arg min  
+
+> α> 0,c
+
+J(α, c ). (43) The first term fits the cumulative trajectory. The optional second term penalizes inconsistency between the initial latent demand and the initial observed capacity. This is useful when the initial staff allocation is considered a reliable signal of the project state at the beginning of the recorded Scrum trajectory. 6
+
+After calibration, operational correctness is assessed by checking that the fitted model satisfies the expected structural properties: cumulative progress must be monotone, bounded by one, limited by available capacity, and able to reproduce the observed completion range within a specified tolerance. These checks do not validate generalization, but they verify that the capacity-constrained mechanism behaves consistently on the available project trace. A stronger internal assessment can be performed through rolling-origin validation. For a sequence of forecast origins 
+
+r < n , only the data available up to sprint r are used to estimate or update the model state. The model then forecasts the remaining trajectory from sprint r + 1 onward. For each origin r, the forecasted completion sprint is 
+
+ˆT (r) = min 
+
+n
+
+k ≥ r : xmod k|r ≥ q
+
+o
+
+, (44) where q is a practical completion threshold, such as q =0.99 . The forecast error at origin r is 
+
+ε(r) 
+
+> T
+
+= ˆT (r) − T obs , (45) where T obs is the observed completion sprint. Across all forecast origins, the rolling-origin errors can be summarized using the metrics defined above, such as M AE T , RM SE T ,and RM SE x.With a single project, this procedure should be interpreted as internal case-study validation. It evaluates whether the model can be calibrated from an ordinary Scrum trace and whether it produces coherent reforecasts as more sprint information be-comes available. It does not establish that the fitted parameters are stable across projects. External validation requires multiple independent project datasets. 
+
+C. Single-Project Temporal Calibration Protocol 
+
+The numerical validation reported in this paper follows a temporal holdout design using a single real historical scrum project, the project comprised the delivery of 1033 story points involving 5424 hours of effort across 22 sprints of 2 weeks uniform duration each. The staff involved was defined by management varying between 5 and 8 persons per sprint, the staff allocation for each sprint was fairly constant within the sprint. On first analysis the information about two of the sprints revealed strong deviations due to special causes, therefore that information was removed from the analysis. The available dataset contains, for each sprint, the sprint identifier, delivered Story Points, recorded effort, and average assigned staff. Since only one project is available, the experi-ment should be interpreted as an internal case-study validation rather than as external organizational validation. Let the project contain n sprints, indexed by k = 1 , . . . , n .The sprint identifier is treated as an integer time index. The dataset is first sorted by sprint number, and the first 
+
+r sprints are used for calibration. Unless otherwise stated, 
+
+r = ⌊n/ 2⌋. The remaining sprints, r + 1 , . . . , n , are used only for validation. The procedure is applied twice. In the first run, the response variable is recorded effort. In the second run, delivered story Points are used as a proxy for project progress. Let 
+
+yk ∈ ek, sp k (46) denote the selected response variable, where ek is the effort recorded in sprint k and sp k is the number of Story Points delivered in that sprint. For retrospective validation of the model mechanism, total project size is computed as 
+
+Ky =
+
+> n
+
+X
+
+> k=1
+
+yk. (47) In a purely operational forecast, Ky should instead be supplied as an external planned estimate. The retrospective value in (47) is used here only to normalize progress and to evaluate the behavior of the model under a known project total. The observed cumulative progress after sprint k is 
+
+xobs ∗ k =
+
+P ∗i = 1 kyi
+
+Ky
+
+. (48) A key normalization step is the conversion of staff into effective capacity. Since staff is not expressed in the same units as effort or Story Points, a capacity conversion rate is estimated using only the calibration segment: 
+
+ρy =
+
+Prk=1 yk
+
+Prk=1 Staf f k
+
+. (49) The planned capacity for sprint k is then 
+
+¯C(y) 
+
+> k
+
+= ρy Staf f k. (50) This assumption means that future effort or future Story Points are not used to construct the forecast. In the validation segment, only the future staff allocation is used, through (50), as the planned capacity signal. For each candidate pair (α, c ), the constrained Parr model is simulated over the calibration segment. The modeled state is initialized as 
+
+xmod  
+
+> 0
+
+(α, c ) = 0 . (51) For k = 1, . . . , r , the model computes the sprint-level modeled delivery as 
+
+ˆyk(α, c ) = min 
+
+ ¯C(y) ∗ k, ¯D ∗ α, c, K y
+
+ xmod k−1 (α, c )
+
+, (52) and updates cumulative progress according to 
+
+xmod ∗ k(α, c ) = xmod ∗ k − 1( α, c ) + ˆyk(α, c )
+
+Ky
+
+. (53) The fitted project-level parameters are obtained by minimiz-ing a combined discrepancy between observed and modeled progress over the calibration segment: 
+
+exk (α, c ) = xobs k − xmod k (α, c ),eyk(α, c ) = yk − ˆyk(α, c )
+
+Ky
+
+,p(y)0 (α, c ) = ¯Dα,c,K y (0) − ¯C(y)1
+
+Ky
+
+.7
+
+JT (α, c ) = 
+
+> r
+
+X
+
+> k=1
+
+wx [exk (α, c )] 2 +
+
+> r
+
+X
+
+> k=1
+
+wy [eyk(α, c )] 2
+
++ ω0
+
+h
+
+p(y)0 (α, c )
+
+i2
+
++ η(α − α0)2.
+
+(ˆ α, ˆc) = arg min  
+
+> α> 0,c
+
+JT (α, c ). (54) The first term fits the cumulative progress trajectory. The second term fits sprint-level delivery. The third term is an optional initial-capacity penalty that encourages consistency between the initial latent demand and the initial observed staff allocation. The final term is a weak shape regularization used to avoid extreme values of α when the latent demand is only partially identifiable under binding capacity constraints. After calibration, the fitted parameters (ˆ α, ˆc) are kept fixed. The model is then evaluated over the validation segment. In this segment, the forecast is generated from the planned capacity clock induced by future staff: 
+
+ˆyk = min 
+
+ ¯C(y) ∗ k, K y − ˆY ∗ k − 1
+
+
+
+, k = r + 1 , . . . , n, 
+
+(55) where 
+
+ˆYk = ˆYk−1 + ˆ yk (56) is the modeled cumulative delivered work. The latent Parr demand remains available as a diagnostic estimate of required capacity, but future delivery during validation is driven only by the staff-based capacity plan. This separation prevents the validation forecast from using future effort or future Story Points while still allowing the model to evaluate whether the planned staff allocation is sufficient. Errors are computed separately for the calibration and validation segments. For sprint-level prediction, the validation RMSE is 
+
+RM SE val =
+
+vuut 1
+
+n − r
+
+> n
+
+X
+
+> k=r+1
+
+(yk − ˆyk)2. (57) To express the magnitude of the error in relative terms, the root mean squared percentage error is also computed: 
+
+RM SP E val =
+
+vuut 1
+
+n − r
+
+> n
+
+X
+
+> k=r+1
+
+
+
+100 ˆyk − yk
+
+yk
+
+2
+
+. (58) sprints with zero observed delivery require either exclusion from percentage-error metrics or a small denominator regu-larization. In the present dataset, the percentage metrics are computed only when the observed value is positive. The graphical protocol follows the same temporal sepa-ration. Original project data are displayed as blue points. The fitted constrained model over the calibration segment is displayed as a solid red line. The validation forecast is displayed as a dotted red line. The optional unconstrained Parr baseline, when shown, is displayed as a solid green line. The calibration cutoff sprint is marked explicitly, and sprint numbers are treated as integer time points. The first half of the sprints data sequence were used to obtain a calibration of the model whilst the second half is used to compare the actual results with the forecast made by the model and evaluate the deviation shown. As the total project size and capacity allocation is considered an external management decision the values of the provided dataset are used. The results obtained from the validation can be seen in the following figures both for the forecast of effort and story points delivered, also the RMS deviation as a percentage is shown for the effort, the deviation for story points is similar and consistent in terms of error with it.   
+
+> Fig. 1. Comparison effort forecast vs. actual
+> Fig. 2. Evaluated RMS as a percent between actual and forecasted effort
+
+Even if the above figures refers to results using effort as the predicted outcome of the model also story points can be used with that purpose with similar results. 
+
+D. Monte Carlo Validation 
+
+To complement the model temporal behaviour validation, a Monte Carlo emulation is used to evaluate the sensitivity of the model results to variations on the project management decisions and the influence of the project context in the model calibrated parameters. A first run is executed where the model is calibrated with the entire set of project values and the resulting configuration is used for a sensitivity analysis to understand the impact in variations of the different factors, the result can be seen in the following tornado graphic figure. 8           
+
+> Fig. 3. Sensitivity of the forecasted effort to variations in the model parameters
+
+The main influence in the outcome, somewhat to be ex-pected, is on variations of the project scope and the capacity assigned by management being changes on the calibration factors less significant. Capacity uncertainty was modeled separately. Instead of sampling capacity from a continuous interval, the staff signal was sampled from the discrete set of staff values actually observed in the project dataset. A second evaluation uses the already used calibration ap-proach to use half the project data to calibrate the model and the other half as part of the model being turned an oracle of the project outcome. In this run distorsions are made in the model parameters using an uniform distribution for it’s values and also an stochastic assignment of capacity within the limits of the values shown by the project reference data, the intent is to understand likely variances observed in the outcome as well as special sensitivity to a random variation of the context. The result can be seen  
+
+> Fig. 4. Sensitivity of the forecasted effort to the capacity and variations in the model parameters
+
+The resulting distribution of ˆyM C j,k was summarized with boxplots for each validation sprint. The nominal forecast 
+
+ˆynom k , obtained from the calibrated model using the actual capacity signal of the dataset, was overlaid as the reference point. Therefore, the graph does not compare the Monte Carlo distribution against the real project observations; instead, it evaluates how stable the model forecast is under stochastic perturbations of its parameters and capacity signal. This validation is diagnostic rather than predictive in the strict statistical sense. Its purpose is to determine whether the calibrated forecast is robust to plausible variation in the model parameters and in the capacity signal. When the nominal forecast lies inside the Monte Carlo range, the calibrated model behavior is consistent with the uncertainty envelope induced by the selected perturbation assumptions. Overall, the validation demonstrates internal coherence and operational plausibility, while highlighting the need for multi-project datasets for external generalization. 
+
+E. Success Criteria 
+
+The model should not be accepted merely because it fits historical curves. A useful empirical result would require at least one of the following: 1) lower rolling-origin completion-time error than constant velocity and constant capacity baselines; 2) better progress trajectory error than unconstrained Parr when capacity is visibly restrictive; 3) diagnostically useful identification of capacity deficit or slack periods confirmed by project records; 4) calibrated uncertainty intervals with reasonable empiri-cal coverage. The validation should also report negative results. If the model does not outperform simple baselines, that is evidence that the added structure is not justified for the dataset. The empirical validation presented in this paper is in-tentionally limited. Because only a single historical Scrum project is available, the results should be interpreted as in-ternal case study validation rather than external organizational generalization. The aim is to demonstrate calibrability, internal coherence, and operational plausibility of the capacity aware mechanism. The model is not claimed to outperform veloc-ity based or capacity based baselines in general; instead, it provides a structured way to connect total effort, capacity plans, and aggregate progress. Future validation with multiple independent projects is required to assess parameter stability, comparative accuracy, and organizational applicability. Overall, the validation demonstrates internal coherence and operational plausibility, while highlighting the need for multi-project datasets for external generalization. VIII. D ISCUSSION 
+
+The core advantage of the proposed formulation is that it retains the useful part of Parr—a compact effort-distribution shape—while changing its managerial interpretation. The curve no longer prescribes how many people must be assigned at each instant. Instead, it describes a latent aggregate demand that may or may not be matched by available capacity. This makes the model compatible with agile teams whose staffing is stable, negotiated, or constrained by organizational reality. The second advantage is empirical discipline. Previous attempts to extend effort curves can easily accumulate param-eters for overload, rework, dependency deformation, and or-ganizational inefficiency. Such mechanisms are plausible, but they are difficult to calibrate from ordinary Scrum records. The present formulation intentionally keeps these effects outside the main model. They may be studied later as residual patterns, not inserted upfront as unidentifiable parameters. 9
+
+The third advantage is managerial interpretability. Forecasts are expressed in terms of expected completion, capacity deficit, and capacity slack. These quantities can support decisions such as preserving a stable team, adding temporary capacity, reducing scope, delaying commitments, or reallocating idle capacity. Even when the completion forecast is uncertain, the deficit and slack diagnostics may be actionable. Assumptions around the theoretical evolution of the effort curve has been kept to a minimum for several reasons. First, the model avoids the strong assumption that a resource-constrained project follows the same internal dependency path as an unconstrained project. Second, it keeps the main formu-lation small enough to be calibrated from ordinary historical scrum records such as sprint, story points, effort, and average staff or capacity. Third, it separates the forecasting model from optional explanations of rework, coordination loss, or architectural dependency. Finally, it defines a validation pro-tocol based on rolling-origin forecasts rather than retrospective curve fitting alone. IX. L IMITATIONS AND THREATS TO VALIDITY 
+
+The model has several limitations that should be stated explicitly. It does not model deformation of the latent demand curve under severe capacity restriction, even though such deformation may occur in practice. It assumes independence between latent demand and available capacity, omitting po-tential feedback loops such as delayed discovery or increased rework. It also depends on the quality of effort and capacity records, and on the accuracy of the total effort estimate K. These limitations reflect the deliberately narrow scope of the contribution and motivate future extensions. The model is aggregate. It does not represent backlog dependency, architectural coupling, defect dynamics, rework loops, team learning, or coordination loss. System-dynamics models address some of these effects at the cost of many additional assumptions and parameters [16], [17]. The present model deliberately does not compete with such models as a causal simulation of project behavior. The model also depends on the quality of K. If total effort is badly estimated, the forecast will inherit that error. In retrospective calibration, using the final observed effort as 
+
+K is acceptable for estimating α and c, but not for claiming true predictive performance. Rolling-origin validation must use only the total-effort estimate available at the forecast date. Story points introduce additional threats. They are team-specific, may drift over time, and are not necessarily compa-rable across projects. Therefore, effort-based progress should be preferred whenever effort records are available. Story-point progress can be useful, but only under consistent local estimation practice. Finally, capacity is not equivalent to productivity. Two teams with the same headcount may differ in skill, availability, domain knowledge, and interruption load. The model treats capacity as the effective effort rate available to the project. If the organization records only nominal staff, an additional preprocessing step is required to translate staff into effective capacity. X. C ONCLUSION 
+
+This paper refactors the extension of Parr’s effort model for agile use by narrowing the claim and simplifying the mathematics. The proposed model combines a normalized Parr-shaped latent effort demand with an explicit capacity trajectory. It forecasts aggregate progress and completion time while diagnosing capacity deficit and slack. The formulation preserves the origin constant c, allowing the model to repre-sent nonzero initial staffing, but avoids the stronger and less defensible assumption that a restricted project follows the same internal activity path as an unrestricted project. Future research should include multi project validation, comparative evaluation against velocity and Rayleigh/PNR baselines, and sensitivity analysis of parameters α and c. Extensions may incorporate stochastic capacity, Bayesian es-timation of K, or deformable curve families that adapt to capacity constraints. Integrating rework dynamics or backlog flow models may also improve realism while preserving the aggregate nature of the formulation. Among the activities also left as future work are to enhance validation with additional data used with empirical execution to implement the sprint-level calibration, evaluate rolling-origin forecasts on historical Scrum datasets, and compare the results against constant velocity, constant capacity, un-constrained Parr, and Rayleigh/PNR baselines. The model should be retained only if it improves forecast usefulness or provides capacity diagnostics that are not available from simpler baselines. REFERENCES [1] B. W. Boehm, Software Engineering Economics . Englewood Cliffs, NJ, USA: Prentice-Hall, 1981. [2] L. H. Putnam, “A general empirical solution to the macro software sizing and estimating problem,” IEEE Transactions on Software Engineering ,vol. SE-4, no. 4, pp. 345–361, Jul. 1978, doi: 10.1109/TSE.1978.231521. [3] F. N. Parr, “An alternative to the Rayleigh curve model for software de-velopment effort,” IEEE Transactions on Software Engineering , vol. SE-6, no. 3, pp. 291–296, May 1980, doi: 10.1109/TSE.1980.230475. [4] V. R. Basili and J. N. Beane, “Can the Parr curve help with manpower distribution and resource estimation problems?,” Journal of Systems and Software , vol. 2, no. 1, pp. 59–69, 1981, doi: 10.1016/0164-1212(81)90047-9. [5] K. Schwaber and J. Sutherland, The Scrum Guide: The Definitive Guide to Scrum: The Rules of the Game . Nov. 2020. [Online]. Available: https://scrumguides.org/scrum-guide.html [6] M. Cohn, Agile Estimating and Planning . Upper Saddle River, NJ, USA: Prentice Hall PTR, 2005. [7] M. Fernandez-Diego, E. R. Mendez, F. Gonzalez-Ladron-de-Guevara, S. Abrahao, and E. Insfran, “An update on effort estimation in agile software development: A systematic literature review,” IEEE Access ,vol. 8, pp. 166768–166800, 2020, doi: 10.1109/ACCESS.2020.3021664. [8] J. Pasuksmit, P. Thongtanunam, and S. Karunasekera, “A systematic lit-erature review on reasons and approaches for accurate effort estimations in agile,” ACM Computing Surveys , vol. 56, no. 11, pp. 1–37, 2024, doi: 10.1145/3663365. [9] V. Tawosi, R. Moussa, and F. Sarro, “Agile effort estimation: Have we solved the problem yet? Insights from a replication study,” IEEE Transactions on Software Engineering , vol. 49, no. 4, pp. 2677–2697, Apr. 2023, doi: 10.1109/TSE.2022.3228739. [10] S. A. Ruk, Y. Mahmood, A. Azmi, N. Firdaus Mohd Azmi, and S. Gul, “Effort estimation in agile and DevOps: A systematic literature review of stakeholder dissatisfaction,” IEEE Access , vol. 13, pp. 167925–167941, 2025, doi: 10.1109/ACCESS.2025.3600321. [11] H. Edison and N. Ali, “Another systematic review? A critical analysis of systematic literature reviews on agile effort and cost estimation,” arXiv:2601.20893, 2026. 10 
+
+[12] B. Gompertz, “On the nature of the function expressive of the law of human mortality, and on a new mode of determining the value of life contingencies,” Philosophical Transactions of the Royal Society of London , vol. 115, pp. 513–583, 1825, doi: 10.1098/rstl.1825.0026. [13] F. J. Richards, “A flexible growth function for empirical use,” Journal of Experimental Botany , vol. 10, no. 2, pp. 290–301, Jun. 1959, doi: 10.1093/jxb/10.2.290. [14] M. Jørgensen and M. Shepperd, “A systematic review of soft-ware development cost estimation studies,” IEEE Transactions on Software Engineering , vol. 33, no. 1, pp. 33–53, Jan. 2007, doi: 10.1109/TSE.2007.256943. [15] M. Jørgensen and B. W. Boehm, “Software development effort estima-tion: Formal models or expert judgment?,” IEEE Software , vol. 26, no. 2, pp. 14–19, Mar./Apr. 2009, doi: 10.1109/MS.2009.47. [16] T. K. Abdel-Hamid and S. E. Madnick, Software Project Dynamics: An Integrated Approach . Englewood Cliffs, NJ, USA: Prentice-Hall, 1991. [17] R. J. Madachy, Software Process Dynamics . Hoboken, NJ, USA: Wiley-IEEE Press, 2008, doi: 10.1002/9780470192719. [18] P. Ralph et al. , “ACM SIGSOFT empirical standards,” arXiv:2010.03525, 2020.

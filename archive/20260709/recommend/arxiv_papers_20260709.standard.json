@@ -1,0 +1,515 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-07-09T21:39:28.590778+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 5,
+    "deep_cap": 6,
+    "deep_selected": 5,
+    "quick_candidates": 8,
+    "quick_skim_target": 11,
+    "quick_selected": 8
+  },
+  "deep_dive": [
+    {
+      "id": "2607.01980v1",
+      "source": "arxiv",
+      "title": "Epic-Organized vs. Requirement-Aligned Gherkin: An Empirical Evaluation of LLM-Based Acceptance Criteria Generation",
+      "abstract": "Automated authoring of Gherkin Behavior-Driven Development (BDD) acceptance criteria remains a manual bottleneck in requirements engineering. This study investigates whether epic-organized LLM-generated Gherkin produces higher quality and coverage than requirement-aligned generation. We compare our Timeless (an epic-organized LLM pipeline) approach against a naive large language model (LLM) baseline on four requirements documents (107 requirements) from the PURE dataset. Evaluation covers structural metrics, automated requirement coverage via TF-IDF and dense embeddings, and blind expert assessment by four researchers. In our evaluation, the JSON-constrained pipeline produced structurally valid scenarios across all generated outputs, while the zero-shot baseline achieved 99% structural validity. Semantic coverage was comparable to the baseline, with Timeless achieving 94.3% semantic Requirement Coverage Rate compared with 92.9% for the baseline. TF-IDF produced lower coverage scores for the epic-organized output, suggesting that lexical metrics may miss coverage when scenarios paraphrase requirements at a higher level of abstraction. Expert raters prefer the epic-organized strategy on Correctness (4.61 vs 4.14), Executability (4.61 vs 4.07), and Completeness (4.31 vs 3.50). Overall, the results suggest that epic-organized generation can improve perceived Gherkin quality while maintaining comparable semantic coverage, although broader replication is needed before generalizing this finding.",
+      "authors": [
+        "Shahbaz Siddeeq",
+        "Mateen Abbasi",
+        "Jussi Rasku",
+        "Zheying Zhang",
+        "François Christophe",
+        "Tommi Mikkonen",
+        "Pekka Abrahamsson"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-07-02T10:12:29+00:00",
+      "link": "https://arxiv.org/pdf/2607.01980v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "LLM-based generation of Gherkin acceptance criteria from requirements",
+      "llm_evidence_cn": "基于大语言模型从需求中生成 Gherkin 验收标准",
+      "llm_evidence": "基于大语言模型从需求中生成 Gherkin 验收标准",
+      "canonical_evidence": "基于大语言模型从需求中生成 Gherkin 验收标准",
+      "llm_tldr_en": "Evaluates LLM pipelines for generating BDD acceptance criteria to improve requirements engineering automation.",
+      "llm_tldr_cn": "评估了大语言模型生成 BDD 验收标准的流水线，旨在提高需求工程的自动化水平。",
+      "llm_tldr": "评估了大语言模型生成 BDD 验收标准的流水线，旨在提高需求工程的自动化水平。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Defining and validating user story acceptance criteria",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.04436v1",
+      "source": "arxiv",
+      "title": "A Retrieval-Augmented Framework for Detecting and Resolving Pragmatic Ambiguities in Natural Language Requirements",
+      "abstract": "Natural language requirements (NLRs) are essential for bridging communication gaps among diverse stakeholders in software development. However, the inherent ambiguity in NLRs can pose significant challenges. In particular, some requirements may be misinterpreted due to varying contextual knowledge and domain-specific expectations of the stakeholders, a phenomenon known as pragmatic ambiguity. This paper presents an approach for detecting and resolving pragmatic ambiguities in NLRs. The approach leverages retrieval-augmented generation techniques with novice, intermediate, and expert domain knowledge bases to simulate stakeholders with varying domain expertise and detect discrepancies in requirement interpretation. Candidate disambiguated requirements are generated using the expert domain knowledge base, with final validation by a requirements analyst required to ensure alignment with the intended functionality. We evaluate the approach on two requirements specification documents from the PUblic REquirements dataset, using four large language models: GPT-4o-mini, Mistral-7B, Llama-3.1-8B, and Qwen2.5-7B. Detection performance is assessed using macro-averaged accuracy, precision, recall, F1, and F2 scores. The resolution quality of the candidate disambiguated requirements is measured through human evaluation of relevance, clarity, and consistency. In this initial evaluation, results show that the proposed approach can detect pragmatic ambiguities and produce candidate disambiguated requirements that are relevant, clear, and consistent with the intended system functionality. Among the evaluated models, GPT-4o-mini achieved the highest macro-averaged recall (0.75) and F2 score (0.75) for pragmatic ambiguity detection. In the resolution task, GPT-4o-mini received the highest relevance scores from human evaluators, while Mistral-7B achieved the highest scores for clarity and consistency.",
+      "authors": [
+        "Pavithra PM Nair",
+        "Preethu Rose Anish"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-07-05T17:58:45+00:00",
+      "link": "https://arxiv.org/pdf/2607.04436v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "detecting and resolving ambiguities in natural language requirements",
+      "llm_evidence_cn": "检测并解决自然语言需求中的歧义",
+      "llm_evidence": "检测并解决自然语言需求中的歧义",
+      "canonical_evidence": "检测并解决自然语言需求中的歧义",
+      "llm_tldr_en": "Uses RAG to detect and resolve pragmatic ambiguities in natural language requirements across stakeholders.",
+      "llm_tldr_cn": "利用RAG技术检测并解决不同利益相关者之间自然语言需求的语用歧义。",
+      "llm_tldr": "利用RAG技术检测并解决不同利益相关者之间自然语言需求的语用歧义。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Quality assessment and improvement of user stories",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.05632v1",
+      "source": "arxiv",
+      "title": "Bridging Stakeholder and Product Requirements: An Empirical Study of Requirement Engineering in the Automotive Industry",
+      "abstract": "The automotive industry's shift toward software-driven systems has increased system complexity and raised the importance of effective requirement intake and refinement for correctness, compliance, development speed, and systematic reuse. Although prior research has proposed techniques for improving requirement quality, limited empirical evidence exists on how stakeholder-level requirements are evaluated, refined, and transformed into product-level requirements in industrial automotive practice. This paper presents a large-scale empirical study based on an industrial dataset from Infineon, comprising 8,082 stakeholder requirements and 5,870 product requirements enriched with traceability links, decision outcomes, deviation rationales, and domain references. Using a mixed-methods approach, we combine quantitative analyses of requirement structures, decision distributions, and mapping patterns with qualitative analyses of rationales, referenced specifications, and software- and hardware-related artifacts. We investigate structural and contextual differences between stakeholder and product requirements, factors influencing acceptance, rejection, and approval with deviation, and the nature of stakeholder-to-product refinement. The results reveal systematic differences across abstraction levels and show that refinement complexity is driven primarily by architectural scope and missing contextual information rather than linguistic verbosity. We further derive a taxonomy of stakeholder-product mapping patterns and relate these patterns to differing refinement effort. The findings provide concrete insight into industrial requirements intake and refinement practices and identify actionable opportunities for improving intake validation, deviation management, and tool-supported contextual enrichment to support faster and more reusable automotive product development.",
+      "authors": [
+        "Zixu Wang",
+        "Shengcheng Yu",
+        "Zhenchang Xing",
+        "Tobias Wenzel",
+        "Chunyang Chen"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-07-06T20:48:37+00:00",
+      "link": "https://arxiv.org/pdf/2607.05632v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "empirical study of requirement engineering and refinement",
+      "llm_evidence_cn": "需求工程与细化的实证研究",
+      "llm_evidence": "需求工程与细化的实证研究",
+      "canonical_evidence": "需求工程与细化的实证研究",
+      "llm_tldr_en": "An empirical study on transforming stakeholder requirements into product requirements in the automotive industry.",
+      "llm_tldr_cn": "一项关于汽车行业中利益相关者需求向产品需求转化的实证研究。",
+      "llm_tldr": "一项关于汽车行业中利益相关者需求向产品需求转化的实证研究。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.00427v1",
+      "source": "arxiv",
+      "title": "BT-APE: A Computationally Light Backtracking Approach to Automatic Prompt Engineering for Requirements Classification",
+      "abstract": "Large language models (LLMs) are increasingly applied to requirements engineering (RE) tasks, yet the prompts guiding them are typically designed manually through trial and error, yielding inconsistent and suboptimal results. Automated prompt construction remains largely unexplored in RE, leaving its effectiveness unclear. To address this, we propose a lightweight Automatic Prompt Engineering approach, Backtracking APE (BT-APE), and apply it to requirements classification. We frame prompt design as an optimization problem, iteratively refining prompts via LLM-generated candidates, backtracking search, and dynamic example selection. Evaluating BT-APE on three benchmark datasets with five instruction-tuned LLMs, we compare it against four classical prompting baselines (zero-shot, few-shot, chain-of-thought, CoT+few-shot) and a state-of-the-art but resource-intensive APE baseline (PE2). BT-APE and PE2 achieve nearly identical accuracy, both substantially outperforming the classical baselines with large effect sizes; however, BT-APE imposes a far lighter computational footprint, consuming roughly 72% fewer input tokens and 66% less wall-clock time at equivalent accuracy, making it better suited to resource-constrained deployment. Our contributions are threefold: (i) a lightweight APE framework with an open interactive tool and replication package; (ii) the first systematic comparison of APE against classical prompting for requirements classification; and (iii) insights into how class definitions and prompt evolution affect performance.",
+      "authors": [
+        "Mohammad Amin Zadenoori",
+        "Waad Alhoshan",
+        "Jacek Dąbrowski",
+        "Liping Zhao",
+        "Alessio Ferrari"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-07-01T04:36:30+00:00",
+      "link": "https://arxiv.org/pdf/2607.00427v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "automatic prompt engineering for requirements classification",
+      "llm_evidence_cn": "用于需求分类的自动提示工程",
+      "llm_evidence": "用于需求分类的自动提示工程",
+      "canonical_evidence": "用于需求分类的自动提示工程",
+      "llm_tldr_en": "Proposes a backtracking approach to optimize prompts for automated requirements engineering tasks.",
+      "llm_tldr_cn": "提出了一种回溯方法，用于优化自动化需求工程任务中的提示词。",
+      "llm_tldr": "提出了一种回溯方法，用于优化自动化需求工程任务中的提示词。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.02186v1",
+      "source": "arxiv",
+      "title": "UA-ChatDev: Uncertainty-Aware Multi-Agent Collaboration for Reliable Software Development",
+      "abstract": "Software development is a complex task that demands cooperation among agents with diverse roles. Large language models (LLMs) have enabled autonomous multi-agent software development frameworks that leverage role-based collaboration to automate requirements analysis, coding, testing, and refinement. However, existing approaches typically assume that intermediate agent outputs are equally reliable, leaving them vulnerable to hallucination propagation, where incorrect decisions generated in early development phases are transferred to downstream agents and negatively impact final software quality. To address this challenge, we propose UA-ChatDev, an uncertainty-aware multi-agent software development framework that integrates uncertainty quantification into agent interactions. It introduces a lightweight uncertainty estimation mechanism based on token-level log probabilities to assess the confidence of agent responses and employs phase-aware threshold calibration to selectively trigger retrieval-based verification when uncertainty exceeds acceptable levels. Extensive experiments on the SRDD benchmark demonstrate that UA-ChatDev consistently outperforms existing single-agent and multi-agent software development frameworks across completeness, executability, consistency, and overall quality metrics. Further ablation studies and communication analyses verify that uncertainty-aware interactions enhance code execution reliability.",
+      "authors": [
+        "Temitayo Olamilekan Ogunsusi",
+        "Lijun Qian",
+        "Xishuang Dong"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-07-02T13:56:57+00:00",
+      "link": "https://arxiv.org/pdf/2607.02186v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "automated requirements analysis and refinement in multi-agent systems",
+      "llm_evidence_cn": "多智能体系统中的自动化需求分析与细化",
+      "llm_evidence": "多智能体系统中的自动化需求分析与细化",
+      "canonical_evidence": "多智能体系统中的自动化需求分析与细化",
+      "llm_tldr_en": "A multi-agent framework that automates requirements analysis and refinement while managing uncertainty.",
+      "llm_tldr_cn": "一种在处理不确定性的同时自动执行需求分析和细化的多智能体框架。",
+      "llm_tldr": "一种在处理不确定性的同时自动执行需求分析和细化的多智能体框架。",
+      "llm_tags": [
+        "query:re-us:composite"
+      ],
+      "matched_query_tag": "query:re-us:composite",
+      "matched_query_text": "Papers central to 需求工程领域的用户故事相关的论文, especially work that connects or combines: User stories in software development and requirements engineering; Requirements engineering methodologies and practices; Agile requirements engineering and management; Quality assessment and improvement of user stories; Automated extraction of user stories from text; Defining and validating user story acceptance criteria; State of the art in user story research for requirements engineering; Automated tools for user story generation and validation; Impact of user story quality on software project success.",
+      "matched_requirement_id": "req-composite-re-us",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2607.00711v1",
+      "source": "arxiv",
+      "title": "ClarifyCodeBench: Evaluating LLMs on Clarifying Ambiguous Requirements for Code Generation",
+      "abstract": "Large Language Models have emerged as programming assistants. However, the efficacy of code generation is constrained by the quality of input requirements, which are frequently ambiguous, incomplete, or underspecified. While LLMs excel at one-shot code synthesis, their ability to proactively clarify intent remains underexplored, as a critical trait for robust software engineering. Existing benchmarks largely overlook this interactive bottleneck, assuming perfectly specified prompts that do not reflect the iterative nature of requirement elicitation. To bridge this gap, we introduce ClarifyCodeBench, a novel interactive benchmark for evaluating LLMs' capability in resolving requirement ambiguity. Constructed from real-world programming tasks, ClarifyCodeBench features high-quality manual annotations, including N unique ambiguity types, associated clarification questions, and corresponding ground-truth answers. Furthermore, we formalize two rigorous metrics to assess the interaction quality: Turn-discounted Key Question Rate, which penalizes inefficient questioning, and Optimal Round Adherence, which measures the precision of the elicitation process. We conduct a systematic evaluation of six state-of-the-art LLMs using ClarifyCodeBench. Our empirical results yield three critical insights: 1) Capability Decoupling: Strong code generation performance does not inherently translate to effective requirement clarification; 2) The Reasoning Paradox: While increased computational thinking enhances code correctness, it yields marginal gains in identifying ambiguities; 3) The Multi-ambiguity Ceiling: LLMs' clarification performance degrades sharply as the density of ambiguities increases, revealing a significant bottleneck in handling complex, real-world specifications. Our work underscores the necessity for future AI4SE research to transition from static synthesis to interactive elicitation.",
+      "authors": [
+        "Zheng Fang",
+        "Dongming Jin",
+        "Yihong dong",
+        "Yongmin Li",
+        "Kechi Zhang",
+        "Zhi Jin",
+        "Ge Li"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-07-01T09:58:59+00:00",
+      "link": "https://arxiv.org/pdf/2607.00711v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "resolving requirement ambiguity and elicitation",
+      "llm_evidence_cn": "解决需求歧义与需求获取",
+      "llm_evidence": "解决需求歧义与需求获取",
+      "canonical_evidence": "解决需求歧义与需求获取",
+      "llm_tldr_en": "Introduces a benchmark to evaluate LLMs on their ability to clarify ambiguous software requirements.",
+      "llm_tldr_cn": "引入了一个基准测试，用于评估大语言模型在澄清模糊软件需求方面的能力。",
+      "llm_tldr": "引入了一个基准测试，用于评估大语言模型在澄清模糊软件需求方面的能力。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2607.02615v1",
+      "source": "arxiv",
+      "title": "The agent creates, we validate: A Lightweight Framework for Agentic Artifact Generation",
+      "abstract": "Generating structured artifacts with Large Language Models - e.g. database queries, threat framework mappings, entity schemas - is relatively straightforward; however, making them reliable enough for production deployments presents challenges. We present a lightweight framework based on a core principle: LLMs generate, we validate. This reframing shifts responsibility from generation quality to validation rigor. The framework rests on three key attributes: First, test driven generation: when tests fail, the LLM receives indicative error messages that expose why the output failed, enabling the LLM to understand its mistakes and refine subsequent attempts. Second, deterministic and LLM-based tests: deterministic tests catch heuristics that can be programmatically verified (schema, syntax, cross-reference), while LLM-based tests evaluate nuanced semantic and delicate features that resist programmatic inspection (intent alignment, logical consistency, domain correctness). Third, expert-distilled judges: LLM-based tests are calibrated to distill and replicate human expert decision distribution, transforming manual human quality gates into scalable, reusable evaluation proxies that reflect professional-grade validation standards. We demonstrate the framework on three artifact types in the security domain - KQL query generation, MITRE ATT\\&CK mapping, and entity mapping - deployed in production at Microsoft Sentinel. We believe this framework can be applied beyond security to other artifact generation tasks, providing a path to reliable, high-quality outputs without sacrificing the efficiency gains of LLM generation.",
+      "authors": [
+        "Yaniv Melamed",
+        "Yoni Zukerman",
+        "Michal Shechter",
+        "Miri Weissler",
+        "Ashwin Patil",
+        "Hani Neuvirth-Telem"
+      ],
+      "primary_category": "cs.CR",
+      "categories": [
+        "cs.CR",
+        "cs.AI",
+        "cs.SE"
+      ],
+      "published": "2026-07-01T17:28:56+00:00",
+      "link": "https://arxiv.org/pdf/2607.02615v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "framework for validating generated artifacts using LLMs",
+      "llm_evidence_cn": "使用大模型验证生成产物的框架",
+      "llm_evidence": "使用大模型验证生成产物的框架",
+      "canonical_evidence": "使用大模型验证生成产物的框架",
+      "llm_tldr_en": "A framework for reliable artifact generation using test-driven validation and LLM-based feedback loops.",
+      "llm_tldr_cn": "一种利用测试驱动验证和大模型反馈循环来可靠生成结构化产物的框架。",
+      "llm_tldr": "一种利用测试驱动验证和大模型反馈循环来可靠生成结构化产物的框架。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Automated tools for user story generation and validation",
+      "matched_requirement_id": "req-8",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2607.01562v1",
+      "source": "arxiv",
+      "title": "A Capacity-Aware Parr Model for Agile Projects",
+      "abstract": "Classical software effort distribution models, including the PNR family and Parr alter native curve, were designed to describe the time distribution of development effort under an implied staffing pattern. Their direct use in agile environments is limited when team capacity is fixed, partially fixed, or externally constrained, the original curve may prescribe a staff demand that the organization cannot allocate. This paper proposes a compact refactoring of Parr model as a capacity-aware forecasting layer for agile projects. The contribution is deliberately narrower than a full causal theory of project dynamics. A normalized Parr shaped latent effort demand is combined with an observed or planned capacity trajectory. The resulting model forecasts aggregate progress, completion time, capacity deficit, and capacity slack without assuming that the same internal activity path is followed under resource restriction. The model uses a small parameter set such as total effort K, a Parr shape parameter, an origin constant c that can match nonzero initial staffing, and the capacity trajectory. A discrete sprint formulation is provided, together with a calibration method from ordinary Scrum records and a rolling origin validation protocol against simple management baselines.",
+      "authors": [
+        "Pedro E. Colla"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-07-02T00:40:22+00:00",
+      "link": "https://arxiv.org/pdf/2607.01562v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "capacity-aware forecasting for agile projects",
+      "llm_evidence_cn": "敏捷项目的容量感知预测",
+      "llm_evidence": "敏捷项目的容量感知预测",
+      "canonical_evidence": "敏捷项目的容量感知预测",
+      "llm_tldr_en": "Proposes a model for forecasting effort distribution in agile projects under fixed team capacity constraints.",
+      "llm_tldr_cn": "提出一种在固定团队容量约束下预测敏捷项目工作量分布的模型。",
+      "llm_tldr": "提出一种在固定团队容量约束下预测敏捷项目工作量分布的模型。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Agile requirements engineering and management",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2607.05125v1",
+      "source": "arxiv",
+      "title": "Three-Phase Evaluation of AI-Assisted Software Development Life Cycle",
+      "abstract": "This paper presents an exploratory evaluation of how increasing levels of AI autonomy affect software development productivity, requirement adherence, and developer cognitive workload. A team of four developers reimplemented the same full-stack web application across three sequential phases: partial AI-assisted development using GitHub Copilot, an AI-exclusive workflow using GitHub Copilot, and an AI-exclusive workflow using AWS Kiro. Evaluation metrics included development effort (hours), requirement adherence (RITM score), AI-interaction efficiency, and NASA-TLX workload measures. Across phases, higher levels of AI autonomy were associated with reduced development effort, improved requirement adherence, and lower self-reported mental workload, while developer frustration increased modestly. The AWS Kiro phase achieved the strongest overall performance on most measured dimensions, suggesting that tooling architecture may influence outcomes independently of AI autonomy level.",
+      "authors": [
+        "Joshua Strubel",
+        "Professor Carrie Russell",
+        "Carson Crockett",
+        "Jason Ferraro",
+        "Nathan Londhe",
+        "Uzayr Syed",
+        "Jacob Viehe"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-07-06T14:13:25+00:00",
+      "link": "https://arxiv.org/pdf/2607.05125v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "evaluation of requirement adherence in AI-assisted development",
+      "llm_evidence_cn": "AI辅助开发中需求遵守情况的评估",
+      "llm_evidence": "AI辅助开发中需求遵守情况的评估",
+      "canonical_evidence": "AI辅助开发中需求遵守情况的评估",
+      "llm_tldr_en": "Explores how AI autonomy levels affect software development productivity and requirement adherence.",
+      "llm_tldr_cn": "探讨了AI自治水平如何影响软件开发效率和需求一致性。",
+      "llm_tldr": "探讨了AI自治水平如何影响软件开发效率和需求一致性。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2607.02057v1",
+      "source": "arxiv",
+      "title": "Prompt Coverage Adequacy",
+      "abstract": "In recent years, it has become increasingly evident that large language models (LLMs) and autonomous agents raise the level of abstraction in software development by shifting the focus from writing precise procedures to expressing intents and goals. This paradigm shift introduces new challenges, particularly in how testing should be guided when prompts, rather than code, become primary development artifacts. To address this challenge, we propose Prompt Coverage Adequacy, a novel coverage criterion designed to support the testing of code generated from task descriptions. Prompt Coverage Adequacy serves as an analog to traditional code coverage, but operates at the level of prompts used in LLM and agent-based programming. Specifically, it measures how well a given test suite satisfies the requirements expressed in a prompt by leveraging the attention mechanisms of LLMs. We evaluate a simple instantiation of this criterion, based on attention boosting, across two datasets and multiple LLMs. Our results demonstrate that Prompt Coverage is associated with fault-detection effectiveness and can uncover over 30+% more faults than traditional code coverage when used to guide test generation. These findings suggest that Prompt Coverage Adequacy can serve as a foundation for developing testing metrics better suited to the emerging paradigm of LLM-driven software development, addressing the limitations of classical coverage criteria in this new context.",
+      "authors": [
+        "Florian Tambon",
+        "Michael Konstantinou",
+        "Cedric Richter",
+        "Charles Chenouard",
+        "Mark Harman",
+        "Mike Papadakis"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-07-02T11:35:39+00:00",
+      "link": "https://arxiv.org/pdf/2607.02057v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "testing code generated from task descriptions and intents",
+      "llm_evidence_cn": "测试根据任务描述和意图生成的代码",
+      "llm_evidence": "测试根据任务描述和意图生成的代码",
+      "canonical_evidence": "测试根据任务描述和意图生成的代码",
+      "llm_tldr_en": "Introduces a coverage criterion for testing code generated from high-level prompts and task descriptions.",
+      "llm_tldr_cn": "引入一种覆盖率标准，用于测试根据高级提示和任务描述生成的代码。",
+      "llm_tldr": "引入一种覆盖率标准，用于测试根据高级提示和任务描述生成的代码。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Defining and validating user story acceptance criteria",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2607.06713v1",
+      "source": "arxiv",
+      "title": "Reliable and Developer-Aligned Evaluation of Agents for Software Engineering",
+      "abstract": "Large language models are rapidly moving towards closing the development cycle, transitioning from simple assistive companions to autonomous contributors deeply embedded into collaborative development environments. Despite their accelerated adoption, existing evaluation techniques are limited due to their fragmented nature and distorted projection of true model capabilities, often obtained from hypothetical syntactic scenarios. This research aims to bridge this gap by providing a comprehensive evaluation methodology for LLM-powered agents that is grounded in real-world software development practice. Our evaluation approach focuses on contamination-awareness, in-the-wild agentic behavior assessment, and trajectory-aware benchmarks and metrics capturing realistic coding contexts, human-aligned behavior, and model failure modes.",
+      "authors": [
+        "Razvan Mihai Popescu"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-07-07T18:29:50+00:00",
+      "link": "https://arxiv.org/pdf/2607.06713v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "evaluation of agents grounded in real-world software practice",
+      "llm_evidence_cn": "基于真实软件实践的代理评估",
+      "llm_evidence": "基于真实软件实践的代理评估",
+      "canonical_evidence": "基于真实软件实践的代理评估",
+      "llm_tldr_en": "Develops a methodology for evaluating LLM-powered agents using real-world software development trajectories.",
+      "llm_tldr_cn": "开发了一种利用真实软件开发轨迹评估LLM驱动代理的方法论。",
+      "llm_tldr": "开发了一种利用真实软件开发轨迹评估LLM驱动代理的方法论。",
+      "llm_tags": [
+        "query:re-us:composite"
+      ],
+      "matched_query_tag": "query:re-us:composite",
+      "matched_query_text": "Papers central to 需求工程领域的用户故事相关的论文, especially work that connects or combines: User stories in software development and requirements engineering; Requirements engineering methodologies and practices; Agile requirements engineering and management; Quality assessment and improvement of user stories; Automated extraction of user stories from text; Defining and validating user story acceptance criteria; State of the art in user story research for requirements engineering; Automated tools for user story generation and validation; Impact of user story quality on software project success.",
+      "matched_requirement_id": "req-composite-re-us",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2607.04448v1",
+      "source": "arxiv",
+      "title": "From Regulation to Requirements: An Automated Requirement Derivation and Explanation Pipeline",
+      "abstract": "Ensuring software compliance with regulations such as the General Data Protection Regulation (GDPR) and the Artificial Intelligence Act (EU AI Act) poses a significant challenge, as requirements engineers must translate complex legal text into actionable software requirements - a process that remains largely manual and error-prone in practice. We present an automated regulation-to-requirements pipeline that identifies requirement-bearing clauses in regulatory documents and derives system-agnostic software requirements, accompanied by plain-language explanations, traceable to their legal sources. We evaluate the pipeline on the full clause sets of the GDPR (398 clauses) and the EU AI Act (574 clauses). For requirement-bearing clause identification, the approach achieves macro-averaged F1 scores of 0.82 and 0.78, respectively, outperforming a SetFit-based baseline. Human evaluation shows high completeness (4.60 and 4.45) and correctness (3.74 and 3.54) of derived requirements, while explanation clarity scores are near-ceiling (4.92 and 4.94) on a 1-5 scale. We implement the approach in Reg2Req, a publicly released tool that further supports requirement classification, use case seeding, cross-reference analysis, definition indexing, and a traceability matrix to operationalize regulatory compliance in practice. A user study with 25 practitioners shows that the plain-language explanations significantly improve comprehension of derived requirements and confidence in acting on them (p < 0.001), and that all participants would use Reg2Req as a starting point for deriving software requirements from a regulation.",
+      "authors": [
+        "Pavithra PM Nair",
+        "Preethu Rose Anish"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-07-05T18:21:36+00:00",
+      "link": "https://arxiv.org/pdf/2607.04448v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "automated requirement derivation from regulatory text",
+      "llm_evidence_cn": "从监管文本中自动推导需求",
+      "llm_evidence": "从监管文本中自动推导需求",
+      "canonical_evidence": "从监管文本中自动推导需求",
+      "llm_tldr_en": "Presents a pipeline to automatically translate complex legal regulations into actionable software requirements.",
+      "llm_tldr_cn": "提出了一种将复杂的法律法规自动转化为可执行软件需求的流水线。",
+      "llm_tldr": "提出了一种将复杂的法律法规自动转化为可执行软件需求的流水线。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2607.07444v1",
+      "source": "arxiv",
+      "title": "LLM Assisted Verification Assertion Generation: Challenges and Future Directions",
+      "abstract": "Assertion-based Verification (ABV) plays a critical role in the Design Verification (DV) process. However, ABV requires substantial manual effort in generating assertion from specification by verification engineers, making it a time-consuming stage in the chip design flow. With the recent development of Large Language Models (LLMs), researchers have started exploring their use as an assistance in the ABV process, particularly for generating SystemVerilog Assertions (SVAs) from design specification. In this paper, we provide an overview of recent works, highlighting the different methods used to generate SVAs. In particular, we investigate LLM-based SVA generation and ask a central question: How can LLM-based assertion generation be made systematic and quality-aware? While addressing this key question, we provide Key Takeaways at the end of each challenge, summarizing the important methodological insights, and also provide guidelines and directions in solving those challenges that can help generate a high-quality set of assertions using LLMs.",
+      "authors": [
+        "Bhabesh Mali",
+        "Chandan Karfa"
+      ],
+      "primary_category": "cs.ET",
+      "categories": [
+        "cs.ET"
+      ],
+      "published": "2026-07-08T14:14:14+00:00",
+      "link": "https://arxiv.org/pdf/2607.07444v1",
+      "tags": [
+        "keyword:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "generating verification assertions from design specifications",
+      "llm_evidence_cn": "从设计规范生成验证断言",
+      "llm_evidence": "从设计规范生成验证断言",
+      "canonical_evidence": "从设计规范生成验证断言",
+      "llm_tldr_en": "Reviews LLM-based generation of SystemVerilog Assertions from design specifications for verification.",
+      "llm_tldr_cn": "综述了基于LLM从设计规范生成SystemVerilog断言以进行验证的方法。",
+      "llm_tldr": "综述了基于LLM从设计规范生成SystemVerilog断言以进行验证的方法。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Defining and validating user story acceptance criteria",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}

@@ -1,0 +1,466 @@
+Title: Epic-Organized vs. Requirement-Aligned Gherkin: An Empirical Evaluation of LLM-Based Acceptance Criteria Generation
+
+URL Source: https://arxiv.org/pdf/2607.01980v1
+
+Published Time: Fri, 03 Jul 2026 00:51:46 GMT
+
+Number of Pages: 16
+
+Markdown Content:
+# Epic-Organized vs. Requirement-Aligned Gherkin: An Empirical Evaluation of LLM-Based Acceptance Criteria Generation ⋆
+
+Shahbaz Siddeeq 1 , Mateen Abbasi 2 , Jussi Rasku 1 , Zheying Zhang 1 ,François Christophe 2 , Tommi Mikkonen 2 , and Pekka Abrahamsson 1 
+
+> 1
+
+Faculty of Information Technology and Communication Science, Tampere University, Tampere, Finland 
+
+{shahbaz.siddeeq,jussi.rasku,zheying.zhang,pekka.abrahamsson }@tuni.fi  
+
+> 2
+
+Faculty of Information Technology, University of Jyväskylä, Jyväskylä, Finland 
+
+{mateen.a.abbasi,francois.m.christophe,tommi.j.mikkonen }@jyu.fi 
+
+Abstract. Automated authoring of Gherkin Behavior-Driven Develop-ment (BDD) acceptance criteria remains a manual bottleneck in require-ments engineering. This study investigates whether epic-organized LLM-generated Gherkin produces higher quality and coverage than requirement-aligned generation. We compare our Timeless (an epic-organized LLM pipeline) approach against a naive large language model (LLM) baseline on four requirements documents (107 requirements) from the PURE dataset. Evaluation covers structural metrics, automated requirement coverage via TF-IDF and dense embeddings, and blind expert assessment by four researchers. In our evaluation, the JSON-constrained pipeline produced structurally valid scenarios across all generated outputs, while the zero-shot baseline achieved 99% structural validity. Semantic coverage was comparable to the baseline, with Timeless achieving 94.3% seman-tic Requirement Coverage Rate compared with 92.9% for the baseline. TF-IDF produced lower coverage scores for the epic-organized output, sug-gesting that lexical metrics may miss coverage when scenarios paraphrase requirements at a higher level of abstraction. Expert raters prefer the epic-organized strategy on Correctness (4.61 vs 4.14), Executability (4.61 vs 4.07), and Completeness (4.31 vs 3.50). Overall, the results suggest that epic-organized generation can improve perceived Gherkin quality while maintaining comparable semantic coverage, although broader replication is needed before generalizing this finding. 
+
+Keywords: Gherkin · Behavior-Driven Development · Large Language Models ·
+
+Requirements Engineering · Acceptance Criteria Generation · Multi-agent  
+
+> ⋆
+
+This paper has been accepted for publication at the International Conference on Software Engineering of Emerging Technologies (SEET 2026). It will be published by Springer Nature in the conference proceedings  
+
+> arXiv:2607.01980v1 [cs.SE] 2 Jul 2026 2S. Siddeeq et al.
+
+1 Introduction 
+
+Software requirements are elicited primarily through stakeholder meetings [ 12 ], yet translating what has been agreed into formal, testable specifications remains a manual, time-consuming, and error-prone task [ 8, 10 ]. Behavior-Driven Devel-opment (BDD) addresses part of this by expressing acceptance criteria with a shared language. One such language is Gherkin, where senarios are described in 
+
+Given /When /Then format making them both human-readable and executable by tools such as Cucumber [ 11 ,20 ,19 , 4]. In practice, however, Gherkin authoring remains manual: analysts write criteria after meetings from notes and memory, in-troducing three problems [ 10 ,2]: (1) incompleteness : edge cases discussed verbally are not captured; (2) delay : criteria written days later lose tacit meeting context; (3) inconsistency : criteria diverge in style across sessions. A systematic mapping study found that automated tooling for Gherkin scenario authoring remains scarce, with teams consistently struggling to maintain well-formed scenarios as requirements evolve [3]. Large Language Models (LLMs) have made automated Gherkin generation from requirements feasible [ 13 , 9]. However, an open question remains: does the 
+
+representation strategy (whether Gherkin use is organized around epics or individ-ual requirements) affect structural quality, requirement coverage, and practitioner perception? While Gherkin is designed for epic- or story-level granularity [ 11 , 19 ], existing automated tools generate scenarios at per-requirement granularity [ 9]; comparing both strategies reveals the coverage–readability trade-off inherent to each approach. We compare an epic-organized two-pass LLM pipeline ( Timeless ) against a requirement-aligned zero-shot baseline across four PURE (Public Requirements) dataset documents (107 requirements in total) using structural metrics, dual-metric requirement coverage, and blind expert evaluation. This paper makes the following contributions: 1. An empirical comparison of epic-organized vs. requirement-aligned Gherkin generation (four PURE documents, 107 requirements) across structural qual-ity, requirement coverage, and practitioner-perceived quality (four expert raters). 2. A two-pass LLM prompting pipeline within Timeless combining semantic epic synthesis with automated coverage-gap filling. 3. Evidence that lexical-only coverage metrics can underestimate epic-organized Gherkin, motivating the use of complementary lexical and semantic coverage measures in future evaluations of LLM-generated BDD artifacts. Section 2 reviews related work; Section 3 presents the generation approach; Section 4 reports results; Section 5 discusses implications and limitations; Section 6 addresses threats to validity; Section 7 concludes. Gherkin Representation Strategies: An Empirical Evaluation 3
+
+2 Background and Related Work 
+
+2.1 Behavior-Driven Development, Gherkin, and the Authoring Challenge 
+
+Behavior-Driven Development (BDD) [ 11 , 20 ] expresses software behavior through concrete scenarios in a shared language, bridging technical and non-technical stakeholders. Gherkin operationalizes this through a structured, human-readable syntax: a Feature block describes a product capability; each Scenario specifies behavior via Given (precondition), When (action), and Then (expected outcome) steps [ 11 ,19 ,20 ]. In BDD practice, related requirements are grouped into epics ,broad, cross-cutting capabilities that a user wants the system to provide. Each epic maps to one Gherkin Feature block, and the individual requirements within that epic inform the concrete scenarios: Epic → Feature block → Requirements 
+
+→ Scenarios [ 11 , 19 ]. This hierarchy is central to the paper’s comparison: the epic-organized strategy follows this design intent; the requirement-aligned baseline generates one scenario per requirement, bypassing the epic grouping level. The primary barrier to BDD adoption is authoring effort: producing correct, complete Gherkin requires both domain knowledge and structural discipline, a combination difficult to sustain at scale [2]. 
+
+2.2 Large Language Models for Acceptance Criteria and Gherkin Generation 
+
+Recent LLMs have made automated Gherkin generation from raw requirements feasible [ 1, 18 ]: GPT-4 matches human-analyst performance on requirements classification, and ChatGPT evaluates user story quality comparably to human reviewers with a consensus-based prompting strategy. Closest to our work, Karpu-rapu et al. [ 9] conducted the most systematic evaluation to date, comparing GPT-4, GPT-3.5, and open-source models on BDD acceptance test generation from user stories: GPT-4 achieved the highest syntactic validity, but all models struggled with negative-path scenario coverage. Rathnayake et al. [ 16 ] confirmed high syntactic correctness alongside variable semantic completeness across three LLM families. Hassani et al. [ 7] showed that Gherkin quality is sensitive to input 
+
+representation format , with iterative human review needed to recover quality lost to poorly structured inputs. Ferreira et al. [ 6] achieved a 95% acceptance rate in an industrial two-step pipeline; however, their approach assumes already-structured user stories rather than raw SRS prose. To the best of our knowledge, prior work has not jointly examined epic-organized Gherkin generation, automated coverage-gap filling, and comparison with a requirement-aligned LLM baseline using both lexical and semantic cov-erage measures. This study addresses that gap using SRS-derived functional requirements from the PURE dataset. 4 S. Siddeeq et al. 
+
+3 Gherkin Generation Approach 
+
+3.1 Prompt Engineering for Gherkin Generation 
+
+The Gherkin generation step receives the current requirements list and the generated epics. The system prompt instructs gpt-4o-mini to produce a JSON array in which each element specifies a feature name, an In order to / As a / I want description, and a scenarios array of keyword-text step pairs, enforcing six structural constraints: 
+
+– One Feature block per epic (3–6 features total). 
+
+– Each Feature includes an In order to / As a / I want description. 
+
+– Each Feature contains 2–4 Scenarios: at least one happy path and one negative or edge-case scenario. 
+
+– Steps use only Given , When , Then , And , But .
+
+– Steps are business-readable: no code, no technical jargon. 
+
+– Output is strictly valid JSON; no markdown fences or free prose. These constraints address documented LLM failure modes [ 9]: one Feature per epic follows Gherkin’s design intent (Feature blocks describe capabilities at epic granularity [ 11 , 19 ]); mandating a negative or edge-case scenario counters the consistent under-generation of failure paths observed across GPT-class mod-els [ 9]; and business-readable steps follow the BDD principle that criteria should communicate intent, not implementation [19,20]. The JSON schema helps enforce the required output structure, while a de-terministic validation step checks whether each scenario follows the expected Given–When–Then order. Together, these constraints reduce the chance of mal-formed Gherkin and explain the high structural validity observed in this eval-uation. Listing 1.1 shows a representative Gherkin scenario rendered from the JSON-constrained output.                                                      
+
+> Feature : Book Reservation In order to reserve books in advance , As aregistered library member , Iwant to place holds on unavailable books . Scenario : Successful reservation of an available book Given Iam logged in as alibrary member When Isearch for " The ␣ Pragmatic ␣ Programmer " And the book has available copies Then Ican reserve acopy And Ireceive aconfirmation notification
+> Listing 1.1. Example Gherkin output generated by Timeless for a library management system.
+
+Gherkin Representation Strategies: An Empirical Evaluation 5Timeless System Architecture 
+
+> Stakeholder
+> Meeting
+> (Audio)
+
+INPUT 
+
+> Audio
+> Stream
+
+TIMELESS BACKEND 
+
+> Transcription Services
+> (Whisper ASR)
+> Real-time
+> speech-to-text
+> transcription
+> Manager Service
+> (Central Coordinator)
+> State management
+> Orchestration
+> Trigger logic
+> SSE broadcaster
+> Requirement Service
+> Relevance check
+> Requirements extraction
+> Epic grouping
+> Gherkin generation
+> OpenCode Service
+> (Code Generation )
+> Code / Artifact
+> Generation
+
+EXTERNAL LLM 
+
+PROVIDER 
+
+> LLM API
+> (Open AI / Others)
+> GPT-4o
+> GPT-4.1
+> GPT-4.1-mini
+> Other models
+
+FRONTEND (React / Next.js)  
+
+> Requirements
+> Panel
+> Epics / Mind Map
+> Panel
+> Gherkin
+> Panel
+> Advisor
+> Panel
+> Code Output
+> Panel
+> Data Flow
+> LLM Interaction
+> SSE Stream
+> Transcript
+> segments
+> LLM calls
+> (analysis &
+> generation)
+> LLM
+> responses
+> Regulate requirements state Generation
+> request
+> SEE (real-time state updates)
+
+Fig. 1. Timeless system architecture. The Manager Service coordinates the pipeline; SSE delivers real-time state updates to the React frontend. 
+
+3.2 The Timeless Platform 
+
+Timeless [ 15 ] is a requirements engineering platform that transcribes meeting speech and extracts requirements in real time. Figure 1 shows the microservice architecture: a Transcription Service captures and transcribes audio via OpenAI Whisper [ 14 ]; a Requirements Service extracts and updates a requirements list from each transcription segment using an LLM; and a Manager Service coordinates both services, triggers downstream generation tasks (epics, mind map, Gherkin acceptance criteria), and streams state updates to the frontend via Server-Sent Events (SSE). The Manager triggers generation when it detects new requirements through LLM-based relevance classification. This paper evaluates the Gherkin generation component. 
+
+3.3 Pipeline Overview 
+
+Gherkin acceptance criteria are produced at the final stage of a four-step pipeline (Figure 2): (1) relevance classification (whether a transcription segment contains requirement-relevant content); (2) requirements update (adding or revising items in the requirements list); (3) epic and mind-map generation (grouping require-ments into 3–6 epics); and (4) Gherkin generation (producing Feature blocks 6 S. Siddeeq et al. The Timeless requirement-to-Gherkin pipeline 
+
+Input 
+
+> Audio
+> Stream
+> Data Flow
+> Trigger / Decision
+> SSE Stream
+
+SEE Stream (real-time updates after each state) 
+
+1
+
+> Stakeholder Discussion
+> Source :
+> Live Meeting (Audio)
+
+Transcription 2
+
+> (Whisper ASR)
+> Output :
+> Transcript Segments
+
+Relevance Check 3 
+
+> (LLM Call # 1)
+> Output :
+> Relevant / Irrelevant
+
+Requirements 
+
+Update 
+
+4
+
+> (LLM Call # 2)
+> Output :
+> Living Requirements
+> (List)
+
+Epic & Mind Map 
+
+Generation 
+
+5
+
+> (LLM Call # 3)
+> Output :
+> Epics +
+> Relationships
+
+Gherkin Generation 
+
+> (LLM Call # 4)
+> Output :
+> Feature Blocks + Scenarios
+> (Gherkin)
+
+State Update  & SSE 
+
+Push 
+
+7
+
+> Output :
+> Structured State (Requirements,
+> Epics, Gherkin, Code)
+
+UI Refresh 8
+
+> (Real-time)
+> Output :
+> Panels Updated Incrementally
+
+Trigger Condition 
+
+> Run pipeline when:
+> Relevant segment detected
+> Or
+> 5 pending segments accumulated
+> LLM call # 1 :
+> Relevance
+> Classification
+> LLM call # 2 :
+> Requirements
+> Extraction &
+> Merge
+> LLM call # 3 :
+> Epic & Mind Map
+> Generation
+> LLM call # 0 :
+> Whisper ASR
+> LLM call # 4 :
+> Gherkin
+> Scenario
+> generation
+> Segments
+> Irrelevant
+> Relevant
+
+6
+
+> Discard
+
+Fig. 2. The Timeless requirements-to-Gherkin pipeline. Each stage runs as an asyn-chronous LLM call; the SSE stream updates the User Interface (UI) as each stage completes. 
+
+with Given-When-Then scenarios for each epic); Step 4 (Gherkin generation) runs after epics stabilize and is the focus of this evaluation. 
+
+4 Evaluation 
+
+4.1 Research Questions 
+
+We evaluate the approach through four Research Questions. The zero-shot LLM baseline generates one Gherkin scenario per requirement in a single prompt, without epic grouping, JSON schema constraints, or gap-fill passes, representing the current state of automated LLM practice in the literature [9,16]. 
+
+– RQ1 : To what extent does an epic-organized, JSON-constrained generation pipeline produce syntactically valid and step-complete Gherkin scenarios compared with a zero-shot LLM baseline? Gherkin Representation Strategies: An Empirical Evaluation 7               
+
+> Table 1. PURE documents selected for evaluation.
+> System Domain Reqs used PURE ID
+> KeePass Password Safe Security / Desktop 32 keepass-2008 Gamma-J Web Store E-Commerce / Web 30 gamma-j-0000 CCTNS Crime Tracking Gov. / Law Enforcement 25 cctns-0000 Internet Peering Service Networking / Services 20 peering-2008
+> Total 107
+
+– RQ2 : How do the requirement coverage characteristics (Requirement Cover-age Rate [RCR] and Spurious Scenario Rate [SSR]) of epic-organized Gherkin compare to those of a zero-shot LLM baseline? 
+
+– RQ3 : How does the epic-organized Gherkin representation strategy (grouping requirements into semantically coherent epics, each represented as a Feature block, rather than one scenario per requirement) affect scenario quality as perceived by practitioners? 
+
+– RQ4 : What are the practical trade-offs between epic-organized and requirement-aligned Gherkin generation, and what are the implications for BDD adoption in agile teams? The RQs form a layered evaluation: structural correctness (RQ1) is a pre-requisite; coverage without sacrifice is the key comparison (RQ2, using dual lexical-semantic methods absent from prior BDD studies [ 9, 16 , 7]); RQ3 adds practitioner-perceived quality; RQ4 synthesizes actionable tradeoffs. 
+
+4.2 Evaluation Design Dataset. We used the PURE dataset [ 5] (79 SRS documents, Zenodo CC-BY 4.0). PURE’s structured XML <req> elements allow consistent automated extraction of requirement statements, and the dataset has prior use as a Requirements Engineering (RE)–NLP benchmark [ 1, 18 ]. We selected four documents covering distinct domains (security, e-commerce, law enforcement, networking), each with 20–35 functional requirements, exceeding the single-document scope of comparable studies [9,7]. Table 1 summarizes the selection. 
+
+Gherkin Generation Procedure. For each selected document, requirements were extracted automatically using an XML parser targeting <req> elements. Duplicate sentences were removed. The resulting requirements list was passed to the Timeless Gherkin generation pipeline using the same LLM prompt and model (gpt-4o-mini , OpenAI) as the production system. Generation latency (LLM call time) was recorded for each document. No manual editing of the generated output was performed. 8 S. Siddeeq et al. 
+
+Baseline. The zero-shot baseline uses the identical model ( gpt-4o-mini ) and requirements input as Timeless, but replaces the structured prompt with a minimal two-sentence instruction: “You are a software requirements expert. Gen-erate Gherkin BDD acceptance criteria for the given requirements.” No epic context, JSON schema, or BDD structural constraints are provided, isolating the contribution of prompt engineering from the underlying LLM capability. 
+
+Metrics. We use two fully automated metric categories. 
+
+Structural quality (RQ1). Structural Validity (SV) measures whether Given 
+
+precedes When precedes Then in each scenario; out-of-order keywords cause parse-time rejection by BDD frameworks. Step Completeness (SC) measures whether each scenario contains at least one step of each mandatory type. Negative Coverage (NC) is the proportion of Feature blocks containing at least one negative or edge-case scenario, identified by keyword matching (“fail”, “invalid”, “error”, “exceed”), a documented failure mode of LLM-generated Gherkin [ 9]. Scenario Density is the ratio of generated scenarios to input requirements. 
+
+Requirement coverage (RQ2). Requirement coverage here measures the proportion of input requirements addressed by at least one generated scenario; it is distinct from requirements traceability as defined in IEEE 29148, which refers to bidirec-tional lifecycle artifact links. Prior automated BDD evaluation studies report only lexical or human-assessed metrics, without automated requirement coverage mea-surement [ 9 ,16 ,7]; this study introduces dual measurement to isolate vocabulary bias from genuine coverage gaps. We compute TF-IDF cosine similarity ( τ = 0.20 ,uni- and bigrams) for lexical coverage and OpenAI text-embedding-3-small 
+
+cosine similarity ( τ = 0.50 ) [ 17 ] for semantic coverage; dense embeddings provide a complementary view because they can capture some paraphrasing that TF-IDF may miss. Both methods compute RCR (proportion of requirements matched above threshold) and SSR (proportion of scenarios with no match above the selected threshold, indicating possible unsupported or weakly linked scenarios). 
+
+4.3 Results RQ1 — Structural Quality. Table 2 presents the automated structural metrics for Timeless and the naive baseline across all four documents. The JSON schema constraint eliminates step-ordering errors by design: Time-less produces zero structurally invalid scenarios across all 119 generated, while the naive baseline records one mal-ordered scenario in the Gamma-J document (99% SV). The distinction between the two systems is not the one-point margin but its nature : Timeless’s perfect SV in this experiment reflects the effect of constrained generation and post-generation validation. Unlike the baseline, this approach explicitly checks the expected scenario structure before accepting the output. The baseline’s near-perfect SV is a statistical observation that holds for this model and dataset but provides no guarantee for unseen inputs or different models. Gherkin Representation Strategies: An Empirical Evaluation 9 
+
+> Table 2. Automated structural quality metrics: Timeless and naive LLM baseline. SV = Structural Validity; SC = Step Completeness (100% in both systems; GPT-class capability floor, not a differentiating metric); NC = Negative Coverage; Dens = scenarios per requirement.
+
+Document System SV% SC% NC% Density AvgSteps Scen. 
+
+KeePass Timeless 100.0 100.0 100.0 1.16 3.0 37 Naive Baseline 100.0 100.0 100.0 0.75 3.0 24 Gamma-J Timeless 100.0 100.0 66.7 0.87 3.5 26 Naive Baseline 96.0 100.0 100.0 0.83 3.4 25 CCTNS Timeless 100.0 100.0 72.7 1.36 3.1 34 Naive Baseline 100.0 100.0 25.0 0.60 3.0 15 Peering Timeless 100.0 100.0 28.6 1.10 4.0 22 Naive Baseline 100.0 100.0 100.0 0.35 4.7 7
+
+Average Timeless 100.0 100.0 67.0 1.12 3.4 119 Naive Baseline 99.0 100.0 81.2 0.60 3.5 71 
+
+Step completeness is 100% in both systems (190 scenarios total), reflecting a GPT-class capability floor rather than a contribution of structured prompting. The naive baseline achieves higher negative scenario coverage (81.2%) than Timeless (67.0%). The baseline groups requirements into broad features that each contain many scenarios, increasing the chance of including a negative case; Timeless’s gap-fill pass creates focused features with fewer scenarios per feature. Negative coverage correlates with scenario density, not prompt design: a feature with few scenarios rarely includes negative cases regardless of how it was generated.  
+
+> Key Takeaway — RQ1
+> JSON schema enforcement makes structural validity an architectural property, not a statistical outcome. The meaningful structural differentiator is elaboration depth :Timeless generates 1.12 scenarios per requirement versus 0.60 for the zero-shot baseline, nearly double the coverage per input.
+
+RQ2 — Requirement Coverage. We apply lexical (TF-IDF) and semantic (dense embedding) coverage analyses to isolate epic-level abstraction from genuine coverage gaps. 
+
+Two-pass coverage. The two-pass design achieves 94.3% semantic RCR, which is comparable to the naive baseline at (92.9%), while TF-IDF RCR is only 72.0%. Three documents reach ≥96% semantic RCR (100% on Internet Peering), driven by the explicit coverage mandate and second-pass gap-fill. 10 S. Siddeeq et al. 
+
+Table 3. Requirement coverage: Timeless and naive LLM baseline. TF-IDF ( τ =0.20 )and semantic embeddings ( τ =0.50 ). RCR = Requirement Coverage Rate; SSR = Spurious Scenario Rate.                                                                  
+
+> Lexical (TF-IDF) Semantic (Embeddings) Document System Reqs Scen. RCR% SSR% RCR% SSR%
+> KeePass Timeless 32 37 68.8 35.9 84.4 10.3 Naive Baseline 32 24 75.0 12.5 90.6 0.0 Gamma-J Timeless 30 26 80.0 19.2 96.7 0.0 Naive Baseline 30 25 80.0 4.0 100.0 0.0 CCTNS Timeless 25 34 44.0 67.6 96.0 20.6 Naive Baseline 25 15 64.0 0.0 96.0 0.0 Peering Timeless 20 22 95.0 9.1 100.0 9.1 Naive Baseline 20 785.0 0.0 85.0 0.0
+> Average Timeless 72.0 33.0 94.3 10.0 Naive Baseline 76.0 4.1 92.9 0.0
+
+Lexical vs. semantic gap (TF-IDF bias). The 22.3 pp lexical-semantic gap (72.0% vs. 94.3%) confirms TF-IDF underestimates abstracted Gherkin: Timeless scenarios paraphrase requirements at epic granularity, whereas the baseline echoes requirement wording directly (baseline gap: +16.9 pp). For this reason, lexical coverage should be interpreted alongside semantic coverage when evaluating structured Gherkin-generation pipelines. 
+
+Spurious Scenario Rate. The TF-IDF SSR for Timeless averages 33.0%, partic-ularly elevated for CCTNS (67.6%). This is expected: the second-pass gap-fill generates scenario clusters that address groups of uncovered requirements rather than individual ones, so no single scenario achieves lexical overlap above threshold with any individual requirement. Semantically, SSR is only 10.0%, confirming these scenarios are grounded in requirements; the elevated TF-IDF SSR is a measurement artifact. 
+
+Key Takeaway — RQ2 
+
+Epic-organized generation achieves 94.3% semantic RCR, equivalent to the requirement-aligned baseline (92.9%), with no coverage penalty from epic-level grouping. The apparent lexical deficit (72.0% vs 76.0% TF-IDF RCR) is a measure-ment artifact: TF-IDF cannot match paraphrased epic-level scenarios to atomic requirement wording, underestimating Timeless by 22 pp. Evaluating structured Gherkin pipelines requires dual-metric coverage measurement (lexical and seman-tic); lexical-only metrics systematically favor less abstracted systems. 
+
+Generation Latency. The Timeless two-pass pipeline averages 58.9 seconds 
+
+per document ( gpt-4o-mini ), compared to 21.5 seconds for the naive baseline. The additional latency reflects the second-pass gap-fill call; both pipelines com-Gherkin Representation Strategies: An Empirical Evaluation 11 
+
+plete in under 65 seconds, so acceptance criteria are available for practitioner review within the meeting in which requirements are elicited. This latency trade-off, together with the NC and SSR tradeoffs identified above, informs the answer to RQ4 below. Figure 3 summarizes the key automated and expert metrics across both systems. 
+
+4.4 Human Expert Evaluation (RQ3) Protocol. To evaluate the representational quality of generated Gherkin from a practitioner perspective, we conducted a pre-registered blind expert evaluation [ 10 ]archived on OSF 3. Four SE researchers from four independent organizations served as evaluators (all PhD researchers; all with RE and/or BDD experience). Each received a blinded survey (Microsoft Forms) with four sections, one per document, presenting the full requirements list alongside System A and System B Gherkin outputs, randomly assigned to Timeless and the naive baseline (fixed seed; decode key archived on OSF post-collection). Each system was rated on three 1–5 Likert dimensions: Correctness (are Given/When/Then steps logically valid?), Executability (can a developer implement step definitions directly?), and 
+
+Completeness (do scenarios collectively cover the requirements?). Correctness and Executability are per-scenario; Completeness is per-document. Inter-rater agreement is Fleiss’ κ. Pre-registered hypotheses: H1 : Timeless scores higher on Executability (behavior-level steps are more directly implementable); H2 :Timeless scores higher on Correctness (JSON schema enforces structure); H3 :the baseline scores higher on Completeness (higher requirement-aligned lexical coverage). 
+
+Results. Timeless scores higher than the naive baseline on all three dimensions across all four documents (Table 4). Mean Correctness is 4.61 vs 4.14 and mean Executability is 4.61 vs 4.07, supporting H1 and H2. The largest margin appears in Internet Peering (Correctness ∆=+ 0.79 , Executability ∆=+ 0.92 ), where the baseline’s flat, requirement-echoing scenarios diverge most from executable behavior descriptions. Contrary to H3, Timeless scores higher on Completeness (4.31 vs 3.50, 
+
+∆=+ 0.81 ). Raters perceived epic-organized Gherkin as more complete than the requirement-aligned output, an unexpected result we attribute to Timeless’s higher scenario density (1.12 vs 0.60 per requirement) and the explicit second-pass coverage mandate. The baseline’s requirement-aligned structure, despite echoing requirement wording directly, does not translate into perceived coverage at the Feature-block level. Fleiss’ κ is near zero across all documents ( κ = −0.08 to 0.03 ), reflecting systematic rater scale-usage differences: one rater consistently used the lower end of the scale while three used the upper range. Despite this, the directional ranking (Timeless > Baseline) holds for 15 of 16 rater-document pairs on Correctness  
+
+> 3https://osf.io/9apdf
+
+12 S. Siddeeq et al. 
+
+Table 4. Human expert evaluation results (mean scores, 4 raters). Correctness and Executability are per-scenario means; Completeness is per-document mean (1 rating per rater). κ = Fleiss’ kappa for Correctness ratings pooled across both systems per document; near-zero values reflect systematic rater scale-usage differences, not directional disagreement. 
+
+Document System Correctness Executability Completeness κ
+
+KeePass Timeless 4.38 4.36 4.25 −0.08 Naive Baseline 4.16 4.11 3.50 Gamma-J Timeless 4.73 4.71 4.25 0.00 Naive Baseline 4.23 4.26 4.00 CCTNS Timeless 4.74 4.75 4.25 0.00 Naive Baseline 4.37 4.22 3.50 Peering Timeless 4.61 4.60 4.50 0.03 Naive Baseline 3.82 3.68 3.00 
+
+Average Timeless 4.61 4.61 4.31 –Naive Baseline 4.14 4.07 3.50 
+
+and Executability, and for all 16 on Completeness. All evaluation materials and analysis scripts are publicly available at https://osf.io/9apdf .
+
+Key Takeaway — RQ3 
+
+Expert evaluation confirms epic-organized Gherkin is preferred across all three practitioner dimensions. H1 (Executability: 4.61 vs 4.07) and H2 (Correctness: 4.61 vs 4.14) are supported. H3 is rejected : Timeless also outscores the baseline on Completeness (4.31 vs 3.50, ∆=+ 0.81 ), contrary to the pre-registered hypothesis; practitioners perceive epic-organized Gherkin as more complete, attributable to higher scenario density and the explicit second-pass coverage mandate. 
+
+Key Takeaway — RQ4 
+
+Teams prioritizing BDD maintainability and readability should adopt epic-organized generation. Those requiring strict per-requirement lexical coverage tracking can augment with a one-to-one pass. The 37-second latency overhead is acceptable for meeting-time delivery of acceptance criteria. 
+
+5 Discussion 
+
+For researchers. The 22 pp gap between TF-IDF RCR (72.0%) and semantic RCR (94.3%) shows that lexical metrics undercount coverage of abstracted, epic-organized Gherkin. Studies that report only TF-IDF or BLEU-type coverage metrics for BDD generation [ 9,16 , 7] should be interpreted with this bias in mind: vocabulary mismatch, not missing coverage, drives the gap. More fundamentally, Gherkin Representation Strategies: An Empirical Evaluation 13 SV            
+
+> Lex-
+> RCR
+> Sem-
+> RCR
+> Expert
+> Correct.
+> Expert
+> Exec.
+> Expert
+> Compl.
+> 0.25
+> 0.50
+> 0.75
+> 1.00
+> Timeless Zero-shot Baseline
+> 40 50 60 70 80 90 100
+> Lexical RCR TF-IDF (%)
+> 80
+> 85
+> 90
+> 95
+> 100
+> 105
+> Semantic RCR  Dense Embeddings (%)
+> KeePass
+> Gamma-J
+> CCTNS
+> Peering
+> +52 pp (CCTNS)
+> Lex = Sem (unbiased)
+> Zero-shot Baseline
+> Timeless
+> (a) Quality Profile (b) Lexical vs Semantic Coverage per Document
+> (points above diagonal: TF-IDF underestimates coverage)
+
+Fig. 3. Results overview. (a) Quality profile: six headline metrics normalized to [0, 1] (higher = better for all axes). Timeless (solid, filled) and the zero-shot baseline (dashed, open markers) are compared across structural validity, lexical and semantic coverage, and the three expert evaluation dimensions. (b) Lexical vs semantic RCR per document; filled circles = Timeless, open squares = baseline. Points above the diagonal ( Lex = Sem )indicate TF-IDF underestimation of coverage. The CCTNS document shows the largest gap: Timeless achieves 44% lexical but 96% semantic RCR (+52 pp), confirming that TF-IDF systematically underestimates abstracted, epic-organized Gherkin. 
+
+this is a construct validity concern: comparing a structured pipeline against a requirement-echoing baseline using only TF-IDF measures vocabulary retention, not semantic coverage, and systematically favors the less abstracted system. Future evaluations should report the lexical-semantic gap alongside both metrics; a large gap signals representation abstraction, not low coverage. 
+
+For practitioners. A 59-second average generation time places scenario authoring within the requirements meeting itself; acceptance criteria are available for review before the meeting closes, not drafted separately the next day. JSON schema enforcement eliminates a concrete CI failure mode: malformed Gherkin breaks a build at feature-file loading, before a single test runs; schema-constrained output passes that check by construction, removing a manual validation step from the developer’s workflow. Epic-organized scenarios match the Feature/Scenario block structure that Cucumber and SpecFlow expect [ 11 , 19 ], so output can be pasted directly into a .feature file and executed without restructuring; practitioners rated this output higher on Correctness (4.61 vs 4.14), Executability (4.61 vs 4.07), and Completeness (4.31 vs 3.50) [ 11 , 19 ]. Teams with per-requirement traceability obligations for compliance or audit can run an additional single-pass generation to produce requirement-aligned output alongside the epic-organized 14 S. Siddeeq et al. 
+
+structure, preserving both a readable BDD artifact and a per-requirement audit trail. 
+
+Limitations. The evaluation uses four documents from the PURE dataset (107 re-quirements); while consistent with comparable studies [ 9,7], this limits confidence in the observed trends. All documents contain 20–35 functional requirements; it is not known whether the epic-grouping strategy scales to larger SRS documents with 100+ requirements, where finer feature granularity may be needed. 
+
+6 Threats to Validity 
+
+Construct validity. Provider coupling between gpt-4o-mini (generation) and 
+
+text-embedding-3-small (embedding) means the semantic RCR score may be inflated if both models share similar internal representations; replication with Sentence-BERT [ 17 ] would isolate this effect. Structural metrics do not capture readability, domain accuracy, or test precision [ 10 ], which the expert evaluation addresses. 
+
+Internal validity. The zero-shot baseline isolates structured prompting’s con-tribution; a chain-of-thought or few-shot baseline would narrow the NC and expert-rating gaps, though the architectural SV guarantee would remain. Results should be read as structured vs. unstructured prompting, not as the upper bound of LLM capability. 
+
+External validity. Four documents yield four data points per metric, sufficient to show consistent trends but not enough for statistical generalization. Documents were selected to cover distinct domains (security, e-commerce, law enforcement, networking), following the sampling strategy of comparable LLM-based RE evaluations [18,1]. 
+
+Conclusion validity. All results are from a single run per document with gpt-4o-mini 
+
+(OpenAI, April 2026); LLM non-determinism means repeated runs may produce different scenario counts and content. Structural guarantees depend on the JSON-constrained prompting strategy and must be re-validated for each new model or version. 
+
+7 Conclusion and Future Work 
+
+Gherkin scenario authoring requires domain knowledge, structural discipline, and full requirement coverage, a combination difficult to sustain manually at scale. This paper evaluates a two-pass LLM prompting approach that organizes requirements into semantically coherent epics before generating JSON-constrained Gherkin output, compared against a zero-shot baseline across four PURE SRS documents (107 requirements). Gherkin Representation Strategies: An Empirical Evaluation 15 
+
+JSON-constrained generation achieves 100% structural validity by architec-tural design. Semantic coverage reaches 94.3%, matching the zero-shot baseline (92.9%), while TF-IDF underestimates abstracted Gherkin by 22 pp, a system-atic bias lexical-only studies cannot detect. Expert evaluation confirms that epic-organized output scores higher on all three quality dimensions, including Completeness where the pre-registered hypothesis predicted the reverse. Three directions follow from these findings. First, extending the evaluation to n ≥ 10 PURE documents and live transcription inputs will test whether the coverage and quality trends hold across a wider requirement dataset (Section 6, external validity). Second, comparing the zero-shot baseline with chain-of-thought and few-shot prompts will separate the contribution of epic organization from the benefit of richer prompting alone (Section 6, internal validity). Third, replication with open-source embedding models such as Sentence BERT [ 17 ] will isolate the provider coupling concern in the semantic coverage measure. The results suggest that epic-organized, schema-constrained generation is a promising direction for automated BDD support. Further evaluation with stronger baselines, more documents, repeated model runs, live meeting inputs, and manually validated traceability data is needed before the findings can be generalized. 
+
+Declaration of AI Assistance 
+
+During the preparation of this manuscript, the authors used ChatGPT to assist with grammar refinement, sentence restructuring, and formatting improvements. Following the use of this tool, the authors carefully reviewed and revised the content and assume full responsibility for the final version of the publication. 
+
+Acknowledgment 
+
+This work has been supported by FAST, the Finnish Software Engineering Doctoral Research Network, funded by the Ministry of Education and Culture, Finland and ANSE (AI Native Software Engineering) (1822/31/2025). 
+
+References     
+
+> 1. Arora, C., Grundy, J., Abdelrazek, M.: Advancing requirements engineering through generative ai: Assessing the role of llms. In: Generative AI for Effective Software Development, pp. 129–148. Springer (2024) 2. Binamungu, L.P., Embury, S.M., Konstantinou, N.: Maintaining behaviour driven development specifications: Challenges and opportunities. In: 2018 IEEE 25th Inter-national Conference on Software Analysis, Evolution and Reengineering (SANER). pp. 175–184. IEEE (2018) 3. Binamungu, L.P., Maro, S.: Behaviour driven development: A systematic mapping study. Journal of Systems and Software 203 , 111749 (2023)
+
+16 S. Siddeeq et al. 4. Cucumber Open Source Project: Cucumber – bdd testing and automation. https: //cucumber.io (2023) 5. Ferrari, A., Spagnolo, G.O., Gnesi, S.: PURE: A dataset of public requirements documents. In: Proceedings of the 25th International Requirements Engineering Conference (RE). pp. 502–503. IEEE (2017). https://doi.org/10.1109/RE.2017. 29 , dataset available at: https://zenodo.org/record/1414117 
+
+6. Ferreira, M., Viegas, L., Faria, J.P., Lima, B.: Acceptance test generation with large language models: An industrial case study. In: 2025 IEEE/ACM International Conference on Automation of Software Test (AST). pp. 1–11. IEEE (2025) 7. Hassani, S., Sabetzadeh, M., Amyot, D.: From law to gherkin: A human-centred quasi-experiment on the quality of llm-generated behavioural specifications from food-safety regulations. Information and Software Technology p. 108122 (2026) 8. Kamsties, E., Hörmann, K., Schlich, M.: Requirements engineering in small and medium enterprises: State-of-the-practice, problems, solutions, and technology transfer. Requirements Engineering 3(2), 84–90 (1998) 9. Karpurapu, S., Myneni, S., Nettur, U., Gajja, L.S., Burke, D., Stiehm, T., Payne, J.: Comprehensive evaluation and insights into the use of large language models in the automation of behavior-driven development acceptance test formulation. IEEE Access (2024) 10. Lucassen, G., Dalpiaz, F., van der Werf, J.M.E., Brinkkemper, S.: Improving agile requirements: the quality user story framework and tool. Requirements engineering 
+
+21 (3), 383–403 (2016) 11. North, D.: Introducing bdd. Better Software Magazine.[Online]. (2006), available at: https://dannorth.net/blog/introducing-bdd 
+
+12. Nuseibeh, B., Easterbrook, S.: Requirements engineering: A roadmap. In: Proceed-ings of the Conference on the Future of Software Engineering (ICSE 2000). pp. 35–46. ACM (2000) 13. OpenAI: Gpt-4 technical report. Tech. rep., OpenAI (2023), arXiv:2303.08774 14. Radford, A., Kim, J.W., Xu, T., Brockman, G., McLeavey, C., Sutskever, I.: Robust speech recognition via large-scale weak supervision. arXiv preprint arXiv:2212.04356 (2022) 15. Rasheed, Z., Sami, M.A., Rasku, J., Kemell, K.K., Zhang, Z., Harjamaki, J., Siddeeq, S., Lahti, S., Herda, T., Nurminen, M., et al.: Timeless: A vision for the next generation of software development. arXiv preprint arXiv:2411.08507 (2024) 16. Rathnayake, A., Shahin, M., Abaei, G.: Behaviour driven development scenario generation with large language models. arXiv preprint arXiv:2603.04729 (2026). 
+
+https://doi.org/10.48550/arXiv.2603.04729 
+
+17. Reimers, N., Gurevych, I.: Sentence-BERT: Sentence embeddings using siamese BERT-networks. In: Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing (EMNLP). pp. 3982–3992. Association for Computa-tional Linguistics (2019) 18. Ronanki, K., Cabrero-Daniel, B., Berger, C.: ChatGPT as a tool for user story quality evaluation: Trustworthy out of the box? In: Agile Processes in Software Engineering and Extreme Programming – Workshops (XP 2022 Workshops). Lecture Notes in Business Information Processing, vol. 489, pp. 173–181. Springer (2024). 
+
+https://doi.org/10.1007/978-3-031-48550-3_17 , arXiv:2306.12132 19. Smart, J.F., Molak, J.: BDD in Action: Behavior-Driven Development for the Whole Software Lifecycle. Simon and Schuster (2023) 20. Solís, C., Wang, X.: A study of the characteristics of behaviour driven development. In: Proceedings of the 37th EUROMICRO Conference on Software Engineering and Advanced Applications (SEAA). pp. 383–387. IEEE (2011)

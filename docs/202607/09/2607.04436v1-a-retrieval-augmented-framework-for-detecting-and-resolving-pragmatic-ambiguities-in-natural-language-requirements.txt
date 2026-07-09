@@ -1,0 +1,539 @@
+Title: A Retrieval-Augmented Framework for Detecting and Resolving Pragmatic Ambiguities in Natural Language Requirements
+
+URL Source: https://arxiv.org/pdf/2607.04436v1
+
+Published Time: Tue, 07 Jul 2026 02:19:59 GMT
+
+Number of Pages: 11
+
+Markdown Content:
+# A Retrieval-Augmented Framework for Detecting and Resolving Pragmatic Ambiguities in Natural Language Requirements 
+
+## Pavithra PM Nair 
+
+Tata Consultancy Services Pune, India pavithra.nair@tcs.com 
+
+## Preethu Rose Anish 
+
+Tata Consultancy Services Pune, India preethu.rose@tcs.com 
+
+Abstract 
+
+Natural language requirements (NLRs) are essential for bridging communication gaps among diverse stakeholders in software de-velopment. However, the inherent ambiguity in NLRs can pose significant challenges. In particular, some requirements may be misinterpreted due to varying contextual knowledge and domain-specific expectations of the stakeholders, a phenomenon known as pragmatic ambiguity. This paper presents an approach for detect-ing and resolving pragmatic ambiguities in NLRs. The approach leverages retrieval-augmented generation techniques with novice ,
+
+intermediate , and expert domain knowledge bases to simulate stake-holders with varying domain expertise and detect discrepancies in requirement interpretation. Candidate disambiguated require-ments are generated using the expert domain knowledge base, with final validation by a requirements analyst required to ensure align-ment with the intended system functionality. We evaluate the ap-proach on two requirements specification documents from the PUblic REquirements (PURE) dataset, using four large language models: GPT-4o-mini, Mistral-7B, Llama-3.1-8B, and Qwen2.5-7B. Detection performance is assessed using macro-averaged accuracy, precision, recall, F1, and F2 scores. The resolution quality of the candidate disambiguated requirements is measured through human evaluation of relevance, clarity, and consistency. In this initial evalu-ation, results show that the proposed approach can detect pragmatic ambiguities and produce candidate disambiguated requirements that are relevant, clear, and consistent with the intended system functionality. Among the evaluated models, GPT-4o-mini achieved the highest macro-averaged recall (0.75) and F2 score (0.75) for pragmatic ambiguity detection. In the resolution task, GPT-4o-mini received the highest relevance scores from human evaluators, while Mistral-7B achieved the highest scores for clarity and consistency. 
+
+CCS Concepts 
+
+• Software and its engineering → Requirements analysis .
+
+Keywords 
+
+Pragmatic Ambiguity, Requirements Engineering, Natural Lan-guage Requirements, Large Language Models, Retrieval-Augmented Generation  
+
+> This work is licensed under a Creative Commons Attribution 4.0 International License.
+> EASE ’26, Glasgow, United Kingdom
+> ©2026 Copyright held by the owner/author(s). ACM ISBN 979-8-4007-2348-3/2026/06 https://doi.org/10.1145/3816483.3816519
+
+ACM Reference Format: 
+
+Pavithra PM Nair and Preethu Rose Anish. 2026. A Retrieval-Augmented Framework for Detecting and Resolving Pragmatic Ambiguities in Natu-ral Language Requirements. In International Conference on Evaluation and Assessment in Software Engineering (EASE ’26), June 09–12, 2026, Glasgow, United Kingdom. ACM, New York, NY, USA, 11 pages. https://doi.org/10. 1145/3816483.3816519 
+
+1 Introduction 
+
+Natural language requirements (NLRs) are a crucial element in the software development life cycle (SDLC), as they capture both the functional specifications and non-functional attributes of the software to be developed. Serving as a communication bridge be-tween different stakeholders in the SDLC, NLRs guide the design, implementation, and validation of software systems. However, the inherent flexibility and context-dependence of natural language often introduce ambiguities in these requirements [ 3, 23 ]. NLRs may be interpreted differently depending on each stakeholder’s background, experience, and perspective [14]. Misinterpretations can arise not only between requirements an-alysts (RAs) and domain experts, but also among stakeholders from different domains or within stakeholder groups with varying levels of expertise. During requirements elicitation meetings, RAs and domain experts often use specialized jargon [ 35 , 36 ]. Differences in domain knowledge and terminology between participants can create misunderstandings, leading to unclear or underspecified requirements [ 7 ]. Such ambiguities may propagate through subse-quent development phases, leading to costly rework in later stages of the SDLC [4, 9]. Consider the requirement: “The system must provide real-time analytics on server performance." For a system administrator, “real-time" may imply the need for monitoring tools that update data at short intervals, such as every minute, to ensure optimal server performance. Conversely, a software engineer may interpret “real-time" as requiring millisecond-level precision, potentially involving integration with lower-level hardware sensors for high granularity monitoring. Meanwhile, a business stakeholder might understand “real-time" as the need for data updates only at a frequency sufficient for business decision-making, which could range from hourly to daily intervals. As illustrated by this example, the same term, “real-time," can be interpreted in vastly different ways depending on the domain knowledge and priorities of the involved stakeholders. This type of ambiguity, arising from differing contextual knowledge and domain-specific expectations, is referred to as pragmatic ambiguity [ 3, 18 ]. Pragmatic ambiguities in NLRs have been relatively underex-plored, with a limited body of research addressing them by incor-porating domain knowledge into requirements analysis [ 14 , 16 ].  
+
+> arXiv:2607.04436v1 [cs.SE] 5 Jul 2026 EASE ’26, June 09–12, 2026, Glasgow, United Kingdom Nair and Anish
+
+However, challenges remain, particularly in capturing all poten-tial pragmatic interpretations of a requirement. The diverse back-grounds, knowledge, and expertise of stakeholders make it difficult to develop infallible rule-based systems for detecting such ambi-guities. While it may be infeasible to create a tool that accounts for every possible interpretation, we believe that RAs could signif-icantly benefit from recommender systems designed to assist in resolving pragmatic ambiguities during the requirements analysis process. In this paper, we propose a novel framework that detects prag-matic ambiguities in NLRs. Our approach identifies potentially ambiguous terms in requirements and generates elucidation ques-tions (EQs) — targeted, open-ended questions tied to a specific ambiguous term in a requirement, designed to surface the clar-ification needed to resolve its pragmatic ambiguity. It leverages retrieval-augmented generation (RAG) techniques, incorporating 
+
+novice , intermediate , and expert domain knowledge bases, which represent varying levels of stakeholder domain knowledge. Using these knowledge bases, we simulate how stakeholders with dif-fering levels of domain expertise would interpret requirements, enabling our framework to detect discrepancies in interpretation. Additionally, we leverage the expert domain knowledge base to propose candidate disambiguated requirements (referred to as “res-olutions”) for the detected pragmatic ambiguities. These candidate resolutions reflect the understanding and implicit assumptions held by domain experts; however, final validation by an RA is essential to ensure that the candidate resolutions align with intended system functionality. The framework is intended for use during the requirements analysis phase, after requirements elicitation and before system development. It is designed to surface ambiguities in requirement interpretation between RAs and domain experts, as well as among stakeholders who have varying levels of domain expertise, all of which the RA should consider when analyzing requirements. We structure our study around the following research questions: 
+
+• RQ 1: How effectively can pragmatic ambiguities in NLRs be detected using a retrieval-augmented method that simulates varying levels of stakeholder domain expertise? 
+
+• RQ 2: To what extent are the candidate resolutions relevant, clear, and consistent with the intended system functionality? 
+
+To answer these questions, we conduct an empirical evaluation using two requirements specification documents from the publicly available PURE dataset [ 17 ] and four large language models (LLMs) (GPT-4o-mini [ 28 ], Llama-3.1-8B [ 24 ], Mistral-7B [ 2], and Qwen2.5-7B [ 32 ]). Detection performance is assessed using macro-averaged accuracy, precision, recall, F1, and F2 scores. Candidate resolutions are evaluated using three human evaluation metrics: Relevance ,
+
+Clarity , and Consistency . Among the models assessed, GPT-4o-mini achieved the highest macro-averaged recall (0.75) for pragmatic ambiguity detection, along with a strong macro-averaged F2 score (0.75). GPT-4o-mini achieved the highest Relevance score, while Mistral-7B outperformed the other models on Clarity and Consis-tency metrics. The main contributions of this paper are as follows: 
+
+• We propose a framework for detecting pragmatic ambiguities in NLRs by generating EQs and comparing interpretations across novice , intermediate , and expert domain knowledge bases. 
+
+• We explore an approach for addressing detected pragmatic ambiguities by generating candidate resolutions informed by the understanding and implicit assumptions captured in the expert domain knowledge base. 
+
+• We conduct an empirical evaluation on two requirements specification documents from the PURE dataset, demonstrat-ing the framework’s effectiveness using both quantitative detection metrics and human evaluation of resolution qual-ity. 
+
+• We release a replication package containing the ground truth datasets, code, and experimental outputs, to support repro-ducibility and future research 1.The remainder of this paper is structured as follows. Section 2 reviews related work on ambiguity in requirements. Section 3 de-scribes our proposed approach. Section 4 presents the experimental setup. Section 5 reports our findings. Section 6 discusses threats to validity, and Section 7 concludes the paper. 
+
+2 Background 
+
+This section provides background on ambiguity in NLRs and re-views related work in the area. Section 2.1 classifies the types of ambiguities commonly found in NLRs, Section 2.2 surveys existing approaches to address these ambiguities, and Section 2.3 focuses on prior research specifically addressing pragmatic ambiguity. 
+
+2.1 Classification of Ambiguity in NLRs 
+
+Ambiguities in NLRs are generally classified into four primary categories, as outlined by Berry et al. [3]: 
+
+• Lexical ambiguity - arises when a term has multiple mean-ings. 
+
+• Syntactic ambiguity - occurs when a sentence can be parsed into multiple grammatical structures, each with a different meaning. 
+
+• Semantic ambiguity - stems from a sentence that can be interpreted into more than one logical expression. 
+
+• Pragmatic ambiguity - arises when a sentence has multiple interpretations depending on the context in which it is used. For pragmatic ambiguity, the concept of “context” is broadly defined by Ferrari and Gnesi [ 18 ], encompassing multiple levels: (1) the requirements immediately preceding and following the current one, (2) other requirements in different sections of the document, (3) the domain knowledge of the stakeholder reading the requirement, and (4) the stakeholder’s common sense knowledge. In addition to these core ambiguity types, the literature high-lights two phenomena that are closely related to ambiguity in the context of NLRs: 
+
+• Vagueness - occurs when an expression has borderline cases, where its truth value is indeterminate, typically due to the use of adjectives or adverbs. 
+
+• Generality - involves expressions that are overly broad and require further specification to convey a precise meaning [8].  
+
+> 1https://github.com/pavithranair/Pragmatica Detecting and Resolving Pragmatic Ambiguities in NLRs EASE ’26, June 09–12, 2026, Glasgow, United Kingdom
+
+Examples of these ambiguity categories and related phenomena are detailed in the work of Berry et al. [3]. Massey et al. [ 23 ] proposed a more recent taxonomy that in-cludes lexical, syntactic, semantic, vagueness, referential, and in-completeness ambiguity, treating vagueness as a type of ambiguity and subsuming aspects of pragmatic ambiguity under referential ambiguity. 
+
+2.2 Approaches to Address Ambiguities in NLRs 
+
+Existing techniques for ambiguity detection in NLRs are primarily rule-based, relying on linguistic patterns to identify ambiguities within requirements. Tools such as QuARS [21] and SREE [34] ex-emplify this approach, which has matured to the point of being ap-plied in industrial projects [ 13 , 15 ]. These tools identify ambiguous phrases based on linguistic markers and typically require manual review by RAs. Commercial tools, such as Qualicen Scout [ 12 ], also use rule-based methods to analyze NLRs for ambiguity. However, rule-based approaches tend to struggle with detecting semantic and pragmatic ambiguities, as they primarily address lexical and syntactic issues and lack scalability for more complex ambiguity types. Statistical techniques leverage machine learning and statistical models to detect ambiguities. Ezzini et al. [ 10 ] employed supervised classifiers and SpanBERT [ 20 ] to detect anaphoric ambiguities in requirements. Chantree et al. [ 5] addressed coordination ambigui-ties using word distribution heuristics. While statistical techniques have advanced, like rule-based approaches, they often focus on lexical and syntactic ambiguities. 
+
+2.3 Approaches to Detect and Resolve Pragmatic Ambiguity in NLRs 
+
+Several studies have made notable contributions to addressing prag-matic ambiguity in NLRs. Ferrari et al. [ 16 ] proposed a method for detecting pragmatic ambiguities by modeling the background knowledge of different stakeholders using graph-based representa-tions. Their approach employs a shortest-path search algorithm to simulate varying pragmatic interpretations of a requirement. By comparing these interpretations, this method identifies potential ambiguities. However, this approach can be computationally ex-pensive, as it requires the construction and traversal of multiple domain knowledge graphs for each requirement, which becomes particularly resource-intensive in large or complex domains with many stakeholders. In subsequent work, Ferrari et al. [ 14 ] introduced an NLP-based approach for detecting cross-domain ambiguities in requirements engineering. They build domain-specific language models using corpora for each domain, derive word embeddings, and compare usage neighborhoods of terms across domains to estimate ambi-guity. They rank terms by ambiguity score and validate against human annotations. While their work is powerful for detecting terms likely to cause misunderstanding between different domains, it does not address ambiguity within a domain caused by varying levels of expertise among stakeholders. Tools such as MaRK [ 22 ], WIKINA [ 33 ], and WikiDoMiner [ 11 ]provide mechanisms for retrieving domain-specific knowledge that can support stakeholder understanding. However, these tools do not explicitly detect or resolve pragmatic ambiguities, and significant manual effort remains necessary to identify and clarify ambiguous requirements. Our work builds on Ferrari et al.’s approaches [ 14 , 16 ]. Our ap-proach leverages multiple knowledge bases that simulate varying levels of domain expertise within the same domain. Cross-domain ambiguities often stem from incomplete knowledge about the do-main of the system for which the requirements are specified, and even when stakeholders appear to have different priorities, these differences often trace back to variations in understanding the sys-tem’s capabilities, constraints, or context [ 14 , 19 ]. In our approach, cross-domain stakeholders may be considered as novices in the system’s domain, allowing the framework to naturally capture both cases: ambiguities that arise within the system’s domain due to varying levels of domain expertise, as well as certain ambiguities that surface across domains. In this way, our work generalizes and extends prior approaches. We do not provide a direct empirical comparison with prior ap-proaches to pragmatic ambiguity detection, as such a comparison is not technically feasible without compromising methodological validity. Ferrari et al.’s graph-based approach does not provide a publicly released dataset corresponding to the original study, mak-ing faithful reproduction of the experimental setting infeasible [ 16 ]. Although implementations and resources are available for the later cross-domain approach [ 14 ], this approach detects ambiguity at the term level. Aligning its outputs with requirement-level prag-matic ambiguity detection would require additional design choices, related to corpus selection and aggregation of term-level signals, which can substantially affect ambiguity outcomes and confound comparative evaluation. Accordingly, we position our contribution as complementary to prior work. 
+
+3 Proposed Approach 
+
+In this section, we outline our approach for pragmatic ambiguity detection and resolution, illustrated in Figure 1 and Figure 4, respec-tively. In the detection phase, a requirements specification knowl-edge base ( 𝐾 𝑅 ) is constructed from the input document, and three do-main knowledge bases ( 𝐾 𝑁 , 𝐾 𝐼 , 𝐾 𝐸 ) are built using WikiDoMiner [ 11 ]to simulate novice, intermediate, and expert levels of domain ex-pertise. An LLM generates EQs for each requirement to surface potentially ambiguous terms. Each requirement and its EQs are first queried against 𝐾 𝑅 ; if the specification resolves the ambiguity, the requirement is treated as unambiguous. Otherwise, the same query is posed to 𝐾 𝑁 , 𝐾 𝐼 , and 𝐾 𝐸 , and the semantic similarity between the retrieved interpretations is computed. If similarity falls below a defined threshold, the requirement is flagged as pragmatically ambiguous. In the resolution phase, candidate resolutions are gen-erated by querying the requirement and its EQs against 𝐾 𝑅 and 𝐾 𝐸 ,and are subsequently validated by an RA to ensure alignment with the intended system functionality. Each step is described in detail below. 
+
+3.1 Knowledge Base Generation 
+
+3.1.1 The Requirements Specification Knowledge Base ( 𝐾 𝑅 ). As de-picted by the step marked as ‘A1’ in Figure 1, a knowledge base is EASE ’26, June 09–12, 2026, Glasgow, United Kingdom Nair and Anish Retrieve top       
+
+> 5 similar chunks to requirements and corresponding EQs from KR
+> Retrieve top
+> 3 similar chunks to requirements and corresponding EQs from each domain knowledge base
+> Novice Domain Knowledge Base (K N)
+> Generated EQs
+> Compute
+> Similarity Scores
+> Requirements Specification (R)
+> Use LLM
+> to verify whether chunks answer the EQs
+> Pragmatically
+> Unambiguous
+> Novice Domain
+> Document
+> Set
+> Intermediate
+> Domain
+> Document Set
+> Expert Domain
+> Document
+> Set
+> Intermediate Domain Knowledge Base (K I)
+> Expert Domain Knowledge Base (K E)
+> Requirements Specification
+> Knowledge Base (K R)
+> No
+> Yes
+> Answer
+> found in
+> requirements specification
+> document?
+> Similarity Scores > Threshold (T )
+> Pragmatically
+> Unambiguous
+> Pragmatic Ambiguity Detected
+> No
+> Yes
+> Identify ambiguous terms and generate EQs
+> B
+> C1
+> C3
+> D1
+> D3
+> A1
+> A2
+> C2
+> D2
+> Start
+> WikiDoMiner
+> depth = 0 depth = 1 depth = 2
+
+Figure 1: Proposed Approach for Pragmatic Ambiguity De-tection 
+
+constructed exclusively from the content of the requirements speci-fication document. The individual requirements are chunked one by one to preserve their granularity. The remainder of the document, which typically includes contextual sections such as the scope, sys-tem overview, definitions, constraints, references, and appendices, is segmented into fixed-length chunks of 400 tokens, with an over-lap of 20 tokens between consecutive chunks. Each chunk is then vectorized using OpenAI’s text-embedding-3-small model [ 29 ]to generate embeddings that capture its semantic meaning. This encoder model was selected due to its strong performance on se-mantic textual similarity benchmarks and its cost-effectiveness for large-scale embedding generation. The resulting vectors are stored in Pinecone [ 31 ], a scalable vector database, to enable efficient sim-ilarity search and retrieval. This collection of vectors constitutes the requirements specification knowledge base, 𝐾 𝑅 .
+
+3.1.2 The Domain Knowledge Bases ( 𝐾 𝑁 , 𝐾 𝐼 , and 𝐾 𝐸 ). As shown in step ‘A2’ of Figure 1, domain knowledge bases are constructed using WikiDoMiner [ 11 ], an automated tool for retrieving domain-relevant documents from Wikipedia. WikiDoMiner accepts the requirements specification document as input, scores candidate key-words using TF-IDF, and selects the top-𝐾 terms to query Wikipedia. The retrieval scope is controlled by a configurable depth parameter: 
+
+• Depth 0 ( Novice ): Retrieves only the Wikipedia articles that directly match the extracted keywords. The retrieved doc-uments are used to populate the novice domain knowledge base, 𝐾 𝑁 .
+
+• Depth 1 ( Intermediate ): Expands the scope by including ar-ticles from the categories of the keyword-matched articles. These documents populate the intermediate domain knowl-edge base, 𝐾 𝐼 .
+
+• Depth 2 ( Expert ): Further extends the retrieval to include articles from subcategories of the keyword-matched articles, yielding the broadest coverage of domain knowledge. These documents populate the expert domain knowledge base, 𝐾 𝐸 .Each document set is segmented into fixed-length chunks of 400 tokens with an overlap of 20 tokens. The chunks are encoded into embeddings using OpenAI’s text-embedding-3-small model [ 29 ]. The resulting vectors for each depth are stored in separate Pinecone namespaces [ 31 ], forming the three domain knowledge bases ( 𝐾 𝑁 , 𝐾 𝐼 , and 𝐾 𝐸 ). Wikipedia is used as a practical source to simulate different levels of domain knowledge. The intent is not to model real stakeholder expertise, but to capture relative differences in their domain knowl-edge. Wikipedia’s category structure allows the retrieval scope to be expanded in a systematic and repeatable way by varying traversal depth, where increasing depth corresponds to broader conceptual coverage and exposure to a larger set of related domain concepts [ 11 ]. Such graph-based expansion has been used in prior work to approximate increasing domain context and conceptual breadth [ 6, 26 ]. In addition, Wikipedia provides reasonably con-sistent coverage across most domains [ 25 ]. While sources such as textbooks and technical manuals may better reflect expert-level knowledge, their use would require manual curation, would vary widely in availability across different domains, and would often involve licensing restrictions. These factors would make it difficult to apply the same retrieval process consistently across domains and are, therefore, outside the scope of this work. 
+
+3.2 Elucidation Question Generation (EQGen) 
+
+Elucidation Question Generation (EQGen), depicted by the step marked as ‘B’ in Figure 1, leverages an LLM to identify poten-tially ambiguous terms within each requirement and generate a corresponding Elucidation Question (EQ) for each. An ambiguous term is a word or phrase that could reasonably be interpreted in more than one way by stakeholders reading the requirement. For each such term, an EQ is a clarification question that helps narrow down the meaning of the ambiguous term so that all stakeholders would interpret the requirement consistently. EQs are scoped to requirement-level ambiguities that affect the intent or scope of the system — proper nouns, standardized interface names, prod-uct names, and specific technical standards are excluded, as are questions about implementation details, document versions, or op-erational procedures. The output of EQGen consists of a list of EQs for each require-ment, each EQ associated with an identified ambiguous term. If no ambiguous terms are detected within a particular requirement from the requirements specification document, the requirement is Detecting and Resolving Pragmatic Ambiguities in NLRs EASE ’26, June 09–12, 2026, Glasgow, United Kingdom 
+
+labeled as “unambiguous,” and no EQs are generated. It is impor-tant to note that this step detects linguistic indicators of potential ambiguity, but does not in itself confirm pragmatic ambiguity. The subsequent steps determine whether differing interpretations truly emerge under varying domain knowledge, thereby establishing pragmatic ambiguity. The final prompt used for EQGen was developed through an iterative prompt engineering process, inspired by the principles on prompt design [ 30 ]. Our prompt development process involved testing variations in system instructions, example coverage, and output format. The final prompt is shown in Figure 2. ### Task: 
+
+Identify ambiguous terms within the given requirement statement. 
+
+An “ambiguous term” is a word or phrase in the requirement that could reasonably be interpreted in more than one way by stakeholders reading the requirement. 
+
+Do NOT consider proper nouns, standardized interface names, product names, or specific technical standards as ambiguous terms, even if the details are not explicitly stated. 
+
+Focus only on requirement-level ambiguities that affect the intent or scope of the system, not on implementation details, formatting, or operational procedures. 
+
+For each ambiguous term you identify, generate an **Elucidation Question**. 
+
+An Elucidation Question is a clarification question that helps narrow down the meaning of the ambiguous term so that all stakeholders would interpret the requirement consistently. 
+
+Do not ask about versions of documents, update cycles, or specific technical implementation methods. 
+
+### Output format: JSON with keys “Ambiguous Term” and “Elucidation Question.” 
+
+Always return valid JSON in the structure: 
+
+{
+
+"clarifications": [ 
+
+{
+
+"Ambiguous Term": "...", 
+
+"Elucidation Question": "..." 
+
+}
+
+]
+
+}
+
+If no ambiguities are found, return: 
+
+{
+
+"clarifications": [] 
+
+}
+
+### Examples: 
+
+Example 1 
+
+Requirement: "The system shall generate regular reports for users." 
+
+Output: 
+
+{
+
+"clarifications": [ 
+
+{
+
+"Ambiguous Term": "regular", 
+
+"Elucidation Question": "How frequently should the reports be generated (e.g., daily, weekly)?" 
+
+}, 
+
+{
+
+"Ambiguous Term": "reports", 
+
+"Elucidation Question": "What type of reports are expected (e.g., performance reports, error logs)?" 
+
+}
+
+]
+
+}
+
+Example 2 (no ambiguity) 
+
+Requirement: "The FWHA Services shall collect transit vehicle data from the Probe Data Service using the X-031 interface." 
+
+Output: 
+
+{
+
+"clarifications": [] 
+
+}
+
+There are a total of 6 examples in the original prompt. Additional examples follow the same format. Not included here for brevity. 
+
+### Now analyze: 
+
+Requirement: "{requirement_text}" 
+
+User Prompt - EQGen 
+
+System Prompt - EQGen 
+
+The assistant strictly adheres to the user’s instructions and tasks. The assistant’s response is always a JSON object and does not include any additional details. 
+
+Figure 2: Prompt used for Elucidation Question Generation 
+
+3.3 Searching in the Requirements Specification Knowledge Base ( 𝐾 𝑅 )
+
+This phase is shown by the steps marked as ‘C1’-‘C3’ in Figure 1. It involves querying 𝐾 𝑅 to identify relevant information that may address the generated EQs. For each EQ, the system searches 𝐾 𝑅 
+
+and retrieves the top 5 most similar text chunks, ranked by their cosine similarity score to the embedding of the requirement and its EQ (step marked as ‘C1’ in Figure 1). The system employs the same LLM used in the EQGen phase to verify whether the information in the retrieved chunk effectively answers the EQ (steps marked as ‘C2’ in Figure 1). The prompt used for verification is shown in Figure 3. If the retrieved information answers all the EQs (step marked as ‘C3’ in Figure 1), the corresponding requirement is labeled as pragmatically unambiguous. If no valid answer is found within 𝐾 𝑅 , the system proceeds to consult the domain knowledge bases ( 𝐾 𝑁 , 𝐾 𝐼 , and 𝐾 𝐸 ). ### Task: 
+
+Determine if any of the provided knowledge base chunks sufficiently answer the Elucidation Question for the ambiguous term in the requirement. 
+
+Focus strictly on the **intent and scope** of the requirement. Ignore implementation details, technical standards, versions, or operational procedures. 
+
+Respond strictly with YES if at least one chunk answers the EQ, otherwise NO. 
+
+### Definitions: 
+
+- Requirement: The original requirement statement from the specification. 
+
+- Ambiguous Term: A word, phrase, or concept in the requirement that could be interpreted in more than one way, creating potential uncertainty. 
+
+- Elucidation Question (EQ): A question generated to clarify the meaning of the ambiguous term, aiming for consistent stakeholder understanding. 
+
+- Knowledge Base Chunks: Pieces of domain knowledge, documentation, or prior requirements that may provide information relevant to answering the EQ. 
+
+### Data: 
+
+Requirement: 
+
+"{requirement_text}" 
+
+Ambiguous Term: 
+
+"{ambiguous_term}" 
+
+Elucidation Question: 
+
+"{eq_text}" 
+
+Knowledge Base Chunks: 
+
+"{chunk_list}" 
+
+User Prompt - Verification 
+
+You are an assistant whose sole task is to determine whether a set of knowledge base chunks sufficiently resolves **ambiguity in a requirement**. Ambiguity refers to any part of a requirement, such as a word, phrase, or concept, that could be interpreted in more than one way, leading to uncertainty about the intent or scope of the requirement. This could include unclear terms, undefined conditions, or vague descriptions that affect understanding. Focus strictly on **whether the EQ is answered**. Evaluate only the information requested by the EQ. 
+
+Respond **only** with YES or NO: 
+
+- YES if at least one chunk fully clarifies the ambiguous term or concept. 
+
+- NO if none of the chunks provide sufficient clarification. 
+
+System Prompt - Verification 
+
+Figure 3: Prompt Used for Verifying Whether Chunks Re-trieved from 𝐾 𝑅 Answer an EQ EASE ’26, June 09–12, 2026, Glasgow, United Kingdom Nair and Anish 
+
+3.4 Searching in the Domain Knowledge Bases (𝐾 𝑁 , 𝐾 𝐼 , and 𝐾 𝐸 )
+
+This phase, depicted by the steps marked as ‘D1’- ‘D3’ in Figure 1, focuses on assessing the consistency of interpretations derived from 𝐾 𝑁 , 𝐾 𝐼 , and 𝐾 𝐸 . In this context, “interpretations” refer to the chunks of text retrieved from a domain knowledge base that are most similar to the requirement and its corresponding EQ. Each re-trieved chunk represents how a stakeholder with the corresponding level of domain knowledge ( novice , intermediate , or expert ) might understand or resolve the ambiguity inherent in the requirement. When no answer is found in 𝐾 𝑅 , the system queries the domain knowledge bases ( 𝐾 𝑁 , 𝐾 𝐼 , and 𝐾 𝐸 ). It retrieves the top 3 most rel-evant vectors from each domain knowledge base, based on their cosine similarity to the requirement and EQ’s embedding (step marked as ‘D1’ in Figure 1). To determine whether a requirement is pragmatically unambiguous, the system evaluates the consistency of interpretations retrieved from 𝐾 𝑁 , 𝐾 𝐼 , and 𝐾 𝐸 . Specifically, it constructs groups by combining the 3 retrieved chunks from each domain knowledge base in all possible combinations, each group containing one chunk from each domain knowledge base. This results in a total of 27 (33) groups, each group containing 3 chunks. The pairwise cosine similarity scores between the embeddings of the chunks within each group are computed (step marked as ‘D2’ in Figure 1). If any such group exhibits pairwise similarity scores that all exceed a pre-determined threshold 𝑇 (see Section 4.3), the requirement is considered pragmatically unambiguous, indicating that the term is interpreted consistently across different domain knowledge levels (step marked as ‘D3’ in Figure 1). Conversely, if none of the groups meet this threshold, the requirement is marked as pragmatically ambiguous, indicating that interpretations differ across the various levels of domain knowledge. 
+
+3.5 Pragmatic Ambiguity Resolution 
+
+The resolution phase, illustrated in Figure 4, generates candidate resolutions for those requirements flagged as pragmatically am-biguous. Each pragmatically ambiguous requirement, along with its associated EQs, is queried against both 𝐾 𝑅 and 𝐾 𝐸 to retrieve relevant contextual information. Candidate resolutions are then generated using an LLM prompted with a carefully designed in-struction, shown in Figure 5. The inputs provided to the prompt include: 
+
+• Original Requirement – the raw requirement flagged as prag-matically ambiguous. 
+
+• Ambiguous Terms – words or phrases in the requirement that could be interpreted in multiple ways. 
+
+• EQs – clarification questions generated for each ambiguous term. 
+
+• Requirement Knowledge – top 3 retrieved chunks (ranked by their cosine similarity score to the embedding of the requirement and its EQ) from 𝐾 𝑅 .
+
+• Domain Knowledge – top 3 retrieved chunks (ranked by their cosine similarity score to the embedding of the requirement and its EQ) from 𝐾 𝐸 .The prompt was developed through an iterative prompt engi-neering process, inspired by established principles of prompt design [ 30 ]. During development, variations in system instructions were tested to ensure that the LLM consistently produced resolutions that preserved the original intent. The candidate resolutions must then be reviewed by an RA, who verifies whether the rewritten requirement accurately cap-tures the intended meaning and ensures that disambiguation does not introduce inconsistencies or alter the requirement’s scope. It is important to note that while our approach leverages domain knowledge to resolve pragmatic ambiguity, it does not guarantee alignment with the intended system functionality; final validation by the RA remains essential. Requirements Specification Knowledge Base (K R)  
+
+> Expert Domain Knowledge Base (K E)
+> Retrieve top 3
+> similar chunks to requirement and corresponding EQs from K E
+> Retrieve top 3 similar chunks to requirement and corresponding EQs from KR
+> Ambiguous Terms
+> Pragmatically
+> Ambiguous Requirement
+> Requirements analyst reviews and refines resolution
+> Pragmatically Unambiguous Requirement
+> Candidate Resolution
+> Generated
+> EQs
+
+Figure 4: Proposed Approach for Pragmatic Ambiguity Reso-lution 
+
+4 Experimental Setup 
+
+In this section, we provide a detailed description of the experimental setup. All experiments were conducted using four LLMs: GPT-4o-mini [ 28 ], Llama-3.1-8B 2, Mistral-7B 3, and Qwen2.5-7B 4. GPT-4o-mini is a widely used commercial model known for strong perfor-mance on general NLP tasks. Mistral-7B, Llama-8B, and Qwen2.5-7B are open-weight models with competitive performance and are ac-cessible for reproducible research. The selected models vary in architecture and training data, enabling us to assess the robustness of our approach across both closed models and open models in the 7–8B parameter range. The link to the ground truth datasets, code, and intermediate outputs generated in the experiments can be found here. 5
+
+4.1 Dataset Creation 
+
+The first document used in this study is “Clarus Weather System Design,” a high-level system requirements specification issued by the U.S. Department of Transportation, Federal Highway Admin-istration, in 2005, which includes 140 requirements. The second document is “Vehicle Infrastructure Integration (VII) Data Use Anal-ysis and Processing (DUAP),” issued by the Michigan Department of Transportation (MDOT) in 2007, containing 148 requirements. The Clarus Weather System Design specification provides a repository of high-level requirements governing the design of the 
+
+> 2https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct
+> 3https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3
+> 4https://huggingface.co/Qwen/Qwen2.5-7B-Instruct
+> 5https://github.com/pavithranair/Pragmatica
+
+Detecting and Resolving Pragmatic Ambiguities in NLRs EASE ’26, June 09–12, 2026, Glasgow, United Kingdom ### Task: 
+
+Your role is to rewrite requirement statements so that they are free from  pragmatic ambiguities while preserving the original intent. 
+
+### Background: 
+
+- Pragmatic ambiguity occurs when different stakeholders, even  within the same domain, can reasonably interpret a requirement  in different ways. This creates uncertainty and inconsistent understanding  about the requirement’s intent or scope. 
+
+- An Ambiguous Term is a word or phrase in the requirement that can be  interpreted in multiple valid ways (e.g., vague adjectives, undefined  frequency, unspecified scope). 
+
+- An Elucidation Question is a clarification question generated for an  ambiguous term. It is designed to surface missing attributes or contextual  details that are necessary for a consistent interpretation. 
+
+### Your job: 
+
+- Given the original requirement, its ambiguous terms, associated elucidation  questions, and relevant requirement knowledge and domain knowledge,  rewrite the requirement to resolve any pragmatic ambiguities. 
+
+- Ensure the rewritten requirement is explicit, clear, and unambiguous. 
+
+- Always preserve the original intent of the requirement and do not introduce  new functionality or scope changes. 
+
+Original Requirement: "{requirement}" 
+
+Ambiguous Terms: "{ambiguous_terms}" 
+
+Elucidation Questions: "{eqs}" 
+
+Relevant Requirement Knowledge: "{req_knowledge}" 
+
+Relevant Domain Knowledge: "{domain_knowledge}" 
+
+User Prompt - Pragmatic Ambiguity Resolution 
+
+System Prompt - Pragmatic Ambiguity Resolution 
+
+The assistant strictly adheres to the user’s instructions and tasks.  The tasks given by the user will be challenging, so the assistant s hould pay close attention while solving the provided complex tasks.  The assistant’s response will directly address the user’s request  without including any additional details. Only output the rewritten requirement with no additional text. 
+
+Figure 5: Prompt Used for Generation of Candidate Require-ments 
+
+Clarus system, an initiative aimed at organizing and enhancing environmental and road condition observation capabilities. The VII Data Use Analysis and Processing document outlines the re-quirements for Michigan’s vehicle infrastructure integration DUAP System, which investigates how new vehicle infrastructure inte-gration data impacts safety, traffic operations and management, asset management, winter operations, and transportation planning. These documents were selected because they offer diverse contexts and complex requirements, making them ideal for evaluating the proposed approach. From the two documents, requirements exhibiting pragmatic ambiguities were manually identified and tagged. Specifically, 37 requirements from the Clarus document and 39 requirements from the VII DUAP document were marked as pragmatically ambiguous. Evaluators were selected based on their demonstrated expertise in transportation systems requirements, with a minimum of five years of industrial research experience in the application domain of the evaluated documents. Two such domain experts, each with 5–7 years of industrial experience as researchers in transportation sys-tems and environmental/road condition monitoring, independently assigned binary labels to indicate whether each requirement was pragmatically ambiguous. Prior to annotation, the domain experts were instructed to carefully review the requirements specification documents to ensure that any pragmatic ambiguity marked could not be reasonably inferred or resolved from the specification docu-ment itself. To support their assessment, novice, intermediate, and expert-level interpretations of each requirement, generated using GPT-4 [ 27 ], were provided; however, the experts were instructed to use these interpretations only as guidance and rely primarily on their own judgment. The prompts used to generate these interpreta-tions are shown in Figure 6. Cohen’s Kappa was computed to assess inter-annotator consistency, yielding a score of 0.89. In cases of disagreement, a senior domain expert with 15 years of experience as an industrial researcher in transportation systems reviewed the requirement and provided the final label. Each participant spent approximately three working days on this task, averaging two hours per day. None of the domain experts who participated in the annotation task, and later in the evaluation of the candidate resolutions (see Section 4.2.2), are co-authors of this paper. Their participation was voluntary, and no monetary compensation was provided. The experts were informed about the purpose of the study and contributed their time based on their professional interest in the research topic. A stratified split was performed, with 60% of the labelled dataset used for threshold calibration (see Section 4.3) and the remaining 40% held out for reporting the final pragmatic ambiguity detection results. You are a beginner in the domain of "{domain}".          
+
+> You have basic general knowledge but limited technical expertise. Read the requirement and explain what it means in your own words, focusing on asimple, literal interpretation.
+> System Prompt - Novice Interpretation
+> You are moderately experienced in the domain of " {domain}". You understand standard procedures and terminology, but are not an expert. Explain the following requirement in detail, including possible assumptions someone at your experience level might make.
+> System Prompt - Intermediate Interpretation
+> You are highly experienced in the domain of " {domain}", with deep technical knowledge and understanding of best practices, standards, and regulations. Interpret the following requirement in detail, including any implicit assumptions or technical specifications an expert would consider.
+> System Prompt - Expert Interpretation Requirement: "{Requirement}"
+> User Prompt - Novice/Intermediate/Expert Interpretation
+> {domain} = " transportation and environmental
+> monitoring systems" for the Clarus Weather
+> System Design document and " vehicle
+> infrastructure integration and traffic
+> management systems" for the MDOT VII DUAP
+> document
+
+Figure 6: Prompts Used to Generate Novice-, Intermediate-, and Expert-level Interpretations of Requirements to Support the Annotation of Pragmatic Ambiguities 
+
+WikiDoMiner [ 11 ] was used to construct 𝐾 𝑁 , 𝐾 𝐼 , and 𝐾 𝐸 by ex-tracting the top-𝐾 keywords from each requirements specification using TF-IDF scoring and querying Wikipedia at three depth levels. For the Clarus document, 𝐾 𝑁 was populated with 99 Wikipedia pages, 𝐾 𝐼 with 5,385 pages, and 𝐾 𝐸 with 31,774 pages. For the VII DUAP document, 𝐾 𝑁 included 161 pages, 𝐾 𝐼 included 20,188 pages, and 𝐾 𝐸 included 45,722 pages. For novice-level retrieval (depth = 0), only pages matching the extracted keywords were included. Intermediate-level retrieval (depth = 1) expanded to include pages from categories associated with the keyword-matched articles, and expert-level retrieval (depth = 2) further incorporated pages from subcategories of these articles. For example, Clarus keywords such as “weather forecasting” and “road condition observation” were used to retrieve corresponding Wikipedia articles; associated cate-gories included “Environmental Monitoring” and “Transport,” while EASE ’26, June 09–12, 2026, Glasgow, United Kingdom Nair and Anish 
+
+subcategories extended to “Environmental Impact Assessment” and “Transport Infrastructure.” 
+
+4.2 Evaluation Metrics 
+
+We employ the following evaluation metrics to assess the perfor-mance of the approach: 
+
+4.2.1 Detection of Pragmatic Ambiguity. We compute accuracy, pre-cision, recall, and the F1 and F2 scores for all experiments. Given the potential consequences of failing to identify pragmatic ambigu-ities during requirement implementation, it is crucial to minimize missed detections (false negatives). The F2 score places greater emphasis on recall, which is critical in ensuring that pragmatic ambiguities are identified and addressed. 
+
+4.2.2 Candidate Resolutions. The ISO/IEC/IEEE 29148:2018 stan-dard [ 1] outlines essential quality characteristics for individual requirements, highlighting the importance of lack of ambiguity, clarity, and consistency. To align with these principles and assess the quality of candidate resolutions, we employ three primary eval-uation metrics: 
+
+• Relevance : This metric assesses how well the suggested reso-lution addresses the identified pragmatic ambiguity. A reso-lution is deemed relevant if it directly addresses the specific pragmatic ambiguity. 
+
+• Clarity : Clarity measures the ease with which the resolution can be understood by stakeholders. A resolution is consid-ered clear if it is easily understandable and presents the solution in a straightforward manner. 
+
+• Consistency : Consistency evaluates how well the resolution aligns with the overall context of the requirements specifica-tion document. A consistent resolution does not introduce contradictions when integrated with other parts of the re-quirements specification document. The same two domain experts employed in the initial annota-tion of pragmatic ambiguities independently rated each candidate resolution on these metrics using a 3-point scale: 3 if the resolution fully met the criterion, 2 if it partially met the criterion, and 1 if it failed to meet the criterion. The evaluators were provided with the pragmatically ambiguous requirement, the detected ambiguous terms, the generated EQs, the requirements specification document, and the candidate resolution. Inter-annotator agreement was calcu-lated using weighted Cohen’s Kappa across all metrics, yielding an overall agreement score of 0.77. 
+
+4.3 Threshold Calibration 
+
+A critical component of the pragmatic ambiguity detection phase is determining the similarity threshold 𝑇 , which governs whether interpretations retrieved from 𝐾 𝑁 , 𝐾 𝐼 , and 𝐾 𝐸 are considered consis-tent (see Section 3.4). If all pairwise cosine similarity scores within a group of interpretations exceed 𝑇 , the requirement is classified as pragmatically unambiguous. To identify an appropriate value for 𝑇 , we performed stratified 5-fold cross-validation on the training split (60% of the dataset). For each fold, we swept threshold values in the range 0.70–0.98, incre-menting by 0.01, and computed the F2 score. The optimal threshold for each fold was selected as the value of 𝑇 that maximized the F2 score. The final threshold was then computed as the mean of the fold-level optimal thresholds. This process was repeated inde-pendently for each of the four LLMs used in our experiments. The models and their corresponding calibrated thresholds are reported in Table 1. 
+
+Table 1: Calibrated Thresholds for LLMs Used in Pragmatic Ambiguity Detection Model GPT-4o-mini Llama-3.1-8B Mistral-7B Qwen2.5-7B 
+
+Threshold 0.87 0.85 0.82 0.86 
+
+5 Results and Analysis 5.1 Pragmatic Ambiguity Detection (RQ 1)
+
+The pragmatic ambiguity detection results for Clarus Weather Sys-tem Design and MDOT VII DUAP requirements specification docu-ments are presented in Table 2. For Clarus, GPT-4o-mini achieved the highest F2 score (0.74). Mistral-7B and Qwen2.5-7B showed moderate performance. For the MDOT VII DUAP document, GPT-4o-mini and Qwen2.5-7B performed similarly, achieving the highest F2 scores (0.76). False positives occur when requirements reference external doc-uments or agreements not included in the domain knowledge bases. Trivial ambiguities, where the impact of detected ambiguous terms on overall requirement clarity is minimal, also contribute. False negatives typically occur when ambiguous terms are missed during EQGen or when domain knowledge base interpretations are vague. In such cases, the domain interpretations may fail to provide clear answers to the EQ, yet are sufficiently similar to evade detection. Table 3 provides illustrative examples of these error cases. 
+
+Answer to RQ 1
+
+Overall, these results indicate that the proposed approach can 
+
+Table 2: Pragmatic Ambiguity Detection Results for the Clarus Weather System Design and MDOT VII DUAP Docu-ments Model Macro Accuracy Macro Precision Macro Recall Macro F1 Macro F2 Clarus Weather System Design GPT-4o-mini 0.75 0.73 0.75 0.73 0.74 
+
+Llama-3.1-8B 0.64 0.6 0.6 0.6 0.6 Mistral-7B 0.66 0.63 0.64 0.63 0.64 Qwen2.5-7B 0.68 0.63 0.6 0.61 0.6 
+
+MDOT VII Data Use Analysis and Processing GPT-4o-mini 0.8 0.76 0.76 0.76 0.76 
+
+Llama-3.1-8B 0.65 0.6 0.61 0.6 0.6 Mistral-7B 0.67 0.61 0.62 0.61 0.62 
+
+Qwen-2.5-7B 0.8 0.76 0.76 0.76 0.76 Detecting and Resolving Pragmatic Ambiguities in NLRs EASE ’26, June 09–12, 2026, Glasgow, United Kingdom 
+
+Table 3: Analysis of Pragmatic Ambiguity Detection Results Requirement Ambiguous Term Generated Elucidation Question Result Explanation 
+
+The DUAP Output Services shall be able to publish traffic data to TMS using the TMS interface format. TMS inter-face format Can you provide more details about the specific format used for publishing traffic data to TMS, such as the data structure and any required standards or guidelines? False Positive Dependence on external agreement/document The information browsers shall pro-vide a means for users to select be-tween Metric and English units of measurement for display. shall pro-vide Is it necessary for the system to provide a built-in UI control for unit selection, or can users make this choice through other established methods within the browser (e.g., settings)? False Positive Irrelevant EQ The DUAP System shall allow data to be accessed as soon as it is cached. cached What defines the ‘cache’ in this context? Is it a buffer, temporary storage, or a specific layer in the system architecture? False Positive Trivial ambiguity The DUAP Computational Services shall be able to derive pothole sever-ity from probe vehicle data. N/A N/A False Negative No ambiguous terms were identified The Clarus system shall be able to detect data submission errors. data sub-mission errors What specific types of data submission errors should the system be able to detect (e.g., format-ting errors, missing fields, validation errors)? False Negative Ambiguous term cor-rectly identified, but do-main knowledge bases provided vague yet sim-ilar interpretations effectively detect pragmatic ambiguities, while the observed error cases highlight limitations related to EQGen and the availability of domain knowledge bases with sufficient varia-tion to surface interpretation differences. 
+
+5.2 Pragmatic Ambiguity Resolution (RQ 2)
+
+The pragmatic ambiguity resolution results are presented in Table 4. Evaluation was performed on the candidate resolutions generated for all requirements labelled as pragmatically ambiguous in the ground truth datasets. For Clarus, Mistral-7B achieved the high-est scores for Clarity (2.95) and Consistency (2.93). GPT-4o-mini achieved the highest Relevance score (2.53), showing strong per-formance in directly addressing the identified ambiguities. Llama-3.1-8B and Qwen2.5-7B showed slightly lower performance across the three metrics. For MDOT, GPT-4o-mini achieved the highest 
+
+Relevance score (2.81). Mistral-7B achieved the highest Clarity (2.91) and Consistency (3.0) scores. Llama-3.1-8B and Qwen2.5-7B showed moderate performance across all three metrics. A few challenges were observed during the generation of can-didate resolutions. Some resolutions introduced unnecessary com-plexity or speculative language that was not present in the original requirement. In certain cases, a resolution successfully addressed the existing ambiguity but inadvertently changed the original mean-ing or introduced new ambiguities. Other resolutions only partially resolved the underlying pragmatic ambiguity, leaving residual un-certainty. Table 5 provides illustrative examples of these issues. 
+
+Answer to RQ 2
+
+Overall, the results indicate that the proposed approach can 
+
+Table 4: Human Evaluation Scores for Candidate Resolutions on the Clarus Weather System Design and MDOT VII DUAP Documents. Values are mean ± standard deviation. Model Relevance Clarity Consistency Clarus Weather System Design 
+
+GPT-4o-mini 2.53 ± 0.72 2.82 ± 0.45 2.88 ± 0.33 Llama-3.1-8B 2.46 ± 0.81 2.91 ± 0.37 2.85 ± 0.48 
+
+Mistral-7B 2.47 ± 0.64 2.95 ± 0.23 2.93 ± 0.25 
+
+Qwen2.5-7B 2.41 ± 0.73 2.73 ± 0.44 2.91 ± 0.29 
+
+MDOT VII Data Use Analysis and Processing 
+
+GPT-4o-mini 2.81 ± 0.75 2.77 ± 0.53 2.85 ± 0.51 Llama-3.1-8B 2.72 ± 0.60 2.68 ± 0.61 2.78 ± 0.57 
+
+Mistral-7B 2.71 ± 0.56 2.91 ± 0.33 3.00 ± 0.00 
+
+Qwen2.5-7B 2.71 ± 0.56 2.83 ± 0.46 2.91 ± 0.36 generate candidate resolutions that are relevant, clear, and consistent with the intended system functionality, while high-lighting the need for RA validation to avoid unnecessary com-plexity or unintended changes in meaning. 
+
+6 Threats to Validity 
+
+The threats and limitations of our approach can be categorized into three main areas: internal, construct, and external validity. EASE ’26, June 09–12, 2026, Glasgow, United Kingdom Nair and Anish 
+
+Table 5: Analysis of Pragmatic Ambiguity Resolution Results Pragmatically Ambiguous Requirement Ambiguous Term(s) Generated Elucidation Question(s) Candidate Resolution (‘...’ indicates text has been short-ened) Explan-ation 
+
+The DUAP Com-putational Services shall be able to de-rive pothole loca-tion from probe ve-hicle data. pothole location What specific criteria or measurements will define a ’pothole’ for the purpose of this system? The DUAP Computational Services shall be able to derive pothole locations defined as depressions in the road surface, where the underlying soil is weakened by moisture and traffic, from probe vehicle data, using specific criteria that measure size, depth, and surface conditions according to standard road assessment methodologies. Partial resolution The DUAP System shall be able to cal-culate measures of effectiveness. measures of effectiveness What specific metrics or in-dicators should the DUAP System calculate, and how will these be defined? The DUAP System shall calculate the following specific mea-sures of effectiveness: Daylight Autonomy (DA)...100 lux as UDI-s and those above 3000 lux as UDI-e. Misaligned with original intent The DUAP System shall archive cached data. archive What specific criteria and retention policies should be applied to the archived cached data? The DUAP System shall archive cached data according to specified criteria and retention policies, ensuring compliance with relevant legal and business data archival requirements. The cached data, both raw and derived, shall be retained for a minimum of one week and then subjected to defined actions at the end of the retention period, including secure deletion or further archiving as per established guidelines. Introduces new ambiguity and unnecessary complexity 
+
+6.1 Internal Validity 
+
+Our approach models only three levels of domain knowledge, which may not capture the full range of possible stakeholder interpreta-tions that could arise in practice. The retrieval parameters were set experimentally to balance performance and computational effi-ciency. Specifically, we used the top 5 results from 𝐾 𝑅 for EQGen (see Section 3.2), the top 3 from each domain knowledge base (see Section 3.4), and the top 3 from both 𝐾 𝑅 and 𝐾 𝐸 for resolution generation (see Section 3.5). These parameter choices may affect detection outcomes. In the ground truth dataset labelling, domain experts may not have been fully able to capture where a stakeholder with novice or intermediate domain knowledge might interpret a requirement differently, even with GPT-4-generated interpreta-tions at multiple domain expertise levels for guidance. Furthermore, providing GPT-4-generated interpretations during annotation may have introduced bias, as experts could have been anchored to the perspectives presented by the model rather than independently arriving at their own assessments. 
+
+6.2 Construct Validity 
+
+Candidate resolution quality is assessed using human evaluations on Relevance , Clarity , and Consistency . These metrics inherently rely on subjective judgment by domain experts. To mitigate this, we employed multiple experts, computed inter-annotator agreement, and provided structured evaluation guidelines for the evaluation of pragmatic ambiguity resolution. Even so, some dimensions of pragmatic ambiguity may not be fully captured by these three metrics. 
+
+6.3 External Validity 
+
+The applicability of our findings may be influenced by the spe-cific requirements specification documents and domain knowledge bases used in this study. We evaluated two distinct transportation-related documents. Pragmatic ambiguity detection and resolution outcomes could vary in other domains or contexts. To reduce this threat, the two documents were selected from different sub-domains within transportation to introduce some variation in terminology and domain context. Future studies should validate the approach on documents from domains such as healthcare, finance, and indus-trial software, and on larger datasets to assess generalizability and reduce the risk of threshold overfitting. 
+
+7 Conclusion 
+
+We present a RAG-based framework for detecting and resolving pragmatic ambiguities in NLRs by simulating stakeholder interpre-tations across novice, intermediate, and expert domain knowledge bases. Requirements whose interpretations diverge across exper-tise levels are flagged as pragmatically ambiguous, and candidate resolutions are proposed for RA validation. To assess the effectiveness of our approach, we use four mod-els: GPT-4o-mini, Llama-3.1-8B, Mistral-7B, and Qwen2.5-7B, on a dataset comprising two requirements specification documents. GPT-4o-mini outperformed the other models in detecting pragmatic ambiguities and achieved the highest human evaluation scores for 
+
+Relevance in pragmatic ambiguity resolution. Mistral-7B achieved the highest human evaluation scores for Clarity and Consistency .Overall, the results indicate that the proposed approach is effective in detecting pragmatic ambiguities and generating candidate reso-lutions that are judged by domain experts to be relevant, clear, and consistent with the intended system functionality. For future work, we plan to extend the framework by integrating stakeholder feedback loops, allowing the system to refine candidate resolutions based on the preferences of multiple stakeholders. We also aim to model conflicting priorities among stakeholders, so that disambiguation can account for trade-offs between competing goals, Detecting and Resolving Pragmatic Ambiguities in NLRs EASE ’26, June 09–12, 2026, Glasgow, United Kingdom 
+
+such as safety, cost, or performance. Additionally, we will explore how organizational context influences requirement interpretation, enabling the framework to adapt its recommendations to different procedural or institutional norms. 
+
+References 
+
+[1] 2018. ISO/IEC/IEEE 29148:2018 – Systems and Software Engineering — Life Cycle Processes — Requirements Engineering. https://www.iso.org/standard/72089. html Accessed: 2025-09-27. [2] Mistral AI. 2023. Mistral 7B: A 7 Billion Parameter Language Model. https: //mistral.ai/news/announcing-mistral-7b Accessed: 2025-01-01. [3] D. M. Berry, E. Kamsties, and M. M. Krieger. 2003. From contract drafting to software specification: linguistic sources of ambiguity. https://cs.uwaterloo.ca/ ~dberry/handbook/ambiguityHandbook.pdf. Accessed: 2025-01-01. [4] Barry W Boehm, Chris Abts, A Winsor Brown, Sunita Chulani, Bradford K Clark, Ellis Horowitz, Ray Madachy, Donald J Reifer, and Bert Steece. 2009. Software cost estimation with COCOMO II . Prentice Hall Press. [5] F. Chantree, Bashar Nuseibeh, Anne De Roeck, and Alistair Willis. 2006. Iden-tifying Nocuous Ambiguities in Natural Language Requirements. Proceedings of 14th IEEE International Requirements Engineering Conference (RE’06) , 59 – 68. doi:10.1109/RE.2006.31 [6] Michelene TH Chi, Paul J Feltovich, and Robert Glaser. 1981. Categorization and representation of physics problems by experts and novices. Cognitive science 5, 2 (1981), 121–152. [7] Michael Christel and Kyo Kang. 1992. Issues in Requirements Elicitation . Tech-nical Report CMU/SEI-92-TR-012. https://www.sei.cmu.edu/library/issues-in-requirements-elicitation/ Accessed: 2025-09-26. [8] D.A. Cruse. 1986. Lexical Semantics . Cambridge University Press. https://books. google.co.in/books?id=xDSBaet2uSsC [9] Alan Davis, Scott Overmyer, Kathleen Jordan, Joseph Caruso, Fatma Dandashi, Anhtuan Dinh, Gary Kincaid, Glen Ledeboer, Patricia Reynolds, Pradip Sitaram, et al . 1993. Identifying and measuring quality in a software requirements specifi-cation. In [1993] Proceedings First International Software Metrics Symposium . Ieee, 141–152. [10] Saad Ezzini, Sallam Abualhaija, Chetan Arora, and Mehrdad Sabetzadeh. 2022. Automated Handling of Anaphoric Ambiguity in Requirements: A Multi-solution Study. In 2022 IEEE/ACM 44th International Conference on Software Engineering (ICSE) . 187–199. doi:10.1145/3510003.3510157 [11] Saad Ezzini, Sallam Abualhaija, and Mehrdad Sabetzadeh. 2022. WikiDoMiner: wikipedia domain-specific miner. In Proceedings of the 30th ACM Joint European Software Engineering Conference and Symposium on the Foundations of Software Engineering (Singapore, Singapore) (ESEC/FSE 2022) . Association for Computing Machinery, New York, NY, USA, 1706–1710. doi:10.1145/3540250.3558916 [12] Henning Femmer. 2018. Requirements Quality Defect Detection with the Qualicen Requirements Scout. In REFSQ Workshops .[13] Henning Femmer, Daniel Méndez Fernández, Stefan Wagner, and Sebastian Eder. 2017. Rapid quality assurance with Requirements Smells. Journal of Systems and Software 123 (2017), 190–213. doi:10.1016/j.jss.2016.02.047 [14] Alessio Ferrari and Andrea Esuli. 2019. An NLP approach for cross-domain am-biguity detection in requirements engineering. Automated Software Engineering 
+
+26 (2019), 559 – 598. [15] Alessio Ferrari, Gloria Gori, Benedetta Rosadini, Iacopo Trotta, Stefano Bacherini, Alessandro Fantechi, and Stefania Gnesi. 2018. Detecting requirements defects with NLP patterns: an industrial experience in the railway domain. Empirical Software Engineering 23 (2018), 3684 – 3733. [16] Alessio Ferrari, Giuseppe Lipari, Stefania Gnesi, and Giorgio O. Spagnolo. 2014. Pragmatic ambiguity detection in natural language requirements. In 2014 IEEE 1st International Workshop on Artificial Intelligence for Requirements Engineering (AIRE) . 1–8. doi:10.1109/AIRE.2014.6894849 [17] Alessio Ferrari, Giorgio Oronzo Spagnolo, and Stefania Gnesi. 2017. PURE: A Dataset of Public Requirements Documents. 2017 IEEE 25th International Requirements Engineering Conference (RE) (2017), 502–505. [18] Stefania Gnesi. 2012. Using collective intelligence to detect pragmatic ambigui-ties. 2012 20th IEEE International Requirements Engineering Conference, RE 2012 -Proceedings , 191–200. doi:10.1109/RE.2012.6345803 [19] Vaibhav Jain, Ruchika Malhotra, Sanskar Jain, and Nishant Tanwar. 2020. Cross-Domain Ambiguity Detection using Linear Transformation of Word Embedding Spaces. arXiv:1910.12956 [cs.CL] https://arxiv.org/abs/1910.12956 [20] Mandar Joshi, Danqi Chen, Yinhan Liu, Daniel S. Weld, Luke Zettlemoyer, and Omer Levy. 2020. SpanBERT: Improving Pre-training by Representing and Predicting Spans. Transactions of the Association for Computational Linguistics 8(2020), 64–77. doi:10.1162/tacl_a_00300 [21] Giuseppe Lami, Mario Fusani, and Gianluca Trentanni. 2019. QuARS: A Pioneer Tool for NL Requirement Analysis . Springer International Publishing, Cham, 211–219. doi:10.1007/978-3-030-30985-5_13 [22] Xiaoli Lian, Mona Rahimi, Jane Cleland-Huang, Li Zhang, Remo Ferrai, and Michael Smith. 2016. Mining Requirements Knowledge from Collections of Domain Documents. In 2016 IEEE 24th International Requirements Engineering Conference (RE) . 156–165. doi:10.1109/RE.2016.50 [23] Aaron Massey, Richard Rutledge, Annie Antón, and Peter Swire. 2014. Identi-fying and classifying ambiguity for regulatory requirements. 2014 IEEE 22nd International Requirements Engineering Conference, RE 2014 - Proceedings , 83–92. doi:10.1109/RE.2014.6912250 [24] Meta. 2024. Llama 3.1: Our Most Capable Models to Date. https://ai.meta.com/ blog/meta-llama-3-1/ Accessed: 2025-01-01. [25] David Milne, Olena Medelyan, and Ian H Witten. 2006. Mining domain-specific thesauri from wikipedia: A case study. In 2006 IEEE/WIC/ACM International Conference on Web Intelligence (WI 2006 Main Conference Proceedings)(WI’06) .IEEE, 442–448. [26] Roberto Navigli and Simone Paolo Ponzetto. 2012. BabelNet: The automatic con-struction, evaluation and application of a wide-coverage multilingual semantic network. Artificial intelligence 193 (2012), 217–250. [27] OpenAI. 2023. GPT-4 Technical Report. arXiv preprint arXiv:2303.08774 (2023). https://cdn.openai.com/papers/gpt-4.pdf [28] OpenAI. 2024. GPT-4o mini: Advancing Cost-Efficient Intelligence. https:// openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/ Accessed: 2025-01-01. [29] OpenAI. 2024. New embedding models and API updates. https://openai.com/ index/new-embedding-models-and-api-updates/. Accessed: 2025-09-27. [30] James Phoenix and Mike Taylor. 2024. Prompt Engineering for Generative AI: Future-Proof Inputs for Reliable AI Outputs . O’Reilly Media, Sebastopol, CA. [31] Pinecone Systems, Inc. 2025. Pinecone: Scalable Vector Database. https://www. pinecone.io/. Accessed: 2025-09-27. [32] QwenLM. 2024. Qwen2.5: A Party of Foundation Models! https://qwenlm.github. io/blog/qwen2.5/ Accessed: 2025-01-01. [33] Danissa V. Rodriguez, Doris L. Carver, and Anas Mahmoud. 2018. An efficient wikipedia-based approach for better understanding of natural language text related to user requirements. In 2018 IEEE Aerospace Conference . 1–16. doi:10. 1109/AERO.2018.8396645 [34] Sri Fatimah Tjong and Daniel M. Berry. 2013. The Design of SREE — A Prototype Potential Ambiguity Finder for Requirements Specifications and Lessons Learned. In Requirements Engineering: Foundation for Software Quality , Joerg Doerr and Andreas L. Opdahl (Eds.). Springer Berlin Heidelberg, Berlin, Heidelberg, 80–95. [35] Óscar Dieste Tubío and Natalia Juristo Juzgado. 2011. Systematic review and aggregation of empirical studies on elicitation techniques. IEEE Transactions on Software Engineering 37 (2011), 283–304. [36] Didar Zowghi and Chad Coulin. 2005. Requirements Elicitation: A Survey of Techniques, Approaches, and Tools . Springer Berlin Heidelberg, Berlin, Heidelberg, 19–46. doi:10.1007/3-540-28244-0_2
