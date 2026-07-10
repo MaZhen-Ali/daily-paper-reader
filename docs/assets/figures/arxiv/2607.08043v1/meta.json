@@ -1,0 +1,46 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2607.08043v1/fig-001.webp",
+      "caption": "Figure 3: The current Aleena prototype interface. Stakeholders sign in with GitHub, upload a meeting document or paste a chat transcript, confirm the target repository, and select which analyses to run. Each analysis exposes an editable prompt so that researchers and RSEs can inspect and adjust how Aleena interprets the artifact before it produces GitHub-native outputs. A live run log makes the agent’s progress observable rather than opaque.",
+      "page": 4,
+      "index": 1,
+      "width": 506,
+      "height": 494
+    },
+    {
+      "url": "assets/figures/arxiv/2607.08043v1/fig-002.webp",
+      "caption": "Figure 2: End-to-end Aleena workflow, organized as five layers that move from interaction artifacts to project-state updates and back. Layer 1 captures meeting and chat transcripts; Layer 2 transforms them into structured GitHub artifacts (meeting summaries, issues, risks, and discussions); Layer 3 produces context-aware suggestions and draft pull requests grounded in prior interaction context; Layer 4 routes these outputs through stakeholder review and follow-up; and Layer 5 closes the loop by updating the project state ahead of the next meeting, feeding insights back into Layer 1.",
+      "page": 3,
+      "index": 2,
+      "width": 506,
+      "height": 342
+    },
+    {
+      "url": "assets/figures/arxiv/2607.08043v1/fig-003.webp",
+      "caption": "Figure 1: The RSE project lifecycle at and Aleena’s role across it. The top row shows the five phases (Pre-Selection, Selection, Scoping and Design, Implementation, Offboarding); the bottom row summarizes how Aleena supports each phase. Together they ground the four alignment challenges AC1– AC4 that recur throughout the lifecycle.",
+      "page": 2,
+      "index": 3,
+      "width": 506,
+      "height": 269
+    },
+    {
+      "url": "assets/figures/arxiv/2607.08043v1/fig-004.webp",
+      "caption": "Figure 4: Aleena first lists decision taking during the engagement. Next it creates action items asGitHub issues and assigns them to relevant stakeholders. Finally, it generates separate GitHub discussions for risks and links them to the meeting summary discussion as parent or related items.",
+      "page": 8,
+      "index": 4,
+      "width": 506,
+      "height": 518
+    },
+    {
+      "url": "assets/figures/arxiv/2607.08043v1/fig-005.webp",
+      "caption": "Figure 5: Aleena first determines action items that can be resolved using a draft PR. It then generates a draft PR and assigns it to a relevant owner for manual review and approval.",
+      "page": 8,
+      "index": 5,
+      "width": 506,
+      "height": 264
+    }
+  ]
+}

@@ -6,61 +6,55 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-07-09
-- 运行时间：2026-07-09 21:41:21 UTC
+- 最新运行日期：2026-07-10
+- 运行时间：2026-07-10 21:24:39 UTC
 - 运行状态：成功
-- 本次总论文数：13
-- 精读区：5
-- 速读区：8
+- 本次总论文数：11
+- 精读区：4
+- 速读区：7
 
 ### 今日简报（AI）
-聚焦需求工程前沿，今日深度解析了利用LLM生成验收准则及消除需求歧义等13项最新研究。
-重点关注Epic组织方式对Gherkin准则生成的显著影响，以及RAG框架在精准识别与修复需求语用歧义上的突破。
-建议开发者尝试将检索增强技术引入需求分析流程，以通过更清晰的输入降低代码生成中的逻辑偏差。
-- 详情：[/202607/09/README](/202607/09/README)
+今日聚焦 LLM 赋能的需求工程与自动化开发，深度剖析了汽车行业需求衔接及 Gherkin 验收标准生成的实证研究。
+研究指出按需求对齐（而非按史诗组织）能显著提升 AI 生成验收标准的质量，并强调了多智能体协作中不确定性感知对开发可靠性的重要性。
+建议优先研读需求工程中的 AI 应用范式，探索如何利用可验证编程与多阶段评估体系优化软件生命周期。
+- 详情：[/202607/10/README](/202607/10/README)
 
 ### 精读区论文标签
-1. [Epic-Organized vs. Requirement-Aligned Gherkin: An Empirical Evaluation of LLM-Based Acceptance Criteria Generation](/202607/09/2607.01980v1-epic-organized-vs-requirement-aligned-gherkin-an-empirical-evaluation-of-llm-based-acceptance-criteria-generation)  
-   标签：评分：10.0/10、query:re-us
-   evidence：基于大语言模型从需求中生成 Gherkin 验收标准
-2. [A Retrieval-Augmented Framework for Detecting and Resolving Pragmatic Ambiguities in Natural Language Requirements](/202607/09/2607.04436v1-a-retrieval-augmented-framework-for-detecting-and-resolving-pragmatic-ambiguities-in-natural-language-requirements)  
+1. [Epic-Organized vs. Requirement-Aligned Gherkin: An Empirical Evaluation of LLM-Based Acceptance Criteria Generation](/202607/10/2607.01980v1-epic-organized-vs-requirement-aligned-gherkin-an-empirical-evaluation-of-llm-based-acceptance-criteria-generation)  
    标签：评分：9.0/10、query:re-us
-   evidence：检测并解决自然语言需求中的歧义
-3. [Bridging Stakeholder and Product Requirements: An Empirical Study of Requirement Engineering in the Automotive Industry](/202607/09/2607.05632v1-bridging-stakeholder-and-product-requirements-an-empirical-study-of-requirement-engineering-in-the-automotive-industry)  
+   evidence：从需求中自动生成和评估 Gherkin 验收标准
+2. [Bridging Stakeholder and Product Requirements: An Empirical Study of Requirement Engineering in the Automotive Industry](/202607/10/2607.05632v1-bridging-stakeholder-and-product-requirements-an-empirical-study-of-requirement-engineering-in-the-automotive-industry)  
    标签：评分：9.0/10、query:re-us
-   evidence：需求工程与细化的实证研究
-4. [BT-APE: A Computationally Light Backtracking Approach to Automatic Prompt Engineering for Requirements Classification](/202607/09/2607.00427v1-bt-ape-a-computationally-light-backtracking-approach-to-automatic-prompt-engineering-for-requirements-classification)  
+   evidence：需求获取、细化和转换的实证研究
+3. [A Retrieval-Augmented Framework for Detecting and Resolving Pragmatic Ambiguities in Natural Language Requirements](/202607/10/2607.04436v1-a-retrieval-augmented-framework-for-detecting-and-resolving-pragmatic-ambiguities-in-natural-language-requirements)  
    标签：评分：8.0/10、query:re-us
-   evidence：用于需求分类的自动提示工程
-5. [UA-ChatDev: Uncertainty-Aware Multi-Agent Collaboration for Reliable Software Development](/202607/09/2607.02186v1-ua-chatdev-uncertainty-aware-multi-agent-collaboration-for-reliable-software-development)  
+   evidence：检测并解决自然语言需求中的语用歧义
+4. [From Regulation to Requirements: An Automated Requirement Derivation and Explanation Pipeline](/202607/10/2607.04448v1-from-regulation-to-requirements-an-automated-requirement-derivation-and-explanation-pipeline)  
    标签：评分：8.0/10、query:re-us
-   evidence：多智能体系统中的自动化需求分析与细化
+   evidence：从监管文本中自动推导需求
 
 ### 速读区论文标签
-1. [ClarifyCodeBench: Evaluating LLMs on Clarifying Ambiguous Requirements for Code Generation](/202607/09/2607.00711v1-clarifycodebench-evaluating-llms-on-clarifying-ambiguous-requirements-for-code-generation)  
+1. [UA-ChatDev: Uncertainty-Aware Multi-Agent Collaboration for Reliable Software Development](/202607/10/2607.02186v1-ua-chatdev-uncertainty-aware-multi-agent-collaboration-for-reliable-software-development)  
    标签：评分：7.0/10、query:re-us
-   evidence：解决需求歧义与需求获取
-2. [A Capacity-Aware Parr Model for Agile Projects](/202607/09/2607.01562v1-a-capacity-aware-parr-model-for-agile-projects)  
+   evidence：多代理软件开发以自动化需求分析
+2. [Guiding Human Validation of LLM-Generated Code via Verifiable Literate Programming](/202607/10/2607.02333v1-guiding-human-validation-of-llm-generated-code-via-verifiable-literate-programming)  
    标签：评分：7.0/10、query:re-us
-   evidence：敏捷项目的容量感知预测
-3. [Prompt Coverage Adequacy](/202607/09/2607.02057v1-prompt-coverage-adequacy)  
+   evidence：根据用户意图和未明确的需求验证代码
+3. [Three-Phase Evaluation of AI-Assisted Software Development Life Cycle](/202607/10/2607.05125v1-three-phase-evaluation-of-ai-assisted-software-development-life-cycle)  
    标签：评分：7.0/10、query:re-us
+   evidence：AI 自主权对软件开发生命周期中需求遵守的影响
+4. [Large Language Models Have Unreliable Understanding of Software Engineering Terminology](/202607/10/2607.06004v1-large-language-models-have-unreliable-understanding-of-software-engineering-terminology)  
+   标签：评分：7.0/10、query:re-us
+   evidence：大模型对标准化软件工程术语的理解
+5. [Prompt Coverage Adequacy](/202607/10/2607.02057v1-prompt-coverage-adequacy)  
+   标签：评分：6.0/10、query:re-us
    evidence：测试根据任务描述和意图生成的代码
-4. [From Regulation to Requirements: An Automated Requirement Derivation and Explanation Pipeline](/202607/09/2607.04448v1-from-regulation-to-requirements-an-automated-requirement-derivation-and-explanation-pipeline)  
-   标签：评分：7.0/10、query:re-us
-   evidence：从监管文本中自动推导需求
-5. [The agent creates, we validate: A Lightweight Framework for Agentic Artifact Generation](/202607/09/2607.02615v1-the-agent-creates-we-validate-a-lightweight-framework-for-agentic-artifact-generation)  
+6. [Aleena: Alignment Agent for Research Software Engineering Collaborations](/202607/10/2607.08043v1-aleena-alignment-agent-for-research-software-engineering-collaborations)  
    标签：评分：6.0/10、query:re-us
-   evidence：使用大模型验证生成产物的框架
-6. [Three-Phase Evaluation of AI-Assisted Software Development Life Cycle](/202607/09/2607.05125v1-three-phase-evaluation-of-ai-assisted-software-development-life-cycle)  
+   evidence：代理AI支持利益相关者对齐和项目意图跟踪
+7. [ASMR: Agentic Schema Generation for Ship Maintenance Report Writing](/202607/10/2607.08177v1-asmr-agentic-schema-generation-for-ship-maintenance-report-writing)  
    标签：评分：6.0/10、query:re-us
-   evidence：AI辅助开发中需求遵守情况的评估
-7. [Reliable and Developer-Aligned Evaluation of Agents for Software Engineering](/202607/09/2607.06713v1-reliable-and-developer-aligned-evaluation-of-agents-for-software-engineering)  
-   标签：评分：6.0/10、query:re-us
-   evidence：基于真实软件实践的代理评估
-8. [LLM Assisted Verification Assertion Generation: Challenges and Future Directions](/202607/09/2607.07444v1-llm-assisted-verification-assertion-generation-challenges-and-future-directions)  
-   标签：评分：6.0/10、query:re-us
-   evidence：从设计规范生成验证断言
+   evidence：从历史叙述中提取信息需求
 
 
 <div class="dpr-home-promo-card">

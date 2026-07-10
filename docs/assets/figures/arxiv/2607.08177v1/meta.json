@@ -1,0 +1,38 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2607.08177v1/fig-001.webp",
+      "caption": "Table 2: Schema quality evaluation metrics.",
+      "page": 6,
+      "index": 1,
+      "width": 543,
+      "height": 281
+    },
+    {
+      "url": "assets/figures/arxiv/2607.08177v1/fig-002.webp",
+      "caption": "Figure 1: Overview of the proposed ASMR framework consisting of a Field Generator Agent for semantic concept extraction and candidate field generation, and a Structural Optimizer Agent for RL-based schema optimization.",
+      "page": 3,
+      "index": 2,
+      "width": 1056,
+      "height": 475
+    },
+    {
+      "url": "assets/figures/arxiv/2607.08177v1/fig-003.webp",
+      "caption": "Figure 2: Example snapshot of the Field Generator Agent. The agent extracts semantic concepts and generates candidate schema fields for downstream schema optimization.",
+      "page": 4,
+      "index": 3,
+      "width": 506,
+      "height": 338
+    },
+    {
+      "url": "assets/figures/arxiv/2607.08177v1/fig-004.webp",
+      "caption": "Figure 3: Example snapshot of the Structural Optimizer Agent operating in a stochastic RL environment for schema optimization.",
+      "page": 5,
+      "index": 4,
+      "width": 583,
+      "height": 329
+    }
+  ]
+}
