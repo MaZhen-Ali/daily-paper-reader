@@ -1,0 +1,46 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2607.06613v1/fig-001.webp",
+      "caption": "TABLE III LIST OF SELU AND SUPERGLUE TASKS TO EVALUATE DOMAIN ADAPTATION AND GENERAL-LANGUAGE UNDERSTANDING. FOR SELU, ALL CLASSIFICATION TASKS USE F1-MACRO AND story points USES SMAPE AS EVALUATION METRIC. FOR SUPERGLUE, cb USES BOTH ACCURACY AND F1-MACRO, AND multirc USES EXACT MATCH AND ANSWER-LEVEL F1. THE REMAINING TASKS ONLY USE ACCURACY.",
+      "page": 6,
+      "index": 1,
+      "width": 1032,
+      "height": 581
+    },
+    {
+      "url": "assets/figures/arxiv/2607.06613v1/fig-002.webp",
+      "caption": "TABLE IV DOMAIN ADAPTATION RESULTS IN TERMS OF SELU SCORES. HIGHEST PP STANDS FOR THE HIGHEST POSTERIOR PROBABILITY FROM THE BAYESIAN-SIGNED RANK TEST, WHERE A CORRESPONDS TO THE OFFICIAL CHECKPOINT AND B THE DOMAIN-ADAPTED LM; THE ARROW INDICATES WHICH RELATION ATTAINS THIS MAXIMUM (↑ FOR P (B > A), ↓ FOR P (A > B), ≈ FOR P (A = B)). CELL SHADING ENCODES THE MAGNITUDE AND DIRECTION OF ∆SELU (BLUE = GAIN, RED = LOSS, INTENSITY SATURATING AT |∆SELU| = 10%); BOLDFACE MARKS DECISIVE COMPARISONS (HIGHEST PP ≥ 0.95). NON-BOLD POSTERIORS (< 0.95) INDICATE A DIRECTIONAL LEANING ONLY.",
+      "page": 8,
+      "index": 2,
+      "width": 1076,
+      "height": 331
+    },
+    {
+      "url": "assets/figures/arxiv/2607.06613v1/fig-003.webp",
+      "caption": "TABLE V GENERAL-LANGUAGE RESULTS IN TERMS OF SUPERGLUE SCORES. READING IS THE SAME AS FOR TABLE IV.",
+      "page": 8,
+      "index": 3,
+      "width": 1076,
+      "height": 320
+    },
+    {
+      "url": "assets/figures/arxiv/2607.06613v1/fig-004.webp",
+      "caption": "TABLE II LMS SELECTED FOR DOMAIN ADAPTATION AND THEIR CORRESPONDING PRE-TRAINING CONFIGURATION. FIRST COMPARTMENT: GENERALIST LMS. SECOND COMPARTMENT: CODE-FOCUSED LMS. TOKEN BUDGETS SEPARATED BY COMMA PRODUCE DIFFERENT CHECKPOINTS. BATCH SIZE IS GIVEN PER GPU. CODELLAMA 7B AND STARCODER2 7B RUN WITH GRADIENT CHECKPOINTING.",
+      "page": 4,
+      "index": 4,
+      "width": 1022,
+      "height": 489
+    },
+    {
+      "url": "assets/figures/arxiv/2607.06613v1/fig-005.webp",
+      "caption": "Fig. 1. Overview of the budget-alignment protocol. (a) Experiments comparable under the constant-token budget of 3.3B. (b) Experiments comparable under the compute-matched budget of 6.01 × e18 FLOPS, where LMs are pre-trained on different number of tokens but at approx. equal compute cost.",
+      "page": 5,
+      "index": 5,
+      "width": 517,
+      "height": 309
+    }
+  ]
+}

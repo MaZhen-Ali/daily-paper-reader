@@ -6,55 +6,49 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-07-10
-- 运行时间：2026-07-10 21:24:39 UTC
+- 最新运行日期：2026-07-12
+- 运行时间：2026-07-12 19:58:59 UTC
 - 运行状态：成功
-- 本次总论文数：11
-- 精读区：4
-- 速读区：7
+- 本次总论文数：9
+- 精读区：3
+- 速读区：6
 
 ### 今日简报（AI）
-今日聚焦 LLM 赋能的需求工程与自动化开发，深度剖析了汽车行业需求衔接及 Gherkin 验收标准生成的实证研究。
-研究指出按需求对齐（而非按史诗组织）能显著提升 AI 生成验收标准的质量，并强调了多智能体协作中不确定性感知对开发可靠性的重要性。
-建议优先研读需求工程中的 AI 应用范式，探索如何利用可验证编程与多阶段评估体系优化软件生命周期。
-- 详情：[/202607/10/README](/202607/10/README)
+今日精选 9 篇前沿论文，深度聚焦自然语言需求歧义消除与法规自动转化。
+重点推荐利用 RAG 框架精准识别需求歧义，以及通过自动化流水线实现从法规到软件需求的合规推导。
+建议关注 AI 在需求工程中的落地实践，尝试将大模型应用于复杂业务逻辑的合规性校验。
+- 详情：[/202607/12/README](/202607/12/README)
 
 ### 精读区论文标签
-1. [Epic-Organized vs. Requirement-Aligned Gherkin: An Empirical Evaluation of LLM-Based Acceptance Criteria Generation](/202607/10/2607.01980v1-epic-organized-vs-requirement-aligned-gherkin-an-empirical-evaluation-of-llm-based-acceptance-criteria-generation)  
+1. [A Retrieval-Augmented Framework for Detecting and Resolving Pragmatic Ambiguities in Natural Language Requirements](/202607/12/2607.04436v1-a-retrieval-augmented-framework-for-detecting-and-resolving-pragmatic-ambiguities-in-natural-language-requirements)  
    标签：评分：9.0/10、query:re-us
-   evidence：从需求中自动生成和评估 Gherkin 验收标准
-2. [Bridging Stakeholder and Product Requirements: An Empirical Study of Requirement Engineering in the Automotive Industry](/202607/10/2607.05632v1-bridging-stakeholder-and-product-requirements-an-empirical-study-of-requirement-engineering-in-the-automotive-industry)  
-   标签：评分：9.0/10、query:re-us
-   evidence：需求获取、细化和转换的实证研究
-3. [A Retrieval-Augmented Framework for Detecting and Resolving Pragmatic Ambiguities in Natural Language Requirements](/202607/10/2607.04436v1-a-retrieval-augmented-framework-for-detecting-and-resolving-pragmatic-ambiguities-in-natural-language-requirements)  
-   标签：评分：8.0/10、query:re-us
    evidence：检测并解决自然语言需求中的语用歧义
-4. [From Regulation to Requirements: An Automated Requirement Derivation and Explanation Pipeline](/202607/10/2607.04448v1-from-regulation-to-requirements-an-automated-requirement-derivation-and-explanation-pipeline)  
+2. [From Regulation to Requirements: An Automated Requirement Derivation and Explanation Pipeline](/202607/12/2607.04448v1-from-regulation-to-requirements-an-automated-requirement-derivation-and-explanation-pipeline)  
    标签：评分：8.0/10、query:re-us
-   evidence：从监管文本中自动推导需求
+   evidence：从法规文件中自动推导软件需求
+3. [Bridging Stakeholder and Product Requirements: An Empirical Study of Requirement Engineering in the Automotive Industry](/202607/12/2607.05632v1-bridging-stakeholder-and-product-requirements-an-empirical-study-of-requirement-engineering-in-the-automotive-industry)  
+   标签：评分：8.0/10、query:re-us
+   evidence：需求工程实践与细化的实证研究
 
 ### 速读区论文标签
-1. [UA-ChatDev: Uncertainty-Aware Multi-Agent Collaboration for Reliable Software Development](/202607/10/2607.02186v1-ua-chatdev-uncertainty-aware-multi-agent-collaboration-for-reliable-software-development)  
+1. [AutoCedar: An Agentic Framework for Verifier-Guided Access Control Policy Synthesis](/202607/12/2607.03656v1-autocedar-an-agentic-framework-for-verifier-guided-access-control-policy-synthesis)  
    标签：评分：7.0/10、query:re-us
-   evidence：多代理软件开发以自动化需求分析
-2. [Guiding Human Validation of LLM-Generated Code via Verifiable Literate Programming](/202607/10/2607.02333v1-guiding-human-validation-of-llm-generated-code-via-verifiable-literate-programming)  
+   evidence：自然语言需求转化为代码和意图原子
+2. [Three-Phase Evaluation of AI-Assisted Software Development Life Cycle](/202607/12/2607.05125v1-three-phase-evaluation-of-ai-assisted-software-development-life-cycle)  
    标签：评分：7.0/10、query:re-us
-   evidence：根据用户意图和未明确的需求验证代码
-3. [Three-Phase Evaluation of AI-Assisted Software Development Life Cycle](/202607/10/2607.05125v1-three-phase-evaluation-of-ai-assisted-software-development-life-cycle)  
+   evidence：AI自主性对软件开发生命周期中需求遵守情况的影响
+3. [Pre-Training on Software Engineering Texts: Effects on Domain Adaptation and General-Language Understanding](/202607/12/2607.06613v1-pre-training-on-software-engineering-texts-effects-on-domain-adaptation-and-general-language-understanding)  
    标签：评分：7.0/10、query:re-us
-   evidence：AI 自主权对软件开发生命周期中需求遵守的影响
-4. [Large Language Models Have Unreliable Understanding of Software Engineering Terminology](/202607/10/2607.06004v1-large-language-models-have-unreliable-understanding-of-software-engineering-terminology)  
+   evidence：理解软件工程文本制品
+4. [ASMR: Agentic Schema Generation for Ship Maintenance Report Writing](/202607/12/2607.08177v1-asmr-agentic-schema-generation-for-ship-maintenance-report-writing)  
    标签：评分：7.0/10、query:re-us
-   evidence：大模型对标准化软件工程术语的理解
-5. [Prompt Coverage Adequacy](/202607/10/2607.02057v1-prompt-coverage-adequacy)  
-   标签：评分：6.0/10、query:re-us
-   evidence：测试根据任务描述和意图生成的代码
-6. [Aleena: Alignment Agent for Research Software Engineering Collaborations](/202607/10/2607.08043v1-aleena-alignment-agent-for-research-software-engineering-collaborations)  
-   标签：评分：6.0/10、query:re-us
-   evidence：代理AI支持利益相关者对齐和项目意图跟踪
-7. [ASMR: Agentic Schema Generation for Ship Maintenance Report Writing](/202607/10/2607.08177v1-asmr-agentic-schema-generation-for-ship-maintenance-report-writing)  
-   标签：评分：6.0/10、query:re-us
    evidence：从历史叙述中提取信息需求
+5. [Is Three the Magic Number? An Empirical Evaluation of LLM-Based Repair Loops](/202607/12/2607.05197v1-is-three-the-magic-number-an-empirical-evaluation-of-llm-based-repair-loops)  
+   标签：评分：6.0/10、query:re-us
+   evidence：软件工程制品的自动修复循环
+6. [Aleena: Alignment Agent for Research Software Engineering Collaborations](/202607/12/2607.08043v1-aleena-alignment-agent-for-research-software-engineering-collaborations)  
+   标签：评分：6.0/10、query:re-us
+   evidence：在议题和聊天等制品中跟踪项目意图和基本原理
 
 
 <div class="dpr-home-promo-card">
