@@ -1,0 +1,38 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2607.10494v1/fig-001.webp",
+      "caption": "TABLE III EXAMPLES OF QUESTIONS, GENERATED ANSWERS, CORRESPONDING GROUND-TRUTH ANSWERS, AND CORRECTNESS OF THE GENERATED ANSWERS. REDACTED TEXT APPEARS IN SQUARE BRACKETS([]) AND IS HIGHLIGHTED IN RED.",
+      "page": 6,
+      "index": 1,
+      "width": 504,
+      "height": 356
+    },
+    {
+      "url": "assets/figures/arxiv/2607.10494v1/fig-002.webp",
+      "caption": "TABLE IV CORRECTNESS CRITERIA FOR GENERATED ANSWERS.",
+      "page": 6,
+      "index": 2,
+      "width": 518,
+      "height": 325
+    },
+    {
+      "url": "assets/figures/arxiv/2607.10494v1/fig-003.webp",
+      "caption": "Fig. 1. Overview of our LLM-based multimodal approach for technical video question answering (LMVQA)",
+      "page": 3,
+      "index": 3,
+      "width": 477,
+      "height": 600
+    },
+    {
+      "url": "assets/figures/arxiv/2607.10494v1/fig-004.webp",
+      "caption": "Fig. 2. Excerpt of an example showing how visual and audio content from a 5-second video is segmented into chunks.",
+      "page": 3,
+      "index": 4,
+      "width": 495,
+      "height": 365
+    }
+  ]
+}

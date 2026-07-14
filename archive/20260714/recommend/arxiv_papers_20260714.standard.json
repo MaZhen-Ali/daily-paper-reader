@@ -1,0 +1,326 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-07-14T21:33:10.487246+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 4,
+    "deep_cap": 6,
+    "deep_selected": 4,
+    "quick_candidates": 4,
+    "quick_skim_target": 11,
+    "quick_selected": 4
+  },
+  "deep_dive": [
+    {
+      "id": "2607.05632v1",
+      "source": "arxiv",
+      "title": "Bridging Stakeholder and Product Requirements: An Empirical Study of Requirement Engineering in the Automotive Industry",
+      "abstract": "The automotive industry's shift toward software-driven systems has increased system complexity and raised the importance of effective requirement intake and refinement for correctness, compliance, development speed, and systematic reuse. Although prior research has proposed techniques for improving requirement quality, limited empirical evidence exists on how stakeholder-level requirements are evaluated, refined, and transformed into product-level requirements in industrial automotive practice. This paper presents a large-scale empirical study based on an industrial dataset from Infineon, comprising 8,082 stakeholder requirements and 5,870 product requirements enriched with traceability links, decision outcomes, deviation rationales, and domain references. Using a mixed-methods approach, we combine quantitative analyses of requirement structures, decision distributions, and mapping patterns with qualitative analyses of rationales, referenced specifications, and software- and hardware-related artifacts. We investigate structural and contextual differences between stakeholder and product requirements, factors influencing acceptance, rejection, and approval with deviation, and the nature of stakeholder-to-product refinement. The results reveal systematic differences across abstraction levels and show that refinement complexity is driven primarily by architectural scope and missing contextual information rather than linguistic verbosity. We further derive a taxonomy of stakeholder-product mapping patterns and relate these patterns to differing refinement effort. The findings provide concrete insight into industrial requirements intake and refinement practices and identify actionable opportunities for improving intake validation, deviation management, and tool-supported contextual enrichment to support faster and more reusable automotive product development.",
+      "authors": [
+        "Zixu Wang",
+        "Shengcheng Yu",
+        "Zhenchang Xing",
+        "Tobias Wenzel",
+        "Chunyang Chen"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-07-06T20:48:37+00:00",
+      "link": "https://arxiv.org/pdf/2607.05632v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "empirical study of requirement intake, refinement, and transformation",
+      "llm_evidence_cn": "需求获取、细化和转换的实证研究",
+      "llm_evidence": "需求获取、细化和转换的实证研究",
+      "canonical_evidence": "需求获取、细化和转换的实证研究",
+      "llm_tldr_en": "An empirical study on transforming stakeholder requirements into product requirements in the automotive industry.",
+      "llm_tldr_cn": "关于汽车行业中将利益相关者需求转化为产品需求的实证研究。",
+      "llm_tldr": "关于汽车行业中将利益相关者需求转化为产品需求的实证研究。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.09900v1",
+      "source": "arxiv",
+      "title": "AfterVibe: What Remains When the Conversation Ends",
+      "abstract": "We present AfterVibe, a framework that recovers natural-language specifications from a vibe coding session. Given a code artifact and the conversation trajectory that produced it, AfterVibe uses an LLM to extract an abstract natural-language specification capturing the developer's intent, and validates it through a regeneration test: a second, blind AI agent re-implements the artifact from the spec alone, and the resulting code is graded against the original through a multi-tier validation pipeline. Spec quality is thus measured by whether an agent can regenerate passing code; if the verifiers deem the implementations equivalent the spec is considered strong, otherwise it is iteratively refined. Evaluating AfterVibe on 72 real-world vibe-coded projects from a company's internal coding sessions, we find that its recovered specs are abstract by design-capturing behavioral intent without dictating implementation-yet strong. Multiple independent regenerations achieve a high mean regeneration score of 5.06 out of 6.0 while remaining diverse in their details, confirming that the spec constrains what without over-prescribing how. Besides outperforming existing human-authored descriptions, the specs can be further strengthened iteratively to a score of 5.74. A practical implication is that specifications-not code-could become the primary artifact for human review and the source of record at a time when AI-generated code is outpacing customary code review.",
+      "authors": [
+        "Matteo Paltenghi",
+        "Satish Chandra"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-07-10T18:44:51+00:00",
+      "link": "https://arxiv.org/pdf/2607.09900v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "recovering natural-language specifications from coding sessions",
+      "llm_evidence_cn": "从编码会话中恢复自然语言规范",
+      "llm_evidence": "从编码会话中恢复自然语言规范",
+      "canonical_evidence": "从编码会话中恢复自然语言规范",
+      "llm_tldr_en": "Extracts and validates natural-language specifications from developer conversations and code artifacts.",
+      "llm_tldr_cn": "从开发人员对话和代码工件中提取并验证自然语言规范。",
+      "llm_tldr": "从开发人员对话和代码工件中提取并验证自然语言规范。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Automated extraction of user stories from text",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.10277v1",
+      "source": "arxiv",
+      "title": "From Business Requirements to Test Assertions: Evaluating LLM-Generated Oracles on Real Bugs",
+      "abstract": "The oracle problem (determining the correct expected outcome for a test) remains a major bottleneck in automated testing, and is increasingly relevant as non-experts rely on AI-generated code they cannot reliably validate. We study whether large language models (LLMs) can generate generalizable test oracles directly from natural-language business requirements, without access to source code or example input-output pairs. We propose a reproducible, requirement-driven pipeline grounded in Defects4J. For each of 10 real bugs from Defects4J Lang (Bugs 1 and 3-11), we (i) extract behavioral changes via buggy/fixed diffs, (ii) manually translate the change into a business requirement, (iii) construct a requirement-derived oracle (REQ) as a gold standard, and (iv) prompt five LLMs (DeepSeek-V3, Gemma-3n, Llama-3, Mistral-7B, and Qwen-3) to generate Java oracle code. We evaluate oracle correctness and generalization under two targets: agreement with REQ and agreement with the system under test (SUT), reporting macro-averaged accuracy, precision, recall, and F1. LLMs achieve non-trivial generalization but with substantial bug- and model-level variance. Generated oracles align more closely with REQ than with SUT, and correlations between requirement technicality/ambiguity ratings and oracle accuracy are weak with wide confidence intervals. No detectable linear relationship exists between requirement properties and oracle accuracy in this dataset, suggesting that pretraining coverage and the semantic specificity of the required behavior dominate oracle correctness. As a pilot proof of concept, these findings are preliminary and are intended to establish feasibility and motivate larger-scale empirical investigation.",
+      "authors": [
+        "Tiancheng Ma",
+        "Nasir U. Eisty"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-07-11T12:17:49+00:00",
+      "link": "https://arxiv.org/pdf/2607.10277v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "generate test oracles directly from natural-language business requirements",
+      "llm_evidence_cn": "直接从自然语言业务需求生成测试断言",
+      "llm_evidence": "直接从自然语言业务需求生成测试断言",
+      "canonical_evidence": "直接从自然语言业务需求生成测试断言",
+      "llm_tldr_en": "Evaluates LLMs' ability to generate test oracles from business requirements to validate software behavior.",
+      "llm_tldr_cn": "评估了大模型从业务需求生成测试断言以验证软件行为的能力。",
+      "llm_tldr": "评估了大模型从业务需求生成测试断言以验证软件行为的能力。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Defining and validating user story acceptance criteria",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.11771v1",
+      "source": "arxiv",
+      "title": "Evaluating RE Practices for Explainability: Synthesizing Insights from Daimler Truck into an Explainable RE Framework Proposal",
+      "abstract": "Explainability has emerged as a critical requirement for AI-based systems, particularly in safety-critical and regulated domains. Although prior research has proposed frameworks, patterns, and user-centered approaches to support explainability, there is limited empirical understanding of how existing Requirements Engineering (RE) practices support explainability requirements across the RE lifecycle, especially in an industrial context. This paper reports early findings from an ongoing industry-based study investigating how explainability requirements are elicited, specified, and validated using established RE techniques. We conducted a multi-phase qualitative study with eight practitioners at Daimler Truck, employing think-aloud protocols and moderated group discussions across requirements elicitation, specification, and validation steps. Our preliminary analysis reveals recurring challenges across all steps, including conceptual ambiguity during elicitation, limited testability and expressiveness during specification, and fragmented validation due to vague criteria and regulatory uncertainty. These findings indicate that current RE practices provide limited support to systematically address explainability requirements. The paper contributes empirical insights into step-specific and cross-cutting challenges and outlines a research vision toward developing an empirically grounded RE framework for explainable AI-based systems.",
+      "authors": [
+        "Umm-e- Habiba",
+        "Lucas Mauser",
+        "Jonas Fritzsch",
+        "Justus Bogner",
+        "Stefan Wagner"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-07-13T16:28:45+00:00",
+      "link": "https://arxiv.org/pdf/2607.11771v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "investigating how requirements are elicited, specified, and validated using established RE techniques",
+      "llm_evidence_cn": "研究如何使用既定的需求工程技术进行需求的获取、规范化和验证",
+      "llm_evidence": "研究如何使用既定的需求工程技术进行需求的获取、规范化和验证",
+      "canonical_evidence": "研究如何使用既定的需求工程技术进行需求的获取、规范化和验证",
+      "llm_tldr_en": "Explores how existing RE practices support explainability requirements in industrial AI contexts.",
+      "llm_tldr_cn": "探讨了现有需求工程实践在工业AI背景下如何支持可解释性需求。",
+      "llm_tldr": "探讨了现有需求工程实践在工业AI背景下如何支持可解释性需求。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2607.05125v1",
+      "source": "arxiv",
+      "title": "Three-Phase Evaluation of AI-Assisted Software Development Life Cycle",
+      "abstract": "This paper presents an exploratory evaluation of how increasing levels of AI autonomy affect software development productivity, requirement adherence, and developer cognitive workload. A team of four developers reimplemented the same full-stack web application across three sequential phases: partial AI-assisted development using GitHub Copilot, an AI-exclusive workflow using GitHub Copilot, and an AI-exclusive workflow using AWS Kiro. Evaluation metrics included development effort (hours), requirement adherence (RITM score), AI-interaction efficiency, and NASA-TLX workload measures. Across phases, higher levels of AI autonomy were associated with reduced development effort, improved requirement adherence, and lower self-reported mental workload, while developer frustration increased modestly. The AWS Kiro phase achieved the strongest overall performance on most measured dimensions, suggesting that tooling architecture may influence outcomes independently of AI autonomy level.",
+      "authors": [
+        "Joshua Strubel",
+        "Professor Carrie Russell",
+        "Carson Crockett",
+        "Jason Ferraro",
+        "Nathan Londhe",
+        "Uzayr Syed",
+        "Jacob Viehe"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-07-06T14:13:25+00:00",
+      "link": "https://arxiv.org/pdf/2607.05125v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "requirement adherence in AI-assisted SDLC",
+      "llm_evidence_cn": "AI辅助软件开发生命周期中的需求符合度",
+      "llm_evidence": "AI辅助软件开发生命周期中的需求符合度",
+      "canonical_evidence": "AI辅助软件开发生命周期中的需求符合度",
+      "llm_tldr_en": "Evaluates how AI autonomy levels impact requirement adherence and productivity in software development.",
+      "llm_tldr_cn": "评估AI自主程度如何影响软件开发中的需求符合度和生产力。",
+      "llm_tldr": "评估AI自主程度如何影响软件开发中的需求符合度和生产力。",
+      "llm_tags": [
+        "query:re-us:composite"
+      ],
+      "matched_query_tag": "query:re-us:composite",
+      "matched_query_text": "Papers central to 需求工程领域的用户故事相关的论文, especially work that connects or combines: User stories in software development and requirements engineering; Requirements engineering methodologies and practices; Agile requirements engineering and management; Quality assessment and improvement of user stories; Automated extraction of user stories from text; Defining and validating user story acceptance criteria; State of the art in user story research for requirements engineering; Automated tools for user story generation and validation; Impact of user story quality on software project success.",
+      "matched_requirement_id": "req-composite-re-us",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2607.06004v1",
+      "source": "arxiv",
+      "title": "Large Language Models Have Unreliable Understanding of Software Engineering Terminology",
+      "abstract": "Large Language Models (LLMs) are increasingly used in software engineering (SE), yet there is no systematic study that determines to which degree these LLMs actually understand standardized SE terminology. Lack of such understanding can lead to miscommunication and misunderstanding, both by LLMs consuming text but also by human-developers acting on LLM-generated text. Within this paper, we investigate to which degree state-of-the-art LLMs are able to identify whether definitions from the ISO/IEC/IEEE 24765:2017 Systems and Software Engineering - Vocabulary are correct. We prompt LLMs both with correct definitions, as well as systematically falsified definitions. The falsifications are both semantic (substitution of key terms) and structural (removing critical information). We measure both classification accuracy and whether reasoning tokens generated by the LLMs make sense with respect to understanding the definition. While most LLMs detect falsified definitions with high accuracy, they also reject many correct definitions, indicating a systematic rejection bias rather than genuine discriminative understanding. Explicit reasoning does not consistently improve results and may even hinder performance through over-thinking. Our work demonstrates that while the performance of LLMs (including their agentic use) in many SE tasks is impressive, there are still fundamental issues to understand how this will impact SE, including the consistent use of terminology.",
+      "authors": [
+        "Huzaifa Ejaz",
+        "Fabian C. Peña",
+        "Steffen Herbold"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-07-07T08:46:49+00:00",
+      "link": "https://arxiv.org/pdf/2607.06004v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "LLM understanding of standardized software engineering terminology and definitions",
+      "llm_evidence_cn": "大语言模型对标准化软件工程术语和定义的理解",
+      "llm_evidence": "大语言模型对标准化软件工程术语和定义的理解",
+      "canonical_evidence": "大语言模型对标准化软件工程术语和定义的理解",
+      "llm_tldr_en": "Evaluates LLMs' ability to correctly identify and understand standardized software engineering vocabulary.",
+      "llm_tldr_cn": "评估大语言模型正确识别和理解标准化软件工程词汇的能力。",
+      "llm_tldr": "评估大语言模型正确识别和理解标准化软件工程词汇的能力。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2607.10494v1",
+      "source": "arxiv",
+      "title": "Question Answering for Diagram-Rich Technical Meeting Videos",
+      "abstract": "Software engineering increasingly relies on asynchronous communication artifacts, including recorded meetings where stakeholders discuss concerns, rationale, and decisions. These meetings often include diagram-based representations of requirements, system behavior, component interactions, and trace dependencies. Accessing knowledge from these meetings is challenging because recordings are long and relevant evidence is distributed across speech, slides, and technical diagrams. This paper reports our industrial experience developing and evaluating LMVQA, an LLM-based multimodal question-answering system for technical meeting videos. Developed in collaboration with engineers at Ciena, LMVQA supports the understanding of requirements and design intent by grounding answers in audio and visual evidence, with explicit handling of diagram-rich content such as requirements and UML diagrams. It processes each video once to build a reusable time-stamped evidence corpus for grounded question answering. Across a Ciena dataset and a public dataset, we show that LMVQA significantly improves answer accuracy compared to a state-of-the-art baseline, from 31% to 94% on the Ciena dataset and from 21% to 88% on the public dataset, with larger gains on diagram-rich videos. We further show that, after one-time indexing, LMVQA reduces average response time from 81.3s to 3.3s on Ciena and from 98.4s to 9.2s on the public dataset, while lowering average token-based LLM API cost by about 75%. Finally, our interviews with three domain experts show that engineers particularly value LMVQA for locating software-engineering-relevant information, revisiting rationale, and tracing answers to specific video segments.",
+      "authors": [
+        "Zhuoran Xu",
+        "Jia Li",
+        "Dayuan Tan",
+        "Mark Cole",
+        "Ish Ashraf",
+        "Sandeep Puri",
+        "Mehrdad Sabetzadeh",
+        "Shiva Nejati"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-07-11T21:58:16+00:00",
+      "link": "https://arxiv.org/pdf/2607.10494v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "understanding requirements and design intent from stakeholder meetings",
+      "llm_evidence_cn": "从利益相关者会议中理解需求和设计意图",
+      "llm_evidence": "从利益相关者会议中理解需求和设计意图",
+      "canonical_evidence": "从利益相关者会议中理解需求和设计意图",
+      "llm_tldr_en": "A multimodal QA system to extract requirements and design intent from technical meeting videos.",
+      "llm_tldr_cn": "一种从技术会议视频中提取需求和设计意图的多模态问答系统。",
+      "llm_tldr": "一种从技术会议视频中提取需求和设计意图的多模态问答系统。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2607.09553v1",
+      "source": "arxiv",
+      "title": "Writing Bug Reports for Software Repair Agents: What Information Matters Most?",
+      "abstract": "Software development is increasingly moving toward agentic-first workflows. This includes AI agents responsible for generating initial fixes for submitted issue reports. In this setting, issue reports are no longer merely documentation for human maintainers; they become the primary task specification for the agent. However, little is known about how such reports should be written to maximize the agent's chances of producing a correct fix. We study what makes a bug report agent-ready. Starting from the SWE-bench Verified benchmark (i.e., a collection of 500 real repository issues with human-written gold patches and test suites for evaluating generated fixes) we manually classify each issue by change type (e.g., bug fix vs refactoring) and annotate each sentence with its information type, such as observed behavior, expected behavior, reproduction steps, localization cues, and suggested fixes. We focus on the 441 issues representing bug reports, and we run on them mini-swe-agent using three LLM backbones (i.e., GPT-5-mini, MiniMax M2.5, and Gemini 3 Flash). We then fit a binomial regression model to estimate the incremental association between each information type and agent success, controlling for confounding factors. Our results suggest that agentic-first reports benefit most from information that narrows the agent's search and repair space. Localization cues, such as references to affected code areas, are positively associated with successful repairs, while suggested fixes, expressed either in code or natural language, show some of the strongest positive associations with pass probability. An ablation study removing selected information types confirms that agents benefit less from information traditionally useful to humans, such as reproduction steps, and more from sentences that expose a repair direction, either through bug localization or a suggested fix.",
+      "authors": [
+        "Vincenzo Luigi Bruno",
+        "Alessandro Giagnorio",
+        "Daniele Bifolco",
+        "Leon Wienges",
+        "Massimiliano Di Penta",
+        "Gabriele Bavota"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-07-10T16:00:57+00:00",
+      "link": "https://arxiv.org/pdf/2607.09553v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "quality of issue reports as task specifications",
+      "llm_evidence_cn": "作为任务规范的问题报告质量",
+      "llm_evidence": "作为任务规范的问题报告质量",
+      "canonical_evidence": "作为任务规范的问题报告质量",
+      "llm_tldr_en": "Investigates how the quality and content of bug reports affect AI agents' ability to fix software issues.",
+      "llm_tldr_cn": "研究缺陷报告的质量和内容如何影响AI代理修复软件问题的能力。",
+      "llm_tldr": "研究缺陷报告的质量和内容如何影响AI代理修复软件问题的能力。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Quality assessment and improvement of user stories",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}

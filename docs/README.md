@@ -6,45 +6,46 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-07-13
-- 运行时间：2026-07-13 20:43:14 UTC
+- 最新运行日期：2026-07-14
+- 运行时间：2026-07-14 21:34:32 UTC
 - 运行状态：成功
 - 本次总论文数：8
-- 精读区：3
-- 速读区：5
+- 精读区：4
+- 速读区：4
 
 ### 今日简报（AI）
-今日深挖 AI 赋能的需求工程，重点解析了 8 篇涵盖需求歧义检测与自动化合规推导的最新成果。
-核心结论指出 RAG 框架能有效解决自然语言需求中的语用歧
-- 详情：[/202607/13/README](/202607/13/README)
+今日深度复盘 8 篇前沿文献，重点聚焦汽车行业需求工程实证与 AI 辅助开发的效能评估。
+核心揭示了汽车软硬件需求衔接的工业实践，并警示大模型在软件工程专业术语理解上仍存在显著不可靠性。
+建议优先研读 9.0 分的汽车需求工程指南，并在利用 AI 辅助开发时审慎校验其技术定义的准确性。
+- 详情：[/202607/14/README](/202607/14/README)
 
 ### 精读区论文标签
-1. [A Retrieval-Augmented Framework for Detecting and Resolving Pragmatic Ambiguities in Natural Language Requirements](/202607/13/2607.04436v1-a-retrieval-augmented-framework-for-detecting-and-resolving-pragmatic-ambiguities-in-natural-language-requirements)  
+1. [Bridging Stakeholder and Product Requirements: An Empirical Study of Requirement Engineering in the Automotive Industry](/202607/14/2607.05632v1-bridging-stakeholder-and-product-requirements-an-empirical-study-of-requirement-engineering-in-the-automotive-industry)  
+   标签：评分：9.0/10、query:re-us
+   evidence：需求获取、细化和转换的实证研究
+2. [AfterVibe: What Remains When the Conversation Ends](/202607/14/2607.09900v1-aftervibe-what-remains-when-the-conversation-ends)  
    标签：评分：8.0/10、query:re-us
-   evidence：检测并解决自然语言需求中的歧义
-2. [From Regulation to Requirements: An Automated Requirement Derivation and Explanation Pipeline](/202607/13/2607.04448v1-from-regulation-to-requirements-an-automated-requirement-derivation-and-explanation-pipeline)  
+   evidence：从编码会话中恢复自然语言规范
+3. [From Business Requirements to Test Assertions: Evaluating LLM-Generated Oracles on Real Bugs](/202607/14/2607.10277v1-from-business-requirements-to-test-assertions-evaluating-llm-generated-oracles-on-real-bugs)  
    标签：评分：8.0/10、query:re-us
-   evidence：从文本中自动推导软件需求
-3. [Bridging Stakeholder and Product Requirements: An Empirical Study of Requirement Engineering in the Automotive Industry](/202607/13/2607.05632v1-bridging-stakeholder-and-product-requirements-an-empirical-study-of-requirement-engineering-in-the-automotive-industry)  
+   evidence：直接从自然语言业务需求生成测试断言
+4. [Evaluating RE Practices for Explainability: Synthesizing Insights from Daimler Truck into an Explainable RE Framework Proposal](/202607/14/2607.11771v1-evaluating-re-practices-for-explainability-synthesizing-insights-from-daimler-truck-into-an-explainable-re-framework-proposal)  
    标签：评分：8.0/10、query:re-us
-   evidence：需求工程实践与细化的实证研究
+   evidence：研究如何使用既定的需求工程技术进行需求的获取、规范化和验证
 
 ### 速读区论文标签
-1. [Three-Phase Evaluation of AI-Assisted Software Development Life Cycle](/202607/13/2607.05125v1-three-phase-evaluation-of-ai-assisted-software-development-life-cycle)  
+1. [Three-Phase Evaluation of AI-Assisted Software Development Life Cycle](/202607/14/2607.05125v1-three-phase-evaluation-of-ai-assisted-software-development-life-cycle)  
    标签：评分：7.0/10、query:re-us
-   evidence：AI辅助开发中需求遵循情况的评估
-2. [Agentic Proof and Property-Based Testing via Property-Templates in Data-Intensive Computing](/202607/13/2607.09072v1-agentic-proof-and-property-based-testing-via-property-templates-in-data-intensive-computing)  
+   evidence：AI辅助软件开发生命周期中的需求符合度
+2. [Question Answering for Diagram-Rich Technical Meeting Videos](/202607/14/2607.10494v1-question-answering-for-diagram-rich-technical-meeting-videos)  
    标签：评分：7.0/10、query:re-us
-   evidence：意图规范和验证是瓶颈
-3. [Pre-Training on Software Engineering Texts: Effects on Domain Adaptation and General-Language Understanding](/202607/13/2607.06613v1-pre-training-on-software-engineering-texts-effects-on-domain-adaptation-and-general-language-understanding)  
+   evidence：从利益相关者会议中理解需求和设计意图
+3. [Large Language Models Have Unreliable Understanding of Software Engineering Terminology](/202607/14/2607.06004v1-large-language-models-have-unreliable-understanding-of-software-engineering-terminology)  
    标签：评分：6.0/10、query:re-us
-   evidence：理解软件工程文本制品，如Issue和开发者讨论
-4. [ASMR: Agentic Schema Generation for Ship Maintenance Report Writing](/202607/13/2607.08177v1-asmr-agentic-schema-generation-for-ship-maintenance-report-writing)  
+   evidence：大语言模型对标准化软件工程术语和定义的理解
+4. [Writing Bug Reports for Software Repair Agents: What Information Matters Most?](/202607/14/2607.09553v1-writing-bug-reports-for-software-repair-agents-what-information-matters-most)  
    标签：评分：6.0/10、query:re-us
-   evidence：从报告中自动提取信息需求
-5. [Writing Bug Reports for Software Repair Agents: What Information Matters Most?](/202607/13/2607.09553v1-writing-bug-reports-for-software-repair-agents-what-information-matters-most)  
-   标签：评分：6.0/10、query:re-us
-   evidence：问题报告作为代理的主要任务规范
+   evidence：作为任务规范的问题报告质量
 
 
 <div class="dpr-home-promo-card">

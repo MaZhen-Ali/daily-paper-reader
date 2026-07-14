@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2607.11771v1/fig-001.webp",
+      "caption": "Table 2: Preliminary Challenges for Explainability Requirements Across RE Steps",
+      "page": 3,
+      "index": 1,
+      "width": 512,
+      "height": 523
+    },
+    {
+      "url": "assets/figures/arxiv/2607.11771v1/fig-002.webp",
+      "caption": "Table 1: Participant Demographics",
+      "page": 3,
+      "index": 2,
+      "width": 1056,
+      "height": 441
+    }
+  ]
+}
