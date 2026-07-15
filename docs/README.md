@@ -6,46 +6,37 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-07-14
-- 运行时间：2026-07-14 21:34:32 UTC
+- 最新运行日期：2026-07-15
+- 运行时间：2026-07-15 21:26:33 UTC
 - 运行状态：成功
-- 本次总论文数：8
-- 精读区：4
-- 速读区：4
+- 本次总论文数：5
+- 精读区：3
+- 速读区：2
 
 ### 今日简报（AI）
-今日深度复盘 8 篇前沿文献，重点聚焦汽车行业需求工程实证与 AI 辅助开发的效能评估。
-核心揭示了汽车软硬件需求衔接的工业实践，并警示大模型在软件工程专业术语理解上仍存在显著不可靠性。
-建议优先研读 9.0 分的汽车需求工程指南，并在利用 AI 辅助开发时审慎校验其技术定义的准确性。
-- 详情：[/202607/14/README](/202607/14/README)
+今日精选 5 篇前沿论文，深度解析了戴姆勒卡车（Daimler Truck）的可解释性需求工程框架及对话持久性研究。
+重点关注获 9.0 高分的可解释性 RE 框架提案，以及针对图表丰富的技术会议视频问答与船舶维护报告自动生成技术。
+建议深入了解工业级可解释性标准与 AI Agent 在专业报告写作中的落地应用。
+- 详情：[/202607/15/README](/202607/15/README)
 
 ### 精读区论文标签
-1. [Bridging Stakeholder and Product Requirements: An Empirical Study of Requirement Engineering in the Automotive Industry](/202607/14/2607.05632v1-bridging-stakeholder-and-product-requirements-an-empirical-study-of-requirement-engineering-in-the-automotive-industry)  
+1. [Evaluating RE Practices for Explainability: Synthesizing Insights from Daimler Truck into an Explainable RE Framework Proposal](/202607/15/2607.11771v1-evaluating-re-practices-for-explainability-synthesizing-insights-from-daimler-truck-into-an-explainable-re-framework-proposal)  
    标签：评分：9.0/10、query:re-us
-   evidence：需求获取、细化和转换的实证研究
-2. [AfterVibe: What Remains When the Conversation Ends](/202607/14/2607.09900v1-aftervibe-what-remains-when-the-conversation-ends)  
+   evidence：用于获取、规范和验证需求的RE实践
+2. [AfterVibe: What Remains When the Conversation Ends](/202607/15/2607.09900v1-aftervibe-what-remains-when-the-conversation-ends)  
    标签：评分：8.0/10、query:re-us
    evidence：从编码会话中恢复自然语言规范
-3. [From Business Requirements to Test Assertions: Evaluating LLM-Generated Oracles on Real Bugs](/202607/14/2607.10277v1-from-business-requirements-to-test-assertions-evaluating-llm-generated-oracles-on-real-bugs)  
+3. [From Business Requirements to Test Assertions: Evaluating LLM-Generated Oracles on Real Bugs](/202607/15/2607.10277v1-from-business-requirements-to-test-assertions-evaluating-llm-generated-oracles-on-real-bugs)  
    标签：评分：8.0/10、query:re-us
-   evidence：直接从自然语言业务需求生成测试断言
-4. [Evaluating RE Practices for Explainability: Synthesizing Insights from Daimler Truck into an Explainable RE Framework Proposal](/202607/14/2607.11771v1-evaluating-re-practices-for-explainability-synthesizing-insights-from-daimler-truck-into-an-explainable-re-framework-proposal)  
-   标签：评分：8.0/10、query:re-us
-   evidence：研究如何使用既定的需求工程技术进行需求的获取、规范化和验证
+   evidence：从自然语言业务需求生成测试断言
 
 ### 速读区论文标签
-1. [Three-Phase Evaluation of AI-Assisted Software Development Life Cycle](/202607/14/2607.05125v1-three-phase-evaluation-of-ai-assisted-software-development-life-cycle)  
-   标签：评分：7.0/10、query:re-us
-   evidence：AI辅助软件开发生命周期中的需求符合度
-2. [Question Answering for Diagram-Rich Technical Meeting Videos](/202607/14/2607.10494v1-question-answering-for-diagram-rich-technical-meeting-videos)  
+1. [Question Answering for Diagram-Rich Technical Meeting Videos](/202607/15/2607.10494v1-question-answering-for-diagram-rich-technical-meeting-videos)  
    标签：评分：7.0/10、query:re-us
    evidence：从利益相关者会议中理解需求和设计意图
-3. [Large Language Models Have Unreliable Understanding of Software Engineering Terminology](/202607/14/2607.06004v1-large-language-models-have-unreliable-understanding-of-software-engineering-terminology)  
+2. [ASMR: Agentic Schema Generation for Ship Maintenance Report Writing](/202607/15/2607.08177v1-asmr-agentic-schema-generation-for-ship-maintenance-report-writing)  
    标签：评分：6.0/10、query:re-us
-   evidence：大语言模型对标准化软件工程术语和定义的理解
-4. [Writing Bug Reports for Software Repair Agents: What Information Matters Most?](/202607/14/2607.09553v1-writing-bug-reports-for-software-repair-agents-what-information-matters-most)  
-   标签：评分：6.0/10、query:re-us
-   evidence：作为任务规范的问题报告质量
+   evidence：从历史叙述中提取信息需求
 
 
 <div class="dpr-home-promo-card">
