@@ -1,0 +1,332 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-07-16T20:41:48.455154+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 2,
+    "deep_cap": 6,
+    "deep_selected": 2,
+    "quick_candidates": 6,
+    "quick_skim_target": 11,
+    "quick_selected": 6
+  },
+  "deep_dive": [
+    {
+      "id": "2607.10277v1",
+      "source": "arxiv",
+      "title": "From Business Requirements to Test Assertions: Evaluating LLM-Generated Oracles on Real Bugs",
+      "abstract": "The oracle problem (determining the correct expected outcome for a test) remains a major bottleneck in automated testing, and is increasingly relevant as non-experts rely on AI-generated code they cannot reliably validate. We study whether large language models (LLMs) can generate generalizable test oracles directly from natural-language business requirements, without access to source code or example input-output pairs. We propose a reproducible, requirement-driven pipeline grounded in Defects4J. For each of 10 real bugs from Defects4J Lang (Bugs 1 and 3-11), we (i) extract behavioral changes via buggy/fixed diffs, (ii) manually translate the change into a business requirement, (iii) construct a requirement-derived oracle (REQ) as a gold standard, and (iv) prompt five LLMs (DeepSeek-V3, Gemma-3n, Llama-3, Mistral-7B, and Qwen-3) to generate Java oracle code. We evaluate oracle correctness and generalization under two targets: agreement with REQ and agreement with the system under test (SUT), reporting macro-averaged accuracy, precision, recall, and F1. LLMs achieve non-trivial generalization but with substantial bug- and model-level variance. Generated oracles align more closely with REQ than with SUT, and correlations between requirement technicality/ambiguity ratings and oracle accuracy are weak with wide confidence intervals. No detectable linear relationship exists between requirement properties and oracle accuracy in this dataset, suggesting that pretraining coverage and the semantic specificity of the required behavior dominate oracle correctness. As a pilot proof of concept, these findings are preliminary and are intended to establish feasibility and motivate larger-scale empirical investigation.",
+      "authors": [
+        "Tiancheng Ma",
+        "Nasir U. Eisty"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-07-11T12:17:49+00:00",
+      "link": "https://arxiv.org/pdf/2607.10277v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Generate test oracles directly from natural-language business requirements",
+      "llm_evidence_cn": "直接从自然语言业务需求生成测试断言",
+      "llm_evidence": "直接从自然语言业务需求生成测试断言",
+      "canonical_evidence": "直接从自然语言业务需求生成测试断言",
+      "llm_tldr_en": "Evaluates LLMs' ability to generate test oracles from business requirements to solve the oracle problem.",
+      "llm_tldr_cn": "评估LLM从业务需求生成测试预言以解决自动化测试瓶颈的能力。",
+      "llm_tldr": "评估LLM从业务需求生成测试预言以解决自动化测试瓶颈的能力。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Defining and validating user story acceptance criteria",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.11771v1",
+      "source": "arxiv",
+      "title": "Evaluating RE Practices for Explainability: Synthesizing Insights from Daimler Truck into an Explainable RE Framework Proposal",
+      "abstract": "Explainability has emerged as a critical requirement for AI-based systems, particularly in safety-critical and regulated domains. Although prior research has proposed frameworks, patterns, and user-centered approaches to support explainability, there is limited empirical understanding of how existing Requirements Engineering (RE) practices support explainability requirements across the RE lifecycle, especially in an industrial context. This paper reports early findings from an ongoing industry-based study investigating how explainability requirements are elicited, specified, and validated using established RE techniques. We conducted a multi-phase qualitative study with eight practitioners at Daimler Truck, employing think-aloud protocols and moderated group discussions across requirements elicitation, specification, and validation steps. Our preliminary analysis reveals recurring challenges across all steps, including conceptual ambiguity during elicitation, limited testability and expressiveness during specification, and fragmented validation due to vague criteria and regulatory uncertainty. These findings indicate that current RE practices provide limited support to systematically address explainability requirements. The paper contributes empirical insights into step-specific and cross-cutting challenges and outlines a research vision toward developing an empirically grounded RE framework for explainable AI-based systems.",
+      "authors": [
+        "Umm-e- Habiba",
+        "Lucas Mauser",
+        "Jonas Fritzsch",
+        "Justus Bogner",
+        "Stefan Wagner"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-07-13T16:28:45+00:00",
+      "link": "https://arxiv.org/pdf/2607.11771v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "investigating how requirements are elicited, specified, and validated using established RE techniques",
+      "llm_evidence_cn": "研究如何使用既定的需求工程技术进行需求的获取、规范化和验证",
+      "llm_evidence": "研究如何使用既定的需求工程技术进行需求的获取、规范化和验证",
+      "canonical_evidence": "研究如何使用既定的需求工程技术进行需求的获取、规范化和验证",
+      "llm_tldr_en": "Proposes an explainable RE framework based on industrial insights into eliciting and validating AI requirements.",
+      "llm_tldr_cn": "基于工业界对AI需求获取和验证的见解，提出了一个可解释的需求工程框架。",
+      "llm_tldr": "基于工业界对AI需求获取和验证的见解，提出了一个可解释的需求工程框架。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2607.08043v1",
+      "source": "arxiv",
+      "title": "Aleena: Alignment Agent for Research Software Engineering Collaborations",
+      "abstract": "Research software collaborations span meetings, informal chats, pull requests, and GitHub issues. A decision surfaced in a Slack thread, refined in a meeting, and implemented in a pull request can lose its original rationale across these artifacts, leaving domain researchers and research software engineers with divergent mental models of project intent, ownership, and scientific assumptions. We argue that alignment in research software engineering is a continuous lifecycle problem, and that agentic AI can support stakeholder alignment and project-state tracking without replacing human decision-making. We present Aleena, an open-source lifecycle alignment agent that uses GitHub as a shared collaboration surface, transforming multi-modal stakeholder interactions into structured project records that surface risks, track open questions, and preserve decision continuity. Grounded in university-based research software engineering center experiences, this paper presents the motivating problem, system design, prototype, and illustrative lifecycle scenarios for Aleena.",
+      "authors": [
+        "Kshitij Dani",
+        "Cordero Core",
+        "Landung Setiawan",
+        "Carlos Garcia Jurado Suarez",
+        "Anshul Tambay",
+        "Vani Mandava",
+        "Anant Mittal"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-07-09T01:36:18+00:00",
+      "link": "https://arxiv.org/pdf/2607.08043v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Stakeholder alignment and project-state tracking in collaborations",
+      "llm_evidence_cn": "协作中的利益相关者对齐和项目状态跟踪",
+      "llm_evidence": "协作中的利益相关者对齐和项目状态跟踪",
+      "canonical_evidence": "协作中的利益相关者对齐和项目状态跟踪",
+      "llm_tldr_en": "Introduces an AI agent to maintain alignment and rationale across diverse software engineering artifacts.",
+      "llm_tldr_cn": "引入AI代理，在多种软件工程产物间保持利益相关者的意图对齐。",
+      "llm_tldr": "引入AI代理，在多种软件工程产物间保持利益相关者的意图对齐。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Agile requirements engineering and management",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2607.08177v1",
+      "source": "arxiv",
+      "title": "ASMR: Agentic Schema Generation for Ship Maintenance Report Writing",
+      "abstract": "In this paper, we study the automatic schema generation problem: given a collection of historical ship maintenance and operational reports across multiple form categories, automatically discover compact and informative schemas that capture the essential information requirements of each report type. To address this challenge, we propose ASMR, a modular agentic framework consisting of two specialized agents. A Field Generation Agent extracts semantic concepts from historical narratives and generates candidate schema fields through adaptive multi-granularity clustering, while a Structural Optimizer Agent employs reinforcement learning to identify compact, informative, and non-redundant schema representations. The resulting schemas can guide report authors toward producing more complete, consistent, and actionable reports. Preliminary results demonstrate the promise of the proposed approach and highlight several open research challenges at the intersection of data management, agentic AI, and human-centered AI.",
+      "authors": [
+        "Sohrab Namazi Nia",
+        "Amogh Dalal",
+        "Ning Sa",
+        "Peter Ly",
+        "Marti Zentmaier",
+        "Tomek Strzalkowski",
+        "Jay Miller",
+        "Rishi Singh",
+        "Senjuti Basu Roy"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.MA"
+      ],
+      "published": "2026-07-09T07:25:28+00:00",
+      "link": "https://arxiv.org/pdf/2607.08177v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Extracts semantic concepts and information requirements from narratives",
+      "llm_evidence_cn": "从叙述中提取语义概念和信息需求",
+      "llm_evidence": "从叙述中提取语义概念和信息需求",
+      "canonical_evidence": "从叙述中提取语义概念和信息需求",
+      "llm_tldr_en": "Proposes an agentic framework to automatically discover information schemas from historical reports.",
+      "llm_tldr_cn": "提出一种代理框架，从历史报告中自动发现信息模式以捕获需求。",
+      "llm_tldr": "提出一种代理框架，从历史报告中自动发现信息模式以捕获需求。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Automated extraction of user stories from text",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2607.09900v1",
+      "source": "arxiv",
+      "title": "AfterVibe: What Remains When the Conversation Ends",
+      "abstract": "We present AfterVibe, a framework that recovers natural-language specifications from a vibe coding session. Given a code artifact and the conversation trajectory that produced it, AfterVibe uses an LLM to extract an abstract natural-language specification capturing the developer's intent, and validates it through a regeneration test: a second, blind AI agent re-implements the artifact from the spec alone, and the resulting code is graded against the original through a multi-tier validation pipeline. Spec quality is thus measured by whether an agent can regenerate passing code; if the verifiers deem the implementations equivalent the spec is considered strong, otherwise it is iteratively refined. Evaluating AfterVibe on 72 real-world vibe-coded projects from a company's internal coding sessions, we find that its recovered specs are abstract by design-capturing behavioral intent without dictating implementation-yet strong. Multiple independent regenerations achieve a high mean regeneration score of 5.06 out of 6.0 while remaining diverse in their details, confirming that the spec constrains what without over-prescribing how. Besides outperforming existing human-authored descriptions, the specs can be further strengthened iteratively to a score of 5.74. A practical implication is that specifications-not code-could become the primary artifact for human review and the source of record at a time when AI-generated code is outpacing customary code review.",
+      "authors": [
+        "Matteo Paltenghi",
+        "Satish Chandra"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-07-10T18:44:51+00:00",
+      "link": "https://arxiv.org/pdf/2607.09900v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "recovers natural-language specifications from coding sessions",
+      "llm_evidence_cn": "从编程会话中恢复自然语言规范",
+      "llm_evidence": "从编程会话中恢复自然语言规范",
+      "canonical_evidence": "从编程会话中恢复自然语言规范",
+      "llm_tldr_en": "AfterVibe extracts and validates natural-language specifications from developer intent and code artifacts.",
+      "llm_tldr_cn": "AfterVibe 从开发人员意图和代码工件中提取并验证自然语言规范。",
+      "llm_tldr": "AfterVibe 从开发人员意图和代码工件中提取并验证自然语言规范。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Automated extraction of user stories from text",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2607.08885v1",
+      "source": "arxiv",
+      "title": "Programmers Are Poor and Overconfident Judges of LLM-Generated Assertions",
+      "abstract": "Code comprehension and code review are already critically important software engineering tasks, and the rising use of AI code generation tools is only increasing that importance. Generative AI has the possibility of supporting these activities, for example by augmenting code with assertions and natural-language explanations describing code behavior. However, little is known about how effective such support may be. We conduct a controlled experiment with 86 Python programmers and a follow-up think-aloud study to examine developers' ability to assess the correctness and completeness of generated assertions of varying quality, and to investigate how natural-language explanations influence these assessments. While programmers can somewhat accurately judge correct assertions (74% accuracy), they perform poorly when shown incorrect assertions (49% accuracy), despite reporting similar levels of confidence in both judgments. This difference in judgment accuracy is statistically significant (p < 0.001): the odds of a developer accurately judging a correct assertion was nearly three times higher than the odds of accurately judging an incorrect assertion (OR = 2.94). Surprisingly, natural-language explanations of assertions provided no overall benefit. Furthermore, low-quality explanations could impair specification assessment accuracy (p = 0.037, OR = 0.58) while simultaneously increasing developer confidence (p = 0.005, 3.99/5 vs. 4.25/5). Our findings suggest that, contrary to common assumptions, AI assistance may not improve the reliability of code comprehension and review. More broadly, our findings highlight the importance of helping developers evaluate machine-generated reliability artifacts, in addition to generating them.",
+      "authors": [
+        "Zhanna Kaufman",
+        "Yuriy Brun",
+        "Adithya Murali",
+        "Madeline Endres"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-07-09T19:22:35+00:00",
+      "link": "https://arxiv.org/pdf/2607.08885v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Assessing correctness and completeness of generated assertions",
+      "llm_evidence_cn": "评估生成的断言的正确性和完整性",
+      "llm_evidence": "评估生成的断言的正确性和完整性",
+      "canonical_evidence": "评估生成的断言的正确性和完整性",
+      "llm_tldr_en": "Evaluates how well programmers judge the quality of AI-generated code assertions and explanations.",
+      "llm_tldr_cn": "评估程序员判断AI生成的代码断言和解释质量的能力。",
+      "llm_tldr": "评估程序员判断AI生成的代码断言和解释质量的能力。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Defining and validating user story acceptance criteria",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2607.10494v1",
+      "source": "arxiv",
+      "title": "Question Answering for Diagram-Rich Technical Meeting Videos",
+      "abstract": "Software engineering increasingly relies on asynchronous communication artifacts, including recorded meetings where stakeholders discuss concerns, rationale, and decisions. These meetings often include diagram-based representations of requirements, system behavior, component interactions, and trace dependencies. Accessing knowledge from these meetings is challenging because recordings are long and relevant evidence is distributed across speech, slides, and technical diagrams. This paper reports our industrial experience developing and evaluating LMVQA, an LLM-based multimodal question-answering system for technical meeting videos. Developed in collaboration with engineers at Ciena, LMVQA supports the understanding of requirements and design intent by grounding answers in audio and visual evidence, with explicit handling of diagram-rich content such as requirements and UML diagrams. It processes each video once to build a reusable time-stamped evidence corpus for grounded question answering. Across a Ciena dataset and a public dataset, we show that LMVQA significantly improves answer accuracy compared to a state-of-the-art baseline, from 31% to 94% on the Ciena dataset and from 21% to 88% on the public dataset, with larger gains on diagram-rich videos. We further show that, after one-time indexing, LMVQA reduces average response time from 81.3s to 3.3s on Ciena and from 98.4s to 9.2s on the public dataset, while lowering average token-based LLM API cost by about 75%. Finally, our interviews with three domain experts show that engineers particularly value LMVQA for locating software-engineering-relevant information, revisiting rationale, and tracing answers to specific video segments.",
+      "authors": [
+        "Zhuoran Xu",
+        "Jia Li",
+        "Dayuan Tan",
+        "Mark Cole",
+        "Ish Ashraf",
+        "Sandeep Puri",
+        "Mehrdad Sabetzadeh",
+        "Shiva Nejati"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-07-11T21:58:16+00:00",
+      "link": "https://arxiv.org/pdf/2607.10494v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "supports understanding of requirements and design intent from stakeholder meetings",
+      "llm_evidence_cn": "支持从利益相关者会议中理解需求和设计意图",
+      "llm_evidence": "支持从利益相关者会议中理解需求和设计意图",
+      "canonical_evidence": "支持从利益相关者会议中理解需求和设计意图",
+      "llm_tldr_en": "Develops a multimodal QA system to extract requirements and design rationale from technical meeting videos.",
+      "llm_tldr_cn": "开发多模态问答系统，从技术会议视频中提取需求和设计依据。",
+      "llm_tldr": "开发多模态问答系统，从技术会议视频中提取需求和设计依据。",
+      "llm_tags": [
+        "query:re-us:composite"
+      ],
+      "matched_query_tag": "query:re-us:composite",
+      "matched_query_text": "Papers central to 需求工程领域的用户故事相关的论文, especially work that connects or combines: User stories in software development and requirements engineering; Requirements engineering methodologies and practices; Agile requirements engineering and management; Quality assessment and improvement of user stories; Automated extraction of user stories from text; Defining and validating user story acceptance criteria; State of the art in user story research for requirements engineering; Automated tools for user story generation and validation; Impact of user story quality on software project success.",
+      "matched_requirement_id": "req-composite-re-us",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2607.13179v1",
+      "source": "arxiv",
+      "title": "SoftBoard: A Multi-Agent Tool for the Creation and Evaluation of Low-Fidelity Prototypes",
+      "abstract": "User Experience (UX) is recognized as a critical factor for the success of digital products, particularly in software startups, environments marked by time constraints, limited resources, and low maturity in design practices. Building Minimum Viable Products (MVPs) through low-fidelity prototyping represents a well-established strategy for rapid validation cycles at reduced cost. A systematic literature mapping, however, revealed gaps in the ecosystem of available tools: a predominance of general-purpose solutions adapted for prototyping, the absence of integrated methodological guidance, and the incipient use of Artificial Intelligence in the design process. This paper presents SoftBoard, a web-based tool for the creation and evaluation of low-fidelity prototypes in the context of MVP development. The tool integrates a prototype editor, team-based project organization, and a multi-agent system based on large language models that supports requirements elicitation and refinement, automates prototype generation, and evaluates interface quality based on usability heuristics. This integration aims to reduce reliance on prior UX expertise, standardize the prototyping process, and support teams in building MVPs aligned with user needs. As future work, a feasibility study with software professionals is currently underway.",
+      "authors": [
+        "Gabriel R. S. Scapim",
+        "Gislaine C. L. Leal",
+        "Guilherme C. Guerino"
+      ],
+      "primary_category": "cs.HC",
+      "categories": [
+        "cs.HC",
+        "cs.SE"
+      ],
+      "published": "2026-07-14T18:27:55+00:00",
+      "link": "https://arxiv.org/pdf/2607.13179v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "low-fidelity prototyping for rapid validation in startups",
+      "llm_evidence_cn": "初创公司快速验证的低保真原型设计",
+      "llm_evidence": "初创公司快速验证的低保真原型设计",
+      "canonical_evidence": "初创公司快速验证的低保真原型设计",
+      "llm_tldr_en": "SoftBoard is a multi-agent tool for creating and evaluating low-fidelity prototypes to validate requirements.",
+      "llm_tldr_cn": "SoftBoard 是一个多代理工具，用于创建和评估低保真原型，以支持需求验证。",
+      "llm_tldr": "SoftBoard 是一个多代理工具，用于创建和评估低保真原型，以支持需求验证。",
+      "llm_tags": [
+        "query:re-us:composite"
+      ],
+      "matched_query_tag": "query:re-us:composite",
+      "matched_query_text": "Papers central to 需求工程领域的用户故事相关的论文, especially work that connects or combines: User stories in software development and requirements engineering; Requirements engineering methodologies and practices; Agile requirements engineering and management; Quality assessment and improvement of user stories; Automated extraction of user stories from text; Defining and validating user story acceptance criteria; State of the art in user story research for requirements engineering; Automated tools for user story generation and validation; Impact of user story quality on software project success.",
+      "matched_requirement_id": "req-composite-re-us",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    }
+  ]
+}

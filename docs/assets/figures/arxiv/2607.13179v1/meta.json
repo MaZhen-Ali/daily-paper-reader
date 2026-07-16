@@ -1,0 +1,62 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2607.13179v1/fig-001.webp",
+      "caption": "Figure 4: Interaction with the conversational agent and requirements structuring.",
+      "page": 5,
+      "index": 1,
+      "width": 482,
+      "height": 302
+    },
+    {
+      "url": "assets/figures/arxiv/2607.13179v1/fig-002.webp",
+      "caption": "Figure 5: Request for automatic wireflow generation.",
+      "page": 5,
+      "index": 2,
+      "width": 482,
+      "height": 302
+    },
+    {
+      "url": "assets/figures/arxiv/2607.13179v1/fig-003.webp",
+      "caption": "Figure 6: Wireflow editor with screen flow and properties panel.",
+      "page": 5,
+      "index": 3,
+      "width": 482,
+      "height": 302
+    },
+    {
+      "url": "assets/figures/arxiv/2607.13179v1/fig-004.webp",
+      "caption": "Figure 3: SoftBoard board management screen.",
+      "page": 5,
+      "index": 4,
+      "width": 482,
+      "height": 302
+    },
+    {
+      "url": "assets/figures/arxiv/2607.13179v1/fig-005.webp",
+      "caption": "Figure 2: SoftBoard multi-agent system.",
+      "page": 4,
+      "index": 5,
+      "width": 506,
+      "height": 327
+    },
+    {
+      "url": "assets/figures/arxiv/2607.13179v1/fig-006.webp",
+      "caption": "Figure 8: Automatic UX review panel with scores and improvement suggestions.",
+      "page": 6,
+      "index": 6,
+      "width": 482,
+      "height": 300
+    },
+    {
+      "url": "assets/figures/arxiv/2607.13179v1/fig-007.webp",
+      "caption": "Figure 7: Interactive mode for navigation between connected screens.",
+      "page": 6,
+      "index": 7,
+      "width": 482,
+      "height": 302
+    }
+  ]
+}
