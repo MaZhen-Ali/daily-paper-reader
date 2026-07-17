@@ -1,0 +1,54 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2607.14673v1/fig-001.webp",
+      "caption": "Figure 1: KALEIDOSCOPE’s workflow.",
+      "page": 3,
+      "index": 1,
+      "width": 447,
+      "height": 590
+    },
+    {
+      "url": "assets/figures/arxiv/2607.14673v1/fig-002.webp",
+      "caption": "Figure 11: Post-pilot feedback form used to collect ratings and qualitative comments from pilot users.",
+      "page": 13,
+      "index": 2,
+      "width": 368,
+      "height": 787
+    },
+    {
+      "url": "assets/figures/arxiv/2607.14673v1/fig-003.webp",
+      "caption": "Figure 10: Hybrid rubric and judge workflow in KALEIDOSCOPE. Preset rubrics use pre-tuned prompts, while custom rubrics are expanded through LLM-based augmentation. Candidate judges are evaluated against human annotations, and only judges that meet the configured reliability threshold contribute to majority-vote aggregation.",
+      "page": 13,
+      "index": 3,
+      "width": 950,
+      "height": 240
+    },
+    {
+      "url": "assets/figures/arxiv/2607.14673v1/fig-004.webp",
+      "caption": "Figure 5: Target setup page, where users provide application context for test generation and evaluation.",
+      "page": 8,
+      "index": 4,
+      "width": 447,
+      "height": 294
+    },
+    {
+      "url": "assets/figures/arxiv/2607.14673v1/fig-005.webp",
+      "caption": "Figure 8: Scoring page, where users inspect automated scores and evaluation results.",
+      "page": 8,
+      "index": 5,
+      "width": 450,
+      "height": 366
+    },
+    {
+      "url": "assets/figures/arxiv/2607.14673v1/fig-006.webp",
+      "caption": "Figure 6: Rubric configuration page, where users define preset or custom evaluation criteria.",
+      "page": 8,
+      "index": 6,
+      "width": 447,
+      "height": 350
+    }
+  ]
+}
