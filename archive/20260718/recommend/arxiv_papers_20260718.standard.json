@@ -1,0 +1,284 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-07-18T21:12:46.718155+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 3,
+    "deep_cap": 6,
+    "deep_selected": 3,
+    "quick_candidates": 4,
+    "quick_skim_target": 11,
+    "quick_selected": 4
+  },
+  "deep_dive": [
+    {
+      "id": "2607.09900v1",
+      "source": "arxiv",
+      "title": "AfterVibe: What Remains When the Conversation Ends",
+      "abstract": "We present AfterVibe, a framework that recovers natural-language specifications from a vibe coding session. Given a code artifact and the conversation trajectory that produced it, AfterVibe uses an LLM to extract an abstract natural-language specification capturing the developer's intent, and validates it through a regeneration test: a second, blind AI agent re-implements the artifact from the spec alone, and the resulting code is graded against the original through a multi-tier validation pipeline. Spec quality is thus measured by whether an agent can regenerate passing code; if the verifiers deem the implementations equivalent the spec is considered strong, otherwise it is iteratively refined. Evaluating AfterVibe on 72 real-world vibe-coded projects from a company's internal coding sessions, we find that its recovered specs are abstract by design-capturing behavioral intent without dictating implementation-yet strong. Multiple independent regenerations achieve a high mean regeneration score of 5.06 out of 6.0 while remaining diverse in their details, confirming that the spec constrains what without over-prescribing how. Besides outperforming existing human-authored descriptions, the specs can be further strengthened iteratively to a score of 5.74. A practical implication is that specifications-not code-could become the primary artifact for human review and the source of record at a time when AI-generated code is outpacing customary code review.",
+      "authors": [
+        "Matteo Paltenghi",
+        "Satish Chandra"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-07-10T18:44:51+00:00",
+      "link": "https://arxiv.org/pdf/2607.09900v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "recovering natural-language specifications from coding sessions",
+      "llm_evidence_cn": "从编码会话中恢复自然语言规范",
+      "llm_evidence": "从编码会话中恢复自然语言规范",
+      "canonical_evidence": "从编码会话中恢复自然语言规范",
+      "llm_tldr_en": "Extracts and validates natural-language specifications from code and conversation history.",
+      "llm_tldr_cn": "从代码和对话历史中提取并验证自然语言规范。",
+      "llm_tldr": "从代码和对话历史中提取并验证自然语言规范。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Automated extraction of user stories from text",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.10277v1",
+      "source": "arxiv",
+      "title": "From Business Requirements to Test Assertions: Evaluating LLM-Generated Oracles on Real Bugs",
+      "abstract": "The oracle problem (determining the correct expected outcome for a test) remains a major bottleneck in automated testing, and is increasingly relevant as non-experts rely on AI-generated code they cannot reliably validate. We study whether large language models (LLMs) can generate generalizable test oracles directly from natural-language business requirements, without access to source code or example input-output pairs. We propose a reproducible, requirement-driven pipeline grounded in Defects4J. For each of 10 real bugs from Defects4J Lang (Bugs 1 and 3-11), we (i) extract behavioral changes via buggy/fixed diffs, (ii) manually translate the change into a business requirement, (iii) construct a requirement-derived oracle (REQ) as a gold standard, and (iv) prompt five LLMs (DeepSeek-V3, Gemma-3n, Llama-3, Mistral-7B, and Qwen-3) to generate Java oracle code. We evaluate oracle correctness and generalization under two targets: agreement with REQ and agreement with the system under test (SUT), reporting macro-averaged accuracy, precision, recall, and F1. LLMs achieve non-trivial generalization but with substantial bug- and model-level variance. Generated oracles align more closely with REQ than with SUT, and correlations between requirement technicality/ambiguity ratings and oracle accuracy are weak with wide confidence intervals. No detectable linear relationship exists between requirement properties and oracle accuracy in this dataset, suggesting that pretraining coverage and the semantic specificity of the required behavior dominate oracle correctness. As a pilot proof of concept, these findings are preliminary and are intended to establish feasibility and motivate larger-scale empirical investigation.",
+      "authors": [
+        "Tiancheng Ma",
+        "Nasir U. Eisty"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-07-11T12:17:49+00:00",
+      "link": "https://arxiv.org/pdf/2607.10277v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "generate test oracles directly from natural-language business requirements",
+      "llm_evidence_cn": "直接从自然语言业务需求生成测试断言",
+      "llm_evidence": "直接从自然语言业务需求生成测试断言",
+      "canonical_evidence": "直接从自然语言业务需求生成测试断言",
+      "llm_tldr_en": "Evaluates LLMs in generating test oracles from business requirements to validate software behavior.",
+      "llm_tldr_cn": "评估大模型从业务需求生成测试断言以验证软件行为的能力。",
+      "llm_tldr": "评估大模型从业务需求生成测试断言以验证软件行为的能力。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Defining and validating user story acceptance criteria",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.11771v1",
+      "source": "arxiv",
+      "title": "Evaluating RE Practices for Explainability: Synthesizing Insights from Daimler Truck into an Explainable RE Framework Proposal",
+      "abstract": "Explainability has emerged as a critical requirement for AI-based systems, particularly in safety-critical and regulated domains. Although prior research has proposed frameworks, patterns, and user-centered approaches to support explainability, there is limited empirical understanding of how existing Requirements Engineering (RE) practices support explainability requirements across the RE lifecycle, especially in an industrial context. This paper reports early findings from an ongoing industry-based study investigating how explainability requirements are elicited, specified, and validated using established RE techniques. We conducted a multi-phase qualitative study with eight practitioners at Daimler Truck, employing think-aloud protocols and moderated group discussions across requirements elicitation, specification, and validation steps. Our preliminary analysis reveals recurring challenges across all steps, including conceptual ambiguity during elicitation, limited testability and expressiveness during specification, and fragmented validation due to vague criteria and regulatory uncertainty. These findings indicate that current RE practices provide limited support to systematically address explainability requirements. The paper contributes empirical insights into step-specific and cross-cutting challenges and outlines a research vision toward developing an empirically grounded RE framework for explainable AI-based systems.",
+      "authors": [
+        "Umm-e- Habiba",
+        "Lucas Mauser",
+        "Jonas Fritzsch",
+        "Justus Bogner",
+        "Stefan Wagner"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-07-13T16:28:45+00:00",
+      "link": "https://arxiv.org/pdf/2607.11771v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "investigating how requirements are elicited, specified, and validated using RE techniques",
+      "llm_evidence_cn": "研究如何使用需求工程技术进行需求的获取、规范和验证",
+      "llm_evidence": "研究如何使用需求工程技术进行需求的获取、规范和验证",
+      "canonical_evidence": "研究如何使用需求工程技术进行需求的获取、规范和验证",
+      "llm_tldr_en": "This paper proposes an explainable RE framework based on industrial practices for AI-based systems.",
+      "llm_tldr_cn": "本文基于工业实践，为人工智能系统提出了一个可解释的需求工程框架。",
+      "llm_tldr": "本文基于工业实践，为人工智能系统提出了一个可解释的需求工程框架。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2607.10494v1",
+      "source": "arxiv",
+      "title": "Question Answering for Diagram-Rich Technical Meeting Videos",
+      "abstract": "Software engineering increasingly relies on asynchronous communication artifacts, including recorded meetings where stakeholders discuss concerns, rationale, and decisions. These meetings often include diagram-based representations of requirements, system behavior, component interactions, and trace dependencies. Accessing knowledge from these meetings is challenging because recordings are long and relevant evidence is distributed across speech, slides, and technical diagrams. This paper reports our industrial experience developing and evaluating LMVQA, an LLM-based multimodal question-answering system for technical meeting videos. Developed in collaboration with engineers at Ciena, LMVQA supports the understanding of requirements and design intent by grounding answers in audio and visual evidence, with explicit handling of diagram-rich content such as requirements and UML diagrams. It processes each video once to build a reusable time-stamped evidence corpus for grounded question answering. Across a Ciena dataset and a public dataset, we show that LMVQA significantly improves answer accuracy compared to a state-of-the-art baseline, from 31% to 94% on the Ciena dataset and from 21% to 88% on the public dataset, with larger gains on diagram-rich videos. We further show that, after one-time indexing, LMVQA reduces average response time from 81.3s to 3.3s on Ciena and from 98.4s to 9.2s on the public dataset, while lowering average token-based LLM API cost by about 75%. Finally, our interviews with three domain experts show that engineers particularly value LMVQA for locating software-engineering-relevant information, revisiting rationale, and tracing answers to specific video segments.",
+      "authors": [
+        "Zhuoran Xu",
+        "Jia Li",
+        "Dayuan Tan",
+        "Mark Cole",
+        "Ish Ashraf",
+        "Sandeep Puri",
+        "Mehrdad Sabetzadeh",
+        "Shiva Nejati"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-07-11T21:58:16+00:00",
+      "link": "https://arxiv.org/pdf/2607.10494v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "understanding of requirements and design intent from stakeholder meetings",
+      "llm_evidence_cn": "从利益相关者会议中理解需求和设计意图",
+      "llm_evidence": "从利益相关者会议中理解需求和设计意图",
+      "canonical_evidence": "从利益相关者会议中理解需求和设计意图",
+      "llm_tldr_en": "A multimodal QA system to extract requirements and design rationale from technical meeting videos.",
+      "llm_tldr_cn": "一种从技术会议视频中提取需求和设计原理的多模态问答系统。",
+      "llm_tldr": "一种从技术会议视频中提取需求和设计原理的多模态问答系统。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2607.14452v1",
+      "source": "arxiv",
+      "title": "AI-Conducted Interviews in Empirical Software Engineering: An Experience Report",
+      "abstract": "Semi-structured interviews are widely used in empirical software engineering (ESE), but they are resource-intensive and difficult to coordinate across schedules, locations, and natural languages. This experience report examines a customized MyGPT used to conduct short, self-administered interviews in two ESE studies: one on refactoring practices and another on generative AI in Scrum-related activities. Participants accessed the interviewer through shared links, used voice interaction, selected a preferred natural language, and completed the interview without a researcher present. The AI followed a predefined protocol and generated a structured synthesis that participants voluntarily submitted; these artifacts were not treated as verbatim transcripts. We analyzed 66 submissions and questionnaire responses, and audited artifact format, language, length, and protocol consistency. Of the submitted artifacts, 92.4% followed the expected synthesis format, 65 were predominantly in Portuguese and one in English, and two conflicted with the reported protocol. Participants generally rated the experience positively: 90.9% reported a positive overall experience and comfort, 95.5% considered the questions clear, 97.0% rated the pace positively, and 89.4% would participate again. Reported limitations included generic questions, limited sensitivity to answers, insufficient depth, privacy concerns, and missed human interaction. The findings support the operational viability and acceptability of this workflow among analyzed respondents, but do not establish completion rates, time savings, summary fidelity, or equivalence to human-conducted interviews. AI interviewers should therefore be treated as a complementary option for short, focused, low-risk studies, with protocol design, privacy guidance, artifact validation, and human oversight.",
+      "authors": [
+        "Rohit Gheyi",
+        "Danyllo Albuquerque",
+        "Márcio Ribeiro",
+        "Mirko Perkusich"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-07-16T00:59:44+00:00",
+      "link": "https://arxiv.org/pdf/2607.14452v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "generative AI in Scrum-related activities",
+      "llm_evidence_cn": "Scrum相关活动中的生成式AI",
+      "llm_evidence": "Scrum相关活动中的生成式AI",
+      "canonical_evidence": "Scrum相关活动中的生成式AI",
+      "llm_tldr_en": "Reports on using AI to conduct interviews regarding refactoring and Scrum practices.",
+      "llm_tldr_cn": "报告了使用AI进行关于重构和Scrum实践的访谈经验。",
+      "llm_tldr": "报告了使用AI进行关于重构和Scrum实践的访谈经验。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Agile requirements engineering and management",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2607.13303v1",
+      "source": "arxiv",
+      "title": "Faithful Autoformalization of Natural Language Assertions",
+      "abstract": "Formal contracts are essential for software testing and verification, yet writing them remains labor-intensive and error-prone. LLMs offer a promising path toward autoformalization: synthesizing executable assertions from natural-language specifications and thereby bridging the gap between informal developer intent and formal executable specifications. We present Monty: an autoformalization framework for assertions that tackles the challenges of expectations of validity of assertions and ambiguity in natural-language. Our techniques are based on filtering formalizations using a novel conformance score metric and validity scores obtained from testing the code against formalized assertions. We evaluate our approach on 541 assertion-generation tasks derived from 22 collection-like Java classes, and show that our technique produces the ground truth more reliably (improving upto 20 points in precision on average) than when using LLMs naively to translate assertions.",
+      "authors": [
+        "Hongyi Liu",
+        "Madhusudan Parthasarathy",
+        "Adithya Murali"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-07-14T22:12:14+00:00",
+      "link": "https://arxiv.org/pdf/2607.13303v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "synthesizing executable assertions from natural-language specifications",
+      "llm_evidence_cn": "从自然语言规范中合成可执行断言",
+      "llm_evidence": "从自然语言规范中合成可执行断言",
+      "canonical_evidence": "从自然语言规范中合成可执行断言",
+      "llm_tldr_en": "Presents a framework to autoformalize natural language specifications into executable assertions for verification.",
+      "llm_tldr_cn": "提出一个将自然语言规范自动形式化为可执行断言的框架，用于软件验证。",
+      "llm_tldr": "提出一个将自然语言规范自动形式化为可执行断言的框架，用于软件验证。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Defining and validating user story acceptance criteria",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2607.14673v1",
+      "source": "arxiv",
+      "title": "Project Kaleidoscope: Contextual, Human-Aligned Evaluation for Real-World AI Applications",
+      "abstract": "Evaluations (Evals) are a deployment bottleneck for real-world AI applications: public benchmarks rarely match a team's users, context, or policies, and human review is often tedious to scale. Motivated by our work with AI applications in the public sector, this project addresses recurring evaluation challenges encountered when applications must satisfy local policy and governance requirements. We present Kaleidoscope, an integrated workflow for contextual functional evaluation that links persona-based test generation, contextualized rubrics, and human review for reliability-gated automated scoring. Generated test cases are scored against application-specific rubrics; human annotations provide reviewable labels; and LLM judges automate scoring only when their agreement with those labels meets a configured threshold. Kaleidoscope is therefore a practical, inspectable, iterative workflow for product teams. We report early evidence from a three-week pilot across four organizational use cases and custom-rubric judge experiments on 108 annotated Q\\&A pairs spanning four domains and 14 evaluation dimensions. The results highlight useful features for end-to-end reliable, automated scoring.",
+      "authors": [
+        "Leanne Tan",
+        "Rohan Jaggi",
+        "Shaun Khoo",
+        "Roy Ka-Wei Lee"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.HC"
+      ],
+      "published": "2026-07-16T07:38:39+00:00",
+      "link": "https://arxiv.org/pdf/2607.14673v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "persona-based test generation and contextualized rubrics for automated scoring",
+      "llm_evidence_cn": "基于画像的测试生成和用于自动评分的情境化准则",
+      "llm_evidence": "基于画像的测试生成和用于自动评分的情境化准则",
+      "canonical_evidence": "基于画像的测试生成和用于自动评分的情境化准则",
+      "llm_tldr_en": "Kaleidoscope provides a workflow for contextual evaluation of AI applications using persona-based tests.",
+      "llm_tldr_cn": "Kaleidoscope提供了一个使用基于画像的测试对AI应用进行情境化评估的工作流。",
+      "llm_tldr": "Kaleidoscope提供了一个使用基于画像的测试对AI应用进行情境化评估的工作流。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Automated tools for user story generation and validation",
+      "matched_requirement_id": "req-8",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
