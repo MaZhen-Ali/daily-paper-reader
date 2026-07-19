@@ -1,0 +1,150 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2607.14896v1/fig-001.webp",
+      "caption": "Figure 1. From a structural-engineering request to reviewable evidence. Unlike a text-only response, StructureClaw preserves the skills, tool executions, and artifacts that support the reported result.",
+      "page": 1,
+      "index": 1,
+      "width": 474,
+      "height": 254
+    },
+    {
+      "url": "assets/figures/arxiv/2607.14896v1/fig-002.webp",
+      "caption": "Figure 4. Descriptive evaluation profiles. The radial display zooms the 50–100 range: observed scores at or below 50 share the inner ring, and larger scores are linearly expanded toward the outer ring. Appendix C defines the axes and their abbreviations. Gaps denote unevaluated axes; radar area is not an evaluation metric.",
+      "page": 6,
+      "index": 2,
+      "width": 485,
+      "height": 546
+    },
+    {
+      "url": "assets/figures/arxiv/2607.14896v1/fig-003.webp",
+      "caption": "Figure 5. Standard workflow results. Purple points denote genericonly execution, teal points denote automatic execution, and labels give the absolute Success Rate gain in percentage points.",
+      "page": 7,
+      "index": 3,
+      "width": 489,
+      "height": 332
+    },
+    {
+      "url": "assets/figures/arxiv/2607.14896v1/fig-004.webp",
+      "caption": "Figure 6. Interactive robustness results. Bars show overall Success Rate, and diamonds show Success Rate on the invalid-value subset.",
+      "page": 7,
+      "index": 4,
+      "width": 487,
+      "height": 357
+    },
+    {
+      "url": "assets/figures/arxiv/2607.14896v1/fig-005.webp",
+      "caption": "Figure 7. Multimodal structural-model reconstruction results. Bars separate image and DXF inputs, and teal dots show each configuration’s overall Success Rate.",
+      "page": 7,
+      "index": 5,
+      "width": 487,
+      "height": 297
+    },
+    {
+      "url": "assets/figures/arxiv/2607.14896v1/fig-006.webp",
+      "caption": "Figure 8. Steel-frame example of the declarative skill and artifact protocol. The frame manifest instantiates reusable metadata and parallel guidance scopes; typed tools and bound providers, rather than the guidance itself, materialize the request-dependent artifact path. The lower panel illustrates a selected analysis-and-checking path rather than the complete artifact taxonomy. Solid arrows denote artifact dependencies defined by the contract. Dashed feedback may motivate a subsequent model patch, which can yield an updated normalized model only after acceptance, base-revision validation, and conflict checks.",
+      "page": 14,
+      "index": 6,
+      "width": 442,
+      "height": 985
+    },
+    {
+      "url": "assets/figures/arxiv/2607.14896v1/fig-007.webp",
+      "caption": "Figure 2. Overall framework of StructureClaw. Multimodal engineering context enters a StructureClaw agent kernel, where capability context, engineering tools, and artifact state support a ReAct-style workflow. The local engineering sandbox executes model construction, validation, analysis, code checking, and report generation, producing structural artifacts and enabling validation-guided refinement.",
+      "page": 3,
+      "index": 7,
+      "width": 964,
+      "height": 727
+    },
+    {
+      "url": "assets/figures/arxiv/2607.14896v1/fig-008.webp",
+      "caption": "Table 9. Validity boundaries and the evidence needed to address them.",
+      "page": 18,
+      "index": 8,
+      "width": 462,
+      "height": 456
+    },
+    {
+      "url": "assets/figures/arxiv/2607.14896v1/fig-009.webp",
+      "caption": "Table 4. Evidence-chain semantics. Each stage adds inspectable evidence or an explicit reason that the next stage should not run.",
+      "page": 13,
+      "index": 9,
+      "width": 479,
+      "height": 516
+    },
+    {
+      "url": "assets/figures/arxiv/2607.14896v1/fig-010.webp",
+      "caption": "Table 1. Standard workflow results on 50 cases. Auto and Generic report Success Rate (%); Generic uses the same environment with only the generic structural skill plus the requested analysis capability. Gain is the percentage-point difference, and Calls and Time report auto-mode averages.",
+      "page": 8,
+      "index": 10,
+      "width": 1036,
+      "height": 242
+    },
+    {
+      "url": "assets/figures/arxiv/2607.14896v1/fig-011.webp",
+      "caption": "Table 2. Interactive robustness results on 50 cases. Success Rate requires all required assertions for a case to pass; Clarify, No invalid model, and No analysis are assertion-level diagnostics, while Invalid reports category-level Success Rate. Lower is better only for Calls and Time.",
+      "page": 8,
+      "index": 11,
+      "width": 1036,
+      "height": 242
+    },
+    {
+      "url": "assets/figures/arxiv/2607.14896v1/fig-012.webp",
+      "caption": "Figure 9. Success Rate across evaluated settings. Gray cells with dashes denote combinations that were not evaluated.",
+      "page": 19,
+      "index": 12,
+      "width": 433,
+      "height": 525
+    },
+    {
+      "url": "assets/figures/arxiv/2607.14896v1/fig-013.webp",
+      "caption": "Figure 10. Assertion-level diagnostics by setting. Gray cells with dashes contain no recorded applicable outcomes and are not interpreted as zero.",
+      "page": 19,
+      "index": 13,
+      "width": 422,
+      "height": 507
+    },
+    {
+      "url": "assets/figures/arxiv/2607.14896v1/fig-014.webp",
+      "caption": "Figure 12. Success Rate by recorded locale and multimodal input format. Both panels use the full 0–100 scale; the comparisons are descriptive rather than matched language or format interventions.",
+      "page": 20,
+      "index": 14,
+      "width": 486,
+      "height": 480
+    },
+    {
+      "url": "assets/figures/arxiv/2607.14896v1/fig-015.webp",
+      "caption": "Figure 13. Success Rate versus recorded mean wall-clock duration. Marker shape distinguishes the evaluated setting.",
+      "page": 20,
+      "index": 15,
+      "width": 449,
+      "height": 331
+    },
+    {
+      "url": "assets/figures/arxiv/2607.14896v1/fig-016.webp",
+      "caption": "Figure 11. Success Rate by standard structure family, interactive category, and multimodal structure family. Bars use a zero baseline. Hatching distinguishes the two bar panels in grayscale and has no inferential meaning.",
+      "page": 20,
+      "index": 16,
+      "width": 485,
+      "height": 564
+    },
+    {
+      "url": "assets/figures/arxiv/2607.14896v1/fig-017.webp",
+      "caption": "Figure 3. Composition of StructureClaw-Bench. The heatmap shows structure-type coverage across task families, the bar chart decomposes interactive robustness cases, and the pie charts summarize multimodal input format and Chinese/English balance.",
+      "page": 5,
+      "index": 17,
+      "width": 491,
+      "height": 293
+    },
+    {
+      "url": "assets/figures/arxiv/2607.14896v1/fig-018.webp",
+      "caption": "Table 6. Principal assertion rules. Thresholds are operational definitions, not independent certificates of engineering validity.",
+      "page": 16,
+      "index": 18,
+      "width": 460,
+      "height": 538
+    }
+  ]
+}
