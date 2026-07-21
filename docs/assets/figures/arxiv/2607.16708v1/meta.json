@@ -1,0 +1,54 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2607.16708v1/fig-001.webp",
+      "caption": "Fig. 2. The generic Multi-Agent LLM layer, instantiated once per generative phase (Phases 2–5), as described in the text.",
+      "page": 6,
+      "index": 1,
+      "width": 611,
+      "height": 391
+    },
+    {
+      "url": "assets/figures/arxiv/2607.16708v1/fig-002.webp",
+      "caption": "Fig. 3. The state machine of the Last Response Engine modelled using RoboChart [36].",
+      "page": 11,
+      "index": 2,
+      "width": 717,
+      "height": 350
+    },
+    {
+      "url": "assets/figures/arxiv/2607.16708v1/fig-003.webp",
+      "caption": "Table 3. Pre-study background survey responses from the six participants (P1–P6); each item was rated on a four-point experience scale: 1 = novice (0–6 months), 2 = intermediate (6 months–1 year), 3 = experienced (1–3 years), 4 = expert (>3 years).",
+      "page": 15,
+      "index": 3,
+      "width": 679,
+      "height": 187
+    },
+    {
+      "url": "assets/figures/arxiv/2607.16708v1/fig-004.webp",
+      "caption": "Fig. 4. Per-stage Single- vs. Multi-agent scores per model (mean over ten repetitions). Stars mark significant differences in either direction (Mann–Whitney U for continuous F1; Fisher’s exact for binary rates): 𝑝 < 0.05: *, 𝑝 < 0.01: **, 𝑝 < 0.001: ***, 𝑝 < 0.0001: ****. Bar heights show direction; a “0” is a measured zero (e.g. Sonnet’s 0/10 EOL runs), not missing data.",
+      "page": 14,
+      "index": 4,
+      "width": 867,
+      "height": 582
+    },
+    {
+      "url": "assets/figures/arxiv/2607.16708v1/fig-005.webp",
+      "caption": "Fig. 1. Overview of RADIANT and its realisation in our tool MALCOM (Section 3.3). The middle (LLM) lane produces JSON/source artefacts per phase via multi-agent generation; the bottom (MDE) lane transforms each into models and Bifrost traceability. Only the requirement model (Phase 1, dashed) is authored manually; all other artefacts are generated.",
+      "page": 5,
+      "index": 5,
+      "width": 731,
+      "height": 288
+    },
+    {
+      "url": "assets/figures/arxiv/2607.16708v1/fig-006.webp",
+      "caption": "Table 4. Comparative experiment for efficiency evaluation. All participants start from the same given requirement model (the input to RADIANT); the automated setting fixes the pipeline to DeepSeek-V4.",
+      "page": 16,
+      "index": 6,
+      "width": 605,
+      "height": 348
+    }
+  ]
+}

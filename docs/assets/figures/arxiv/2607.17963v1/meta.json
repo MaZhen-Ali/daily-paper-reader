@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2607.17963v1/fig-001.webp",
+      "caption": "Figure 1. Overview of Ontoextend: 1) The Ontology Retriever extracts the relevant ontology elements of the input ontologies given a new competency question. 2) The Ontology Extender uses the retrieved ontology elements together with the competency question to prompt an LLM to generate missing ontology fragments. 3) The Ontology Integrator integrates the fragments into the extended ontologies.",
+      "page": 2,
+      "index": 1,
+      "width": 735,
+      "height": 252
+    },
+    {
+      "url": "assets/figures/arxiv/2607.17963v1/fig-002.webp",
+      "caption": "Figure 3. Evaluation workflow: input ontologies, the generated fragments, and the extended ontologies are fed to different evaluation metrics to create the final report.",
+      "page": 10,
+      "index": 2,
+      "width": 735,
+      "height": 187
+    },
+    {
+      "url": "assets/figures/arxiv/2607.17963v1/fig-003.webp",
+      "caption": "Table 1. Comparison of the related works discussed in Section 2. Columns indicate whether a work explicitly reports ontology pitfall analysis (OOPS!), syntax or well-formedness checking (Syntax), semantic or logical consistency validation (Consist.), verification against requirements (Req. verif.), explicit presence of superfluous elements (Superfl. el), formal user evaluation (User eval.), expert-based assessment (Expert), evidence across multiple domains (Domain gen.), evaluation on an actively used ontology (Real-world Onto.), and evidence of scalability (Scal.). Symbols: Y = yes, P = partial, N = not reported.",
+      "page": 4,
+      "index": 3,
+      "width": 663,
+      "height": 629
+    }
+  ]
+}

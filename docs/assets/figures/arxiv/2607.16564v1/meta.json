@@ -1,0 +1,86 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2607.16564v1/fig-001.webp",
+      "caption": "Table 1 Routing of atom tags to pre-SRS artifact types.",
+      "page": 6,
+      "index": 1,
+      "width": 832,
+      "height": 313
+    },
+    {
+      "url": "assets/figures/arxiv/2607.16564v1/fig-002.webp",
+      "caption": "Figure 5 Information coverage and loss across datasets using overlapping window-2 source units",
+      "page": 11,
+      "index": 2,
+      "width": 810,
+      "height": 285
+    },
+    {
+      "url": "assets/figures/arxiv/2607.16564v1/fig-003.webp",
+      "caption": "Figure 1 Example of section-to-atom decomposition and artifact routing. A mixed section is",
+      "page": 2,
+      "index": 3,
+      "width": 827,
+      "height": 665
+    },
+    {
+      "url": "assets/figures/arxiv/2607.16564v1/fig-004.webp",
+      "caption": "Figure 4 Chunk-level atom faithfulness across datasets and atomizer models. Most atomized",
+      "page": 10,
+      "index": 4,
+      "width": 824,
+      "height": 298
+    },
+    {
+      "url": "assets/figures/arxiv/2607.16564v1/fig-005.webp",
+      "caption": "Table 3 Comparison of candidate judge LLMs for atom- and artifact-level assessment against reconciled human labels. F1 is higher-is-better. FPR and FNR are lower-is-better.",
+      "page": 10,
+      "index": 5,
+      "width": 832,
+      "height": 251
+    },
+    {
+      "url": "assets/figures/arxiv/2607.16564v1/fig-006.webp",
+      "caption": "Figure 7 Stage-wise information retention across the ReqGenX pipeline. Green indicates information retained end-to-end, while yellow and red indicate estimated information loss during atomization and artifact generation, respectively.",
+      "page": 14,
+      "index": 6,
+      "width": 822,
+      "height": 281
+    },
+    {
+      "url": "assets/figures/arxiv/2607.16564v1/fig-007.webp",
+      "caption": "Table 5 Downstream reconstruction retention scores. SBERT measures semantic similarity between source atoms and generated SRS, while AlignScore estimates factual support.",
+      "page": 13,
+      "index": 7,
+      "width": 731,
+      "height": 197
+    },
+    {
+      "url": "assets/figures/arxiv/2607.16564v1/fig-008.webp",
+      "caption": "Figure 2 End-to-end ReqGenX study pipeline for deriving and evaluating traceable synthetic pre-SRS artifacts from legacy SRS documents.",
+      "page": 4,
+      "index": 8,
+      "width": 827,
+      "height": 482
+    },
+    {
+      "url": "assets/figures/arxiv/2607.16564v1/fig-009.webp",
+      "caption": "Figure 6 Artifact quality over generated artifacts. Mean AlignScore, Prometheus pass ratio, and judge pass ratio are reported on a 0–1 scale. All models show high atom-level grounding and high judge acceptance, while Prometheus reveals stricter variation in artifact completeness and quality.",
+      "page": 12,
+      "index": 9,
+      "width": 823,
+      "height": 372
+    },
+    {
+      "url": "assets/figures/arxiv/2607.16564v1/fig-010.webp",
+      "caption": "Figure 3 Pairwise Cohen’s κ agreement among LLM-generated and human-reviewed labels for semantic tag assignment and requirement classification. Diagonal cells denote self-agreement, while off-diagonal cells show agreement between annotator/model pairs.",
+      "page": 9,
+      "index": 10,
+      "width": 811,
+      "height": 328
+    }
+  ]
+}

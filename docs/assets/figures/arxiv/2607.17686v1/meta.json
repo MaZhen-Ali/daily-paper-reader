@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2607.17686v1/fig-001.webp",
+      "caption": "Fig. 1. The VNVSPEC framework. High-level requirements enter from users or from standards-derived catalogs and pass a quality gate. They are decomposed into module-level requirements with explicit metrics and further into test cases whose results are captured as evidence records by existing test tools. Every link is an edge in a traceability DAG. Assessment rolls evidence up the graph into verdicts and produces role-specific outputs: compliance matrices for auditors, CI reports for developers, and GSN assurance cases for safety engineers.",
+      "page": 3,
+      "index": 1,
+      "width": 1076,
+      "height": 402
+    }
+  ]
+}

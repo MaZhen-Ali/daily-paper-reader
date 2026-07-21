@@ -1,0 +1,62 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2607.16680v1/fig-001.webp",
+      "caption": "Table 4: Analytical evaluation of the SGRM against the ISO/IEC 25010 product quality characteristics [17].",
+      "page": 11,
+      "index": 1,
+      "width": 852,
+      "height": 481
+    },
+    {
+      "url": "assets/figures/arxiv/2607.16680v1/fig-002.webp",
+      "caption": "Table 5: Boundary conditions: when specification governance is and is not warranted.",
+      "page": 13,
+      "index": 2,
+      "width": 806,
+      "height": 305
+    },
+    {
+      "url": "assets/figures/arxiv/2607.16680v1/fig-003.webp",
+      "caption": "Table 3: The three rigor tiers of specification-driven development, formalized as process invariants. Tiers follow Piskala [2]; the invariant formulation is contributed here.",
+      "page": 8,
+      "index": 3,
+      "width": 918,
+      "height": 212
+    },
+    {
+      "url": "assets/figures/arxiv/2607.16680v1/fig-004.webp",
+      "caption": "Figure 3: Selected quantified findings from the verified corpus [9–11,15,16]. Metrics are heterogeneous across studies (speedups, defect rates, reductions) and are shown together only as an evidence map. The Pearce et al. bar is a risk finding for ungoverned generation; the Marri and Vilas Boas et al. bars are outcomes reported under specification governance in single case studies (Section 6.4).",
+      "page": 12,
+      "index": 4,
+      "width": 834,
+      "height": 392
+    },
+    {
+      "url": "assets/figures/arxiv/2607.16680v1/fig-005.webp",
+      "caption": "Figure 2: The Specification Governance Reference Model (SGRM). Solid arrows denote the generation-andverification flow; dashed arrows denote feedback (validator diagnostics as corrective context; governed evolution of the specification). The traceability spine links every specification element to the artifacts that realize it.",
+      "page": 9,
+      "index": 5,
+      "width": 891,
+      "height": 482
+    },
+    {
+      "url": "assets/figures/arxiv/2607.16680v1/fig-006.webp",
+      "caption": "Table 1: Composition of the verified evidence corpus.",
+      "page": 5,
+      "index": 6,
+      "width": 794,
+      "height": 234
+    },
+    {
+      "url": "assets/figures/arxiv/2607.16680v1/fig-007.webp",
+      "caption": "Table 2: Failure modes of ungoverned AI code generation identified from the verified evidence corpus.",
+      "page": 5,
+      "index": 7,
+      "width": 894,
+      "height": 326
+    }
+  ]
+}

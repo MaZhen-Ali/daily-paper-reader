@@ -1,0 +1,484 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-07-21T21:14:33.122558+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 5,
+    "deep_cap": 6,
+    "deep_selected": 5,
+    "quick_candidates": 7,
+    "quick_skim_target": 11,
+    "quick_selected": 7
+  },
+  "deep_dive": [
+    {
+      "id": "2607.16564v1",
+      "source": "arxiv",
+      "title": "ReqGenX: An Empirical Study of Atomic Decomposition, Artifact Regeneration, and Reconstruction for Legacy SRS Documents",
+      "abstract": "Background: Evaluating automated Software Requirements Specification (SRS) generation is challenging because few datasets provide fine-grained traceability between source requirements, intermediate elicitation artifacts, and generated specifications. Aims: We aim to study whether legacy SRS documents can be transformed into traceable synthetic pre-SRS artifacts that support fine-grained evaluation of LLM-based SRS generation. Method: We conduct an empirical study using ReqGenX, a controlled pipeline that decomposes SRS sections into source-grounded atomic statements, routes atoms to standards-inspired artifact types through multi-LLM plurality voting, and generates artifacts using constrained prompts with iterative judge-guided refinement. We evaluate ReqGenX on seven PURE SRS documents using grounding, quality, information retention, and downstream reconstruction analyses. Results: ReqGenX produces faithful and usable atoms, with median AlignScore values typically between 0.96 and 0.99 and Prometheus scores ranging from 4.34 to 4.85. Generated artifacts remain strongly grounded in their source atoms, with AlignScore values typically between 0.80--0.94 and judge pass rates near 100%; stricter Prometheus evaluation yields pass rates from 54.8% to 97.1%. In a downstream SRS reconstruction case study, artifact-backed atoms remain recoverable from generated SRSs, with SBERT means between 0.69 and 0.75 and AlignScore medians between 0.76 and 0.84. Conclusions: Traceable synthetic pre-SRS artifacts can support more fine-grained evaluation of LLM-based SRS generation, while exposing tradeoffs among faithfulness, information retention, and artifact completeness.",
+      "authors": [
+        "Ragib Shahariar Ayon",
+        "Rayed Fahmi",
+        "Sumon Biswas",
+        "Shibbir Ahmed"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-07-18T00:30:33+00:00",
+      "link": "https://arxiv.org/pdf/2607.16564v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Automated SRS generation and decomposition into atomic statements",
+      "llm_evidence_cn": "自动化SRS生成及原子化需求分解",
+      "llm_evidence": "自动化SRS生成及原子化需求分解",
+      "canonical_evidence": "自动化SRS生成及原子化需求分解",
+      "llm_tldr_en": "Studies automated SRS generation and decomposition to improve requirements traceability and evaluation.",
+      "llm_tldr_cn": "研究自动化SRS生成与分解，以提高需求可追溯性和评估细粒度。",
+      "llm_tldr": "研究自动化SRS生成与分解，以提高需求可追溯性和评估细粒度。",
+      "llm_tags": [
+        "query:re-us:composite"
+      ],
+      "matched_query_tag": "query:re-us:composite",
+      "matched_query_text": "Papers central to 需求工程领域的用户故事相关的论文, especially work that connects or combines: User stories in software development and requirements engineering; Requirements engineering methodologies and practices; Agile requirements engineering and management; Quality assessment and improvement of user stories; Automated extraction of user stories from text; Defining and validating user story acceptance criteria; State of the art in user story research for requirements engineering; Automated tools for user story generation and validation; Impact of user story quality on software project success.",
+      "matched_requirement_id": "req-composite-re-us",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.17225v1",
+      "source": "arxiv",
+      "title": "Specifying the Delegated-Autonomy Boundary: Requirements Engineering for Agentic AI",
+      "abstract": "Agentic AI systems do not just predict or recommend; they plan, maintain state, and act in external environments with varying degrees of autonomy. This changes the requirements engineering problem in a specific and under-addressed way: it introduces what we call the delegated-autonomy boundary -- the set of decisions about what may be delegated to the system, under what graduated authority, with what oversight, and how control is returned. Current practices bury these decisions inside prompts, tool schemas, and runtime policies, even though they are requirements-level commitments. This paper proposes two complementary artifacts. First, an Agency Justification Record (AJR) helps teams decide when an agent is warranted over simpler alternatives. Second, an Agentic Delegation Policy (ADP) captures what must be specified for safe and effective development: purpose, authority, information, coordination, assurance, and evolution. Crucially, authority in the ADP is modelled as graduated, i.e., a tiered structure. We illustrate the framework with two contrasting examples: a safety-critical hospital discharge coordination agent and an automated code review agent.",
+      "authors": [
+        "Chetan Arora",
+        "Andreas Vogelsang",
+        "Abbi Sharma"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-07-19T12:27:39+00:00",
+      "link": "https://arxiv.org/pdf/2607.17225v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "requirements engineering for agentic AI and autonomy boundaries",
+      "llm_evidence_cn": "代理 AI 的需求工程与自主边界",
+      "llm_evidence": "代理 AI 的需求工程与自主边界",
+      "canonical_evidence": "代理 AI 的需求工程与自主边界",
+      "llm_tldr_en": "Proposes artifacts for defining delegated autonomy and authority in requirements engineering for AI agents.",
+      "llm_tldr_cn": "提出了在 AI 代理需求工程中定义委派自主权和权限的工件。",
+      "llm_tldr": "提出了在 AI 代理需求工程中定义委派自主权和权限的工件。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.11771v1",
+      "source": "arxiv",
+      "title": "Evaluating RE Practices for Explainability: Synthesizing Insights from Daimler Truck into an Explainable RE Framework Proposal",
+      "abstract": "Explainability has emerged as a critical requirement for AI-based systems, particularly in safety-critical and regulated domains. Although prior research has proposed frameworks, patterns, and user-centered approaches to support explainability, there is limited empirical understanding of how existing Requirements Engineering (RE) practices support explainability requirements across the RE lifecycle, especially in an industrial context. This paper reports early findings from an ongoing industry-based study investigating how explainability requirements are elicited, specified, and validated using established RE techniques. We conducted a multi-phase qualitative study with eight practitioners at Daimler Truck, employing think-aloud protocols and moderated group discussions across requirements elicitation, specification, and validation steps. Our preliminary analysis reveals recurring challenges across all steps, including conceptual ambiguity during elicitation, limited testability and expressiveness during specification, and fragmented validation due to vague criteria and regulatory uncertainty. These findings indicate that current RE practices provide limited support to systematically address explainability requirements. The paper contributes empirical insights into step-specific and cross-cutting challenges and outlines a research vision toward developing an empirically grounded RE framework for explainable AI-based systems.",
+      "authors": [
+        "Umm-e- Habiba",
+        "Lucas Mauser",
+        "Jonas Fritzsch",
+        "Justus Bogner",
+        "Stefan Wagner"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-07-13T16:28:45+00:00",
+      "link": "https://arxiv.org/pdf/2607.11771v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "investigating how explainability requirements are elicited, specified, and validated",
+      "llm_evidence_cn": "调查可解释性需求如何被获取、规范和验证",
+      "llm_evidence": "调查可解释性需求如何被获取、规范和验证",
+      "canonical_evidence": "调查可解释性需求如何被获取、规范和验证",
+      "llm_tldr_en": "This paper evaluates RE practices for explainability requirements within an industrial context.",
+      "llm_tldr_cn": "本文评估了工业背景下针对可解释性需求的需求工程实践。",
+      "llm_tldr": "本文评估了工业背景下针对可解释性需求的需求工程实践。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.16708v1",
+      "source": "arxiv",
+      "title": "Model-Driven Discipline for Multi-Agent LLMs: Requirement-to-Verification Generation of Traceable System Models",
+      "abstract": "Software complexity is a long-standing challenge for system engineers. Model-Driven Engineering (MDE) addresses it by treating models as first-class artefacts, but a typical MDE process spans many tools and produces heterogeneous models of different system aspects, making traceability, maintenance, and change management difficult.   We propose RADIANT, an engineering methodology that combines MDE with Multi-Agent Large Language Models (LLMs) for complete model-based system development, with a focus on safety-critical systems. From a carefully specified requirement model, RADIANT automatically generates heterogeneous models across engineering phases -- a concept model, a domain-specific modelling language, a conforming system model, and a behaviour model -- together with executable, element-level traceability links, on top of which it provides exact, automated change-impact analysis. Generated behaviour models are translated into CSP and formally verified (e.g.\\ for deadlock freedom and convergence) with a counterexample-driven repair loop. Evaluating RADIANT across three LLMs, we find that the multi-agent decomposition reliably improves the \\emph{syntactic validity} of the generated formal artefacts over a single-agent baseline -- and their \\emph{executability} where the model's code generation permits -- while gains in semantic accuracy are model-dependent. A six-participant study shows an order-of-magnitude ($10$--$15\\times$) reduction in development time, and the unmodified pipeline transfers to a second domain.",
+      "authors": [
+        "Ran Wei",
+        "Le Zhu",
+        "Haochi Wang",
+        "Ruizhe Yang",
+        "Jiapeng Guan",
+        "Siyuan Ji",
+        "Yuchen Hu",
+        "Zhe Jiang",
+        "Xiangyang Ji"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-07-18T08:50:55+00:00",
+      "link": "https://arxiv.org/pdf/2607.16708v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "requirement-to-verification generation of traceable system models",
+      "llm_evidence_cn": "从需求到验证的可追溯系统模型生成",
+      "llm_evidence": "从需求到验证的可追溯系统模型生成",
+      "canonical_evidence": "从需求到验证的可追溯系统模型生成",
+      "llm_tldr_en": "Combines MDE and LLMs to automatically generate traceable system models from requirement specifications.",
+      "llm_tldr_cn": "结合 MDE 和 LLM，从需求规范中自动生成可追溯的系统模型。",
+      "llm_tldr": "结合 MDE 和 LLM，从需求规范中自动生成可追溯的系统模型。",
+      "llm_tags": [
+        "query:re-us:composite"
+      ],
+      "matched_query_tag": "query:re-us:composite",
+      "matched_query_text": "Papers central to 需求工程领域的用户故事相关的论文, especially work that connects or combines: User stories in software development and requirements engineering; Requirements engineering methodologies and practices; Agile requirements engineering and management; Quality assessment and improvement of user stories; Automated extraction of user stories from text; Defining and validating user story acceptance criteria; State of the art in user story research for requirements engineering; Automated tools for user story generation and validation; Impact of user story quality on software project success.",
+      "matched_requirement_id": "req-composite-re-us",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.17686v1",
+      "source": "arxiv",
+      "title": "Integrating High-Level Requirements to Low-Level Tests with Machine-Readable V&V Specifications",
+      "abstract": "Modern software teams have mature tools for low-level testing, such as pytest, JUnit, and Jest, which make it inexpensive to write unit tests and run them on every commit. Systems engineering, in parallel, has developed rigorous principles for design verification and validation (V&V), which has worked very well across engineering discipline to align user expecations and requirements with developers' deliverables. In practice, however, the two rarely connect, and the link between users' high-level requirements and the low-level tests that machines actually run is maintained by hand, if at all. This gap is increasingly costly for AI-enabled and cyber-physical systems, for which regulators now ask for traceable evidence that high-level requirements are met, while raw test results provide little of the structure such evidence requires. We introduce VNVSpec, an open-source framework that makes V&V specifications machine-readable and executable. With this framework, users state high-level requirements directly or import them from catalogs derived from published standards. Then, the framework checks requirement quality, supports decomposition into module-level requirements with explicit metrics and acceptance criteria, links these requirements to test results through a traceability graph, and compiles the collected evidence into verdicts and audit-ready reports. We evaluate the framework by self-application, in which it is continuously assessed in CI against its own specification of 36 requirements verified by 449 tests, completed within limited time which scales linearly and thus can handle up to 10,000 requirements. We also discuss how the framework extends to testing black-box AI models and AI coding agents. The framework, its full test suite, the catalogs, and the benchmark scripts are available at https://github.com/ai-vnv/vnvspec.",
+      "authors": [
+        "Mansur Arief",
+        "Nur Ahmad Khatim",
+        "Ali Akarma",
+        "Ahmad Alfan Alfian Irfan"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-07-20T08:36:54+00:00",
+      "link": "https://arxiv.org/pdf/2607.17686v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "linking high-level requirements to low-level tests for V&V",
+      "llm_evidence_cn": "将高层需求与底层测试链接以进行验证与确认",
+      "llm_evidence": "将高层需求与底层测试链接以进行验证与确认",
+      "canonical_evidence": "将高层需求与底层测试链接以进行验证与确认",
+      "llm_tldr_en": "This paper proposes machine-readable specifications to bridge the gap between requirements and automated tests.",
+      "llm_tldr_cn": "本文提出了机器可读的规范，以弥合需求与自动化测试之间的鸿沟。",
+      "llm_tldr": "本文提出了机器可读的规范，以弥合需求与自动化测试之间的鸿沟。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Defining and validating user story acceptance criteria",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2607.13303v1",
+      "source": "arxiv",
+      "title": "Faithful Autoformalization of Natural Language Assertions",
+      "abstract": "Formal contracts are essential for software testing and verification, yet writing them remains labor-intensive and error-prone. LLMs offer a promising path toward autoformalization: synthesizing executable assertions from natural-language specifications and thereby bridging the gap between informal developer intent and formal executable specifications. We present Monty: an autoformalization framework for assertions that tackles the challenges of expectations of validity of assertions and ambiguity in natural-language. Our techniques are based on filtering formalizations using a novel conformance score metric and validity scores obtained from testing the code against formalized assertions. We evaluate our approach on 541 assertion-generation tasks derived from 22 collection-like Java classes, and show that our technique produces the ground truth more reliably (improving upto 20 points in precision on average) than when using LLMs naively to translate assertions.",
+      "authors": [
+        "Hongyi Liu",
+        "Madhusudan Parthasarathy",
+        "Adithya Murali"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-07-14T22:12:14+00:00",
+      "link": "https://arxiv.org/pdf/2607.13303v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Synthesizing executable assertions from natural-language specifications",
+      "llm_evidence_cn": "从自然语言规范中合成可执行断言",
+      "llm_evidence": "从自然语言规范中合成可执行断言",
+      "canonical_evidence": "从自然语言规范中合成可执行断言",
+      "llm_tldr_en": "Presents a framework to bridge natural language intent and formal executable specifications.",
+      "llm_tldr_cn": "提出了一个连接自然语言意图与形式化可执行规范的框架。",
+      "llm_tldr": "提出了一个连接自然语言意图与形式化可执行规范的框架。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Defining and validating user story acceptance criteria",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2607.13179v1",
+      "source": "arxiv",
+      "title": "SoftBoard: A Multi-Agent Tool for the Creation and Evaluation of Low-Fidelity Prototypes",
+      "abstract": "User Experience (UX) is recognized as a critical factor for the success of digital products, particularly in software startups, environments marked by time constraints, limited resources, and low maturity in design practices. Building Minimum Viable Products (MVPs) through low-fidelity prototyping represents a well-established strategy for rapid validation cycles at reduced cost. A systematic literature mapping, however, revealed gaps in the ecosystem of available tools: a predominance of general-purpose solutions adapted for prototyping, the absence of integrated methodological guidance, and the incipient use of Artificial Intelligence in the design process. This paper presents SoftBoard, a web-based tool for the creation and evaluation of low-fidelity prototypes in the context of MVP development. The tool integrates a prototype editor, team-based project organization, and a multi-agent system based on large language models that supports requirements elicitation and refinement, automates prototype generation, and evaluates interface quality based on usability heuristics. This integration aims to reduce reliance on prior UX expertise, standardize the prototyping process, and support teams in building MVPs aligned with user needs. As future work, a feasibility study with software professionals is currently underway.",
+      "authors": [
+        "Gabriel R. S. Scapim",
+        "Gislaine C. L. Leal",
+        "Guilherme C. Guerino"
+      ],
+      "primary_category": "cs.HC",
+      "categories": [
+        "cs.HC",
+        "cs.SE"
+      ],
+      "published": "2026-07-14T18:27:55+00:00",
+      "link": "https://arxiv.org/pdf/2607.13179v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "low-fidelity prototyping for rapid validation cycles and user expectations",
+      "llm_evidence_cn": "用于快速验证周期和对齐用户期望的低保真原型设计",
+      "llm_evidence": "用于快速验证周期和对齐用户期望的低保真原型设计",
+      "canonical_evidence": "用于快速验证周期和对齐用户期望的低保真原型设计",
+      "llm_tldr_en": "SoftBoard is a multi-agent tool for creating and evaluating low-fidelity prototypes to validate user requirements.",
+      "llm_tldr_cn": "SoftBoard是一个多智能体工具，通过创建和评估低保真原型来验证用户需求。",
+      "llm_tldr": "SoftBoard是一个多智能体工具，通过创建和评估低保真原型来验证用户需求。",
+      "llm_tags": [
+        "query:re-us:composite"
+      ],
+      "matched_query_tag": "query:re-us:composite",
+      "matched_query_text": "Papers central to 需求工程领域的用户故事相关的论文, especially work that connects or combines: User stories in software development and requirements engineering; Requirements engineering methodologies and practices; Agile requirements engineering and management; Quality assessment and improvement of user stories; Automated extraction of user stories from text; Defining and validating user story acceptance criteria; State of the art in user story research for requirements engineering; Automated tools for user story generation and validation; Impact of user story quality on software project success.",
+      "matched_requirement_id": "req-composite-re-us",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2607.13303v2",
+      "source": "arxiv",
+      "title": "Faithful Autoformalization of Natural Language Assertions",
+      "abstract": "Formal contracts are essential for software testing and verification, yet writing them remains labor-intensive and error-prone. LLMs offer a promising path toward autoformalization: synthesizing executable assertions from natural-language specifications and thereby bridging the gap between informal developer intent and formal executable specifications. We present Monty: an autoformalization framework for assertions that tackles the challenges of expectations of validity of assertions and ambiguity in natural-language. Our techniques are based on filtering formalizations using a novel conformance score metric and validity scores obtained from testing the code against formalized assertions. We evaluate our approach on 541 assertion-generation tasks derived from 22 collection-like Java classes, and show that our technique produces the ground truth more reliably (improving upto 20 points in precision on average) than when using LLMs naively to translate assertions.",
+      "authors": [
+        "Hongyi Liu",
+        "Madhusudan Parthasarathy",
+        "Adithya Murali"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-07-14T22:12:14+00:00",
+      "link": "https://arxiv.org/pdf/2607.13303v2",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "synthesizing executable assertions from natural-language specifications",
+      "llm_evidence_cn": "从自然语言规范中合成可执行断言",
+      "llm_evidence": "从自然语言规范中合成可执行断言",
+      "canonical_evidence": "从自然语言规范中合成可执行断言",
+      "llm_tldr_en": "Monty framework autoformalizes natural language specifications into executable assertions for verification.",
+      "llm_tldr_cn": "Monty框架将自然语言规范自动形式化为可执行断言，用于软件验证。",
+      "llm_tldr": "Monty框架将自然语言规范自动形式化为可执行断言，用于软件验证。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Defining and validating user story acceptance criteria",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2607.14673v1",
+      "source": "arxiv",
+      "title": "Project Kaleidoscope: Contextual, Human-Aligned Evaluation for Real-World AI Applications",
+      "abstract": "Evaluations (Evals) are a deployment bottleneck for real-world AI applications: public benchmarks rarely match a team's users, context, or policies, and human review is often tedious to scale. Motivated by our work with AI applications in the public sector, this project addresses recurring evaluation challenges encountered when applications must satisfy local policy and governance requirements. We present Kaleidoscope, an integrated workflow for contextual functional evaluation that links persona-based test generation, contextualized rubrics, and human review for reliability-gated automated scoring. Generated test cases are scored against application-specific rubrics; human annotations provide reviewable labels; and LLM judges automate scoring only when their agreement with those labels meets a configured threshold. Kaleidoscope is therefore a practical, inspectable, iterative workflow for product teams. We report early evidence from a three-week pilot across four organizational use cases and custom-rubric judge experiments on 108 annotated Q\\&A pairs spanning four domains and 14 evaluation dimensions. The results highlight useful features for end-to-end reliable, automated scoring.",
+      "authors": [
+        "Leanne Tan",
+        "Rohan Jaggi",
+        "Shaun Khoo",
+        "Roy Ka-Wei Lee"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.HC"
+      ],
+      "published": "2026-07-16T07:38:39+00:00",
+      "link": "https://arxiv.org/pdf/2607.14673v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "contextual functional evaluation and persona-based test generation",
+      "llm_evidence_cn": "上下文功能评估与基于画像的测试生成",
+      "llm_evidence": "上下文功能评估与基于画像的测试生成",
+      "canonical_evidence": "上下文功能评估与基于画像的测试生成",
+      "llm_tldr_en": "Introduces a workflow for contextual AI evaluation using persona-based tests and specific rubrics.",
+      "llm_tldr_cn": "介绍了一种使用基于画像的测试和特定细则进行上下文 AI 评估的工作流。",
+      "llm_tldr": "介绍了一种使用基于画像的测试和特定细则进行上下文 AI 评估的工作流。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Defining and validating user story acceptance criteria",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2607.16680v1",
+      "source": "arxiv",
+      "title": "Specification-Driven Development as the Foundation of AI-Native Enterprise Software Engineering",
+      "abstract": "Large language models (LLMs) and agentic AI are shifting software engineering from manual coding toward intent specification, architecture, and governance. Two paradigms have emerged: vibe coding, an intuition-driven approach accepting AI artifacts via observed behavior, and Specification-Driven Development (SDD), which uses structured specifications as the authoritative source of truth. This article makes three contributions. First, based on a verified literature corpus, it identifies failure modes of ungoverned conversational generation: the productivity-reliability paradox, architectural erosion from limited context, security exposure, and technical debt. Second, it introduces the Specification Governance Reference Model (SGRM). This tool-independent framework defines four-component specification contracts, constrains stochastic generation via deterministic validation, formalizes three rigor levels, and integrates generation, verification, and governance into a closed-loop architecture. Third, it evaluates SGRM against ISO/IEC 25010, mapping quality characteristics to governance mechanisms. Empirical evidence supports this, reporting a 73% reduction in security defects under constitutional constraints and a 50% reduction in time-to-market through specification-governed agentic delivery. The analysis concludes that while vibe coding is valuable for ideation and rapid prototyping, enterprise software requires specification governance to transform probabilistic AI generation into deterministic, auditable engineering. Boundary conditions, threats to validity, and future research directions are discussed.",
+      "authors": [
+        "Mamdouh Alenezi"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-07-18T07:27:02+00:00",
+      "link": "https://arxiv.org/pdf/2607.16680v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Specification-Driven Development shifting from manual coding to intent specification",
+      "llm_evidence_cn": "规范驱动开发从手动编码转向意图规范",
+      "llm_evidence": "规范驱动开发从手动编码转向意图规范",
+      "canonical_evidence": "规范驱动开发从手动编码转向意图规范",
+      "llm_tldr_en": "Advocates for structured specifications as the source of truth in AI-native software engineering.",
+      "llm_tldr_cn": "倡导在AI原生软件工程中将结构化规范作为权威事实来源。",
+      "llm_tldr": "倡导在AI原生软件工程中将结构化规范作为权威事实来源。",
+      "llm_tags": [
+        "query:re-us:composite"
+      ],
+      "matched_query_tag": "query:re-us:composite",
+      "matched_query_text": "Papers central to 需求工程领域的用户故事相关的论文, especially work that connects or combines: User stories in software development and requirements engineering; Requirements engineering methodologies and practices; Agile requirements engineering and management; Quality assessment and improvement of user stories; Automated extraction of user stories from text; Defining and validating user story acceptance criteria; State of the art in user story research for requirements engineering; Automated tools for user story generation and validation; Impact of user story quality on software project success.",
+      "matched_requirement_id": "req-composite-re-us",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2607.17286v1",
+      "source": "arxiv",
+      "title": "IssueExec: A Test-Driven Approach for Localizing Software Engineering Issues",
+      "abstract": "Issue localization, which identifies code locations requiring modification from issue descriptions, is a critical step in automated software maintenance. Existing approaches predominantly attempt to directly align issue descriptions with code elements, yet often struggle due to the inherent abstraction gap between the issue description and code implementation. Seeking alternative signals, our theoretical analysis suggests that test suites can serve as executable proxies for requirements, reducing localization uncertainty by 7.73 bits of entropy on average. A large-scale empirical study on 18 repositories validates this premise: existing tests cover 96.98\\% of ground-truth files, and the two-hop pathway yields stronger semantic connectivity than direct matching in 82.4\\% of cases. Despite their potential, leveraging tests for localization faces two key challenges: the semantic gap separating issue descriptions from test identifiers, and the substantial noise in execution traces from infrastructure code. To address these, we propose IssueExec, which bridges the semantic gap through domain-knowledge-enhanced test representations and filters noise via hierarchical trace analysis. Experiments on SWE-bench Lite show that IssueExec achieves state-of-the-art performance, improving function-level Recall@1 by 41.57\\% over the strongest baseline. When integrated into the Agentless pipeline, IssueExec resolves 17.72\\% more issues, demonstrating practical downstream benefits.",
+      "authors": [
+        "Jiawei Liu",
+        "Yun Lin",
+        "Chenyan Liu",
+        "Yu Qian",
+        "Yiming Liu",
+        "Jiaxin Chang",
+        "Weinan Zhang",
+        "Linpeng Huang"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-07-19T15:08:08+00:00",
+      "link": "https://arxiv.org/pdf/2607.17286v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Test suites as executable proxies for requirements",
+      "llm_evidence_cn": "测试套件作为需求的可执行代理",
+      "llm_evidence": "测试套件作为需求的可执行代理",
+      "canonical_evidence": "测试套件作为需求的可执行代理",
+      "llm_tldr_en": "Proposes using test suites as executable requirements to improve the localization of software issues.",
+      "llm_tldr_cn": "提出将测试套件作为可执行需求，以改进软件问题的定位。",
+      "llm_tldr": "提出将测试套件作为可执行需求，以改进软件问题的定位。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Defining and validating user story acceptance criteria",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2607.17963v1",
+      "source": "arxiv",
+      "title": "OntoExtend: A Framework for Requirement-driven and Scalable Ontology Extension with LLMs",
+      "abstract": "Ontology extension refers to the process of enriching an existing ontology in response to emerging requirements, making it more complete. This task is a resource-intensive and error-prone process. Large Language Models (LLMs) have shown promising performance on generating ontologies from scratch, but current approaches rarely tie ontology extension explicitly to requirements or reusable core models, and offer limited, systematic evaluation of LLM outputs. This paper introduces OntoExtend, a requirements-driven framework for ontology extension with LLMs. It uses retrieval-augmented generation (RAG) over relevant input ontologies and requirements in the form of competency questions to propose grounded extensions. We evaluate OntoExtend on 39 CQs from two use cases: a public EU-project ontology, Onto-DESIDE, and an industrial ontology from Bosch. The generated fragments show few structural issues, satisfy all functional evaluation tests, and are rated by ontology engineers as requiring minor to moderate revision before integration. These results suggest that OntoExtend is useful as a drafting assistant for requirement-driven ontology extension in real world scenarios, while remaining sensitive to CQ specificity and modelling profile.",
+      "authors": [
+        "Anna Sofia Lippolis",
+        "Mohammad Javad Saeedizade",
+        "Stefan Schmid",
+        "Simon Blattner",
+        "Robin Keskisärkkä",
+        "Aldo Gangemi",
+        "Eva Blomqvist",
+        "Andrea Giovanni Nuzzolese"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-07-20T14:04:01+00:00",
+      "link": "https://arxiv.org/pdf/2607.17963v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Requirement-driven framework for ontology extension",
+      "llm_evidence_cn": "需求驱动的本体扩展框架",
+      "llm_evidence": "需求驱动的本体扩展框架",
+      "canonical_evidence": "需求驱动的本体扩展框架",
+      "llm_tldr_en": "Introduces a requirements-driven framework using LLMs to extend ontologies based on competency questions.",
+      "llm_tldr_cn": "引入一个需求驱动的框架，利用大模型根据能力问题扩展本体。",
+      "llm_tldr": "引入一个需求驱动的框架，利用大模型根据能力问题扩展本体。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    }
+  ]
+}
