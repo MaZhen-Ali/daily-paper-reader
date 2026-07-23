@@ -1,0 +1,832 @@
+Title: ReqGenX: An Empirical Study of Atomic Decomposition, Artifact Regeneration, and Reconstruction for Legacy SRS Documents
+
+URL Source: https://arxiv.org/pdf/2607.16564v1
+
+Published Time: Tue, 21 Jul 2026 00:20:00 GMT
+
+Number of Pages: 21
+
+Markdown Content:
+# ReqGenX: An Empirical Study of Atomic Decomposition, Artifact Regeneration, and Reconstruction for Legacy SRS Documents 
+
+## Ragib Shahariar Ayon # Ñ
+
+Texas State University, San Marcos, TX, USA 
+
+## Rayed Fahmi #
+
+Texas State University, San Marcos, TX, USA 
+
+## Sumon Biswas # Ñ
+
+Case Western Reserve University, Cleveland, OH, USA 
+
+## Shibbir Ahmed # Ñ
+
+Texas State University, San Marcos, TX, USA 
+
+Abstract 
+
+Background: Evaluating automated Software Requirements Specification (SRS) generation is challenging because few datasets provide fine-grained traceability between source requirements, intermediate elicitation artifacts, and generated specifications. Aims: We aim to study whether legacy SRS documents can be transformed into traceable synthetic pre-SRS artifacts that support fine-grained evaluation of LLM-based SRS generation. Method: We conduct an empirical study using ReqGenX , a controlled pipeline that decomposes SRS sections into source-grounded atomic statements, routes atoms to standards-inspired artifact types through multi-LLM plurality voting, and generates artifacts using constrained prompts with iterative judge-guided refinement. We evaluate ReqGenX on seven PURE SRS documents using grounding, quality, information retention, and downstream reconstruction analyses. Results: ReqGenX produces faithful and usable atoms, with median AlignScore values typically between 0.96 and 0.99 and Prometheus scores ranging from 4.34 to 4.85. Generated artifacts remain strongly grounded in their source atoms, with AlignScore values typically between 0.80–0.94 and judge pass rates near 100%; stricter Prometheus evaluation yields pass rates from 54.8% to 97.1%. In a downstream SRS reconstruction case study, artifact-backed atoms remain recoverable from generated SRSs, with SBERT means between 0.69 and 0.75 and AlignScore medians between 0.76 and 0.84. Conclusions: Traceable synthetic pre-SRS artifacts can support more fine-grained evaluation of LLM-based SRS generation, while exposing tradeoffs among faithfulness, information retention, and artifact completeness. 
+
+2012 ACM Subject Classification Software and its engineering → Requirements analysis 
+
+Keywords and phrases Requirements, Large Language Model, Software Engineering 
+
+Supplementary Material https://doi.org/10.5281/zenodo.20267334 
+
+## 1 Introduction 
+
+Large language models (LLMs) are increasingly being applied to requirements engineering (RE), including SRS generation, requirement extraction, validation, correction, and the production of intermediate artifacts such as user stories and acceptance criteria [ 24 , 42 , 35 ]. However, SRS compilation differs from many software engineering tasks because requirements are primarily expressed in natural language and encode stakeholder intent, system scope, constraints, assumptions, and quality expectations. As a result, a generated SRS may appear coherent while omitting source information, merging distinct concerns, or introducing unsupported requirements. Evaluating LLM-based SRS compilation, therefore, requires more than document-level fluency: it requires claim-level evidence about which source statements support each generated artifact and whether the original requirements knowledge is preserved. arXiv:2607.16564v1 [cs.SE] 18 Jul 2026 2 ReqGenX Sectionwise Chunk:  Section 2.1.3 — Software Interfaces 
+
+The product uses the Qt graphical library.  It must run with all the operating systems that Qt supports. 
+
+Software Interfaces 
+
+1. Graphical Library 
+
+- The product uses the Qt graphical library  as its graphical 
+
+interface framework. 
+
+2. Operating System Compatibility 
+
+- The product  must run on all operating systems supported by 
+
+the Qt  graphical library. 
+
+> Baseline LLM SOTA
+
+As a user, I want the product to run on all operating systems supported by Qt  so that I can have 
+
+flexibility in choosing my preferred platform. 
+
+> No semantic decomposition
+> No standard Aligned artifact typing
+> No claim traceability
+
+Baseline and SOTA 
+
+ReqGenX 
+
+> Typed artifacts
+> Claim traceability
+> Decomposed artifacts
+> ReqGenX
+
+Artifact 1:  System Context and Constraints 
+
+Note 
+
+Source: 2.1.3 Software Interfaces 
+
+1. External Entities / Interfaces 
+
+- The product uses the Qt graphical library. 
+
+3. Constraints 
+
+- The product must run with all the operating 
+
+systems that Qt supports. 
+
+Artifact 2:  Quality Attribute Constraints Note 
+
+Quality Attr: Portability 
+
+1. Scenario 
+
+Artifact: The product 
+
+Stimulus:  It must run with all the operating 
+
+systems that Qt supports. 
+
+Atom 1:  The product uses the Qt graphical 
+
+library. 
+
+Tag : product perspective 
+
+Atom 2:  It must run with all the operating 
+
+systems that Qt supports. 
+
+Tag : supporting_information 
+
+Figure 1 Example of section-to-atom decomposition and artifact routing. A mixed section is split into atomic statements and mapped to different artifact types. The baseline merges claims into a single artifact, whereas ReqGenX produces typed, traceable artifacts. Colored highlights show mappings from source statements to artifacts ( : requirement content, : supporting information content). 
+
+Prior Natural Language Processing for Requirements Engineering (NLP4RE) work provides important foundations for this problem, including requirements classification, extraction, defect detection, quality analysis, and traceability [ 41 ]. Public corpora such as PURE provide requirements documents for experimentation [ 16 ], and traceability research shows that intermediate artifacts can help bridge abstraction gaps among lifecycle artifacts [ 17 ]. However, existing resources do not provide a ready-made evaluation substrate that jointly links heterogeneous SRS evidence, intermediate RE artifacts, generated requirements, and traceability relations. This motivates using legacy SRSs as seed evidence for constructing traceable synthetic RE resources that can support fine-grained evaluation of LLM-based SRS compilation. Figure 1 illustrates this challenge using a QHeadache SRS section from PURE [ 16 ]. The section combines two distinct claims: that the product uses the Qt graphical library and that it must run on all operating systems supported by Qt. A section-level baseline treats both claims as a single generic pre-SRS artifact, obscuring which source statement supports which generated content. In contrast, ReqGenX decomposes the section into atomic statements and routes them to typed proxy artifacts: the Qt-library claim becomes a System Context and Constraints Note , while the operating-system claim becomes a Quality Attribute Constraints R. Ayon, R. Fahmi, S. Biswas and S. Ahmed 3
+
+Note . This example motivates our atom-centric design, where generated artifacts remain traceable to individual source claims rather than only to coarse section-level passages. To empirically study this gap, we use ReqGenX as a controlled, reproducible pipeline to generate synthetic pre-SRS artifacts from existing SRS documents with explicit provenance metadata. ReqGenX serves as the experimental instrument for observing how information changes as legacy SRS content is decomposed, routed, transformed into typed artifacts, and later used for reconstruction. ReqGenX uses each SRS as source evidence and operates in three stages. First, it prepares document-level SRS content for fine-grained generation by normalizing each document, splitting it into section-level chunks, and decomposing each chunk into source-grounded atomic statements. Second, it assigns artifact types to atoms using multi-LLM plurality voting followed by human-in-the-loop (HITL) review. Third, it generates typed pre-SRS artifacts using tag-specific prompts, artifact standards, and iterative quality checks. Across these stages, ReqGenX assigns stable identifiers to source sections, chunks, atoms, tags, and generated artifacts, and stores their mappings as provenance metadata. We evaluate ReqGenX at two levels: at the atom level, we study faithfulness, atomicity, downstream utility, source-to-atom coverage, factual grounding, and information loss; at the artifact level, we study faithfulness, support, contextuality, structural alignment, sparsity, and refinement needs, using judge models selected against reconciled human annotations. We also benchmark candidate LLM classifiers on PROMISE and use the best-performing models in the plurality-voting setup. We use ReqGenX as a controlled pipeline for studying how LLMs transform legacy SRS content into intermediate pre-SRS artifacts and how information changes across decomposition, routing, generation, and reconstruction. This framing allows us to evaluate not only the generated outputs, but also the practical tradeoffs that arise when public SRSs are used as seed evidence for synthetic RE resources. We evaluate ReqGenX on seven SRS documents derived from the PURE dataset. The results show that ReqGenX produces atoms that are generally faithful and well formed: median AlignScore values are typically between 0.96 and 0.99, unsupported rates remain below 3% for most dataset–model pairs, and final atom quality scores range from 4.34 to 4.85 under Prometheus. Generated artifacts also remain strongly grounded in their source atoms, with AlignScore values typically between 0.80–0.94 and judge pass rates near 100% after refinement, although Prometheus reveals stricter variation in artifact quality, with pass rates ranging from 54.8% to 97.1%. Finally, our downstream SRS reconstruction case study shows that artifact-backed atoms remain semantically recoverable from generated SRSs, with SBERT means ranging from 0.690 to 0.753 and AlignScore medians ranging from 0.760 to 0.842. This study makes the following contributions: We empirically characterize LLM-based atomization of legacy SRSs across seven selected PURE documents, showing that high atom-level faithfulness (median AlignScore 0.96– 0.99) can coexist with wide variation in source coverage (35.6–93.5%). We provide a stage-wise analysis of information loss across the SRS-to-atoms-to-artifacts transformation, finding that many losses reflect evidence-granularity issues rather than hallucination or parsing failure; downstream reconstruction is evaluated separately as a recoverability case study. We show that, in our setting, LLM semantic routing is more reliable than fine-grained requirement classification: Claude reaches human agreement of κ = 0 .83 for semantic tags and κ = 0 .80 for requirements, while GPT-4o/GPT-OSS agreement drops to κ = 0 .31 for requirement classification. We present a human-calibrated judge-selection procedure for LLM-as-a-judge evaluation of RE artifacts, based on 291 annotated triples with inter-annotator agreement of κ = 0 .84 4 ReqGenX Synthetic Artifacts                     
+
+> Faithfullness Support
+> Structural Alignment
+> Sparsity
+> Contextuality
+> Artifact Generation from Routed Atoms
+> RQ1
+> Decomposition of
+> Requirements
+> Normalization
+> SRS
+> Chunks
+> 12
+> 3
+> Faithfulness Atomicity
+> Tagged
+> Atoms
+> Artifact
+> Generator
+> Prompt
+> Template
+> Multi-LLM
+> Tagging
+> Human
+> In the Loop
+> Semantic Routing of Decomposed Atoms
+> Artifact
+> Reviewer
+> a
+> ab
+> Utility Title Page
+> Page Num.
+> Table of Contents
+> Section Hierarchy
+> Header
+> Footer
+> Atomizer Reviewer
+> keep
+> rewrite split merge
+> remove add
+> Actions
+> Action & rationale
+> Candidate Atoms
+> Decision Reliability
+> Candidate Artifact
+> Action & rationale
+> Artifact Quality Faithfulness
+> a
+> SRS
+> Compiler
+> RQ3
+> RQ2
+> Agreement Analysis
+> RQ4: SRS Reconstruction
+> Generated
+> Atoms
+> Compiled
+> SRS
+> Business Analysis Brief User Research Note System Context
+> Quality Note Verification Brief Terminology RAID Log
+> bJudge-guided refinement
+> Judge-guided refinement b
+> RQ5 Information Loss Coverage Revision Actions
+> Structural Alignment
+> RQ5 Failure Patterns
+> Judge Selection
+
+Figure 2 End-to-end ReqGenX study pipeline for deriving and evaluating traceable synthetic pre-SRS artifacts from legacy SRS documents. 
+
+for atoms and κ = 0 .97 for artifacts. We release a traceable replication package with processed SRSs, generated atoms and artifacts, prompts, codebooks, traceability metadata, and evaluation outputs [4]. The remainder of this paper is organized as follows. Section 2 describes the ReqGenX 
+
+framework. Section 3 presents the experimental design, and Section 4 reports the main results and evaluation, including the downstream SRS reconstruction case study. Section 5 discusses empirical insights, including routing agreement, judge selection, information retention, revision behavior, and artifact-generation failures. Section 6 reviews related work, Section 7 discusses threats to validity, and Section 8 concludes the paper. 
+
+## 2 Study Pipeline 
+
+Terminology. We use section for a logical SRS unit after normalization, chunk for the text associated with that section, and atom for a minimal, source-supported proposition extracted from a chunk. An atom should express one coherent statement and remain interpretable in isolation, following the requirements-quality notion of atomicity as avoiding conflation of multiple concerns [ 18 ]. We describe ReqGenX as the study pipeline used to operationalize our empirical analysis, rather than as a deployment-ready requirements engineering tool. Figure 2 summarizes the ReqGenX workflow for deriving standards-inspired, traceable pre-SRS artifacts from legacy SRS documents. The pipeline consists of three stages: 1
+
+decomposition of requirements , which produces source-grounded atoms from SRS sections; 2
+
+semantic routing of decomposed atoms , which maps atoms to artifact types; and 3 artifact generation and review , which generates and refines typed pre-SRS artifacts. R. Ayon, R. Fahmi, S. Biswas and S. Ahmed 5
+
+## 2.1 Decomposition of Requirements 
+
+The pipeline begins with an SRS document, typically available as a PDF. Because such documents are designed for presentation rather than structured processing, we first convert each document into a text-based representation (e.g., Markdown) that preserves headings, lists, and basic layout structure. Following prior work on extracting and restructuring software documents [ 6, 27 ], we normalize the parsed output by removing non-requirements material such as cover pages, tables of contents, headers, footers, page numbers, broken line fragments, and other layout artifacts. Pattern-based rules repair common PDF-conversion errors, including broken section headers, missing hierarchy levels, and merged or fragmented sections. We then perform a lightweight manual validation against the original SRS to ensure that requirement content has not been removed and that parsing artifacts have not been introduced. The normalized SRS is segmented into section-wise chunks using the restored section hierarchy, and each chunk retains its section identifier, title, and source-document metadata for traceability. Each chunk is decomposed into atomic statements using an LLM-based atomizer. The atomizer is instructed to separate independent propositions while preserving necessary qualifiers, conditions, bounds, and scope information. Each atom must satisfy three criteria: faithfulness , meaning every claim is directly supported by the source chunk; atomicity , meaning the atom expresses one usable, self-contained proposition rather than a bundle of separable ideas or metadata-like fragment; and downstream utility , meaning the atom is specific enough to seed a meaningful pre-SRS artifact [ 33 , 8 , 20 ]. Because LLM-generated requirements may still be ambiguous, infeasible, or unsupported [ 33 ], a separate judge LLM evaluates each atom set using a structured rubric. The judge scores faithfulness, atomicity, and utility, checks the set for redundancy, overlap, bad splitting or bundling, missing ideas, incoherent decomposition, and unnecessary structural atoms, and returns actions such as keep , rewrite , split , merge , remove , or add . Atom sets that fail the acceptance criterion are revised before proceeding to semantic routing. 
+
+## 2.2 Semantic Routing of Decomposed Atoms 
+
+After decomposition, ReqGenX assigns each atom a semantic tag using an IEEE 29148-inspired schema [ 2, 41 , 19 ]. Routing is needed because different SRS statements support different pre-SRS artifacts: for example, purpose and scope statements, user characteristics, definitions, assumptions, functional behavior, and quality constraints require different artifact structures. Table 1 summarizes the resulting mapping from atom tags to artifact families. 
+
+ReqGenX uses an independent proposal–then–aggregate strategy for semantic routing. The atomizer first proposes an initial tag, after which three LLM agents independently label each atom without seeing peer outputs. The final tag is selected by plurality vote [ 37 , 43 ]; unresolved cases are assigned through human-in-the-loop (HITL) review so that each atom has one canonical label before artifact generation. Atoms tagged as requirements undergo a second classification stage because the requirement label is too coarse for routing. ReqGenX 
+
+classifies these atoms as functional , quality , or other . Functional atoms are routed to Use Case Briefs , while quality atoms are routed to Quality Attribute Constraints . For quality atoms, 
+
+ReqGenX further resolves the corresponding PROMISE-NFR subtype, such as availability ,
+
+fault tolerance , performance , portability , security , or usability [26 , 34 ]. These subtypes guide how the quality constraint is expressed within the artifact, rather than changing the artifact family itself. The same plurality-voting and human-review process is used for this second classification stage. 6 ReqGenX           
+
+> Table 1 Routing of atom tags to pre-SRS artifact types.
+> IEEE 29148 Artifact Atom Tags
+> Business Analysis Brief Purpose, Scope, Product Functions User Research User Characteristics System Context and Constraints Product Perspective, Limitations, Supporting Information, Other Use Case Brief Functional Quality Attribute Constraints Availability, Fault Tolerance, Operability, Performance, Portability, Scalability, Security, Legal, Usability, Look and Feel, Maintainability Acceptance Criteria Sheet Verification Terminology and References Definitions, References, Acronyms and Abbreviations RAID Log Entry Assumptions and Dependencies
+
+## 2.3 Artifact Generation and Review 
+
+After semantic routing, ReqGenX converts each validated atom into a pre-SRS artifact using an artifact-specific template, such as a use case, quality constraint, or context note. The 
+
+atom_text is treated as the primary source of truth: all substantive artifact content must be supported by the atom, while metadata such as the semantic tag, section title, and chunk context is used only for formatting or minor disambiguation. Each artifact retains a traceable identifier linking it back to the source atom and its location in the original SRS. The generator returns an artifact_text instance, which ReqGenX post-processes to remove formatting leakage, residual rationale text, and unintended prompt artifacts. The templates are intentionally conservative: they prioritize faithful normalization over abstraction, prohibit unsupported enrichment, omit unsupported fields, and allow empty outputs when the atom does not support a valid instance of the target artifact type. To improve artifact quality, ReqGenX applies an iterative review loop using a rubric-based judge LLM. The judge evaluates each artifact on five dimensions: faithfulness , whether the artifact preserves the atom’s meaning; support , whether all artifact content is grounded in the atom; contextuality , whether limited section context is used appropriately without adding new claims; structural alignment , whether the artifact follows the expected type-specific structure; and sparsity , whether it avoids filler, placeholders, and unsupported template sections. Artifacts that meet the acceptance threshold are retained; failed artifacts are revised using judge feedback until they pass or the refinement budget is reached. This review loop helps prevent fluent but unsupported outputs, including implicit assumptions, unnecessary structure, and template-driven filler. The eight artifact families in Table 1 provide compact coverage of the main information roles underlying an SRS while remaining grounded in established requirements and architecture documentation practices [10, 32, 2, 7, 36, 1]. 
+
+## 2.4 Traceability and Provenance Model 
+
+ReqGenX maintains provenance metadata across the generated artifacts so that each output can be related back to its source evidence. During chunking, each section-wise chunk stores document-level and location metadata, including the document identifier, source file, section label, section identifier, and section title. During artifact generation, ReqGenX combines the document identifier with the atom identifier to create a stable artifact-level trace identifier. This identifier is stored with the generated artifact together with the source atom, semantic tag, requirement-type labels, section metadata, and supporting chunk context. As a result, R. Ayon, R. Fahmi, S. Biswas and S. Ahmed 7
+
+the pipeline records a practical trace chain from the SRS document and section to chunk, atom, semantic tag, generated artifact, and, in the reconstruction case study, matched SRS sentence windows. We use these links to support grounding checks, information retention analysis, and downstream recoverability evaluation. We do not claim that this metadata provides a complete industrial traceability solution; rather, it provides the provenance needed to audit LLM-generated artifacts against their source SRS evidence. 
+
+## 3 Experimental Design 
+
+We use ReqGenX as a controlled pipeline to study how LLMs perform across the transforma-tions required to derive traceable synthetic pre-SRS artifacts from legacy SRS documents. The study covers five dimensions: intermediate RE decisions, atomic decomposition, artifact generation, downstream reconstruction, and sources of information loss. 
+
+RQ1: To what extent can LLMs support RE-specific intermediate decisions, including semantic classification and quality judgment? 
+
+RQ2: Can LLMs decompose legacy SRS sections into faithful, atomic, and downstream-usable statements while preserving source information? 
+
+RQ3: To what extent can LLMs generate grounded, sparse, and structurally valid pre-SRS artifacts from routed atoms? 
+
+RQ4: Can LLM-generated pre-SRS artifacts support downstream SRS reconstruction? 
+
+RQ5: Where is information lost across the transformation process, and which revision or failure patterns explain these losses? 
+
+## 3.1 Dataset 
+
+We construct our benchmark from the PURE dataset [ 16 ] using the document-selection protocol of Okamoto et al. [ 27 ]. Because ReqGenX operates on text sequences, we select SRS documents whose requirements content can be represented as ordered textual sections, paragraphs, and lists. We retain only documents explicitly identified as Software Requirements Specifications (SRSs), excluding other specification types such as functional or system requirements specifications. We also exclude SRSs with substantive figures or non-revision-history tables, since these elements do not provide a stable linear reading order for sentence segmentation, atomization, and downstream faithfulness evaluation. Revision-history tables are retained because they can be normalized into linear text without changing their meaning. After filtering, we retain seven PURE SRS documents: Get Real, Library, Puget Sound, QHeadache, VUB, Libra, and Home. In total, the benchmark contains 31,454 words, 1,408 sentences, and 369 sections. This filtering favors SRSs whose requirements content can be represented as linear text; therefore, our results may understate failures that would arise for figure-heavy, table-heavy, or multimodal SRSs. 
+
+## 3.1.1 Implementation and Large Language Models 
+
+Our pipeline was implemented in Python 3.11, and all LLM interactions were orchestrated via LangChain. We ran all experiments on a system with a 28-core Intel ® Xeon ® W-3465X CPU (2.50 GHz), 256 GB RAM, and an NVIDIA RTX 6000 Ada Generation GPU, running Ubuntu 24.04.2 LTS. We set the temperature to 1.0 to encourage output diversity, aiming to generate varied artifacts rather than deterministic rewrites. In this work, we use LLMs for four main tasks: atom generation, semantic tagging, artifact generation, and review. 8 ReqGenX 
+
+Our experiments include both closed-source and open-source models from multiple families and parameter scales, including Claude Sonnet 4.6, GPT-4o, GPT-OSS (20.9B), Gemma 3 (27.4B), Phi-4 (14.7B), Mistral (7.2B), Llama 3.1 (8.0B), Qwen3 (30.5B and 8.2B), and LLaMA 3 (8.0B). This model set enables us to compare behavior across both generation and evaluation roles. 
+
+## 3.2 Evaluation Metrics 
+
+AlignScore: We use AlignScore [ 39 ] to measure whether generated content is semantically supported by its source. For atom evaluation, the source chunk serves as the context, and the generated atom as the claim. For artifact evaluation, the source atom serves as the context, and the generated artifact as the claim. We use 0.80 as the support threshold when reporting unsupported rates. 
+
+Judge LLM and Prometheus Evaluation: We use a rubric-based judge LLM to evaluate atom and artifact quality on a 1–5 scale, treating scores ≥ 4 as passing. Atoms are judged for faithfulness, atomicity, and downstream utility; artifacts are judged for faithfulness, unsupported content, contextual use, structural alignment, and sparsity. We also use Prometheus [ 23 ] as an external rubric-based evaluator to provide a stricter complementary assessment of atom and artifact quality. 
+
+Embedding-Based Information Retention : We measure source information reten-tion using cosine similarity over text-embedding-3-large . Source SRS text is split into overlapping two-sentence units, and each unit is matched to the final atoms. A source unit is treated as covered if its best-match similarity is at least 0.75. We use this setup to estimate source coverage after atomization and stage-wise retention across SRS →Atoms and Atoms →Artifacts transformations. 
+
+Downstream SRS Reconstruction Metrics: For the reconstruction case study, we evaluate whether accepted artifact-backed atoms are recoverable from the generated SRS. We segment the generated SRS into overlapping sentence windows and match each source atom to its closest generated SRS window using Sentence-BERT (SBERT) cosine similarity [ 30 ]. We then apply AlignScore with the generated SRS window as context and the source atom as the claim. SBERT measures semantic similarity, while AlignScore estimates factual support. 
+
+## 4 Results and Evaluation 4.1 RQ1: Reliability of LLM-Based RE Decisions 
+
+RQ1 examines whether LLMs can support two intermediate decisions required for traceable artifact generation: semantic routing and quality judgment. Semantic routing determines which artifact family an atom should support, while quality judgment determines whether generated atoms and artifacts are acceptable for downstream use. We evaluate these decisions through routing-model screening, agreement with human-reviewed labels, and human-grounded judge selection. For routing, we first screen candidate LLMs on the re-labeled PROMISE-NFR dataset 1 as a proxy benchmark for requirement-style classification. Because PROMISE-NFR does not cover the full ReqGenX routing schema, Table 2 should be interpreted as evidence of general requirement-classification ability rather than direct routing accuracy. Claude Sonnet 4.6 and GPT-4o achieve the strongest weighted F1 among  
+
+> 1https://zenodo.org/records/14330485
+
+R. Ayon, R. Fahmi, S. Biswas and S. Ahmed 9
+
+Table 2 Performance of candidate LLMs on the PROMISE dataset for plurality voting selection. Metrics are reported as support-weighted per-class precision, recall, and F1; weighted F1 is averaged from per-class F1 values. 
+
+Model Precision Recall F1 
+
+Claude Sonnet 4.6 0.80 0.84 0.81 
+
+GPT-4o 0.78 0.86 0.81 
+
+GPT-OSS 0.84 0.68 0.70 Phi-4 0.84 0.55 0.59 Qwen3 (30B) 0.92 0.43 0.50 Qwen3 (8B) 0.80 0.46 0.50 LLaMA 3 (8B) 0.44 0.37 0.36  
+
+> Note: Bold values indicate the best value in each metric column; underlined values indicate the second-best value. Ties are marked for all tied values. Claude
+> GPT-4o
+> GPT-OSS
+> Human
+
+Claude 
+
+GPT-4o 
+
+GPT-OSS 
+
+Human             
+
+> 1.00 0.56 0.64 0.83
+> 0.56 1.00 0.52 0.69
+> 0.64 0.52 1.00 0.79
+> 0.83 0.69 0.79 1.00
+
+Tags 
+
+> Claude
+> GPT-4o
+> GPT-OSS
+> Human
+
+Claude 
+
+GPT-4o 
+
+GPT-OSS 
+
+Human             
+
+> 1.00 0.55 0.42 0.80
+> 0.55 1.00 0.31 0.60
+> 0.42 0.31 1.00 0.54
+> 0.80 0.60 0.54 1.00
+
+Requirements 
+
+0.4 
+
+0.6 
+
+0.8 
+
+> Cohen's  κ
+
+Figure 3 Pairwise Cohen’s κ agreement among LLM-generated and human-reviewed labels for semantic tag assignment and requirement classification. Diagonal cells denote self-agreement, while off-diagonal cells show agreement between annotator/model pairs. 
+
+closed-source models, while GPT-OSS is the strongest open-source model; we therefore use Claude Sonnet 4.6, GPT-4o, and GPT-OSS 20B as complementary voters for plurality-based routing. We then evaluate routing on the actual ReqGenX schema using human-reviewed labels. The agreement analysis includes 2,054 semantic-tag instances and 1,177 requirement-label instances; human review corrected 353 semantic tags (17.2%) and 58 requirement labels (4.9%). Figure 3 shows that agreement is consistently higher for semantic tags than for requirement labels, indicating that high-level routing is more stable than fine-grained requirement classification. Claude has the strongest agreement with human-reviewed labels, reaching κ = 0 .83 for tags and κ = 0 .80 for requirements, while model-to-model agreement is weakest for requirement classification, where GPT-4o and GPT-OSS fall to κ = 0 .31 . For quality judgment, we compare candidate judge LLMs against reconciled human annotations from 291 triples sampled from 1,195 Claude Sonnet 4.6-generated artifact instances. Two annotators scored atom and artifact quality using a shared 1–5 rubric, achieving Cohen’s 
+
+κ = 0 .84 for atoms and κ = 0 .97 for artifacts; disagreements were adjudicated to create gold-standard labels. Table 3 compares candidate judges using F1, false positive rate (FPR), and false negative rate (FNR). Since false acceptance can propagate low-quality atoms or 10 ReqGenX 
+
+Table 3 Comparison of candidate judge LLMs for atom- and artifact-level assessment against reconciled human labels. F1 is higher-is-better. FPR and FNR are lower-is-better. 
+
+Atoms Artifacts LLM F1 ↑ FPR ↓ FNR ↓ F1 ↑ FPR ↓ FNR ↓
+
+Gemma 3 0.80 0.33 0.20 0.88 0.29 0.13 GPT-4o 0.77 0.28 0.27 0.88 0.63 0.03 Phi-4 0.79 0.46 0.16 0.87 0.47 0.09 Mistral 0.74 0.89 0.12 0.84 1.00 0.01 
+
+Llama 3.1 0.66 0.23 0.44 0.83 0.90 0.04 GPT-OSS 0.81 0.49 0.12 0.76 0.77 0.21 
+
+Note: Bold values indicate the best value in each metric column; underlined values indicate the second-best value. Ties are marked for all tied values. .80 .85 .90 .95 1.00                             
+
+> VUB
+> QHeadache
+> Puget
+> Library
+> Libra
+> Home
+> GetReal
+> Claude
+> 0.34
+> 0.18
+> 0.82
+> 0.12
+> 0.39
+> 0.86
+> 0.07
+> .80 .85 .90 .95 1.00
+> GPT-4o
+> 0.15
+> 0.11
+> 0.82
+> 0.70
+> 0.06
+> 0.89
+> 0.07
+> .80 .85 .90 .95 1.00
+> GPT-OSS
+> 0.03
+> 0.04
+> 0.13
+> 0.41
+> 0.02
+> 0.29
+> 0.00
+> Claude
+> GPT-4o
+> GPT-OSS
+> 5.1 8.9 8.6
+> 9.2 8.0 8.0
+> 0.0 0.0 2.4
+> 1.4 1.1 2.2
+> 1.0 2.7 1.6
+> 0.0 0.0 0.7
+> 1.5 1.8 2.9
+> Unsupported (%)
+> Claude IQR GPT-4o IQR GPT-OSS IQR Median Mean Min / tail Support threshold (.80)
+
+Figure 4 Chunk-level atom faithfulness across datasets and atomizer models. Most atomized outputs achieve high central AlignScore values, with medians generally above 0.95, but several dataset–model pairs exhibit low-scoring tail cases. Unsupported rates are computed using the AlignScore support threshold of 0.80 and show that high typical faithfulness can still coexist with occasional unsupported atoms. 
+
+artifacts into later stages, we prioritize low FPR. Gemma 3 provides the best overall tradeoff, with strong F1 for atoms (0.80) and artifacts (0.88) while keeping FPR lower than alternatives such as GPT-OSS for atoms and GPT-4o for artifacts. We therefore use Gemma 3 as the automated judge for large-scale evaluation. 
+
+Finding 1: LLMs can support RE-specific intermediate decisions, but reliability varies by decision type. Semantic tags are more stable than fine-grained requirement labels: Claude reaches κ = 0 .83 for tags and κ = 0 .80 for requirements, while model-to-model agreement drops to κ = 0 .31 for GPT-4o vs. GPT-OSS on requirement classification. For quality judgment, Gemma 3 provides the best overall tradeoff, with F1 scores of 0.80 for atoms and 0.88 for artifacts while maintaining lower false-positive rates than the strongest alternatives. R. Ayon, R. Fahmi, S. Biswas and S. Ahmed 11 0 25 50 75 100                              
+
+> GetReal
+> Home
+> Libra
+> Library
+> Puget
+> QHead.
+> VUB
+> Threshold
+> Claude
+> 56.6% 43.4%
+> 76.3% 23.7%
+> 87.2% 12.8%
+> 57.6% 42.4%
+> 93.5%
+> 68.3% 31.7%
+> 67.5% 32.5%
+> 025 50 75 100
+> Threshold
+> GPT-4o
+> 48.5% 51.5%
+> 75.7% 24.3%
+> 75.6% 24.4%
+> 35.6% 64.4%
+> 88.8% 11.2%
+> 46.2% 53.8%
+> 55.8% 44.2%
+> 025 50 75 100
+> Threshold
+> GPT-OSS
+> 55.6% 44.4%
+> 74.6% 25.4%
+> 76.7% 23.3%
+> 48.3% 51.7%
+> 90.7% 9.3%
+> 54.8% 45.2%
+> 61.0% 39.0%
+> Covered Lost
+
+Figure 5 Information coverage and loss across datasets using overlapping window-2 source units with a similarity threshold of 0.75. Each horizontal stacked bar shows the percentage of covered and lost source information units for a given model and dataset. 
+
+Table 4 Final atom quality across SRSs and atomizer models. Atomicity and usability pass rates report the percentage of final atoms receiving judge scores ≥ 4; average Judge (Gemma 3) and Prometheus scores are reported on a 1–5 scale.                                                                                                    
+
+> SRS Atomicity Pass % Usability Pass % Avg. Judge Score Avg. Prometheus Score Claude GPT-4o GPT-OSS Claude GPT-4o GPT-OSS Claude GPT-4o GPT-OSS Claude GPT-4o GPT-OSS VUB 98.1 92.5 96.4 96.2 85.6 89.8 4.84 4.70 4.75 4.72 4.69 4.67 QHeadache 98.0 76.0 87.5 93.9 70.7 75.0 4.84 4.65 4.66 4.77 4.77 4.80
+> Puget Sound 96.2 96.3 94.5 82.6 84.6 87.4 4.67 4.69 4.69 4.34 4.44 4.37 Library 90.0 85.6 87.6 87.9 82.2 80.3 4.87 4.76 4.75 4.81 4.77 4.85
+> Libra 93.0 94.1 95.3 91.0 89.8 92.2 4.78 4.80 4.80 4.72 4.75 4.72 Home 98.5 100 99.3 97.0 90.3 94.6 4.90 4.86 4.85 4.70 4.69 4.72
+> Get Real 95.4 93.0 95.7 81.5 82.5 85.7 4.64 4.62 4.73 4.46 4.60 4.59
+
+Note. Bold values indicate the best-performing model for each dataset and metric group; underlined values indicate the second-best model. Ties are marked for all tied models. 
+
+## 4.2 RQ2: Quality of Generated Atoms 
+
+RQ2 evaluates whether LLMs can decompose legacy SRS sections into atoms that are faithful, atomic, and useful for downstream artifact generation. Overall, the results show that LLM-generated atoms are usually well grounded, but atomization is not equivalent to lossless extraction: usable decomposition requires balancing faithfulness, source coverage, atomicity, and downstream utility. Figure 4 shows that generated atoms are generally faithful to their source chunks. Across datasets and models, median AlignScore values typically range from 0.96 to 0.99, while unsupported rates remain below 3% for most dataset–model pairs. The strongest cases occur in Puget Sound and Home, where unsupported rates are 0.0% for Claude Sonnet 4.6 and GPT-4o, and remain low for GPT-OSS. The highest unsupported rates appear for QHeadache with Claude-generated atoms (9.2%) and for VUB with GPT-4o and GPT-OSS atoms (8.9% and 8.6%, respectively). These low-scoring tails show that median faithfulness alone is insufficient: occasional unsupported atoms can still appear and may propagate into routing and artifact generation. Model-level differences are small and should be interpreted cautiously. A paired bootstrap over the seven SRSs shows that Claude and GPT-4o are not clearly separated on mean AlignScore, while Claude is only slightly higher than GPT-OSS; for unsupported rate, Claude is lower than GPT-OSS by 1.13 percentage points, but not clearly separated from GPT-4o. We therefore treat model rankings as descriptive rather than conclusive. 12 ReqGenX 0.00 0.50 1.00       
+
+> GetReal
+> Home
+> Libra
+> Library
+> Puget Sound
+> QHeadache
+> VUB
+> 0.94
+> 0.92
+> 0.94
+> 0.94
+> 0.91
+> 0.91
+> 0.88
+> 0.89
+> 0.85
+> 0.90
+> 0.67
+> 0.75
+> 0.83
+> 0.65
+> 1.00
+> 1.00
+> 1.00
+> 1.00
+> 1.00
+> 1.00
+> 1.00
+> Claude
+> 0.00 0.50 1.00
+> 0.80
+> 0.88
+> 0.87
+> 0.89
+> 0.86
+> 0.88
+> 0.85
+> 0.86
+> 0.72
+> 0.84
+> 0.91
+> 0.68
+> 0.97
+> 0.57
+> 1.00
+> 1.00
+> 1.00
+> 1.00
+> 1.00
+> 1.00
+> 0.99
+> GPT-4o
+> 0.00 0.50 1.00
+> 0.89
+> 0.80
+> 0.86
+> 0.61
+> 0.82
+> 0.76
+> 0.83
+> 0.81
+> 0.64
+> 0.83
+> 0.76
+> 0.76
+> 0.81
+> 0.55
+> 1.00
+> 1.00
+> 1.00
+> 1.00
+> 1.00
+> 0.98
+> 1.00
+> GPT-OSS
+> Mean AlignScore Prometheus pass ratio Judge pass ratio
+
+Figure 6 Artifact quality over generated artifacts. Mean AlignScore, Prometheus pass ratio, and judge pass ratio are reported on a 0–1 scale. All models show high atom-level grounding and high judge acceptance, while Prometheus reveals stricter variation in artifact completeness and quality. 
+
+Finding 2: LLMs can decompose legacy SRS sections into faithful, atomic, and usable statements. Across datasets and models, median AlignScore values typically fall between 0.96 and 0.99, most unsupported rates remain below 3%, and most atomicity pass rates exceed 90%. Source-coverage results further show that decomposition quality should be interpreted together with information-retention analysis. 
+
+Figure 5 shows a sharper tradeoff for source coverage. Puget Sound is consistently best preserved, with 88.8–93.5% coverage, followed by Libra with 75.6–87.2%. In contrast, GPT-4o covers only 35.6% of Library and 46.2% of QHeadache. This suggests that atomization is often faithful in what it retains, but may omit or transform source information depending on the dataset and model. Some loss is expected: judge-guided revision can remove redundant, structural, vague, or low-utility content to produce cleaner atoms for downstream use. Thus, coverage should be interpreted alongside faithfulness rather than as a standalone failure signal. Table 4 shows that final atoms are generally well formed after revision. Atomicity pass rates range from 76.0% to 100.0%, with most dataset–model pairs above 90%, while usability pass rates range from 70.7% to 97.0%. Average Gemma 3 judge scores remain high, ranging from 4.62 to 4.90, and Prometheus scores range from 4.34 to 4.85. These results indicate that LLMs can produce strong atomic decompositions, but downstream usability is harder to achieve than atomicity and benefits from explicit judge-guided refinement. 
+
+## 4.3 RQ3: Quality of the Generated Artifacts 
+
+Our goal is to assess whether atom-derived artifacts are both grounded in their source atoms and suitable for downstream requirements generation. Since artifacts are generated through type-specific templates and refined through a judge-guided loop, we evaluate them along three complementary dimensions: atom-level grounding using mean AlignScore, acceptance under the internal judge, and stricter external quality assessment using Prometheus. All three metrics are reported on a 0–1 scale. Figure 6 evaluates whether generated artifacts remain grounded in their source atoms and whether they satisfy downstream quality requirements after refinement. Overall, mean AlignScore values remain consistently high across datasets R. Ayon, R. Fahmi, S. Biswas and S. Ahmed 13   
+
+> Table 5 Downstream reconstruction retention scores. SBERT measures semantic similarity between source atoms and generated SRS, while AlignScore estimates factual support.
+
+Dataset SBERT AlignScore Mean Median IQR Mean Median IQR PugetSound 0.697 0.717 [0.622–0.782] 0.596 0.785 [0.081–0.988] Library 0.698 0.720 [0.640–0.764] 0.643 0.842 [0.307–0.962] Libra 0.690 0.694 [0.634–0.755] 0.551 0.785 [0.040–0.974] Home 0.753 0.770 [0.706–0.821] 0.633 0.760 [0.261–0.984] and models, typically ranging between 0.80 and 0.94, indicating that generated artifacts are largely supported by their source atoms. Claude Sonnet 4.6 shows the strongest and most stable grounding performance, reaching 0.94 on Library, while GPT-OSS exhibits larger variation, dropping to 0.61 on the same dataset. Judge pass ratios are nearly saturated after iterative refinement, remaining close to 1.00 across almost all dataset–model pairs. This suggests that the review-and-repair loop reliably produces artifacts that satisfy the pipeline’s acceptance criteria. However, Prometheus reveals substantially greater variation, with pass ratios ranging from 0.55 to 0.97. The strongest Prometheus result appears on QHeadache using GPT-4o (0.97), while lower scores occur for VUB and Home, particularly for GPT-OSS and GPT-4o. This gap indicates that atom-level grounding alone does not guarantee artifact completeness, sparsity, or structural quality. Taken together, these results show that 
+
+ReqGenX can generate artifacts that remain strongly grounded in their source atoms while achieving high refinement success rates. At the same time, stricter rubric-based evaluation reveals that downstream artifact quality remains sensitive to dataset characteristics and model behavior, motivating multi-dimensional evaluation beyond grounding alone. 
+
+Finding 3: LLMs can generate grounded pre-SRS artifacts from routed atoms, with mean AlignScore values typically between 0.80 and 0.94 and judge pass ratios near 1.00 after refinement. However, stricter Prometheus pass ratios range from 0.55 to 0.97, showing that grounded artifacts still require artifact-specific quality checks for sparsity, completeness, and structural alignment. 
+
+## 4.4 RQ4: Downstream SRS Reconstruction 
+
+RQ4 evaluates whether traceable pre-SRS artifacts can support downstream SRS reconstruc-tion while preserving source-grounded information. We conduct this as a limited four-dataset case study because complete SRS compilation requires an additional generation, evaluation, and traceability-matching pipeline. The goal is not practitioner-ready SRS generation, but to test whether source atoms remain factually recoverable after artifact-based reconstruction. We use Claude Sonnet 4.6-generated artifacts as input because Claude showed strong up-stream performance, and GPT-4o as a separate compiler model to avoid using the same model for artifact generation and reconstruction. GPT-4o compiles the artifacts into SRS drafts under ISO/IEC/IEEE 29148-inspired constraints while preserving artifact-level traceability. The generated requirements are then refined through a quality-assurance loop for ambiguity, singularity, verifiability, and syntactic correctness. To evaluate retention, we trace each generated SRS back to its artifact-backed source atoms. We segment the generated SRS into overlapping sentence windows, match each source atom to its closest window using SBERT 14 ReqGenX 0 100                                           
+
+> VUB
+> QHead.
+> Puget
+> Library
+> Libra
+> Home
+> GetReal
+> 71.3 25.1
+> 63.6 24.0 12.4
+> 84.2 10.8
+> 66.6 28.5
+> 72.1 11.0 16.9
+> 66.4 26.3
+> 52.7 38.8 8.5
+> Claude
+> 0100
+> 44.8 33.9 21.3
+> 23.5 48.1 28.4
+> 43.2 11.0 45.8
+> 45.1 9.8 45.1
+> 53.7 22.1 24.2
+> 51.6 8.2 40.2
+> 38.3 48.0 13.7
+> GPT-4o
+> 0100
+> 57.1 30.6 12.3
+> 39.3 40.4 20.3
+> 63.1 9.0 27.9
+> 50.7 41.9
+> 60.2 18.6 21.2
+> 60.5 33.1
+> 50.7 39.8 9.5
+> GPT-OSS
+> Retained end-to-end Lost during SRS Atoms Lost during Atoms Artifacts
+
+Figure 7 Stage-wise information retention across the ReqGenX pipeline. Green indicates in-formation retained end-to-end, while yellow and red indicate estimated information loss during atomization and artifact generation, respectively. 
+
+cosine similarity, and apply AlignScore with the matched window as context and the source atom as the claim. 
+
+Finding 4: LLM-generated pre-SRS artifacts can support partial downstream SRS reconstruction, but semantic similarity overestimates factual recoverability. The recon-structed SRSs should be interpreted as traceable drafts for evaluation, not as complete or practitioner-ready specifications. Table 5 reports retention scores for SRSs compiled by GPT-4o from Claude Sonnet 4.6-generated artifacts. Across 473 accepted artifact-backed atoms, SBERT means range from 0.690 to 0.753, indicating moderate-to-high semantic recoverability. AlignScore medians remain high, ranging from 0.760 to 0.842, but lower means and wider IQRs show that factual support is more variable than semantic similarity. These low-support cases may reflect abstraction, rephrasing, or additional content introduced during SRS compilation rather than direct omission alone. 
+
+## 4.5 RQ5: Information Loss and Failure Patterns 
+
+RQ5 examines where source information is lost across the transformation process and what revision patterns explain these losses. We analyze stage-wise retention across SRS →Atoms and Atoms →Artifacts, and summarize descriptive diagnostics from judge-revision logs and artifact-generation traces. Information loss is not concentrated in a single step. Claude retains the most source information end-to-end, preserving 52.7–84.2% of source content, while GPT-4o shows the largest cumulative loss, dropping to 23.5% retention on QHeadache; GPT-OSS falls between these ranges, retaining 39.3–63.1%. Loss also varies by dataset: QHeadache and Get Real lose substantial information during SRS →Atoms conversion, suggesting that implicit or weakly structured statements are difficult to stabilize as atoms, whereas Library and Puget Sound lose more information during Atoms →Artifacts conversion, indicating that valid atoms may still be too narrow to instantiate constrained artifact templates. Revision and artifact diagnostics explain these patterns. Most atom-level revisions involve granularity, context, or downstream usefulness rather than unsupported hallucination. The most frequent buckets are bundled or non-atomic claims (30.4%), context-dependent wording (20.4%), and weak or non-actionable wording (8.5%) [ 4]. Rewrite and remove actions dominate, while R. Ayon, R. Fahmi, S. Biswas and S. Ahmed 15 0 10 20 30 40 50 60 70 80                     
+
+> VUB
+> QHead.
+> Puget
+> Library
+> Libra
+> Home
+> GetReal
+> 44.9
+> 59.6
+> 20.9
+> 3.3
+> 15.4
+> 13.6
+> 51.4
+> 50.7
+> 36.2
+> 25.6
+> 53.3
+> 18.7
+> 4.5
+> 24.3
+> 21.7
+> 27.7
+> 4.7
+> 21.7
+> 13.2
+> 9.1
+> 8.1
+> 8.7
+> 12.8
+> 5.0
+> 11.0
+> Claude
+> 010 20 30 40 50 60 70 80
+> 34.8
+> 44.7
+> 20.9
+> 16.7
+> 20.9
+> 9.1
+> 48.6
+> 66.7
+> 40.4
+> 32.6
+> 21.7
+> 24.2
+> 13.6
+> 32.4
+> 23.2
+> 25.5
+> 4.7
+> 18.3
+> 11.0
+> 4.5
+> 5.4
+> 24.6
+> 12.8
+> 4.7
+> 5.0
+> 13.2
+> 4.5
+> 5.4
+> 2.9
+> 4.3
+> 8.1
+> GPT-4o
+> 010 20 30 40 50 60 70 80
+> 49.3
+> 63.8
+> 32.6
+> 31.7
+> 14.3
+> 9.1
+> 51.4
+> 66.7
+> 48.9
+> 32.6
+> 43.3
+> 23.1
+> 27.3
+> 29.7
+> 31.9
+> 25.5
+> 4.7
+> 21.7
+> 13.2
+> 13.6
+> 8.1
+> 26.1
+> 4.3
+> 2.3
+> 18.3
+> 3.3
+> 4.5
+> 5.4
+> 2.1
+> 1.7
+> GPT-OSS
+> Remove Rewrite Split Merge Add
+
+Figure 8 Revision action rates across datasets and atomizer models. Rewrite and remove actions dominate across most dataset–model pairs, while split actions remain visible for structurally dense SRS sections. 
+
+split actions remain visible for dense SRS sections; merge and add actions are rare. This suggests that the atomizer more often over-produces weak or underspecified atoms than under-produces missing ones. Artifact-level failures show a related evidence-granularity problem: missing or incomplete artifacts are rarely due to parsing or generation crashes, but usually occur because the selected atom lacks enough evidence to fill the target artifact structure. For Claude, sparse artifacts are often associated with chunk-only information ,while for GPT-4o and GPT-OSS the dominant issue is template fields omitted .
+
+Finding 5: Information loss is stage-specific and often reflects evidence granularity rather than generation failure. Decomposition can discard implicit, redundant, or weakly actionable source content, while artifact generation can fail when a valid atom is too narrow to instantiate a complete typed artifact. 
+
+## 5 Lessons Learned 
+
+1 LLM-based RE decisions need uncertainty-aware evaluation. RQ1 shows that LLMs can support semantic routing and quality judgment, but reliability varies across decision types. This matters because routing determines which artifact an atom becomes, while judging determines which outputs are accepted for later stages. Disagreement should not be treated only as noise; it can identify ambiguous requirements, weak artifact boundaries, and cases where human review is most valuable. Large Language Models for Requirements Engineering (LLM4RE) researchers should therefore evaluate routing confidence, disagreement patterns, and judge false-acceptance risk instead of reporting only aggregate accuracy. Practitioners should review low-confidence routing decisions and judge-approved outputs rather than treat them as reliable artifacts. 2 Not every SRS statement is immediately artifact-ready. RQ2 shows that LLM-generated atoms can be faithful and well formed, but source coverage varies across datasets and models. This reflects a property of legacy SRSs: they mix concrete requirements with background 16 ReqGenX 
+
+context, vague notes, structural fragments, and partially specified ideas. Some statements can directly seed pre-SRS artifacts, while others need added context or aggregation with neighboring atoms. LLM4RE researchers should therefore study artifact readiness: which statements should become artifacts, which should remain supporting context, and how coverage can be improved without reducing downstream utility. Practitioners should avoid forcing every SRS sentence into an artifact template; weak content may be better treated as context, clarification targets, or evidence for grouped artifacts. 3 Artifact generation requires balancing completeness and evidence control. RQ3 shows that artifacts can remain grounded in their source atoms, but grounding alone does not make them complete or useful. The key tradeoff is that adding synthetic details can improve completeness but risks unsupported content, while strict atom-grounding preserves factuality but may produce sparse artifacts. Evidence-aware generation should therefore decide when to produce full artifacts, partial artifacts, or request more context. Missing fields should be treated as diagnostic signals that the source evidence is incomplete, too narrow, or not ready for artifact-level synthesis. 4 SRS reconstruction is feasible, but factuality must be checked across artifact chains. 
+
+RQ4 shows that LLM-generated pre-SRS artifacts can be compiled into SRS drafts with partial source recoverability. However, synthetic details introduced during artifact generation may bleed into the reconstruction, creating fluent, structurally valid SRS text that is only partially supported by the original atoms. Future work should therefore evaluate factuality across the full chain from source SRS to atoms, artifacts, and reconstructed SRS, rather than only the final document. Generated SRS drafts should be reviewed through trace links, especially when requirements rely on synthetic artifact content. 5 The main bottleneck is evidence granularity. RQ5 shows that information loss is not mainly caused by parsing crashes or random generation failure; it often occurs because the available evidence is either too implicit, too bundled, or too narrow for the next transformation step. At the SRS →Atom stage, weakly structured or context-dependent statements are difficult to turn into standalone atoms. At the Atom →Artifact stage, valid atoms may still be too small to fill a typed artifact template without adding unsupported content. The broader lesson is that future LLM4RE systems need mechanisms for carrying and using context at the right granularity, such as grouping related atoms, preserving context-only evidence, and allowing partially specified artifacts instead of forcing every atom into a complete template. In practice, analysts should treat missing or sparse artifacts as signals that the source evidence needs clarification, grouping, or richer contextual support before it can be used for requirements generation. 
+
+## 6 Related Work 
+
+Recent work shows that LLMs can support requirements engineering (RE) activities such as elicitation, user-story generation, acceptance-criteria generation, functional design specifica-tion, and SRS drafting [ 33 , 29 , 35 , 28 , 25 , 24 , 38 , 42 ]. Broader Large Language Models for Software Engineering (LLM4SE) surveys also report increasing use of LLMs across software engineering tasks [ 14 , 21 , 40 ]. These studies demonstrate that LLMs can generate useful requirements artifacts, whereas our work studies a different problem: how legacy SRS content can be decomposed into traceable atomic evidence, routed to typed pre-SRS artifacts, and evaluated for downstream reconstruction. NLP4RE has long studied requirements classification, extraction, ambiguity analysis, traceability, and quality assessment [ 41 , 3 , 19 , 11 , 9, 18 ]. Recent work also explores extracting R. Ayon, R. Fahmi, S. Biswas and S. Ahmed 17 
+
+models or requirements from agile backlogs, app reviews, and other textual sources [ 5, 12 ], as well as using NLI for RE classification and defect or conflict analysis [ 15 ]. Closest to our setting, Okamoto et al. [ 27 ] study LLM-based restructuring of organically written SRSs into ISO/IEC/IEEE 29148-compliant documents. Our work shares the goal of making legacy SRSs more structured and analyzable, but operates at a finer granularity by decomposing sections into atomic propositions before routing them to pre-SRS artifact types. Public datasets such as PURE [ 16 ] support reproducible NLP4RE research, while re-cent work calls for reusable benchmarks, clearer reporting, and stronger traceability re-sources [ 3, 22 ]. Traceability recovery research further emphasizes linking information across heterogeneous lifecycle artifacts [ 17 ], and synthetic requirements data has been explored as a way to address data scarcity in AI4RE [ 13 ]. ReqGenX contributes to this direction by using public SRSs as seed evidence for constructing traceable synthetic pre-SRS artifacts. 
+
+## 7 Threats to Validity 
+
+Construct validity. Our metrics measure traceability-grounded proxy quality, not the complete correctness of requirements. AlignScore approximates factual support, SBERT cosine semantic recoverability, and judge/Prometheus scores rubric-based quality; none establishes full SRS coherence, ISO conformance, or practitioner usefulness. Because PURE and PROMISE-NFR are public, strong scores may partly reflect benchmark exposure rather than only decomposition or routing ability [ 31 ]. We mitigate this through stage-wise evaluation under our routing schema and triangulation across evidence on grounding, coverage, quality, agreement, revision, failure, and retention. 
+
+Internal validity. The pipeline contains several LLM-based stages, so outputs may vary with prompts, model updates, decoding, and nondeterminism. We reduce this risk using fixed prompts, codebooks, traceability identifiers, plurality voting, judge-guided refinement, and manual input checks. The temperature was set to 1.0 to encourage diversity, but single-run outputs cannot establish model stability. 
+
+External validity. We evaluate seven selected text-based PURE SRS documents and synthetic pre-SRS artifact types; results may differ for proprietary, safety-critical, table-heavy, multimodal, or actively maintained industrial requirements. We mitigate this through multiple SRSs, models, artifact types, and released prompts, codebooks, artifacts, and outputs. We did not run a baseline comparison because the study evaluates LLM behavior in a controlled traceability setting, not ReqGenX as a competing SRS-generation method; existing baselines do not expose the intermediate provenance needed for our analyses. 
+
+Conclusion validity. Several analyses use a few SRS documents, nested units, fixed thresholds, and one generation run per model. We mitigate this through dataset-level aggregation, distributional summaries, paired bootstrap comparisons where applicable, and cautious interpretation. Overall, our conclusions support feasibility, observed tradeoffs, and failure-mode characterization, not statistical superiority, production readiness, or deployment-level effectiveness. 
+
+## 8 Conclusion 
+
+We conducted an empirical study of how LLMs transform legacy SRS documents into traceable synthetic pre-SRS artifacts, using ReqGenX as a controlled study pipeline. Across seven selected text-only PURE SRSs, our results show that LLMs can produce faithful and usable atomic statements and grounded typed artifacts, but these transformations are not lossless. 18 ReqGenX 
+
+Semantic routing and quality judgment require human-grounded model selection, artifact grounding does not guarantee structural completeness, and downstream reconstruction preserves source information only partially. These findings suggest that traceable synthetic artifacts can support fine-grained evaluation of LLM-based SRS generation, while exposing important tradeoffs among faithfulness, coverage, sparsity, and recoverability. Future work should extend this study to multimodal and industrial SRSs, evaluate the usefulness of artifacts with RE practitioners, and develop loss-aware decomposition and more flexible artifact schemas for partially specified source evidence. 
+
+## 9 Data Availability 
+
+To support double-anonymous review and reproducibility, we provide an anonymized stable repository [ 4]. The repository includes processed inputs, generated atoms, semantic tags, routed pre-SRS artifacts, reconstructed SRS outputs, traceability metadata, evaluation out-puts, scripts, notebooks, prompts, rubrics/codebooks, templates, configuration files, cached outputs, and README files. During review, author-identifying metadata, commit history, acknowledgments, and ownership information are removed or hidden. Upon acceptance, we will archive the final package with a permanent DOI. 
+
+References 
+
+1 IEEE recommended practice for software requirements specifications. IEEE Std 830-1993 ,pages 1–32, 1994. doi:10.1109/IEEESTD.1994.121431 .
+
+2 ISO/IEC/IEEE international standard - systems and software engineering – life cycle processes – requirements engineering. ISO/IEC/IEEE 29148:2018(E) , pages 1–104, 2018. doi:10.1109/ IEEESTD.2018.8559686 .
+
+3 Sallam Abualhaija, F. Basak Aydemir, Fabiano Dalpiaz, Davide Dell’Anna, Alessio Ferrari, Xavier Franch, and Davide Fucci. Replication in requirements engineering: The nlp for re case. ACM Trans. Softw. Eng. Methodol. , 33(6), June 2024. doi:10.1145/3658669 .
+
+4 Anonymous. ReqGenX. https://doi.org/10.5281/zenodo.20267334 , 2026. doi:10.5281/ zenodo.20267334 .
+
+5 Sathurshan Arulmohan, Marie-Jean Meurs, and Sébastien Mosser. Extracting domain mod-els from textual requirements in the era of large language models. In 2023 ACM/IEEE International Conference on Model Driven Engineering Languages and Systems Companion (MODELS-C) , page 580–587. IEEE Press, 2023. doi:10.1109/MODELS-C59198.2023.00096 .
+
+6 Alberto Bacchelli, Anthony Cleve, Michele Lanza, and Andrea Mocci. Extracting structured data from natural language documents with island parsing. In 2011 26th IEEE/ACM Inter-national Conference on Automated Software Engineering (ASE 2011) , pages 476–479. IEEE, 2011. 
+
+7 Kevin Brennan et al. A guide to the Business Analysis Body of Knowledge (BABOK Guide) .IIBA, 2009. 
+
+8 Tong Chen, Hongwei Wang, Sihao Chen, Wenhao Yu, Kaixin Ma, Xinran Zhao, Hongming Zhang, and Dong Yu. Dense x retrieval: What retrieval granularity should we use? In 
+
+Proceedings of the 2024 Conference on Empirical Methods in Natural Language Processing ,pages 15159–15177, 2024. 
+
+9 Jane Cleland-Huang, Raffaella Settimi, Xuchang Zou, and Peter Solc. Automated classification of non-functional requirements. Requirements engineering , 12(2):103–120, 2007. 
+
+10 Alistair Cockburn. Basic use case template. Humans and Technology, Technical Report , 96:28, 1998. R. Ayon, R. Fahmi, S. Biswas and S. Ahmed 19 
+
+11 Fabiano Dalpiaz, Davide Dell’Anna, Fatma Basak Aydemir, and Sercan Çevikol. Requirements classification with interpretable machine learning and dependency parsing. In 2019 IEEE 27th International Requirements Engineering Conference (RE) , pages 142–152. IEEE, 2019. 
+
+12 Adailton Ferreira de Araújo and Ricardo Marcondes Marcacini. Re-bert: automatic extraction of software requirements from app reviews using bert language model. In Proceedings of the 36th Annual ACM Symposium on Applied Computing , SAC ’21, page 1321–1327, New York, NY, USA, 2021. Association for Computing Machinery. doi:10.1145/3412841.3442006 .
+
+13 Abdelkarim El-Hajjami and Camille Salinesi. How good are synthetic requirements? evaluating llm-generated datasets for ai4re. arXiv preprint arXiv:2506.21138 , 2025. 
+
+14 Angela Fan, Beliz Gokkaya, Mark Harman, Mitya Lyubarskiy, Shubho Sengupta, Shin Yoo, and Jie M Zhang. Large language models for software engineering: Survey and open problems. In 2023 IEEE/ACM International Conference on Software Engineering: Future of Software Engineering (ICSE-FoSE) , pages 31–53. IEEE, 2023. 
+
+15 Mohamad Fazelnia, Viktoria Koscinski, Spencer Herzog, and Mehdi Mirakhorli. Lessons from the use of natural language inference (nli) in requirements engineering tasks. In 2024 IEEE 32nd International Requirements Engineering Conference (RE) , pages 103–115. IEEE, 2024. 
+
+16 Alessio Ferrari, Giorgio Oronzo Spagnolo, and Stefania Gnesi. Pure: A dataset of public requirements documents. In 2017 IEEE 25th international requirements engineering conference (RE) , pages 502–505. IEEE, 2017. 
+
+17 Hui Gao, Hongyu Kuang, Wesley KG Assunção, Christoph Mayr-Dorn, Guoping Rong, He Zhang, Xiaoxing Ma, and Alexander Egyed. Triad: Automated traceability recovery based on biterm-enhanced deduction of transitive links among artifacts. In Proceedings of the IEEE/ACM 46th International Conference on Software Engineering , pages 1–13, 2024. 
+
+18 Gonzalo Génova, José M Fuentes, Juan Llorens, Omar Hurtado, and Valentín Moreno. A framework to measure and improve the quality of textual requirements. Requirements engineering , 18(1):25–41, 2013. 
+
+19 Tobias Hey, Jan Keim, Anne Koziolek, and Walter F Tichy. Norbert: Transfer learning for requirements classification. In 2020 IEEE 28th international requirements engineering conference (RE) , pages 169–179. IEEE, 2020. 
+
+20 Mohammad Javad Hosseini, Yang Gao, Tim Baumgärtner, Alex Fabrikant, and Reinald Kim Amplayo. Scalable and domain-general abstractive proposition segmentation. In Findings of the Association for Computational Linguistics: EMNLP 2024 , pages 8856–8872, 2024. 
+
+21 Xinyi Hou, Yanjie Zhao, Yue Liu, Zhou Yang, Kailong Wang, Li Li, Xiapu Luo, David Lo, John Grundy, and Haoyu Wang. Large language models for software engineering: A systematic literature review. ACM Transactions on Software Engineering and Methodology , 33(8):1–79, 2024. 
+
+22 Xing Hu, Feifei Niu, Junkai Chen, Xin Zhou, Junwei Zhang, Junda He, Xin Xia, and David Lo. Assessing and advancing benchmarks for evaluating large language models in software engineering tasks. ACM Trans. Softw. Eng. Methodol. , December 2026. Just Accepted. 
+
+doi:10.1145/3786771 .
+
+23 Seungone Kim, Juyoung Suk, Shayne Longpre, Bill Yuchen Lin, Jamin Shin, Sean Welleck, Graham Neubig, Moontae Lee, Kyungjae Lee, and Minjoon Seo. Prometheus 2: An open source language model specialized in evaluating other language models. In Proceedings of the 2024 Conference on Empirical Methods in Natural Language Processing , pages 4334–4353, 2024. 
+
+24 Madhava Krishna, Bhagesh Gaur, Arsh Verma, and Pankaj Jalote. Using llms in software requirements specifications: An empirical evaluation. In 2024 IEEE 32nd International Requirements Engineering Conference (RE) , pages 475–483. IEEE, 2024. 
+
+25 Christopher Lazik, Charlotte Kauter, Inês Nunes, Aaron Ziglowski, Alina Pryma, Christopher Katins, Lars Grunske, and Thomas Kosch. The good, the bad, and the uncanny: Investigating diversity aspects of llm-generated personas for requirements engineering. In 2025 IEEE 33rd International Requirements Engineering Conference (RE) , pages 244–256. IEEE, 2025. 20 ReqGenX 
+
+26 F.-L. Li, J. Horkoff, J. Mylopoulos, A. Borgida, R. Guizzardi, G. Guizzardi, L. Liu, and Y. Peng. Dataset for a requirements modeling language and the desiree framework, 2024. Data set. doi:10.5281/zenodo.14330485 .
+
+27 Ryu Okamoto and Shinji Kusumoto. Towards the Automatic Restructuring of Software Requirements Specifications to Conform to Standards Using Large Language Models . In 
+
+2025 IEEE 33rd International Requirements Engineering Conference (RE) , pages 467–475, Los Alamitos, CA, USA, September 2025. IEEE Computer Society. URL: https://doi.ieee computersociety.org/10.1109/RE63999.2025.00056 , doi:10.1109/RE63999.2025.00056 .
+
+28 Liliana Pasquale, Azzurra Ragone, Emanuele Piemontese, and Armin Amiri Darban. Exploring the use of llms for requirements specification in an it consulting company. In 2025 IEEE 33rd International Requirements Engineering Conference (RE) , pages 389–399. IEEE, 2025. 
+
+29 Giovanni Quattrocchi, Liliana Pasquale, Paola Spoletini, and Luciano Baresi. Can llms generate user stories and assess their quality? IEEE Transactions on Software Engineering ,2026. 
+
+30 Nils Reimers and Iryna Gurevych. Sentence-bert: Sentence embeddings using siamese bert-networks. In Proceedings of the 2019 conference on empirical methods in natural language processing and the 9th international joint conference on natural language processing (EMNLP-IJCNLP) , pages 3982–3992, 2019. 
+
+31 Martin Riddell, Ansong Ni, and Arman Cohan. Quantifying contamination in evaluating code generation capabilities of language models. In Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers) , pages 14116–14137, 2024. 
+
+32 James Robertson and Suzanne Robertson. Volere. Requirements Specification Templates , 2000. 
+
+33 Krishna Ronanki, Christian Berger, and Jennifer Horkoff. Investigating chatgpt’s potential to assist in requirements elicitation processes. In 2023 49th Euromicro conference on software engineering and advanced applications (SEAA) , pages 354–361. IEEE, 2023. 
+
+34 SAYYAD Shirabad. The promise repository of software engineering databases. (No Title) ,2005. 
+
+35 Tjerk Spijkman, Bente Molenkamp, Steffen Beudeker, Sietse Overbeek, and Fabiano Dalpiaz. Llm-assisted requirements engineering in agile mdd: Industry insights and validation. In 2025 IEEE 33rd International Requirements Engineering Conference (RE) , pages 366–377. IEEE, 2025. 
+
+36 Gernot Starke, Michael Simons, Stefan Zorner, and Ralf Müller. arc42 by Example . Packt Publishing, 2019. 
+
+37 Xuezhi Wang, Jason Wei, Dale Schuurmans, Quoc Le, Ed Chi, Sharan Narang, Aakanksha Chowdhery, and Denny Zhou. Self-consistency improves chain of thought reasoning in language models. arXiv preprint arXiv:2203.11171 , 2022. 
+
+38 Danning Xie, Byoungwoo Yoo, Nan Jiang, Mijung Kim, Lin Tan, Xiangyu Zhang, and Judy S Lee. How effective are large language models in generating software specifications? In 2025 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER) ,pages 1–12. IEEE, 2025. 
+
+39 Yuheng Zha, Yichi Yang, Ruichen Li, and Zhiting Hu. Alignscore: Evaluating factual consistency with a unified alignment function. In Proceedings of the 61st Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers) , pages 11328–11348, 2023. 
+
+40 Quanjun Zhang, Chunrong Fang, Yang Xie, Yaxin Zhang, Shengcheng Yu, Weisong Sun, Yun Yang, and Zhenyu Chen. A survey on large language models for software engineering. Science China Information Sciences , 69(4):141102, 2026. 
+
+41 Liping Zhao, Waad Alhoshan, Alessio Ferrari, Keletso J Letsholo, Muideen A Ajagbe, Erol-Valeriu Chioasca, and Riza T Batista-Navarro. Natural language processing for requirements engineering: A systematic mapping study. ACM Computing Surveys (CSUR) , 54(3):1–41, 2021. R. Ayon, R. Fahmi, S. Biswas and S. Ahmed 21 
+
+42 Taohong Zhu, Lucas C Cordeiro, and Youcheng Sun. Reqinone: A large language model-based agent for software requirements specification generation. In 2025 IEEE 33rd International Requirements Engineering Conference (RE) , pages 449–457. IEEE, 2025. 
+
+43 Xiaochen Zhu, Caiqi Zhang, Tom Stafford, Nigel Collier, and Andreas Vlachos. Conformity in large language models. In Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers) , pages 3854–3872, 2025.

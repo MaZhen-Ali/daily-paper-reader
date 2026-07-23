@@ -1,0 +1,62 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2607.19703v1/fig-001.webp",
+      "caption": "Fig. 2. Challenges of glue code generation in BDD.",
+      "page": 6,
+      "index": 1,
+      "width": 825,
+      "height": 420
+    },
+    {
+      "url": "assets/figures/arxiv/2607.19703v1/fig-002.webp",
+      "caption": "Table 1. Collected open-source Java BDD repositories and statistics of BDD artifacts",
+      "page": 11,
+      "index": 2,
+      "width": 719,
+      "height": 232
+    },
+    {
+      "url": "assets/figures/arxiv/2607.19703v1/fig-003.webp",
+      "caption": "Table 2. Per-project and overall functional alignment (API overlap) comparison",
+      "page": 15,
+      "index": 3,
+      "width": 821,
+      "height": 284
+    },
+    {
+      "url": "assets/figures/arxiv/2607.19703v1/fig-004.webp",
+      "caption": "Fig. 1. BDD describes expected system behaviors as feature files, scenarios, and natural-language steps. Glue code maps each step to executable logic that invokes the project code, enabling scenarios to run against the system for behavior validation.",
+      "page": 2,
+      "index": 4,
+      "width": 790,
+      "height": 426
+    },
+    {
+      "url": "assets/figures/arxiv/2607.19703v1/fig-005.webp",
+      "caption": "Fig. 3. Overview of the AutoGlue framework.",
+      "page": 9,
+      "index": 5,
+      "width": 827,
+      "height": 591
+    },
+    {
+      "url": "assets/figures/arxiv/2607.19703v1/fig-006.webp",
+      "caption": "Table 5. Ablation study results on glue code generation",
+      "page": 20,
+      "index": 6,
+      "width": 756,
+      "height": 246
+    },
+    {
+      "url": "assets/figures/arxiv/2607.19703v1/fig-007.webp",
+      "caption": "Table 3. Per-project and overall glue code similarity comparison",
+      "page": 16,
+      "index": 7,
+      "width": 823,
+      "height": 274
+    }
+  ]
+}
