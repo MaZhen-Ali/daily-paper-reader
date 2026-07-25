@@ -1,0 +1,222 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2607.16412v1/fig-001.webp",
+      "caption": "Table 2: Task-alignment performance under abstract intent (14 models, all three tasks). CR = CommitReward; @1 = CommitAcc@1 (%). Bold = per-column best within each task. AVERAGE = unweighted mean across the 14 models in this table.",
+      "page": 6,
+      "index": 1,
+      "width": 818,
+      "height": 425
+    },
+    {
+      "url": "assets/figures/arxiv/2607.16412v1/fig-002.webp",
+      "caption": "Table 11: CommitAcc@1 (%) across abstract / moderate / concrete intent tiers on GDPVal.",
+      "page": 25,
+      "index": 2,
+      "width": 594,
+      "height": 408
+    },
+    {
+      "url": "assets/figures/arxiv/2607.16412v1/fig-003.webp",
+      "caption": "Table 10: CommitAcc@1 (%) across abstract / moderate / concrete intent tiers on Shopping.",
+      "page": 25,
+      "index": 3,
+      "width": 594,
+      "height": 408
+    },
+    {
+      "url": "assets/figures/arxiv/2607.16412v1/fig-004.webp",
+      "caption": "Table 13: Total information gain TotalIG = ∑t ∆H̃t per (model, tier), across all three tasks. Score-vector subset only (5 models: GPT-5.4 family + Qwen3.5-9B / 397B-A17B).",
+      "page": 26,
+      "index": 4,
+      "width": 714,
+      "height": 397
+    },
+    {
+      "url": "assets/figures/arxiv/2607.16412v1/fig-005.webp",
+      "caption": "Table 12: CommitAcc@1 (%) across abstract / moderate / concrete intent tiers on TerminalBench.",
+      "page": 26,
+      "index": 5,
+      "width": 594,
+      "height": 408
+    },
+    {
+      "url": "assets/figures/arxiv/2607.16412v1/fig-006.webp",
+      "caption": "Figure 10: Per-model behavioral statistics for all 14 evaluated models.",
+      "page": 21,
+      "index": 6,
+      "width": 582,
+      "height": 563
+    },
+    {
+      "url": "assets/figures/arxiv/2607.16412v1/fig-007.webp",
+      "caption": "Figure 4: Normalized entropy H̃ at commit vs. normalized rank at commit, per model (mean ± SEM), across all three tasks.",
+      "page": 7,
+      "index": 7,
+      "width": 829,
+      "height": 300
+    },
+    {
+      "url": "assets/figures/arxiv/2607.16412v1/fig-008.webp",
+      "caption": "Figure 5: Variance decomposition of across-model alignment (CommitRank) per task.",
+      "page": 7,
+      "index": 8,
+      "width": 386,
+      "height": 319
+    },
+    {
+      "url": "assets/figures/arxiv/2607.16412v1/fig-009.webp",
+      "caption": "Figure 18: Qwen3.5-9B per-turn normalized entropy H̃t on Shopping abstract for base, SFT, and RL.",
+      "page": 29,
+      "index": 9,
+      "width": 826,
+      "height": 567
+    },
+    {
+      "url": "assets/figures/arxiv/2607.16412v1/fig-010.webp",
+      "caption": "Figure 11: Behavioral decomposition along (1) the model’s initial guess r̂1 (light gray), (2) how effectively the model interacts ∆r̂ = r̂T⋆ − r̂1 (dark gray), and (3) when the model commits T⋆ (depth of gray: light = fast commit, dark = late commit). The light red gap and red italic ∆r̂ mark regressions where interaction worsens rank. One row per task: Shopping, GDPVal, Terminal-Bench.",
+      "page": 22,
+      "index": 10,
+      "width": 622,
+      "height": 941
+    },
+    {
+      "url": "assets/figures/arxiv/2607.16412v1/fig-011.webp",
+      "caption": "Table 6: Matched simulator-validation comparison: same LLM as the asker, two user conditions. Real humans came with a specific product in mind (similar to concrete intent), so the matched sim condition is also treated as concrete-tier.",
+      "page": 14,
+      "index": 11,
+      "width": 702,
+      "height": 207
+    },
+    {
+      "url": "assets/figures/arxiv/2607.16412v1/fig-012.webp",
+      "caption": "Figure 7: Human vs. simulated user, pooled across the three assistants (gpt-5.4, qwen3.5-9b, qwen3.5-397b-a17b) by equal-weight mean of per-assistant means. Each metric (CommitReward, CommitAcc@1, E[T⋆]) is normalized to the human-condition value. Human bars all sit at 1.0; the dotted reference line marks parity. Error bars are pooled SEM in the same normalized scale.",
+      "page": 14,
+      "index": 12,
+      "width": 648,
+      "height": 450
+    },
+    {
+      "url": "assets/figures/arxiv/2607.16412v1/fig-013.webp",
+      "caption": "Figure 2: Workflow of our POMDP-based task-alignment framework, illustrated with an example from Terminal-Bench. The assistant interacts with a user simulator whose responses are guided by an evolving intent state conditioned on the full specification and conversation history. At each turn, the assistant ranks candidate specifications (as an additional output just for evaluation), allowing us to track how interaction affects belief over the latent task.",
+      "page": 3,
+      "index": 13,
+      "width": 829,
+      "height": 423
+    },
+    {
+      "url": "assets/figures/arxiv/2607.16412v1/fig-014.webp",
+      "caption": "Figure 12: Commit turn T⋆ vs. normalized rank at commit, per model (abstract tier). Left: Shopping. Middle: GDPVal. Right: Terminal-Bench.",
+      "page": 23,
+      "index": 14,
+      "width": 826,
+      "height": 304
+    },
+    {
+      "url": "assets/figures/arxiv/2607.16412v1/fig-015.webp",
+      "caption": "Figure 14: GDPVal: per-turn trajectories for all 14 models, split into 2 groups of 7.",
+      "page": 23,
+      "index": 15,
+      "width": 829,
+      "height": 271
+    },
+    {
+      "url": "assets/figures/arxiv/2607.16412v1/fig-016.webp",
+      "caption": "Figure 13: Shopping: per-turn trajectories for all 14 models, split into 2 groups of 7.",
+      "page": 23,
+      "index": 16,
+      "width": 829,
+      "height": 273
+    },
+    {
+      "url": "assets/figures/arxiv/2607.16412v1/fig-017.webp",
+      "caption": "Figure 17: Qwen3.5-9B training curves, stacked top-to-bottom. (a) SFT loss. (b) RL train/eval CommitReward. (c) RL train/eval mean T⋆.",
+      "page": 28,
+      "index": 17,
+      "width": 414,
+      "height": 994
+    },
+    {
+      "url": "assets/figures/arxiv/2607.16412v1/fig-018.webp",
+      "caption": "Table 4: Per-item mean CommitAcc@1 (%, ± standard error) on the Concrete intent tier for the human-asks user study vs. each assistant model. Each model cell aggregates ≈ 13 rollouts; each human cell aggregates the corresponding user-study sessions on that item.",
+      "page": 13,
+      "index": 18,
+      "width": 718,
+      "height": 302
+    },
+    {
+      "url": "assets/figures/arxiv/2607.16412v1/fig-019.webp",
+      "caption": "Table 5: Per-item mean reward (± standard error) on the Concrete intent tier for the humanasks user study vs. each assistant model. Each model cell aggregates ≈ 13 rollouts; each human cell aggregates the corresponding user-study sessions on that item.",
+      "page": 13,
+      "index": 19,
+      "width": 814,
+      "height": 302
+    },
+    {
+      "url": "assets/figures/arxiv/2607.16412v1/fig-020.webp",
+      "caption": "Table 16: GRPO hyperparameters. Fullparameter RL from the base checkpoint (no SFT init); terminal reward is r̂T⋆ (terminal bonus 1.0, truncation penalty −0.5 at the 15- turn interaction cap, step penalty 0).",
+      "page": 27,
+      "index": 20,
+      "width": 439,
+      "height": 288
+    },
+    {
+      "url": "assets/figures/arxiv/2607.16412v1/fig-021.webp",
+      "caption": "Table 14: Per-(task, model) quadrant distribution at the abstract tier (% of rollouts), scorevector subset. Bold = column max within each task. Quadrants defined as in Table 1.",
+      "page": 27,
+      "index": 21,
+      "width": 829,
+      "height": 440
+    },
+    {
+      "url": "assets/figures/arxiv/2607.16412v1/fig-022.webp",
+      "caption": "Figure 15: Terminal-Bench: per-turn trajectories for all 14 models, split into 2 groups of 7.",
+      "page": 24,
+      "index": 22,
+      "width": 829,
+      "height": 273
+    },
+    {
+      "url": "assets/figures/arxiv/2607.16412v1/fig-023.webp",
+      "caption": "Figure 16: Cumulative information gain TotalIG = H̃0 − H̃T⋆ per (model, task), averaged across the three intent tiers. Bars are mean ± pooled SEM across tiers.",
+      "page": 24,
+      "index": 23,
+      "width": 706,
+      "height": 513
+    },
+    {
+      "url": "assets/figures/arxiv/2607.16412v1/fig-024.webp",
+      "caption": "Table 3: Training head-to-head for Qwen3.5-9B. Top: outcome metrics (evaluation CommitReward). Bottom: TotalIG and quadrant %.",
+      "page": 9,
+      "index": 24,
+      "width": 414,
+      "height": 323
+    },
+    {
+      "url": "assets/figures/arxiv/2607.16412v1/fig-025.webp",
+      "caption": "Figure 9: Zero-shot and full-specification performance. Top: Shopping-MMLU query product ranking mean NDCG over ∼150 queries per model, with ±SEM. Middle: GDPVal normalized AA-leaderboard Elo (best= 100). Bottom: Terminal-Bench normalized AAleaderboard score (best= 100).",
+      "page": 20,
+      "index": 25,
+      "width": 456,
+      "height": 1152
+    },
+    {
+      "url": "assets/figures/arxiv/2607.16412v1/fig-026.webp",
+      "caption": "Figure 3: Per-turn trajectories of belief entropy H̃t (left) and normalized rank r̂t (right) at the abstract tier, one row per task. Score-vector subset (GPT-5.4 family, Qwen3.5-9B, Qwen3.5-397B); trained Qwen3.5-9B SFT / RL added on Shopping. Trajectory lines terminate at mean ⌈T∗⌉, and already-terminated rollouts contribute their terminal value thereafter for icon placement. GPT5.4 family trajectories end early across all tasks due to early commitment to task execution (T∗ ∈ [1, 2]).",
+      "page": 5,
+      "index": 26,
+      "width": 497,
+      "height": 570
+    },
+    {
+      "url": "assets/figures/arxiv/2607.16412v1/fig-027.webp",
+      "caption": "Figure 8: Per-turn spec-token coverage = |Ut ∩ S|/|S|, where Ut is the set of unique content tokens in the cumulative user text up to turn t and S is the set of unique content tokens in the ground-truth specification. Averaged across the 14 models at the abstract tier; shadings are ±SEM across models.",
+      "page": 16,
+      "index": 27,
+      "width": 414,
+      "height": 336
+    }
+  ]
+}
