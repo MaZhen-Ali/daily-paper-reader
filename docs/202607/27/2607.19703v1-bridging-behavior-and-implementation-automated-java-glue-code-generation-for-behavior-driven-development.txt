@@ -1,0 +1,657 @@
+Title: Bridging Behavior and Implementation: Automated Java Glue Code Generation for Behavior-Driven Development
+
+URL Source: https://arxiv.org/pdf/2607.19703v1
+
+Published Time: Thu, 23 Jul 2026 00:21:38 GMT
+
+Number of Pages: 25
+
+Markdown Content:
+# Bridging Behavior and Implementation: Automated Java Glue Code Generation for Behavior-Driven Development 
+
+XINYU SHI, University of Alberta, Canada 
+
+ZHOU YANG, University of Alberta, Canada 
+
+AN RAN CHEN, University of Alberta, Canada Behavior-Driven Development (BDD) helps technical and non-technical stakeholders share a common under-standing of software requirements through executable natural-language scenarios. Developers make these scenarios executable by writing glue code, which maps each natural-language step to the corresponding project code. Writing and maintaining glue code requires developers to understand both the intended behavior and the underlying codebase, which makes it one of the most labor-intensive aspects of BDD, especially as requirements evolve. Although large language models (LLMs) have demonstrated strong code generation capabilities, no prior work has explored automated glue code generation using LLMs. This task requires jointly reasoning over underspecified behavior, BDD artifacts, and large project codebases. In this paper, we propose AutoGlue, a hierarchical multi-agent framework for automated Java glue code generation. AutoGlue follows the same behavior-first workflow that developers use in BDD, first understanding the intended behavior, then retrieving relevant project context, and finally generating glue code grounded in both behavior specifications and project code. AutoGlue separates behavior interpretation, context retrieval, and glue code generation. In particular, a Behavior Interpreter infers the intent of a step within its scenario context, and a Developer agent coordinates the retrieval of related BDD artifacts and project code before generating glue code. We evaluate AutoGlue on 1,307 steps from eight open-source Java projects. AutoGlue improves API F1 by 58.7% and CodeBLEU by 43.7% over few-shot prompting. It also generates directly usable glue code for 46.1% of the evaluated steps, while most remaining partially correct cases require only minor edits, such as adding missing actions or refining parameters. Our ablation study further shows that behavior interpretation and project-aware context retrieval each contribute substantially to generation quality. Overall, our results demonstrate that LLMs can effectively bridge natural-language behavior specifications and project code, opening new opportunities for automating specification-driven software development. We further highlight the limitations of current LLM-based glue code generation and identify promising directions for future research. CCS Concepts: • Software and its engineering → Requirements analysis .Additional Key Words and Phrases: large language models, Behavior-driven development 
+
+1 Introduction 
+
+Software development requires technical and non-technical stakeholders to maintain a shared understanding of software requirements. In practice, software teams often struggle to stay aligned on what the system is expected to do [ 22 , 43 ]. Customers, users, and managers may describe their needs in business terms, while developers require concrete behavioral details for implementation 
+
+Authors’ Contact Information: Xinyu Shi, University of Alberta, Edmonton , Canada, xshi12@ualberta.ca; Zhou Yang, University of Alberta, Edmonton , Canada, zy25@ualberta.ca; An Ran Chen, University of Alberta, Edmonton , Canada, anran6@ualberta.ca. Permission to make digital or hard copies of all or part of this work for personal or classroom use is granted without fee provided that copies are not made or distributed for profit or commercial advantage and that copies bear this notice and the full citation on the first page. Copyrights for components of this work owned by others than the author(s) must be honored. Abstracting with credit is permitted. To copy otherwise, or republish, to post on servers or to redistribute to lists, requires prior specific permission and/or a fee. Request permissions from permissions@acm.org. 
+
+© 2018 Copyright held by the owner/author(s). Publication rights licensed to ACM. ACM XXXX-XXXX/2018/7-ART https://doi.org/XXXXXXX.XXXXXXX , Vol. 1, No. 1, Article . Publication date: July 2018. arXiv:2607.19703v1 [cs.SE] 22 Jul 2026 2 Shi et al. 
+
+and testing. Prior work in requirements engineering has shown that such communication gaps can lead to misunderstood requirements, weak coordination, quality issues, and wasted effort [7, 8]. Behavior-Driven Development (BDD) addresses this problem by using expected system behavior as a shared artifact between developers and non-technical stakeholders [ 46 ]. In BDD, the team works together to describe what the system should do before implementation. These specifications are written in natural language, allowing even non-technical stakeholders to read and discuss them, which helps the team develop a shared understanding of the expected behavior. In practice, BDD specifications are organized into features (user goals), scenarios (specific cases), and steps 
+
+(context, actions, and expected outcomes introduced by the keywords Given, When, and Then). For example, the scenario in Figure 1 describes an admin reviewing an application, with steps such as “Given I am logged in as an admin” and “Then I should have no accessibility issues”. These specifications serve not only as documentation but also as executable specifications that verify whether the implementation behaves as expected. Glue code maps each natural-language step to the corresponding project code, which enables features and scenarios to execute against the system. By continuously validating that the implementation matches the specified behavior, BDD helps teams maintain a shared understanding of system requirements throughout software development. However, BDD is costly to adopt in real-world projects [ 11 , 56 ], because every step must be wired to the project code by hand through glue code. As projects evolve, the number of steps can grow to hundreds or even thousands, substantially increasing maintenance effort and technical debt [ 44 , 56 ]. Continual requirement changes further exacerbate this burden, as existing steps and their implementations frequently need to be modified or rewritten. Moreover, writing glue code requires both an accurate understanding of business logic and deep familiarity with the project codebase, concentrating this work in the hands of a few experienced developers rather than being shared across the team. Finally, existing techniques [ 17 , 27 , 41 , 47 , 55 ] offer limited support, as most Glue code 
+
+Behaviors     
+
+> Feature : General Accessibility for Admins
+> Scenario : Admin Review Application Page
+> Given I am logged in as an admin
+> When I am on the Review Application page
+> Then I should have no accessibility issues
+> Scenario : Admin Screening Log Page
+> Given I am logged in as an admin
+> When I am on the Screening Log page
+> Then I should have no accessibility issues
+> @When("^I am on the Review Application page$" )
+> public void i_am_on_the_review_application_page() {
+> adminSteps.goToAdminPendingPage ();
+> generalSteps.clickLinkAssertTitle (".reviewLink",
+> "Review Application");
+> }
+> Invoke project code
+> to realize behavior
+> @Then("^I should have no accessibility issues$")
+> public void i_should_have_no_accessibility_issues() {
+> generalSteps.hasNoServerError();
+> page.checkAccessibility();
+> }
+> @Given("^I am logged in as an admin$")
+> public void i_am_logged_in_as_an_admin() {
+> generalSteps.login("admin", "admin");
+> }
+> Match step
+
+Natural language Code       
+
+> Glue code m ap behavior to project
+> code , so that the natural language
+> behavior can be tested and verified.
+> BDD enabling shared understanding
+> between non -technical and technical
+> stakeholders
+> Behavior specifications in structured Natural Language
+> Translate behavior to project code
+
+Fig. 1. BDD describes expected system behaviors as feature files, scenarios, and natural-language steps. Glue code maps each step to executable logic that invokes the project code, enabling scenarios to run against the system for behavior validation. 
+
+, Vol. 1, No. 1, Article . Publication date: July 2018. Bridging Behavior and Implementation: Automated Java Glue Code Generation for Behavior-Driven Development 3
+
+rely on rule-based mappings or manually maintained artifacts that still require substantial human involvement. Recent advances in large language models (LLMs) provide an opportunity to automate this process. Prior work [ 15 , 23 , 57 ] has shown the potential of LLMs across many software engineering tasks, including code generation [ 33 , 53 ], testing and debugging [ 45 , 50 ], as well as program repair [ 9]. However, using LLMs to bridge fine-grained steps and project code remains largely unexplored. In practice, generating glue code poses several challenges. It requires joint reasoning over multiple artifacts, including individual steps, feature or scenario context, and project code, which makes it more complex than conventional code generation. In addition, individual steps are often short and underspecified, so their intent can be ambiguous when interpreted in isolation, especially when their behavior depends on other steps in the same scenario or feature. At the same time, glue code must connect high-level behavior to project code, such as internal functions, domain objects, or project-specific APIs, which is typically scattered across the codebase and requires deep project-specific knowledge. Moreover, the content of glue code evolves as project behavior changes, while LLMs lack inherent awareness of a specific codebase. Finally, generated glue code must remain consistent with existing implementation styles and conventions, which vary significantly across projects and teams. To address these limitations, we propose AutoGlue, a hierarchical multi-agent [ 21 ] framework for automated Java glue code generation from steps. To the best of our knowledge, AutoGlue is the first approach to automatically generate glue code from steps. AutoGlue decomposes the process into three sequential stages: behavior interpretation, context retrieval, and glue code generation. Specifically, a Behavior Interpreter agent first analyzes the target step within its enclosing feature and scenario to derive a description of its intended behavior and its role in the scenario. A Developer agent then acts as a supervisor [ 30 ] that coordinates two specialized sub-agents during context retrieval: one retrieves relevant BDD context from similar steps and existing glue code, and the other explores the project codebase to collect project code context. The multi-agent design is motivated by the complexity of glue code generation, which requires reasoning over both behavior and project code. AutoGlue separates the reasoning over different types of information into dedicated agents to avoid mixed reasoning, error propagation, and excessive context usage [ 19 ]. The hierarchical structure models a behavior-first development process, where behavior is understood before code is written. The Developer agent uses two specialized sub-agents to retrieve information from different sources and integrate it into glue code, while keeping contexts separate to reduce noise. To evaluate AutoGlue in real-world practice, we collect 1,307 distinct steps and their corre-sponding Java glue code from eight open-source GitHub projects. We choose Java because it is representative of real-world BDD practice. Java was the first programming ecosystem where BDD was practiced and popularized, supported by early tools such as JBehave [ 24 , 36 ]. Later tools in other languages adopted similar conventions [ 56 ], including the separation between feature files and project code, as well as pattern-based step binding mechanisms. Beyond this representativeness, generating Java glue code is harder than for scripting languages. For instance, Java requires strict annotation binding with regular expressions and correct parameter types, which increases the difficulty of generating valid method signatures [ 52 ]. In addition, Java projects typically exhibit a strong refactoring culture [ 2 ], clear separation of concerns, and object-oriented designs for glue code. We conduct a series of experiments to evaluate the effectiveness of our glue code generation framework. Since no established automatic approach exists for glue code generation, we compare our framework with two LLM-based prompting approaches commonly used by developers: few-shot prompting and plain prompting [ 26 , 34 ]. We first evaluate glue code quality by measuring API overlap, which reflects functional alignment by assessing whether the generated glue code uses  
+
+> , Vol. 1, No. 1, Article . Publication date: July 2018. 4Shi et al.
+
+the same project APIs as the ground truth, together with similarity metrics [ 5, 31 , 42 ] that capture structural and lexical resemblance to human-written code. Our results show that AutoGlue achieves substantially stronger alignment with ground truth, improving API F1 by over 50% and CodeBLEU by over 40% on average compared to prompting-based baselines. To assess practical usability and to address the limitations of execution-based evaluation caused by complex environments and ambiguous step outcomes in BDD, we employ an LLM-as-a-Judge [ 12 , 29 , 49 ] to conduct pointwise evaluation against ground-truth glue code. Our results show that AutoGlue substantially increases the proportion of directly usable glue code, with nearly half of the generated implementations requiring no modification. Further analysis of partially correct cases shows that these cases typically require only minor changes, most often to add missing actions or to correct imprecise parameters, indicating that the generated glue code is often close to being usable in practice. We further conduct an ablation study to examine how key design choices affect glue code generation quality. Our results show that retrieving related BDD artifacts strongly improves similarity to human-written glue code, while access to project code is important for producing correct and directly usable implementations. Removing behavior interpretation also leads to consistent performance drops across all metrics, indicating that explicit understanding of the step intent provides useful guidance for generation. In the discussion, we further analyze the efficiency of AutoGlue and discuss its implications, contributions, and remaining open challenges for automated BDD support. The main contributions of this paper are: 
+
+• We propose AutoGlue, the first automated approach for generating glue code directly from steps. AutoGlue adopts a hierarchical multi-agent design that separates behavior interpretation, context retrieval, and glue code generation. 
+
+• We evaluate AutoGlue on 1,307 step–glue-code pairs collected from eight real-world open-source Java projects. AutoGlue consistently outperforms prompting-based baselines in both functional alignment and code similarity. 
+
+• We analyze the usability of generated glue code using an LLM-as-a-Judge. Our analysis shows that nearly half of the generated glue code is directly usable, while most partially correct cases require only minor fixes, such as adding missing actions or adjusting parameters. 
+
+• We conduct an ablation study to examine the contribution of key design components. We find that grounding LLMs in both behavior specifications and project code substantially improves glue code generation. Future studies are needed to explore how these principles extend to broader specification-to-code automation. 
+
+2 Background 2.1 Behavior-driven Development 
+
+Translating requirements into working software requires technical and non-technical stakeholders to develop a shared understanding of the expected system behavior. However, stakeholders may interpret natural-language requirements differently because they bring different perspectives, assumptions, and vocabularies. Behavior-driven development (BDD) addresses this problem by using concrete examples written in natural language as a shared basis for discussing expected behavior [ 46 ]. Motivated by test-driven development (TDD), which uses tests to guide software development, BDD uses behavior as a shared reference to guide the development process. It expresses observable system behavior in a form that stakeholders can discuss, refine, and agree upon before connecting it to the implementation. The resulting examples are then formulated as structured behavior specifications and automated as executable checks. In this way, the same examples connect requirements discussion, behavior specification, and implementation verification.  
+
+> , Vol. 1, No. 1, Article . Publication date: July 2018. Bridging Behavior and Implementation: Automated Java Glue Code Generation for Behavior-Driven Development 5
+
+This link is established through an iterative process of Discovery, Formulation, and Automation. During Discovery, team members discuss concrete examples to clarify expected behavior and identify missing or conflicting interpretations. During Formulation, the agreed examples are written as structured behavior specifications. These specifications organize behavior into features, scenarios, and steps. A feature represents a high-level business capability or user goal. Each scenario describes one concrete case through a sequence of steps. Given steps establish the relevant context or preconditions. When steps describe actions or events. Then steps state the expected outcomes. During Automation, glue code connects the steps to project code so that each scenario can be executed. The three activities form a feedback loop. If writing or executing an example reveals missing information, the team can return to the discussion and refine its shared understanding. Figure 1 illustrates how a formulated example becomes an executable scenario. The Given 
+
+step establishes that the user is logged in as an administrator. The When step opens the Review Application page, and the Then step checks the page for accessibility issues. Both scenarios in the figure reuse the login and accessibility steps but open different pages in their When steps. This reuse allows recurring behavior to be expressed consistently while each scenario retains the context needed to understand the steps. During execution, glue code connects each natural-language step to a corresponding Java method that calls project code. The steps run in order to establish the scenario state, perform the action, and check the outcome. The same scenario can therefore serve as a shared description of expected behavior and as an executable check of the implementation. Repeated execution also provides feedback when a change no longer satisfies the documented behavior. These properties help keep requirement discussions, behavior specifications, and project code aligned as the system evolves [ 46 ]. This benefit depends on maintaining the connection between the steps and project code. The next subsection explains how glue code establishes and executes this connection. 
+
+2.2 Glue code in BDD 
+
+How glue code works. Glue code connects natural-language steps to project code and makes BDD specifications executable. Before a scenario runs, the patterns in the @Given , @When , and 
+
+@Then annotations are loaded from the glue code. Each step is matched against these patterns. Values captured by a matching pattern are converted to the required types. They are then passed as parameters to the corresponding Java method. The Java method is executed and calls the project code needed for the behavior. For example, in Figure 1, the pattern in the @When annotation matches the step text “I am on the Review Application page.” The corresponding Java method calls adminSteps.goToAdminPendingPage() and generalSteps.clickLinkAssertTitle(...) .These calls open the page and check its title. Overall, glue code provides an executable connection between behavior specifications and project code. Developers must maintain this connection as either side evolves. 
+
+Challenges for generation. Generating glue code from steps poses several inherent challenges. (1) Semantic gap between natural-language steps and project code. Individual steps are usually short and underspecified. When interpreted in isolation, their intent can be ambiguous, especially when the actual behavior depends on other steps within the same scenario or feature. For example, a step may simply say that a user submits a form, but the same phrase can have different meanings even within a single project. The user may refer to different roles or account states, such as a guest, registered customer, administrator, or already authenticated user, and the form may belong to registration, checkout, profile editing, or an administrative workflow. Each interpretation may require different page objects, validation helpers, domain services, or setup logic. The glue code must therefore infer which concrete project abstraction should be used from the scenario, feature, and surrounding project code context. (2) Strong dependence on project- or tool-specific context. Glue 
+
+> , Vol. 1, No. 1, Article . Publication date: July 2018.
+
+6 Shi et al. Project -specific Context Joint Reasoning across artifacts 
+
+Input Step 
+
+Understand Step Intent 
+
+What does 'submit form' mean? 
+
+• Click a button? 
+
+• Validate fields? 
+
+• Wait for response? 
+
+• Handle errors? 
+
+Possible Implementations 
+
+> # Interpretation A
+> page.click_submit_button()
+> # Interpretation B
+> page.submit_form()
+> # Interpretation C
+> form.validate(); form.save()
+> When I submit the form When I submit the form When I submit the form
+
+Large codebase Scattered context 
+
+Challenge: Locating and selecting 
+
+the right context is hard in large 
+
+repositories. 
+
+Challenge: Locating and selecting 
+
+the right context is hard in large 
+
+repositories. 
+
+Challenge: Mapping an ambiguous 
+
+step to the correct, specific intention 
+
+is non -trivial. 
+
+Challenge: Mapping an ambiguous 
+
+step to the correct, specific intention 
+
+is non -trivial. 
+
+Behavior Glue code Project code 
+
+> Feature
+> Scenarios
+> Steps
+> @when(user
+> login)
+> public void
+> user_login()
+> Reason across multiple
+> heterogeneous artifacts
+> Find the related project
+> code in the repository
+
+Challenge: glue code generation needs 
+
+jointly reasoning over behaviors , glue 
+
+code , and project code .
+
+Challenge: glue code generation needs 
+
+jointly reasoning over behaviors , glue 
+
+code , and project code .       
+
+> Natural Language Code
+> void waitReady ():
+> . . .
+> void waitReady ():
+> . . .
+> class LoginPage:
+> void login(self):
+> ...
+> class LoginPage:
+> void login(self):
+> ...
+> void submit_order (
+> self, data):
+> . . .
+> void submit_order (
+> self, data):
+> . . .
+> List<Item> cartItems
+> = new ArrayList<>();
+> ...
+> List<Item> cartItems
+> = new ArrayList<>();
+> ...
+> /project /project
+> pages/ pages/
+> services/ services/
+> models/ models/
+> utils/ utils/
+> LoginPage.java LoginPage.java
+> OrderService.java OrderService.java
+> Cart.java Cart.java
+> WaitUtils.java WaitUtils.java
+> /project
+> pages/
+> services/
+> models/
+> utils/
+> LoginPage.java
+> OrderService.java
+> Cart.java
+> WaitUtils.java
+
+Fig. 2. Challenges of glue code generation in BDD. 
+
+code must connect high-level behavioral descriptions to project code, such as internal functions, domain objects, or project-specific APIs. This information is often scattered across the codebase and requires detailed project knowledge. As shown in Figure 2, generation often requires an understanding of the project structure. The generator must find where the target behavior is implemented in a large codebase. It may also need to combine objects and methods from different files or functional modules. (3) Joint reasoning over multiple heterogeneous artifacts. Correct glue code generation requires reasoning over multiple sources at the same time, including individual steps, scenario or feature context, and project code. These artifacts use different forms, from natural language to Java code. The generator must combine them before it can produce glue code that both matches the step and calls the relevant project code. This makes the task more complex than generating a standalone function and calls for generation strategies designed for BDD. 
+
+Challenges for evaluation. Evaluating automatically generated glue code is also non-trivial in the BDD setting. (1) Lack of execution-based oracles. Unlike general code generation tasks, execution-based evaluation is difficult to apply to glue code. There is no clear notion of passing or failing tests that can serve as a reliable oracle, which makes metrics such as pass@k inapplicable. (2) Absence of step-level outcomes. Glue code is designed to be executed as part of a complete scenario or feature. Individual Given or When steps often do not produce observable outcomes or assertions, making it difficult to verify their correctness in isolation. (3) Complex and implicit environment dependencies. Glue code is rarely self-contained and its execution depends on project-specific runtime states, such as initialized browsers, connected databases, or preconfigured services. These dependencies are hard to identify and reconstruct across different open-source projects. 
+
+Observation 1: Unlike ordinary project code, glue code is highly context-dependent and requires a deep understanding of the project. Glue code generation requires joint reasoning over underspecified natural-language steps, scenario-level behavior, and project code. 
+
+, Vol. 1, No. 1, Article . Publication date: July 2018. Bridging Behavior and Implementation: Automated Java Glue Code Generation for Behavior-Driven Development 7
+
+3 Related Work 3.1 Automated BDD Support 
+
+BDD adoption and maintenance challenges. Prior studies show that BDD is used in practice and can improve communication, requirements understanding, and behavioral validation. Binamungu et al. [ 6] surveyed 75 BDD practitioners from 26 countries and found that BDD is actively used in industry, especially in private organizations. Practitioners reported that BDD helps teams describe requirements with domain-specific terms, make specifications executable, and help maintenance developers understand the intent of code. Repository studies also show broad BDD adoption in open-source projects. Zampetti et al. [ 56 ] studied 50,000 open-source projects and found that 27.25% use at least one BDD-related framework or tool, with particularly high adoption in Ruby and JavaScript projects. Similarly, Nascimento et al. [ 35 ] interviewed 42 members of agile development teams and found that BDD can improve collaboration and reduce ambiguity in requirements. Systematic reviews report similar benefits, including customer satisfaction, requirements tracking, artifact reuse, and early validation of expected behavior [1, 4, 14]. However, these benefits come with substantial maintenance costs. Prior studies report that BDD adoption requires teams to change how they discuss requirements, write scenarios, and maintain executable specifications. Developers also report a learning curve, difficulty applying BDD correctly, and increased development time and cost [ 1 , 4 , 6 ]. As BDD suites grow, specifications become harder to locate, understand, and update, and may contain duplicated scenarios or slow tests [ 6]. Zampetti et al. [ 56 ] also found that developers do not always follow a strict BDD process, with tests often written during or after coding rather than before implementation. Together, these studies suggest that BDD has clear practical value, but its adoption and long-term use still depend on substantial human effort. They motivate automated support for reducing BDD maintenance effort, but they mainly study BDD usage, benefits, and challenges rather than generating executable glue code from steps. 
+
+Automated tools for BDD. Before the emergence of LLMs, automated support for BDD mainly focused on assisting developers in connecting natural-language scenarios with existing imple-mentations, rather than generating glue code end-to-end. Most prior tools rely heavily on human involvement, such as manual modeling, predefined rules, or constrained authoring practices. Several approaches generate BDD artifacts or partial testing code from intermediate representations defined during requirements engineering, requiring developer intervention [ 17 ]. Another line of work maps steps to existing implementation code using probabilistic or rule-based matching techniques. Such approaches assume that relevant implementation code already exists and therefore do not address glue code generation for new or evolving behaviors [ 27 , 41 , 47 ]. They further rely on manually designed mapping rules, interactive user input, or controlled project settings, which limits their scalability in real-world projects. More recent tools transform BDD scenarios into formal behavioral models to enable systematic test generation. While effective for improving test coverage, these approaches rely on explicit formal modeling and do not directly generate executable glue code, leaving the connection between scenarios and project code to developers [ 55 ]. Recent LLM-based studies have explored automating parts of the BDD workflow, but their focus remains on behavior discovery rather than glue code generation. Paduraru et al. [ 39 ] proposed an agent-based approach that assists users in interactively creating and refining BDD scenarios, but only supports reusing existing glue code. Similarly, Karpurapu et al. [ 28 ] evaluated the use of LLMs to generate BDD acceptance tests from requirements with zero- and few-shot prompting. However, the most labor-intensive component of BDD, the automatic generation of glue code, remains largely unaddressed and continues to rely on manual development.  
+
+> , Vol. 1, No. 1, Article . Publication date: July 2018. 8Shi et al.
+
+3.2 Large Language Models and Agentic Systems 
+
+Large language models (LLMs) are neural language models trained on large-scale text and code corpora to understand and generate natural language, source code, and other structured text [ 25 , 48 ]. Given an input prompt, an LLM predicts and generates a response that follows the task description, examples, and contextual information provided in the prompt. This ability has recently shown strong potential for software engineering tasks. Existing studies have applied LLMs to a wide range of software engineering tasks, including code generation, test generation, debugging, fault localization, and program repair [ 9 , 23 , 26 , 33 , 45 , 50 ]. These tasks often involve understanding what the developer wants to change and producing the corresponding code edits. This makes LLMs especially relevant to BDD, where expected behavior is explicitly described in natural language and must eventually be connected to executable implementation code. However, many software engineering tasks cannot be solved reliably from a single isolated prompt. Generated code often needs to fit the existing codebase, such as its data models, coding style, tests, and framework conventions. Without sufficient project context, an LLM may produce code that is syntactically plausible but incompatible with the target system. For this reason, recent LLM-based software engineering approaches increasingly emphasize context-aware generation, retrieval-augmented generation, and repository-level reasoning [ 45 , 53 ]. Instead of generating code only from a short task description, these approaches attempt to ground generation in relevant project artifacts, such as existing source files, tests, documentation, and similar examples. Agentic systems are systems in which one or more LLM-based agents act toward a goal by following assigned roles, using tools, gathering context, and making intermediate decisions [ 25 , 54 ]. They extend LLM-based generation by organizing the model around explicit goals, roles, tools, and decision processes. Rather than producing one response to one prompt, an agentic system can decompose a task, retrieve information, inspect external artifacts, call tools, and synthesize intermediate results before making a final decision. Multi-agent systems further divide a complex task among multiple specialized agents, such as planners, retrievers, developers, and reviewers [ 19 ,21 , 30 ]. Such designs are increasingly explored in software engineering because many development tasks require coordination across heterogeneous artifacts and different forms of reasoning. At the same time, agentic systems also introduce new challenges, including context noise, error propagation, and coordination overhead. Therefore, effective agentic designs require clear task decomposition and well-defined responsibilities among agents. These properties make LLM-based agentic systems a promising fit for BDD glue code generation. Generating glue code requires understanding the natural-language behavior expressed by a step, interpreting its role within the surrounding scenario, identifying similar existing BDD artifacts, and locating project code that can implement the behavior. This process naturally involves multiple sources of information and different reasoning needs. A behavior-oriented component can reduce ambiguity in underspecified steps, while retrieval-oriented components can ground generation in existing BDD conventions and project code. Thus, an agentic design provides a structured way to bridge natural-language behavior descriptions and project code, which motivates the hierarchical multi-agent framework proposed in this paper. 
+
+4 Methodology 
+
+We propose AutoGlue, an LLM-based hierarchical multi-agent framework for generating Java glue code from a target BDD step. As shown in Figure 3, AutoGlue takes a target BDD step and the project codebase as input, and outputs Java glue code that connects the step to the project code that implements the behavior. The workflow consists of three sequential stages: behavior interpretation, context retrieval, and glue code generation. AutoGlue follows a hierarchical multi-agent design. 
+
+> , Vol. 1, No. 1, Article . Publication date: July 2018.
+
+Bridging Behavior and Implementation: Automated Java Glue Code Generation for Behavior-Driven Development 9When input "Input text" in "Your Name"   
+
+> @When("^(?:I |)input \"([^\"]*)\" in \"([^\"]*)\"$")
+> public void inputInField (String value, String name) {
+> input (name). setText (value);
+> }
+> @When("^(?:I |)input \"([^\"]*)\" in \"([^\"]*)\"$")
+> public void inputInField (String value, String name) {
+> input (name). setText (value);
+> }
+
+Behavior 
+
+Interpretation 
+
+Context 
+
+Retrieval 
+
+Glue code 
+
+Generation 
+
+Input step 
+
+Project Context Retriever BDD Context Retriever 
+
+Similar glue code    
+
+> When input "123" in "password"
+> When enter "a@b.com" in "Email"
+> Then "Full Name" is required
+
+Similar steps  
+
+> @When("I clear input")
+> input(name).clear()
+> @Then("input is empty")
+> input(name).getValue()
+> FormPage.java
+> InputField.java
+> class RegistrationPage
+> void setText(String value)
+> Map<String, InputField> fields
+
+Code repository  
+
+> Search Similar steps and glue code Explore relevant project code
+
+Developer (Generation) 
+
+> Generate glue code
+> Fill the user's name in the registration
+> form by entering the provided text into
+> the field labeled "Your Name".
+> Fill the user's name in the registration
+> form by entering the provided text into
+> the field labeled "Your Name".
+
+Behavior Interpreter 
+
+> Summary of expected behavior
+> Fill the user's name in the registration
+> form by entering the provided text into
+> the field labeled "Your Name".
+
+Behavior Interpreter 
+
+> Summary of expected behavior
+
+Feature/Scenario Context   
+
+> Feature : User registration
+> Scenario : Fill in personal information
+> Given the user is on the registration page
+> Feature : User registration
+> Scenario : Fill in personal information
+> Given the user is on the registration page
+> Help understand the step
+
+Feature/Scenario Context  
+
+> Feature : User registration
+> Scenario : Fill in personal information
+> Given the user is on the registration page
+> Help understand the step
+
+Fig. 3. Overview of the AutoGlue framework. 
+
+The Behavior Interpreter agent first clarifies the intended behavior of the target step. The Developer agent then supervises the remaining stages. It delegates context retrieval to two sub-agents, the BDD Context Retriever and the Project Context Retriever, and uses the retrieved context to generate the final glue code. The BDD context helps AutoGlue follow existing glue-code patterns, while the project context helps AutoGlue invoke suitable project code. Using the running example in Figure 3, given the target step “When input "Input text" in "Your Name"”, AutoGlue interprets the step, retrieves relevant context, and generates the corresponding Java glue code. 
+
+4.1 Behavior Interpretation 
+
+Individual BDD steps are often underspecified when interpreted in isolation. The same step may correspond to different project behaviors depending on the surrounding scenario and feature. AutoGlue therefore begins by interpreting the intended behavior before retrieving project context. The Behavior Interpreter agent performs this stage by starting from the target step and using its feature and scenario context to clarify information that may be implicit in the step text. For example, in Figure 3, the target step already indicates an input action, but the surrounding context shows that it occurs on a user registration page and that the field “Your Name” refers to the user’s name in the registration form. Based on this context, the Behavior Interpreter agent produces a behavior summary that states what the glue code should accomplish, without specifying how the code should be implemented. By producing this summary before retrieval and generation, AutoGlue reduces ambiguity in the target step and provides clearer guidance for the later stages. 
+
+, Vol. 1, No. 1, Article . Publication date: July 2018. 10 Shi et al. 
+
+4.2 Context Retrieval 
+
+Once AutoGlue identifies the intended behavior, it gathers the contextual information needed to implement it. Since glue code must align with both existing BDD artifacts and the project codebase, the Developer agent delegates this retrieval step to two specialized sub-agents. Before writing the final code, the Developer agent invokes two retrieval sub-agents. The BDD Context Retriever collects context from existing BDD artifacts, while the Project Context Retriever collects context from the project codebase. These two sub-agents gather and organize useful information for the Developer agent, but do not generate the final glue code. 
+
+The BDD Context Retriever sub-agent searches for steps that are semantically similar to the target step and examines their corresponding glue code using embedding-based retrieval with cosine similarity. It can also directly search within existing glue code to identify potentially relevant implementations. These retrieved steps often involve similar domain objects or operations, and allow the framework to identify established behavioral patterns, naming conventions, and implementation styles already present in the project. The retrieved results are filtered and consolidated before being returned to the Developer agent, providing references that help ground subsequent code generation in existing BDD practices within the project. The retriever selectively aggregates the most relevant steps and code snippets as useful references. 
+
+The Project Context Retriever sub-agent is responsible for collecting project context required for implementing the glue code. It explores the project codebase by examining the project file structure, identifying potentially relevant source files, inspecting symbol trees such as classes and methods, and selectively checking code snippets that may be involved in implementing the target step. These may include domain objects, helper utilities, or existing test infrastructure that the glue code is expected to interact with. This design is particularly useful when no closely related existing glue code is available as a direct reference, as the implementation must rely more heavily on project code rather than prior examples. The retrieved information is consolidated and returned to the Developer agent, enabling context-aware glue code generation. 
+
+4.3 Glue Code Generation 
+
+With the relevant context from both BDD artifacts and the project codebase collected, AutoGlue proceeds to the final stage of glue code generation. In this stage, the Developer agent jointly reasons over the target step, the behavior summary, and the retrieved context to generate the final Java glue code. The output includes the step annotation, method signature, parameters, and method body. The generated code should match the natural-language target step and invoke suitable project code. In this way, AutoGlue separates behavior understanding, context retrieval, and code generation, while allowing the Developer agent to make the final generation decision based on the collected evidence. 
+
+5 Data Collection 
+
+Studied systems. To study BDD glue code generation in the wild, we construct an evaluation dataset from open-source Java projects that adopt BDD. Our goal is to collect realistic pairs of steps and their corresponding glue code, which together form the basis for automated glue code generation. We first identify candidate Java repositories on GitHub that adopt BDD practices. Following prior study [ 10 ], we treat the presence of BDD feature files ( .feature ) as a necessary indicator of BDD adoption, as these files contain executable behavioral specifications. For each project, we further verify the existence of Java glue code using BDD annotations ( @Given , @When ,
+
+@Then ), ensuring that the feature-file specifications are actively bound to executable test code. To ensure that the collected data reflects realistic BDD usage, we restrict our dataset to projects that                                               
+
+> , Vol. 1, No. 1, Article . Publication date: July 2018. Bridging Behavior and Implementation: Automated Java Glue Code Generation for Behavior-Driven Development 11
+> Table 1. Collected open-source Java BDD repositories and statistics of BDD artifacts
+> Repository LOC Features Scenarios Steps Step–glue-code pairs
+> metasfresh 3,408,473 191 758 12,039 615 CxFlow 89,636 45 159 708 309 PSM 48,173 27 154 706 140 SYMON 28,789 19 55 4,711 104 JDI Light 139,214 36 264 696 89 SpringMVC Router 2,125 544 136 25 Worblehat 2,595 712 51 20 Datadog Java APM 375,540 35 43 91 5
+
+are non-trivial in scale, actively maintained and well-documented. Based on these criteria, we identify eight open-source Java projects spanning diverse application domains. We align steps with their corresponding glue code using pattern matching to ensure that each aligned pair reflects an executable relationship in the original project. To ensure a clean and non-redundant evaluation dataset, we apply the following filtering rules. (1) First, we remove steps that have no corresponding glue code. This is common in real-world projects that are still under development, where scenarios are defined but the business logic has not yet been implemented. (2) Second, multiple steps may map to the same glue code method, differing only in parameters. To avoid redundancy and prevent biased generation instances, we randomly select one pair for each such group. As shown in Table 1, after filtering and alignment, the final dataset contains 1,307 step–glue-code pairs across the eight open-source projects. Table 1 summarizes the projects included in our study and reports key statistics, such as the number of feature files, steps, and the filtered step–glue-code pairs per project. 
+
+Empirical observations. We further analyze the collected data to understand how BDD artifacts are used in practice. On average, each scenario contains three Given steps, two When steps, and three Then steps. We examine the evolution of system behavior. Among all scenarios, 49.2% of the steps are created at the same time as their corresponding feature files, while the remaining 50.8% are added at a later stage. In addition, 65.1% of scenarios are modified after their initial creation, suggesting that behavioral specifications often evolve over time. We also examine the complexity and evolution of the glue code. Compared to core business logic, glue code methods are structurally lightweight, with a mean cyclomatic complexity of 1.5, an average of seven lines of code, and fewer than one parameter (0.92) per method on average. Our evolution study shows that glue code evolves over time. Each glue code method is modified four times on average during project evolution, reflecting ongoing changes in both behavioral specifications and implementation details. 
+
+Observation 2: Both steps and their implementations evolve frequently, necessitating a more adaptive and automation-friendly approach to glue code generation and maintenance. 
+
+6 Experimental Settings 6.1 Baseline Selection 
+
+Automated generation of Java glue code from natural-language steps remains an underexplored problem. As discussed in Section 3.1, prior solutions rely on human-defined mappings between steps and project APIs and do not support direct code generation, which makes them unsuitable as baselines for comparison. Meanwhile, LLMs are increasingly adopted in practice as general-purpose assistants for code generation in software development workflows [ 26 , 32 ]. Under such circumstances, new baselines are needed to reflect real-world LLM usage. To approximate real-world  
+
+> , Vol. 1, No. 1, Article . Publication date: July 2018. 12 Shi et al.
+
+settings, two prompt-based LLM baselines are constructed to represent common ways developers interact with LLMs during BDD development. Both baselines generate glue code directly from the input step. The two designed baselines are as follows: 
+
+• Few-shot prompting provides the LLM with three example pairs of steps and their correspond-ing glue code implementations. Examples are randomly sampled from the same project as the target step, ensuring that they are drawn from the same codebase without manual selection. Such in-context examples allow the model to observe concrete mappings between step descriptions and glue code implementations, which is a commonly adopted strategy to improve code generation performance [ 34 ]. The target step is then appended to the prompt, and the model is instructed to generate the corresponding glue code following the given examples. 
+
+• Plain prompting represents a minimal interaction setting that is also commonly adopted by developers. The model receives only a natural-language instruction describing the task, together with the target step. No in-context examples or project-specific information are provided. This baseline captures zero-shot generation behavior and serves as a lower-bound reference. 
+
+6.2 Evaluation Metrics 
+
+To comprehensively assess the quality of generated glue code, we design a set of evaluation metrics that measure functional alignment, code similarity, and practical usability. 
+
+Functional alignment. To measure the functional alignment between generated glue code and the intended behavior, we design a set of API overlap metrics that compare the usage of APIs in generated glue code against those in corresponding human-written glue code. In this work, we define the APIs as the program elements in glue code, including method calls and object references, which represent the invocation of corresponding functional modules. We identify the program elements through static analysis based on AST parsing. Specifically, we parse both generated and ground truth Java glue code into ASTs and extract method invocations and object references. API overlap is then computed by exact symbol matching between generated and reference glue code, which precisely reflects whether the glue code links to the required functional elements. 
+
+• API Precision measures the proportion of program elements in the generated glue code that also appear in the corresponding human-written implementation, computed as |𝐴 gen ∩𝐴 ref ||𝐴 gen | , where 
+
+𝐴 gen and 𝐴 ref denote the sets of APIs extracted from the generated and reference glue code, respectively. This metric characterizes how accurately the model selects relevant project-level APIs without introducing unnecessary or spurious calls. 
+
+• API Recall captures the extent to which the generated glue code recovers the program elements present in the reference implementation, defined as |𝐴 gen ∩𝐴 ref ||𝐴 ref | . It reflects the model’s ability to cover the essential elements required to realize the intended step behavior. 
+
+• API F1 balances correctness and coverage by computing the harmonic mean of API Precision and API Recall: 2·Precision ·Recall Precision +Recall .
+
+Code similarity. To measure lexical and structural similarity between generated and human-written glue code, we further adopt widely used code similarity metrics. These metrics provide a complementary perspective by characterizing similarities in code representation, organization, and token-level patterns, independent of functional correctness. Specifically, we consider the following widely used automatic metrics [38, 40] to assess lexical and structural similarity. 
+
+• CodeBLEU [ 42 ] is a composite code similarity metric that integrates n-gram overlap, syntax matching based on abstract syntax trees, and data-flow consistency, capturing both surface-level token similarity and higher-level correspondence in generated code.  
+
+> , Vol. 1, No. 1, Article . Publication date: July 2018. Bridging Behavior and Implementation: Automated Java Glue Code Generation for Behavior-Driven Development 13
+
+• METEOR [ 5 ] measures lexical similarity through exact and partial token matches, making it more tolerant to minor variations in naming and formatting and suitable for comparing semantically similar but syntactically different implementations. 
+
+• ROUGE-L [ 31 ] evaluates sequence-level similarity by computing the longest common subse-quence between generated and reference implementations, thereby reflecting alignment in code ordering and sequential structure. Taken together, this metric suite offers a coarse-grained but multi-faceted assessment of glue code quality, covering both project-level API grounding and form-level implementation similarity. 
+
+Usability. To address evaluation challenges, we evaluate the usability of generated glue code using an output-based, reference-aware LLM-as-a-Judge framework. Recent studies have shown that output-based LLM judges, which directly reason over the generated artifact and emit an explicit judgment, achieve higher alignment with human developers in software engineering tasks [ 12 , 49 ]. These approaches are particularly suitable when execution-based validation is infeasible and when correctness, rather than surface similarity, is the primary concern. In our setting, the availability of human-written ground-truth glue code enables direct comparison between generated and reference implementations, which makes the reference-aware LLM-as-a-Judge evaluation particularly suitable. Following the formal characterization of LLM-as-a-Judge in prior work [ 20 ], we adopt a pointwise 
+
+evaluation setting. Each generated glue code is assessed independently, without comparison to alternative candidates. For each instance, the judge is provided with three inputs: the step input, the generated glue code, and the corresponding ground truth human-written glue code as a reference. While reference-free judging has been explored in prior work, multiple studies indicate that reference-aware evaluation can better anchor semantic reasoning and reduce false positives caused by superficially plausible but incorrect code [12, 13]. The LLM judge is instructed to produce a single holistic assessment reflecting whether the generated glue code constitutes an acceptable implementation of the step within the given project context. Rather than decomposing the evaluation into multiple independent sub-scores, we follow evidence that holistic judgments more closely resemble human evaluation behavior and yield more stable score distributions [ 49 ]. To guide the model’s reasoning and mitigate overestimation, we explicitly require the judge to consider multiple criteria during its internal deliberation, including semantic equivalence to the ground-truth behavior, correctness of step-to-code binding, consistency with project-specific API usage, and the presence of missing or incorrect logic. These criteria guide how the LLM reasons about the glue code and help achieve more stable and accurate judgments. The final judgment is expressed in two complementary forms. First, the judge assigns a continuous semantic correctness score in the range [1.0, 5.0], allowing fine-grained distinctions among imperfect implementations, as advocated by prior empirical studies on LLM-based evaluators [ 49 ]. Second, the score is mapped to a categorical label using a predefined three-level scheme. This hybrid design combines the sensitivity of continuous scoring with the interpretability and reporting convenience of discrete labels, a practice commonly adopted in recent LLM-as-a-Judge frameworks [12, 20]. We define the categories in the prompt as follows: 
+
+• Exact Match corresponds to implementations that can be directly accepted without modifica-tion, as they correctly realize the semantics of the step, preserve the intended behavior of the reference implementation, and use appropriate project APIs. 
+
+• Partial Match describes implementations that require minor fixes to become acceptable. These implementations capture the main intent of the step but exhibit secondary deviations, such as incomplete condition handling, minor behavioral inconsistencies, or limited API misuse.  
+
+> , Vol. 1, No. 1, Article . Publication date: July 2018. 14 Shi et al.
+
+• Mismatch refers to implementations that are not usable in practice, as they fail to satisfy the intended behavior, contain substantial semantic errors or irrelevant logic, or omit core functionality. Importantly, this categorization is grounded in practical usability rather than strict textual or structural similarity. As emphasized in prior work, the ultimate goal of LLM-based evaluation in software engineering is to approximate how a competent developer would judge the usefulness and correctness of a generated artifact in context [ 20 , 49 ]. The prompt for the LLM judge is shown below: You are an expert Java developer with extensive experience in Behavior -Driven Development           
+
+> (BDD). Your task is to evaluate whether a generated glue code implementation correctly realizes
+> the intended behavior of a given Gherkin step. Assign a semantic correctness score between 1.0
+> and 5.0. Floating point values are allowed .Be conservative when assigning high scores. Use the
+> following unified evaluation scheme:
+> Exact Match (score in [4.0, 5.0]):
+> Correctly implements the Gherkin step. Uses appropriate project APIs. Has no missing or incorrect
+> behavior. Could be used directly.
+> Partial Match (score in [2.0, 4.0)):
+> Captures the main intent of the step .May miss or add secondary actions, edge cases, or require
+> minor fixes . W ould likely pass after small manual edits .
+> Mismatch (score in [1.0, 2.0)):
+> Fails to implement the intended behavior .Uses incorrect APIs or irrelevant logic .Would not
+> satisfy the step even after minor edits .
+
+6.3 Implementation and Environment 
+
+All experiments are conducted using the same LLM across all approaches. We employ GPT-5 mini [37 ] for all LLM components, which is a recently released model, balancing capability and computational cost. For embedding-based retrieval, we employ the text-embedding-3-small 
+
+model provided by OpenAI. When conducting experiments with AutoGlue, we use the provider’s default temperature setting, while setting the temperature to zero for the LLM-as-a-Judge evalu-ation to ensure stability and consistency. AutoGlue is organized into a hierarchical multi-agent framework implemented using LangGraph , consisting of a Behavior Interpreter, a Developer agent, and two retrieval sub-agents, as described in Section 4. Prompt designs are kept concise to reduce unnecessary token consumption and to reserve sufficient context. To ensure fair comparison, all methods are evaluated under the same model configuration and experimental settings. To prevent data leakage, ground-truth glue code is strictly excluded during generation. Since multiple steps can map to the same glue code, we apply different controls at different stages. During retrieval, we exclude all steps aligned with the target glue code. During behavior interpretation, we retain the target step but remove access to its glue code, preventing information leakage while allowing behavior analysis. Similarly, during project context retrieval, the target glue code is removed from the project code. As a result, the framework has no access to ground truth during the generation task. 
+
+7 Results 
+
+This section presents the results of our experiments by proposing and answering the following research questions (RQs).                                                                                              
+
+> , Vol. 1, No. 1, Article . Publication date: July 2018. Bridging Behavior and Implementation: Automated Java Glue Code Generation for Behavior-Driven Development 15
+> Table 2. Per-project and overall functional alignment (API overlap) comparison
+> Project AutoGlue Few-shot Plain Prompt
+> Precision Recall F1 Precision Recall F1 Precision Recall F1 metasfresh 0.629 0.694 0.626 0.469 0.434 0.396 0.291 0.359 0.287 CxFlow 0.517 0.574 0.514 0.395 0.330 0.319 0.365 0.316 0.281 PSM 0.891 0.891 0.887 0.628 0.573 0.590 0.251 0.389 0.258 SYMON 0.720 0.827 0.748 0.488 0.450 0.437 0.401 0.334 0.320 JDI Light 0.873 0.881 0.872 0.523 0.583 0.538 0.187 0.421 0.238 SpringMVC Router 0.858 0.864 0.842 0.615 0.568 0.541 0.415 0.344 0.335 Worblehat 0.660 0.689 0.649 0.392 0.457 0.405 0.368 0.309 0.320 Datadog Java APM 0.857 0.897 0.874 0.629 0.731 0.662 0.407 0.452 0.415
+> Overall 0.660 0.714 0.660 0.476 0.440 0.416 0.310 0.353 0.284
+
+7.1 RQ1: How effective is AutoGlue at generating glue code in the wild? 
+
+Motivation. In BDD, glue code connects steps to project code. We evaluate whether AutoGlue can generate glue code that is functionally aligned and consistent with human-written implementations under real-world settings. 
+
+Approach. To assess the effectiveness of AutoGlue in realistic, in-the-wild settings, we evaluate the generated glue code by directly comparing it against human-written implementations (ground truth) collected from open-source Java BDD projects. For each step in our dataset, AutoGlue generates a corresponding glue code implementation under the default and fixed configurations, without project-specific tuning or manual post-processing. This reflects a practical usage scenario in which developers apply the tool out of the box to evolving real-world codebases. To evaluate different aspects of glue code quality, we employ a combination of complementary automatic metrics. In this section, we use functional alignment (API overlap) and code similarity metrics to evaluate the average performance of the generated glue code. These automatic metrics enable scalable evaluation across a diverse set of real-world projects and establish a quantitative baseline for the more fine-grained semantic analysis conducted in RQ2. For the API overlap evaluation, we report precision, recall, and F1 score using macro averaging, where these metrics are first computed independently for each step and then averaged across all steps to obtain per-project and overall scores. In addition, we validate step-to-glue-code binding by testing whether the annotation patterns in the generated glue code successfully match the target steps. 
+
+Results. AutoGlue improves average API F1 by 58.7% over few-shot prompting baseline and by 132.4% over plain prompting baseline, showing markedly stronger functional alignment. 
+
+Table 2 shows that AutoGlue reaches an overall API F1 score of 0.660, compared to 0.416 for few-shot prompting and 0.284 for plain prompting. Both API Precision and API Recall contribute to this gain across all evaluated projects. In particular, the overall API Recall of AutoGlue reaches 0.714, which is 27.4 percentage points higher than few-shot prompting and more than twice that of plain prompting, while its API Precision reaches 0.660, exceeding few-shot prompting by 38.7% and plain prompting by 112.9%. This pattern suggests that AutoGlue recovers a larger fraction of essential project-level API interactions needed to realize the intended behavior of steps, instead of relying on generic or weakly related calls. 
+
+AutoGlue improves average CodeBLEU, METEOR, and ROUGE-L by 43.7%, 51.3%, and 55.1% over few-shot prompting baseline, indicating closer alignment with human-written glue code. As shown in Table 3, AutoGlue achieves overall CodeBLEU, METEOR, and ROUGE-L scores                                                                                              
+
+> , Vol. 1, No. 1, Article . Publication date: July 2018. 16 Shi et al.
+> Table 3. Per-project and overall glue code similarity comparison
+> Project AutoGlue Few-shot Plain Prompt
+> CBLEU METEOR RL CBLEU METEOR RL CBLEU METEOR RL metasfresh 0.585 0.604 0.573 0.372 0.365 0.349 0.348 0.321 0.236 CxFlow 0.530 0.541 0.461 0.397 0.357 0.310 0.427 0.318 0.241 PSM 0.900 0.910 0.897 0.745 0.724 0.653 0.581 0.488 0.260 SYMON 0.737 0.735 0.691 0.472 0.471 0.442 0.439 0.393 0.281 JDI Light 0.851 0.870 0.847 0.599 0.634 0.539 0.518 0.343 0.193 SpringMVC Router 0.751 0.800 0.766 0.459 0.488 0.471 0.401 0.371 0.279 Worblehat 0.600 0.612 0.568 0.498 0.463 0.376 0.417 0.354 0.275 Datadog Java APM 0.718 0.902 0.852 0.481 0.669 0.621 0.362 0.486 0.463
+> Overall 0.641 0.655 0.614 0.446 0.433 0.396 0.412 0.348 0.243
+
+of 0.641, 0.655, and 0.614. The corresponding scores for few-shot prompting are 0.446, 0.433, and 0.396, while plain prompting yields consistently lower values of 0.412, 0.348, and 0.243. The largest relative improvement appears in ROUGE-L, reflecting stronger sequence-level alignment between generated and reference implementations. At the same time, gains in CodeBLEU and METEOR point to improved alignment in syntactic patterns and token-level realization. We also check the correctness of annotation pattern matching for all generated glue code. No pattern-matching errors are observed for AutoGlue or for either prompt-based baseline, indicating that LLMs are capable of correctly handling step-to-glue-code binding in practice. 
+
+RQ1 Takeaway: AutoGlue can generate high-quality Java glue code in real-world projects, achieving significantly better functional alignment and code similarity than prompt-based baselines, while maintaining correct step-to-glue-code binding. 
+
+7.2 RQ2: How usable is the generated glue code? 
+
+Motivation. While automatic metrics such as API overlap and code-similarity measures provide useful signals about the average quality of generated glue code, they do not directly reflect whether the generated code can be practically adopted. In real-world BDD projects, the usability of glue code is primarily determined by whether it correctly implements the intended step behavior and can be integrated into existing test suites with little or no modification. 
+
+Approach. Evaluating the usability of generated glue code is challenging in BDD, as execution-based oracles are unavailable, individual steps rarely have observable outcomes, and glue code is not self-contained. To address this, we adopt a pointwise, reference-aware LLM-as-a-Judge framework that directly compares generated glue code against the ground truth and produces usability judgments. As discussed in Section 2.2, we prompt the LLM judge to assign a usability score in the range [1.0, 5.0], where each score level is explicitly defined with a corresponding category. The generated glue code is categorized into Exact Match , Partial Match , and Mismatch , corresponding to cases that require no modification, minor modification, or are unusable, respectively. To validate the accuracy of the LLM judge, we randomly sample 120 cases and conduct consistency and correlation analyses against human evaluation using Spearman’s rank correlation coefficient and Cohen’s 𝜅 .To better reflect practical usability, we further analyze the Partial Match cases. These cases require manual modification but are not completely unusable, and therefore represent the main source of post-editing effort in practice. As a result, Partial Match serves as the key boundary for estimating the manual effort needed to make the generated glue code usable. We analyze the  
+
+> , Vol. 1, No. 1, Article . Publication date: July 2018. Bridging Behavior and Implementation: Automated Java Glue Code Generation for Behavior-Driven Development 17
+
+dominant issue in Partial Match cases that prevents the generated glue code from being directly acceptable. We adopt a single-label strategy that mirrors how developers typically reason about fixes by identifying the most dominant issue to be addressed first, which is consistent with prior findings that LLM-based evaluators are more stable and interpretable when providing a single primary judgment [ 13 ]. To derive these subcategories, we manually inspect a random sample of 100 Partial Match instances drawn across all evaluated projects and identify a set of recurring correction patterns. Based on this observation, we define the following categories and instruct the LLM judge to output the corresponding classification in the prompt: 
+
+• Missing Action describes implementations that capture the overall intent of the step but omit one or more required actions necessary to fully realize the intended behavior. 
+
+• Parameter Mismatch characterizes implementations that use appropriate project APIs but supply incorrect, incomplete, or imprecise parameters, resulting in behavior that deviates from the intended semantics. 
+
+• Condition Mismatch applies to cases where the main action is present, but the conditional checks or branching logic do not correctly reflect the execution conditions. 
+
+• Over Implementation denotes implementations that introduce additional behaviors, API calls, or control logic that are not required by the step or the reference implementation. 
+
+• Invocation Order Mismatch refers to implementations that invoke relevant operations in an incorrect or suboptimal order, leading to partially correct or unintended behavior. These subcategories are defined in terms of observable behavioral deviations rather than syntactic properties. They are intended to capture developer-relevant correction patterns in partially correct glue code, providing an interpretable characterization of why an implementation is not directly acceptable. In addition, this categorization offers a structured basis for analyzing and comparing Partial Match cases in future studies on BDD glue code generation. 
+
+Results. Nearly half of the glue code generated by AutoGlue is directly usable, with 46.1% of generated implementations requiring no further modification. Table 4 and Figure 4 report the overall LLM-as-a-Judge evaluation results on 1,307 generated glue code implementations. AutoGlue achieves 603 Exact Match cases, corresponding to 46.1% of all evaluated steps. Few-shot prompting yields 289 Exact Match implementations (22.1%), while plain prompting achieves 175 (13.4%). For plain prompting, the Exact Match, Partial Match, and Mismatch rates are 13.4%, 33.4%, and 53.2%, respectively. Overall, AutoGlue achieves a 108.7% increase over few-shot prompting and a 244.6% increase over plain prompting in Exact Match cases. The higher rate of direct usability suggests that AutoGlue more reliably produces glue code that can be directly accepted and integrated into existing BDD workflows, highlighting the practical value of a purpose-built generation approach in real-world BDD projects. In addition, AutoGlue also lowers the proportion of unusable glue code substantially, reducing Mismatch cases to 18.9%. 
+
+Most partially correct glue code produced by AutoGlue is close to being usable, with missing actions and parameter issues as the dominant causes. To better understand the remaining modification effort, we further analyze Partial Match cases by their dominant correction category. As shown in Figure 4, the most common issue among AutoGlue outputs is Missing Action , accounting for 18% of all evaluated instances. These generated glue code typically capture the main intent of the step but omit one or more required operations. Parameter Mismatch accounts for an additional 10%, where appropriate project APIs are invoked with incorrect or imprecise arguments. In contrast, issues such as Condition Mismatch , Over-Implementation , and Invocation Order Mismatch occur much less frequently. This distribution indicates that the majority of Partial Match implementations generated by AutoGlue would require only localized edits rather than substantial redesign, offering practical insights into how such artifacts could be efficiently corrected or refined by developers. 
+
+> , Vol. 1, No. 1, Article . Publication date: July 2018.
+
+18 Shi et al. 
+
+Table 4. Results of LLM-as-a-Judge evaluation of AutoGlue and baseline methods on 1,307 glue code instances 
+
+Method Exact Match Partial Match Mismatch 
+
+AutoGlue 603 457 247 Few-shot Prompting 289 517 501 Plain Prompting 175 437 695 46.1% 
+
+35.0% 
+
+18.9% 
+
+> 22.1%
+> 39.6%
+> 38.3%
+
+AutoGlue Few -shot Plain Prompt       
+
+> 18%
+> 10%
+> 4%
+> 3%
+> 1%
+> Missing Action
+> Parameter Mismatch
+> Condition Mismatch
+> Over Implementation
+> Order Mismatch
+> Partial Match Breakdown
+> Exact Match Partial Match Mismatch
+> 46.1% 35.0% 18.9%
+> 13.4%
+> 33.4%
+> 53.2%
+> Exact Match
+> 22.1%
+> Partial Match
+> 39.6%
+> Mismatch
+> 38.3%
+> Exact Match
+> 13.4%
+> Partial Match
+> 33.4%
+> Mismatch
+> 53.2%
+
+Fig. 4. Usability evaluation results and breakdown of partial match cases 
+
+This breakdown also provides further structured insights for future studies on targeted correction and refinement strategies. 
+
+The low frequency of over-implementation indicates that AutoGlue adopts a conservative generation strategy that prioritizes intent alignment over speculative completeness. As shown in the fine-grained breakdown of Partial Match cases, Over-Implementation occurs only rarely among the outputs of AutoGlue, accounting for approximately 3% of all evaluated instances. AutoGlue does not tend to introduce speculative logic or unnecessary project API calls in an attempt to appear plausible. Instead, the generated glue code remains closely anchored to the semantics explicitly expressed in the step, reflecting a conservative generation strategy. Importantly, this error profile implies that most usability issues arise from under-specification rather than misinterpretation. The predominance of Missing Action and Parameter Mismatch indicates that the generated implementations are generally aligned with the correct behavioral direction, but fall short in completeness or precision. From a practical standpoint, such errors are typically easier for developers to diagnose and correct than over-implemented logic, which may obscure intent or introduce unintended side effects. As a result, the low frequency of over-implementation further reinforces the practical usability of AutoGlue outputs, even in cases that are not fully correct. 
+
+LLM-as-a-Judge aligns well with human evaluation at both score and usability judgment. 
+
+We validate the LLM-as-a-Judge against human evaluation on 120 randomly sampled cases. In the human-evaluated set, the counts for Exact, Partial, and Mismatch are 66, 26, and 28, respectively, compared with 61, 39, and 20 from the LLM judge. The Spearman rank correlation between LLM scores and human judgments is strong ( 𝜌 = 0.84 , 𝑝 < 10 −30 ), indicating high correlation in relative 
+
+, Vol. 1, No. 1, Article . Publication date: July 2018. Bridging Behavior and Implementation: Automated Java Glue Code Generation for Behavior-Driven Development 19 
+
+usability ranking. In addition, Cohen’s Kappa under a binary setting ( Exact Match vs. Non-Exact )reaches 0.71 , reflecting substantial agreement in identifying directly usable glue code. This confirms that the LLM judge provides reliable signals for both comparative usability assessment and Exact Match detection. 
+
+RQ2 Takeaway: AutoGlue generates glue code that is largely usable in practice. Nearly half of the generated implementations are directly usable, and most remaining cases require only minor fixes, primarily missing actions or parameter adjustments. These results also show strong correlation and agreement with human evaluation. 
+
+7.3 RQ3: How does each component of AutoGlue contribute to its overall effectiveness? 
+
+Motivation. AutoGlue adopts a multi-agent architecture that decomposes glue code generation into several specialized stages. A dedicated Behavior Interpreter agent first analyzes the step to infer its intended behavior and required actions. Supervised by the Developer agent, two retrieval sub-agents ground the generation process by retrieving relevant BDD artifacts, such as existing glue code and scenarios, as well as project code and APIs. The retrieved contextual information is then used by the supervisor to guide the final glue code generation toward behaviorally and structurally aligned implementations. While the full system demonstrates strong overall performance, it remains unclear how much each component contributes to glue code generation quality. Understanding the individual impact of these design choices is essential for validating the necessity of a multi-stage, retrieval-augmented architecture and for guiding future system design and refinement. 
+
+Approach. We investigate how key design choices influence the effectiveness of glue code gen-eration in AutoGlue. For each major component, we conduct controlled ablation experiments by removing it from the full pipeline while keeping all other components unchanged, in order to isolate its individual contribution. This setup allows us to assess whether each component provides tangible benefits or introduces unnecessary complexity. All variants are evaluated on the same dataset under identical experimental settings. Generation quality is assessed using both functionality-oriented metrics (API precision, recall, and F1) and text-based similarity metrics (CodeBLEU, METEOR, and ROUGE-L). To this end, we construct the following variants: 
+
+• w/o Behavior Interpreter To evaluate the role of behavior interpretation, we remove the Behavior Interpreter agent and directly generate glue code from retrieved context. In this setting, the model no longer explicitly understands the step intent or decomposes required actions, and the input prompt is directly passed to the Developer agent. 
+
+• w/o BDD Context Retriever To assess the importance of references from relevant BDD artifacts (e.g., other steps and glue code), we disable the BDD Context Retriever sub-agent. The Developer agent therefore lacks explicit behavioral exemplars and relies only on relevant project code to infer the intended semantics of the step. 
+
+• w/o Project Context Retriever To examine the contribution of project code grounding, we remove the Project Context Retriever sub-agent and prevent the model from accessing relevant project code and files within the project. In this variant, glue code generation is guided by behavioral context alone, without direct exposure to project code. 
+
+Results. BDD-context retrieval strongly improves overall similarity to human-written glue code. As shown in Table 5, disabling the BDD Context Retriever causes the largest degradation in similarity metrics among all components. ROUGE-L decreases by up to 24.1%, METEOR by 20.2%, and CodeBLEU by 19.0%, while API F1 drops substantially from 0.660 to 0.503. Access to semantically related steps and existing glue code within the same project provides concrete behavioral and structural references, enabling closer alignment with established implementation  
+
+> , Vol. 1, No. 1, Article . Publication date: July 2018. 20 Shi et al.
+> Table 5. Ablation study results on glue code generation
+
+Metric AutoGlue w/o Interpreter w/o BDD-Retri w/o Project-Retri 
+
+API Precision 0.660 0.645 ( ↓ 2.3%) 0.520 ( ↓ 21.2%) 0.552 ( ↓ 16.4%) API Recall 0.714 0.654 ( ↓ 8.4%) 0.566 ( ↓ 20.7%) 0.640 ( ↓ 10.4%) API F1 0.660 0.622 ( ↓ 5.8%) 0.503 ( ↓ 23.8%) 0.559 ( ↓ 15.3%) CodeBLEU 0.641 0.597 ( ↓ 6.9%) 0.519 ( ↓ 19.0%) 0.588 ( ↓ 8.3%) METEOR 0.655 0.617 ( ↓ 5.8%) 0.523 ( ↓ 20.2%) 0.583 ( ↓ 11.0%) ROUGE-L 0.614 0.585 ( ↓ 4.7%) 0.466 ( ↓ 24.1%) 0.520 ( ↓ 15.3%) Exact Match 603 560 ( ↓ 7.1%) 502 ( ↓ 16.7%) 474 ( ↓ 21.4%) conventions. Without such references, generated glue code exhibits reduced alignment at both the token and sequence levels, leading to weaker correspondence with the intended behavior. 
+
+Project-context retrieval has a significant impact on exact correctness and practical usability. 
+
+Removing the Project Context Retriever results in the largest reduction in Exact Match cases, which drop from 603 to 474, a relative decrease of over 21%. At the same time, API F1 and text-based metrics decrease more moderately, by up to 15.3%. This pattern suggests that while BDD context supports coarse-grained behavioral realization, access to project code and APIs is essential for resolving fine-grained implementation details required for fully correct glue code. Project-context retrieval therefore plays an important role in selecting appropriate classes, methods, and invocation patterns, influencing whether generated glue code is immediately usable without manual correction. 
+
+Behavior interpretation further improves overall generation performance. Removing the Behavior Interpreter leads to consistent degradation across all evaluated metrics. API Precision decreases from 0.660 to 0.645 (2.3%), while API Recall drops from 0.714 to 0.654 (8.4%), resulting in an overall API F1 reduction from 0.660 to 0.622. Text-based metrics exhibit similar trends, with CodeBLEU decreasing from 0.641 to 0.597 (6.9%) and METEOR from 0.655 to 0.617 (5.8%). The number of Exact Match cases is reduced from 603 to 560. These results indicate that finer-grained inspection and interpretation of step behavior provide more precise guidance for subsequent stages of glue code generation. 
+
+RQ3 Takeaway: Each component in AutoGlue contributes to glue code generation quality. BDD context improves similarity to human-written code, project context enables correct and usable implementations, and behavior interpretation further improves overall performance. 
+
+8 Discussion 8.1 Efficiency of AutoGlue 
+
+We evaluate AutoGlue in terms of API cost and runtime, and the results suggest it is practical. Under a pricing model of $0.25 per million input tokens and $2 per million output tokens, the multi-agent pipeline costs about $0.05 per generated step [ 37 ], with roughly 190k-200k input tokens and 400-1500 output tokens per step. Cost is dominated by input tokens (context), whereas output tokens mainly come from generated glue code and tool calls. In terms of latency, over 90% of generations finish within 60 seconds. Runtime is largely determined by LLM API response time (e.g., network latency and provider-side scheduling) rather than local computation. Overall, the efficiency is sufficient for offline evaluation and developer-in-the-loop BDD workflows, where glue code generation is performed on demand rather than in performance-critical runtime paths.  
+
+> , Vol. 1, No. 1, Article . Publication date: July 2018. Bridging Behavior and Implementation: Automated Java Glue Code Generation for Behavior-Driven Development 21
+
+8.2 Implications 
+
+Automated glue-code generation can reduce a practical BDD bottleneck. Our results suggest that LLM-based agents can support one of the most labor-intensive parts of BDD: translating natural-language steps into glue code that invokes project code. Nearly half of AutoGlue’s generated implementations are directly usable, and many remaining cases require only small fixes. This indicates that automated generation can be useful even when it does not fully replace developers. In practice, such tools are likely to be most valuable as project-aware assistants that draft glue code, retrieve related glue code and APIs, and help developers maintain consistency across growing BDD suites. 
+
+Behavior interpretation is useful for project-aware code generation. The ablation results show that behavior interpretation, BDD-context retrieval, and project-context retrieval each contribute to generation quality. This finding has implications beyond BDD glue code. For context-dependent code generation tasks, directly prompting a model to produce code may be less reliable than first making the intended behavior explicit and then grounding implementation decisions in the local codebase. An explicit behavior layer can reduce ambiguity in underspecified inputs, make the agent’s reasoning easier to inspect, and provide a clearer interface between natural-language intent and project code. 
+
+BDD suggests a broader specification-to-code paradigm. BDD is a useful starting point for studying how natural-language specifications can be transformed into executable code because its inputs are structured around concrete system behavior. The success of AutoGlue suggests that specification-to-code automation is feasible when the system can combine specification context with project code context. This perspective is not limited to BDD. It can inform future tools for other agile and software engineering artifacts, such as user stories, issue tickets, acceptance criteria, design notes, and lightweight task plans. Compared with these artifacts, BDD makes behavioral intent more explicit and therefore illustrates how structure in natural-language specifications can help bridge the gap between requirements and implementation. 
+
+8.3 Future Work 
+
+From isolated steps to scenario- and feature-level synthesis. AutoGlue currently generates glue code for individual steps while using the surrounding scenario and feature as context. An important next direction is to move from step-level generation to scenario- or feature-level synthesis. This setting is more demanding because the generator must preserve dependencies across steps, including shared objects, fixture initialization, parameter values, background steps, and the data flow from preconditions to actions and assertions. Generating glue code for multiple steps together could allow the system to plan a coherent execution path before emitting code, reuse variables and helper methods consistently, and avoid locally plausible implementations that conflict with other steps in the same scenario. Future work can therefore explore structured intermediate representations, such as behavior dependency graphs or scenario-level execution plans, to guide multi-step glue code generation. 
+
+Feedback-guided repair could address remaining partial and mismatch cases. Our usability analysis shows that many non-exact cases are close to usable, often requiring missing actions to be added or parameters to be corrected. This error profile suggests that future systems should not treat generation as a one-shot process. Instead, they can combine AutoGlue’s behavior-first generation with project-level feedback, including compilation errors, test failures, execution traces, exceptions, static analysis warnings, and IDE diagnostics. Such feedback can help localize whether an error comes from step interpretation, API selection, object construction, or assertion logic, and then guide targeted repair over multiple rounds. For harder mismatch cases, fully automatic repair  
+
+> , Vol. 1, No. 1, Article . Publication date: July 2018. 22 Shi et al.
+
+may still be unreliable because the intended behavior can depend on project-specific conventions and domain knowledge. A practical extension is therefore a human-in-the-loop workflow [ 16 , 51 ], where the system presents candidate implementations, explains the main behavioral or API-level uncertainty, and lets developers select or refine the most appropriate implementation. 
+
+BDD automation could support evolution and broader framework settings. Real-world BDD artifacts evolve together with requirements and project code. As shown in our dataset, many scenarios are modified after their initial creation, which means glue code generation is only one part of the broader maintenance problem. Future work can study evolution-aware BDD automation that detects when feature files, glue code, or project APIs become inconsistent and recommends corresponding updates. This direction is especially relevant for large BDD suites, where duplicated steps, obsolete scenarios, and diverging glue implementations increase maintenance cost. In addition, although AutoGlue is evaluated on Java projects, its behavior-first and project-aware design is not inherently tied to Java. Future studies can adapt and evaluate the framework across other BDD ecosystems, such as JavaScript, Ruby, Python, and PHP, to understand which parts of the approach generalize and which require framework-specific retrieval, binding, or execution support. 
+
+9 Threats to Validity 
+
+Internal threats. A potential internal threat is data leakage from LLM’s training data. We reduce this risk by collecting all data from open-source projects in the wild instead of curated benchmarks. For each project, we use the latest commit available at the time of collection and treat the steps and glue code as fixed snapshots. Another internal threat is using an LLM-as-a-Judge to assess usability. LLM judgments can be sensitive to prompts. We use a reference-aware setting where the judge compares generated glue code with the human-written implementation from the same project. We test robustness by running the judge five times with the same LLM. The Exact, Partial, and Mismatch rates vary by less than 6% across runs. We also compare two judge models, Gemini-2.5-Flash [ 18 ] and Claude-Sonnet-4.5 [ 3 ]. The Exact Match rates differ by less than 10%, and the Partial and Mismatch rates differ by at most 15%. Our human evaluation on a subset also shows high agreement (Section 7.2). Overall, these checks support the validity of our evaluation results. 
+
+External threats. The generalizability to other programming languages is a potential threat. We focus on Java because Java glue code poses greater generation difficulty and represents one of the earliest and most widely adopted BDD standards. Our approach does not rely on Java-specific language features. Instead, it relies on a modular separation of responsibilities that can be adapted to project-specific structures and conventions. As a result, the conclusions drawn in this study reflect the behavior of the proposed framework under a challenging and representative BDD setting. 
+
+10 Conclusion 
+
+This paper presents AutoGlue, the first automated approach for generating Java glue code directly from steps. AutoGlue is a hierarchical multi-agent framework that separates behavior interpretation, context retrieval, and glue code generation. We evaluated AutoGlue on 1,307 real-world steps from eight open-source Java projects. The results show that AutoGlue consistently outperforms prompt-based baselines in functional alignment, code similarity, and practical usability. Our ablation results further confirm the contributions of key components of AutoGlue. Overall, this work establishes a practical foundation for automated glue-code generation in BDD and suggests a broader behavior-to-code paradigm in which explicit intent modeling serves as a controllable layer between natural-language specifications and implementations. Future studies could build on this basis to translate other behavioral artifacts (e.g., user stories, tickets, and acceptance criteria) into executable code, extend step generation to scenario- and feature-level synthesis while maintaining 
+
+> , Vol. 1, No. 1, Article . Publication date: July 2018.
+
+Bridging Behavior and Implementation: Automated Java Glue Code Generation for Behavior-Driven Development 23 
+
+consistent cross-step state and data flow, and leverage project feedback to enable more iterative, debuggable, and developer-in-the-loop automation. 
+
+References 
+
+[1] Hisham M Abushama, Hanaa Altigani Alassam, and Fatin A Elhaj. 2021. The effect of test-driven development and behavior-driven development on project success factors: A systematic literature review based study. In 2020 International Conference on Computer, Control, Electrical, and Electronics Engineering (ICCCEEE) . IEEE, 1–9. [2] Jehad Al Dallal. 2015. Identifying refactoring opportunities in object-oriented code: A systematic literature review. 
+
+Information and software Technology 58 (2015), 231–249. [3] Anthropic. 2025. Claude Sonnet 4.5 . https://www.anthropic.com/claude/sonnet Accessed 30 January 2026. [4] Víctor Manuel Arredondo-Reyes, Saúl Domínguez-Isidro, Ángel J Sánchez-García, and Jorge Octavio Ocharán-Hernández. 2023. Benefits and challenges of the behavior-driven development: A systematic literature review. In 2023 11th International Conference in Software Engineering Research and Innovation (CONISOFT) . IEEE Computer Society, 45–54. [5] Satanjeev Banerjee and Alon Lavie. 2005. METEOR: An automatic metric for MT evaluation with improved correlation with human judgments. In Proceedings of the acl workshop on intrinsic and extrinsic evaluation measures for machine translation and/or summarization . 65–72. [6] Leonard Peter Binamungu, Suzanne M Embury, and Nikolaos Konstantinou. 2018. Maintaining behaviour driven development specifications: Challenges and opportunities. In 2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER) . IEEE, 175–184. [7] Elizabeth Bjarnason, Per Runeson, Markus Borg, Michael Unterkalmsteiner, Emelie Engström, Björn Regnell, Giedre Sabaliauskaite, Annabella Loconsole, Tony Gorschek, and Robert Feldt. 2014. Challenges and practices in aligning requirements with verification and validation: a case study of six companies. Empirical software engineering 19, 6 (2014), 1809–1855. [8] Elizabeth Bjarnason, Krzysztof Wnuk, and Björn Regnell. 2011. Requirements are slipping through the gaps — A case study on causes & effects of communication gaps in large-scale software development. In 2011 IEEE 19th International Requirements Engineering Conference . 37–46. doi:10.1109/RE.2011.6051639 [9] Islem Bouzenia, Premkumar Devanbu, and Michael Pradel. 2024. Repairagent: An autonomous, llm-based agent for program repair. arXiv preprint arXiv:2403.17134 (2024). [10] Adwait Chandorkar, Nitish Patkar, Andrea Di Sorbo, and Oscar Nierstrasz. 2022. An exploratory study on the usage of gherkin features in open-source projects. In 2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER) . IEEE, 1159–1166. [11] Thiciane Couto, Sabrina Marczak, and Fabio Gomes. 2020. On the understanding of how to measure the benefits of behavior-driven development adoption: Preliminary literature results from a grey literature study. In Proceedings of the XIX Brazilian Symposium on Software Quality . 1–7. [12] Giuseppe Crupi, Rosalia Tufano, Alejandro Velasco, Antonio Mastropaolo, Denys Poshyvanyk, and Gabriele Bavota. 2025. On the Effectiveness of LLM-as-a-judge for Code Generation and Summarization. IEEE Transactions on Software Engineering (2025). [13] Ora Nova Fandina, Eitan Farchi, Shmulik Froimovich, Rami Katan, Alice Podolsky, Orna Raz, and Avi Ziv. 2025. Automated Validation of LLM-based Evaluators for Software Engineering Artifacts. arXiv preprint arXiv:2508.02827 
+
+(2025). [14] Muhammad Shoaib Farooq, Uzma Omer, Amna Ramzan, Mansoor Ahmad Rasheed, and Zabihullah Atal. 2023. Behavior driven development: A systematic literature review. IEEE access 11 (2023), 88008–88024. [15] Cuiyun Gao, Xing Hu, Shan Gao, Xin Xia, and Zhi Jin. 2025. The current challenges of software engineering in the era of large language models. ACM Transactions on Software Engineering and Methodology 34, 5 (2025), 1–30. [16] Jie Gao, Simret Araya Gebreegziabher, Kenny Tsu Wei Choo, Toby Jia-Jun Li, Simon Tangi Perrault, and Thomas W Malone. 2024. A taxonomy for human-llm interaction modes: An initial exploration. In Extended Abstracts of the CHI Conference on Human Factors in Computing Systems . 1–11. [17] Ning Gao and Zhi Li. 2016. Generating testing codes for behavior-driven development from problem diagrams: A tool-based approach. In 2016 IEEE 24th International Requirements Engineering Conference (RE) . IEEE, 399–400. [18] Google. 2025. Gemini 2.5 Flash . https://docs.cloud.google.com/vertex-ai/generative-ai/docs/models/gemini/2-5-flash Accessed 30 January 2026. [19] Taicheng Guo, Xiuying Chen, Yaqi Wang, Ruidi Chang, Shichao Pei, Nitesh V Chawla, Olaf Wiest, and Xiangliang Zhang. 2024. Large language model based multi-agents: A survey of progress and challenges. arXiv preprint arXiv:2402.01680 
+
+(2024). , Vol. 1, No. 1, Article . Publication date: July 2018. 24 Shi et al. 
+
+[20] Junda He, Jieke Shi, Terry Yue Zhuo, Christoph Treude, Jiamou Sun, Zhenchang Xing, Xiaoning Du, and David Lo. 2025. From code to courtroom: Llms as the new software judges. arXiv preprint arXiv:2503.02246 (2025). [21] Junda He, Christoph Treude, and David Lo. 2025. LLM-Based Multi-Agent Systems for Software Engineering: Literature Review, Vision, and the Road Ahead. ACM Transactions on Software Engineering and Methodology 34, 5 (2025), 1–30. [22] Hubert F Hofmann and Franz Lehner. 2001. Requirements engineering as a success factor in software projects. IEEE software 18, 4 (2001), 58. [23] Xinyi Hou, Yanjie Zhao, Yue Liu, Zhou Yang, Kailong Wang, Li Li, Xiapu Luo, David Lo, John Grundy, and Haoyu Wang. 2024. Large language models for software engineering: A systematic literature review. ACM Transactions on Software Engineering and Methodology 33, 8 (2024), 1–79. [24] JBehave Organization. 2003. JBehave . https://jbehave.org/index.html [25] Haolin Jin, Linghan Huang, Haipeng Cai, Jun Yan, Bo Li, and Huaming Chen. 2024. From llms to llm-based agents for software engineering: A survey of current, challenges and future. arXiv preprint arXiv:2408.02479 (2024). [26] Kailun Jin, Chung-Yu Wang, Hung Viet Pham, and Hadi Hemmati. 2024. Can chatgpt support developers? an empirical evaluation of large language models for code generation. In Proceedings of the 21st International Conference on Mining Software Repositories . 167–171. [27] Sunil Kamalakar, Stephen H Edwards, and Tung M Dao. 2013. Automatically generating tests from natural language descriptions of software behavior. In International Conference on Evaluation of Novel Software Approaches to Software Engineering , Vol. 2. SCITEPRESS, 238–245. [28] Shanthi Karpurapu, Sravanthy Myneni, Unnati Nettur, Likhit Sagar Gajja, Dave Burke, Tom Stiehm, and Jeffery Payne. 2024. Comprehensive evaluation and insights into the use of large language models in the automation of behavior-driven development acceptance test formulation. IEEE Access 12 (2024), 58715–58721. [29] Haitao Li, Qian Dong, Junjie Chen, Huixue Su, Yujia Zhou, Qingyao Ai, Ziyi Ye, and Yiqun Liu. 2024. Llms-as-judges: a comprehensive survey on llm-based evaluation methods. arXiv preprint arXiv:2412.05579 (2024). [30] Xinyi Li, Sai Wang, Siqi Zeng, Yu Wu, and Yi Yang. 2024. A survey on LLM-based multi-agent systems: workflow, infrastructure, and challenges. Vicinagearth 1, 1 (2024), 9. [31] Chin-Yew Lin. 2004. Rouge: A package for automatic evaluation of summaries. In Text summarization branches out .74–81. [32] Feng Lin, Dong Jae Kim, et al . 2024. Soen-101: Code generation by emulating software process models using large language model agents. arXiv preprint arXiv:2403.15852 (2024). [33] Feng Lin, Dong Jae Kim, Zhenhao Li, Jinqiu Yang, et al . 2025. Robunfr: Evaluating the robustness of large language models on non-functional requirements aware code generation. arXiv preprint arXiv:2503.22851 (2025). [34] Ggaliwango Marvin, Nakayiza Hellen, Daudi Jjingo, and Joyce Nakatumba-Nabende. 2023. Prompt engineering in large language models. In International conference on data intelligence and cognitive informatics . Springer, 387–402. [35] Nicolas Nascimento, Alan R Santos, Afonso Sales, and Rafael Chanin. 2020. Behavior-driven development: A case study on its impacts on agile development teams. In Proceedings of the IEEE/ACM 42nd International Conference on Software Engineering Workshops . 109–116. [36] Dan North. 2006. Introducing BDD . https://dannorth.net/blog/introducing-bdd/ [37] OpenAI. [n. d.]. GPT-5 mini Model | OpenAI API — platform.openai.com . Accessed 30-01-2026. [38] Wendkûuni C Ouédraogo, Yinghua Li, Xueqi Dang, Xin Zhou, Anil Koyuncu, Jacques Klein, David Lo, and Tegawendé F Bissyandé. 2025. Beyond Surface Similarity: Evaluating LLM-Based Test Refactorings with Structural and Semantic Awareness. arXiv preprint arXiv:2506.06767 (2025). [39] Ciprian Paduraru, Miruna Zavelca, and Alin Stefanescu. 2025. Agentic AI for Behavior-Driven Development Testing Using Large Language Models. In Proceedings of the 17th International Conference on Agents and Artificial Intelligence -Volume 2: ICAART . 805–815. [40] Debalina Ghosh Paul, Hong Zhu, and Ian Bayley. 2024. Benchmarks and metrics for evaluations of code generation: A critical review. In 2024 IEEE International Conference on Artificial Intelligence Testing (AITest) . IEEE, 87–94. [41] Indra Kharisma Raharjana, Fadel Harris, and Army Justitia. 2020. Tool for generating behavior-driven development test-cases. Journal of Information Systems Engineering and Business Intelligence 6, 1 (2020), 27. [42] Shuo Ren, Daya Guo, Shuai Lu, Long Zhou, Shujie Liu, Duyu Tang, Neel Sundaresan, Ming Zhou, Ambrosio Blanco, and Shuai Ma. 2020. Codebleu: a method for automatic evaluation of code synthesis. arXiv preprint arXiv:2009.10297 
+
+(2020). [43] Hossein Saiedian and Robert Dale. 2000. Requirements engineering: making the connection between the software developer and customer. Information and software technology 42, 6 (2000), 419–428. [44] Xinyu Shi. 2026. Behavior-Driven Development Meets LLMs: Do We Need Them, and Do They Work?. In Proceedings of the 2026 IEEE/ACM 48th International Conference on Software Engineering (ICSE-Companion ’26) . Association for Computing Machinery, Rio de Janeiro, Brazil. doi:10.1145/3774748.3787745 , Vol. 1, No. 1, Article . Publication date: July 2018. Bridging Behavior and Implementation: Automated Java Glue Code Generation for Behavior-Driven Development 25 
+
+[45] Xinyu Shi, Zhenhao Li, and An Ran Chen. 2025. Enhancing LLM-based Fault Localization with a Functionality-Aware Retrieval-Augmented Generation Framework. arXiv preprint arXiv:2509.20552 (2025). [46] John Ferguson Smart and Jan Molak. 2023. BDD in Action: Behavior-driven development for the whole software lifecycle .Simon and Schuster. [47] Tim Storer and Ruxandra Bob. 2019. Behave nicely! automatic generation of code for behaviour driven development test suites. In 2019 19th International Working Conference on Source Code Analysis and Manipulation (SCAM) . IEEE, 228–237. [48] Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N Gomez, Łukasz Kaiser, and Illia Polosukhin. 2017. Attention is all you need. Advances in neural information processing systems 30 (2017). [49] Ruiqi Wang, Jiyu Guo, Cuiyun Gao, Guodong Fan, Chun Yong Chong, and Xin Xia. 2025. Can llms replace human evaluators? an empirical study of llm-as-a-judge in software engineering. Proceedings of the ACM on Software Engineering 2, ISSTA (2025), 1955–1977. [50] Wenhan Wang, Chenyuan Yang, Zhijie Wang, Yuheng Huang, Zhaoyang Chu, Da Song, Lingming Zhang, An Ran Chen, and Lei Ma. 2025. Testeval: Benchmarking large language models for test case generation. In Findings of the Association for Computational Linguistics: NAACL 2025 . 3547–3562. [51] Xinru Wang, Hannah Kim, Sajjadur Rahman, Kushan Mitra, and Zhengjie Miao. 2024. Human-llm collaborative annotation through effective verification of llm labels. In Proceedings of the 2024 CHI Conference on Human Factors in Computing Systems . 1–21. [52] Aidan ZH Yang, Daniel Alencar Da Costa, and Ying Zou. 2019. Predicting co-changes between functionality specifica-tions and source code in behavior driven development. In 2019 IEEE/ACM 16th International Conference on Mining Software Repositories (MSR) . IEEE, 534–544. [53] Zezhou Yang, Sirong Chen, Cuiyun Gao, Zhenhao Li, Xing Hu, Kui Liu, and Xin Xia. 2025. An empirical study of retrieval-augmented code generation: Challenges and opportunities. ACM Transactions on Software Engineering and Methodology (2025). [54] Shunyu Yao, Jeffrey Zhao, Dian Yu, Nan Du, Izhak Shafran, Karthik Narasimhan, and Yuan Cao. 2022. React: Synergizing reasoning and acting in language models. arXiv preprint arXiv:2210.03629 (2022). [55] Tannaz Zameni, Petra van Den Bos, Jan Tretmans, Johan Foederer, and Arend Rensink. 2023. From BDD scenarios to test case generation. In 2023 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW) . IEEE, 36–44. [56] Fiorella Zampetti, Andrea Di Sorbo, Corrado Aaron Visaggio, Gerardo Canfora, and Massimiliano Di Penta. 2020. Demystifying the adoption of behavior-driven development in open source projects. Information and Software Technology 123 (2020), 106311. [57] Quanjun Zhang, Chunrong Fang, Yang Xie, Yaxin Zhang, Shengcheng Yu, Weisong Sun, Yun Yang, and Zhenyu Chen. 2026. A survey on large language models for software engineering. Science China Information Sciences 69, 4 (2026), 141102. , Vol. 1, No. 1, Article . Publication date: July 2018.

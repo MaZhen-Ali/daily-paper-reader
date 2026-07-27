@@ -1,0 +1,158 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2607.22406v1/fig-001.webp",
+      "caption": "Table 2 Classified prompt pattern for Automated Software engineering Task (AST) by White et al. (2024).",
+      "page": 6,
+      "index": 1,
+      "width": 621,
+      "height": 333
+    },
+    {
+      "url": "assets/figures/arxiv/2607.22406v1/fig-002.webp",
+      "caption": "Fig. 10 Boxplots of code and TLOC grouped by workflow. The asterisk (*) denotes the mean value.",
+      "page": 25,
+      "index": 2,
+      "width": 705,
+      "height": 332
+    },
+    {
+      "url": "assets/figures/arxiv/2607.22406v1/fig-003.webp",
+      "caption": "Table 9 One-tailed Mann–Whitney U tests for functional correctness with null hypothesis H0 : A > B. (*) denote single-test statistical significance at α = 0.05. (**) denotes statistical significance after Holm-Bonferroni correction.",
+      "page": 26,
+      "index": 3,
+      "width": 704,
+      "height": 358
+    },
+    {
+      "url": "assets/figures/arxiv/2607.22406v1/fig-004.webp",
+      "caption": "Fig. 11 Syntactic similarity between any two sets A and B for LCS and LED. LCS, the higher the better; LED, the smaller the better. (*) denotes the mean value.",
+      "page": 26,
+      "index": 4,
+      "width": 704,
+      "height": 330
+    },
+    {
+      "url": "assets/figures/arxiv/2607.22406v1/fig-005.webp",
+      "caption": "Table 12 One-tailed Mann-Whitney U tests for code coverage with null hypothesis H0 : A > B. (*) denote statistical significance at α = 0.05. (**) denotes statistical significance after Holm-Bonferroni correction.",
+      "page": 30,
+      "index": 5,
+      "width": 703,
+      "height": 672
+    },
+    {
+      "url": "assets/figures/arxiv/2607.22406v1/fig-006.webp",
+      "caption": "Fig. 2 Overview of the TDD process.",
+      "page": 7,
+      "index": 6,
+      "width": 583,
+      "height": 236
+    },
+    {
+      "url": "assets/figures/arxiv/2607.22406v1/fig-007.webp",
+      "caption": "Table 11 One-tailed Mann-Whitney U tests for test structural complexity with null hypothesis H0 : A > B. The asterisk (*) denote statistical significance at α = 0.05. (**) denotes statistical significance after Holm-Bonferroni correction.",
+      "page": 29,
+      "index": 7,
+      "width": 563,
+      "height": 333
+    },
+    {
+      "url": "assets/figures/arxiv/2607.22406v1/fig-008.webp",
+      "caption": "Table 7: Prompts designed for the collaborative, fully-automated, and agentic interaction workflows of the TDD process.",
+      "page": 22,
+      "index": 8,
+      "width": 705,
+      "height": 943
+    },
+    {
+      "url": "assets/figures/arxiv/2607.22406v1/fig-009.webp",
+      "caption": "Fig. 3 Overview of the toolset’s architecture.",
+      "page": 10,
+      "index": 9,
+      "width": 705,
+      "height": 279
+    },
+    {
+      "url": "assets/figures/arxiv/2607.22406v1/fig-010.webp",
+      "caption": "Table 5 Demographics of the participants.",
+      "page": 18,
+      "index": 10,
+      "width": 604,
+      "height": 421
+    },
+    {
+      "url": "assets/figures/arxiv/2607.22406v1/fig-011.webp",
+      "caption": "Fig. 4 Tasks’ specification.",
+      "page": 17,
+      "index": 11,
+      "width": 705,
+      "height": 277
+    },
+    {
+      "url": "assets/figures/arxiv/2607.22406v1/fig-012.webp",
+      "caption": "Table 15 Grouped post-experiment responses for exercise perception by interaction model.",
+      "page": 32,
+      "index": 12,
+      "width": 704,
+      "height": 302
+    },
+    {
+      "url": "assets/figures/arxiv/2607.22406v1/fig-013.webp",
+      "caption": "Table 16 Metrics’ values per participant (vibe coding) and per run (agentic coding) and means and standard deviations. The brackets for the values of TAM indicate the total number of assertions. (*) Participants perceiving time >40 min (actual limit: 40 min). Abbreviations: CG (ChatGPT), CS (Claude Sonnet), FA (fully-automated).",
+      "page": 41,
+      "index": 13,
+      "width": 730,
+      "height": 879
+    },
+    {
+      "url": "assets/figures/arxiv/2607.22406v1/fig-014.webp",
+      "caption": "Table 10 One-tailed Mann-Whitney U tests for code complexity with null hypothesis H0 : A > B. The asterisk (*) denote statistical significance at α = 0.05. (**) denotes statistical significance after Holm-Bonferroni correction.",
+      "page": 27,
+      "index": 14,
+      "width": 575,
+      "height": 487
+    },
+    {
+      "url": "assets/figures/arxiv/2607.22406v1/fig-015.webp",
+      "caption": "Table 8 Kruskal-Wallis H test across models. The asterisk (*) denote statistical significance at α = 0.05; effect size computed with ϵ2. The comparison for # of Iterations excludes the agentic workflow.",
+      "page": 24,
+      "index": 15,
+      "width": 499,
+      "height": 291
+    },
+    {
+      "url": "assets/figures/arxiv/2607.22406v1/fig-016.webp",
+      "caption": "Table 13 One-tailed Mann-Whitney U tests for process efficiency with null hypothesis H0 : A > B. The asterisk (*) denote statistical significance at α = 0.05. (**) denotes statistical significance after Holm-Bonferroni correction.",
+      "page": 31,
+      "index": 16,
+      "width": 567,
+      "height": 333
+    },
+    {
+      "url": "assets/figures/arxiv/2607.22406v1/fig-017.webp",
+      "caption": "Fig. 6 fully-automated workflow.",
+      "page": 20,
+      "index": 17,
+      "width": 673,
+      "height": 213
+    },
+    {
+      "url": "assets/figures/arxiv/2607.22406v1/fig-018.webp",
+      "caption": "Table 1 Categories and their patterns in the CLLM catalogue of White et al. (2023).",
+      "page": 5,
+      "index": 18,
+      "width": 695,
+      "height": 674
+    },
+    {
+      "url": "assets/figures/arxiv/2607.22406v1/fig-019.webp",
+      "caption": "Table 4 Metrics per research question.",
+      "page": 16,
+      "index": 19,
+      "width": 700,
+      "height": 946
+    }
+  ]
+}

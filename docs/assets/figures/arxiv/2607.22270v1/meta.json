@@ -1,0 +1,46 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2607.22270v1/fig-001.webp",
+      "caption": "Table 4: List of sources used, per country, to support the SCA for the main regulatory data protection analysis, including the main data protection regulation analyzed. (Continued)",
+      "page": 25,
+      "index": 1,
+      "width": 814,
+      "height": 870
+    },
+    {
+      "url": "assets/figures/arxiv/2607.22270v1/fig-002.webp",
+      "caption": "Table 3: Summary of the regulatory analysis, frequency per code. ⋆: The APPI from Japan does not directly foresee the right to revoke consent. ⋆⋆: Section Appendix D provides an explanation over this aspect.",
+      "page": 21,
+      "index": 2,
+      "width": 732,
+      "height": 199
+    },
+    {
+      "url": "assets/figures/arxiv/2607.22270v1/fig-003.webp",
+      "caption": "Table C.5: Full list of participants of the interviews, per continent and their jurisdiction of expertise. Multiple legal experts hold knowledge and certifications regarding the GDPR. Junior = 2 - 3 years experience; Intermediate = 4 - 8 years experience; Expert = +8 years experience",
+      "page": 85,
+      "index": 3,
+      "width": 698,
+      "height": 1017
+    },
+    {
+      "url": "assets/figures/arxiv/2607.22270v1/fig-004.webp",
+      "caption": "Table 2: Table for codes regarding interdisciplinary challenges for data protection and understanding of data protection. Codes are unique instances, subcodes can overlap between participants. †: Inductive codes.",
+      "page": 18,
+      "index": 4,
+      "width": 918,
+      "height": 753
+    },
+    {
+      "url": "assets/figures/arxiv/2607.22270v1/fig-005.webp",
+      "caption": "Table D.6: Existence of the codes in personal data and data subject rights in the main data protection regulation or other important legal instruments. For a more detailed table, including regulations analyzed and articles, please go to the dataset.",
+      "page": 87,
+      "index": 5,
+      "width": 1192,
+      "height": 752
+    }
+  ]
+}
