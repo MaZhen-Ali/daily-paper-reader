@@ -1,0 +1,397 @@
+Title: Model-Driven Requirements Configuration with Three-Valued Uncertainty Scoring
+
+URL Source: https://arxiv.org/pdf/2607.26220v1
+
+Published Time: Thu, 30 Jul 2026 00:08:39 GMT
+
+Number of Pages: 32
+
+Markdown Content:
+# Model-Driven Requirements Configuration with Three-Valued Uncertainty Scoring 
+
+Ahmed Ibrahim a, ∗
+
+> aWestern University, London, Canada
+
+Abstract Context: Large Language Models (LLMs) offer natural-language flexibility for automated requirements elicitation but frequently generate structurally invalid requirements and logical inconsistencies, lacking formal correctness guarantees. 
+
+Objectives: This study aims to eliminate logical inconsistencies and enforce structural conformance in LLM-generated requirements while quan-tifying the LLM’s pre-validation decision uncertainty within a formal domain model. 
+
+Methods: We present a neuro-symbolic multi-agent architecture that op-erationalizes the Object-Oriented Method for Requirements Authoring and Management (OOMRAM) lattice. The LLM acts as a non-deterministic heuristic for lattice traversal, while a deterministic symbolic validator en-forces all structural constraints. We introduce a three-valued ⟨T, I, F ⟩ (Truth, Indeterminacy, Falsity) framework to classify and score the LLM’s require-ment decisions before and after validation. 
+
+Results: Evaluated across 37 natural-language project visions in eleven application families, the system completely eliminated structural inconsis-tencies in 35 out of 37 cases (94.6%), with the remaining two containing only 6 unresolved structural errors (0.39% of decisions) due to iteration limits. Three-valued analysis revealed that 24.7% of all decisions are indeterminate (structurally valid but discretionary choices not explicitly mandated by the stakeholder). 
+
+Conclusion: Offloading structural integrity to a deterministic symbolic layer successfully guarantees structural conformance, while the three-valued   
+
+> ∗Corresponding author
+> Email address: aibrah64@uwo.ca (Ahmed Ibrahim) arXiv:2607.26220v1 [cs.SE] 28 Jul 2026
+
+classification provides a formal way to measure neural uncertainty, facilitating safe LLM deployment in formal requirements engineering. 
+
+Keywords: requirements engineering, neuro-symbolic systems, large language models, structural conformance, OOMRAM, three-valued logic, uncertainty quantification 
+
+1. Introduction 
+
+Requirements engineering (RE) is costly and error-prone. Reusing vali-dated requirements from software product lines reduces effort and improves quality [1, 2]. In requirements modelling, formal domain formalisms, such as the Object-Oriented Method for Requirements Authoring and Management (OOMRAM) [3, 4], represent an application family as a strict mathemati-cal structure. For instance, OOMRAM organizes requirements into a formal lattice where variability is expressed through discriminants. However, tra-ditional formal methods typically demand exact requirement identifiers and rigid syntax, creating an "exact-match bottleneck" that prevents analysts from exploring options using natural-language project descriptions. Recent literature reviews and empirical studies demonstrate that Large Language Models (LLMs) are increasingly applied to RE tasks, including automated requirement generation, tracing, and elicitation from natural lan-guage text [5, 6, 7, 8, 9]. In this paper, we refer to such a free-text stakeholder description as a project vision (or simply vision). A vision can be anything from a few keywords to several paragraphs, as long as it spells out the desired functionality and constraints in ordinary language. A short smart-home illus-tration would be: "A voice-controlled home automation system that adjusts lighting and room temperature based on occupancy and time of day, with a backup battery for power outages." However, pure LLM approaches are prone to logical inconsistencies: they invent non-existent identifiers, ignore mandatory constraints, or combine mutually exclusive options [10, 11, 12]. Most NLP4RE approaches lack formal correctness guarantees and are vali-dated only in laboratory settings [13]. To address this gap, this paper proposes a novel neuro-symbolic multi-agent architecture that directly operationalizes a formal domain model, using the OOMRAM lattice [3, 4] as our primary exemplar. Within this framework, the LLM acts as a non-deterministic heuristic for lattice traversal, interpret-ing the free-text vision, while a separate, deterministic symbolic validator 2enforces all structural constraints. This coupling ensures that logically in-consistent requirement combinations are eliminated because they cannot by-pass the symbolic verification layer. While the framework cannot prevent an LLM from selecting a semantically odd requirement, it guarantees that any selected specification is a logically valid instance of the domain metamodel. 
+
+Scope clarification. It is important to note that the system targets the 
+
+feature-selection phase of product-line requirements elicitation [2]. Given a pre-engineered OOMRAM lattice for an application family (e.g., eRecord Keeping or Smart Home), the goal is to identify which requirements from that lattice are mandated or compatible with a stakeholder’s natural-language vi-sion—a structured configuration task, not generative requirements authoring from scratch. This scoping decision enables formal structural guarantees that are not achievable in open-ended generation. However, this study argues that simply labelling selections as binary "cor-rect" or "incorrect" fails to capture a critical engineering distinction. While some requirements are strictly mandated by the project vision, others are structurally valid but discretionary, representing free choices among equally acceptable alternatives, such as selecting a specific communication protocol from a set of available adapters. The main contributions of this paper are fourfold. First, we present a neuro-symbolic architecture that makes OOMRAM practical for natural-language elicitation by offloading structural logic to a symbolic layer. Second, we introduce a three-valued evaluation framework ( ⟨T, I, F ⟩) that quantifies the difference between mandated requirements, valid but indeterminate se-lections, and structural falsities. Third, we conduct an empirical evaluation on 37 project visions across eleven families, demonstrating that the system reduces structural falsity to 0.39% under a lightweight model and achieves 100% convergence and 0% structural falsity under a frontier model. Fourth, we provide a comparative analysis with standard LLM baselines and a formal proof of validator convergence. The remainder of this paper is organized as follows. Section 2 reviews related work in NLP4RE and neuro-symbolic AI. Section 3 defines the OOM-RAM lattice and the multi-agent architecture. Section 4 presents the empir-ical results, including the three-valued uncertainty analysis and scalability study. Section 5 discusses implications for practice and threats to validity. Section 6 concludes. 31.1. Research Questions 
+
+This paper addresses the following research questions: 1. RQ1 (Structural Conformance): To what extent can a symbolic validator, integrated into an LLM-driven requirements elicitation loop, eliminate logical inconsistencies and enforce structural conformance in the final specification? 2. RQ2 (Three-Valued uncertainty): How many of the LLM’s de-cisions are truly indeterminate, that is, structurally correct but not something the vision explicitly demands, and does this change much from one application family to another? 3. RQ3 (Baseline comparison): Compared to an unconstrained LLM (without validator), how many structural violations does our system prevent? 4. RQ4 (Scalability): Does the traversal time scale linearly with the number of discriminant nodes, as claimed by the frontier-based navi-gation strategy? Each research question is answered in Section 4: RQ1 via the final falsity count (Table 2); RQ2 via the indeterminacy proportion and family break-down; RQ3 via the ablation analysis; RQ4 via scalability measurements. 
+
+2. Related Work 
+
+Our work draws on product-line requirements engineering, neuro-symbolic AI, multi-agent systems, formal verification, and three-valued logic. 
+
+2.1. OOMRAM and Feature Modeling 
+
+Feature Models (FMs) and the Feature-Oriented Domain Analysis (FODA) framework proposed by Kang et al. [14] serve as the established standard for variability modeling in software product lines. Traditional feature models structure software options into a hierarchy or tree with mandatory, optional, alternative (XOR), and OR features. Building upon foundations in requirement reuse, the Object-Oriented Method for Requirements Authoring and Management (OOMRAM) was in-troduced by Ibrahim [3, 4] to model reusable requirements in application families. OOMRAM was chosen specifically for this work because its object-oriented lattice structure (formalized as a Directed Acyclic Graph) han-dles multiple inheritance and cross-cutting requirement constraints more 4naturally than standard strictly tree-based Feature Models. In an OOM-RAM lattice, a single requirement node can inherit from multiple parent discriminants, capturing shared software capabilities across distinct subsys-tem branches. The structural rules governing single-adaptors (SA), multiple-adaptors (MA), core nodes, and options in OOMRAM serve as the standard constraints for this family of lattices , providing a rich graph benchmark for formal constraint verification. 
+
+2.2. LLMs and Neuro-Symbolic Systems in RE 
+
+While formalisms like OOMRAM [3, 4] offer a rigorous lattice-based structure for managing variability, their original retrieval mechanisms de-mand exact requirement identifiers. This "exact-match bottleneck" pre-vents practical adoption in natural-language settings. Several recent efforts have brought LLMs to bear on core RE tasks (elicitation, classification, and traceability) [15, 5, 6, 7, 8, 9]. However, the same studies consistently re-port logical inconsistencies, hallucinations, and an absence of formal guaran-tees [10, 11]. Techniques such as retrieval-augmented generation (RAG) [16], iterative grounding [17], and layered mitigation frameworks [18] can suppress some errors, but their protection remains heuristic. They stop short of the deterministic enforcement that high-assurance RE demands. Neuro-symbolic approaches pair neural flexibility with symbolic correct-ness [19, 20]. Notable examples include LLM-guided controller synthesis [21], where temporal logic constraints guide neural search, and formal verification of LLM-produced code [22, 23], which translates LLM outputs into inter-mediate representations for constraint solving (e.g., using Z3). In partic-ular, HaVen [23] and similar approaches [24] verify logic ex-post, checking generated specifications against separate safety rules. In contrast, our ap-proach embeds the symbolic constraints of the domain lattice directly into the generative loop, structurally prohibiting invalid selections from advanc-ing beyond the navigator phase. Multi-agent RE frameworks have been built for stakeholder simulation [25], debate-based refinement [26], and collabo-rative privacy threat modelling [27]. Critically, none of them incorporate a deterministic constraint checker. Formal methods for business-constraint verification [28] and static model checking [29] deliver rigorous guarantees, but they operate outside LLM pipelines. Three-valued logic frameworks add an explicit indeterminacy compo-nent (I) alongside truth (T) and falsity (F). Earlier three-valued logics laid 5the groundwork for reasoning under partial information [30, 31], and three-valued classification has since been applied to trust verification in ad-hoc networks [32] and medical decision support [33]. Our work embeds a deterministic constraint checker directly in an LLM agent loop and evaluates each proposal with ⟨T, I, F ⟩ scoring, coupling formal logical inconsistency elimination with fine-grained uncertainty quantification. 
+
+2.3. Comparative Analysis 
+
+Table 1 summarizes how our system differs from prior work across five di-mensions: formal guarantees, LLM usage, uncertainty quantification, multi-agent orchestration, and empirical validation scale. 
+
+> Table 1: Comparison with related approaches.
+
+Approach Formal Guarantee LLM Uncertainty Quant. Multi-Agent Visions 
+
+Norheim et al. [13] No Yes No No 5Vogelsang [34] No Yes No No –Wang et al. [24] No Yes No No 20 Bayat et al. [21] Yes (ctrl) Yes No Yes 3Councilman et al. [22] Yes (code) Yes No No 28 Yang et al. [35] Yes (spec) Yes No No 2HaVen [23] Yes (HDL) Yes No No –Baharloo et al. [32] No No Yes (neutr.) No –Khushal [33] No No Yes (3-val.) No –
+
+This work Yes (lattice) Yes Yes (T,I,F) Yes 37 3. Neuro-Symbolic Multi-Agent System 
+
+3.1. Overview of OOMRAM 
+
+The Object-Oriented Method for Requirements Authoring and Manage-ment (OOMRAM) was originally designed to support systematic reuse of re-quirements across families of related software applications [3, 4]. It extends Mannion’s earlier MRAM method [36] and rests on three main concepts: application families, requirement lattices, and discriminants. 
+
+Application families . An application family is a set of systems that share a common domain and a common core of functionality, while differing 6at well-defined points of variability. Typical examples include record-keeping systems, smart home controllers, and automotive infotainment systems. 
+
+Requirement lattice . All requirements of a family are organized as a directed acyclic graph (a lattice). Each node represents a reusable re-quirement object that may have several parents (multiple inheritance) and several children. The lattice captures both mandatory (core) and optional relationships. 
+
+Discriminants. Variability is expressed through three types of discrim-inant nodes that behave conceptually like UI selection widgets to enforce constraints. First, a single-adaptor (SA) node requires that exactly one child must be selected from a set of mutually exclusive alternatives, behaving like a radio button group (e.g., choosing either an Oracle or PostgreSQL database backend, but not both). Second, a multiple-adaptor (MA) node requires that at least one child (and potentially several) must be selected, acting like a mandatory checkbox group (e.g., selecting supported export formats: PDF, CSV, or both). Third, an option node allows a child to be selected or omitted independently, conceptually behaving like an optional toggle switch. Core nodes, by contrast, are strictly mandatory whenever their parent is selected. The lattice structure is used instead of a simple tree to capture complex, cross-cutting dependencies, such as a single requirement being a child of multiple different options (multiple inheritance). 
+
+> 1: Core Record keeping
+> 1.4 SA Admin channel
+> 3.3 MA Link to info
+> 3.3.3 Option Other docs
+> 1.4.2 Fax
+> 1.4.1 Email
+> 3.3.1 Notes
+> 3.3.2 Emails
+> optional child
+> Figure 1: A fragment of an OOMRAM lattice showing core (blue), single-adaptor (SA, green), multiple-adaptor (MA, orange), and optional (gray, dashed) nodes. Parent-child relationships are indicated by arrows.
+
+Figure 1 shows a small lattice fragment. Core nodes (e.g., requirement 1) are mandatory when selected; SA discriminants (e.g., 1.4) require exactly one child; MA discriminants (e.g., 3.3) require at least one child; optional nodes (e.g., 3.3.3) may be included or omitted. 7Original retrieval bottleneck . In the original OOMRAM tool, an an-alyst navigated the lattice by manually choosing discriminants or by provid-ing exact requirement identifiers. Natural-language project visions were not supported. As a result, the framework’s reuse potential remained largely un-tapped, a limitation that our neuro-symbolic architecture directly addresses. For a complete description of OOMRAM, including its object-oriented requirement representation, versioning, and repository design, we refer the reader to [3, 4]. The next subsection formalizes the lattice model that forms the backbone of our symbolic validator. 
+
+3.2. Lattice Model 
+
+We formally define an OOMRAM requirement lattice as a 4-tuple: 
+
+L = ( V, E, T , Φ) (1) where V is the finite set of requirement nodes, E ⊆ V × V is the set of directed parent-child edges forming a Directed Acyclic Graph (DAG), T :
+
+V → { Core , SA , MA , Option } assigns a structural node type to each node, and Φ is the set of global lattice invariants. Let S ⊆ V be the set of requirements currently selected by the agent during traversal. For any node v ∈ V , we define its parent set and children set respectively as: 
+
+parent( v) = {p ∈ V | (p, v ) ∈ E} (2) 
+
+children( v) = {c ∈ V | (v, c ) ∈ E} (3) A selection set S is structurally valid if and only if it satisfies the global consistency predicate Ψ( S), defined by the conjunction of four axiomatic structural invariants: 
+
+1. Core Invariant (Mandatory Selection): Any Core requirement node must be selected whenever at least one of its parent nodes is active in S:
+
+∀v ∈ V,  T (v) = Core ∧ parent( v) ∩ S̸ = ∅ =⇒ v ∈ S (4) 
+
+2. Single-Adaptor (SA / XOR) Invariant: For every active single-adaptor node, exactly one of its child requirement nodes must be selected: 
+
+∀v ∈ S , T (v) = SA =⇒ | children( v) ∩ S| = 1 (5) 83. Multiple-Adaptor (MA / OR) Invariant: For every active multiple-adaptor node, at least one of its child requirement nodes must be selected: 
+
+∀v ∈ S , T (v) = MA =⇒ | children( v) ∩ S| ≥ 1 (6) 
+
+4. Structural Integrity (Orphan Prevention): Every selected non-root node must have at least one selected parent node in S, preventing orphaned requirements: 
+
+∀v ∈ S , v ̸ = root =⇒ parent( v) ∩ S̸ = ∅ (7) The global consistency predicate Ψ( S) evaluates to true if and only if Equations (4)–(7) simultaneously hold: 
+
+Ψ( S) ⇐⇒ Eqs. (4) ∧ (5) ∧ (6) ∧ (7) (8) Option nodes ( T (v) = Option) carry no lower or upper selection constraints on their children beyond standard orphan prevention. 
+
+3.3. Agent Workflow 
+
+The system is built with LangGraph and comprises four agents: Nav-igator, Interpreter, Validator, and Scribe. The Navigator selects the next discriminant node (depth-first traversal). The Interpreter (LLM, temper-ature 0) translates the project vision and current context into a proposed set of child IDs, output as JSON. The Validator is a deterministic Python function that checks Ψ( S); if a violation occurs, it returns an error message to the Interpreter, which then revises its proposal. The Scribe compiles the final selected set into a formatted specification. The Validator never calls an LLM, ensuring that all structural checks are symbolic and sound. The loop continues until all constraints are satisfied, capped at 250 re-cursion steps and 150 LLM calls (a safety margin; the longest run used 101 calls). We refer to this upper limit (e.g., 150 LLM calls per run) as the call budget . It acts as a safety margin to prevent infinite loops. To keep the LLM context window fixed, we use a frontier-based navi-gation strategy. The frontier is the set of discriminant nodes that have been reached but not yet processed; we traverse it depth-first, pruning unselected subtrees. This approach ensures that each node is processed at most once, leading to linear scaling O(|V |).To handle scenarios where prior choices lead to structural dead-ends, the Navigator agent implements a soft backtracking mechanism . If the 9Validator (symbolic)   
+
+> 〈T,I,F 〉applied here
+> Navigator (LLM)
+> Interpreter (LLM)
+> Scribe (LLM)
+> suggests node
+> proposed selection
+> valid
+> next node
+> rejected
+> ⟨T, I, F ⟩
+
+Figure 2: Neuro-symbolic agent workflow. The Navigator selects the next discriminant node. The Interpreter (LLM) proposes a set of child IDs based on the project vision. The symbolic Validator checks structural constraints; if a violation occurs (red dashed loop), the Interpreter revises its proposal. Accepted selections (green arrow) are sent to the Scribe, which compiles the final specification. The ⟨T, I, F ⟩ label indicates where three-valued discretion scoring is applied at the Validator output before the rejection branch. 
+
+symbolic Validator identifies a constraint violation that cannot be resolved through local child-node re-selection, the system re-evaluates the node’s po-sition within the state history H. By surfacing the parent-node context and previous validation errors in the augmented prompt, the framework allows the Interpreter to pivot its traversal strategy, effectively re-configuring the selection set S to satisfy the global predicate Ψ( S).Figure 2 illustrates the interaction between agents. 
+
+3.4. Symbolic Validator 
+
+The Validator is the cornerstone of our structural conformance guaran-tee. Algorithmically, it performs the following checks after each Interpreter proposal. 1. For every core node v whose parent is in S, verify that v ∈ S . If not, record "Mandatory core node v is missing". 2. For every SA node v, count k = |S ∩ children( v)|. If k̸ = 1 , record “SA violation at v: selected k children, expected exactly 1”. 3. For every MA node v, count k = |S ∩ children( v)|. If k < 1, record “MA violation at v: selected k children, expected at least 1”. 4. For every selected node c, ensure that parent( c) ∩ S̸ = ∅ (unless c is the root). If not, record "Orphaned node c". 10 If the Validator records any violation, it rejects the proposal and returns the detailed error list to the Interpreter. The Interpreter then revises its proposal using the error messages as feedback. 
+
+3.5. Heuristic Convergence and Computational Bounds 
+
+The search for a consistent selection set is a heuristic process conducted by a non-deterministic agent. Because Large Language Models process prompt histories stochastically, infinite correction cycles could theoretically occur if an LLM repeatedly generates identical invalid responses despite receiving error feedback. To provide strict computational guarantees in practice, system completion is bounded by a pragmatic engineering call budget capped at 150 LLM iterations (and 250 recursion steps) per vision. While the symbolic Validator provides deterministic boundaries for verifying any selection set S, overall system execution is evaluated in terms of Empirical Convergence Rates :
+
+• Under the lightweight Llama 3.1 8B model, the system achieved a 94.6% empirical convergence rate (35 out of 37 visions fully converged to 0% structural falsity within the 150-call budget; the longest converged run required 101 LLM calls and 94 recursion steps). 
+
+• Two visions under Llama 3.1 8B hit the 150-call iteration cap without fully resolving an MA node constraint, leaving 6 residual structural errors (0.39% of total decisions). 
+
+• Under a frontier instruction-following model (NVIDIA Nemotron 3 Ul-tra), the system achieved a 100% empirical convergence rate (37 out of 37 visions converged with zero structural falsity well within the call budget). Thus, while individual LLM traversal steps are non-deterministic, the com-bination of symbolic validation, feedback retries, and bounded call budgets guarantees that the execution halts deterministically, producing a struc-turally sound specification whenever the search converges. 
+
+3.6. Three-Valued Discretion Scoring 
+
+While the symbolic validator guarantees structural soundness for all con-verging runs, it does not reveal how much uncertainty or genuine freedom 11 the LLM exhibited during traversal. Binary correctness collapses two quali-tatively different outcomes: a selection that is mandated by the vision, and one that is merely valid but free . To recover this distinction, we introduce a three-valued classification metric that labels each LLM proposal with a crisp triple (td, i d, f d) ∈ { 0, 1}3 such that td + id + fd = 1 .For every decision step d (the LLM’s proposal for a specific discriminant node), we define: 
+
+• td = 1 (Truth) iff the proposal was accepted by the validator and the se-lection is explicitly mandated by the project vision or by a gold-standard specification, a manually verified, structurally correct requirement se-lection. Mandated selections include: all core nodes (once their parent is selected), SA and MA discriminant parents, child nodes that ap-pear in the gold standard, and (when no gold standard exists) child nodes whose text shares at least two content keywords with the vision description. 
+
+• id = 1 (Indeterminacy) iff the proposal was accepted by the validator but, the selection is not mandated. This includes any option node, SA or MA choices that differ from the gold standard, and for visions without a gold standard, a child whose keyword overlap is less than two. 
+
+• fd = 1 (Falsity) iff the proposal was rejected by the validator (i.e., it violated a structural constraint). The aggregate classification vector for a complete benchmark run is N =(P 
+
+> d
+
+td, P 
+
+> d
+
+id, P 
+
+> d
+
+fd) = ( T, I, F ). The degree of indeterminacy is I/ (T +
+
+I + F ), which captures the fraction of decisions where the LLM exercised legitimate discretion. The scoring rules are implemented in a Python script that reads the logged JSON outputs of the benchmark runs. The script is deterministic and open-source, ensuring reproducibility. 
+
+3.7. Implementation and Reproducibility 
+
+We wrote the system in Python, relying on LangGraph (v0.2) and Ollama (v0.5). The shared state σ is a typed dictionary that holds the project vision (string), conversation history (a list of messages), selected IDs (a set), validation errors (list), and some execution flags (bool). Here’s the template we use for the Interpreter prompt: 12 You are helping a requirements analyst. Below is a single lattice node that needs a decision. Pick the child requirements that should be selected. Node: {node_id} (type: {type}) Children: {list} Vision: {vision} Chat history: {history} Reply with JSON only: {"selected": ["id1", "id2"]} 
+
+The JSON output is parsed and checked by the validator straight away. When a constraint is violated, the error list is added to the conversation history and the Interpreter is invoked again with the same prompt, now augmented with those errors, so it can adjust the proposal. Our frontier-based navigation keeps a stack of pending discriminant nodes, and each node is processed at most once. The source code and logs are avail-able in the project repository. 
+
+4. Experimental Evaluation 
+
+4.1. Benchmark Setup and Scoring Implementation 
+
+We created 37 project visions spanning eleven distinct application fami-lies: eRecord Keeping (5 visions), Smart Home (5), automotive IVI (3), core banking (3), e-commerce (3), fleet management (3), hospital management (3), HR/payroll (3), LMS (3), smart grid (3), and telecom OSS/BSS (3). The visions range from minimal-feature configurations (e.g., "small business, email only, basic backup”) to comprehensive systems (e.g., “national utility grid with full IEC 61850 compliance"). 
+
+Lattice Scale and Context Window Bounds. Across the eleven appli-cation families, the domain lattices contain an average of 45 .2 ± 12 .8 require-ment nodes (ranging from 28 nodes in LMS to 98 nodes in eRecord Keep-ing) and 62 .4 ± 18 .3 directed parent-child edges. Critically, our Frontier-based navigation strategy evaluates requirement decisions incrementally per discriminant node rather than dumping the entire graph into a mono-lithic prompt. This bounds the LLM’s local prompt context window at O(1) 
+
+13 size relative to total lattice size |V |. Consequently, the architecture scales efficiently to industrial-scale lattices containing thousands of requirement ob-jects, whereas single-prompt or unpartitioned RAG approaches inevitably exceed model context window limits or suffer severe prompt truncation and attention degradation. For a subset of three representative visions (er_small_biz, er_gov_agency, sh_elderly), we manually created a gold-standard set of requirement IDs that strictly adheres to the lattice rules. For the remaining visions, gold stan-dards were not available; we therefore rely on a keyword-overlap heuristic (as described in the three-valued scoring definitions) to determine whether a selection is mandated. All experiments ran autonomously on a consumer machine (Apple M1 Pro, 32 GB RAM) with Ollama serving the llama3.1:8b-instruct-q4_0 
+
+model at temperature 0. The benchmark script logs every proposal and validator decision. After all runs, the three-valued scoring script processes the logs and outputs the aggregated counts shown in Table 2. 
+
+> Table 2: Three-valued T/I/F classification scores per requirement node type (counts and row percentages, all runs pooled).
+
+Node Type T I F
+
+Core (mandatory) 762 (99.7%) 0 (0.0%) 2 (0.3%) SA Discriminant 82 (100.0%) 0 (0.0%) 0 (0.0%) MA Discriminant 164 (100.0%) 0 (0.0%) 0 (0.0%) SA Option Choice 54 (65.9%) 28 (34.1%) 0 (0.0%) MA Option Choice 87 (26.1%) 241 (72.4%) 5 (1.5%) Optional Feature 0 (0.0%) 110 (100.0%) 0 (0.0%) 
+
+Total 1149 379 7
+
+4.2. RQ1 & RQ2: Results and Empirical Analysis 
+
+The results reveal a clear stratification. Core nodes and discriminant par-ents are almost always Truth (99.7% and 100%), confirming that the LLM reliably enforces the mandatory backbone. SA choice nodes show a mix: 66% Truth, 34% Indeterminacy, indicating that sometimes the vision uniquely de-termines a choice and sometimes leaves it open. MA choice nodes exhibit the highest Indeterminacy (72%) and a small amount of Falsity (1.5%), reflecting 14 genuine freedom of selection plus occasional structural violations. Optional nodes are entirely Indeterminate by definition. Total Falsity (the ⟨T, I, F ⟩ count) is 7 across all runs, all confined to the eRecord Keeping family. Six of these are unresolved structural violations that persisted in the final specifications of two visions ( er_small_biz and 
+
+er_nonprofit ) whose correction loops did not converge before the run com-pleted; the seventh is an additional falsity label recorded during a correction cycle in that same family. The validator rejected 56 times in total across all benchmark runs; the other 49 rejections triggered successful corrections, and those decisions contribute to T or I. Consequently, the final specification con-tains only 6 residual falsities out of 1535 decisions (0.39%), all from the two visions whose correction loops did not converge. In all other 35 visions, the final output has F = 0 . The neuro-symbolic guardrail eliminates structural violations in 35 out of 37 visions (94.6%), with only 6 residual falsities in the remaining two (RQ1). A McNemar’s test on the paired binary outcomes (violation present/absent) shows that the Validator significantly reduces the proportion of visions with structural violations ( p < 0.001 , exact conditional odds ratio → ∞ ). The three-valued scores expose the inconsistency inherent in the LLM’s proposals: high Indeterminacy for underspecified choices, occasional Falsity for violations. The symbolic validator, by enforcing Ψ( S), ensures consis-tency: the output is deterministic, all mandatory requirements are present, and almost all structural violations are removed. This transformation from inconsistent neural output into a verified, structurally sound specification is the central contribution of our framework. 
+
+Answer to RQ1 and RQ2: The symbolic validator eliminates struc-tural violations in 94.6% of visions (RQ1). The three-valued analysis reveals that 24.7% of all decisions across visions are legitimate indeterminacy, con-centrated primarily in multiple-adaptor and optional nodes (RQ2). 
+
+4.3. Running Example: Small-Business eRecord Keeping 
+
+To make the elicitation pipeline concrete, we trace one complete run: vi-sion er_small_biz , family eRecord Keeping , described as "Small business, email only, basic backup, minimal compliance." Table 3 annotates six repre-sentative decision points, illustrating how Truth, Indeterminacy, and Falsity labels arise naturally from the interaction. 15 Table 3: Annotated decision trace for vision er_small_biz (eRecord Keeping family, 39 requirements selected from 57 nodes, 101 LLM calls). 
+
+Step Node Type Label Rationale 
+
+1 1 — Shall meet record keeping standards 
+
+Core T Mandatory root; selected unconditionally. 2 1.4 — SA: Admin comm. channel 
+
+SA disc. T LLM selects 1.4.1 (email); matches vision keyword. 3a 2.2 — Display classification markings 
+
+Core F Validator rejected: manda-tory child of node 2 missing 3b 2.2 (retry) Core T LLM corrected after error message; node added 4 3.3 — MA: Link to related info 
+
+MA disc. T LLM selects 3.3.1 (notes) 
+
+and 3.3.2 (emails); both valid. 5 3.3.3 — Link to other documents 
+
+MA opt. I Not mandated by vision; in-cluded as a valid extension (Indeterminate). 6 5, 6 — Optional features 
+
+Option I Optional nodes selected without gold-standard mandate. 16 4.4. Validation of Keyword Heuristic 
+
+To validate the reliability of the keyword-overlap heuristic used for three-valued scoring, we evaluated its performance against the three gold-standard visions (er_small_biz, er_gov_agency, sh_elderly). The heuristic achieves a Precision of 0.92, a recall of 0.89, and an F1-score of 0.91, indicating high alignment with manual expert labelling. Inter-rater reliability was assessed by having a second researcher label the same 30 decisions (stratified by node type) using the keyword rule, resulting in a Cohen’s κ = 0 .84 , which is considered substantial agreement. A sensitivity analysis varying the threshold from 1 to 3 keywords (Ta-ble 4) shows that while the absolute proportion of indeterminacy shifts, the fundamental pattern, indeterminacy concentrated in MA and optional nodes, remains robust across all thresholds. 
+
+> Table 4: Sensitivity analysis of keyword threshold on indeterminacy.
+
+Threshold Indeterminacy 
+
+1 18.0% 2 (Baseline) 24.7% 3 31.0% 
+
+4.5. RQ3: Ablation Study: Symbolic Validator Contribution 
+
+To quantify the contribution of the symbolic validator, we analyze the counterfactual condition in which the validator node is absent from the Lang-Graph pipeline and Interpreter proposals are accepted unconditionally. Rather than re-running the 37 visions, we reconstruct the baseline from the existing benchmark logs: any vision in which the Validator rejected at least once would have produced an uncorrected structural violation in the no-validator condition. Results are summarized in Table 5. Without the Validator, 51.4% of visions would terminate with at least one structural constraint violation. The Validator resolves 89.5% of those viola-tions during the elicitation dialogue, reducing the violation rate from 51.4% to 5.4% under a lightweight LLM (Llama 3.1 8B). Notably, when evaluated with the frontier NVIDIA Nemotron 3 Ultra model (via OpenRouter), the system achieves 0% structural falsity across all 37 visions, confirming that stronger instruction-following models fully resolve the remaining constraint-enforcement edge cases. 17 Table 5: Validator ablation: comparison of full system (with Validator) versus counterfac-tual baseline (without Validator) across 37 visions. 
+
+Metric With Validator Baseline (no) 
+
+Visions with ≥ 1 viola-tion 2 / 37 (5.4%) 19 / 37 (51.4%) Total validator rejec-tions 56 —Structural violations resolved 17 / 19 (89.5%) 0 / 19 Residual violations (fi-nal spec) 6 ≥ 56 
+
+To contextualize these results, Table 6 compares our neuro-symbolic ap-proach against four standard LLM reasoning strategies applied to the same 37 visions. All baselines use the same Llama 3.1 backbone via Ollama but omit the symbolic Validator, so any structural violations in their outputs are uncorrected. Structural Falsity (%) reports the proportion of visions in which at least one structural constraint violation persisted in the final output.    
+
+> Table 6: Comparison of our neuro-symbolic system against four unguarded LLM strategies, all evaluated on the same 37 visions using Llama 3.1. Structural Falsity is the % of visions with ≥1uncorrected constraint violation.
+
+Method Precision Recall Structural Falsity 
+
+Plain LLM (no validator) 0.73 0.77 64.9% RAG (Top-3 retrieved) 0.79 0.55 94.6% Self-consistency ( N =5 ) 0.76 0.78 62.2% Multi-agent Debate 0.74 0.74 83.8% 
+
+Our System (Llama 3.1 8B) 0.94 0.91 5.4% Our System (Nemotron 3 Ultra) 0.72 0.88 0.0% 
+
+All four unguarded strategies produce structurally inconsistent specifi-cations in the majority of visions: falsity rates range from 62.2% (self-consistency) to 94.6% (RAG). Critically, the RAG baseline is not “naive”; the prompt contains both 18 the full requirements lattice and the complete set of structural rules. The surprisingly high falsity rate (94.6%) under RAG is a direct consequence of retrieval anchoring bias . Surfacing the Top-3 keyword-matched nodes prompts the LLM to select deep leaf nodes or disjoint optional features that match the query text. However, because standard RAG does not retrieve the corresponding parent paths or parent-child rules for those specific recommen-dations, the LLM includes the retrieved options but fails to trace and select the required parent nodes back to the root, resulting in pervasive parent-consistency violations. This focus on the retrieved subset also narrows the model’s scope, causing Recall to drop to 0.55. Self-consistency reduces falsity marginally through majority voting yet cannot eliminate structural violations because the vote itself has no knowl-edge of lattice constraints. Multi-agent debate surfaces high falsity (83.8%) because the merger call, like each individual agent, has no access to the structural rules. In contrast, the symbolic Validator reduces falsity to 5.4% under the lightweight model and to 0% under the frontier model, confirming that only deterministic, constraint-aware enforcement can provide structural soundness guarantees. 
+
+Answer to RQ3: The symbolic Validator is the primary mechanism re-sponsible for structural correctness. Removing it degrades the vision-level correctness rate from 94.6% to 48.6%, and no unguarded LLM strategy achieves falsity below 62%. The neuro-symbolic architecture reduces struc-tural violation rates from 64.9% (plain LLM) to 5.4% (Llama 3.1 8B with Validator) and to 0% with the NVIDIA Nemotron 3 Ultra frontier model. 
+
+4.6. Indeterminacy Across Application Families 
+
+Indeterminacy is not uniformly distributed across application domains. Table 7 reports the aggregate ⟨T, I, F ⟩ counts and the indeterminacy pro-portion ρI = I/ (T + I + F ) for each of the eleven families, sorted by ρI
+
+descending. The eRecord Keeping family exhibits the highest indeterminacy ( ρI =34 .7% ), reflecting its richly branching MA structures and many optional com-pliance features whose inclusion is context-dependent across organizational sizes. Smart Grid shows the lowest indeterminacy ( ρI = 6 .2% ), consistent with its heavily regulated, prescriptive standards where most choices are technically mandated. The remaining nine families cluster between 17% and 26%, suggesting that a baseline indeterminacy of roughly 20% is character-istic of moderately complex, configurable application domains. 19 Table 7: Per-family three-valued T/I/F totals and indeterminacy proportion ρI = I/ (T +   
+
+> I+F), sorted descending.
+
+Family T I F Total ρI
+
+eRecord Keeping 315 171 7 493 34.7% Automotive IVI 63 22 0 85 25.9% Core Banking 65 21 0 86 24.4% eCommerce 68 20 0 88 22.7% HR & Payroll 79 22 0 101 21.8% Smart Home 219 57 0 276 20.7% Hospital Mgmt. 60 15 0 75 20.0% Telecom OSS/BSS 88 22 0 110 20.0% Fleet Management 57 12 0 69 17.4% LMS 60 12 0 72 16.7% Smart Grid 75 5 0 80 6.2% 
+
+All families 1149 379 7 1535 24.7% 
+
+Falsity is confined entirely to the eRecord Keeping family ( F = 7 , 1.4% 
+
+of its decisions), attributable to two visions whose correction loops did not resolve the remaining MA violations before the run completed. All other fam-ilies achieve F = 0 , demonstrating that the Validator eliminates structural errors completely within the call budget for ten of eleven domains (RQ2). A chi-square test of independence on the distribution of indeterminacy across families (family × indeterminacy: I vs non-I) confirms that the varia-tion is statistically significant ( χ2(10) = 50 .91 , p < 0.001 ). Post-hoc pairwise chi-square tests with Bonferroni correction ( αadj = 0 .0009 ) reveal that eRe-cord Keeping has significantly higher indeterminacy than both Smart Home (p < 0.001 ) and Smart Grid ( p < 0.001 ), reflecting the relative complexity and choice-richness of the record-keeping domain compared to more prescrip-tive grid standards. 
+
+4.7. RQ4: Scalability Analysis 
+
+Table 8 summarizes the linear regression results for LLM call count and latency against lattice size (number of requirement nodes) across all 37 bench-mark runs. LLM call count scales near-linearly with lattice size (slope ≈ 1.16 calls per node, R2 = 0 .69 , p < 10 −9), confirming that the Navigator’s depth-first 20 Table 8: Linear regression of LLM calls and latency versus lattice size. 
+
+Metric Slope Intercept R2
+
+LLM calls per vision 1.158 26 .1 0.691 
+
+Latency (seconds) 2.764 104 .3 0.148 
+
+pruning strategy avoids redundant LLM invocations for unselected subtrees (RQ4). However, wall-clock latency is only weakly correlated with lattice size (R2 = 0 .15 , p = 0 .019 ), indicating that latency is dominated by stochastic network and model-serving overhead rather than by the number of nodes. Thus, while the number of LLM calls scales as expected, the overall response time does not; practitioners should optimize inference infrastructure sepa-rately. 
+
+Robustness and Retry Analysis. To assess the robustness of the neuro symbolic loop, we decomposed the total execution latency by agent type. On average, the Interpreter (neural heuristic) accounts for 85.2% of the wall-clock time, while the Navigator and Scribe account for 10.1% and 4.3% respectively. The symbolic Validator consistently accounts for less than 0.4% of the total latency, confirming that formal verification adds negligible overhead to the LLM-driven pipeline. Retry rates varied significantly by node type. Single-adaptor (SA) dis-criminant nodes required a correction cycle in 12.4% of cases (usually because the LLM selected multiple or zero children). Multiple-adaptor (MA) nodes were more prone to error, requiring retries in 28.7% of cases, typically due to the LLM missing the ’at least one’ constraint. The ability of the Valida-tor to catch these errors and prompt a revision is what ensures high final specification correctness. 
+
+Answer to RQ4: The number of LLM calls scales near-linearly ( R2 =0.69 ) with the lattice size due to the frontier-based pruning strategy, al-though wall-clock latency is largely dominated by network overhead rather than structural complexity. 
+
+4.8. Structural Fidelity Quantification 
+
+We define a Structural Fidelity Metric Σ that quantifies how closely the final specification adheres to the structural constraints imposed by the OOM-RAM lattice: 21 Σ = 1 − FT + I + F (9) For the full system, Σ = 1 − 7/1535 = 0 .9954 , indicating near-complete alignment with the lattice constraints. However, as noted above, 6 of these 7 falsities are residual violations that remained unresolved due to non-convergence of the correction loop; in the actual final outputs(excluding those two vi-sions), the Structural Fidelity Metric is 1.0 for 35 of 37 runs. For the baseline (no Validator), where residual violations are at least 56 across 37 runs, and we conservatively set Fbase ≈ 56 :
+
+Σbase ≈ 1 − 56 1535 = 0 .9635 (10) The Validator thus raises the Structural Fidelity Metric by ∆Σ = +0 .032 
+
+in absolute terms, or an 87.5% reduction in the structural falsity rate, con-firming that the neuro-symbolic coupling enforces structural fidelity in a sta-tistically meaningful way. 
+
+5. Discussion 
+
+5.1. Interpretation of Three-Valued Discretion Scores 
+
+The high Indeterminacy in MA choice and option nodes is not a fail-ure of the LLM; it correctly reflects the freedom intentionally built into the OOMRAM lattice. In requirements engineering, such freedom is essential for capturing legitimate variability across different stakeholders. A binary met-ric would treat a mandated selection and a free selection both as "correct", hiding vision underspecification. Our three-valued classification makes this underspecification explicit: high indeterminacy signals to analysts that they may need to clarify decisions, while low indeterminacy indicates a precisely specified vision. 
+
+5.2. Threats to Validity 
+
+Keyword Heuristic Bias. We openly admit that using an automated keyword-overlap metric to define "Truth" ( T ) represents an automated proxy that may be influenced by common vocabulary shared between the natural-language project visions and the domain lattices. Because the dataset was constructed within the domain context, keyword overlap could overestimate 22 explicit stakeholder mandate. However, we emphasize a crucial mathemat-ical counter-argument: the Falsity ( F ) score is derived strictly from the symbolic Validator’s deterministic logical checks , completely in-dependent of keyword matching. As a result, our primary claim regarding 
+
+Structural Conformance (the elimination of logical inconsistencies and structural violations) is entirely immune to vocabulary or keyword bias. We view the current T /I/F scoring as a baseline framework for quantifying agent discretion, and future work will incorporate independent multi-annotator human-expert labeling to further refine the boundary between Truth and Indeterminacy. 
+
+Internal validity. All three-valued labels were assigned through a deter-ministic automated scoring procedure. While this ensures consistency across the large benchmark of 37 visions, the reliance on a keyword-overlap heuristic to define Truth ( T ) represents a potential threat to internal validity, as lit-eral keyword matches may not always capture complex semantic nuances. To mitigate this threat and validate the reliability of the automated proxy, the authors performed a manual expert audit of 50 randomly sampled decisions stratified by requirement node type. This qualitative review confirmed a se-mantic alignment of over 90% between the automated labels and the project visions, demonstrating that the heuristic reliably captures stakeholder in-tent. Furthermore, any residual misclassification in the automated script is confined to the boundary between Truth and Indeterminacy; the Falsity ( F )count is derived strictly from deterministic symbolic validator rejections and is thus unaffected by heuristic labelling. This ensures that the core findings regarding structural conformance remain mathematically robust. 
+
+External validity. The benchmark covers eleven families but may not generalize to radically different constraint types. Experiments used a single LLM (Llama 3.1 8B via Ollama) and a frontier model (NVIDIA Nemotron 3 Ultra); results may differ with other models, but the validator’s ability to enforce structural rules is model-independent by design. 
+
+Construct validity. Our definition of "mandated" is conservative. A more permissive definition would increase T and decrease I, but the qualitative pattern (I concentrated in MA and option nodes) would persist. The F count is unaffected because it is determined solely by validator rejections. 
+
+Reliability. The scoring script is deterministic; re-running yields identical counts. A sensitivity analysis varying the keyword threshold from 1 to 3 changed T/I proportions by at most 4%. 23 5.3. Limitations 
+
+Despite the high correctness rate, our approach has several limitations. First, the symbolic validator is only as strong as the lattice constraints; it cannot detect semantic misalignments where a selection is structurally valid but irrelevant to the stakeholder’s intent (though our high Precision/Recall scores suggest this is rare). Second, the current implementation relies on a pre-defined OOMRAM lattice; automating the creation of these lattices from legacy documents is a separate, non-trivial challenge. Third, the system’s re-liance on iterative correction loops can be token-intensive; while we stayed within a 150-call budget, industrial-scale lattices with thousands of nodes may require more efficient pruning or better base-model instruction-following. Fourth, the primary benchmark was conducted with a single lightweight LLM (Llama 3.1 8B via Ollama). The validator’s structural correctness guarantee is model-independent by design; the symbolic constraint layer enforces the same lattice rules regardless of which neural component drives the traver-sal, but indeterminacy proportions and convergence behaviour differ across models of varying capability. To address this, we conducted a full bench-mark replication using the frontier NVIDIA Nemotron 3 Ultra model (a 550B mixture-of-experts model accessed via OpenRouter), running all 37 visions across eleven application families. All 37 visions converged with zero struc-tural falsity, confirming that the two residual MA-node failures observed with Llama 3.1 8B are model-specific and are fully resolved with stronger instruction-following models. Precision was 0.72, and Recall was 0.88 across all 37 visions. 
+
+5.4. Implications for RE Practice 
+
+The proposed neuro-symbolic framework offers several concrete benefits for industrial requirements engineering. 
+
+For requirements analysts, The system allows stakeholders to express project visions in natural language without needing to learn formal lattice syntax or exact requirement identifiers. The symbolic validator acts as a silent guardrail: analysts receive only structurally sound specifications, and the three-valued scores (T,I,F) provide immediate feedback on which deci-sions were mandated by the vision (T), which were free choices (I), and where the LLM initially proposed invalid combinations (F). A high indeterminacy proportion signals that the vision is underspecified, prompting analysts to clarify optional or multiple-adaptor choices before finalizing the specification. 24 For tool developers, The architecture separates the neural heuris-tic (LLM) from the symbolic constraint checker (validator). This modular design means that the LLM can be upgraded or replaced without affecting the correctness guarantees, and the validator can be extended with richer constraint languages (e.g., OCL, first-order logic). The implementation uses LangGraph, which is open-source and supports custom state machines; the entire system can be deployed as a microservice within ALM/PLM pipelines. The overhead of the symbolic validator (less than 0.4% of total latency) is negligible, making the approach suitable for interactive elicitation tools. 
+
+For quality assurance, The structural fidelity metric Σ = 1 − F/ (T +
+
+I +F ) provides a quantitative, objective measure of specification correctness. Unlike heuristic hallucination detectors, our validator offers a deterministic guarantee: for any run that converges, the final output is guaranteed to sat-isfy all lattice constraints. Our frontier evaluation with NVIDIA Nemotron 3 Ultra achieved Σ = 1 .0 (perfect structural fidelity) across all 37 visions, while Llama 3.1 8B achieved Σ = 0 .9961 (0.39% falsity rate). The remaining Llama 3.1 8B MA-node failures highlight a clear, model-specific limitation with "at least one" constraints; tool builders can address this by switching to a more capable LLM. 
+
+For process integration, The three-valued (T,I,F) scores can be logged per project to build organizational knowledge. For example, if across many projects a particular optional node consistently receives high I, that indicates a common point of variability that may be better modelled as a mandatory MA node. Conversely, a node with consistently low I (always mandated) might be promoted to core. This enables continuous refinement of the re-quirement lattice itself based on empirical usage data. 
+
+Limitations in practice, Practitioners must maintain a validated OOMRAM lattice for each application family. Creating such a lattice from legacy documents is non-trivial; however, semi-automatic lattice extraction from feature models or use-case maps is a promising direction. Additionally, the system’s reliance on iterative LLM calls (up to 101 for the largest vision) may be too slow for real-time elicitation; batch processing or GPU-accelerated inference is recommended for industrial scale. 
+
+6. Conclusion and Future Work 
+
+This paper presented a neuro-symbolic multi-agent system that bridges natural-language project visions with a formal OOMRAM requirement lat-25 tice, targeting the feature-selection phase of product-line requirements elicita-tion. The key innovation is a deterministic symbolic validator that guarantees structural correctness for all converging runs, eliminating structurally incon-sistent identifiers, missing mandatory nodes, and invalid option combinations that plague pure LLM-based elicitation. Over an empirical benchmark of 37 visions spanning eleven application families, the system reduced structural falsity to only 6 residual violations out of 1535 decisions (0.39%) using Llama 3.1 8B, with 35 out of 37 visions achieving zero falsity. Critically, a full repli-cation with the frontier NVIDIA Nemotron 3 Ultra model achieved 100% convergence with zero structural falsity across all 37 visions (Precision: 0.72, Recall: 0.88), confirming that the symbolic validator’s structural guarantees hold across a wide range of LLM capabilities. A novel three-valued ⟨T, I, F ⟩
+
+classification framework quantified the discretionary uncertainty inherent in the LLM’s traversal, revealing that 24.7% of all decisions are legitimate in-determinacy concentrated in multiple-adaptor and optional nodes – precisely where the requirement lattice intentionally leaves free choice. The symbolic validator thus transforms the LLM’s inherently inconsistent proposals into a structurally faithful, verified specification. The separation of neural heuristic (LLM) from symbolic constraint check-ing provides a general design pattern for safe LLM deployment in safety-critical or quality-sensitive domains. The modular architecture allows the LLM com-ponent to be upgraded without compromising formal guarantees, and the validator can be extended with richer constraint languages (OCL, first-order logic) or integrated into existing ALM/PLM pipelines. The three-valued scores offer practitioners actionable feedback: high indeterminacy signals underspecified visions, while persistent falsity (though rare) pinpoints prob-lematic lattice regions or model-level misunderstandings. Despite the overall success, the system has limitations. The symbolic validator cannot detect semantic hallucinations (structurally valid but irrele-vant selections), though our high precision/recall suggests this is uncommon. With Llama 3.1 8B, two visions did not converge within the 150-call budget due to the LLM’s persistent misinterpretation of a specific "at least one" constraint; this reveals that even with a validator, the LLM’s ability to fol-low error messages is model-dependent. However, our full frontier replication with NVIDIA Nemotron 3 Ultra confirms that this is model-specific: all 37 visions converged with zero structural falsity under a stronger instruction-following model. Finally, the approach assumes a pre-engineered OOMRAM lattice; automating lattice extraction from legacy documents remains an open 26 challenge. We identify four high-priority directions for future work. First, a con-trolled user study with requirements analysts (using NASA-TLX for work-load and SUS for usability) will evaluate whether the three-valued scores help practitioners identify underspecified visions faster than current practice. Second, we are developing a reference implementation as a microservice that exposes a REST API for vision submission and specification retrieval, and we will prototype plugins for Jira, Polarion, and Siemens Teamcenter to en-able seamless adoption in existing ALM/PLM workflows. Third, to eliminate the current manual selection of an OOMRAM family (e.g., eRecord Keeping, Smart Home), we plan to build a semantic router that embeds both the vision and each family’s root node description using a sentence transformer, then selects the family with the highest cosine similarity, thereby enabling the sys-tem to handle mixed or cross-family visions. Fourth, we will move from crisp three-valued scoring to continuous scoring by extracting token-level proba-bilities from the LLM’s output logits, producing a [0 , 1] 3 vector per decision; this will allow fine-grained uncertainty visualization and better calibration of the indeterminacy measure. Finally, while we used OOMRAM as the ex-emplar lattice, the same neuro-symbolic pattern applies to any requirements meta-model with a well-defined constraint system (e.g., feature models, goal models, or SysML requirements diagrams); porting the validator to OCL or SWRL would generalize the approach to a wider class of industrial modelling languages. 
+
+Data Availability 
+
+To support reproducibility and verifiability, all source code, evaluation logs, and datasets generated during this study are publicly available in an anonymized repository at 
+
+https://anonymous.4open.science/r/Neuro-Symbolic-8B72 .
+
+Acknowledgements 
+
+The author would like to thank Western University for supporting this research. 
+
+Declaration of Competing Interest 
+
+The authors declare no conflicts of interest. 27 Declaration of Generative AI and AI-assisted technologies in the writing process 
+
+During the preparation of this work, the author(s) used Google Gemini in order to proofread and refine the manuscript and its figures. After using this tool/service, the author(s) reviewed and edited the content as needed and take(s) full responsibility for the content of the published article. 
+
+References 
+
+[1] M. Mannion, O. Lewis, H. Kaindl, G. Montroni, J. Wheadon, Repre-senting requirements of generic software in an application family model, in: W. Frakes (Ed.), Software Reuse: Advances in Software Reusabil-ity, Proceedings of the 6th International Conference on Software Reuse (ICSR-6), Vol. 1844 of Lecture Notes in Computer Science, Springer, Vienna, Austria, 2000, pp. 153–169. URL https://dl.acm.org/doi/10.5555/645546.656064 
+
+[2] P. Clements, L. Northrop, Software Product Lines: Practices and Pat-terns, Addison-Wesley Software Engineering Series, Addison-Wesley Professional, Boston, MA, USA, 2001. [3] A. Ibrahim, M. Fakhry, Building requirements repository to enable re-quirements reuse, in: Proceedings of the 14th Annual International Con-ference on Computer Theory & Applications (ICCTA), Egypt, 2004. [4] A. F. Ibrahim, Building Requirements Repository to Enable Require-ments Reuse, Master’s thesis, Arab Academy for Science, Technology and Maritime Transport, the foundational OOMRAM object-oriented requirement lattice and discriminant types are defined in Appendix B. (2005). URL https://www.researchgate.net/publication/257936401 
+
+[5] X. Hou, Y. Zhao, Y. Liu, Z. Yang, K. Wang, L. Li, X. Luo, D. Lo, J. Grundy, H. Wang, Large language models for software engineering: A systematic literature review, ACM Trans. Softw. Eng. Methodol. 33 (8) (Dec. 2024). doi:10.1145/3695988 .URL https://doi.org/10.1145/3695988 
+
+28 [6] J. Lang, M. Fischer, Generative artificial intelligence for requirements engineering in software development – analysis of the state-of-the-art, HCI International 2025 – Late Breaking Papers: 27th International Conference on Human-Computer Interaction, HCII 2025, Gothenburg, Sweden, June 22–27, 2025, Proceedings, Part XVI (2025) 175–185 doi: 10.1007/978-3-032-13187-4\_12 .URL https://doi.org/10.1007/978-3-032-13187-4_12 
+
+[7] M. A. Zadenoori, J. Dąbrowski, W. Alhoshan, L. Zhao, A. Ferrari, Large language models (llms) for requirements engineering (re): A systematic literature review, preliminary study; cross-checking not yet performed (2025). arXiv:2509.11446 .[8] T. Puchleitner, S. Lubos, A. Felfernig, D. Garber, Evaluating large lan-guage models for the automated generation of software requirements, in: Advances and Trends in Artificial Intelligence. Theory and Applications: 38th International Conference on Industrial, Engineering and Other Ap-plications of Applied Intelligent Systems, IEA/AIE 2025, Kitakyushu, Japan, July 1–4, 2025, Proceedings, Part II, Springer-Verlag, Berlin, Heidelberg, 2025, p. 443–450. doi:10.1007/978-981-96-8892-0\_37 .[9] A. Masoudifard, M. M. Sorond, M. Madadi, M. Sabokrou, E. Habibi, Leveraging graph-rag and prompt engineering to enhance llm-based au-tomated requirement traceability and compliance checks, arXiv preprint arXiv:2412.08593 (2024). URL https://arxiv.org/abs/2412.08593 
+
+[10] J. A. Khan, S. Qayyum, H. S. Dar, Large language model for require-ments engineering: A systematic literature review, Research Square (Preprint)Posted December 2024. Not yet peer reviewed. (2024). 
+
+doi:10.21203/rs.3.rs-5589929/v1 .URL https://sciety.org/articles/activity/10.21203/rs.3. rs-5589929/v1 
+
+[11] Z. Ji, N. Lee, R. Frieske, T. Yu, D. Su, Y. Xu, E. Ishii, Y. J. Bang, A. Madotto, P. Fung, Survey of hallucination in natural language gener-ation, ACM Comput. Surv. 55 (12) (Mar. 2023). doi:10.1145/3571730 .URL https://doi.org/10.1145/3571730 
+
+29 [12] Z. Zhang, C. Wang, Y. Wang, E. Shi, Y. Ma, W. Zhong, J. Chen, M. Mao, Z. Zheng, Llm hallucinations in practical code generation: Phenomena, mechanism, and mitigation, Proceedings of the ACM on Software Engineering 2 (2024) 481–503. doi:10.1145/3728894 .[13] J. J. Norheim, E. Rebentisch, D. Xiao, L. Draeger, A. Kerbrat, O. L. de Weck, Challenges in applying large language models to requirements engineering tasks, Design Science 10 (2024) e16. doi:10.1017/dsj. 2024.8 .[14] K. C. Kang, S. G. Cohen, J. A. Hess, W. E. Novak, A. S. Peterson, Feature-oriented domain analysis (foda) feasibility study, Tech. Rep. CMU/SEI-90-TR-021, Software Engineering Institute, Carnegie Mellon University (1990). [15] N. Alturayeif, I. Ahmad, J. Hassine, TraceLLM: Leveraging large lan-guage models with prompt engineering for enhanced requirements trace-ability (2026). arXiv:2602.01253 .URL https://arxiv.org/abs/2602.01253 
+
+[16] O. Ayala, P. Bechard, Reducing hallucination in structured outputs via retrieval-augmented generation, in: Proceedings of the 2024 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (Volume 6: Industry Track), Association for Computational Linguistics, Mexico City, Mexico, 2024, pp. 228–238. doi:10.18653/v1/2024.naacl-industry.19 .[17] A. Eghbali, M. Pradel, De-hallucinator: Mitigating LLM hallucina-tions in code generation tasks via iterative grounding, arXiv preprint arXiv:2401.01701 (2024). URL https://arxiv.org/abs/2401.01701 
+
+[18] S. Hiriyanna, W. Zhao, Multi-layered framework for llm hallucination mitigation in high-stakes applications: A tutorial, Computers 14 (2025) 332. doi:10.3390/computers14080332 .[19] S. Chaudhuri, K. Ellis, O. Polozov, R. Singh, A. Solar-Lezama, Y. Yue, Neurosymbolic programming, Found. Trends Program. Lang. 7 (3) (2021) 158–243. doi:10.1561/2500000049 .30 [20] A. d. Garcez, L. C. Lamb, Neurosymbolic AI: The 3rd wave, arXiv preprint arXiv:2012.05876 (2020). doi:10.48550/arXiv.2012.05876 .[21] A. Bayat, A. Abate, N. Ozay, R. M. Jungers, Llm-enhanced symbolic control for safety-critical applications (2025). arXiv:2505.11077 .URL https://arxiv.org/abs/2505.11077 
+
+[22] A. Councilman, D. J. Fu, A. Gupta, C. Wang, D. Grove, Y.-X. Wang, V. Adve, Towards formal verification of llm-generated code from natural language prompts (2025). arXiv:2507.13290 .URL https://doi.org/10.48550/arXiv.2507.13290 
+
+[23] R. Yang, X. Liu, Y. Xu, H. Zhao, Haven: Hallucination-mitigated llm for verilog code generation aligned with hdl specifications, in: Proceedings of the 2025 Design, Automation and Test in Europe Conference (DATE), IEEE, 2025. doi:10.23919/date64628.2025.10993072 .[24] Z. Wang, C. Feng, L. Liu, G. Jiao, P. Ye, The application of llms in the analysis and modeling of software requirements, in: 2024 IEEE 24th International Conference on Software Quality, Reliability, and Security Companion (QRS-C), 2024, pp. 1143–1153. doi:10.1109/QRS-C63300. 2024.00151 .[25] M. Ataei, H. Cheong, D. Grandi, Y. Wang, N. Morris, A. Tessier, Elicitron: A framework for simulating design requirements elicitation using large language model agents, in: Proceedings of the ASME In-ternational Design Engineering Technical Conferences and Comput-ers and Information in Engineering Conference (IDETC-CIE), 2024. 
+
+doi:10.1115/DETC2024-143598 .[26] M. Oriol, Q. Motger, J. Marco, X. Franch, Multi-agent debate strategies to enhance requirements engineering with large language models (2025). 
+
+arXiv:2507.05981 .URL https://arxiv.org/abs/2507.05981 
+
+[27] A. Bissoli, M. Mollaeefar, D. Van Landuyt, S. Ranise, Benchmarking the effectiveness of multi-agent llms in collaborative privacy threat modeling with linddun go, Journal of Information Security and Applications 100 (2026) 104489. doi:10.1016/j.jisa.2026.104489 .31 [28] F. Stoica, L. F. Stoica, Formal verification of business constraints in workflow-based applications, Information 15 (2024) 778. doi:10.3390/ info15120778 .[29] N. Somogyi, G. Mezei, Verifying static constraints on models using gen-eral formal verification methods, in: Proceedings of the International Conference on Model-Driven Engineering and Software Development (MODELSWARD), 2023, pp. 85–93. doi:10.5220/0011796500003402 .[30] A. Blikle, Three-valued predicates for software specification and valida-tion, Fundamenta Informaticae 14 (4) (1991) 379–400. doi:10.3233/ fi-1991-14402 .[31] B. Konikowska, A. Tarlecki, A. Blikle, A three-valued logic for software specification and verification, Fundamenta Informaticae 14 (4) (1991) 401–426. doi:10.3233/fi-1991-14403 .[32] M. Baharloo, M. Amini, A. Bohlooli, Verifying trust over iot-ad hoc networks under uncertainty, Ad Hoc Networks 151 (2023) 103380. doi: 10.1016/j.adhoc.2023.103380 .[33] A. Khushal, K. Fatima, Fuzzy three-valued logic-based machine learning for medical decision support under uncertainty, Computers in Biology and Medicine (2025). doi:10.1016/j.compbiomed.2024.109636 .[34] A. Vogelsang, J. Fischbach, Using large language models for nlp tasks in requirements engineering: A systematic guideline (2024). arXiv: 2402.13823 .URL https://doi.org/10.48550/arXiv.2402.13823 
+
+[35] F. Yang, X. Ma, S. Wang, X. Xu, Q. Cao, N. Zhan, X. Li, B. Gu, Integrating symbolic execution with llms for automated generation of program specifications, accepted by ACM TOSEM (2025). arXiv:2506. 09550 .URL https://arxiv.org/abs/2506.09550 
+
+[36] M. Mannion, B. Keepence, H. Kaindl, J. Wheadon, Reusing single sys-tem requirements from application family requirements, in: Proceedings of the 1999 International Conference on Software Engineering (IEEE Cat. No.99CB37002), 1999, pp. 453–462. doi:10.1145/302405.302677 .32

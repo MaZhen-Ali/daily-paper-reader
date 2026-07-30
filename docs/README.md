@@ -6,43 +6,55 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-07-29
-- 运行时间：2026-07-29 21:18:22 UTC
+- 最新运行日期：2026-07-30
+- 运行时间：2026-07-30 21:47:02 UTC
 - 运行状态：成功
-- 本次总论文数：7
-- 精读区：3
-- 速读区：4
+- 本次总论文数：11
+- 精读区：4
+- 速读区：7
 
 ### 今日简报（AI）
-今日聚焦 AI 驱动的需求工程前沿，深度探讨从 App 原型图自动生成待办列表及需求质量定义的重构。
-重点关注 AI 从 Mockup 转化为 Backlog 的满分表现，以及多智能体框架在“需求到代码”全链路追踪中的落地潜力。
-建议开发者尝试利用 AI 自动化工具将 UI 原型直接转化为开发任务，以显著提升需求分析与合规性审查效率。
-- 详情：[/202607/29/README](/202607/29/README)
+今日深度探索 AI 赋能软件工程全链路，涵盖从原型自动生成 Backlog 到工业级测试用例生成的 11 篇前沿成果。
+核心结论指出 AI 在解析应用原型生成需求列表上已达满分水平，且模型驱动的需求配置正通过三值不确定性评分走向精准化。
+建议开发者重点关注 Coding Agent 在长周期开发中的执行规范，以及大模型在工业测试场景下的落地实践。
+- 详情：[/202607/30/README](/202607/30/README)
 
 ### 精读区论文标签
-1. [How Well Can AI Generate Backlogs from App Mockups?](/202607/29/2607.22902v1-how-well-can-ai-generate-backlogs-from-app-mockups)  
+1. [How Well Can AI Generate Backlogs from App Mockups?](/202607/30/2607.22902v1-how-well-can-ai-generate-backlogs-from-app-mockups)  
    标签：评分：10.0/10、query:re-us
-   evidence：从原型图自动生成用户故事和待办事项
-2. [Information is all you need: Requirements Engineering Quality Reframed](/202607/29/2607.21319v1-information-is-all-you-need-requirements-engineering-quality-reframed)  
+   evidence：从原型图自动生成用户故事和史诗
+2. [Model-Driven Requirements Configuration with Three-Valued Uncertainty Scoring](/202607/30/2607.26220v1-model-driven-requirements-configuration-with-three-valued-uncertainty-scoring)  
    标签：评分：9.0/10、query:re-us
-   evidence：敏捷背景下需求工程质量的整体理论
-3. [Bridging Behavior and Implementation: Automated Java Glue Code Generation for Behavior-Driven Development](/202607/29/2607.19703v1-bridging-behavior-and-implementation-automated-java-glue-code-generation-for-behavior-driven-development)  
+   evidence：使用神经符号架构的自动化需求提取与验证
+3. [Bridging Behavior and Implementation: Automated Java Glue Code Generation for Behavior-Driven Development](/202607/30/2607.19703v1-bridging-behavior-and-implementation-automated-java-glue-code-generation-for-behavior-driven-development)  
    标签：评分：8.0/10、query:re-us
-   evidence：BDD场景作为自然语言需求和可执行标准
+   evidence：行为驱动开发中的自然语言场景
+4. [Information is all you need: Requirements Engineering Quality Reframed](/202607/30/2607.21319v1-information-is-all-you-need-requirements-engineering-quality-reframed)  
+   标签：评分：8.0/10、query:re-us
+   evidence：需求工程质量和信息流的整体理论
 
 ### 速读区论文标签
-1. [TraceDev: A Traceability-Driven Multi-agent Framework for Requirement-to-Code Development](/202607/29/2607.18886v1-tracedev-a-traceability-driven-multi-agent-framework-for-requirement-to-code-development)  
+1. [ICAE-Bench: Evaluating Coding Agents as Interactive Project Builders](/202607/30/2607.21217v1-icae-bench-evaluating-coding-agents-as-interactive-project-builders)  
    标签：评分：7.0/10、query:re-us
-   evidence：自然语言需求到代码的转换及追溯机制
-2. [Comparing and Conceptualizing Data Protection Requirements Worldwide for Privacy Regulatory Compliance](/202607/29/2607.22270v1-comparing-and-conceptualizing-data-protection-requirements-worldwide-for-privacy-regulatory-compliance)  
+   evidence：从模糊的产品意图进行需求澄清
+2. [Industrial Practice of LLM-Based Test Case Carving and Assertion Generation (Experience Paper)](/202607/30/2607.24000v1-industrial-practice-of-llm-based-test-case-carving-and-assertion-generation-experience-paper)  
    标签：评分：7.0/10、query:re-us
-   evidence：需求工程中的监管数据保护需求
-3. [ICAE-Bench: Evaluating Coding Agents as Interactive Project Builders](/202607/29/2607.21217v1-icae-bench-evaluating-coding-agents-as-interactive-project-builders)  
+   evidence：根据自然语言场景描述生成测试
+3. [CodeSpec: Dual Executable Specifications for Agentic Long-Horizon Feature Development](/202607/30/2607.26777v1-codespec-dual-executable-specifications-for-agentic-long-horizon-feature-development)  
+   标签：评分：7.0/10、query:re-us
+   evidence：功能开发的执行规范
+4. [SpecFirst: Behavioral Specification Elicitation as a First-Class Step in Agent-Based Program Synthesis from Scratch](/202607/30/2607.27167v1-specfirst-behavioral-specification-elicitation-as-a-first-class-step-in-agent-based-program-synthesis-from-scratch)  
+   标签：评分：7.0/10、query:re-us
+   evidence：受经典需求工程启发的行为规范提取
+5. [Vibe Coding: An Experiment with Test-Driven Development](/202607/30/2607.22406v1-vibe-coding-an-experiment-with-test-driven-development)  
    标签：评分：6.0/10、query:re-us
-   evidence：需求澄清与模糊产品需求
-4. [Industrial Practice of LLM-Based Test Case Carving and Assertion Generation (Experience Paper)](/202607/29/2607.24000v1-industrial-practice-of-llm-based-test-case-carving-and-assertion-generation-experience-paper)  
+   evidence：整合敏捷设计与人机协作
+6. [Domain-Specific Data Quality Analysis Using Technology-Independent Query Templates](/202607/30/2607.24151v1-domain-specific-data-quality-analysis-using-technology-independent-query-templates)  
    标签：评分：6.0/10、query:re-us
-   evidence：自然语言场景描述和验证逻辑生成
+   evidence：领域专家使用模型驱动方法定义质量需求
+7. [Large Language Models for Software Engineering Diagrams: A Systematic Review of UML and ER modelling](/202607/30/2607.26100v1-large-language-models-for-software-engineering-diagrams-a-systematic-review-of-uml-and-er-modelling)  
+   标签：评分：6.0/10、query:re-us
+   evidence：用于软件工程图表和建模的 LLM
 
 
 <div class="dpr-home-promo-card">
