@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2607.27923v1/fig-001.webp",
+      "caption": "Figure 1: The four scenarios presented in the survey",
+      "page": 3,
+      "index": 1,
+      "width": 506,
+      "height": 1034
+    },
+    {
+      "url": "assets/figures/arxiv/2607.27923v1/fig-002.webp",
+      "caption": "Table 2: Scenario gist and most endorsed non-trust reasons (number of respondents).",
+      "page": 5,
+      "index": 2,
+      "width": 1032,
+      "height": 411
+    },
+    {
+      "url": "assets/figures/arxiv/2607.27923v1/fig-003.webp",
+      "caption": "Table 1: Scenario gist and most endorsed trust reasons (number of respondents).",
+      "page": 5,
+      "index": 3,
+      "width": 1032,
+      "height": 413
+    }
+  ]
+}
