@@ -6,49 +6,58 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-08-02
-- 运行时间：2026-08-02 21:04:26 UTC
+- 最新运行日期：2026-08-03
+- 运行时间：2026-08-03 21:28:05 UTC
 - 运行状态：成功
-- 本次总论文数：9
+- 本次总论文数：12
 - 精读区：4
-- 速读区：5
+- 速读区：8
 
 ### 今日简报（AI）
-今日深度复盘 9 篇 AI 赋能软件工程的前沿论文，重点攻克从 UI 原型自动生成 Backlog 及微服务架构设计等核心环节。
-满分研究证实 AI 在视觉需求转化与工程教育中表现卓越，能精准打通从 App Mockup 到功能清单的自动化链路。
-建议开发者关注如何利用 LLM 强化需求质量与行为规范（SpecFirst），以实现从视觉设计到代码实现的无缝衔接。
-- 详情：[/202608/02/README](/202608/02/README)
+今日聚焦 AI 赋能的需求工程，深度解析 12 篇涵盖教育实证、模型驱动配置及 LLM 工业实践的前沿成果。
+重点推荐 TPACK 框架下的 AI 辅助教学研究与三值不确定性需求评分模型，揭示了需求质量提升与配置优化的新路径。
+建议开发者关注 LLM 在微服务架构合成与自动化测试中的落地表现，把握大模型驱动开发（Agentic Development）的技术趋势。
+- 详情：[/202608/03/README](/202608/03/README)
 
 ### 精读区论文标签
-1. [How Well Can AI Generate Backlogs from App Mockups?](/202608/02/2607.22902v1-how-well-can-ai-generate-backlogs-from-app-mockups)  
+1. [Integrating AI into Requirements Quality Learning in Software Engineering Education: A TPACK-Guided Empirical Study](/202608/03/2607.28176v1-integrating-ai-into-requirements-quality-learning-in-software-engineering-education-a-tpack-guided-empirical-study)  
    标签：评分：10.0/10、query:re-us
-   evidence：从应用原型自动生成包含用户故事的待办事项列表
-2. [Integrating AI into Requirements Quality Learning in Software Engineering Education: A TPACK-Guided Empirical Study](/202608/02/2607.28176v1-integrating-ai-into-requirements-quality-learning-in-software-engineering-education-a-tpack-guided-empirical-study)  
-   标签：评分：10.0/10、query:re-us
-   evidence：对用户故事质量标准的理解
-3. [Model-Driven Requirements Configuration with Three-Valued Uncertainty Scoring](/202608/02/2607.26220v1-model-driven-requirements-configuration-with-three-valued-uncertainty-scoring)  
+   evidence：对用户故事质量标准和需求质量分析的理解
+2. [Model-Driven Requirements Configuration with Three-Valued Uncertainty Scoring](/202608/03/2607.26220v1-model-driven-requirements-configuration-with-three-valued-uncertainty-scoring)  
    标签：评分：9.0/10、query:re-us
-   evidence：使用大模型进行自动化需求提取与验证
-4. [From Backlog Items to Security Guidance: Towards Continuous Security Compliance](/202608/02/2607.27374v1-from-backlog-items-to-security-guidance-towards-continuous-security-compliance)  
+   evidence：自动化需求获取及LLM生成需求的结构一致性
+3. [From Backlog Items to Security Guidance: Towards Continuous Security Compliance](/202608/03/2607.27374v1-from-backlog-items-to-security-guidance-towards-continuous-security-compliance)  
+   标签：评分：9.0/10、query:re-us
+   evidence：基于NLP的待办事项增强及待办事项与安全需求的关联
+4. [SpecFirst: Behavioral Specification Elicitation as a First-Class Step in Agent-Based Program Synthesis from Scratch](/202608/03/2607.27167v1-specfirst-behavioral-specification-elicitation-as-a-first-class-step-in-agent-based-program-synthesis-from-scratch)  
    标签：评分：8.0/10、query:re-us
-   evidence：基于NLP的待办事项增强与安全需求提取
+   evidence：受经典需求工程启发进行行为规范提取
 
 ### 速读区论文标签
-1. [SpecFirst: Behavioral Specification Elicitation as a First-Class Step in Agent-Based Program Synthesis from Scratch](/202608/02/2607.27167v1-specfirst-behavioral-specification-elicitation-as-a-first-class-step-in-agent-based-program-synthesis-from-scratch)  
+1. [Industrial Practice of LLM-Based Test Case Carving and Assertion Generation (Experience Paper)](/202608/03/2607.24000v1-industrial-practice-of-llm-based-test-case-carving-and-assertion-generation-experience-paper)  
    标签：评分：7.0/10、query:re-us
-   evidence：受需求工程启发的行为规范提取
-2. [From Textual Requirements to Microservice Architectures - A Comprehensive Evaluation of LLM-Based Design Synthesis](/202608/02/2607.28307v1-from-textual-requirements-to-microservice-architectures---a-comprehensive-evaluation-of-llm-based-design-synthesis)  
+   evidence：从自然语言场景描述生成可执行测试
+2. [CodeSpec: Dual Executable Specifications for Agentic Long-Horizon Feature Development](/202608/03/2607.26777v1-codespec-dual-executable-specifications-for-agentic-long-horizon-feature-development)  
    标签：评分：7.0/10、query:re-us
-   evidence：从自然语言需求中合成微服务架构
-3. [Industrial Practice of LLM-Based Test Case Carving and Assertion Generation (Experience Paper)](/202608/02/2607.24000v1-industrial-practice-of-llm-based-test-case-carving-and-assertion-generation-experience-paper)  
+   evidence：用于功能开发的可执行规范，维护设计与实现的一致性
+3. [From Textual Requirements to Microservice Architectures - A Comprehensive Evaluation of LLM-Based Design Synthesis](/202608/03/2607.28307v1-from-textual-requirements-to-microservice-architectures---a-comprehensive-evaluation-of-llm-based-design-synthesis)  
+   标签：评分：7.0/10、query:re-us
+   evidence：利用文本需求桥接需求工程与架构设计
+4. [Structural Validation of LLM-Generated Microservice Decompositions Using Source-Code Dependencies](/202608/03/2607.28331v1-structural-validation-of-llm-generated-microservice-decompositions-using-source-code-dependencies)  
+   标签：评分：7.0/10、query:re-us
+   evidence：从文本需求生成微服务分解并验证结构一致性
+5. [An Empirical Study of Coordination Mode as the First-Class Citizen in From-Scratch Multi-Agent Coding](/202608/03/2607.27877v1-an-empirical-study-of-coordination-mode-as-the-first-class-citizen-in-from-scratch-multi-agent-coding)  
    标签：评分：6.0/10、query:re-us
-   evidence：从自然语言场景描述生成回归测试
-4. [The Case for Vibe Modeling: A Missing Step in AI-Based Trustworthy Software Development](/202608/02/2607.27923v1-the-case-for-vibe-modeling-a-missing-step-in-ai-based-trustworthy-software-development)  
+   evidence：使用层级需求和确定性准则评估多智能体编程
+6. [DragonCrawl: A Generative, Intent-Based Framework for Scalable Mobile End-to-End Testing](/202608/03/2607.28750v1-dragoncrawl-a-generative-intent-based-framework-for-scalable-mobile-end-to-end-testing)  
    标签：评分：6.0/10、query:re-us
-   evidence：AI开发中体现人类意图的中间表示
-5. [Structural Validation of LLM-Generated Microservice Decompositions Using Source-Code Dependencies](/202608/02/2607.28331v1-structural-validation-of-llm-generated-microservice-decompositions-using-source-code-dependencies)  
+   evidence：在移动端测试中验证特定的用户流程和关键功能
+7. [Analysing User Reviews to Identify User Concerns Around Permissions in AI Apps](/202608/03/2607.29343v1-analysing-user-reviews-to-identify-user-concerns-around-permissions-in-ai-apps)  
    标签：评分：6.0/10、query:re-us
-   evidence：根据文本需求生成分解方案
+   evidence：从非结构化应用评论中提取用户关注点和需求
+8. [From Code Review to Code Critique: Intent, Drift, and Spotlight for AI-Generated Diffs at Scale](/202608/03/2607.29516v1-from-code-review-to-code-critique-intent-drift-and-spotlight-for-ai-generated-diffs-at-scale)  
+   标签：评分：6.0/10、query:re-us
+   evidence：意图预测以及开发者意图与代理输出之间的偏差检测
 
 
 <div class="dpr-home-promo-card">

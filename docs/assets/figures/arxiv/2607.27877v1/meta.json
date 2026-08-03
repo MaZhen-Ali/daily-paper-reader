@@ -1,0 +1,78 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2607.27877v1/fig-001.webp",
+      "caption": "Figure 5: Collaboration-mode radar on ten normalized axes. Higher values indicate stronger capability or lower cost.",
+      "page": 6,
+      "index": 1,
+      "width": 495,
+      "height": 243
+    },
+    {
+      "url": "assets/figures/arxiv/2607.27877v1/fig-002.webp",
+      "caption": "Table 3: Average metrics over all 10 projects. The metric definition and bold convention are the same as Table 2.",
+      "page": 6,
+      "index": 2,
+      "width": 456,
+      "height": 689
+    },
+    {
+      "url": "assets/figures/arxiv/2607.27877v1/fig-003.webp",
+      "caption": "Table 7: The ten collaboration modes as instances of the mode template. Serialized-handoff modes pass work through explicit artifact boundaries; parallel-contention modes maximize concurrency and must reconcile overlapping changes. Pipeline is intentionally almost serial and serves as a coordination-control condition.",
+      "page": 11,
+      "index": 3,
+      "width": 944,
+      "height": 721
+    },
+    {
+      "url": "assets/figures/arxiv/2607.27877v1/fig-004.webp",
+      "caption": "Figure 7: One MSEval round end to end, from the feature-squad / Claude Opus 4.8 / instant-messaging run. Top (collaboration): a periodic LegoGent sync broadcast—the runtime-state block and the “idle-and-stable + required-artifacts” gate are the actual basis for accepting a round, and each agent reports the same four fields every cycle; here dev-4 crashed on a provider API error and dev-1 absorbed its frontend work, a real multi-agent failure the round still had to reconcile. Bottom (evaluation): TAgent then grades the deployed round—route discovery, a passing API check, and a failing security check—with every verdict citing concrete behavior (status codes, measured latency, file:line); this item-level evidence is returned to LegoGent as the ranked repair agenda that opens the next round.",
+      "page": 15,
+      "index": 4,
+      "width": 1050,
+      "height": 1117
+    },
+    {
+      "url": "assets/figures/arxiv/2607.27877v1/fig-005.webp",
+      "caption": "Table 1: Comparison of MSEval against existing benchmarks. MSEval is the first benchmark that examine the impact of multi-agent coordination on from-scratch coding.",
+      "page": 2,
+      "index": 5,
+      "width": 500,
+      "height": 256
+    },
+    {
+      "url": "assets/figures/arxiv/2607.27877v1/fig-006.webp",
+      "caption": "Figure 1: MSEval overview. MSEval builds and evaluates a web app from requirement document without detailed API specifications and evaluate the projects comprehensively.",
+      "page": 3,
+      "index": 6,
+      "width": 872,
+      "height": 425
+    },
+    {
+      "url": "assets/figures/arxiv/2607.27877v1/fig-007.webp",
+      "caption": "Table 8: Per-project × per-mode best score, averaged over the three full-grid models (DeepSeek v4 Flash/Pro, GLM-5.2). Columns are grouped as in the main-paper radar panels; the right column and bottom row give project and mode means. The best mode per project is discussed in the text.",
+      "page": 13,
+      "index": 7,
+      "width": 636,
+      "height": 317
+    },
+    {
+      "url": "assets/figures/arxiv/2607.27877v1/fig-008.webp",
+      "caption": "Figure 4: Pareto-frontier collaboration modes on instant messaging, scores against USD cost and wall-clock time.",
+      "page": 5,
+      "index": 8,
+      "width": 920,
+      "height": 254
+    },
+    {
+      "url": "assets/figures/arxiv/2607.27877v1/fig-009.webp",
+      "caption": "Table 2: Metrics of instant-messaging project. We display the R1/R2/R3 scores with the coding time (in minutes), cost (in USD), and total input and output tokens (in million); bold marks the row-best model and its associated best-round metrics.",
+      "page": 5,
+      "index": 9,
+      "width": 1052,
+      "height": 242
+    }
+  ]
+}
