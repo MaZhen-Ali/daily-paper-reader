@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2607.29175v1/fig-001.webp",
+      "caption": "Table 1: Operational domains and representative tool sets used to evaluate SyntheticAgentTraceQA. The evaluation spans four domains: three enterprise analytics environments (finance, research portfolio, and supply chain) and the genius_song_lyrics",
+      "page": 7,
+      "index": 1,
+      "width": 976,
+      "height": 190
+    },
+    {
+      "url": "assets/figures/arxiv/2607.29175v1/fig-002.webp",
+      "caption": "Figure 1: Overview of SyntheticAgentTraceQA. The execution-first pipeline constructs and validates tool-use traces before",
+      "page": 4,
+      "index": 2,
+      "width": 1056,
+      "height": 509
+    }
+  ]
+}

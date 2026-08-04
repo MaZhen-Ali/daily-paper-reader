@@ -1,0 +1,564 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-08-04T21:48:39.388176+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 5,
+    "deep_cap": 6,
+    "deep_selected": 5,
+    "quick_candidates": 9,
+    "quick_skim_target": 11,
+    "quick_selected": 9
+  },
+  "deep_dive": [
+    {
+      "id": "2607.26220v1",
+      "source": "arxiv",
+      "title": "Model-Driven Requirements Configuration with Three-Valued Uncertainty Scoring",
+      "abstract": "Context: Large Language Models (LLMs) offer natural-language flexibility for automated requirements elicitation but frequently generate structurally invalid requirements and logical inconsistencies, lacking formal correctness guarantees.   Objectives: This study aims to eliminate logical inconsistencies and enforce structural conformance in LLM-generated requirements while quantifying the LLM's pre-validation decision uncertainty within a formal domain model.   Methods: We present a neuro-symbolic multi-agent architecture that operationalizes the Object-Oriented Method for Requirements Authoring and Management (OOMRAM) lattice. The LLM acts as a non-deterministic heuristic for lattice traversal, while a deterministic symbolic validator enforces all structural constraints. We introduce a three-valued (T, I, F) -- Truth, Indeterminacy, Falsity -- framework to classify and score the LLM's requirement decisions before and after validation.   Results: Evaluated across 37 natural-language project visions in eleven application families, the system completely eliminated structural inconsistencies in 35 out of 37 cases (94.6%), with the remaining two containing only 6 unresolved structural errors (0.39% of decisions) due to iteration limits. Three-valued analysis revealed that 24.7% of all decisions are indeterminate -- structurally valid but discretionary choices not explicitly mandated by the stakeholder.   Conclusion: Offloading structural integrity to a deterministic symbolic layer successfully guarantees structural conformance, while the three-valued classification provides a formal way to measure neural uncertainty, facilitating safe LLM deployment in formal requirements engineering.",
+      "authors": [
+        "Ahmed Ibrahim"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-07-28T19:49:42+00:00",
+      "link": "https://arxiv.org/pdf/2607.26220v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "automated requirements elicitation and structural conformance validation",
+      "llm_evidence_cn": "自动化需求提取与结构一致性验证",
+      "llm_evidence": "自动化需求提取与结构一致性验证",
+      "canonical_evidence": "自动化需求提取与结构一致性验证",
+      "llm_tldr_en": "Uses a neuro-symbolic architecture to automate requirements elicitation while ensuring formal correctness.",
+      "llm_tldr_cn": "使用神经符号架构自动化需求提取，同时确保形式正确性。",
+      "llm_tldr": "使用神经符号架构自动化需求提取，同时确保形式正确性。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Automated tools for user story generation and validation",
+      "matched_requirement_id": "req-8",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.28176v1",
+      "source": "arxiv",
+      "title": "Integrating AI into Requirements Quality Learning in Software Engineering Education: A TPACK-Guided Empirical Study",
+      "abstract": "The rapid adoption of generative Artificial Intelligence (AI) in software engineering (SE) practice creates a need for pedagogically grounded approaches to AI integration in SE education, especially in conceptually intensive subjects such as requirements engineering (RE). This study examines a TPACK-guided integration of a multi-agent AI tool into a master-level RE assignment on requirements quality analysis. Using a mixed-methods design (N=100; 72 submissions analysed), we examine how structured assignment design shaped students' AI use, affected their understanding of user story quality criteria, and influenced their perceptions of AI's benefits and limitations. Results show that students used the AI tool selectively, mainly as support for analysis and evaluation rather than automation. Alignment improvements were most evident for structurally concrete requirements quality dimensions, such as value articulation and testability, while negotiability showed mixed effects. Students reported conditional trust, active refinement, and increased awareness of quality criteria, alongside moderate usability challenges. The findings show that TPACK-guided scaffolding can align AI affordances with pedagogical goals and RE content, offering design guidance for responsible AI integration in RE education.",
+      "authors": [
+        "Hansika Ekanayake Mudiyanselage",
+        "Rohan Jai Dharmaraj",
+        "Malik Abdul Sami",
+        "Zheying Zhang"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-07-30T13:15:16+00:00",
+      "link": "https://arxiv.org/pdf/2607.28176v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "affected their understanding of user story quality criteria",
+      "llm_evidence_cn": "影响了他们对用户故事质量标准的理解",
+      "llm_evidence": "影响了他们对用户故事质量标准的理解",
+      "canonical_evidence": "影响了他们对用户故事质量标准的理解",
+      "llm_tldr_en": "Explores AI integration in teaching requirements engineering and its impact on user story quality analysis.",
+      "llm_tldr_cn": "探讨了在需求工程教学中集成AI对用户故事质量分析能力的影响。",
+      "llm_tldr": "探讨了在需求工程教学中集成AI对用户故事质量分析能力的影响。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Quality assessment and improvement of user stories",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.27374v1",
+      "source": "arxiv",
+      "title": "From Backlog Items to Security Guidance: Towards Continuous Security Compliance",
+      "abstract": "Continuous software engineering in regulated domains requires engineering teams to address security throughout the development lifecycle. Yet making security requirements explicit in backlog items is still problematic. Engineers must instead infer security relevance of backlog items from brief, free-form descriptions and often lack timely guidance on applicable requirements. We present an NLP-based backlog enrichment system that detects security-relevant backlog items and links them to relevant security requirements. The approach combines a security-relevance classifier with a retrieval-augmented generation (RAG) pipeline over security requirements documents. The approach was developed and evaluated in the context of a large enterprise in highly regulated domains. We present three contributions. First, we release a dataset of 288 backlog items labeled for security relevance by nine security practitioners, with substantial agreement (Fleiss' $κ=0.787$). Second, a recall-oriented classifier achieving $F2=0.774$ in-distribution and mean zero-shot G-measure $\\approx 0.65$ across five established benchmarks, matching or outperforming most published classical-ML and open-source GPT baselines. Third, we preliminarily evaluated a four-stage security requirements document-grounded RAG pipeline with two practitioners on industrial backlogs using company-internal security policies and CIS Benchmarks. Of the retrieved 24 clauses, 12 were rated at least 4/5 for relevance. Our findings provide first indicators that NLP-based product backlog enrichment can support engineers in identifying security requirements early in the development process. With this work we aim to facilitate continuous security compliance through proactive introduction of security requirements in continuous software engineering.",
+      "authors": [
+        "Ignacio García Núñez",
+        "Florian Angermeir",
+        "Fabiola Moyón Constante"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.CR"
+      ],
+      "published": "2026-07-29T18:31:01+00:00",
+      "link": "https://arxiv.org/pdf/2607.27374v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "NLP-based detection of security requirements from backlog items",
+      "llm_evidence_cn": "基于NLP从待办事项中检测安全需求",
+      "llm_evidence": "基于NLP从待办事项中检测安全需求",
+      "canonical_evidence": "基于NLP从待办事项中检测安全需求",
+      "llm_tldr_en": "An NLP system that identifies security-relevant backlog items and links them to formal requirements.",
+      "llm_tldr_cn": "一种NLP系统，可识别与安全相关的待办事项并将其链接到正式需求。",
+      "llm_tldr": "一种NLP系统，可识别与安全相关的待办事项并将其链接到正式需求。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Automated extraction of user stories from text",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2608.01533v1",
+      "source": "arxiv",
+      "title": "Algorithm-driven Development: A Proactive Approach to Improving Software Quality and Reducing Defects",
+      "abstract": "Ensuring software quality while meeting deadlines and adapting to evolving requirements is a persistent challenge in software engineering practice. This paper introduces Algorithm-Driven Development (ADD), a methodology developed from industrial practice to address recurring challenges in translating requirements into reliable, testable, and maintainable software behavior. ADD translates requirements into algorithmic flowcharts from which acceptance tests are systematically derived. These flowcharts serve both as specification artifacts and as technical blueprints, supporting shared understanding between stakeholders and developers. By linking requirement modeling with automated test generation, ADD provides systematic coverage of functional scenarios, including edge cases, from the outset of development. The approach was evaluated over a four-year period within an industrial project at Dassault Systèmes, involving two development teams, 22,444 lines of production code for Team 1, and 157 APIs analyzed for Team 2. The evaluation combined longitudinal quality and delivery indicators with a comparative analysis of ADD, TDD, and test-last development practices across API functions of different complexity levels. Empirical data collected from internal lifecycle management and CI/CD systems show that ADD supported sustained code coverage above 95%, low defect density in both QA and post-release phases, and a stable delivery cadence. These findings provide evidence of ADD's potential to strengthen the connection between requirements, testing, and implementation in industrial software development contexts.",
+      "authors": [
+        "Philippe Jawish",
+        "Pierre Evrard",
+        "Alexandre Lemerle",
+        "Adrian Genin",
+        "Layal Dergham",
+        "Séverin Lanfranchi"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.PL"
+      ],
+      "published": "2026-08-02T22:58:00+00:00",
+      "link": "https://arxiv.org/pdf/2608.01533v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "translates requirements into algorithmic flowcharts from which acceptance tests are systematically derived",
+      "llm_evidence_cn": "将需求转化为算法流程图，并从中系统地导出验收测试",
+      "llm_evidence": "将需求转化为算法流程图，并从中系统地导出验收测试",
+      "canonical_evidence": "将需求转化为算法流程图，并从中系统地导出验收测试",
+      "llm_tldr_en": "Introduces a methodology to link requirement modeling with automated acceptance test generation.",
+      "llm_tldr_cn": "介绍了一种将需求建模与自动化验收测试生成相结合的方法论。",
+      "llm_tldr": "介绍了一种将需求建模与自动化验收测试生成相结合的方法论。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Defining and validating user story acceptance criteria",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2608.01640v1",
+      "source": "arxiv",
+      "title": "AI-assisted Script Management for Requirements Elicitation Interviews",
+      "abstract": "Requirements elicitation interviews require interviewers to balance topic coverage, active listening, and adaptive probing while responding to stakeholders in real time. Although prior work has explored AI support for isolated interviewing tasks, such as script generation and follow-up question generation, little is known about how integrated support affects the interview and what requirements artifacts emerge. Furthermore, script management---which helps the interviewer track topic coverage in real time and decide when to probe further---remains underexplored. This paper presents an AI-assisted elicitation workflow that combines theory-guided script generation grounded in business goals with live support for topic coverage tracking and on-demand follow-up question generation. We evaluate the workflow in a between-subjects quasi-experimental study comparing a no-training, AI-assisted condition with a training, AI-unassisted condition. Based on a rubric derived from elicitation best practices, the AI-generated scripts score higher than training-only scripts (92.8 vs. 74.8 out of 100). AI-assisted interviews cover fewer topics (9.6 vs. 14.5), cover more scripted questions (86% vs. 69%), ask more follow-ups per topic (3.43 vs. 1.15), and produce more refined goal models (lowest-level goal fraction 0.653 vs. 0.598). Participants find script management useful, rating topic tracking as the most useful workflow feature (86% agreement). Collectively, these results show that the AI-assisted condition is associated with a different interview trajectory and different elicited requirements than a training-only condition, positioning AI-assisted workflows as elicitation scaffolds for future studies.",
+      "authors": [
+        "Anmol Singhal",
+        "Paulo Carvalho",
+        "Travis Breaux"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-08-03T03:22:37+00:00",
+      "link": "https://arxiv.org/pdf/2608.01640v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "AI-assisted requirements elicitation and artifact emergence",
+      "llm_evidence_cn": "AI辅助需求获取及需求制品生成",
+      "llm_evidence": "AI辅助需求获取及需求制品生成",
+      "canonical_evidence": "AI辅助需求获取及需求制品生成",
+      "llm_tldr_en": "Introduces an AI-assisted workflow for requirements elicitation interviews and tracking topic coverage.",
+      "llm_tldr_cn": "介绍了一种AI辅助的需求获取访谈工作流，支持主题覆盖跟踪和需求制品生成。",
+      "llm_tldr": "介绍了一种AI辅助的需求获取访谈工作流，支持主题覆盖跟踪和需求制品生成。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2607.24000v1",
+      "source": "arxiv",
+      "title": "Industrial Practice of LLM-Based Test Case Carving and Assertion Generation (Experience Paper)",
+      "abstract": "Enterprise regression testing for microservice systems is often constrained by incomplete or outdated documentation. In practice, QA engineers frequently rely on real execution traffic to reconstruct business scenarios; however, turning raw traffic into replayable regression tests with stable validation logic remains labor-intensive and error-prone.   This paper presents NL2Test, an end-to-end approach and tool that generates executable API regression tests from (i) a natural-language scenario description and (ii) a traffic capture recorded while executing the scenario. NL2Test addresses two coupled tasks: test case carving, which extracts a minimal replayable request sequence and reconstructs data dependencies so that dynamic values are bound from their responses rather than hard-coded; and assertion generation, which produces assertions aligned with business intent while avoiding non-deterministic fields and hallucinated paths. To improve reliability, NL2Test uses LLMs for semantic interpretation and constrained code synthesis, and uses deterministic algorithms for request filtering, dependency confirmation via value consistency, and assertion-path validation.   We evaluate NL2Test on 51 industrial regression scenarios extracted from a large consumer-facing Internet company. NL2Test achieves an exact-match rate of 82.4% (42/51), and produces a functionally usable draft in 98.0% (50/51) of scenarios when allowing minor post-edits. In a 9-month production deployment starting in March 2025, NL2Test generated 3,196 test cases with an overall code adoption rate of 85.4%. These results indicate that traffic-grounded generation with deterministic guardrails can substantially reduce manual effort while improving regression automation in complex microservice environments.",
+      "authors": [
+        "Haozhen You",
+        "Zhen Dong",
+        "Jingjing Wang",
+        "Qiang Li",
+        "Xin Peng"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-07-27T04:52:51+00:00",
+      "link": "https://arxiv.org/pdf/2607.24000v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Generates executable tests from natural-language scenario descriptions",
+      "llm_evidence_cn": "从自然语言场景描述生成可执行测试",
+      "llm_evidence": "从自然语言场景描述生成可执行测试",
+      "canonical_evidence": "从自然语言场景描述生成可执行测试",
+      "llm_tldr_en": "NL2Test generates API regression tests from natural language scenarios and traffic captures.",
+      "llm_tldr_cn": "NL2Test 通过自然语言场景和流量捕获生成 API 回归测试。",
+      "llm_tldr": "NL2Test 通过自然语言场景和流量捕获生成 API 回归测试。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Defining and validating user story acceptance criteria",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2607.24000v2",
+      "source": "arxiv",
+      "title": "Industrial Practice of LLM-Based Test Case Carving and Assertion Generation (Experience Paper)",
+      "abstract": "Enterprise regression testing for microservice systems is often constrained by incomplete or outdated documentation. In practice, QA engineers frequently rely on real execution traffic to reconstruct business scenarios; however, turning raw traffic into replayable regression tests with stable validation logic remains labor-intensive and error-prone.   This paper presents NL2Test, an end-to-end approach and tool that generates executable API regression tests from (i) a natural-language scenario description and (ii) a traffic capture recorded while executing the scenario. NL2Test addresses two coupled tasks: test case carving, which extracts a minimal replayable request sequence and reconstructs data dependencies so that dynamic values are bound from their responses rather than hard-coded; and assertion generation, which produces assertions aligned with business intent while avoiding non-deterministic fields and hallucinated paths. To improve reliability, NL2Test uses LLMs for semantic interpretation and constrained code synthesis, and uses deterministic algorithms for request filtering, dependency confirmation via value consistency, and assertion-path validation.   We evaluate NL2Test on 51 industrial regression scenarios extracted from a large consumer-facing Internet company. NL2Test achieves an exact-match rate of 82.4% (42/51), and produces a functionally usable draft in 98.0% (50/51) of scenarios when allowing minor post-edits. In a 9-month production deployment starting in March 2025, NL2Test generated 3,196 test cases with an overall code adoption rate of 85.4%. These results indicate that traffic-grounded generation with deterministic guardrails can substantially reduce manual effort while improving regression automation in complex microservice environments.",
+      "authors": [
+        "Haozhen You",
+        "Zhen Dong",
+        "Jingjing Wang",
+        "Qiang Li",
+        "Xin Peng"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-07-27T04:52:51+00:00",
+      "link": "https://arxiv.org/pdf/2607.24000v2",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "generates executable API regression tests from natural-language scenario description",
+      "llm_evidence_cn": "从自然语言场景描述生成可执行的API回归测试",
+      "llm_evidence": "从自然语言场景描述生成可执行的API回归测试",
+      "canonical_evidence": "从自然语言场景描述生成可执行的API回归测试",
+      "llm_tldr_en": "Presents a tool to generate executable tests from natural language scenarios, aiding acceptance criteria validation.",
+      "llm_tldr_cn": "提出一种从自然语言场景生成可执行测试的工具，有助于验收标准的验证。",
+      "llm_tldr": "提出一种从自然语言场景生成可执行测试的工具，有助于验收标准的验证。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Defining and validating user story acceptance criteria",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2607.26777v1",
+      "source": "arxiv",
+      "title": "CodeSpec: Dual Executable Specifications for Agentic Long-Horizon Feature Development",
+      "abstract": "LLM-based code agents have advanced repository-level software development through iterative interaction with codebases and tools. However, feature development requires integrating new behaviors into existing architectures through coherent cross-component functional chains. Existing agents typically derive such chains through free-form reasoning, often producing unreliable feature designs with incomplete functional chains. Moreover, textual designs are difficult to verify and enforce, making it challenging to maintain design-implementation consistency throughout long-horizon development. We propose CodeSpec, a dual executable specification method for repository-level feature development. It builds reliable functional chains from evidence pairing sub-requirement semantics with repository architectures, then compiles them into complementary architecture and behavior specifications that check chain completeness and correctness while preserving design-implementation consistency over long interactions. On FeatureBench, which targets feature development in existing repositories, CodeSpec achieves 70.7%, 55.0%, and 49.9% pass rates under DeepSeek-V4-Pro, outperforming representative baselines such as Claude Code. Results on the repository generation benchmark NL2Repo-Bench further demonstrate its generalizability.",
+      "authors": [
+        "Peiding Wang",
+        "Li Zhang",
+        "Fang Liu",
+        "Taichuan Li",
+        "Yinghao Zhu"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-07-29T11:20:49+00:00",
+      "link": "https://arxiv.org/pdf/2607.26777v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Executable specifications for feature development",
+      "llm_evidence_cn": "功能开发的可执行规范",
+      "llm_evidence": "功能开发的可执行规范",
+      "canonical_evidence": "功能开发的可执行规范",
+      "llm_tldr_en": "Proposes dual executable specifications to maintain consistency between design and implementation.",
+      "llm_tldr_cn": "提出双重可执行规范，以保持设计与实现之间的一致性。",
+      "llm_tldr": "提出双重可执行规范，以保持设计与实现之间的一致性。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Defining and validating user story acceptance criteria",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2607.26100v1",
+      "source": "arxiv",
+      "title": "Large Language Models for Software Engineering Diagrams: A Systematic Review of UML and ER modelling",
+      "abstract": "Large language models (LLMs) are increasingly applied to diagram-based software and data modelling. Among various modelling notations, UML and entity-relationship (ER) diagrams are the most widely adopted for software modelling and data modelling, respectively. Recent literature has investigated various applications of LLMs in diagram modelling; however, their effectiveness and limitations have not been extensively discussed. This systematic literature review analyses 64 studies published between 2023 and 2025, examining diagram coverage, modelling tasks, technical approaches, evaluation practices, and limitations. Our findings reveal significant concentration patterns and gaps. UML-based software modelling strongly dominates, with class diagrams receiving the most attention whilst behavioural diagrams and data modelling remain underrepresented. Diagram construction from natural language is the primary focus, with limited work on transformation, quality assurance, and consistency checking. GPT-based models are heavily prevalent, raising concerns about reproducibility and vendor dependence. Evaluation practices are heterogeneous, employing diverse metrics and custom datasets with limited benchmark reuse and inconsistent reporting of robustness and statistical significance. Common limitations include semantic inaccuracies, hallucinated diagram elements, sensitivity to prompt formulation, and reproducibility constraints. This survey provides the first systematic synthesis of LLM-based diagram modelling research, highlighting needs for standardised benchmarks, stronger evaluation protocols, broader diagram coverage, and techniques for improving semantic reliability and multi-view consistency.",
+      "authors": [
+        "Mojdeh Rahmanian",
+        "Ashkan Sami",
+        "Yanchao Yu"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-07-28T06:41:32+00:00",
+      "link": "https://arxiv.org/pdf/2607.26100v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "systematic review of LLMs for software engineering modeling",
+      "llm_evidence_cn": "LLM在软件工程建模中的系统综述",
+      "llm_evidence": "LLM在软件工程建模中的系统综述",
+      "canonical_evidence": "LLM在软件工程建模中的系统综述",
+      "llm_tldr_en": "A systematic review of LLM applications in software modeling, covering UML and ER diagrams.",
+      "llm_tldr_cn": "对LLM在软件建模（包括UML和ER图）中应用的系统性综述，分析了现状与挑战。",
+      "llm_tldr": "对LLM在软件建模（包括UML和ER图）中应用的系统性综述，分析了现状与挑战。",
+      "llm_tags": [
+        "query:re-us:composite"
+      ],
+      "matched_query_tag": "query:re-us:composite",
+      "matched_query_text": "Papers central to 需求工程领域的用户故事相关的论文, especially work that connects or combines: User stories in software development and requirements engineering; Requirements engineering methodologies and practices; Agile requirements engineering and management; Quality assessment and improvement of user stories; Automated extraction of user stories from text; Defining and validating user story acceptance criteria; State of the art in user story research for requirements engineering; Automated tools for user story generation and validation; Impact of user story quality on software project success.",
+      "matched_requirement_id": "req-composite-re-us",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2607.27167v1",
+      "source": "arxiv",
+      "title": "SpecFirst: Behavioral Specification Elicitation as a First-Class Step in Agent-Based Program Synthesis from Scratch",
+      "abstract": "LLM-based agents excel at software engineering tasks where an existing codebase provides context, but constructing a program from scratch remains fundamentally harder. Recent benchmarks such as ProgramBench quantify this gap: given only natural-language documentation and an execute-only binary as a behavioral oracle, even frontier models solve fewer than 1% of instances. Existing frameworks conflate documentation reading, behavioral exploration, and code synthesis into a single pass, causing agents to probe insufficiently, lose behavioral intent as context drifts, and propagate early misinterpretations into the final implementation. Inspired by classical requirements engineering, we argue that behavioral specification elicitation should be a first-class phase that precedes implementation. We present SpecFirst, a two-stage framework that forces the specification elicitation before code synthesis. A dedicated spec agent first probes the binary and combines observations with documentation into a structured specification. Next, a code synthesis agent then uses this specification to drive implementation. This decomposition resolves documentation ambiguities before coding begins and provides a stable behavioral reference throughout synthesis. We evaluate SpecFirst on all 200 ProgramBench instances across four models spanning two families and an order of magnitude of capability. SpecFirst consistently outperforms the single-loop baseline, improving test pass rates by 6.9%-21.3% and binary exploration coverage by 9.4%-18.5%, all statistically significant. Behavioral analysis on code synthesis further shows that a prior specification enables earlier and more sustained code construction. Our results demonstrate that an explicit requirements-engineering phase is an effective paradigm for from-scratch program construction.",
+      "authors": [
+        "Yihao Chen",
+        "Shi Chang",
+        "Feng Lin",
+        "Khaled Chawa",
+        "Boyuan Chen",
+        "Shaowei Wang",
+        "Ahmed E. Hassan"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.CL"
+      ],
+      "published": "2026-07-29T17:42:47+00:00",
+      "link": "https://arxiv.org/pdf/2607.27167v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "behavioral specification elicitation inspired by requirements engineering",
+      "llm_evidence_cn": "受需求工程启发的行为规范提取",
+      "llm_evidence": "受需求工程启发的行为规范提取",
+      "canonical_evidence": "受需求工程启发的行为规范提取",
+      "llm_tldr_en": "Introduces SpecFirst to improve program synthesis by eliciting behavioral specifications from documentation.",
+      "llm_tldr_cn": "引入 SpecFirst，通过从文档中提取行为规范来改进程序合成。",
+      "llm_tldr": "引入 SpecFirst，通过从文档中提取行为规范来改进程序合成。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2607.29175v1",
+      "source": "arxiv",
+      "title": "Execution-First Synthetic Tool-Use Trace Generation for LLM Agents",
+      "abstract": "Agentic software-engineering and industrial systems increasingly operate through executable workflows rather than code genera- tion alone: they search artifacts, invoke tools, inspect structured observations, and query databases. Training these agents requires supervision data that captures valid tool interactions and executable workflows. However, traditional query-first data synthesis can fail because plausible user requests may not correspond to valid tool sequences, compatible parameters, or available data. To address this limitation, we propose SyntheticAgentTraceQA, an execution- first framework for generating scalable supervision data for tool- augmented agents. Our framework first constructs high-level work- flow structures, maps them to available tools through dependency- aware assignment, executes and validates the resulting traces in con- trolled environments, and only then synthesizes natural-language user tasks, teacher-generated reasoning annotations, and reference answers. We evaluate the framework across four tool ecosystems and use the resulting data to fine-tune and evaluate Qwen model variants. The results show that execution-grounded supervision improves tool execution behavior, reference-trace agreement, and answer-generation performance on the evaluated tasks. Further analysis reveals a supervision trade-off: masked supervision, which excludes reasoning annotations from the training objective, im- proves final-answer metrics, whereas full supervision, computing loss over the complete assistant output including reasoning tokens, underperforms on answer quality and does not consistently im- prove reference-trace agreement, particularly at the 9B scale. These findings highlight the importance of designing synthetic supervi- sion according to the desired capabilities of tool-augmented agents.",
+      "authors": [
+        "Hafsa Ouajdi",
+        "Francesco Giannuzzo",
+        "Alaa Boukhary",
+        "Paolo Papotti",
+        "Gerard Conangla",
+        "Adam Elwood"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-07-31T08:52:26+00:00",
+      "link": "https://arxiv.org/pdf/2607.29175v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Generates executable workflows from user requests for agent training",
+      "llm_evidence_cn": "从用户请求中生成可执行工作流用于智能体训练",
+      "llm_evidence": "从用户请求中生成可执行工作流用于智能体训练",
+      "canonical_evidence": "从用户请求中生成可执行工作流用于智能体训练",
+      "llm_tldr_en": "SyntheticAgentTraceQA generates scalable supervision data for tool-augmented agents from user requests.",
+      "llm_tldr_cn": "SyntheticAgentTraceQA 为工具增强型智能体从用户请求中生成可扩展的监督数据。",
+      "llm_tldr": "SyntheticAgentTraceQA 为工具增强型智能体从用户请求中生成可扩展的监督数据。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Automated tools for user story generation and validation",
+      "matched_requirement_id": "req-8",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2607.28307v1",
+      "source": "arxiv",
+      "title": "From Textual Requirements to Microservice Architectures - A Comprehensive Evaluation of LLM-Based Design Synthesis",
+      "abstract": "Microservice architectures have become dominant for modernizing monolithic systems, yet identifying appropriate services remains challenging and largely manual. Existing decomposition approaches are predominantly code-centric, limiting applicability in early design stages where only textual requirements are available. Despite advances in Large Language Models (LLMs), limited empirical evidence exists on their ability to synthesize complete microservice architectures from natural-language requirements, including service definitions and inter-service interactions. This study investigates whether an LLM can bridge requirements engineering and architectural design, generating architectures solely from textual requirements and evaluating structural agreement and perceived quality of results. We conduct a mixed-method study using OpenAI o3 under zero-shot (ZS) and few-shot (FS) prompting across two systems (Bookstore, PetClinic), one execution per system/condition. Architectures are evaluated through (i) comparison with reference architectures using precision, recall, and F1-score for service identification and communication recovery, and (ii) a blinded expert assessment of correctness, completeness, modularity, and plausibility, plus open feedback synthesis. OpenAI o3 identifies services with higher agreement under FS prompting (F1 = 0.79 for ZS versus = 0.97 for FS). Communication recovery is more challenging: ZS produces dense architectures with high recall but low precision (F1 = 0.61), while FS improves agreement, reaching F1 = 0.82 and reducing unsupported dependencies. Expert evaluation corroborates these results, with FS architectures perceived as more modular, coherent, and plausible than ZS outputs. OpenAI o3 shows potential for requirements-driven synthesis when guided by exemplar prompting. Results are model- and context-specific from two small systems, not model-independent proof.",
+      "authors": [
+        "Danyllo Albuquerque",
+        "José Renan",
+        "Guillermo Rodríguez",
+        "Guillermo Rodríguez",
+        "Emanuel Dantas",
+        "Ademar França",
+        "Mirko Perkusich",
+        "Kyller Gorgônio",
+        "Angelo Perkusich"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-07-30T14:45:18+00:00",
+      "link": "https://arxiv.org/pdf/2607.28307v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "bridge requirements engineering and architectural design from textual requirements",
+      "llm_evidence_cn": "从文本需求桥接需求工程与架构设计",
+      "llm_evidence": "从文本需求桥接需求工程与架构设计",
+      "canonical_evidence": "从文本需求桥接需求工程与架构设计",
+      "llm_tldr_en": "Evaluates LLMs in synthesizing microservice architectures from natural-language requirements.",
+      "llm_tldr_cn": "评估大模型从自然语言需求合成微服务架构的能力。",
+      "llm_tldr": "评估大模型从自然语言需求合成微服务架构的能力。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2607.29343v1",
+      "source": "arxiv",
+      "title": "Analysing User Reviews to Identify User Concerns Around Permissions in AI Apps",
+      "abstract": "Artificial intelligence is increasingly embedded in everyday software, making its integration into mobile apps inevitable. However, AI mobile app developers are not always versed in security and privacy best practices, leaving users to monitor their own security and understand how apps use their data. App reviews capture real user experiences, helping others make informed decisions before downloading. This paper presents a machine learning model for classifying AI app reviews into permission-related categories. Because user reviews are unstructured, assembling a conventional labeled training set is difficult. To address this, AI-generated security and permission reviews are used to identify relevant training examples from a large corpus of human-written reviews, eliminating the need for manual annotation. The proposed approach classified permission reviews with an accuracy of 82%. Analysis shows that users organise their concerns by sentiment toward the requesting app rather than specific permission types, with implications for users, developers, and platform administrators.",
+      "authors": [
+        "Babar Shah",
+        "Faheem Ullah",
+        "Myles Watkinson",
+        "Muhammad Moiz Khalid",
+        "Tehmina Karamat Khan",
+        "Muhammad Junaid"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "published": "2026-07-31T12:25:20+00:00",
+      "link": "https://arxiv.org/pdf/2607.29343v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Extracting user concerns from unstructured reviews",
+      "llm_evidence_cn": "从非结构化评论中提取用户关注点",
+      "llm_evidence": "从非结构化评论中提取用户关注点",
+      "canonical_evidence": "从非结构化评论中提取用户关注点",
+      "llm_tldr_en": "Classifies user reviews into permission-related categories to identify security and privacy concerns.",
+      "llm_tldr_cn": "将用户评论分类为权限相关类别，以识别安全和隐私方面的用户关注点。",
+      "llm_tldr": "将用户评论分类为权限相关类别，以识别安全和隐私方面的用户关注点。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Automated extraction of user stories from text",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2608.02323v1",
+      "source": "arxiv",
+      "title": "ECLAIR: A Causally-Grounded AI Framework for Scientific Discovery in Empirical Software Engineering",
+      "abstract": "The scientific method has long guided empirical research in Software Engineering (SE), but the complexity of modern software systems often hinders its systematic application. This paper introduces _ECLAIR_, a causally grounded AI framework that integrates Large Language Models (_LLMs_) into every stage of the scientific process, from hypothesis generation to analysis and interpretation. _ECLAIR_ treats _LLMs_ as active **scientific agents** operating under the principles of causal inference, within a human-in-the-loop design that safeguards against the risks of unsound automated reasoning. We demonstrate the framework through a case study examining how prompt design influences code generation accuracy in two _LLMs_. Results show that, for both models, instruction-style, longer few-shot, and signature-augmented prompts yield small negative causal effects on accuracy, illustrating how causal reasoning provides a principled foundation for explaining _why_ software phenomena occur. This study presents the first causally grounded structured methodology for embedding _LLMs_ within the scientific method in SE, designed around the epistemological demands of empirical SE research, establishing a basis for rigorous AI-assisted research.",
+      "authors": [
+        "Alejandro Velasco",
+        "Daniel Rodriguez-Cardenas",
+        "Dipin Khati",
+        "David N. Palacio",
+        "Denys Poshyvanyk"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-08-03T14:47:03+00:00",
+      "link": "https://arxiv.org/pdf/2608.02323v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "AI framework for scientific discovery in empirical software engineering",
+      "llm_evidence_cn": "经验软件工程中科学发现的 AI 框架",
+      "llm_evidence": "经验软件工程中科学发现的 AI 框架",
+      "canonical_evidence": "经验软件工程中科学发现的 AI 框架",
+      "llm_tldr_en": "Introduces ECLAIR, a causally-grounded AI framework for empirical software engineering research.",
+      "llm_tldr_cn": "引入 ECLAIR，一种用于经验软件工程研究的因果关联 AI 框架。",
+      "llm_tldr": "引入 ECLAIR，一种用于经验软件工程研究的因果关联 AI 框架。",
+      "llm_tags": [
+        "query:re-us:composite"
+      ],
+      "matched_query_tag": "query:re-us:composite",
+      "matched_query_text": "Papers central to 需求工程领域的用户故事相关的论文, especially work that connects or combines: User stories in software development and requirements engineering; Requirements engineering methodologies and practices; Agile requirements engineering and management; Quality assessment and improvement of user stories; Automated extraction of user stories from text; Defining and validating user story acceptance criteria; State of the art in user story research for requirements engineering; Automated tools for user story generation and validation; Impact of user story quality on software project success.",
+      "matched_requirement_id": "req-composite-re-us",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}

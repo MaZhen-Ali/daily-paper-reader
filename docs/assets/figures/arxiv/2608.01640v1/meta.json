@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2608.01640v1/fig-001.webp",
+      "caption": "Fig. 3. Goal refinements from a navigation-app interview. Node labels are paraphrased; the node and sink counts are means over 43 interviews.",
+      "page": 8,
+      "index": 1,
+      "width": 518,
+      "height": 262
+    },
+    {
+      "url": "assets/figures/arxiv/2608.01640v1/fig-002.webp",
+      "caption": "Fig. 2. AI-assisted interviewers’ ratings of the assisted capabilities (5-point Likert). Bars show the full response distribution diverging from neutral; % agree is the share selecting the two most favorable responses.",
+      "page": 7,
+      "index": 2,
+      "width": 514,
+      "height": 241
+    },
+    {
+      "url": "assets/figures/arxiv/2608.01640v1/fig-003.webp",
+      "caption": "Fig. 1. The AI-assisted elicitation workflow: offline script generation (Phase 1) followed by online script management (Phase 2).",
+      "page": 1,
+      "index": 3,
+      "width": 524,
+      "height": 400
+    }
+  ]
+}
