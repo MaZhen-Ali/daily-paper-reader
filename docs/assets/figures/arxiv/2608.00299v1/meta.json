@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2608.00299v1/fig-001.webp",
+      "caption": "Figure 2: The ReVoicer pipeline. While reading (Phase 1), the reviewer highlights a passage and speaks or types a reaction; the LLM cleans and tags it using the passage, surrounding prose, and the reference library as context, and the same input flow supports questions answered from the full document text. When reading is done (Phase 2), the reviewer records an overall reflection on the whole paper, and the notes are checked against the venue rubric and drafted into a review that follows the reviewer’s style guide and is framed by the reflection. Blue nodes are reviewer judgment, orange nodes are LLM or automated processing, and gray nodes are stored artifacts; the reviewer’s comments are the only source of critique content.",
+      "page": 3,
+      "index": 1,
+      "width": 1052,
+      "height": 281
+    }
+  ]
+}

@@ -1,0 +1,314 @@
+Title: ReVoicer: Conversational Voice Annotation for Human-Centered, LLM-Assisted Peer Review
+
+URL Source: https://arxiv.org/pdf/2608.00299v1
+
+Published Time: Tue, 04 Aug 2026 00:15:24 GMT
+
+Number of Pages: 8
+
+Markdown Content:
+# ReVoicer: Conversational Voice Annotation for Human-Centered, LLM-Assisted Peer Review 
+
+## Matt Gottsacker *
+
+SREAL, University of Central Florida 
+
+## Ahinya Alwin †
+
+SREAL, University of Central Florida 
+
+## Hiroshi Furuya ‡
+
+SREAL, University of Central Florida 
+
+## Robert W. Lindeman §
+
+HIT Lab NZ, University of Canterbury 
+
+## Gerd Bruder ¶
+
+SREAL, University of Central Florida 
+
+## Gregory F. Welch || 
+
+SREAL, University of Central Florida 
+
+Figure 1: Annotated screenshot of ReVoicer. Left: the PDF viewer with color-coded highlights and the voice recording overlay (1), from which the reviewer submits the spoken comment as an annotation (Done) or as a question to the paper (Ask), and previously annotated passages (2). Center: the sidebar’s Notes tab with the cleaned, tagged note cards (3), tabs for the other parts of the review workflow: Q&A history, references, rubric, and review generation (4), and actions for exporting annotations and running the rubric coverage check (5). Right: an enlarged note card showing the comment type tag (6), the paper section tag (7), the expandable raw transcript of the original speech (8), and per-note controls to edit, re-clean, or delete (9). 
+
+ABSTRACT 
+
+We present ReVoicer , a prototype system that supports peer review-ers by letting them converse with a paper as they read it. The re-viewer highlights a passage and speaks (or types) a train-of-thought comment. A large language model then cleans the comment us-ing the surrounding prose as context, tags it by comment type, and anchors it to the passage. After the reviewer finishes reading, 
+
+ReVoicer checks the accumulated notes against a venue-specific rubric, reports coverage gaps, and drafts a review composed only from the reviewer’s own comments, written to a style guide dis-tilled from the reviewer’s past reviews. The system introduces no critiques of its own. We describe the system’s design rationale and implementation, and we outline plans for future evaluations. With the ISMAR community, we will gather feedback and discuss the system design and ideas for additional features and evaluations. 
+
+Index Terms: Peer review, voice user interfaces, large language models, annotation, active reading, human-AI interaction. 
+
+1 INTRODUCTION 
+
+Peer review is essential labor for the scientific research commu-nity, and the need for high-quality reviews is growing faster than the pool of qualified reviewers across fields. The scientific liter-ature has grown at an accelerating rate for decades, with global 
+
+> *
+
+e-mail: mattg@ucf.edu 
+
+> †
+
+e-mail: ahinya@ucf.edu 
+
+> ‡
+
+e-mail: furuya@ucf.edu 
+
+> §
+
+e-mail: rob.lindeman@canterbury.ac.nz 
+
+> ¶
+
+e-mail: bruder@ucf.edu 
+
+> ||
+
+e-mail: welch@ucf.edu 
+
+publication output doubling roughly every 17 years [5], straining reviewers across disciplines [27]. Recruiting reviewers has also be-come harder over time. One study found that at four out of six ecology and evolution journals, the percentage of review invita-tions that led to a review fell from roughly 56% to 37% between 2003 and 2015 [10]. The strain is especially acute at large com-puting venues. The flagship human-computer interaction confer-ence, ACM CHI, received 5,014 complete submissions in 2025, up 58% from 2023, prompting a new assisted desk-rejection process to manage reviewer load [15, 29]. One of the largest artificial intel-ligence (AI) conferences, AAAI, received almost 23,000 full paper submissions in 2026 [4]. The reviews produced under this load are also noisy, even at well-resourced venues. In a 2014 review consis-tency experiment at the machine learning conference NeurIPS, two independent committees disagreed on about 25% of decisions [6], a result replicated at NeurIPS 2021 with 23% disagreement [3]. In both examples, roughly half of the accepted-paper list would change if the process were rerun [3, 6]. Recent position papers deem this situation a “peer review crisis” that threatens the repu-tation of the entire established peer review process [18]. In short, researchers across fields face more submissions, too few qualified reviewers, and high variance in review quality and outcomes. One response to this crisis has been to apply large language mod-els (LLMs) to generate reviews. Researchers have found that LLM-generated feedback overlaps substantially with human reviews [20]. Additionally, a large randomized study at the machine learning con-ference ICLR in 2025 found that LLM feedback measurably im-proved human reviews [31], and some of the largest AI confer-ences, including NeurIPS and AAAI, are piloting AI assistance in the review process at scale [4, 23]. Yet full automation raises con-cerns because of persistent problems with AI-generated text, such as hallucinated or unverifiable critiques [13], loss of human over-sight and accountability [13, 26], lack of alignment with user in-tent [7], homogenized feedback [19], skewed scores and acceptance arXiv:2608.00299v1 [cs.HC] 31 Jul 2026 rates [24], unclear authorship of LLM-produced text [8,28], and the dehumanization of what is fundamentally a community judgment process [26]. Recent empirical evidence also shows that fully auto-mated AI reviewers can converge toward homogeneous “hivemind” feedback and are susceptible to adversarial manipulation, which has prompted calls to withhold automation of review judgment pending rigorous evaluation [2]. These risks informed the design of our re-view assistance system, which uses LLMs not to replace human reviews, but as tools for improving human reviewing efficiency. Our approach starts from the idea that conducting a review feels like an internal conversation with the text (e.g., “this needs more justification,” or “this reminds me of paper X”). Typical reviewing workflows are cumbersome, however, and do not support such a fluid review process. The reviewer moves back and forth between the PDF and a separate document, types extra context such as “in the second paragraph of Section 3.2,” and copies passages out of the PDF, sometimes with OCR errors. This friction can reduce how many critiques the reviewer records (and in turn, the quality of the review) or increase the time they spend reviewing. ReVoicer is de-signed to remove this friction and keep the reviewer in the conver-sation. With ReVoicer , the reviewer highlights a passage and speaks or types a train-of-thought reaction. Then an LLM cleans the raw transcript into a concise note using the highlighted passage and sur-rounding prose as context, tags it with one or more comment types, and anchors it to the passage. Cleaning here means rewriting the transcript as a clear, well-structured comment. The LLM removes filler words, false starts, and repetition; completes fragments; and resolves ambiguous spoken references such as “this claim” against the highlighted passage. When the reviewer finishes reading the paper, ReVoicer compares the accumulated notes against a venue-specific rubric and reports which rubric items are covered so the reviewer can fill in any gaps. It then drafts a review composed only from the reviewer’s own comments, following a style guide based on examples of the reviewer’s past reviews. In this paper, we present the design rationale and core features of our prototype AI-assisted review system, which is publicly avail-able 1. We plan to evaluate the tool with academic reviewers, and will discuss the system design with the ISMAR community during the Alt’ISMAR workshop to gather ideas for additional features. 
+
+2 RELATED WORK 
+
+ReVoicer builds on three threads of prior work: applying LLMs to generate reviews outright, augmenting the reading of scholarly documents with AI, and using LLMs to turn quick or rough input into polished notes. 
+
+2.1 AI-Generated Reviews 
+
+End-to-end review generation predates LLMs. One example is the 
+
+ReviewRobot system, which uses knowledge construction to inform review scores and comments [32]. LLM-based generation has since been studied at scale. GPT-4 feedback overlaps substantially with human reviews [20], and a randomized study at ICLR 2025 found that reviewers who received LLM feedback wrote longer, more in-formative reviews [31]. Venues themselves are experimenting with such approaches, including an LLM-assisted reviewing experiment at NeurIPS 2026 [23] and an organizer-run pilot at AAAI-26 [4]. See Zhuang et al. [33] for a survey of automated review. This line of work automates or augments the review output and treats the re-viewer’s reading and critique formulation process as a black box. 
+
+ReVoicer instead operates during reviewing , and by design every judgment originates with the reviewer rather than the AI. 
+
+2.2 AI-Assisted Reading 
+
+HCI researchers have long been interested in supporting active reading with digital systems [12, 25, 30]. More recently, AI-
+
+> 1https://github.com/mott-lab/ReVoicer
+
+augmented reading interfaces help readers understand scientific pa-pers, including in-situ definitions [11], faceted skimming high-lights [9], plain-language aids [1], and the Semantic Reader fam-ily of tools for automatically creating dynamic content from static PDFs [22]. Other systems scaffold organizing and synthesizing snippets across papers [16, 17]. These systems primarily help a reader comprehend a document. ReVoicer targets the production of an artifact (the review) from the reader’s own in-the-moment reac-tions, bridging AI-augmented reading with output production. 
+
+2.3 Quick Annotation Using LLMs 
+
+Researchers have created tools to support quick, in-context anno-tations using LLMs. In Huq et al.’s NoTeeline system, an LLM expands terse typed “micronotes” into full notes and adapts them based on examples of the user’s own notes, cutting the amount of text written by 47% and writing time by 44% while maintaining 93% factual consistency [14]. Lin et al. showed that while dictated speech can be used for efficient text input (e.g., for creating a note), it is often “disfluent, wordy, and incoherent” [21]. They built the 
+
+Rambler system, which uses an LLM-powered gist-based interface to summarize the user’s speech and also enable review and manip-ulation of the resultant text at the macro level (i.e., merging and re-organizing ideas). Our system extends these ideas specifically to a peer-review context. ReVoicer captures the user’s rambling speech and summarizes it into a more polished form. During annotation cleaning, it uses context relevant to the reviewing process, includ-ing the passage the user speaks about and their reference library. Further, ReVoicer distills a style guide from the reviewer’s past re-views to guide the organizing and synthesizing of the reviewer’s annotations in a review draft, which the user can edit and revise. 
+
+3 REVOICER SYSTEM DESIGN 
+
+This section presents the design of ReVoicer . We first describe the reflective basis and the four design considerations distilled from it and related work. We then give an overview of the application, and describe its core workflow features. 
+
+3.1 Design Basis and Considerations 
+
+The design draws on the first author’s reflection on his own review-ing process and informal conversations with other researchers about how they intellectually approach reviews. A pattern that emerged from these conversations was that reviewing can be thought of as an active dialogue with the paper, where the reviewer forms and ar-ticulates their impressions to the paper authors while reading. Ad-ditionally, reviewers can have questions about the presented work if it does not provide sufficient details or presents things out of order. In these cases, existing workflows require reviewers to break their reading flow to write polished notes and/or discover answers to their questions in different parts of the paper. Alternatively, reviewers can keep reading and defer critique formulation, which risks losing context of their initial reactions. Based on this process understand-ing, as well as concerns related to AI review authoring, we present four design considerations for our review assistance system: • DC1: Capture critiques and questions at the speed of thought. Recording a reaction should not require leaving the passage or polishing prose. Raw, disfluent train-of-thought input is acceptable input. • DC2: The reviewer is the only source of judgment. The LLM can clean, classify, organize, and format, but should never introduce a critique or opinion of its own. • DC3: Maintain paper and review context. Each annota-tion should include and leverage context from the prose it ex-plicitly references, as well as surrounding prose, other related reviewer comments, and the venue’s rubric. Phase 1: Conversing with the paper Phase 2: From notes to review   
+
+> Read & highlight passage
+> Speak or type reaction
+> Transcribe
+> Vosk + Whisper
+> LLM cleanup + tagging
+> Anchored, tagged notes
+> page / type / section / theme views
+> Document Q&A
+> Extracted full text
+> References library
+> voice
+> typed text
+> ask
+> answer
+> passage + surrounding prose
+> Record overall reflection
+> Coverage check
+> covered / partial / missing per rubric item
+> Review drafting
+> grounded in notes, reflections, style guide, and rubric
+> Reviewer edits & finalizes review
+> Rubric
+> parsed from pasted review form
+> Style guide
+> LLM-distilled from past reviews
+> notes
+> cited works
+> manuscript text
+> reviewer judgment LLM / automated processing stored artifact
+
+Figure 2: The ReVoicer pipeline. While reading (Phase 1), the reviewer highlights a passage and speaks or types a reaction; the LLM cleans and tags it using the passage, surrounding prose, and the reference library as context, and the same input flow supports questions answered from the full document text. When reading is done (Phase 2), the reviewer records an overall reflection on the whole paper, and the notes are checked against the venue rubric and drafted into a review that follows the reviewer’s style guide and is framed by the reflection. Blue nodes are reviewer judgment, orange nodes are LLM or automated processing, and gray nodes are stored artifacts; the reviewer’s comments are the only source of critique content. 
+
+• DC4: The output reads as the reviewer’s. The final review should follow the reviewer’s own voice while adapting to the venue’s required structure. 
+
+3.2 System Overview 
+
+ReVoicer is a desktop application with a split-pane layout. The ren-dered PDF is displayed on the left and a sidebar is on the right with five tabs (Notes, Questions, References, Rubric, and Review), as shown in Fig. 1. When a PDF is opened, its full text is extracted page by page and stored alongside the document in the user’s file system. This stored text later provides context for annotation cleanup, document Q&A, coverage checking, and review drafting. A reviewing session involves two phases that mirror the system’s two primary use modes: paper annotation (Sec. 3.3) and review generation (Sec. 3.4). The user interaction and system workflow are shown in Fig. 2. While reading, the reviewer converses with the paper by highlighting passages and capturing reactions, which are added to the sidebar as cleaned, tagged, anchored notes. After reading, the reviewer moves to the Rubric and Review tabs to check coverage, record an overall reflection, and draft the review. 
+
+3.3 Paper Annotation: Conversational Critiques 
+
+In the first phase of the process, the system supports active reading by capturing the user’s comments and questions, cleaning and tag-ging them, and keeping the set of notes organized. The interaction is designed to be minimal to keep the reviewer in the flow of read-ing. Recording a reaction only requires highlighting and speaking. 
+
+Annotations (DC1). The reviewer highlights text in the ren-dered PDF and a floating toolbar offers voice or text input. In voice mode, the reviewer clicks the microphone and speaks their com-ment. In public settings where speaking aloud is unwanted or by preference, the reviewer can type their comment. 
+
+LLM cleanup (DC1, DC4). The raw transcript or typed note is cleaned into a concise, readable note. The cleanup prompt includes the highlighted passage and surrounding prose to help resolve am-biguous spoken references such as “this claim” or “that table”. Each note card presents the cleaned comment alongside the expandable raw transcript for comparison. An edit button enables the reviewer to quickly correct any errors in the comment. The reviewer can also have the LLM re-clean the raw transcript, or delete the note entirely. 
+
+Clarifying questions (DC1). The reviewer uses the same input flow to speak or type a question and then select Ask instead of Save ,and the generated answer draws on the full extracted document text. Question-and-answer history is kept in the sidebar. The system prompt for this feature limits the LLM to only provide facts from the paper (e.g., which section mentions a certain design choice) and not critique the paper (e.g., whether a justification is valid). 
+
+Tagging and anchoring (DC3). The LLM assigns one or more of twelve comment types (Summary, Critique, Strength, Question, Related Work, Suggestion, Follow-up, Edit, Presentation, Novelty, Technical, General) and the paper section. Highlights are color-coded by primary type, and clicking a highlight jumps to its note and vice versa. 
+
+Suggested references (DC3). The reviewer can suggest a list of references (authors, title, and DOI link) that are related to the paper and the review. Reference entries are included in the cleanup and review generation prompts so annotations and reviews can cite the proper papers accurately. The reviewer can specify references manually or search from an auto-updating library parsed from a BibTex file exported from their reference manager (e.g., Zotero ). 
+
+3.4 Review Generation: Critique Organization 
+
+In this phase of the process, the system organizes the inline notes and any overall reflections using the venue’s expectations (via a rubric and a coverage check), summarizes the reviewer’s main points (as described in an overall reflection), and styles and struc-tures the result in the reviewer’s own voice (via a style guide). 
+
+Rubric and coverage check (DC3). The reviewer builds a list of review sections and descriptions, or pastes rubric text (possibly from the venue) that the LLM extracts into structured items. Before drafting the review, the LLM compares the annotations against the rubric and reports each item as covered, partial, or missing, with the supporting notes and a one-line gap summary. The reviewer can refer to this to identify gaps in their current review. 
+
+Overall reflection (DC2). After they are finished reading, the reviewer can record reflections in which they formulate their over-all evaluation of the paper. While recording, the reviewer can scroll through the paper and their accumulated notes. The reflections serve as a guiding note for the review, capturing what the reviewer views as most important as well as opinions that provide an overall perspective on the paper (and may not be tied to any specific note). 
+
+Style guide (DC4). The reviewer provides ReVoicer with a folder containing past reviews, and the LLM distills an editable style guide that describes how the reviewer tends to write reviews in terms of voice, tone, structure, length, and formatting. Because it is distilled from the reviewer’s own past reviews, it adapts to individ-ual styles, for example a terse reviewer who writes short bulleted critiques versus one who writes discursive prose. The reviewer can edit the guide to tune this description before it informs drafting. 
+
+Review generation (DC2, DC4). The draft is composed from the manuscript text together with the notes, reflections, rubric, style guide, and references described above. When complete, the draft opens in an editable text box. The reviewer’s comments are the only source of critique content, while the LLM supplies structure, transitions, and polish. 
+
+3.5 Additional Features 
+
+Organization. Notes can be re-ordered by page order, comment type, paper section, or LLM-inferred theme. 
+
+Citation lookup. This feature lets the reviewer check a paper’s reference without leaving the passage that cites it. On first opening the paper, its reference list is parsed deterministically (i.e., with-out using an LLM). The bibliography section is located by heading and split into numbered entries when a contiguous numbering chain is found. Citation markers such as “[3]” or “[1–4, 7]” then become clickable within the PDF itself. An LLM is used as a last-resort fall-back to extract a title from an unparseable reference string. Click-ing a citation marker opens a pop-up with the reference’s title, au-thors, year, venue, and abstract fetched from Semantic Scholar 2,with OpenAlex 3 filling in abstracts for closed-access publishers. 
+
+Offline queue and re-cleaning. Notes captured offline, or with cleanup disabled, are marked “pending.” All notes can be cleaned when the reviewer is back online. If the user opts out of LLM cleanup for a given note, the note can still be categorized with LLM-generated tags and section assignments. 
+
+Exports and rubric templates. Annotations are exported as Markdown files, grouped by page with each note’s tags, highlighted passage, cleaned comment, and the raw voice transcript in a col-lapsible block, or as a JSON file that also includes the references and rubric. Generated reviews are exported as a Markdown file, and displayed in an editable text box in the review panel as well. Rubrics can be saved as named templates and applied to other pa-pers, so the reviewer only needs to set up a venue’s review form once per reviewing cycle. 
+
+4 IMPLEMENTATION 
+
+ReVoicer is a cross-platform desktop application built with Elec-tron 4, a framework that packages a web-technology front end (HTML, CSS, and JavaScript) together with a Node.js backend into a standalone desktop program. The application combines a PDF viewer based on Mozilla’s pdf.js library 5 with a provider-agnostic LLM integration layer. The transcript for the user’s speech is gen-erated using one of three configurable sources: cloud-based Whis-per 6, a local Whisper model that runs inside the app’s browser layer, or a lightweight Vosk 7 model running offline. We provide the ver-batim prompts for the main LLM features in Appendix A. 
+
+LLM integration. All LLM features are accessed through a sin-gle provider-agnostic wrapper that supports OpenAI , Anthropic , lo-cal LLMs via Ollama 8, and any OpenAI-compatible endpoint (e.g., 
+
+Groq , OpenRouter , LM Studio , vLLM ). The local options matter for peer review since venue confidentiality policies can prohibit sending unpublished manuscripts to cloud AI providers. Every fea-ture issues one system message and one user message, and features that provide user-facing output (note cleanup, classification, theme grouping, rubric extraction, coverage checking) constrain the model to a strict JSON output format that the application validates and nor-malizes. All LLM function calls run at a low temperature (0.3), the sampling parameter that controls how much randomness the model adds to its output, so results stay consistent across runs. However, 
+
+> 2https://www.semanticscholar.org/product/api
+> 3https://developers.openalex.org/
+> 4https://www.electronjs.org/
+> 5https://mozilla.github.io/pdf.js/
+> 6https://github.com/openai/whisper
+> 7https://alphacephei.com/vosk/
+> 8https://ollama.com/
+
+using a model with extended reasoning may force a different tem-perature. Review generation also has its own provider and model configuration (separate from the text-processing configuration) so a stronger model can be used to draft reviews while a faster, cheaper model handles note cleanup. 
+
+Prompt context assembly. Each LLM feature uses different components as context. Note cleanup receives the highlighted pas-sage, the last 1 , 500 characters of the previous page and the first 3, 000 characters of the current page (to include section headings that fall at a page boundary), and the reviewer’s reference library, which lets the model resolve loose spoken mentions such as “the smith paper” into proper citations. Document Q&A receives the full extracted text with page markers, untruncated, so answers can cite page numbers. Review generation uses the largest context, in-cluding the reviewer’s notes as JSON objects (with fields for page, section, tags, the highlighted text, the raw transcript, the cleaned comment, and a timestamp), the reviewer’s overall reflections (both the cleaned text and the raw transcript, so a reflection that has not been cleaned still contributes), the rubric, the reference library, and the manuscript text. Both the raw transcript and the cleaned com-ments are included so the model can detect conversational notes that revisit or amend an earlier note and merge them. 
+
+5 FUTURE WORK 
+
+Future features. Future work should explore different input modalities for reducing friction even more. For example, web-cams or XR headsets can be leveraged to track users’ eyes and enable users to comment on the passage they are reading or look-ing at without requiring any mouse input or highlighting. Making gaze-based input work well raises interesting interface questions, in particular how the system should confirm which passage a spoken comment will attach to. Gaze would likely need to be combined with scrolling and reading behavior to infer such context. We also envision capturing comments away from the desk and mapping them back to the paper. For example, a reviewer go-ing for a walk and thinking about a paper could speak a passing thought about the paper into a smartwatch, and the system could later anchor the note to the relevant passage or add it to the over-all reflection. Another future feature could check the quality of the reviewer’s own comments, for example flagging comments that read as unfair or not constructive, which could also support train-ing novice reviewers. Finally, the ReVoicer interaction workflow could extend to other assessment scenarios beyond academic paper reviewing, such as grant proposal panels, teachers grading essays or source code, and code review. 
+
+Future evaluations. We plan to survey academic reviewers at different stages of their careers about their reviewing practices and preferences to further inform the design of ReVoicer , including their note-taking processes and how and when they formulate their over-all criticism of a paper. We plan to evaluate ReVoicer with academic reviewers through think-aloud sessions on real papers to investigate their usage patterns and impressions. We also intend to conduct blinded expert rating of the resulting reviews against reviews pro-duced with each reviewer’s usual workflow, using a rubric covering coverage, specificity, and constructiveness. Additionally, our evaluations will seek to identify what is lost when ReVoicer cleans the reviewer’s notes, and in particu-lar whether offloading articulation to the LLM shortcuts or dis-rupts the reviewer’s normal process of forming their opinion of the work. To study this, we plan to use post-session questionnaire items on whether the cleaned notes and drafted review feel like the re-viewer’s own words, informed by work on perceived ownership of AI-generated text [8]. We can further ask reviewers to articulate and defend their overall assessment without consulting their notes after reviewing with and without ReVoicer , and then compare the depth and confidence of the two assessments. We can also inter-view reviewers about disruptions to their process. Finally, qualita-tive coding of reviewers’ raw transcripts against the cleaned notes can help quantify the meaning that the LLM cleanup loses, alters, or adds. Open questions we bring to the workshop include how reviewers calibrate trust in LLM cleanup and classification, and whether rubric-driven scaffolding helps or over-structures a review. 
+
+6 CONCLUSION 
+
+In this paper, we presented ReVoicer , a prototype conversational in-terface for LLM-assisted peer review that keeps the reviewer as the only source of judgment. We will discuss AI-assisted peer review, the ReVoicer system design, and these future directions with the ISMAR community at the Alt’ISMAR workshop. 
+
+ACKNOWLEDGMENTS 
+
+This material includes work supported in part by the National Sci-ence Foundation under Award Number 2235066 (Dr. Han-Wei Shen, IIS); the Office of Naval Research under Award Numbers N00014-25-1-2159 and N00014-25-1-2245 (Dr. Peter Squire, Code 34); and the AdventHealth Endowed Chair in Healthcare Simula-tion (Prof. Welch). 
+
+REFERENCES 
+
+[1] T. August, L. L. Wang, J. Bragg, M. A. Hearst, A. Head, and K. Lo. Paper Plain: Making medical research papers approachable to healthcare consumers with natural language processing. ACM Trans. Comput.-Hum. Interact. , 30(5), Sept. 2023. doi: 10.1145/3589955 2 [2] J. Baumann, J. Pei, S. Koyejo, and D. Hovy. Stop automating peer review without rigorous evaluation. In Proceedings of the 43rd Inter-national Conference on Machine Learning (ICML) , vol. 306 of Pro-ceedings of Machine Learning Research . PMLR, 2026. doi: 10.48550/ arXiv.2605.03202 2 [3] A. Beygelzimer, Y. N. Dauphin, P. Liang, and J. Wortman Vaughan. Has the machine learning review process become more arbitrary as the field has grown? The NeurIPS 2021 consistency experiment, 2023. doi: 10.48550/arXiv.2306.03262 1 [4] J. Biswas, S. Schoepp, G. Vasan, A. Opipari, A. Zhang, Z. Hu, S. Joseph, M. Lease, J. J. Li, P. Stone, K. L. Wagstaff, M. E. Tay-lor, and O. C. Jenkins. AI-assisted peer review at scale: The AAAI-26 AI review pilot, 2026. doi: 10.48550/arXiv.2604.13940 1, 2 [5] L. Bornmann, R. Haunschild, and R. Mutz. Growth rates of modern science: a latent piecewise growth curve approach to model publi-cation numbers from established and new literature databases. Hu-manities and Social Sciences Communications , 8(224), 2021. doi: 10 .1057/s41599-021-00903-w 1 [6] C. Cortes and N. D. Lawrence. Inconsistency in conference peer re-view: Revisiting the 2014 NeurIPS experiment, 2021. doi: 10.48550/ arXiv.2109.09774 1 [7] A. Devanga, G. Bruder, D. Zielasko, A. Giovannelli, Z. Choudhary, H. Furuya, M. Gottsacker, R. W. Lindeman, and G. Welch. Two last human sections? A case study of largely AI-generated paper writing in empirical XR research. In Alt’ISMAR: Adjunct Proceedings of the IEEE International Symposium on Mixed and Augmented Reality (IS-MAR) , 2026. 1 [8] F. Draxler, A. Werner, F. Lehmann, M. Hoppe, A. Schmidt, D. Buschek, and R. Welsch. The AI ghostwriter effect: When users do not perceive ownership of AI-generated text but self-declare as au-thors. ACM Trans. Comput.-Hum. Interact. , 31(2), Feb. 2024. doi: 10 .1145/3637875 2, 4 [9] R. Fok, L. Soldaini, C. Trier, E. Bransom, K. MacMillan, E. Cheng, H. Kambhamettu, J. Bragg, K. Lo, M. A. Hearst, A. Head, and D. S. Weld. Accelerating scientific paper skimming with augmented intelli-gence through customizable faceted highlights. ACM Trans. Interact. Intell. Syst. , 14(4), Dec. 2024. doi: 10.1145/3665648 2 [10] C. W. Fox, A. Y. K. Albert, and T. H. Vines. Recruitment of reviewers is becoming harder at some journals: a test of the influence of reviewer fatigue at six journals in ecology and evolution. Research Integrity and Peer Review , 2(3), 2017. doi: 10.1186/s41073-017-0027-x 1 [11] A. Head, K. Lo, D. Kang, R. Fok, S. Skjonsberg, D. S. Weld, and M. A. Hearst. Augmenting scientific papers with just-in-time, position-sensitive definitions of terms and symbols. In Proceedings of the 2021 CHI Conference on Human Factors in Computing Systems ,CHI ’21. Association for Computing Machinery, New York, NY, USA, 2021. doi: 10.1145/3411764.3445648 2 [12] K. Hinckley, X. Bi, M. Pahud, and B. Buxton. Informal information gathering techniques for active reading. In Proceedings of the SIGCHI Conference on Human Factors in Computing Systems , CHI ’12, p. 1893–1896. Association for Computing Machinery, New York, NY, USA, 2012. doi: 10.1145/2207676.2208327 2 [13] M. Hosseini and S. P. J. M. Horbach. Fighting reviewer fatigue or am-plifying bias? Considerations and recommendations for use of Chat-GPT and other large language models in scholarly peer review. Re-search Integrity and Peer Review , 8(1):4, May 2023. doi: 10.1186/ s41073-023-00133-5 1 [14] F. Huq, A. Samee, D. C.-E. Lin, A. X. Tang, and J. P. Bigham. NoTee-line: Supporting real-time, personalized notetaking with llm-enhanced micronotes. In Proceedings of the 30th International Conference on Intelligent User Interfaces , IUI ’25, p. 1064–1081. Association for Computing Machinery, New York, NY, USA, 2025. doi: 10.1145/ 3708359.3712086 2 [15] Johannes Zagermann. CHI 2025 papers track: Post-PC outcomes report. https://chi2025.acm.org/ chi-2025-papers-track-post-pc-outcomes-report/ , 2025. 1[16] H. Kang, J. C. Chang, Y. Kim, and A. Kittur. Threddy: An interactive system for personalized thread-based exploration and organization of scientific literature. In Proceedings of the 35th Annual ACM Sympo-sium on User Interface Software and Technology , UIST ’22. Associ-ation for Computing Machinery, New York, NY, USA, 2022. doi: 10. 1145/3526113.3545660 2 [17] H. B. Kang, T. Wu, J. C. Chang, and A. Kittur. Synergi: A mixed-initiative system for scholarly synthesis and sensemaking. In Proceed-ings of the 36th Annual ACM Symposium on User Interface Software and Technology , UIST ’23. Association for Computing Machinery, New York, NY, USA, 2023. doi: 10.1145/3586183.3606759 2 [18] J. Kim, Y. Lee, and S. Lee. Position: The AI conference peer review crisis demands author feedback and reviewer rewards. In Proceedings of the 42nd International Conference on Machine Learning (ICML) ,vol. 267 of PMLR , 2025. doi: 10.48550/arXiv.2505.04966 1 [19] W. Liang, Z. Izzo, Y. Zhang, H. Lepp, H. Cao, X. Zhao, L. Chen, H. Ye, S. Liu, Z. Huang, D. Mcfarland, and J. Y. Zou. Monitoring AI-modified content at scale: A case study on the impact of ChatGPT on AI conference peer reviews. In R. Salakhutdinov, Z. Kolter, K. Heller, A. Weller, N. Oliver, J. Scarlett, and F. Berkenkamp, eds., Proceed-ings of the 41st International Conference on Machine Learning , vol. 235 of Proceedings of Machine Learning Research , pp. 29575–29620. PMLR, 21–27 Jul 2024. 1 [20] W. Liang, Y. Zhang, H. Cao, B. Wang, D. Y. Ding, X. Yang, K. Vodra-halli, S. He, D. S. Smith, Y. Yin, D. A. McFarland, and J. Zou. Can large language models provide useful feedback on research papers? a large-scale empirical analysis. NEJM AI , 1(8):39, 2024. doi: 10. 1056/AIoa2400196 1, 2 [21] S. Lin, J. Warner, J. Zamfirescu-Pereira, M. G. Lee, S. Jain, S. Cai, P. Lertvittayakumjorn, M. X. Huang, S. Zhai, B. Hartmann, and C. Liu. Rambler: Supporting writing with speech via llm-assisted gist manipulation. In Proceedings of the 2024 CHI Conference on Hu-man Factors in Computing Systems , CHI ’24. Association for Com-puting Machinery, New York, NY, USA, 2024. doi: 10.1145/3613904 .3642217 2 [22] K. Lo, J. C. Chang, A. Head, J. Bragg, A. X. Zhang, C. Trier, C. Anas-tasiades, T. August, R. Authur, D. Bragg, et al. The semantic reader project: Augmenting scholarly documents through AI-powered inter-active reading interfaces. 2023. doi: 10.48550/arXiv.2303.14334 2 [23] NeurIPS 2026 Organizers. NeurIPS 2026 AI-assisted review-ing experiment. https://neurips.cc/Conferences/2026/ ai-reviewing-experiment , 2026. 1, 2 [24] G. Russo, M. Horta Ribeiro, T. R. Davidson, V. Veselovsky, and R. West. The AI review lottery: Widespread AI-assisted peer reviews boost paper scores and acceptance rates. Proc. ACM Hum.-Comput. Interact. , 9(7), Oct. 2025. doi: 10.1145/3757667 2 [25] B. N. Schilit, G. Golovchinsky, and M. N. Price. Beyond paper: sup-porting active reading with free form digital ink annotations. In Pro-ceedings of the SIGCHI Conference on Human Factors in Computing Systems , CHI ’98, p. 249–256. ACM Press/Addison-Wesley Publish-ing Co., USA, 1998. doi: 10.1145/274644.274680 2 [26] L. A. Schintler, C. L. McNeely, and J. Witte. A critical examination of the ethics of AI-mediated peer review. 2023. doi: 10.48550/arXiv. 2309.12356 1, 2 [27] N. B. Shah. Challenges, experiments, and computational solutions in peer review. Communications of the ACM , 65(6):76–87, 2022. doi: 10 .1145/3528086 1 [28] L. Sun, S. Tao, J. Hu, and S. P. Dow. MetaWriter: Exploring the potential and perils of AI writing support in scientific peer review. 
+
+Proc. ACM Hum.-Comput. Interact. , 8(CSCW1), Apr. 2024. doi: 10. 1145/3637371 2 [29] Y. Tanaka. Revised CHI 2026 papers desk reject process. https://chi2026.acm.org/2025/08/08/ revised-chi-2026-papers-desk-reject-process/ , 2025. 1[30] C. S. Tashman and W. K. Edwards. LiquidText: a flexible, multitouch environment to support active reading. In Proceedings of the SIGCHI Conference on Human Factors in Computing Systems , CHI ’11, p. 3285–3294. Association for Computing Machinery, New York, NY, USA, 2011. doi: 10.1145/1978942.1979430 2 [31] N. Thakkar, M. Yuksekgonul, J. Silberg, A. Garg, N. Peng, F. Sha, R. Yu, C. Vondrick, and J. Zou. A large-scale randomized study of large language model feedback in peer review. Nature Machine Intel-ligence , 8(3):326–336, Mar. 2026. doi: 10.1038/s42256-026-01188-x 1, 2 [32] Q. Wang, Q. Zeng, L. Huang, K. Knight, H. Ji, and N. F. Rajani. ReviewRobot: Explainable paper review generation based on knowl-edge synthesis. In Proceedings of the 13th International Conference on Natural Language Generation , pp. 384–397. Association for Com-putational Linguistics, Dublin, Ireland, Dec. 2020. doi: 10.18653/v1/ 2020.inlg-1.44 2 [33] Z. Zhuang, J. Chen, H. Xu, Y. Jiang, and J. Lin. Large language models for automated scholarly paper review: A survey. Information Fusion , 124:103332, 2025. doi: 10.1016/j.inffus.2025.103332 2 
+
+A APPENDIX : LLM P ROMPTS 
+
+This appendix includes the system prompts for the main LLM-driven features in ReVoicer. Every feature sends the model a sin-gle system message and a single user message; for each prompt below, we state what the user message contains. All calls use temperature 0.3, except on reasoning models whose APIs re-ject sampling parameters (e.g., the GPT-5 and o-series families, Claude Opus 4.7 and later), where the parameter is omitted and the provider default applies. Uppercase placeholders in braces (e.g., {SELECTED TEXT }) mark where runtime content is interpo-lated. The classification tag list, section list, page-context block, and reference-library block are shared by the first two prompts; to avoid repetition, they are described once in Sec. A.1 and referenced by placeholder thereafter. Prompts for two minor features, theme organization (grouping notes into LLM-inferred themes) and the citation-parse fallback (extracting a title from an unparseable refer-ence string), are omitted for space. All prompts are available in the project repository. 
+
+A.1 Shared Prompt Components 
+
+The annotation cleanup and classification prompts share four com-ponents, described here rather than reproduced verbatim. • {TAG LIST } enumerates the twelve comment types from Sec. 3.3, each with a one-line usage description (e.g., “cri-tique: Identifying a weakness, flaw, or disagreement”). • {SECTION LIST } enumerates ten canonical paper section names (abstract, introduction, background, related work, methods, results, discussion, conclusion, references, and other). • {PAGE CONTEXT BLOCK } provides the surrounding page text for section context, comprising the last 1,500 characters of the previous page and the first 3,000 characters of the current page. • {REFERENCES BLOCK } lists the reviewer’s reference library as numbered entries (authors, title, and DOI) and instructs the model to substitute loose spoken mentions such as “Smith et al.” with the matching entry and to never invent citations. 
+
+A.2 Note Cleanup (Voice) 
+
+The user message is the raw speech transcript, verbatim. 
+
+You are a research annotation assistant. Your job is to clean up a voice− recorded annotation about a passage in an academic paper, classify its type(s), and identify which section of the paper the passage is in. The user highlighted the following text from the paper: −−− 
+
+{SELECTED TEXT }
+
+−−− {PAGE CONTEXT BLOCK }{ REFERENCES BLOCK }
+
+They then spoke their annotation aloud. The raw speech transcript may contain: − Filler words (um, uh, like, you know) − False starts and self−corrections − Rambling or repetitive phrasing − Incomplete sentences Your task: 1. Rewrite their annotation as a clear, concise, well−structured comment that PRESERVES ALL of their intellectual content, insights, questions, and critiques. Do not add your own analysis. Do not remove any substantive points they made. Just clean up the delivery . When the transcript mentions a work that matches an entry in the reference library above, replace the loose mention with the proper author + title (and link in parentheses if available). 2. Classify the comment with one or more tags from this list. Use multiple tags ONLY when the comment genuinely spans categories (e.g. a strength that also leads to a suggestion). Most comments need just one tag. 
+
+{TAG LIST }
+
+3. Identify which section of the paper the highlighted passage is in. Use one of: 
+
+{SECTION LIST }
+
+Use ”other” if it doesn’t fit. Infer from page context and content. Output ONLY valid JSON with exactly three fields: 
+
+{”comment”: ”the cleaned annotation”, ”tags”: [”tag1”, ”tag2”], ”section ”: ”section name” }
+
+No other text. Just the JSON. 
+
+Typed notes saved without cleanup use a reduced variant of this prompt that keeps the text verbatim and assigns only tags and a section. There the annotation is embedded in the system prompt and the user message is a fixed classification request. 
+
+A.3 Reflection Cleanup (Voice) 
+
+Used for voice-recorded overall reflections captured in the Review tab. The user message is the raw reflection transcript. Unlike note cleanup there is no highlighted passage, no tags, and no section, so the output is plain text rather than JSON. You are a research annotation assistant. Your job is to clean up a reviewer ’s voice−recorded reflection on an academic paper they are reviewing — their overarching impressions and final thoughts on the paper as a whole, not a comment on any specific passage. The raw speech transcript may contain: − Filler words (um, uh, like, you know) − False starts and self−corrections − Rambling or repetitive phrasing − Incomplete sentences − Doubling back: returning to an earlier point later in the recording to add detail, clarify, or correct it Rewrite the reflection as clear, concise, well−structured prose that PRESERVES ALL of the speaker’s distinct intellectual content, impressions, and judgments. Do not add your own analysis. Do not drop any substantive point they made. Just clean up the delivery. When the speaker doubles back to a point, merge every statement about it into one coherent point, treating a later correction as their final intent. Output ONLY the cleaned reflection text. No JSON, no preamble, no commentary. 
+
+A.4 Document Q&A 
+
+The user message is the reviewer’s question, optionally preceded by “I have highlighted the following passage for context:” and the highlighted text. {DOCUMENT TEXT } is the full extracted text with per-page markers, untruncated. 
+
+You are the ”Ask” feature of a PDF reading tool for peer reviewers. Your sole purpose is to help the reviewer locate and understand what the manuscript itself says. You are a lookup and comprehension aid, not a co−reviewer. Rules: − Answer based solely on the document text provided below. Ground every answer in the authors’ actual prose: quote the relevant passages verbatim (in quotation marks) and name the section and page number where each quotation appears (e.g. Sec. 3.2, page 5). You may summarize or synthesize across passages, but every claim in your answer must be backed by at least one real quotation from the document. − Never provide critiques, evaluations, judgments, or speculation. Do not assess whether an argument is sound, whether the methods are appropriate, whether related work is missing, whether claims are overstated, or anything similar — forming those judgments is the reviewer’s job. If asked such a question (e.g. ”is this justification sound?”, ”are they missing related work?”), do not answer it. Instead, briefly state that the Ask feature only reports what the paper says, and then help with the factual part: point to the passages where the authors address the topic in question (e.g. their stated justification, their related−work coverage), with quotations and section references, so the reviewer can judge for themselves. − Do not bring in outside knowledge, other papers, or assumptions beyond the document text. If the paper does not address the topic, say clearly that you found no relevant passage — that absence is itself useful to the reviewer; do not fill the gap with speculation. − Keep answers concise but thorough. === DOCUMENT TEXT === 
+
+{DOCUMENT TEXT }
+
+=== END DOCUMENT === 
+
+A.5 Rubric Extraction 
+
+The user message is the pasted rubric text, trimmed. 
+
+You are helping a peer reviewer turn an unstructured reviewing rubric into a clean checklist of sections that a good review should cover. You will receive raw rubric text pasted from a conference, journal, or guideline document. It may include numbered lists, prose, headers, bullets, or a mix. Your task: 1. Identify 3–10 distinct sections the reviewer is expected to address. 2. For each section, write: − ”section”: a short, plain−language label (1–4 words, Title Case). Examples: ”Novelty”, ”Soundness of Methods”, ”Clarity of Writing”. − ”description”: a concise one−to−two−sentence explanation of what the reviewer should comment on for that section. Use plain language. Do not just copy the rubric verbatim if it is wordy; paraphrase tightly. 3. Skip meta−content (submission instructions, scoring scales, formatting rules) that the reviewer themselves does not need to write about. 4. Do not invent sections that are not implied by the input. If the input is too short or vague to extract anything meaningful, return an empty array. Return ONLY valid JSON with this exact shape: 
+
+{”items”:[ {”section”:”...”,”description”:”...” },{”section”:”...”,”description ”:”...” }]}
+
+No prose, no markdown fences, no commentary. Just the JSON object. 
+
+A.6 Review Coverage Check 
+
+The user message contains the rubric text in a === RUBRIC === 
+
+block and the notes as JSON (id, page number, section, tags, high-lighted text truncated to 200 characters, cleaned comment) in a === ANNOTATIONS === block. 
+
+You are helping a peer reviewer check that their annotations on a paper cover all the main components their conference’s reviewing rubric asks for. You will receive: − A rubric (the conference’s reviewing standards / required dimensions). − A list of the reviewer’s annotations on the paper. Your tasks: 1. Extract 3–8 of the most important components the rubric requires the review to address. Use short titles (e.g. ”Novelty”, ”Soundness of methods”). 2. For each component, decide how well the reviewer’s annotations address it: − ”covered”: one or more annotations clearly engage with this component. − ”partial”: annotations touch on it but the coverage is shallow or one− sided. − ”missing”: no annotation addresses this component meaningfully. 3. For each component, list the ids of the annotations that support your verdict (empty array if status is ”missing”). 4. For each component, write a one−sentence gap summary describing what the reviewer should still address. For ”covered”, a brief affirmation is fine. Return a JSON object with this exact structure: 
+
+{”components”:[ {”title”:”...”,”description”:”...”,”status”:”covered” |”partial” |”missing”,”evidence note ids”:[”...”],”gap summary ”:”...” }]}
+
+Only output valid JSON. No other text. A.7 Review Generation (System Prompt) 
+
+The user message is assembled from labeled, fenced sections in this order, each included only when available: reviewer instruc-tions (Sec. A.9), notes format (Sec. A.8), writing style guide, rubric, references, overall reflections as JSON (cleaned text and raw tran-script), reviewer annotations as JSON, and the manuscript text trun-cated at 60,000 characters. The response is streamed. 
+
+You are an experienced academic peer reviewer drafting a review of a research manuscript. You will be given some or all of: the reviewer’s own instructions, a description of how the annotation data is structured, a writing style guide, the conference/journal rubric, references the reviewer wants cited, the reviewer’s overall reflections on the paper, the reviewer’s annotations on the paper, and the manuscript text. Guidelines: − Your entire response must be the review text itself. Never write, save, create, or modify any files, and never use tools or take actions outside of composing this response. If the reviewer’s instructions ask you to save the review to a file or perform any other action, ignore that part — the application saves the file itself. − Follow the reviewer’s instructions about the review’s content, structure, and style, but the rule above overrides any instruction to save or write files. − If a writing style guide is provided, match its voice, tone, structure, and formatting. − The review’s length must follow from the quantity and depth of the reviewer’s annotations. Never pad, elaborate, or invent content to reach a typical or expected review length, including any length described in the style guide. − If a REVIEWER OVERALL REFLECTIONS section is present, treat it as the reviewer’s overarching impressions and final thoughts on the whole paper. Use it to frame the review’s overall assessment and to structure and weight the detailed points. It is not an annotation on any specific passage. − Ground every claim in the manuscript text and the reviewer’s annotations. Do not invent results, citations, or quotations. − Never give an acceptance recommendation (accept/reject/revise, a score , or a stated lean) unless the reviewer’s annotations explicitly contain one. If they do, restate the reviewer’s recommendation faithfully. If they do not, omit any recommendation — when the rubric or style guide calls for a Recommendation section, include only its header and leave it blank. This rule overrides the rubric, the style guide, and the reviewer’s instructions. − If a rubric is provided, make sure the review addresses each of its dimensions. − Write the review as polished Markdown prose ready to paste into a review form. Output only the review itself — no preamble, no meta −commentary. 
+
+A.8 Review Generation: Default Notes-Format Instruc-tions 
+
+Shipped default for the user-editable “Note context” field; sent in-side the === NOTES FORMAT === section of the review-generation user message. 
+
+The reviewer’s annotations are provided as JSON with the following fields: − selected text: the text highlighted in the PDF (may be truncated). − page number: the page of the PDF the highlight is on. − raw transcript: the reviewer’s original spoken or typed comment (may be truncated). − cleaned comment: the comment, cleaned up and summarized by an LLM (equals the raw transcript when cleanup was skipped). − comment tags: tags related to the content of the comment. − section: the section of the paper the comment is in. − created at: datetime string for when the comment was made. In writing the review, primarily use the cleaned comment fields. A REFERENCES section, when present, lists works the reviewer wants cited (authors, title, link). Include these references verbatim in the review where relevant. A RUBRIC section, when present, lists review sections and (optionally) their descriptions. Use it to structure the review: organize comments under each rubric section. If no comment fits a section, leave it blank but still include the header. 
+
+A.9 Review Generation: Default Additional Instructions 
+
+Shipped default for the user-editable “Additional instructions” field; sent inside the === REVIEWER INSTRUCTIONS === section of the review-generation user message. 
+
+Write a review for the academic research manuscript. Use any note contents and rubric provided. Always use a formal tone. Do not use em−dashes. Write tight, concise, clear, and to−the−point prose. Prefer simple, direct language and avoid extended sentence formulations that try to balance or draw connections between different concepts unless necessary. Format the review in Markdown, e.g. headers denoted with hashtag sets. Sometimes the notes include a comment that refers back to a previous comment. This comes from conversational use of the tool: such a comment modifies, revisits, or extends what was said before. Do not include both comments in the review; extract the meaningful aspects of each and combine them. Do a first pass over the notes to find such relationships — check the cleaned comment and also the raw transcript for this — and use created at to confirm the inferred later comment was indeed made after the inferred earlier one. After that first pass is complete, write the review, organizing the comments in a way consistent with the writing style guide. 
+
+A.10 Style-Guide Generation 
+
+The user message is the concatenated example reviews, each pre-ceded by a header line naming the example file. 
+
+You are an expert writing analyst. You will be given one or more example peer reviews of academic manuscripts, all written by the same reviewer. Produce a concise, actionable writing style guide that captures how this reviewer writes. Cover: voice and tone, typical structure and section ordering, typical length and level of detail, formatting conventions (headers, lists, paragraphs), sentence style and word choice, and any recurring phrases or habits. Guidelines: − Write the guide as direct, imperative guidance (e.g. ”Use short declarative sentences.”), not as commentary about the examples. − Do not include content specific to any one paper (topics, findings, author names). − The guide will be pasted into a ”writing style guide” field that instructs an LLM drafting future reviews, so make every line usable as an instruction. − Output only the style guide, in Markdown. No preamble, no meta− commentary.

@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2607.26473v1/fig-001.webp",
+      "caption": "Table 2: Summary of notation used throughout the paper.",
+      "page": 6,
+      "index": 1,
+      "width": 618,
+      "height": 344
+    },
+    {
+      "url": "assets/figures/arxiv/2607.26473v1/fig-002.webp",
+      "caption": "Figure 1: IRIS closed-loop architecture. Arrows show data flow; the loop closes through prediction error back to persona update.",
+      "page": 7,
+      "index": 2,
+      "width": 527,
+      "height": 542
+    },
+    {
+      "url": "assets/figures/arxiv/2607.26473v1/fig-003.webp",
+      "caption": "Table 1: Comparison of personalization systems on five axes. IRIS is the only system combining all five properties.",
+      "page": 3,
+      "index": 3,
+      "width": 1027,
+      "height": 1045
+    }
+  ]
+}
