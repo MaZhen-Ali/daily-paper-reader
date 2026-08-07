@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2608.06228v1/fig-001.webp",
+      "caption": "Figure 1. TF third iteration after hypothesis testing",
+      "page": 7,
+      "index": 1,
+      "width": 976,
+      "height": 631
+    }
+  ]
+}

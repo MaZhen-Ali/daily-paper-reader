@@ -1,0 +1,54 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2608.06167v1/fig-001.webp",
+      "caption": "TABLE III OVERVIEW OF ANALYSES, WITH MODELS USED FOR EXTRACTION AND EVALUATION, AND THE DATES ON WHICH THESE WERE PERFORMED",
+      "page": 6,
+      "index": 1,
+      "width": 1006,
+      "height": 196
+    },
+    {
+      "url": "assets/figures/arxiv/2608.06167v1/fig-002.webp",
+      "caption": "TABLE I ATTRIBUTES TO BE EXTRACTED FROM HTA DOCUMENTS",
+      "page": 2,
+      "index": 2,
+      "width": 529,
+      "height": 371
+    },
+    {
+      "url": "assets/figures/arxiv/2608.06167v1/fig-003.webp",
+      "caption": "Fig. 5. Evaluation metrics per attribute, and over all attributes",
+      "page": 7,
+      "index": 3,
+      "width": 879,
+      "height": 210
+    },
+    {
+      "url": "assets/figures/arxiv/2608.06167v1/fig-004.webp",
+      "caption": "Fig. 6. F1 scores per attribute, and over all attributes, for the generative AI models Claude Opus 3, Claude Opus 4.6, Gemini 3.1 Pro, and GPT OSS 120B",
+      "page": 8,
+      "index": 4,
+      "width": 879,
+      "height": 210
+    },
+    {
+      "url": "assets/figures/arxiv/2608.06167v1/fig-005.webp",
+      "caption": "Fig. 7. F1 scores per attribute, and over all attributes, for the HTA organisations NICE, ZIN, and HAS. HAS does not report the attributes internal_identifier and outcome_cea. For managed_entry_agreement for HAS, either both the AI-extracted value and the gold standard value were null, or the AI did not classify the requirement of future assessments as an outcome-based managed entry agreement like the human expert did.",
+      "page": 8,
+      "index": 5,
+      "width": 879,
+      "height": 210
+    },
+    {
+      "url": "assets/figures/arxiv/2608.06167v1/fig-006.webp",
+      "caption": "Fig. 4. Flowchart illustrating the comparison of extracted attributes with the gold standard",
+      "page": 5,
+      "index": 6,
+      "width": 346,
+      "height": 925
+    }
+  ]
+}
