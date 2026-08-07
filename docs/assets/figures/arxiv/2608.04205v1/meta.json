@@ -1,0 +1,134 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2608.04205v1/fig-001.webp",
+      "caption": "Figure 3: Controlled behavioral adherence across four environments. (a) Each cell pools five personas declaring one pole of an attribute and five declaring the opposite pole; 10/10 means that all five positive personas expressed the target and all five negative personas expressed the opposite value. (b) Overall successful-trial share by environment and the number of strong attributes, defined as at least four of five successes in both arms. An LLM judge evaluates the recorded trajectory or artifact. Overall, 366 of 400 trials succeed.",
+      "page": 11,
+      "index": 1,
+      "width": 976,
+      "height": 379
+    },
+    {
+      "url": "assets/figures/arxiv/2608.04205v1/fig-002.webp",
+      "caption": "Table 17: Cited judge evidence, Survey environment. For each attribute, the behavior the judge identified in a positive persona (declared value) versus its matched negative persona (opposite value). Excerpts are quoted from the trial trajectories.",
+      "page": 43,
+      "index": 2,
+      "width": 986,
+      "height": 404
+    },
+    {
+      "url": "assets/figures/arxiv/2608.04205v1/fig-003.webp",
+      "caption": "Table 4: Complete index of the 43 schema categories. Counts sum to 1,290 attributes. Examples are labels from the authoritative dimension catalog; the complete attribute-level mapping is supplied as supp_material/persona_taxonomy_mapping.csv.",
+      "page": 25,
+      "index": 3,
+      "width": 894,
+      "height": 1031
+    },
+    {
+      "url": "assets/figures/arxiv/2608.04205v1/fig-004.webp",
+      "caption": "Figure 9: Move-transition graphs for the meal-planning chat study, by economic motivation. 1,000 GPT-5.5 persona conversations, 500 per stratum, one fixed assistant; 13,120 move transitions in total. A conversation averages six exchanges and fourteen moves, so it traverses the graph in loops rather than one pass; edges curving back up the page are those returns. Each panel draws only its own moves and transitions and lays itself out, so shape differences reflect the data. Black edges trace each step’s most frequent successor; every drawn edge carries its transition count, and a pair of moves with no edge between them co-occurred fewer than the panel’s count floor of about 90 transitions.",
+      "page": 38,
+      "index": 4,
+      "width": 966,
+      "height": 339
+    },
+    {
+      "url": "assets/figures/arxiv/2608.04205v1/fig-005.webp",
+      "caption": "Table 5: Detailed schema-to-source grounding map. The mapping records source families and their roles in schema design, prior estimation, dependency construction, compatibility rules, or downstream validation.",
+      "page": 26,
+      "index": 5,
+      "width": 945,
+      "height": 1177
+    },
+    {
+      "url": "assets/figures/arxiv/2608.04205v1/fig-006.webp",
+      "caption": "Table 16: Persona adherence per attribute and environment, both acting agents. Each environment is split into two sub-columns: Opus 4.8 (left) and GPT-5.6-sol (right), under the same Opus 4.8 judge. Each cell shows two groups of five persona icons—the left group the positive cohort, the right group the negative cohort. A filled icon (x) marks a persona whose behavior expressed the declared value (for the negative cohort, correctly expressed the opposite value—target suppressed); a faint icon (x) marks one that did not. More filled icons is better in both groups. Overall Opus 366/400 = 91.5% (33/40 cells strong, ≥ 4 filled per group) vs. GPT-5.6-sol 317/400 = 79.2%.",
+      "page": 42,
+      "index": 6,
+      "width": 986,
+      "height": 254
+    },
+    {
+      "url": "assets/figures/arxiv/2608.04205v1/fig-007.webp",
+      "caption": "Figure 1: Overview of the MatrAIx simulated-user evaluation framework. Evaluators describe the target audience, and MatrAIx retrieves matching personas from Persona 8B to form an evaluation cohort. The four environments define how these persona agents interact, while MatrAIx Applications provides the task specifications they execute. Shared telemetry and task-owned verification preserve the evidence needed for subgroup and population-level reporting.",
+      "page": 3,
+      "index": 7,
+      "width": 922,
+      "height": 396
+    },
+    {
+      "url": "assets/figures/arxiv/2608.04205v1/fig-008.webp",
+      "caption": "Table 21: Capability comparison across representative agent benchmarks, simulation systems, and synthetic-sampling methods. Systems, left to right: AgentBench (Liu et al., 2024), GAIA (Mialon et al., 2024), WebArena (Zhou et al., 2024a), WebShop (Yao et al., 2022), Mind2Web (Deng et al., 2023), AppWorld (Trivedi et al., 2024), ToolLLM (Qin et al., 2024), BenchFlow (BenchFlow, 2025), 𝜏-bench (Yao et al., 2025), Generative Agents (Park et al., 2023), SOTOPIA (Zhou et al., 2024b), OASIS (Yang et al., 2024), and Silicon sampling (Argyle et al., 2023). A check (3) indicates explicit support in the published system; a cross (7) indicates the capability is not stated. Dimensions read as follows: product-as-SUT evaluation treats the product, not the agent, as the subject under test; persona conditioning instantiates a user from a sampled population profile; behavioral grounding verifies that behavior tracks a target attribute rather than confounders; native-device execution covers real mobile/desktop apps beyond API demos; reproducible reporting separates verifier facts from reporting policy; trajectory inspection exposes per-trial traces; end-to-end validation closes the persona–task–product loop; silicon sampling substitutes simulated respondents for survey/UX pre-studies; reproducible cohorts deterministically re-instantiate the same cohort; and multi-agent simulation denotes persistent multi-agent social worlds (a deliberate non-goal for MatrAIx). The matrix compares capability coverage rather than providing an overall ranking.",
+      "page": 45,
+      "index": 8,
+      "width": 534,
+      "height": 388
+    },
+    {
+      "url": "assets/figures/arxiv/2608.04205v1/fig-009.webp",
+      "caption": "Table 13: Product-level conclusions under three agent models on identical cohorts. Denominators are trials in which the field was answered. Notion aggregates its three paid tiers against the free tier. †The meal-planning GPT 5.5 arm did not run the declared cohort and is not comparable with the other two arms.",
+      "page": 40,
+      "index": 9,
+      "width": 856,
+      "height": 227
+    },
+    {
+      "url": "assets/figures/arxiv/2608.04205v1/fig-010.webp",
+      "caption": "Table 12: Complete primary-outcome results for the eight validation tasks. Range is the largest minus smallest model share in percentage points. The 𝑞 column reports a three-arm 𝜒2 test after Benjamini–Hochberg correction across the eight tasks (∗∗∗𝑞 < 0.001, ∗𝑞 < 0.05; ns otherwise).",
+      "page": 40,
+      "index": 10,
+      "width": 868,
+      "height": 254
+    },
+    {
+      "url": "assets/figures/arxiv/2608.04205v1/fig-011.webp",
+      "caption": "Figure 7: Declared composition of the volunteer subset on six core dimensions. Shares are computed among records answering each item, so each panel’s denominator differs; unanswered items remain null and are never imputed. The plotted values correspond to Table 8.",
+      "page": 32,
+      "index": 11,
+      "width": 968,
+      "height": 569
+    },
+    {
+      "url": "assets/figures/arxiv/2608.04205v1/fig-012.webp",
+      "caption": "Table 18: Extraction-quality metrics. Higher scores indicate better extraction quality.",
+      "page": 44,
+      "index": 12,
+      "width": 968,
+      "height": 377
+    },
+    {
+      "url": "assets/figures/arxiv/2608.04205v1/fig-013.webp",
+      "caption": "Table 14: Rank correlation between model arms’ orderings of the same persona subgroups. Significancemarks are ordered GPT / Opus / Haiku (• significant after correction, ◦ not). A flat arm has no ordering to compare. †The GPT arm has a cohort-integrity exception. ‡App rows contain only three to eight personas per subgroup.",
+      "page": 41,
+      "index": 13,
+      "width": 776,
+      "height": 257
+    },
+    {
+      "url": "assets/figures/arxiv/2608.04205v1/fig-014.webp",
+      "caption": "Figure 5: The full persona DAG. All 1,308 graph nodes and 6,999 directed edges. Nodes are placed left to right by the topological order used in Equation 5 and grouped vertically into one lane per schema category, with lanes ordered by their mean topological position; marker area scales with a node’s directed degree. Edges are drawn as translucent curves, so darker bands mark the dependency bundles that connect demographic and educational roots to downstream expertise, interest, and behavior dimensions.",
+      "page": 27,
+      "index": 14,
+      "width": 966,
+      "height": 606
+    },
+    {
+      "url": "assets/figures/arxiv/2608.04205v1/fig-015.webp",
+      "caption": "Figure 4: Complete three-layer taxonomy of the Persona 8B schema. The left column gives the five top-level groups and their attribute totals; the middle column gives 16 subgroups; and the right column gives all 55 conceptual categories with counts. The hierarchy covers exactly 1,290 attributes and excludes latent or helper variables used only by the generation graph.",
+      "page": 24,
+      "index": 15,
+      "width": 826,
+      "height": 1165
+    },
+    {
+      "url": "assets/figures/arxiv/2608.04205v1/fig-016.webp",
+      "caption": "Figure 6: How much of the 1,290-item instrument the volunteer subset exercises. Each vertical bar is the median coverage of one interface category’s items, sorted, for all 43 categories. Labels carry the category’s leaf name, dropping the group prefix (Interests, Behavior, and so on) that would otherwise repeat under every bar. The vertical axis starts at 88.5% rather than zero because the finding is how narrow the range is, from 89.3% (Time, under Behavior) to 92.4% (Agent Adoption, under Developer; both extremes are named on their bars), which a zero-based axis would render as 43 nearly identical bars. The dashed line marks the 91.3% category median. The narrow range indicates that missingness is not concentrated in a small set of categories. Separately, 272 of the 355 records answer every one of the 1,290 items and the remaining 83 answer between 520 and 1,186.",
+      "page": 31,
+      "index": 16,
+      "width": 968,
+      "height": 551
+    }
+  ]
+}
