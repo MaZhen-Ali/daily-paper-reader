@@ -1,0 +1,62 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2608.01377v1/fig-001.webp",
+      "caption": "Figure 1: Comparison between direct Human/AI judgment and CraftAlign’s feature-grounded evaluation and revision.",
+      "page": 1,
+      "index": 1,
+      "width": 500,
+      "height": 583
+    },
+    {
+      "url": "assets/figures/arxiv/2608.01377v1/fig-002.webp",
+      "caption": "Figure 4: Mean Selection Rates from eight human reviewers. Error bars show reviewer-level min–max ranges; rates sum to 200% because each reviewer selects two stories per group.",
+      "page": 7,
+      "index": 2,
+      "width": 458,
+      "height": 322
+    },
+    {
+      "url": "assets/figures/arxiv/2608.01377v1/fig-003.webp",
+      "caption": "Table 2: RQ3 cross-editor revision results. Target realization and non-target drift are measured against the CraftAlign-selected target set for all conditions. Bold marks the best result within each editor; Avg. reports the macro-average across editors.",
+      "page": 7,
+      "index": 3,
+      "width": 1032,
+      "height": 355
+    },
+    {
+      "url": "assets/figures/arxiv/2608.01377v1/fig-004.webp",
+      "caption": "Figure 2: CraftAlign overview. StoryScope reference profiles supervise only the local feature estimator. Downstream energy modeling and search operate on out-of-sample predicted profiles. The same scalar energy function is queried with Human and AI labels, and structured search reuses this function to select renderable feature transitions.",
+      "page": 4,
+      "index": 4,
+      "width": 1052,
+      "height": 336
+    },
+    {
+      "url": "assets/figures/arxiv/2608.01377v1/fig-005.webp",
+      "caption": "Table 5: Reviewer-level selection counts over all 20 humanevaluation groups. Each reviewer makes 40 selections in total, selecting two of five versions per group. Mean reports the average count across the eight reviewers; the Human Reference text is not reproduced in the case display.",
+      "page": 17,
+      "index": 5,
+      "width": 502,
+      "height": 1202
+    },
+    {
+      "url": "assets/figures/arxiv/2608.01377v1/fig-006.webp",
+      "caption": "Table 4: Hyperparameters of the class-conditional energy model and structured search.",
+      "page": 12,
+      "index": 6,
+      "width": 479,
+      "height": 589
+    },
+    {
+      "url": "assets/figures/arxiv/2608.01377v1/fig-007.webp",
+      "caption": "Table 3: Fine-tuning configuration of the Qwen3.5-9B feature estimator.",
+      "page": 12,
+      "index": 7,
+      "width": 472,
+      "height": 629
+    }
+  ]
+}
