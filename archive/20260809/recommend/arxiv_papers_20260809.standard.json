@@ -1,0 +1,252 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-08-09T19:21:43.221005+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 3,
+    "deep_cap": 6,
+    "deep_selected": 3,
+    "quick_candidates": 3,
+    "quick_skim_target": 11,
+    "quick_selected": 3
+  },
+  "deep_dive": [
+    {
+      "id": "2608.01640v1",
+      "source": "arxiv",
+      "title": "AI-assisted Script Management for Requirements Elicitation Interviews",
+      "abstract": "Requirements elicitation interviews require interviewers to balance topic coverage, active listening, and adaptive probing while responding to stakeholders in real time. Although prior work has explored AI support for isolated interviewing tasks, such as script generation and follow-up question generation, little is known about how integrated support affects the interview and what requirements artifacts emerge. Furthermore, script management---which helps the interviewer track topic coverage in real time and decide when to probe further---remains underexplored. This paper presents an AI-assisted elicitation workflow that combines theory-guided script generation grounded in business goals with live support for topic coverage tracking and on-demand follow-up question generation. We evaluate the workflow in a between-subjects quasi-experimental study comparing a no-training, AI-assisted condition with a training, AI-unassisted condition. Based on a rubric derived from elicitation best practices, the AI-generated scripts score higher than training-only scripts (92.8 vs. 74.8 out of 100). AI-assisted interviews cover fewer topics (9.6 vs. 14.5), cover more scripted questions (86% vs. 69%), ask more follow-ups per topic (3.43 vs. 1.15), and produce more refined goal models (lowest-level goal fraction 0.653 vs. 0.598). Participants find script management useful, rating topic tracking as the most useful workflow feature (86% agreement). Collectively, these results show that the AI-assisted condition is associated with a different interview trajectory and different elicited requirements than a training-only condition, positioning AI-assisted workflows as elicitation scaffolds for future studies.",
+      "authors": [
+        "Anmol Singhal",
+        "Paulo Carvalho",
+        "Travis Breaux"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-08-03T03:22:37+00:00",
+      "link": "https://arxiv.org/pdf/2608.01640v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "AI-assisted requirements elicitation and script management",
+      "llm_evidence_cn": "人工智能辅助的需求获取与脚本管理",
+      "llm_evidence": "人工智能辅助的需求获取与脚本管理",
+      "canonical_evidence": "人工智能辅助的需求获取与脚本管理",
+      "llm_tldr_en": "Presents an AI-assisted workflow for requirements elicitation interviews to improve topic coverage and artifact quality.",
+      "llm_tldr_cn": "展示了一种AI辅助的需求获取访谈工作流，旨在提高主题覆盖率和需求产物质量。",
+      "llm_tldr": "展示了一种AI辅助的需求获取访谈工作流，旨在提高主题覆盖率和需求产物质量。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2608.06287v1",
+      "source": "arxiv",
+      "title": "Automatic Translation of Unstructured Requirements into Linear Temporal Logic through Large Language Models",
+      "abstract": "Automatically translating unstructured natural language requirements into formal specifications remains a challenge in requirements engineering and formal methods, particularly for safety- and mission-critical systems whose verification depends on mathematically precise specifications. This paper evaluates whether contemporary off-the-shelf Large Language Models (LLMs) can help bridge this gap by generating Linear Temporal Logic (LTL) formulas directly from unstructured requirements. The study examines six modern LLMs using a few-shot prompting strategy on a heterogeneous benchmark of 15 structurally varied requirements. Five independent generations were collected for each requirement-model pair, yielding 450 candidate LTL formulas in total. Performance was assessed through manual semantic evaluation, pass@k for k in {1, 3, 5}, and a self-consistency measure capturing syntactic reproducibility across stochastic trials. The results indicate that current general-purpose LLMs can achieve practically significant performance on the unstructured NL-to-LTL task without task-specific fine-tuning. The study also considers understandability for non-experts by pairing generated formulas with model-produced natural language explanations and discussing the complementary use of timeline-based LTL visualization. The findings suggest that modern LLMs are becoming viable front-end assistants for semi-automated formalization workflows.",
+      "authors": [
+        "Alexandra Newcomb",
+        "Omar Ochoa"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-08-06T17:13:07+00:00",
+      "link": "https://arxiv.org/pdf/2608.06287v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "translating unstructured requirements into formal specifications",
+      "llm_evidence_cn": "将非结构化需求转换为形式化规范",
+      "llm_evidence": "将非结构化需求转换为形式化规范",
+      "canonical_evidence": "将非结构化需求转换为形式化规范",
+      "llm_tldr_en": "Evaluates LLMs for translating natural language requirements into Linear Temporal Logic formulas.",
+      "llm_tldr_cn": "评估大语言模型将自然语言需求转换为线性时序逻辑公式的能力。",
+      "llm_tldr": "评估大语言模型将自然语言需求转换为线性时序逻辑公式的能力。",
+      "llm_tags": [
+        "query:re-us:composite"
+      ],
+      "matched_query_tag": "query:re-us:composite",
+      "matched_query_text": "Papers central to 需求工程领域的用户故事相关的论文, especially work that connects or combines: User stories in software development and requirements engineering; Requirements engineering methodologies and practices; Agile requirements engineering and management; Quality assessment and improvement of user stories; Automated extraction of user stories from text; Defining and validating user story acceptance criteria; State of the art in user story research for requirements engineering; Automated tools for user story generation and validation; Impact of user story quality on software project success.",
+      "matched_requirement_id": "req-composite-re-us",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2608.01533v1",
+      "source": "arxiv",
+      "title": "Algorithm-driven Development: A Proactive Approach to Improving Software Quality and Reducing Defects",
+      "abstract": "Ensuring software quality while meeting deadlines and adapting to evolving requirements is a persistent challenge in software engineering practice. This paper introduces Algorithm-Driven Development (ADD), a methodology developed from industrial practice to address recurring challenges in translating requirements into reliable, testable, and maintainable software behavior. ADD translates requirements into algorithmic flowcharts from which acceptance tests are systematically derived. These flowcharts serve both as specification artifacts and as technical blueprints, supporting shared understanding between stakeholders and developers. By linking requirement modeling with automated test generation, ADD provides systematic coverage of functional scenarios, including edge cases, from the outset of development. The approach was evaluated over a four-year period within an industrial project at Dassault Systèmes, involving two development teams, 22,444 lines of production code for Team 1, and 157 APIs analyzed for Team 2. The evaluation combined longitudinal quality and delivery indicators with a comparative analysis of ADD, TDD, and test-last development practices across API functions of different complexity levels. Empirical data collected from internal lifecycle management and CI/CD systems show that ADD supported sustained code coverage above 95%, low defect density in both QA and post-release phases, and a stable delivery cadence. These findings provide evidence of ADD's potential to strengthen the connection between requirements, testing, and implementation in industrial software development contexts.",
+      "authors": [
+        "Philippe Jawish",
+        "Pierre Evrard",
+        "Alexandre Lemerle",
+        "Adrian Genin",
+        "Layal Dergham",
+        "Séverin Lanfranchi"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.PL"
+      ],
+      "published": "2026-08-02T22:58:00+00:00",
+      "link": "https://arxiv.org/pdf/2608.01533v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "translating requirements into algorithmic flowcharts and acceptance tests",
+      "llm_evidence_cn": "将需求转化为算法流程图和验收测试",
+      "llm_evidence": "将需求转化为算法流程图和验收测试",
+      "canonical_evidence": "将需求转化为算法流程图和验收测试",
+      "llm_tldr_en": "Introduces a methodology to derive systematic acceptance tests from requirement-based algorithmic flowcharts.",
+      "llm_tldr_cn": "介绍了一种从基于需求的算法流程图中导出系统验收测试的方法论。",
+      "llm_tldr": "介绍了一种从基于需求的算法流程图中导出系统验收测试的方法论。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Defining and validating user story acceptance criteria",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2608.06167v1",
+      "source": "arxiv",
+      "title": "Schema-Guided Hierarchical Information Extraction and Semantic Evaluation Using Generative AI",
+      "abstract": "We present a schema-based framework for extracting complex, structured information from unstructured text documents using generative AI, followed by automated semantic evaluation of the extracted information against a gold standard. The schema, serving as an information model encoding domain knowledge, provides a unified, systematic, and consistent framework for extraction of hierarchical, nested information, with attributes of variable cardinality, and subsequent evaluation of the results. Information extraction from a document is performed in a single call to the model, in zero-shot mode.   In the evaluation step, we introduce a path-based semantic matching algorithm to align the nested, variable-cardinality attributes in the extracted results with those in the gold standard. We use generative AI for semantic comparison of the extracted and gold standard values of an attribute, and introduce a rubric to classify the result of the comparison, according to domain-specific considerations, as an exact, semantic, useful, or non-match.   We were able to extract 12 out of 14 attributes with an F1 score of $>$90\\% from documents published by the health technology assessment organisation NICE, using the generative AI model Claude Opus 3. The time needed to extract the attributes from a document was $\\sim$30 times lower than the time taken by a human domain expert. We further demonstrate generalisability of this framework across different generative AI models and transferability across different HTA organisations and languages.",
+      "authors": [
+        "Modhurita Mitra",
+        "Jan-Willem Versteeg",
+        "Maarten D. Schermer",
+        "Shiva Nadi Najafabadi",
+        "Marie L. De Bruin",
+        "Lourens T. Bloem"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ],
+      "published": "2026-08-06T15:33:30+00:00",
+      "link": "https://arxiv.org/pdf/2608.06167v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Extraction of structured information from unstructured text",
+      "llm_evidence_cn": "从非结构化文本中提取结构化信息",
+      "llm_evidence": "从非结构化文本中提取结构化信息",
+      "canonical_evidence": "从非结构化文本中提取结构化信息",
+      "llm_tldr_en": "A schema-based framework for extracting structured info from text, highly applicable to user story extraction.",
+      "llm_tldr_cn": "一种基于模式的从文本提取结构化信息的框架，非常适用于用户故事提取。",
+      "llm_tldr": "一种基于模式的从文本提取结构化信息的框架，非常适用于用户故事提取。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Automated extraction of user stories from text",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2608.04293v1",
+      "source": "arxiv",
+      "title": "LEGOUI: Designing with UI-DSL Bricks to Balance Transparency and Controllability",
+      "abstract": "Generative user interface design tools enable rapid prototyping but often operate as black boxes with limited transparency and controllability. When outputs diverge from the designer's intent, users are left tweaking prompts via trial-and-error with little insight into the model's reasoning. We present LegoUI, a staged generative framework that structures the interface design process into sequential, interpretable steps along key design dimensions, capturing each step's result in a UI domain-specific language (UI-DSL) enriched with provenance. This approach exposes the model's intermediate reasoning and enables user intervention and iterative refinement. In a technical evaluation on 40 real-world design prompts, LegoUI's requirement analysis stage captured explicit requirements with over 95% accuracy, near-complete coverage, and zero redundancy. In user studies, participants using LegoUI reported significantly greater transparency, controllability, and alignment with their intent compared to existing one-shot generative UI tools.",
+      "authors": [
+        "Yinsi Zhou",
+        "Mingyue Yuan",
+        "Hongyue Xu",
+        "Jieshan Chen",
+        "Dong Wen",
+        "Shidong Pan",
+        "Xiwei Xu",
+        "Wenjie Zhang",
+        "Aaron Quigley",
+        "Zhenchang Xing",
+        "Gelareh Mohammadi"
+      ],
+      "primary_category": "cs.HC",
+      "categories": [
+        "cs.HC"
+      ],
+      "published": "2026-08-04T23:58:39+00:00",
+      "link": "https://arxiv.org/pdf/2608.04293v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "requirement analysis for generative UI design",
+      "llm_evidence_cn": "生成式UI设计的需求分析",
+      "llm_evidence": "生成式UI设计的需求分析",
+      "canonical_evidence": "生成式UI设计的需求分析",
+      "llm_tldr_en": "Introduces LegoUI, a framework that structures UI design into interpretable steps based on requirement analysis.",
+      "llm_tldr_cn": "引入LegoUI框架，将UI设计过程结构化为基于需求分析的可解释步骤。",
+      "llm_tldr": "引入LegoUI框架，将UI设计过程结构化为基于需求分析的可解释步骤。",
+      "llm_tags": [
+        "query:re-us:composite"
+      ],
+      "matched_query_tag": "query:re-us:composite",
+      "matched_query_text": "Papers central to 需求工程领域的用户故事相关的论文, especially work that connects or combines: User stories in software development and requirements engineering; Requirements engineering methodologies and practices; Agile requirements engineering and management; Quality assessment and improvement of user stories; Automated extraction of user stories from text; Defining and validating user story acceptance criteria; State of the art in user story research for requirements engineering; Automated tools for user story generation and validation; Impact of user story quality on software project success.",
+      "matched_requirement_id": "req-composite-re-us",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2608.06228v1",
+      "source": "arxiv",
+      "title": "Predicting Agile Success: The Critical Few Factors",
+      "abstract": "While Agile projects are more successful than traditional software development project management approaches, their overall success rate remains relatively low, with a high percentage of projects still deemed challenged or failed. This low project success rate is attributed to projects not being rigorously evaluated against critical success factors (CSF) of Agile projects and contemporary project success criteria. To identify the CSF that contribute to Agile software development project success as perceived by Agile practitioners, this study used a positivist approach to investigate the CSF of Agile software development projects. PLS-SEM with SmartPLS was used to analyse the data and test the hypotheses to identify significant relationships between the constructs and project success criteria. This research found that a few critical factors significantly contribute to Agile project success. The study developed a novel model that can be used to evaluate and measure project success.",
+      "authors": [
+        "Ridewaan Hanslo",
+        "Maureen Tanner"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-08-06T16:18:13+00:00",
+      "link": "https://arxiv.org/pdf/2608.06228v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Agile software development project success factors",
+      "llm_evidence_cn": "敏捷软件开发项目成功因素",
+      "llm_evidence": "敏捷软件开发项目成功因素",
+      "canonical_evidence": "敏捷软件开发项目成功因素",
+      "llm_tldr_en": "Investigates critical success factors for Agile software development projects using PLS-SEM analysis.",
+      "llm_tldr_cn": "使用 PLS-SEM 分析研究敏捷软件开发项目的关键成功因素。",
+      "llm_tldr": "使用 PLS-SEM 分析研究敏捷软件开发项目的关键成功因素。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Agile requirements engineering and management",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    }
+  ]
+}
