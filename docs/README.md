@@ -6,40 +6,40 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-08-09
-- 运行时间：2026-08-09 19:22:34 UTC
+- 最新运行日期：2026-08-10
+- 运行时间：2026-08-10 21:08:17 UTC
 - 运行状态：成功
 - 本次总论文数：6
-- 精读区：3
-- 速读区：3
+- 精读区：2
+- 速读区：4
 
 ### 今日简报（AI）
-今日聚焦 AI 深度介入的需求工程，重点攻克了访谈脚本管理与非结构化需求向线性时序逻辑（LTL）的自动转化。
-核心研究表明 LLM 能精准实现需求的形式化验证，并在敏捷开发成功率预测与 UI-DSL 协同设计领域展现出显著潜力。
-建议关注如何利用大模型弥合自然语言与严谨逻辑规范之间的鸿沟，以提升复杂软件系统的开发质量与透明度。
-- 详情：[/202608/09/README](/202608/09/README)
+今日聚焦 AI 驱动的需求工程革新，深度解析从访谈脚本管理到逻辑公式自动生成的全链路自动化方案。
+核心结论指出 LLM 已能高效实现非结构化需求向线性时序逻辑（LTL）的精准转化，显著提升了需求获取的严谨性与效率。
+建议开发者重点关注 AI 原生敏捷开发下的质量保障与安全验证架构，以应对复杂软件系统的缺陷预防挑战。
+- 详情：[/202608/10/README](/202608/10/README)
 
 ### 精读区论文标签
-1. [AI-assisted Script Management for Requirements Elicitation Interviews](/202608/09/2608.01640v1-ai-assisted-script-management-for-requirements-elicitation-interviews)  
+1. [AI-assisted Script Management for Requirements Elicitation Interviews](/202608/10/2608.01640v1-ai-assisted-script-management-for-requirements-elicitation-interviews)  
    标签：评分：9.0/10、query:re-us
-   evidence：人工智能辅助的需求获取与脚本管理
-2. [Automatic Translation of Unstructured Requirements into Linear Temporal Logic through Large Language Models](/202608/09/2608.06287v1-automatic-translation-of-unstructured-requirements-into-linear-temporal-logic-through-large-language-models)  
-   标签：评分：9.0/10、query:re-us
-   evidence：将非结构化需求转换为形式化规范
-3. [Algorithm-driven Development: A Proactive Approach to Improving Software Quality and Reducing Defects](/202608/09/2608.01533v1-algorithm-driven-development-a-proactive-approach-to-improving-software-quality-and-reducing-defects)  
+   evidence：AI辅助需求获取与制品生成
+2. [Automatic Translation of Unstructured Requirements into Linear Temporal Logic through Large Language Models](/202608/10/2608.06287v1-automatic-translation-of-unstructured-requirements-into-linear-temporal-logic-through-large-language-models)  
    标签：评分：8.0/10、query:re-us
-   evidence：将需求转化为算法流程图和验收测试
+   evidence：将非结构化需求转换为形式化规范
 
 ### 速读区论文标签
-1. [Schema-Guided Hierarchical Information Extraction and Semantic Evaluation Using Generative AI](/202608/09/2608.06167v1-schema-guided-hierarchical-information-extraction-and-semantic-evaluation-using-generative-ai)  
+1. [Algorithm-driven Development: A Proactive Approach to Improving Software Quality and Reducing Defects](/202608/10/2608.01533v1-algorithm-driven-development-a-proactive-approach-to-improving-software-quality-and-reducing-defects)  
    标签：评分：7.0/10、query:re-us
-   evidence：从非结构化文本中提取结构化信息
-2. [Predicting Agile Success: The Critical Few Factors](/202608/09/2608.06228v1-predicting-agile-success-the-critical-few-factors)  
+   evidence：将需求转化为验收测试
+2. [JTA: Joint Testability Architecture for Scenario-Based Validation of Safety-Critical Software](/202608/10/2608.05594v1-jta-joint-testability-architecture-for-scenario-based-validation-of-safety-critical-software)  
    标签：评分：7.0/10、query:re-us
-   evidence：敏捷软件开发项目成功因素
-3. [LEGOUI: Designing with UI-DSL Bricks to Balance Transparency and Controllability](/202608/09/2608.04293v1-legoui-designing-with-ui-dsl-bricks-to-balance-transparency-and-controllability)  
+   evidence：基于场景的软件验证
+3. [Towards Assurance Closure in AI-Native Large-Scale Agile Software Development](/202608/10/2608.07317v1-towards-assurance-closure-in-ai-native-large-scale-agile-software-development)  
+   标签：评分：7.0/10、query:re-us
+   evidence：AI代理在大规模敏捷软件开发中的保证闭环
+4. [Schema-Guided Hierarchical Information Extraction and Semantic Evaluation Using Generative AI](/202608/10/2608.06167v1-schema-guided-hierarchical-information-extraction-and-semantic-evaluation-using-generative-ai)  
    标签：评分：6.0/10、query:re-us
-   evidence：生成式UI设计的需求分析
+   evidence：从文本中自动提取结构化信息
 
 
 <div class="dpr-home-promo-card">

@@ -1,0 +1,246 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-08-10T21:06:39.967498+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 2,
+    "deep_cap": 6,
+    "deep_selected": 2,
+    "quick_candidates": 4,
+    "quick_skim_target": 11,
+    "quick_selected": 4
+  },
+  "deep_dive": [
+    {
+      "id": "2608.01640v1",
+      "source": "arxiv",
+      "title": "AI-assisted Script Management for Requirements Elicitation Interviews",
+      "abstract": "Requirements elicitation interviews require interviewers to balance topic coverage, active listening, and adaptive probing while responding to stakeholders in real time. Although prior work has explored AI support for isolated interviewing tasks, such as script generation and follow-up question generation, little is known about how integrated support affects the interview and what requirements artifacts emerge. Furthermore, script management---which helps the interviewer track topic coverage in real time and decide when to probe further---remains underexplored. This paper presents an AI-assisted elicitation workflow that combines theory-guided script generation grounded in business goals with live support for topic coverage tracking and on-demand follow-up question generation. We evaluate the workflow in a between-subjects quasi-experimental study comparing a no-training, AI-assisted condition with a training, AI-unassisted condition. Based on a rubric derived from elicitation best practices, the AI-generated scripts score higher than training-only scripts (92.8 vs. 74.8 out of 100). AI-assisted interviews cover fewer topics (9.6 vs. 14.5), cover more scripted questions (86% vs. 69%), ask more follow-ups per topic (3.43 vs. 1.15), and produce more refined goal models (lowest-level goal fraction 0.653 vs. 0.598). Participants find script management useful, rating topic tracking as the most useful workflow feature (86% agreement). Collectively, these results show that the AI-assisted condition is associated with a different interview trajectory and different elicited requirements than a training-only condition, positioning AI-assisted workflows as elicitation scaffolds for future studies.",
+      "authors": [
+        "Anmol Singhal",
+        "Paulo Carvalho",
+        "Travis Breaux"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-08-03T03:22:37+00:00",
+      "link": "https://arxiv.org/pdf/2608.01640v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "AI-assisted requirements elicitation and artifact generation",
+      "llm_evidence_cn": "AI辅助需求获取与制品生成",
+      "llm_evidence": "AI辅助需求获取与制品生成",
+      "canonical_evidence": "AI辅助需求获取与制品生成",
+      "llm_tldr_en": "Presents an AI-assisted workflow for requirements elicitation interviews and topic coverage tracking.",
+      "llm_tldr_cn": "展示了一种用于需求获取访谈和主题覆盖跟踪的AI辅助工作流。",
+      "llm_tldr": "展示了一种用于需求获取访谈和主题覆盖跟踪的AI辅助工作流。",
+      "llm_tags": [
+        "query:re-us:composite"
+      ],
+      "matched_query_tag": "query:re-us:composite",
+      "matched_query_text": "Papers central to 需求工程领域的用户故事相关的论文, especially work that connects or combines: User stories in software development and requirements engineering; Requirements engineering methodologies and practices; Agile requirements engineering and management; Quality assessment and improvement of user stories; Automated extraction of user stories from text; Defining and validating user story acceptance criteria; State of the art in user story research for requirements engineering; Automated tools for user story generation and validation; Impact of user story quality on software project success.",
+      "matched_requirement_id": "req-composite-re-us",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2608.06287v1",
+      "source": "arxiv",
+      "title": "Automatic Translation of Unstructured Requirements into Linear Temporal Logic through Large Language Models",
+      "abstract": "Automatically translating unstructured natural language requirements into formal specifications remains a challenge in requirements engineering and formal methods, particularly for safety- and mission-critical systems whose verification depends on mathematically precise specifications. This paper evaluates whether contemporary off-the-shelf Large Language Models (LLMs) can help bridge this gap by generating Linear Temporal Logic (LTL) formulas directly from unstructured requirements. The study examines six modern LLMs using a few-shot prompting strategy on a heterogeneous benchmark of 15 structurally varied requirements. Five independent generations were collected for each requirement-model pair, yielding 450 candidate LTL formulas in total. Performance was assessed through manual semantic evaluation, pass@k for k in {1, 3, 5}, and a self-consistency measure capturing syntactic reproducibility across stochastic trials. The results indicate that current general-purpose LLMs can achieve practically significant performance on the unstructured NL-to-LTL task without task-specific fine-tuning. The study also considers understandability for non-experts by pairing generated formulas with model-produced natural language explanations and discussing the complementary use of timeline-based LTL visualization. The findings suggest that modern LLMs are becoming viable front-end assistants for semi-automated formalization workflows.",
+      "authors": [
+        "Alexandra Newcomb",
+        "Omar Ochoa"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-08-06T17:13:07+00:00",
+      "link": "https://arxiv.org/pdf/2608.06287v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Translating unstructured requirements into formal specifications",
+      "llm_evidence_cn": "将非结构化需求转换为形式化规范",
+      "llm_evidence": "将非结构化需求转换为形式化规范",
+      "canonical_evidence": "将非结构化需求转换为形式化规范",
+      "llm_tldr_en": "Evaluates LLMs in translating natural language requirements into Linear Temporal Logic for formal verification.",
+      "llm_tldr_cn": "评估了大语言模型将自然语言需求转换为线性时序逻辑以进行形式化验证的能力。",
+      "llm_tldr": "评估了大语言模型将自然语言需求转换为线性时序逻辑以进行形式化验证的能力。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2608.01533v1",
+      "source": "arxiv",
+      "title": "Algorithm-driven Development: A Proactive Approach to Improving Software Quality and Reducing Defects",
+      "abstract": "Ensuring software quality while meeting deadlines and adapting to evolving requirements is a persistent challenge in software engineering practice. This paper introduces Algorithm-Driven Development (ADD), a methodology developed from industrial practice to address recurring challenges in translating requirements into reliable, testable, and maintainable software behavior. ADD translates requirements into algorithmic flowcharts from which acceptance tests are systematically derived. These flowcharts serve both as specification artifacts and as technical blueprints, supporting shared understanding between stakeholders and developers. By linking requirement modeling with automated test generation, ADD provides systematic coverage of functional scenarios, including edge cases, from the outset of development. The approach was evaluated over a four-year period within an industrial project at Dassault Systèmes, involving two development teams, 22,444 lines of production code for Team 1, and 157 APIs analyzed for Team 2. The evaluation combined longitudinal quality and delivery indicators with a comparative analysis of ADD, TDD, and test-last development practices across API functions of different complexity levels. Empirical data collected from internal lifecycle management and CI/CD systems show that ADD supported sustained code coverage above 95%, low defect density in both QA and post-release phases, and a stable delivery cadence. These findings provide evidence of ADD's potential to strengthen the connection between requirements, testing, and implementation in industrial software development contexts.",
+      "authors": [
+        "Philippe Jawish",
+        "Pierre Evrard",
+        "Alexandre Lemerle",
+        "Adrian Genin",
+        "Layal Dergham",
+        "Séverin Lanfranchi"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.PL"
+      ],
+      "published": "2026-08-02T22:58:00+00:00",
+      "link": "https://arxiv.org/pdf/2608.01533v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "translating requirements into acceptance tests",
+      "llm_evidence_cn": "将需求转化为验收测试",
+      "llm_evidence": "将需求转化为验收测试",
+      "canonical_evidence": "将需求转化为验收测试",
+      "llm_tldr_en": "Introduces a methodology to translate requirements into flowcharts for systematic acceptance test generation.",
+      "llm_tldr_cn": "引入了一种将需求转化为流程图以系统生成验收测试的方法论。",
+      "llm_tldr": "引入了一种将需求转化为流程图以系统生成验收测试的方法论。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Defining and validating user story acceptance criteria",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2608.06167v1",
+      "source": "arxiv",
+      "title": "Schema-Guided Hierarchical Information Extraction and Semantic Evaluation Using Generative AI",
+      "abstract": "We present a schema-based framework for extracting complex, structured information from unstructured text documents using generative AI, followed by automated semantic evaluation of the extracted information against a gold standard. The schema, serving as an information model encoding domain knowledge, provides a unified, systematic, and consistent framework for extraction of hierarchical, nested information, with attributes of variable cardinality, and subsequent evaluation of the results. Information extraction from a document is performed in a single call to the model, in zero-shot mode.   In the evaluation step, we introduce a path-based semantic matching algorithm to align the nested, variable-cardinality attributes in the extracted results with those in the gold standard. We use generative AI for semantic comparison of the extracted and gold standard values of an attribute, and introduce a rubric to classify the result of the comparison, according to domain-specific considerations, as an exact, semantic, useful, or non-match.   We were able to extract 12 out of 14 attributes with an F1 score of $>$90\\% from documents published by the health technology assessment organisation NICE, using the generative AI model Claude Opus 3. The time needed to extract the attributes from a document was $\\sim$30 times lower than the time taken by a human domain expert. We further demonstrate generalisability of this framework across different generative AI models and transferability across different HTA organisations and languages.",
+      "authors": [
+        "Modhurita Mitra",
+        "Jan-Willem Versteeg",
+        "Maarten D. Schermer",
+        "Shiva Nadi Najafabadi",
+        "Marie L. De Bruin",
+        "Lourens T. Bloem"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ],
+      "published": "2026-08-06T15:33:30+00:00",
+      "link": "https://arxiv.org/pdf/2608.06167v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "automated extraction of structured information from text",
+      "llm_evidence_cn": "从文本中自动提取结构化信息",
+      "llm_evidence": "从文本中自动提取结构化信息",
+      "canonical_evidence": "从文本中自动提取结构化信息",
+      "llm_tldr_en": "A framework for extracting structured information from text using GenAI, useful for automated requirement extraction.",
+      "llm_tldr_cn": "一种利用生成式AI从文本中提取结构化信息的框架，可用于自动化的需求提取任务。",
+      "llm_tldr": "一种利用生成式AI从文本中提取结构化信息的框架，可用于自动化的需求提取任务。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Automated extraction of user stories from text",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2608.05594v1",
+      "source": "arxiv",
+      "title": "JTA: Joint Testability Architecture for Scenario-Based Validation of Safety-Critical Software",
+      "abstract": "Validation adequacy in safety-critical software depends on more than the system under test. Critical scenarios must be constructed under controlled conditions, execution evidence must be aligned into verdict-ready form, and abnormal outcomes must be attributable to actionable causes. Existing testability research remains largely artifact-centric and offers little architectural support for reasoning about the combined capability of the scenario, the test system, and the system under test. Joint Testability Architecture (JTA) addresses this gap by treating those three elements as a single object of analysis and design. It characterizes validation capability along three dimensions--controllability, observability, and isolability--and organizes them through three domains, three bridges, and an analysis-design-evaluation-refinement loop. JTA also introduces scenario contracts, joint capability assessment, validation blind-spot identification, and bridge-oriented design actions that map capability gaps to concrete improvements in control points, evidence organization, and attribution boundaries. An illustrative analysis of ArduPilot failsafe validation shows that link-loss scenarios are comparatively mature, whereas state-estimation anomaly scenarios remain harder to validate because evidence alignment and attribution semantics are weaker. JTA is not a replacement for existing testing or safety-analysis techniques; it provides an architectural basis for modeling, designing, and assessing scenario-based validation in safety-critical software.",
+      "authors": [
+        "Wenyao Xue",
+        "Jiandi Wang",
+        "Yichen Wang"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.RO"
+      ],
+      "published": "2026-08-06T04:35:38+00:00",
+      "link": "https://arxiv.org/pdf/2608.05594v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "scenario-based validation of software",
+      "llm_evidence_cn": "基于场景的软件验证",
+      "llm_evidence": "基于场景的软件验证",
+      "canonical_evidence": "基于场景的软件验证",
+      "llm_tldr_en": "An architecture for scenario-based validation, highly relevant to defining and validating acceptance criteria.",
+      "llm_tldr_cn": "一种基于场景的验证架构，与定义和验证验收标准高度相关。",
+      "llm_tldr": "一种基于场景的验证架构，与定义和验证验收标准高度相关。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Defining and validating user story acceptance criteria",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2608.07317v1",
+      "source": "arxiv",
+      "title": "Towards Assurance Closure in AI-Native Large-Scale Agile Software Development",
+      "abstract": "The AI-Native Manifesto envisions large-scale agile software development in which humans increasingly govern intent, risk, and exceptions while agents execute more of the engineering process. Realizing that end-state requires more than better code generation: it requires assurance closure, meaning that the system can establish what must be true, determine and obtain appropriate evidence, judge the credibility of that evidence, preserve its validity through change, and use the resulting uncertainty to bound agent authority. Existing work already provides many of the necessary mechanisms across formal methods, testing, simulation, assurance cases, digital twins, and runtime assurance. We identify six residual gaps in making the surrounding assurance reasoning sufficiently machine-operable, propose a high-level architecture with six corresponding capabilities built on a shared semantic assurance layer, and formulate four research questions to turn that architecture into dependable, human-on-the-loop, AI-native R&D.",
+      "authors": [
+        "Ricardo Britto"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-08-07T15:11:18+00:00",
+      "link": "https://arxiv.org/pdf/2608.07317v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Assurance closure in large-scale agile software development with AI agents",
+      "llm_evidence_cn": "AI代理在大规模敏捷软件开发中的保证闭环",
+      "llm_evidence": "AI代理在大规模敏捷软件开发中的保证闭环",
+      "canonical_evidence": "AI代理在大规模敏捷软件开发中的保证闭环",
+      "llm_tldr_en": "Discusses establishing intent and evidence validity in AI-native agile software engineering processes.",
+      "llm_tldr_cn": "探讨在AI原生敏捷软件工程过程中建立意图和证据有效性的问题。",
+      "llm_tldr": "探讨在AI原生敏捷软件工程过程中建立意图和证据有效性的问题。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Agile requirements engineering and management",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    }
+  ]
+}
