@@ -1,0 +1,490 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-08-11T21:16:19.404134+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 5,
+    "deep_cap": 6,
+    "deep_selected": 5,
+    "quick_candidates": 7,
+    "quick_skim_target": 11,
+    "quick_selected": 7
+  },
+  "deep_dive": [
+    {
+      "id": "2608.01533v1",
+      "source": "arxiv",
+      "title": "Algorithm-driven Development: A Proactive Approach to Improving Software Quality and Reducing Defects",
+      "abstract": "Ensuring software quality while meeting deadlines and adapting to evolving requirements is a persistent challenge in software engineering practice. This paper introduces Algorithm-Driven Development (ADD), a methodology developed from industrial practice to address recurring challenges in translating requirements into reliable, testable, and maintainable software behavior. ADD translates requirements into algorithmic flowcharts from which acceptance tests are systematically derived. These flowcharts serve both as specification artifacts and as technical blueprints, supporting shared understanding between stakeholders and developers. By linking requirement modeling with automated test generation, ADD provides systematic coverage of functional scenarios, including edge cases, from the outset of development. The approach was evaluated over a four-year period within an industrial project at Dassault Systèmes, involving two development teams, 22,444 lines of production code for Team 1, and 157 APIs analyzed for Team 2. The evaluation combined longitudinal quality and delivery indicators with a comparative analysis of ADD, TDD, and test-last development practices across API functions of different complexity levels. Empirical data collected from internal lifecycle management and CI/CD systems show that ADD supported sustained code coverage above 95%, low defect density in both QA and post-release phases, and a stable delivery cadence. These findings provide evidence of ADD's potential to strengthen the connection between requirements, testing, and implementation in industrial software development contexts.",
+      "authors": [
+        "Philippe Jawish",
+        "Pierre Evrard",
+        "Alexandre Lemerle",
+        "Adrian Genin",
+        "Layal Dergham",
+        "Séverin Lanfranchi"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.PL"
+      ],
+      "published": "2026-08-02T22:58:00+00:00",
+      "link": "https://arxiv.org/pdf/2608.01533v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "systematic derivation of acceptance tests from requirements",
+      "llm_evidence_cn": "从需求中系统地推导验收测试",
+      "llm_evidence": "从需求中系统地推导验收测试",
+      "canonical_evidence": "从需求中系统地推导验收测试",
+      "llm_tldr_en": "Introduces Algorithm-Driven Development to link requirement modeling with automated acceptance test generation.",
+      "llm_tldr_cn": "引入算法驱动开发方法，将需求建模与自动化验收测试生成相结合以提高质量。",
+      "llm_tldr": "引入算法驱动开发方法，将需求建模与自动化验收测试生成相结合以提高质量。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Defining and validating user story acceptance criteria",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2608.01640v1",
+      "source": "arxiv",
+      "title": "AI-assisted Script Management for Requirements Elicitation Interviews",
+      "abstract": "Requirements elicitation interviews require interviewers to balance topic coverage, active listening, and adaptive probing while responding to stakeholders in real time. Although prior work has explored AI support for isolated interviewing tasks, such as script generation and follow-up question generation, little is known about how integrated support affects the interview and what requirements artifacts emerge. Furthermore, script management---which helps the interviewer track topic coverage in real time and decide when to probe further---remains underexplored. This paper presents an AI-assisted elicitation workflow that combines theory-guided script generation grounded in business goals with live support for topic coverage tracking and on-demand follow-up question generation. We evaluate the workflow in a between-subjects quasi-experimental study comparing a no-training, AI-assisted condition with a training, AI-unassisted condition. Based on a rubric derived from elicitation best practices, the AI-generated scripts score higher than training-only scripts (92.8 vs. 74.8 out of 100). AI-assisted interviews cover fewer topics (9.6 vs. 14.5), cover more scripted questions (86% vs. 69%), ask more follow-ups per topic (3.43 vs. 1.15), and produce more refined goal models (lowest-level goal fraction 0.653 vs. 0.598). Participants find script management useful, rating topic tracking as the most useful workflow feature (86% agreement). Collectively, these results show that the AI-assisted condition is associated with a different interview trajectory and different elicited requirements than a training-only condition, positioning AI-assisted workflows as elicitation scaffolds for future studies.",
+      "authors": [
+        "Anmol Singhal",
+        "Paulo Carvalho",
+        "Travis Breaux"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-08-03T03:22:37+00:00",
+      "link": "https://arxiv.org/pdf/2608.01640v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "AI-assisted requirements elicitation interviews",
+      "llm_evidence_cn": "AI辅助的需求获取访谈",
+      "llm_evidence": "AI辅助的需求获取访谈",
+      "canonical_evidence": "AI辅助的需求获取访谈",
+      "llm_tldr_en": "Explores AI support for script management and topic tracking during requirements elicitation interviews.",
+      "llm_tldr_cn": "探讨了在需求获取访谈中，AI如何辅助脚本管理和主题跟踪以优化需求产出。",
+      "llm_tldr": "探讨了在需求获取访谈中，AI如何辅助脚本管理和主题跟踪以优化需求产出。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2608.06228v1",
+      "source": "arxiv",
+      "title": "Predicting Agile Success: The Critical Few Factors",
+      "abstract": "While Agile projects are more successful than traditional software development project management approaches, their overall success rate remains relatively low, with a high percentage of projects still deemed challenged or failed. This low project success rate is attributed to projects not being rigorously evaluated against critical success factors (CSF) of Agile projects and contemporary project success criteria. To identify the CSF that contribute to Agile software development project success as perceived by Agile practitioners, this study used a positivist approach to investigate the CSF of Agile software development projects. PLS-SEM with SmartPLS was used to analyse the data and test the hypotheses to identify significant relationships between the constructs and project success criteria. This research found that a few critical factors significantly contribute to Agile project success. The study developed a novel model that can be used to evaluate and measure project success.",
+      "authors": [
+        "Ridewaan Hanslo",
+        "Maureen Tanner"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-08-06T16:18:13+00:00",
+      "link": "https://arxiv.org/pdf/2608.06228v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "critical success factors of Agile software development projects",
+      "llm_evidence_cn": "敏捷软件开发项目的关键成功因素",
+      "llm_evidence": "敏捷软件开发项目的关键成功因素",
+      "canonical_evidence": "敏捷软件开发项目的关键成功因素",
+      "llm_tldr_en": "Investigates critical success factors that contribute to the success of Agile software development projects.",
+      "llm_tldr_cn": "调查了有助于敏捷软件开发项目成功的关键成功因素。",
+      "llm_tldr": "调查了有助于敏捷软件开发项目成功的关键成功因素。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Agile requirements engineering and management",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2608.06287v1",
+      "source": "arxiv",
+      "title": "Automatic Translation of Unstructured Requirements into Linear Temporal Logic through Large Language Models",
+      "abstract": "Automatically translating unstructured natural language requirements into formal specifications remains a challenge in requirements engineering and formal methods, particularly for safety- and mission-critical systems whose verification depends on mathematically precise specifications. This paper evaluates whether contemporary off-the-shelf Large Language Models (LLMs) can help bridge this gap by generating Linear Temporal Logic (LTL) formulas directly from unstructured requirements. The study examines six modern LLMs using a few-shot prompting strategy on a heterogeneous benchmark of 15 structurally varied requirements. Five independent generations were collected for each requirement-model pair, yielding 450 candidate LTL formulas in total. Performance was assessed through manual semantic evaluation, pass@k for k in {1, 3, 5}, and a self-consistency measure capturing syntactic reproducibility across stochastic trials. The results indicate that current general-purpose LLMs can achieve practically significant performance on the unstructured NL-to-LTL task without task-specific fine-tuning. The study also considers understandability for non-experts by pairing generated formulas with model-produced natural language explanations and discussing the complementary use of timeline-based LTL visualization. The findings suggest that modern LLMs are becoming viable front-end assistants for semi-automated formalization workflows.",
+      "authors": [
+        "Alexandra Newcomb",
+        "Omar Ochoa"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-08-06T17:13:07+00:00",
+      "link": "https://arxiv.org/pdf/2608.06287v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "translating unstructured requirements into formal specifications",
+      "llm_evidence_cn": "将非结构化需求转换为形式化规范",
+      "llm_evidence": "将非结构化需求转换为形式化规范",
+      "canonical_evidence": "将非结构化需求转换为形式化规范",
+      "llm_tldr_en": "Evaluates LLMs in translating natural language requirements to LTL for formal verification in RE.",
+      "llm_tldr_cn": "评估大模型在需求工程中将自然语言需求转换为线性时序逻辑以进行形式化验证的能力。",
+      "llm_tldr": "评估大模型在需求工程中将自然语言需求转换为线性时序逻辑以进行形式化验证的能力。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2608.06752v1",
+      "source": "arxiv",
+      "title": "Mind the Gap: A Dual Knowledge Graph Framework for Unified Multi-task User Intent Inference",
+      "abstract": "This paper proposes DKG-MTI, a dual knowledge graph framework for unified multi-task user intent inference from online travel reviews. Existing approaches often rely on hierarchical pipelines that suffer from error propagation or retrieval methods that ignore structural relationships in domain knowledge. To address these limitations, we introduce an inference-only knowledge augmentation framework that dynamically constructs a User-Specific Intent Knowledge Graph from each review and aligns it with a Global Hotel Knowledge Graph through structure-aware semantic smoothing. The aligned knowledge is combined with the original review and processed by a large language model to simultaneously predict aspect ratings and generate reverse user intent statements. Experiments on TripAdvisor reviews show that DKG-MTI consistently outperforms strong LLM and retrieval-based baselines in both classification and intent generation tasks, demonstrating the effectiveness of structure-aware knowledge alignment for scalable and explainable intent inference.",
+      "authors": [
+        "Tzu-Cheng Peng",
+        "Chien Chin Chen",
+        "Chih-Hao Ku",
+        "Yung-Chun Chang"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ],
+      "published": "2026-08-07T03:18:13+00:00",
+      "link": "https://arxiv.org/pdf/2608.06752v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "automated extraction of user intent and reverse user stories from reviews",
+      "llm_evidence_cn": "从评论中自动提取用户意图和反向用户故事",
+      "llm_evidence": "从评论中自动提取用户意图和反向用户故事",
+      "canonical_evidence": "从评论中自动提取用户意图和反向用户故事",
+      "llm_tldr_en": "Uses a dual knowledge graph framework to infer user intent and generate reverse user stories from text.",
+      "llm_tldr_cn": "利用双知识图谱框架从文本中推断用户意图并生成反向用户故事。",
+      "llm_tldr": "利用双知识图谱框架从文本中推断用户意图并生成反向用户故事。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Automated extraction of user stories from text",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2608.08801v1",
+      "source": "arxiv",
+      "title": "IDRAAK: From Multi-Agent NLP to Few-Shot Prompting for Semantic Drift Detection in Technical Requirements",
+      "abstract": "Translating technical requirements across languages can introduce semantic drift, altering numerical constraints, polarities, modalities, or other specification-critical meaning. IDRAAK is presented as an interpretable framework for detecting such drift using a language-independent Semantic Requirement Representation (SRR), with six detection workflows evaluated, ranging from deterministic comparison to multi-agent verification and few-shot prompting. On 890 synthetic perturbations across 300 requirements from 10 engineering domains, a single LLM call with six few-shot examples achieves MCC=0.888 and F1=0.983, outperforming the evaluated structured and multi-stage alternatives. Further evaluation on PAWS-X (805 pairs, 5 languages) and XNLI (700 pairs, 7 languages) exposes complementary strengths and limitations of structured and LLM-based approaches. Deterministic SRR comparison performs strongly on technical requirements (F1=0.898) but poorly on general-domain text (F1=0.012), while structured evidence improves performance on adversarial paraphrases. Post-hoc Platt scaling further improves confidence calibration. The results demonstrate that increased agentic complexity does not necessarily improve semantic-drift detection and that simple few-shot prompting can provide a strong and efficient alternative.",
+      "authors": [
+        "Shiva Ahir"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL",
+        "cs.AR",
+        "cs.ET"
+      ],
+      "published": "2026-08-09T16:34:38+00:00",
+      "link": "https://arxiv.org/pdf/2608.08801v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "semantic drift detection in technical requirements",
+      "llm_evidence_cn": "技术需求中的语义偏移检测",
+      "llm_evidence": "技术需求中的语义偏移检测",
+      "canonical_evidence": "技术需求中的语义偏移检测",
+      "llm_tldr_en": "Presents IDRAAK, a framework for detecting semantic drift in technical requirements using multi-agent NLP.",
+      "llm_tldr_cn": "提出了IDRAAK框架，利用多智能体NLP检测技术需求在翻译或转换中的语义偏移。",
+      "llm_tldr": "提出了IDRAAK框架，利用多智能体NLP检测技术需求在翻译或转换中的语义偏移。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2608.04293v1",
+      "source": "arxiv",
+      "title": "LEGOUI: Designing with UI-DSL Bricks to Balance Transparency and Controllability",
+      "abstract": "Generative user interface design tools enable rapid prototyping but often operate as black boxes with limited transparency and controllability. When outputs diverge from the designer's intent, users are left tweaking prompts via trial-and-error with little insight into the model's reasoning. We present LegoUI, a staged generative framework that structures the interface design process into sequential, interpretable steps along key design dimensions, capturing each step's result in a UI domain-specific language (UI-DSL) enriched with provenance. This approach exposes the model's intermediate reasoning and enables user intervention and iterative refinement. In a technical evaluation on 40 real-world design prompts, LegoUI's requirement analysis stage captured explicit requirements with over 95% accuracy, near-complete coverage, and zero redundancy. In user studies, participants using LegoUI reported significantly greater transparency, controllability, and alignment with their intent compared to existing one-shot generative UI tools.",
+      "authors": [
+        "Yinsi Zhou",
+        "Mingyue Yuan",
+        "Hongyue Xu",
+        "Jieshan Chen",
+        "Dong Wen",
+        "Shidong Pan",
+        "Xiwei Xu",
+        "Wenjie Zhang",
+        "Aaron Quigley",
+        "Zhenchang Xing",
+        "Gelareh Mohammadi"
+      ],
+      "primary_category": "cs.HC",
+      "categories": [
+        "cs.HC"
+      ],
+      "published": "2026-08-04T23:58:39+00:00",
+      "link": "https://arxiv.org/pdf/2608.04293v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "requirement analysis for UI design prompts",
+      "llm_evidence_cn": "UI设计提示词的需求分析",
+      "llm_evidence": "UI设计提示词的需求分析",
+      "canonical_evidence": "UI设计提示词的需求分析",
+      "llm_tldr_en": "A generative framework that uses requirement analysis to structure UI design into interpretable steps.",
+      "llm_tldr_cn": "一种通过需求分析将UI设计过程结构化为可解释步骤的生成式框架。",
+      "llm_tldr": "一种通过需求分析将UI设计过程结构化为可解释步骤的生成式框架。",
+      "llm_tags": [
+        "query:re-us:composite"
+      ],
+      "matched_query_tag": "query:re-us:composite",
+      "matched_query_text": "Papers central to 需求工程领域的用户故事相关的论文, especially work that connects or combines: User stories in software development and requirements engineering; Requirements engineering methodologies and practices; Agile requirements engineering and management; Quality assessment and improvement of user stories; Automated extraction of user stories from text; Defining and validating user story acceptance criteria; State of the art in user story research for requirements engineering; Automated tools for user story generation and validation; Impact of user story quality on software project success.",
+      "matched_requirement_id": "req-composite-re-us",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2608.09072v1",
+      "source": "arxiv",
+      "title": "A Unified Issue Resolution Benchmark for Requirement Clarification, Planning, and Code Generation for Coding Agents",
+      "abstract": "Large language model-powered coding agents are increasingly used to modify existing code repositories, for example, by adding features or fixing bugs. Yet existing repository-level benchmarks typically evaluate only whether the final patch passes tests. Satisfying a user request requires a long chain of interdependent reasoning and decisions: an agent must recover explicit and implicit requirements, formulate a repository-grounded implementation plan, and translate it into correct code. A pass/fail outcome cannot characterize how an unsuccessful trajectory diverges from the requirements and implementation process needed for a correct patch. To address this gap, we introduce SWE-RPG, a repository-level benchmark that combines executable patch evaluation with validated ground-truth references (GTs) for (1) Requirement Clarification and (2) Implementation Planning. These intermediate GTs support retrospective, GT-aligned diagnosis of complete coding-agent trajectories across clarification, planning, code generation, and artifact submission. SWE-RPG comprises 163 tasks from 31 Python and Java repositories, including 113 bug fixes and 50 feature additions. We evaluate 3 coding agents, including Claude Code, Codex, and OpenCode, with 6 large language model backends, including Claude-Sonnet-5 and GPT-5.6-Terra. Results show that the evaluated popular coding agents still struggle to implement user requests in existing repositories, achieving an average resolved rate of only 31.5% on SWE-RPG. Intermediate-GT diagnosis further identifies implicit requirement recovery as the main bottleneck, accounting for 24.5%--46.0% of agent runs. This result suggests implicit-requirement recovery as a key candidate direction for improving coding agents. The benchmark data and evaluation code are available at https://github.com/Xin-Zhou-smu/SWE-RPG-Bench.",
+      "authors": [
+        "Xin Zhou",
+        "Chun Yong Chong",
+        "Kisub Kim",
+        "Yun Peng",
+        "Rui Shu",
+        "Zihan Wu",
+        "Xu Han",
+        "Guowen Yuan",
+        "Zeyang Zhuang",
+        "Jounghoon Kim",
+        "Jeongjin Ju",
+        "Seongmin Ju",
+        "Taein Yoon",
+        "David Lo"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-08-10T03:22:04+00:00",
+      "link": "https://arxiv.org/pdf/2608.09072v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "requirement clarification and planning for coding agents",
+      "llm_evidence_cn": "针对编码代理的需求澄清与规划",
+      "llm_evidence": "针对编码代理的需求澄清与规划",
+      "canonical_evidence": "针对编码代理的需求澄清与规划",
+      "llm_tldr_en": "Introduces SWE-RPG, a benchmark for evaluating coding agents on requirement clarification and implementation planning.",
+      "llm_tldr_cn": "引入了SWE-RPG基准，用于评估编码代理在需求澄清和实施规划方面的能力。",
+      "llm_tldr": "引入了SWE-RPG基准，用于评估编码代理在需求澄清和实施规划方面的能力。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2608.05594v1",
+      "source": "arxiv",
+      "title": "JTA: Joint Testability Architecture for Scenario-Based Validation of Safety-Critical Software",
+      "abstract": "Validation adequacy in safety-critical software depends on more than the system under test. Critical scenarios must be constructed under controlled conditions, execution evidence must be aligned into verdict-ready form, and abnormal outcomes must be attributable to actionable causes. Existing testability research remains largely artifact-centric and offers little architectural support for reasoning about the combined capability of the scenario, the test system, and the system under test. Joint Testability Architecture (JTA) addresses this gap by treating those three elements as a single object of analysis and design. It characterizes validation capability along three dimensions--controllability, observability, and isolability--and organizes them through three domains, three bridges, and an analysis-design-evaluation-refinement loop. JTA also introduces scenario contracts, joint capability assessment, validation blind-spot identification, and bridge-oriented design actions that map capability gaps to concrete improvements in control points, evidence organization, and attribution boundaries. An illustrative analysis of ArduPilot failsafe validation shows that link-loss scenarios are comparatively mature, whereas state-estimation anomaly scenarios remain harder to validate because evidence alignment and attribution semantics are weaker. JTA is not a replacement for existing testing or safety-analysis techniques; it provides an architectural basis for modeling, designing, and assessing scenario-based validation in safety-critical software.",
+      "authors": [
+        "Wenyao Xue",
+        "Jiandi Wang",
+        "Yichen Wang"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.RO"
+      ],
+      "published": "2026-08-06T04:35:38+00:00",
+      "link": "https://arxiv.org/pdf/2608.05594v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "scenario-based validation of software requirements",
+      "llm_evidence_cn": "基于场景的软件需求验证",
+      "llm_evidence": "基于场景的软件需求验证",
+      "canonical_evidence": "基于场景的软件需求验证",
+      "llm_tldr_en": "Proposes a Joint Testability Architecture for scenario-based validation of safety-critical software.",
+      "llm_tldr_cn": "提出了一种联合可测试性架构，用于安全关键软件的基于场景的验证。",
+      "llm_tldr": "提出了一种联合可测试性架构，用于安全关键软件的基于场景的验证。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Defining and validating user story acceptance criteria",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2608.09799v1",
+      "source": "arxiv",
+      "title": "SpecPath: Testing Coding Agents Across Contract-Equivalent Specification Histories",
+      "abstract": "Modern coding agents increasingly appear capable of following complex software requirements, yet their success leaves a critical ambiguity: do they resolve the active specification, or merely follow the most salient path by which it was stated? We identify specification-path sensitivity, a failure mode in which requirement histories that are equivalent in their final meaning lead the same agent system to produce behaviorally different programs. This reframes evolving-requirement evaluation as active-contract resolution: before writing code, an agent must determine which requirements still count.   Building on this view, we introduce SpecPath, a diagnostic evaluation that holds the repository, final contract, verifier, agent system, and execution budget fixed while changing only the revision path that leads to the contract. Rather than treating each patch as an isolated pass or failure, SpecPath uses paired executable outcomes to reveal whether an agent realizes the same tested behavior across contract-equivalent histories. Across five calibrated software tasks and fourteen coding-agent configurations, aggregate direct and revision-history accuracy is nearly unchanged; nevertheless, 35 of 100 complete blocks that succeed on the direct specification fail on at least one equivalent history. These results show that implementation success on a consolidated request does not guarantee specification-path invariance. Evaluating evolving requirements therefore calls for controlled tests of whether agents are robust to the path by which a specification becomes final.",
+      "authors": [
+        "Yangfan Wu",
+        "Haozhe Wang",
+        "Huanyu Yang",
+        "Jianmin Ji",
+        "Fangzhen Lin"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-08-10T16:19:00+00:00",
+      "link": "https://arxiv.org/pdf/2608.09799v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "resolving complex software requirements and evolving-requirement evaluation",
+      "llm_evidence_cn": "解决复杂的软件需求和演进式需求评估",
+      "llm_evidence": "解决复杂的软件需求和演进式需求评估",
+      "canonical_evidence": "解决复杂的软件需求和演进式需求评估",
+      "llm_tldr_en": "Introduces SpecPath to evaluate how coding agents resolve evolving software requirements and active contracts.",
+      "llm_tldr_cn": "引入SpecPath来评估编码智能体如何处理演进中的软件需求和有效合同。",
+      "llm_tldr": "引入SpecPath来评估编码智能体如何处理演进中的软件需求和有效合同。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Requirements engineering methodologies and practices",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2608.06167v1",
+      "source": "arxiv",
+      "title": "Schema-Guided Hierarchical Information Extraction and Semantic Evaluation Using Generative AI",
+      "abstract": "We present a schema-based framework for extracting complex, structured information from unstructured text documents using generative AI, followed by automated semantic evaluation of the extracted information against a gold standard. The schema, serving as an information model encoding domain knowledge, provides a unified, systematic, and consistent framework for extraction of hierarchical, nested information, with attributes of variable cardinality, and subsequent evaluation of the results. Information extraction from a document is performed in a single call to the model, in zero-shot mode.   In the evaluation step, we introduce a path-based semantic matching algorithm to align the nested, variable-cardinality attributes in the extracted results with those in the gold standard. We use generative AI for semantic comparison of the extracted and gold standard values of an attribute, and introduce a rubric to classify the result of the comparison, according to domain-specific considerations, as an exact, semantic, useful, or non-match.   We were able to extract 12 out of 14 attributes with an F1 score of $>$90\\% from documents published by the health technology assessment organisation NICE, using the generative AI model Claude Opus 3. The time needed to extract the attributes from a document was $\\sim$30 times lower than the time taken by a human domain expert. We further demonstrate generalisability of this framework across different generative AI models and transferability across different HTA organisations and languages.",
+      "authors": [
+        "Modhurita Mitra",
+        "Jan-Willem Versteeg",
+        "Maarten D. Schermer",
+        "Shiva Nadi Najafabadi",
+        "Marie L. De Bruin",
+        "Lourens T. Bloem"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ],
+      "published": "2026-08-06T15:33:30+00:00",
+      "link": "https://arxiv.org/pdf/2608.06167v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "schema-guided information extraction from unstructured text and semantic evaluation",
+      "llm_evidence_cn": "从非结构化文本中进行模式引导的信息提取和语义评估",
+      "llm_evidence": "从非结构化文本中进行模式引导的信息提取和语义评估",
+      "canonical_evidence": "从非结构化文本中进行模式引导的信息提取和语义评估",
+      "llm_tldr_en": "Proposes a framework for structured information extraction and semantic matching using generative AI.",
+      "llm_tldr_cn": "提出了一个利用生成式AI进行结构化信息提取和语义匹配的框架。",
+      "llm_tldr": "提出了一个利用生成式AI进行结构化信息提取和语义匹配的框架。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Automated extraction of user stories from text",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2608.09049v1",
+      "source": "arxiv",
+      "title": "Security and Privacy Taxonomy Generation from Mobile App Reviews",
+      "abstract": "Mobile app reviews are a rich, continuously renewing source of how users experience privacy and security, yet existing taxonomies of these concerns are hand-crafted and cannot keep pace with the evolving nature of the data. Automating taxonomy construction is the natural response, but scalability is the core challenge: current LLM- and clustering-based methods are developed for scientific corpora of a few thousand documents and do not extend to app review collections numbering in the hundreds of thousands. We address this gap in two ways. First, we filter app reviews for privacy- and security-related content, yielding a comprehensive corpus of over 600K reviews. Second, we introduce TaxoScale, a pipeline that handles taxonomy construction at this scale by extending an expert-defined taxonomy via Recursive Hierarchical Clustering and LLM-based node naming. TaxoScale outperforms strong automatic-taxonomy baselines on path, level, coverage, and novelty metrics, and discovers novel branches absent from prior taxonomies.",
+      "authors": [
+        "Moghis Fereidouni",
+        "Vinaik Chhetri",
+        "Umar Farooq",
+        "A. B. Siddique"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-08-10T02:55:24+00:00",
+      "link": "https://arxiv.org/pdf/2608.09049v1",
+      "tags": [
+        "keyword:RE US",
+        "query:RE US"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "extracting security and privacy concerns from app reviews",
+      "llm_evidence_cn": "从应用评论中提取安全与隐私关注点",
+      "llm_evidence": "从应用评论中提取安全与隐私关注点",
+      "canonical_evidence": "从应用评论中提取安全与隐私关注点",
+      "llm_tldr_en": "Automates taxonomy construction from user reviews, relevant to extracting user needs and stories.",
+      "llm_tldr_cn": "从用户评论中自动构建分类法，与从文本中提取用户需求和故事相关。",
+      "llm_tldr": "从用户评论中自动构建分类法，与从文本中提取用户需求和故事相关。",
+      "llm_tags": [
+        "query:re-us"
+      ],
+      "matched_query_tag": "query:re-us",
+      "matched_query_text": "Automated extraction of user stories from text",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2608.08801v1/fig-001.webp",
+      "caption": "Fig. 4. Detection rate by drift type on the synthetic benchmark.",
+      "page": 6,
+      "index": 1,
+      "width": 507,
+      "height": 468
+    },
+    {
+      "url": "assets/figures/arxiv/2608.08801v1/fig-002.webp",
+      "caption": "Fig. 5. Per-language MCC on XNLI across workflows.",
+      "page": 6,
+      "index": 2,
+      "width": 508,
+      "height": 247
+    },
+    {
+      "url": "assets/figures/arxiv/2608.08801v1/fig-003.webp",
+      "caption": "Fig. 1. Cross-lingual semantic drift detection through structured requirement comparison. The Hindi translation preserves the source semantics, while the Chinese translation introduces numerical and modality drift.",
+      "page": 2,
+      "index": 3,
+      "width": 529,
+      "height": 352
+    },
+    {
+      "url": "assets/figures/arxiv/2608.08801v1/fig-004.webp",
+      "caption": "Fig. 7. F1 score vs. computation time on the synthetic benchmark.",
+      "page": 7,
+      "index": 4,
+      "width": 508,
+      "height": 328
+    },
+    {
+      "url": "assets/figures/arxiv/2608.08801v1/fig-005.webp",
+      "caption": "Fig. 2. Architecture of the IDRAAK framework (W5). The system comprises five phases and eight specialized agents for cross-lingual drift detection. W3 and W4 represent simplified workflow variants.",
+      "page": 3,
+      "index": 5,
+      "width": 529,
+      "height": 352
+    },
+    {
+      "url": "assets/figures/arxiv/2608.08801v1/fig-006.webp",
+      "caption": "Fig. 3. Performance comparison of the five drift-detection workflows. W3 achieves the best overall performance despite its simpler architecture.",
+      "page": 5,
+      "index": 6,
+      "width": 529,
+      "height": 291
+    }
+  ]
+}

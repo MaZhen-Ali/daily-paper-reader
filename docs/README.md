@@ -6,40 +6,59 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-08-10
-- 运行时间：2026-08-10 21:08:17 UTC
+- 最新运行日期：2026-08-11
+- 运行时间：2026-08-11 21:17:59 UTC
 - 运行状态：成功
-- 本次总论文数：6
-- 精读区：2
-- 速读区：4
+- 本次总论文数：12
+- 精读区：5
+- 速读区：7
 
 ### 今日简报（AI）
-今日聚焦 AI 驱动的需求工程革新，深度解析从访谈脚本管理到逻辑公式自动生成的全链路自动化方案。
-核心结论指出 LLM 已能高效实现非结构化需求向线性时序逻辑（LTL）的精准转化，显著提升了需求获取的严谨性与效率。
-建议开发者重点关注 AI 原生敏捷开发下的质量保障与安全验证架构，以应对复杂软件系统的缺陷预防挑战。
-- 详情：[/202608/10/README](/202608/10/README)
+- 今日共生成 12 篇推荐（精读 5 篇，速读 7 篇）
+- 精读：《Algorithm-driven Development: A Proactive Approach to Improving Software Quality and Reducing Defects》（8.0/10）, 《AI-assisted Script Management for Requirements Elicitation Interviews》（8.0/10）
+- 速读：《IDRAAK: From Multi-Agent NLP to Few-Shot Prompting for Semantic Drift Detection in Technical Requirements》（7.0/10）, 《A Unified Issue Resolution Benchmark for Requirement Clarification, Planning, and Code Generation for Coding Agents》（7.0/10）, 《SpecPath: Testing Coding Agents Across Contract-Equivalent Specification Histories》（7.0/10）
+- 这些结果覆盖了当下较热的方向，建议先看精读区论文的关键问题与方法。
+- 详情：[/202608/11/README](/202608/11/README)
 
 ### 精读区论文标签
-1. [AI-assisted Script Management for Requirements Elicitation Interviews](/202608/10/2608.01640v1-ai-assisted-script-management-for-requirements-elicitation-interviews)  
-   标签：评分：9.0/10、query:re-us
-   evidence：AI辅助需求获取与制品生成
-2. [Automatic Translation of Unstructured Requirements into Linear Temporal Logic through Large Language Models](/202608/10/2608.06287v1-automatic-translation-of-unstructured-requirements-into-linear-temporal-logic-through-large-language-models)  
+1. [Algorithm-driven Development: A Proactive Approach to Improving Software Quality and Reducing Defects](/202608/11/2608.01533v1-algorithm-driven-development-a-proactive-approach-to-improving-software-quality-and-reducing-defects)  
+   标签：评分：8.0/10、query:re-us
+   evidence：从需求中系统地推导验收测试
+2. [AI-assisted Script Management for Requirements Elicitation Interviews](/202608/11/2608.01640v1-ai-assisted-script-management-for-requirements-elicitation-interviews)  
+   标签：评分：8.0/10、query:re-us
+   evidence：AI辅助的需求获取访谈
+3. [Predicting Agile Success: The Critical Few Factors](/202608/11/2608.06228v1-predicting-agile-success-the-critical-few-factors)  
+   标签：评分：8.0/10、query:re-us
+   evidence：敏捷软件开发项目的关键成功因素
+4. [Automatic Translation of Unstructured Requirements into Linear Temporal Logic through Large Language Models](/202608/11/2608.06287v1-automatic-translation-of-unstructured-requirements-into-linear-temporal-logic-through-large-language-models)  
    标签：评分：8.0/10、query:re-us
    evidence：将非结构化需求转换为形式化规范
+5. [Mind the Gap: A Dual Knowledge Graph Framework for Unified Multi-task User Intent Inference](/202608/11/2608.06752v1-mind-the-gap-a-dual-knowledge-graph-framework-for-unified-multi-task-user-intent-inference)  
+   标签：评分：8.0/10、query:re-us
+   evidence：从评论中自动提取用户意图和反向用户故事
 
 ### 速读区论文标签
-1. [Algorithm-driven Development: A Proactive Approach to Improving Software Quality and Reducing Defects](/202608/10/2608.01533v1-algorithm-driven-development-a-proactive-approach-to-improving-software-quality-and-reducing-defects)  
+1. [IDRAAK: From Multi-Agent NLP to Few-Shot Prompting for Semantic Drift Detection in Technical Requirements](/202608/11/2608.08801v1-idraak-from-multi-agent-nlp-to-few-shot-prompting-for-semantic-drift-detection-in-technical-requirements)  
    标签：评分：7.0/10、query:re-us
-   evidence：将需求转化为验收测试
-2. [JTA: Joint Testability Architecture for Scenario-Based Validation of Safety-Critical Software](/202608/10/2608.05594v1-jta-joint-testability-architecture-for-scenario-based-validation-of-safety-critical-software)  
+   evidence：技术需求中的语义偏移检测
+2. [A Unified Issue Resolution Benchmark for Requirement Clarification, Planning, and Code Generation for Coding Agents](/202608/11/2608.09072v1-a-unified-issue-resolution-benchmark-for-requirement-clarification-planning-and-code-generation-for-coding-agents)  
    标签：评分：7.0/10、query:re-us
-   evidence：基于场景的软件验证
-3. [Towards Assurance Closure in AI-Native Large-Scale Agile Software Development](/202608/10/2608.07317v1-towards-assurance-closure-in-ai-native-large-scale-agile-software-development)  
+   evidence：针对编码代理的需求澄清与规划
+3. [SpecPath: Testing Coding Agents Across Contract-Equivalent Specification Histories](/202608/11/2608.09799v1-specpath-testing-coding-agents-across-contract-equivalent-specification-histories)  
    标签：评分：7.0/10、query:re-us
-   evidence：AI代理在大规模敏捷软件开发中的保证闭环
-4. [Schema-Guided Hierarchical Information Extraction and Semantic Evaluation Using Generative AI](/202608/10/2608.06167v1-schema-guided-hierarchical-information-extraction-and-semantic-evaluation-using-generative-ai)  
+   evidence：解决复杂的软件需求和演进式需求评估
+4. [LEGOUI: Designing with UI-DSL Bricks to Balance Transparency and Controllability](/202608/11/2608.04293v1-legoui-designing-with-ui-dsl-bricks-to-balance-transparency-and-controllability)  
    标签：评分：6.0/10、query:re-us
-   evidence：从文本中自动提取结构化信息
+   evidence：UI设计提示词的需求分析
+5. [JTA: Joint Testability Architecture for Scenario-Based Validation of Safety-Critical Software](/202608/11/2608.05594v1-jta-joint-testability-architecture-for-scenario-based-validation-of-safety-critical-software)  
+   标签：评分：6.0/10、query:re-us
+   evidence：基于场景的软件需求验证
+6. [Schema-Guided Hierarchical Information Extraction and Semantic Evaluation Using Generative AI](/202608/11/2608.06167v1-schema-guided-hierarchical-information-extraction-and-semantic-evaluation-using-generative-ai)  
+   标签：评分：6.0/10、query:re-us
+   evidence：从非结构化文本中进行模式引导的信息提取和语义评估
+7. [Security and Privacy Taxonomy Generation from Mobile App Reviews](/202608/11/2608.09049v1-security-and-privacy-taxonomy-generation-from-mobile-app-reviews)  
+   标签：评分：6.0/10、query:re-us
+   evidence：从应用评论中提取安全与隐私关注点
 
 
 <div class="dpr-home-promo-card">

@@ -1,0 +1,456 @@
+Title: Security and Privacy Taxonomy Generation from Mobile App Reviews
+
+URL Source: https://arxiv.org/pdf/2608.09049v1
+
+Published Time: Tue, 11 Aug 2026 01:46:18 GMT
+
+Number of Pages: 12
+
+Markdown Content:
+# Security and Privacy Taxonomy Generation from Mobile App Reviews 
+
+Moghis Fereidouni 1, Vinaik Chhetri 2, Umar Farooq 2, A.B. Siddique 1
+
+> 1
+
+University of Kentucky, 2Louisiana State University 
+
+> moghis.fereidouni@uky.edu, vchhet2@lsu.edu, ufarooq@lsu.edu, ab.siddique@uky.edu
+
+Abstract 
+
+Mobile app reviews are a rich, continuously re-newing source of how users experience privacy and security, yet existing taxonomies of these concerns are hand-crafted and cannot keep pace with the evolving nature of the data. Automat-ing taxonomy construction is the natural re-sponse, but scalability is the core challenge: current LLM- and clustering-based methods are developed for scientific corpora of a few thousand documents and do not extend to app review collections numbering in the hundreds of thousands. We address this gap in two ways. First, we filter app reviews for privacy- and security-related content, yielding a comprehen-sive corpus of over 600K reviews. Second, we introduce TaxoScale, a pipeline that han-dles taxonomy construction at this scale by ex-tending an expert-defined taxonomy via Recur-sive Hierarchical Clustering and LLM-based node naming. TaxoScale outperforms strong automatic-taxonomy baselines on path, level, coverage, and novelty metrics, and discovers novel branches absent from prior taxonomies. 
+
+1 Introduction 
+
+Mobile app reviews are one of the largest and fastest-growing sources of real-world user feedback on privacy and security. Users describe intrusive permissions, suspected data collection, observed surveillance behaviors, and compromised accounts. Unlike developer-defined privacy policies, these re-views capture privacy and security as experienced by users, at the scale of entire app ecosystems, and shift continuously as apps ship new features, plat-forms revise permission models, and new threats emerge. This combination of massive scale, evolv-ing user perspective, and continuous generation of new content makes app reviews a uniquely valu-able asset for understanding privacy and security concerns as they evolve. Prior work has mined app reviews for such sig-nals (Zhang et al., 2025a; Nema et al., 2022; Hark-ous et al., 2022), and some efforts organize the re-sulting concerns into taxonomies. However, these taxonomies are hand-crafted (Akgul et al., 2024); expensive to build and static once created, unable to keep pace with the very dynamic nature that makes app reviews valuable in the first place. The natural response is to automate taxonomy construction. A substantial literature now uses LLMs and clustering for this purpose (Kargupta et al., 2025; Gao et al., 2025; Zhu et al., 2025; Katz et al., 2024; Hu et al., 2024; Hsu et al., 2024), but these methods are bounded by LLM context windows and rely on clustering pipelines evaluated only on corpora of a few thousand documents. App reviews are the opposite regime: large-scale cor-pora can contain tens of millions of reviews, and even after filtering for privacy and security content, the resulting set may still number in the hundreds of thousands. As a result, prompting-based ap-proaches cannot fit the full input in context, and hierarchical clustering becomes intractable. A second obstacle is the lack of suitable data. Datasets used in prior privacy-focused work (Nema et al., 2022; Harkous et al., 2022; Akgul et al., 2024) are not publicly released, and most app re-view datasets (Maqbool et al., 2023; Fereidouni et al., 2022) are general-purpose and not spe-cific to privacy or security. Additionally, open privacy-focused resources are narrow in scope: HARPT (Kelly et al., 2025) is confined to health apps, and the resource of Zhang et al. (2025a) cov-ers only eleven popular apps. To our knowledge, no large-scale, comprehensive open corpus of privacy-and security-related app reviews currently exists. To address these problems, we first build an LLM-based classifier (ten open-source LLMs ×
+
+eight prompt templates against a human-annotated benchmark) and apply it to filter 18.63M reviews to 601,257 privacy- and security-related ones. We then apply an extractive summarizer to isolate the concern-describing spans, yielding clean concern-arXiv:2608.09049v1 [cs.CL] 10 Aug 2026 level pseudo labels. To organize these pseudo la-bels into a taxonomy at scale, we introduce Tax-oScale, a four-step pipeline that seeds from an exist-ing expert taxonomy and extends it by combining embedding-based clustering with LLM-based node naming. At its core, TaxoScale introduces Recur-sive Hierarchical Clustering , which alternates top-down k-means partitioning with bottom-up Ward agglomerative merging to scale to hundreds of thou-sands of pseudo labels while remaining grounded in established privacy terminology. TaxoScale outper-forms strong automatic-taxonomy baselines across path, level, coverage, and novelty metrics, and dis-covers novel branches, including an entirely new Network Security branch (e.g., IP Address Manage-ment, VPN Functionality) and a refined Behavioral Tracking branch (e.g., Driving Behavior Tracking, User activity tracking, Financial Transaction Track-ing) absent from prior taxonomies. We also release the filtered review corpus, extracted concern labels, and the TaxoScale codebase as a resource for future research. 
+
+2 Corpus and Pseudo-Labels 
+
+2.1 Diverse Review Aggregation 
+
+We aggregated reviews from three sources: AI-powered app reviews from Chhetri et al. (2025), the MobileRec dataset (Maqbool et al., 2023), and reviews of teacher-approved apps, yielding 18.63M reviews across 11.22K apps in 48 categories. Per-source statistics appear in Table 2, Appendix A. 
+
+2.2 Privacy/Security Filter 
+
+Mobile app reviews discuss a wide range of top-ics, so we must first filter those that explicitly raise privacy- or security-related concerns. To bench-mark this filtering step, two authors independently labeled 300 sampled reviews as privacy/security-related or not, reaching substantial agreement (Co-hen’s κ = 0.87 (Cohen, 1960)); a third author adju-dicated disagreements to produce the ground truth. We then evaluated ten open-source LLMs (4B– 70B parameters) from the Llama (Grattafiori et al., 2024), Gemma (Team et al., 2025), Mistral/Mixtral (Jiang et al., 2024, 2023), and DeepSeek (Guo et al., 2025) families under eight prompt templates (see Appendix B for the full setup and F1 scores). Llama-3.3-70B achieved the best F1 (0.9700) un-der both the zero-shot (rules) and few-shot (permis-sions+rules) templates. We selected the latter and applied it to all 18.63M reviews, yielding 601,257 privacy- and security-related reviews. 
+
+2.3 Extractive Privacy/Security Summarizer 
+
+We next extract the specific text spans within each filtered review that describe the underlying pri-vacy or security concern. We built a benchmark of 140 randomly sampled privacy/security-related reviews; two authors independently produced ex-tractive spans (multiple per review when needed), reaching κ = 0 .78 , with a third author adjudicat-ing cases where annotator spans did not overlap. Llama-3.3-70B, prompted on this benchmark to extract concern-describing spans, achieved a Jac-card similarity of 0.8511 and a token-level F1 score of 0.8187 against the ground truth. Both metrics are token-level against the review text, so the high scores confirm the extracted spans are faithful to the source rather than hallucinated. We therefore ap-plied Llama-3.3-70B to all 601,257 filtered reviews to obtain the concern-describing spans, hereafter 
+
+pseudo-labels , that serve as input to the taxonomy generation stage. For example, from the review 
+
+“Great UI, but why does it need my contacts and call logs??” , the extracted pseudo-label is “need my contacts and call logs” , stripping the unrelated UI praise and keeping only the permission concern. 
+
+3 Methodology 
+
+When a taxonomy curated by a domain expert al-ready exists, building from scratch wastes prior knowledge and may produce categories that diverge from established terminology. TaxoScale therefore seeds the tree with a predefined privacy/security taxonomy, refining its existing categories into finer subcategories while also discovering entirely new branches. The seed in our experiments is the pri-vacy taxonomy of Akgul et al. (2024): a two-level structure of 20 top-level categories (e.g., Data Collection , Data Sharing , Consent , Surveillance ,
+
+Advertising ) with 0–13 subcategories each. The pipeline proceeds in four steps, shown in Figure 1. 
+
+3.1 Step 1: Embedding and Assignment 
+
+Let L = {ℓ1, . . . , ℓ N } be the set of pseudo-labels from Section 2.3. We encode each ℓi with Qwen3-Embedding-8B (Zhang et al., 2025b) and 
+
+ℓ2-normalize, yielding X ∈ RN ×d. For the seed taxonomy, we generate two textual descriptors per parent–child pair: the concatenation parent – child (e.g., Selling data – For advertising purposes )and the parent name alone (e.g., Selling data ). The parent-alone descriptor lets pseudo-labels that match a broad category but no specific subcat-egory attach at the parent level. Each descrip-tor is encoded and ℓ2-normalized using the same 1- Assigned Pseudo Labels                        
+
+> 2- Parent Path
+> 3- Sibling Summaries
+> K-means Ward’s algorithm
+> YES
+> Too many data points?
+> NO Ward’s algorithm
+> directly on all data points
+> Embeddings
+> height-tolerance collapsing
+> ⋮⋮⋮⋮⋮⋮⋮⋮
+> ⋮ ⋮
+> ⋮⋮⋮⋮⋮⋮⋮⋮
+> ⋮ ⋮
+> Recursive Hierarchical Clustering
+> ⋮
+> ⋮
+> Conversion
+> Recursion
+> Resulting Binary Tree
+> ⋮⋮⋮⋮⋮⋮⋮⋮
+> ⋮ ⋮
+> Taxonomy Naming
+> Qwen3-235B
+> Emit 2-6 Word Summary: Behavioral tracking
+
+Figure 1: Our four-step taxonomy construction pipeline: (1) embedding and pseudo-label assignment, (2) recursive hierarchical clustering, (3) binary-to-multiway tree conversion, and (4) LLM-based node naming (Qwen3-235B). 
+
+model, giving T ∈ RM ×d, where M is the total number of descriptors across all pairs. We then compute pairwise cosine similarities S = XT ⊤
+
+and assign each pseudo-label to its closest node, 
+
+j∗ 
+
+> i
+
+= arg max j Si,j , with score si = Si, j ∗ 
+
+> i
+
+. Using threshold θ = 0 .5, we form per-node embedding sets Ej = {xi | j∗ 
+
+> i
+
+= j, si ≥ θ}, and collect unassignable pseudo-labels (those below threshold) in Eunk , which attach directly to the root. 
+
+3.2 Step 2: Recursive Hierarchical Clustering 
+
+Given each Ej and Eunk , we build a binary sub-tree via Algorithm 1 (Appendix C), which alter-nates top-down k-means partitioning with bottom-up Ward agglomerative merging until every cluster is small enough for direct Ward clustering. 
+
+Top-down step. We partition E into K
+
+clusters via mini-batch k-means with K =min( Kmax , ⌊p|E| /2⌋), where ⌊p|E| /2⌋ esti-mates the cluster count (Mardia et al., 1979) and 
+
+Kmax caps over-partitioning, yielding K centroids. 
+
+Bottom-up step. Ward’s minimum-variance link-age (Jr., 1963) is applied to the K centroids (not the raw embeddings, keeping the step tractable) via the nearest-neighbor chain algorithm (Murtagh and Contreras, 2011), producing a binary tree over the 
+
+K regions. 
+
+Recursion. Each leaf cluster c still contains |E c|
+
+pseudo-labels. When this exceeds the tractability threshold ( |E c| > τ ), direct Ward linkage on the raw embeddings becomes infeasible, so we recurse on Ec with the full top-down/bottom-up procedure, updating Kmax ← min( Kmax , ⌊p|E c|/2⌋). Oth-erwise, we apply Ward linkage directly to the raw embeddings. The resulting subtree replaces leaf c.Each subtree is appended to its seed node, and the subtree from Eunk attaches to the root. Every internal node v retains its Ward merge height h(v)
+
+and assigned pseudo-labels, which step 3 uses to convert the binary tree into a multi-way taxonomy. 
+
+3.3 Step 3: Binary-to-Multiway Conversion 
+
+At full depth, the constructed tree has as many leaves as there are pseudo-labels, which is too fine-grained. We address this by extracting effective leaves ; walking the tree from the root, we stop at any v with h(v) ≤ δleaf and treat its subtree as a single semantic cluster. The resulting tree is still strictly binary, whereas real taxonomies are multi-way. We therefore apply height-tolerance collapsing ; for an internal node v and child u, if u
+
+is internal and h(v) − h(u) ≤ ϵ, we lift u’s chil-dren to v and recurse on each lifted child, always comparing against the original h(v). Anchoring against h(v) ensures that an entire chain of near-equal-height splits collapses into one multi-way node, rather than only the first one. 
+
+3.4 Step 4: LLM-Based Node Naming 
+
+Each newly created node carries pseudo-labels but no name. We assign names bottom-up with Qwen3-235B-A22B-2507 (Yang et al., 2025); seed-taxonomy nodes retain their original names. For a leaf, we prompt the model with ( i) the node’s pseudo-labels, ( ii ) the parent path of already-named ancestors (e.g., Privacy/Security > Data Sharing ), and ( iii ) sibling names, and instruct it to emit a 2–6 word summary that is a strict sub-category of the parent, distinct from siblings, and avoids generic placeholders (issues, problems, con-cerns). For internal nodes, the prompt is identi-cal except that pseudo-labels are replaced with the already-resolved child names. Full prompts appear in Tables 6 and 7 in Appendix G. 
+
+4 Experiments 
+
+4.1 Baselines 
+
+We compare TaxoScale against four taxonomy con-struction methods: Chain-of-Layers (Zeng et al., Method Path Level Coverage Novelty                     
+
+> Chain of Layers 0.6533 0.4444 0.9090 0.1092 TaxoCom 0.2222 0.3333 0.5855 0.0802 TaxoAdapt 0.7031 0.7407 0.5671 0.2788 SCYCHIC 0.4652 0.6232 0.5493 0.4219 TaxoScale (Ours) 0.7285 0.7726 0.9852 0.4778
+> Table 1: Comparison of taxonomy methods across eval-uation metrics.
+
+2024), which prompts an LLM top-down layer by layer; TaxoCom (Lee et al., 2022), which expands a partial seed hierarchy via sub-topic cluster dis-covery; TaxoAdapt (Kargupta et al., 2025), which combines LLM knowledge with corpus signals via hierarchical classification; and SCYCHIC (Gao et al., 2025), which alternates top-down embedding clustering with bottom-up abstraction. For more implementation details, refer to Appendix E. 
+
+4.2 Evaluation Metrics Path Score: For each parent–child pair, an LLM (GPT-4o) judges whether the child is a genuinely more specific subtopic of its parent. Level Score: 
+
+For each parent, GPT-4o judges how coherent and consistent in specificity its children are. Coverage Score: The fraction of pseudo-labels whose max-imum cosine similarity to any leaf node exceeds 0.6, indicating how well leaves account for corpus topics. Coverage scores for a range of thresholds can be found in Appendix D, Table 4. Weighted Novelty: For each node, GPT-4o judges whether it represents a novel concept beyond a standard privacy/security taxonomy. We report a count-weighted average across nodes, weighting by the number of pseudo-labels covered so that novelty in heavily populated nodes outweighs novelty in sparse ones. 
+
+4.3 Results and Analysis 
+
+As shown in Table 1, TaxoScale achieves the best performance across all four metrics. It attains the highest path (0.7285) and level (0.7726) scores, outperforming the strongest baseline TaxoAdapt on both and demonstrating high taxonomy qual-ity. Coverage (0.9852) substantially exceeds the next-best Chain of Layers (0.9090), reflecting Tax-oScale’s ability to exploit large-scale pseudo-labels. Finally, the highest novelty score (0.4778, vs. 0.4219 for SCYCHIC) shows that TaxoScale dis-covers concepts absent from standard taxonomies. These novel concepts are discussed further in the next section. 
+
+4.4 Qualitative Analysis of Novel Nodes 
+
+TaxoScale discovers novel branches, all shown in Figure 2 (Appendix F). Behavioral Tracking (Fig-ure 2a) expands into four meaningful subcategories (Driving Behavior Tracking, Personal Movement Tracking, User Activity Tracking, and Financial Transaction Tracking), each capturing a distinct surveillance dimension. The Password branch (Fig-ure 2b) similarly reveals nuanced nodes such as Weak Password Feedback, Reset Difficulties, and 2FA Failures. Beyond refining existing branches, TaxoScale uncovers a new Network Security branch (e.g., IP Address Management, VPN Functionality; Figure 2c) and a domain-specific Parental Control 
+
+branch (e.g., Child Safety Safeguard, Activity Over-sight; Figure 2d) reflecting the teacher-approved apps in our corpus. These discoveries are enabled by Recursive Hierarchical Clustering, which pre-serves fine-grained coherence at scale, letting niche concerns emerge as their own clusters instead of being absorbed into broader parents. 
+
+5 Related Work 
+
+LLM-only methods iteratively prompt models to create taxonomies from unstructured text (Wan et al., 2024; Wang et al., 2023; Zeng et al., 2024; Hsu et al., 2024; Kargupta et al., 2025) but lack embedding-based grounding. Clustering-only methods ground structure in embedding geometry via clustering methods (Zhang et al., 2018; Shang et al., 2020; Lee et al., 2022) but cannot leverage LLM knowledge. Hybrid approaches combine the two (Hu et al., 2024; Katz et al., 2024; Gao et al., 2025; Zhu et al., 2025) but target scientific litera-ture and are evaluated on corpora of at most around ten thousand documents; in contrast, TaxoScale scales to 600K app reviews. 
+
+6 Conclusion 
+
+We presented TaxoScale, a four-step pipeline that automatically expands an expert-defined privacy and security taxonomy from large-scale mobile app reviews. By combining Recursive Hierarchi-cal Clustering with LLM-based node naming, Tax-oScale is applied to 601,257 privacy- and security-related reviews and outperforms strong automatic-taxonomy baselines on path, level, coverage, and novelty metrics. Beyond refining existing cate-gories, it surfaces concrete novel branches absent from prior taxonomies. We release the filtered re-view corpus, extracted concern labels, and the Tax-oScale codebase as a reusable resource for future privacy and security research on mobile apps. Limitations 
+
+Our evaluation focuses on mobile app privacy and security. TaxoScale itself is domain-agnostic: its four steps make no assumptions specific to pri-vacy or security, and the pipeline can be applied to any large-scale corpus. We leave such cross-domain validation to future work, as our motivation in this paper is grounded in the privacy and security setting, where the combination of massive scale, evolving threats, and the limitations of hand-crafted taxonomies makes automated taxonomy construc-tion particularly valuable. 
+
+References 
+
+Omer Akgul, Sai Teja Peddinti, Nina Taft, Michelle L. Mazurek, Hamza Harkous, Animesh Srivastava, and Benoit Seguin. 2024. A decade of privacy-relevant android app reviews: large scale trends. In Proceed-ings of the 33rd USENIX Conference on Security Symposium , SEC ’24, USA. USENIX Association. Vinaik Chhetri, Krishna Upadhyay, A.B. Siddique, and Umar Farooq. 2025. Large-scale analysis of user feedback on ai-powered mobile apps. In 2025 IEEE International Conference on Big Data (BigData) ,pages 500–509. Jacob Cohen. 1960. A coefficient of agreement for nominal scales. Educational and Psychological Mea-surement , 20:37 – 46. Moghis Fereidouni, Adib Mosharrof, Umar Farooq, and A.B. Siddique. 2022. Proactive prioritization of app issues via contrastive learning. In 2022 IEEE Inter-national Conference on Big Data (Big Data) , pages 535–544. Muhan Gao, Jash Shah, Weiqi Wang, Kuan-Hao Huang, and Daniel Khashabi. 2025. Science hierarchogra-phy: Hierarchical organization of science literature. 
+
+arXiv preprint arXiv:2504.13834 .Aaron Grattafiori, Abhimanyu Dubey, Abhinav Jauhri, Abhinav Pandey, Abhishek Kadian, Ahmad Al-Dahle, Aiesha Letman, Akhil Mathur, Alan Schelten, Alex Vaughan, and 1 others. 2024. The llama 3 herd of models. arXiv preprint arXiv:2407.21783 .Daya Guo, Dejian Yang, Haowei Zhang, Junxiao Song, Peiyi Wang, Qihao Zhu, Runxin Xu, Ruoyu Zhang, Shirong Ma, Xiao Bi, and 1 others. 2025. Deepseek-r1: Incentivizing reasoning capability in llms via reinforcement learning. arXiv preprint arXiv:2501.12948 .Hamza Harkous, Sai Teja Peddinti, Rishabh Khandel-wal, Animesh Srivastava, and Nina Taft. 2022. Hark: A deep learning system for navigating privacy feed-back at scale. In 2022 IEEE Symposium on Security and Privacy (SP) , pages 2469–2486. Chao-Chun Hsu, Erin Bransom, Jenna Sparks, Bailey Kuehl, Chenhao Tan, David Wadden, Lucy Wang, and Aakanksha Naik. 2024. CHIME: LLM-assisted hierarchical organization of scientific studies for liter-ature review support. In Findings of the Association for Computational Linguistics: ACL 2024 , pages 118–132, Bangkok, Thailand. Association for Com-putational Linguistics. Yuntong Hu, Zhuofeng Li, Zheng Zhang, Chen Ling, Raasikh Kanjiani, Boxin Zhao, and Liang Zhao. 2024. Taxonomy tree generation from citation graph. arXiv preprint arXiv:2410.03761 .Albert Q. Jiang, Alexandre Sablayrolles, Arthur Men-sch, Chris Bamford, Devendra Singh Chaplot, Diego de las Casas, Florian Bressand, Gianna Lengyel, Guil-laume Lample, Lucile Saulnier, Lélio Renard Lavaud, Marie-Anne Lachaux, Pierre Stock, Teven Le Scao, Thibaut Lavril, Thomas Wang, Timothée Lacroix, and William El Sayed. 2023. Mistral 7b. Preprint ,arXiv:2310.06825. Albert Q Jiang, Alexandre Sablayrolles, Antoine Roux, Arthur Mensch, Blanche Savary, Chris Bam-ford, Devendra Singh Chaplot, Diego de las Casas, Emma Bou Hanna, Florian Bressand, and 1 oth-ers. 2024. Mixtral of experts. arXiv preprint arXiv:2401.04088 .Joe H. Ward Jr. 1963. Hierarchical grouping to opti-mize an objective function. Journal of the American Statistical Association , 58(301):236–244. Priyanka Kargupta, Nan Zhang, Yunyi Zhang, Rui Zhang, Prasenjit Mitra, and Jiawei Han. 2025. TaxoAdapt: Aligning LLM-based multidimensional taxonomy construction to evolving research corpora. In Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers) , pages 29834–29850, Vienna, Austria. Association for Computational Linguistics. Uri Katz, Mosh Levy, and Yoav Goldberg. 2024. Knowl-edge navigator: LLM-guided browsing framework for exploratory search in scientific literature. In Find-ings of the Association for Computational Linguistics: EMNLP 2024 , pages 8838–8855, Miami, Florida, USA. Association for Computational Linguistics. Timoteo Kelly, Abdulkadir Korkmaz, Samuel Mallet, Connor Souders, Sadra Aliakbarpour, and Praveen Rao. 2025. Health app reviews for privacy & trust (harpt): A corpus for analyzing patient privacy con-cerns, trust in providers and trust in applications. 
+
+arXiv preprint arXiv:2506.19268 .Dongha Lee, Jiaming Shen, Seongku Kang, Susik Yoon, Jiawei Han, and Hwanjo Yu. 2022. Taxocom: Topic taxonomy completion with hierarchical discovery of novel topic clusters. In Proceedings of the ACM Web Conference 2022 , WWW ’22, page 2819–2829, New York, NY, USA. Association for Computing Machinery. M. H. Maqbool, Umar Farooq, Adib Mosharrof, A. B. Siddique, and Hassan Foroosh. 2023. Mobilerec: A large scale dataset for mobile apps recommendation. In Proceedings of the 46th International ACM SI-GIR Conference on Research and Development in Information Retrieval , SIGIR ’23, page 3007–3016, New York, NY, USA. Association for Computing Machinery. K. V. Mardia, J. T. Kent, and J. M. Bibby. 1979. Mul-tivariate Analysis . Probability and Mathematical Statistics. Academic Press, London. Fionn Murtagh and Pedro Contreras. 2011. Meth-ods of hierarchical clustering. arXiv preprint arXiv:1105.0121 .Preksha Nema, Pauline Anthonysamy, Nina Taft, and Sai Teja Peddinti. 2022. Analyzing user perspectives on mobile app privacy at scale. In Proceedings of the 44th International Conference on Software Engineer-ing , ICSE ’22, page 112–124, New York, NY, USA. Association for Computing Machinery. Jingbo Shang, Xinyang Zhang, Liyuan Liu, Sha Li, and Jiawei Han. 2020. Nettaxo: Automated topic tax-onomy construction from text-rich network. In Pro-ceedings of The Web Conference 2020 , WWW ’20, page 1908–1919, New York, NY, USA. Association for Computing Machinery. Gemma Team, Aishwarya Kamath, Johan Ferret, Shreya Pathak, Nino Vieillard, Ramona Merhej, Sarah Perrin, Tatiana Matejovicova, Alexandre Ramé, Morgane Rivière, Louis Rouillard, Thomas Mesnard, Geoffrey Cideron, Jean bastien Grill, Sabela Ramos, Edouard Yvinec, Michelle Casbon, Etienne Pot, Ivo Penchev, and 197 others. 2025. Gemma 3 technical report. 
+
+Preprint , arXiv:2503.19786. Mengting Wan, Tara Safavi, Sujay Kumar Jauhar, Yujin Kim, Scott Counts, Jennifer Neville, Siddharth Suri, Chirag Shah, Ryen W. White, Longqi Yang, Reid Andersen, Georg Buscher, Dhruv Joshi, and Nagu Rangan. 2024. Tnt-llm: Text mining at scale with large language models. In Proceedings of the 30th ACM SIGKDD Conference on Knowledge Discov-ery and Data Mining , KDD ’24, page 5836–5847, New York, NY, USA. Association for Computing Machinery. Zihan Wang, Jingbo Shang, and Ruiqi Zhong. 2023. Goal-driven explainable clustering via language de-scriptions. In Proceedings of the 2023 Conference on Empirical Methods in Natural Language Process-ing , pages 10626–10649, Singapore. Association for Computational Linguistics. An Yang, Anfeng Li, Baosong Yang, Beichen Zhang, Binyuan Hui, Bo Zheng, Bowen Yu, Chang Gao, Chengen Huang, Chenxu Lv, and 1 others. 2025. Qwen3 technical report. arXiv preprint arXiv:2505.09388 .Qingkai Zeng, Yuyang Bai, Zhaoxuan Tan, Shangbin Feng, Zhenwen Liang, Zhihan Zhang, and Meng Jiang. 2024. Chain-of-layer: Iteratively prompting large language models for taxonomy induction from limited examples. In Proceedings of the 33rd ACM International Conference on Information and Knowl-edge Management , CIKM ’24, page 3093–3102, New York, NY, USA. Association for Computing Machin-ery. Chao Zhang, Fangbo Tao, Xiusi Chen, Jiaming Shen, Meng Jiang, Brian Sadler, Michelle Vanni, and Jiawei Han. 2018. Taxogen: Unsupervised topic taxonomy construction by adaptive term embedding and clus-tering. In Proceedings of the 24th ACM SIGKDD International Conference on Knowledge Discovery & Data Mining , KDD ’18, page 2701–2709, New York, NY, USA. Association for Computing Machinery. Jianzhang Zhang, Jialong Zhou, Jinping Hua, Nan Niu, and Chuang Liu. 2025a. Mining user privacy concern topics from app reviews. Journal of Systems and Software , 222:112355. Yanzhao Zhang, Mingxin Li, Dingkun Long, Xin Zhang, Huan Lin, Baosong Yang, Pengjun Xie, An Yang, Dayiheng Liu, Junyang Lin, and 1 others. 2025b. Qwen3 embedding: Advancing text embedding and reranking through foundation models. arXiv preprint arXiv:2506.05176 .Kun Zhu, Lizi Liao, Yuxuan Gu, Lei Huang, Xiaocheng Feng, and Bing Qin. 2025. Context-aware hierar-chical taxonomy generation for scientific papers via LLM-guided multi-aspect clustering. In Proceedings of the 2025 Conference on Empirical Methods in Natural Language Processing , pages 15616–15634, Suzhou, China. Association for Computational Lin-guistics. Feature AI-related MobileRec Teacher Approved Total 
+
+Number of Reviews 2.88M 14.21M 1.54M 18.63M Number of Apps 292 10.17K 1.12K 11.22K Number of App Categories 14 48 18 48 
+
+Table 2: Summary statistics of the mobile app review dataset after filtering for English-language reviews with a minimum length of five words.                                                                                               
+
+> Prompt Template Mistral Mixtral Gemma-3 Llama DeepSeek-R1-Distill 7b 8x7b 8x22b 4b 12b 27b 3.1-8b 3.3-70b llama-70b qwen-32b
+> Zero-shot (naive) 0.9634 0.9434 0.9300 0.8163 0.9434 0.9098 0.9467 0.9600 0.9567 0.9600 Zero-shot (rules) 0.9600 0.8919 0.9434 0.8019 0.9667 0.9367 0.9300 0.9700 0.9231 0.9500 Zero-shot (permissions) 0.9667 0.9267 0.9401 0.5400 0.9567 0.9333 0.9401 0.9634 0.9400 0.9467 Zero-shot (permissions+rules) 0.9398 0.9128 0.9534 0.5890 0.9634 0.9467 0.9367 0.9667 0.9196 0.9299 Few-shot (naive) 0.9434 0.9501 0.9333 0.7835 0.9500 0.9400 0.9031 0.9500 0.9501 0.9500 Few-shot (rules) 0.9534 0.9400 0.9334 0.8091 0.9534 0.9534 0.9267 0.9634 0.9467 0.9433 Few-shot (permissions) 0.9467 0.9434 0.9434 0.5551 0.9467 0.9467 0.8349 0.9534 0.9534 0.9600 Few-shot (permissions+rules) 0.9567 0.9500 0.9401 0.6303 0.9500 0.9534 0.8797 0.9700 0.9400 0.9634
+
+Table 3: F1 scores across all model and prompt template combinations. 
+
+A Per-Source Dataset Statistics 
+
+Table 2 reports the per-source breakdown of the aggregated review corpus described in Section 2.1. 
+
+B Privacy/Security Filter 
+
+B.1 Models 
+
+We evaluated a diverse set of open-source LLMs varying in scale (4 billion to 70 billion parame-ters) and architecture, including models from the Llama (Grattafiori et al., 2024), Gemma (Team et al., 2025), Mistral/Mixtral (Jiang et al., 2024, 2023), and DeepSeek (Guo et al., 2025) families. 
+
+B.2 Prompting Strategies 
+
+We designed eight prompt templates resulting from the combination of three design dimensions. 
+
+prompting paradigm : zero-shot, where the model receives only instructions with no examples, ver-sus few-shot, where three labeled examples are included to guide the model’s output. 
+
+classification rules : some prompts provide explicit privacy- and security-related topics that should be labeled "Yes" (e.g., surveillance, data leaks, iden-tity theft) as well as categories that should be la-beled "No" (e.g., UI complaints, performance is-sues), while others rely solely on the model’s inher-ent understanding of the task. 
+
+app permissions : Some prompts additionally sup-ply the list of permissions declared by the applica-tion, providing a contextual signal that may help the model better interpret ambiguous reviews. This yields four zero-shot variants (naive, rules, permissions, permissions+rules) and their four few-shot counterparts. 
+
+B.3 Comparison of Models and Prompting Strategies 
+
+Table 3 reports F1 across all model–prompt com-binations. Across all tested models and prompting strategies, Llama-3.3-70B achieved the highest F1 score (0.9700) under two distinct prompt templates: zero-shot (rules) and few-shot (permissions+rules). More broadly, Llama-3.3-70B demonstrated con-sistently strong performance across all eight tem-plates, being the only model to achieve an F1 score of at least 0.95 in every configuration. Gemma-3-4B, by contrast, showed the weakest and most variable performance, particularly when permis-sions were included in the prompt, suggesting that smaller models struggle to effectively lever-age the additional context. These results estab-lish Llama-3.3-70B as the most reliable model for this classification task among all candidates evaluated. Regarding the choice of prompt tem-plate, both zero-shot (rules) and few-shot (permis-sions+rules) yielded identical peak performance on our 300-review benchmark. We selected few-shot (permissions+rules) for the final pipeline, as we hypothesize that the combination of labeled examples, explicit classification rules, and app per-mission context provides the model with a richer signal that is more likely to generalize to the full, noisier 18.63M-review corpus. Method Coverage (0.5) Coverage (0.6) Coverage (0.7) Coverage (0.8) Coverage (0.9) 
+
+Chain of Layers 0.9934 0.9090 0.5298 0.1437 0.0092 TaxoCom 0.9541 0.5855 0.0870 0.0068 0.0001 TaxoAdapt 0.9490 0.5671 0.1556 0.0131 0.0001 SCYCHIC 0.9475 0.5493 0.0717 0.0010 0.0000 TaxoScale (Ours) 0.9988 0.9852 0.8540 0.3725 0.0297      
+
+> Table 4: Coverage scores at five thresholds ∈ { 0.5,0.6,0.7,0.8,0.9}
+
+Algorithm 1 RecHierCluster: Recursive Hierarchi-cal Clustering 
+
+Require: Embeddings E, where E = Ej for some node j, or E = Eunk ; cluster size kmax ; large-corpus threshold τ
+
+Ensure: Binary tree root r 
+
+> 1:
+
+k ← min  kmax , ⌊p|E| /2⌋ 
+
+> 2:
+
+C ← KMeans (E, max_k = k) {Top-down step}  
+
+> 3:
+
+{E c}c ← partition E by C. kmeans_preds  
+
+> 4:
+
+r ← Ward (C. centers ) {Bottom-up step}  
+
+> 5:
+
+for each leaf cluster c in r do  
+
+> 6:
+
+if |E c| > τ then  
+
+> 7:
+
+k′ ← min  kmax , ⌊p|E c|/2⌋ 
+
+> 8:
+
+sub ← RecHierCluster (Ec, k ′, τ ) 
+
+> 9:
+
+else  
+
+> 10:
+
+sub ← Ward (Ec) {Bottom-up step}  
+
+> 11:
+
+end if  
+
+> 12:
+
+Replace leaf node c in r with sub  
+
+> 13:
+
+end for  
+
+> 14:
+
+return r
+
+C Algortihm 
+
+Algorithm 1 formalizes the Recursive Hierarchical Clustering procedure from Section 3.2: it inter-leaves top-down k-means partitioning with bottom-up Ward merging, recursing on any subcluster larger than the tractability threshold τ and falling back to direct Ward linkage otherwise. 
+
+D Coverage Results 
+
+For a more comprehensive evaluation, we report coverage scores for all baselines across a range of similarity thresholds ∈ { 0.5, 0.6, 0.7, 0.8, 0.9}.As shown in Table 4, TaxoScale consistently out-performs all baselines at every threshold, with the margin widening substantially at stricter thresholds: at 0.7, TaxoScale achieves 0.8540 coverage com-pared to 0.5298 for the next-best baseline.                
+
+> nRuntime ∆RAM (MB) 5,000 33s 253 10,000 2m 16s 763 20,000 9m 15s 3,052 40,000 37m 28s 13,457 60,000 1h 24m 29,340
+> Table 5: runtime and peak memory of Ward agglomera-tive on embeddings as a function of subcluster size n,measured on our machine (Core i9-9920X CPU) with embedding dimension d= 4096 .
+
+E Implementation Details 
+
+Chain-of-Layers, TaxoAdapt, and SCYCHIC are limited by their LLMs’ context windows, so we provide them a representative 100K-pseudo-label subset obtained by k-means clustering ( k=1 ,000 )and sampling 100 pseudo-labels per cluster. For the Recursive Hierarchical Clustering, we set the large-corpus threshold τ = 40 ,000 . Ward’s nearest-neighbor chain algorithm is O(n2) in time (Murtagh and Contreras, 2011), so τ acts as a tractability ceiling: subclusters with at most τ
+
+points are merged directly with Ward on raw em-beddings, while larger subclusters are first parti-tioned via k-means. As shown in Table 5, Ward becomes impractical and slow for n > 40 ,000 ,which is why we chose this value. We set δleaf = 10 and ϵ = 20 . The leaf height threshold δleaf controls how deep we walk the binary tree before treating a sub-tree as a sin-gle semantic cluster: lower values produce finer, more specific leaves, while higher values produce broader leaves containing more diverse pseudo-labels. We chose a relatively low value so that each finalized leaf corresponds to a tight, coherent theme, which is important for Step 4: the LLM namer conditions on the pseudo-labels assigned to a leaf, and clusters spanning semantically distant pseudo-labels would force the model toward overly generic names. At the same time, δleaf cannot be arbitrarily small; values close to zero split nearly identical pseudo-labels (e.g., “tracks my location” and “my location is being tracked”) into separate leaves, producing redundant siblings. δleaf = 10 
+
+balances these concerns. Moreover, the height-tolerance ϵ governs how aggressively near-equal-height splits are collapsed into multi-way nodes: low values preserve the binary structure with nar-row two-way splits, while high values lift many children to their grandparents, producing flatter nodes that may group children of differing speci-ficity under a single parent. In our sweep, weighted novelty peaks at ϵ = 20 and drops on either side, indicating this is the setting at which multi-way nodes best consolidate semantically related leaves. Beyond ϵ = 20 , we also observe a sharp drop in path granularity, as children of unequal specificity are forced under the same parent. We therefore set 
+
+ϵ = 20 .
+
+F Additional Taxonomy Branches 
+
+Figures 2b, 2c, and 2d show three additional branches generated by TaxoScale that are refer-enced in Section 4.4: the refined Password branch, the entirely new Network Security branch, and the domain-specific Parental Control branch. 
+
+G Taxonomy Summarization Prompts 
+
+We use two prompt variants depending on the node type: Table 6 for leaf nodes and Table 7 for internal nodes. Location tracking 
+
+Tracking method 
+
+Country tracking 
+
+Home location tracking 
+
+Inaccurate location tracking 
+
+Behavioral tracking 
+
+Tracking practices 
+
+Driving behavior tracking 
+
+Personal movement tracking 
+
+User activity tracking 
+
+Financial transaction tracking 
+
+Tracking (a) Tracking branch generated by TaxoScale. Password issues 
+
+Password management 
+
+Authentication failures 
+
+> Password m emory issues
+> Reset diffic ulties
+> Weak password fee dback
+> Biometric login failures
+> 2FA failure s
+> Passcode failures
+
+(b) Password branch generated by TaxoScale. Network security  Network 
+
+> IP address management
+> VPN functionality
+
+(c) Network Security branch generated by TaxoScale. Parental control 
+
+Monitoring & safety 
+
+Device management 
+
+> Usage monitoring
+> Activity oversight
+> Child safety safeguard
+> Excessive phone control
+> Remote device control
+
+(d) Parental Control branch generated by TaxoScale. 
+
+Figure 2: Taxonomy branches for tracking, password, network security, and parental control. Leaf Node Summarization Prompt 
+
+You are a precise taxonomy summarization assistant. 
+
+Given: 
+
+• A list of user review labels • The parent path (hierarchical summaries above the current node) (if given) • The sibling summaries (other summaries under the same parent) (if given) Generate a concise subcategory summary that captures the dominant shared theme of the labels. 
+
+Requirements: 
+
+• The summary must be concise (2–6 words). • The summary does not need to cover every label perfectly; prioritize the dominant theme. • The summary must clearly be a subcategory of the provided parent path. • The summary must not be the exact copy of parent summary or sibling summaries (if given). • The summary must be at a comparable level of abstraction to the sibling summaries. • The summary must be semantically distinct from its siblings (avoid overlap or near-duplicates). • Prefer specific, concrete terms over generic ones. Avoid vague words (e.g., “issues”, “problems”, “concerns”, “practices”) unless the labels themselves are genuinely broad. • Always output valid JSON with a single summary string. • Do not include explanations or additional text. 
+
+Output Format (JSON): 
+
+{"summary": "<2-6 word summary>" }
+
+Example: 
+
+Parent Path: 
+
+Privacy/Security > Advertising 
+
+Sibling Summaries: 
+
+Personalized advertising; Paid services 
+
+Input Labels: 
+
+fake ads; scam advertisements; fraudulent promotions; misleading ads; phishing advertisements 
+
+Output: 
+
+{"summary": "Fraudulent Ads" }
+
+Now generate the concise summary using the following: 
+
+Parent Path: 
+
+[$PARENT_PATH$] 
+
+Sibling Summaries: 
+
+[$SIBLINGS$] 
+
+Input Labels: 
+
+[$LABELS$] 
+
+Table 6: Prompt for leaf node summarization. Template variables $PARENT_PATH$ , $SIBLINGS$ , and $LABELS$ are filled for each leaf node to be labeled. Internal Node Summarization Prompt 
+
+Task: 
+
+Given a list of child labels, generate a concise parent label that semantically encompasses them. You may also be given: • A parent path (higher-level categories above the current node) • Sibling parent labels (other categories at the same level) Your goal is to generate a high-quality parent label for the provided child labels. 
+
+Requirements: 
+
+• The parent label must be concise (2–6 words). • The label must reflect the shared theme of all child labels and be more general than each child. • The label must fall under the given parent path (if given) and be more specific than it. • The label must not be the exact copy of parent summary or sibling summaries (if given). • The label must be at a comparable level of abstraction to the sibling labels (if given). • The label must be semantically distinct from its siblings (avoid near-duplicates or overlap). • Avoid repeating exact child terms. • Prefer specific, concrete terms over generic ones. Avoid vague words (e.g., “issues”, “problems”, “concerns”, “practices”) unless the labels themselves are genuinely broad. • Always output valid JSON with a single label string. • Do NOT include explanations. 
+
+Output Format (JSON): 
+
+{"parent_label": "<2-6 word concise label>" }
+
+Example: 
+
+Parent Path: 
+
+Privacy/Security 
+
+Sibling Summaries: 
+
+Data Sharing; Location and Tracking 
+
+Child Labels: 
+
+Personalized advertising; Paid services; Ad-based data monetization; 
+
+Output: 
+
+{"parent_label": "Commercial Exploitation" }
+
+Now generate the parent label using the following: 
+
+Parent Path: 
+
+[$PARENT_PATH$] 
+
+Sibling Summaries: 
+
+[$SIBLINGS$] 
+
+Child Labels: 
+
+[$LABELS$] 
+
+Table 7: System prompt for internal node summarization. Template variables $PARENT_PATH$ , $SIBLINGS$ , and 
+
+$LABELS$ are filled for each internal node to be labeled.
